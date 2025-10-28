@@ -1,0 +1,35 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1fa37e;
+  color: white;
+  padding: 15px 40px;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 700;
+  font-family: "Poppins", sans-serif;
+}
+
+.nav {
+  display: flex;
+  gap: 20px;
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+}
+
+.nav a.active {
+  border-bottom: 2px solid #fff;
+  padding-bottom: 3px;
+}
