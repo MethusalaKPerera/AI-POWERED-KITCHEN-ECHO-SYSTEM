@@ -1,0 +1,246 @@
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: linear-gradient(to bottom, #eafbf0, #ddf5e2);
+  color: #2a2e35;
+}
+
+/* HERO */
+/* Hero Box Styling */
+/* HERO SECTION POSITIONING */
+/* HERO SECTION LAYOUT */
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 20px;       /* Keeps it slightly below top */
+  padding-bottom: 100px;    /* Spacing before next section */
+  background: linear-gradient(to bottom, #eafbf0 0%, #ddf5e2 100%);
+}
+
+/* HERO BOX */
+.hero-box {
+  background: linear-gradient(145deg, #d8f3e2 0%, #c4ebd4 100%);
+  border-radius: 28px;
+  padding: 50px 60px;        /* 🔹 Reduced vertical padding (height) */
+  width: 90%;                /* ✅ Keeps your nice horizontal width */
+  max-width: 1400px;         /* Keeps it wide on larger screens */
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.06),
+    inset 0 1px 4px rgba(255, 255, 255, 0.4);
+  text-align: center;
+  transition: all 0.3s ease;
+  margin-top: 30px;          /* Light top spacing */
+}
+
+/* Optional hover lift */
+.hero-box:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 24px 50px rgba(0, 0, 0, 0.08),
+    inset 0 1px 4px rgba(255, 255, 255, 0.5);
+}
+
+/* Text Styling */
+.hero-box h1 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  color: #164e3b;
+  font-size: 44px;
+  margin-bottom: 20px;
+}
+
+.hero-box p {
+  font-size: 18px;
+  color: #365a48;
+  max-width: 800px;
+  margin: 0 auto 30px auto;
+  line-height: 1.6;
+}
+
+
+
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.btn {
+  border: none;
+  border-radius: 30px;
+  padding: 12px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn.primary {
+  background: #1fa37e;
+  color: white;
+}
+
+.btn.primary:hover {
+  transform: scale(1.05);
+}
+
+.btn.secondary {
+  border: 2px solid #1fa37e;
+  color: #1fa37e;
+  background: transparent;
+}
+
+.btn.secondary:hover {
+  background: #e9f9f2;
+}
+
+/* SECTIONS */
+.section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.section h2 {
+  font-family: "Poppins", sans-serif;
+  font-size: 28px;
+  color: #164e3b;
+  margin-bottom: 30px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 25px;
+  max-width: 900px;
+  margin: auto;
+}
+
+/* CARDS */
+.card,
+.feature {
+  background: white;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  transition: 0.3s ease;
+}
+
+.card:hover,
+.feature:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+}
+
+.icon {
+  color: #1fa37e;
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+/* RESEARCH + STATS */
+.research {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  max-width: 1000px;
+  margin: auto;
+  padding: 60px 20px;
+}
+
+.research h3 {
+  color: #164e3b;
+  font-family: "Poppins", sans-serif;
+}
+
+.research p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.team {
+  display: flex;
+  gap: 20px;
+  justify-content: start;
+  flex-wrap: wrap;
+}
+
+.team-card {
+  text-align: center;
+  flex: 1;
+  min-width: 150px;
+}
+
+.team-card .avatar {
+  width: 60px;
+  height: 60px;
+  background: #1fa37e33;
+  border-radius: 50%;
+  margin: 0 auto 10px;
+}
+
+.team-card h5 {
+  margin: 0;
+  color: #164e3b;
+}
+
+.team-card .role {
+  font-size: 13px;
+  color: #555;
+}
+
+.team-card .quote {
+  font-size: 12px;
+  font-style: italic;
+  color: #777;
+}
+
+.stats-box {
+  background: #ffffffb0;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.stat span {
+  font-size: 22px;
+}
+
+.stat p {
+  margin: 0;
+  color: #333;
+  font-weight: 500;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+  padding: 40px 10px;
+}
+
+.footer-links a {
+  color: #1fa37e;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .research {
+    grid-template-columns: 1fr;
+  }
+}
