@@ -12,7 +12,7 @@ def allowed_file(filename):
 
 @cooking_bp.route('/analyze-image', methods=['POST'])
 def analyze_image():
-    """Upload and analyze ingredient image"""
+    """Upload and analyze ingredient image using Google Cloud Vision API"""
     if 'image' not in request.files:
         return jsonify({'error': 'No image file provided'}), 400
     
@@ -29,25 +29,24 @@ def analyze_image():
         filepath = os.path.join('uploads', filename)
         file.save(filepath)
         
-        # TODO Day 2: Call Google Vision API
-        # For now, return mock data
-        detected_ingredients = [
-            'tomato',
-            'onion', 
-            'chicken',
-            'rice',
-            'curry leaves',
-            'garlic'
-        ]
+        # Use Google Cloud Vision API to detect ingredients
+        from cooking_assistant.image_processor import detect_ingredients
+        detected_ingredients = detect_ingredients(filepath)
+        
+        # Optionally delete the uploaded file after processing
+        # Uncomment the next line if you don't want to keep uploaded images
+        # os.remove(filepath)
         
         return jsonify({
             'success': True,
             'ingredients': detected_ingredients,
-            'message': 'Image analyzed successfully (mock data)',
-            'image_path': filepath
+            'message': 'Image analyzed with Google Cloud Vision API',
+            'image_path': filepath,
+            'total_detected': len(detected_ingredients)
         }), 200
         
     except Exception as e:
+        print(f"Error in analyze_image: {str(e)}")
         return jsonify({
             'error': f'Error processing image: {str(e)}'
         }), 500
@@ -62,6 +61,7 @@ def search_recipes():
         return jsonify({'error': 'No ingredients provided'}), 400
     
     ingredients = data['ingredients']
+    preferences = data.get('preferences', {})
     
     # TODO Day 3-5: Implement RAG model + ML matching
     # Mock recipes for now
@@ -152,3 +152,16 @@ def generate_grocery_list():
         'total_items': sum(len(items) for items in mock_grocery_list.values()),
         'num_people': num_people
     }), 200
+
+
+@cooking_bp.route('/test-api', methods=['GET'])
+def test_api():
+    """Test if Google Cloud Vision API is working"""
+    from cooking_assistant.image_processor import test_api_connection
+    
+    success, message = test_api_connection()
+    
+    return jsonify({
+        'api_working': success,
+        'message': message
+    }), 200 if success else 500
