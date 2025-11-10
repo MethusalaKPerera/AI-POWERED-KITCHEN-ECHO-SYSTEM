@@ -14,7 +14,7 @@ function AppRouter() {
         <Route path="/" element={<Home />} />
         <Route path="/cooking-assistant" element={<CookingAssistant />} />
         <Route path="/expiry-predictor" element={<ExpiryPredictor />} />
-        <Route path="/smart-shopping" element={<SmartShopping />} />
+        <Route path="/smart-shopping/*" element={<SmartShopping />} />
         <Route path="/nutritional-guidance" element={<NutritionalGuidance />} />
       </Routes>
     </Router>
