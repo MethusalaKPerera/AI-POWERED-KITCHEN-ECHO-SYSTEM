@@ -1,21 +1,25 @@
 import os
 import io
 from google.cloud import vision
-from google.oauth2 import service_account
 
 def detect_ingredients(image_path):
     """
     Detect ingredients from image using Google Cloud Vision API
+    with smart mapping to specific ingredients
     """
     try:
-        # Get API key from environment
         api_key = os.getenv('GOOGLE_CLOUD_API_KEY')
         
+        print(f"🔍 DEBUG: API Key exists: {bool(api_key)}")
+        print(f"🔍 DEBUG: API Key first 10 chars: {api_key[:10] if api_key else 'None'}...")
+        
         if not api_key:
-            print("Warning: No API key found. Using mock data.")
+            print("❌ WARNING: No API key found. Using mock data.")
             return get_mock_ingredients()
         
-        # Initialize Vision API client with API key
+        print(f"✅ API key found! Analyzing image: {image_path}")
+        
+        # Initialize Vision API client
         client = vision.ImageAnnotatorClient(
             client_options={"api_key": api_key}
         )
@@ -26,90 +30,216 @@ def detect_ingredients(image_path):
         
         image = vision.Image(content=content)
         
-        # Perform label detection
-        response = client.label_detection(image=image)
-        labels = response.label_annotations
+        # 1. Label Detection (general objects)
+        label_response = client.label_detection(image=image)
+        labels = label_response.label_annotations
         
-        # Also try object localization for more specific results
-        objects = client.object_localization(image=image).localized_object_annotations
+        # 2. Object Localization (specific objects)
+        object_response = client.object_localization(image=image)
+        objects = object_response.localized_object_annotations
+        
+        # 3. Text Detection (for packaged foods)
+        text_response = client.text_detection(image=image)
+        texts = text_response.text_annotations
         
         # Check for errors
-        if response.error.message:
-            raise Exception(f"API Error: {response.error.message}")
+        if label_response.error.message:
+            raise Exception(f"API Error: {label_response.error.message}")
         
-        # Extract food-related items
-        ingredients = extract_food_items(labels, objects)
+        # Extract and map ingredients
+        detected_items = extract_and_map_ingredients(labels, objects, texts)
         
-        # If no food items detected, return mock data as fallback
-        if not ingredients:
-            print("No food items detected. Using sample data.")
+        # If nothing detected, return fallback
+        if not detected_items:
+            print("No ingredients detected. Using sample data.")
             return get_mock_ingredients()
         
-        return ingredients
+        return detected_items
         
     except Exception as e:
         print(f"Error in detect_ingredients: {str(e)}")
-        # Return mock data if API fails
         return get_mock_ingredients()
 
 
-def extract_food_items(labels, objects):
+def extract_and_map_ingredients(labels, objects, texts):
     """
-    Extract food-related items from Vision API results
+    Extract ingredients and map generic terms to specific ingredients
     """
-    # Food-related keywords to filter
-    food_keywords = [
-        'vegetable', 'fruit', 'food', 'ingredient', 'produce',
-        'meat', 'chicken', 'fish', 'seafood', 'beef', 'pork',
-        'grain', 'rice', 'wheat', 'bread',
-        'dairy', 'cheese', 'milk', 'egg',
-        'spice', 'herb', 'seasoning',
-        'tomato', 'onion', 'garlic', 'potato', 'carrot',
-        'pepper', 'chili', 'cucumber', 'cabbage',
-        'leaf', 'leafy', 'green'
-    ]
     
-    # Common ingredient names
-    ingredient_names = [
+    # Ingredient mapping dictionary (generic → specific)
+    ingredient_mapping = {
+        # Vegetables
+        'vegetable': ['mixed vegetables'],
+        'produce': ['fresh produce'],
+        'root vegetable': ['carrot', 'potato', 'radish'],
+        'leafy vegetable': ['spinach', 'cabbage', 'lettuce'],
+        'allium': ['onion', 'garlic', 'leek'],
+        'gourd': ['pumpkin', 'cucumber', 'zucchini'],
+        
+        # Specific vegetables
+        'tomato': ['tomato'],
+        'onion': ['onion'],
+        'garlic': ['garlic'],
+        'ginger': ['ginger'],
+        'potato': ['potato'],
+        'carrot': ['carrot'],
+        'pepper': ['bell pepper', 'chili'],
+        'chili': ['green chili', 'red chili'],
+        'cucumber': ['cucumber'],
+        'cabbage': ['cabbage'],
+        'eggplant': ['eggplant', 'brinjal'],
+        'pumpkin': ['pumpkin'],
+        'beans': ['green beans'],
+        'peas': ['peas'],
+        'corn': ['corn', 'sweet corn'],
+        'mushroom': ['mushroom'],
+        'broccoli': ['broccoli'],
+        'cauliflower': ['cauliflower'],
+        
+        # Proteins
+        'meat': ['meat'],
+        'chicken': ['chicken'],
+        'beef': ['beef'],
+        'pork': ['pork'],
+        'fish': ['fish'],
+        'seafood': ['seafood'],
+        'shrimp': ['shrimp', 'prawns'],
+        'egg': ['egg'],
+        'tofu': ['tofu'],
+        
+        # Grains & Staples
+        'rice': ['rice'],
+        'wheat': ['wheat flour'],
+        'flour': ['flour'],
+        'bread': ['bread'],
+        'pasta': ['pasta'],
+        'noodles': ['noodles'],
+        
+        # Dairy
+        'dairy': ['milk', 'yogurt'],
+        'milk': ['milk'],
+        'cheese': ['cheese'],
+        'butter': ['butter'],
+        'cream': ['cream'],
+        'yogurt': ['yogurt', 'curd'],
+        
+        # Spices & Herbs
+        'spice': ['spices'],
+        'herb': ['herbs'],
+        'curry': ['curry powder', 'curry leaves'],
+        'turmeric': ['turmeric'],
+        'cumin': ['cumin'],
+        'coriander': ['coriander'],
+        'cinnamon': ['cinnamon'],
+        'cardamom': ['cardamom'],
+        'chili powder': ['chili powder'],
+        'garam masala': ['garam masala'],
+        'bay leaf': ['bay leaf'],
+        'mint': ['mint'],
+        'cilantro': ['cilantro', 'coriander leaves'],
+        'basil': ['basil'],
+        'parsley': ['parsley'],
+        'thyme': ['thyme'],
+        'rosemary': ['rosemary'],
+        
+        # Oils & Condiments
+        'oil': ['cooking oil'],
+        'coconut': ['coconut', 'coconut milk'],
+        'coconut milk': ['coconut milk'],
+        'soy sauce': ['soy sauce'],
+        'vinegar': ['vinegar'],
+        'salt': ['salt'],
+        'sugar': ['sugar'],
+        'honey': ['honey'],
+        
+        # Nuts & Seeds
+        'nut': ['nuts'],
+        'cashew': ['cashew'],
+        'peanut': ['peanut'],
+        'almond': ['almond'],
+        'walnut': ['walnut'],
+        'sesame': ['sesame seeds'],
+        
+        # Fruits
+        'fruit': ['fruit'],
+        'lemon': ['lemon'],
+        'lime': ['lime'],
+        'apple': ['apple'],
+        'banana': ['banana'],
+        'mango': ['mango'],
+        'orange': ['orange'],
+        'tomato': ['tomato'],  # Technically a fruit
+        
+        # Lentils & Legumes
+        'lentil': ['lentils', 'dhal'],
+        'bean': ['beans'],
+        'chickpea': ['chickpeas'],
+        'red lentil': ['red lentils'],
+        'green lentil': ['green lentils'],
+    }
+    
+    # Common ingredients to always include if mentioned
+    common_ingredients = {
         'tomato', 'onion', 'garlic', 'ginger', 'potato', 'carrot',
-        'chicken', 'beef', 'pork', 'fish', 'egg', 'rice', 'wheat',
-        'pepper', 'chili', 'cucumber', 'cabbage', 'lettuce',
-        'mushroom', 'broccoli', 'cauliflower', 'spinach',
-        'lemon', 'lime', 'apple', 'banana', 'orange',
-        'cheese', 'milk', 'butter', 'oil', 'salt', 'sugar'
-    ]
+        'chicken', 'rice', 'egg', 'oil', 'salt', 'pepper',
+        'chili', 'curry', 'coconut', 'fish', 'beef', 'pork',
+        'cucumber', 'cabbage', 'beans', 'peas', 'corn',
+        'milk', 'cheese', 'butter', 'flour', 'sugar'
+    }
     
-    detected_items = set()
+    detected_ingredients = set()
+    raw_detections = set()
     
     # Process labels
     for label in labels:
-        description = label.description.lower()
+        description = label.description.lower().strip()
+        raw_detections.add(description)
         
-        # Check if it's a food-related label
-        is_food = any(keyword in description for keyword in food_keywords)
+        # Check if it's a common ingredient
+        for common in common_ingredients:
+            if common in description or description in common:
+                detected_ingredients.add(common)
         
-        # Check if it's a specific ingredient
-        is_ingredient = any(ing in description for ing in ingredient_names)
-        
-        if is_food or is_ingredient:
-            # Clean up the description
-            clean_name = description.replace('_', ' ').strip()
-            detected_items.add(clean_name)
+        # Map to specific ingredients
+        for generic, specifics in ingredient_mapping.items():
+            if generic in description:
+                detected_ingredients.update(specifics)
     
-    # Process objects (more specific)
+    # Process objects (usually more specific)
     for obj in objects:
-        name = obj.name.lower()
+        name = obj.name.lower().strip()
+        raw_detections.add(name)
         
-        # Objects are usually more specific
-        is_food = any(keyword in name for keyword in food_keywords)
-        is_ingredient = any(ing in name for ing in ingredient_names)
+        # Check common ingredients
+        for common in common_ingredients:
+            if common in name or name in common:
+                detected_ingredients.add(common)
         
-        if is_food or is_ingredient:
-            clean_name = name.replace('_', ' ').strip()
-            detected_items.add(clean_name)
+        # Direct mapping
+        for generic, specifics in ingredient_mapping.items():
+            if generic in name:
+                detected_ingredients.update(specifics)
     
-    # Convert set to sorted list
-    return sorted(list(detected_items))
+    # Process text (for packaged foods)
+    if texts and len(texts) > 0:
+        detected_text = texts[0].description.lower() if texts else ""
+        
+        # Look for ingredient keywords in text
+        for common in common_ingredients:
+            if common in detected_text:
+                detected_ingredients.add(common)
+    
+    # Remove generic terms if we have specific ones
+    generic_terms = {'food', 'ingredient', 'produce', 'vegetable', 'fruit', 'meat', 'spice'}
+    detected_ingredients = detected_ingredients - generic_terms
+    
+    # Convert to sorted list
+    result = sorted(list(detected_ingredients))
+    
+    print(f"Raw detections: {raw_detections}")
+    print(f"Mapped ingredients: {result}")
+    
+    return result
 
 
 def get_mock_ingredients():
@@ -141,7 +271,6 @@ def test_api_connection():
             client_options={"api_key": api_key}
         )
         
-        # Try a simple operation
         return True, "API connection successful!"
         
     except Exception as e:
