@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import "./CookingAssistant.css";
+import React, { useState } from 'react';
+import './CookingAssistant.css';
 
 function CookingAssistant() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -77,90 +77,127 @@ function CookingAssistant() {
   };
 
   return (
-    <div className="cooking-assistant-page">
-      <section className="section">
-        <h2>🍳 AI Cooking Assistant</h2>
-        <p className="subtitle">
-          Upload an image of your ingredients, and our AI will identify them and suggest delicious recipes!
-        </p>
-
-        <div className="upload-container">
-          <div className="upload-box">
-            <input
-              type="file"
-              id="image-upload"
-              accept="image/*"
-              onChange={handleImageChange}
-              style={{ display: "none" }}
-            />
-            <label htmlFor="image-upload" className="upload-label">
-              {previewUrl ? (
-                <img src={previewUrl} alt="Preview" className="preview-image" />
-              ) : (
-                <div className="upload-placeholder">
-                  <span className="upload-icon">📷</span>
-                  <p>Click to upload ingredient image</p>
-                  <small>Supports: JPG, PNG, GIF</small>
-                </div>
-              )}
-            </label>
-          </div>
-
-          <button
-            className="btn primary analyze-btn"
-            onClick={analyzeImage}
-            disabled={!selectedImage || loading}
-          >
-            {loading ? "🔍 Analyzing..." : "🚀 Analyze Ingredients"}
-          </button>
+    <div className="cooking-assistant-container">
+      {/* Sidebar */}
+      <aside className="sidebar">
+        <div className="sidebar-header">
+          <div className="logo-icon">🍛</div>
+          <h2>AI Kitchen</h2>
+          <p className="tagline">Sri Lankan Cuisine</p>
         </div>
 
-        {error && (
-          <div className="error-message">
-            ⚠️ {error}
+        <nav className="sidebar-nav">
+          <div className="nav-item active">
+            <span className="nav-icon">📸</span>
+            <span>Detect Ingredients</span>
           </div>
-        )}
+          <div className="nav-item" onClick={() => window.location.href = '/meal-planner'}>
+            <span className="nav-icon">📅</span>
+            <span>Meal Planner</span>
+          </div>
+          <div className="nav-item">
+            <span className="nav-icon">🛒</span>
+            <span>Grocery List</span>
+          </div>
+        </nav>
 
-        {ingredients.length > 0 && (
-          <div className="results-section">
-            <h3>✅ Detected Ingredients:</h3>
-            <div className="ingredients-list">
-              {ingredients.map((ingredient, index) => (
-                <span key={index} className="ingredient-tag">
-                  {ingredient}
-                </span>
-              ))}
+        <div className="sidebar-footer">
+          <div className="sri-lankan-badge">
+            <span className="flag">🇱🇰</span>
+            <div>
+              <div className="badge-title">Authentic Sri Lankan</div>
+              <div className="badge-subtitle">Traditional Recipes</div>
             </div>
           </div>
-        )}
+        </div>
+      </aside>
 
-        {recipes.length > 0 && (
-          <div className="results-section">
-            <h3>🍽️ Recipe Suggestions:</h3>
-            <div className="recipes-grid">
-              {recipes.map((recipe) => (
-                <div key={recipe.id} className="recipe-card">
-                  <div className="recipe-header">
-                    <h4>{recipe.name}</h4>
-                    <span className="match-score">{recipe.match_score}% Match</span>
+      {/* Main Content */}
+      <main className="cooking-assistant-page">
+        <section className="section">
+          <h2>🍳 AI Cooking Assistant</h2>
+          <p className="subtitle">
+            Upload an image of your ingredients, and our AI will identify them and suggest delicious recipes!
+          </p>
+
+          <div className="upload-container">
+            <div className="upload-box">
+              <input
+                type="file"
+                id="image-upload"
+                accept="image/*"
+                onChange={handleImageChange}
+                style={{ display: "none" }}
+              />
+              <label htmlFor="image-upload" className="upload-label">
+                {previewUrl ? (
+                  <img src={previewUrl} alt="Preview" className="preview-image" />
+                ) : (
+                  <div className="upload-placeholder">
+                    <span className="upload-icon">📷</span>
+                    <p>Click to upload ingredient image</p>
+                    <small>Supports: JPG, PNG, GIF</small>
                   </div>
-                  <div className="recipe-details">
-                    <p><strong>Cuisine:</strong> {recipe.cuisine}</p>
-                    <p><strong>Time:</strong> {recipe.cooking_time}</p>
-                    <p><strong>Difficulty:</strong> {recipe.difficulty}</p>
-                    {recipe.missing_ingredients.length > 0 && (
-                      <p className="missing">
-                        <strong>You'll need:</strong> {recipe.missing_ingredients.join(", ")}
-                      </p>
-                    )}
-                  </div>
-                  <button className="btn secondary">View Recipe</button>
-                </div>
-              ))}
+                )}
+              </label>
             </div>
+
+            <button
+              className="btn primary analyze-btn"
+              onClick={analyzeImage}
+              disabled={!selectedImage || loading}
+            >
+              {loading ? "🔍 Analyzing..." : "🚀 Analyze Ingredients"}
+            </button>
           </div>
-        )}
-      </section>
+
+          {error && (
+            <div className="error-message">
+              ⚠️ {error}
+            </div>
+          )}
+
+          {ingredients.length > 0 && (
+            <div className="results-section">
+              <h3>✅ Detected Ingredients:</h3>
+              <div className="ingredients-list">
+                {ingredients.map((ingredient, index) => (
+                  <span key={index} className="ingredient-tag">
+                    {ingredient}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {recipes.length > 0 && (
+            <div className="results-section">
+              <h3>🍽️ Recipe Suggestions:</h3>
+              <div className="recipes-grid">
+                {recipes.map((recipe) => (
+                  <div key={recipe.id} className="recipe-card">
+                    <div className="recipe-header">
+                      <h4>{recipe.name}</h4>
+                      <span className="match-score">{recipe.match_score}% Match</span>
+                    </div>
+                    <div className="recipe-details">
+                      <p><strong>Cuisine:</strong> {recipe.cuisine}</p>
+                      <p><strong>Time:</strong> {recipe.cooking_time}</p>
+                      <p><strong>Difficulty:</strong> {recipe.difficulty}</p>
+                      {recipe.missing_ingredients && recipe.missing_ingredients.length > 0 && (
+                        <p className="missing">
+                          <strong>You'll need:</strong> {recipe.missing_ingredients.join(", ")}
+                        </p>
+                      )}
+                    </div>
+                    <button className="btn secondary">View Recipe</button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </section>
+      </main>
     </div>
   );
 }
