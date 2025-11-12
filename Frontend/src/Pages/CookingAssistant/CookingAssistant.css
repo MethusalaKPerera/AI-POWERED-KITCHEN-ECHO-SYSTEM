@@ -1,18 +1,141 @@
-.cooking-assistant-page {
+/* Container with sidebar */
+.cooking-assistant-container {
+  display: flex;
   min-height: 100vh;
   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: 280px;
+  background: linear-gradient(180deg, #0d4d3d 0%, #1fa37e 100%); /* Teal/Green Gradient */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.sidebar-header {
+  padding: 30px 20px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo-icon {
+  font-size: 60px;
+  margin-bottom: 15px;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.sidebar-header h2 {
+  margin: 0;
+  font-size: 26px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.tagline {
+  margin: 8px 0 0 0;
+  font-size: 13px;
+  opacity: 0.8;
+  font-style: italic;
+}
+
+.sidebar-nav {
+  flex: 1;
+  padding: 20px 0;
+}
+
+.nav-item {
+  padding: 18px 25px;
+  margin: 8px 15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateX(5px);
+}
+
+.nav-item.active {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.nav-icon {
+  font-size: 24px;
+}
+
+/* --- Sidebar Footer Styles (Added/Fixed) --- */
+.sidebar-footer {
   padding: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sri-lankan-badge {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 15px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.flag {
+  font-size: 32px;
+}
+
+.badge-title {
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.badge-subtitle {
+  font-size: 11px;
+  opacity: 0.8;
+  margin-top: 2px;
+}
+/* --- End Sidebar Footer Styles --- */
+
+/* Main Content */
+.cooking-assistant-page {
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
+}
+
+.section h2 {
+  text-align: center;
+  font-size: 42px;
+  color: #1fa37e;
+  margin-bottom: 10px;
 }
 
 .subtitle {
   text-align: center;
   color: #666;
-  margin-bottom: 40px;
+  /* Increased margin to create a larger gap */
+  margin-bottom: 100px; 
+  font-size: 16px;
 }
 
 .upload-container {
   max-width: 600px;
-  margin: 0 auto 40px;
+  margin: 0 auto 70px;
   text-align: center;
 }
 
@@ -29,6 +152,7 @@
 .upload-box:hover {
   border-color: #148a63;
   box-shadow: 0 5px 15px rgba(31, 163, 126, 0.2);
+  transform: scale(1.02);
 }
 
 .upload-label {
@@ -52,14 +176,47 @@
   border-radius: 10px;
 }
 
+.btn {
+  padding: 15px 40px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, #1fa37e 0%, #148a63 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(31, 163, 126, 0.3);
+}
+
+.btn.primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(31, 163, 126, 0.4);
+}
+
+.btn.primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn.secondary {
+  background: white;
+  color: #1fa37e;
+  border: 2px solid #1fa37e;
+}
+
+.btn.secondary:hover {
+  background: #1fa37e;
+  color: white;
+}
+
 .analyze-btn {
   font-size: 18px;
   padding: 15px 40px;
-}
-
-.analyze-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+  width: 100%;
 }
 
 .error-message {
@@ -85,6 +242,10 @@
 .results-section h3 {
   color: #1fa37e;
   margin-bottom: 20px;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .ingredients-list {
@@ -99,6 +260,12 @@
   padding: 10px 20px;
   border-radius: 25px;
   font-weight: 500;
+  transition: transform 0.2s ease;
+}
+
+.ingredient-tag:hover {
+  transform: scale(1.05);
+  box-shadow: 0 3px 10px rgba(31, 163, 126, 0.3);
 }
 
 .recipes-grid {
@@ -119,6 +286,7 @@
 .recipe-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  border-color: #1fa37e;
 }
 
 .recipe-header {
@@ -131,6 +299,7 @@
 .recipe-header h4 {
   margin: 0;
   color: #333;
+  font-size: 20px;
 }
 
 .match-score {
@@ -149,14 +318,36 @@
 .recipe-details p {
   margin: 8px 0;
   color: #555;
+  font-size: 14px;
 }
 
 .recipe-details .missing {
   color: #ff9800;
   font-size: 14px;
+  background: #fff3e0;
+  padding: 8px;
+  border-radius: 8px;
+  margin-top: 10px;
 }
 
 .recipe-card .btn {
   width: 100%;
   margin-top: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cooking-assistant-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+
+  .cooking-assistant-page {
+    padding: 20px;
+  }
 }
