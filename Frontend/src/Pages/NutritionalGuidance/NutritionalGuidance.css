@@ -1,0 +1,214 @@
+/* Layout Base */
+.nutritional-guidance-container {
+  display: flex;
+  min-height: 100vh;
+  background: #f4faf7;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 270px;
+  background: linear-gradient(180deg, #0d4d3d 0%, #1fa37e 100%);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  box-shadow: 6px 0 20px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+/* Sidebar Header */
+.sidebar-header {
+  padding: 35px 20px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo-icon {
+  font-size: 58px;
+  margin-bottom: 10px;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.sidebar-header h2 {
+  font-size: 24px;
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.tagline {
+  font-size: 13px;
+  font-style: italic;
+  opacity: 0.8;
+  margin-top: 4px;
+}
+
+/* Navigation */
+.sidebar-nav {
+  flex: 1;
+  padding: 20px 0;
+  overflow-y: auto;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 14px 25px;
+  margin: 6px 18px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateX(5px);
+}
+
+.nav-item.active {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+.nav-icon {
+  font-size: 22px;
+  min-width: 24px;
+}
+
+/* Sidebar Footer */
+.sidebar-footer {
+  padding: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.health-badge {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 12px 15px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.badge-icon {
+  font-size: 28px;
+}
+
+.badge-title {
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.badge-subtitle {
+  font-size: 11px;
+  opacity: 0.85;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  padding: 40px 50px;
+  margin-left: 270px;
+  background: #f8fdfa;
+  overflow-y: auto;
+  transition: all 0.3s ease;
+}
+
+/* Card Styles */
+.card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 25px 30px;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e9f5ee;
+  margin-bottom: 25px;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+}
+
+.card h3 {
+  color: #164e3b;
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Primary Button */
+.btn-primary {
+  background: linear-gradient(135deg, #1fa37e, #0d4d3d);
+  color: #fff;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(31, 163, 126, 0.3);
+}
+
+/* Scrollbar Styling */
+.sidebar-nav::-webkit-scrollbar,
+.main-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb,
+.main-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .sidebar {
+    width: 230px;
+  }
+
+  .main-content {
+    margin-left: 230px;
+    padding: 30px 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: absolute;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar.active {
+    transform: translateX(0);
+  }
+
+  .main-content {
+    margin-left: 0;
+    padding: 20px;
+  }
+}

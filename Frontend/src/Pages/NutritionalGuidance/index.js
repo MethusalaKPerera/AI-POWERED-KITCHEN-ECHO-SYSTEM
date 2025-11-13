@@ -1,3 +1,3 @@
-import UserDetailsForm from "./UserDetailsForm";
+import NutritionalGuidance from './NutritionalGuidance';
 
-export default UserDetailsForm;
+export default NutritionalGuidance;
