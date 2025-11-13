@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "../Pages/Home.jsx";
 import CookingAssistant from "../Pages/CookingAssistant/CookingAssistant.jsx";
 import MealPlanner from "../Pages/CookingAssistant/MealPlanner.jsx"; // <-- NEW IMPORT
-import ExpiryPredictor from "../Pages/ExpiryPredictor.jsx";
+import ExpiryPredictor from "../Pages/ExpiryPredictor/ExpiryPredictor.jsx";
 import SmartShopping from "../Pages/SmartShopping.jsx";
 import NutritionalGuidance from "../Pages/NutritionalGuidance";
 import Header from "../Components/Header.jsx";
