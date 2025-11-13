@@ -1,3 +1,3 @@
-import GuidanceForm from "./GuidanceForm";
+import UserDetailsForm from "./UserDetailsForm";
 
-export default GuidanceForm;
+export default UserDetailsForm;
