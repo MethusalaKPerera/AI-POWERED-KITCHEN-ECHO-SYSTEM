@@ -1,13 +1,19 @@
 import React from 'react';
+import '../DashboardHome.css';
 
 const DashboardHome = () => {
   return (
     <div className="dashboard-home">
+      {/* Welcome Section */}
       <div className="welcome-section">
-        <h1>Welcome to Your Nutritional Guide 🍎</h1>
-        <p className="subtitle">AI-Powered Predictive Health Intervention System</p>
+        <div className="welcome-content">
+          <div className="welcome-icon">🥗</div>
+          <h1>Welcome to Nutritional Guide</h1>
+          <p className="subtitle">AI-Powered Predictive Health Intervention System</p>
+        </div>
       </div>
 
+      {/* Stats Grid */}
       <div className="stats-grid">
         <div className="stat-card">
           <div className="stat-icon">📊</div>
@@ -46,6 +52,7 @@ const DashboardHome = () => {
         </div>
       </div>
 
+      {/* Features Grid */}
       <div className="features-grid">
         <div className="card">
           <h3>🎯 Predictive Analytics</h3>
@@ -88,6 +95,7 @@ const DashboardHome = () => {
         </div>
       </div>
 
+      {/* Quick Actions */}
       <div className="quick-actions">
         <h2>Quick Actions</h2>
         <div className="action-buttons">
