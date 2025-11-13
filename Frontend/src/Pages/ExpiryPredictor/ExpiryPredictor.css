@@ -1,0 +1,30 @@
+/* HERO BOX (Personalization Component) */
+.hero-box {
+  background: linear-gradient(145deg, #d8f3e2 0%, #c4ebd4 100%);
+  border-radius: 28px;
+  padding: 50px 60px;
+  width: 90%;
+  max-width: 1400px;
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.06),
+    inset 0 1px 4px rgba(255, 255, 255, 0.4);
+  text-align: center;
+  transition: all 0.3s ease;
+  margin-top: 30px;
+}
+
+.hero-box h1 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  color: #164e3b;
+  font-size: 44px;
+  margin-bottom: 20px;
+}
+
+.hero-box p {
+  font-size: 18px;
+  color: #365a48;
+  max-width: 800px;
+  margin: 0 auto 30px auto;
+  line-height: 1.6;
+}
