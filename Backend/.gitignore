@@ -6,3 +6,5 @@ uploads/
 *.db
 data/embeddings/
 .DS_Store
+.
+.venv/
