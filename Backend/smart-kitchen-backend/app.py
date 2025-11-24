@@ -18,6 +18,17 @@ os.makedirs('data', exist_ok=True)
 from cooking_assistant.routes import cooking_bp
 app.register_blueprint(cooking_bp, url_prefix='/api/cooking')
 
+<<<<<<< Updated upstream:Backend/smart-kitchen-backend/app.py
+=======
+# 🔹 Import smart shopping module
+from smart_shopping.routes import smart_shopping_bp, init_history_manager
+app.register_blueprint(smart_shopping_bp, url_prefix='/api/smart-shopping')
+
+# 🔹 Initialize smart shopping history manager with MongoDB
+init_history_manager(mongo_db=mongo.db)
+
+# 🔹 Health check endpoint
+>>>>>>> Stashed changes:Backend/app.py
 @app.route('/health', methods=['GET'])
 def health_check():
     return jsonify({
@@ -36,6 +47,17 @@ def root():
                     'POST /api/cooking/analyze-image',
                     'POST /api/cooking/search-recipes',
                     'POST /api/cooking/generate-grocery-list'
+                ]
+            },
+            'smart_shopping': {
+                'endpoints': [
+                    'POST /api/smart-shopping/search',
+                    'POST /api/smart-shopping/recommendations',
+                    'POST /api/smart-shopping/chat',
+                    'GET/POST/PUT/DELETE /api/smart-shopping/history',
+                    'POST /api/smart-shopping/process-query',
+                    'POST /api/smart-shopping/convert-currency',
+                    'GET /api/smart-shopping/health'
                 ]
             }
         }
