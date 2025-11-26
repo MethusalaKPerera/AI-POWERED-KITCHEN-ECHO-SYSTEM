@@ -1,18 +1,40 @@
 import React from 'react';
-import { StarIcon, BookmarkIcon } from 'lucide-react';
+import { StarIcon, BookmarkIcon, ExternalLink } from 'lucide-react';
 import { useCurrency } from '../context/CurrencyContext';
 
 export function ProductCard({ product, onSave }) {
   const { convertPrice } = useCurrency();
 
+  const handleCardClick = (e) => {
+    // Don't navigate if clicking the save button
+    if (e.target.closest('button')) return;
+
+    // Open product URL in new tab
+    console.log('Product URL:', product.url);
+    if (product.url && product.url !== '#') {
+      console.log('Opening URL:', product.url);
+      window.open(product.url, '_blank', 'noopener,noreferrer');
+    } else {
+      console.log('No valid URL found');
+    }
+  };
+
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
+    <div
+      className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 group cursor-pointer"
+      onClick={handleCardClick}
+    >
       <div className="relative overflow-hidden">
         <img
           src={product.image}
           alt={product.name}
           className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
         />
+        {product.store && (
+          <div className="absolute top-2 right-2 bg-white px-3 py-1 rounded-full shadow-md">
+            <span className="text-xs font-semibold text-[#2D5F4F]">{product.store}</span>
+          </div>
+        )}
         {product.aiReason && (
           <div className="absolute inset-0 bg-black bg-opacity-80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
             <p className="text-white text-sm text-center">{product.aiReason}</p>
@@ -39,13 +61,27 @@ export function ProductCard({ product, onSave }) {
             {product.category}
           </span>
         )}
-        <button
-          onClick={onSave}
-          className="w-full flex items-center justify-center space-x-2 bg-[#2D9B81] text-white py-2 rounded-md hover:bg-[#267A68] transition-colors"
-        >
-          <BookmarkIcon size={16} />
-          <span>Save to History</span>
-        </button>
+        <div className="flex gap-2">
+          <button
+            onClick={onSave}
+            className="flex-1 flex items-center justify-center space-x-2 bg-[#2D9B81] text-white py-2 rounded-md hover:bg-[#267A68] transition-colors"
+          >
+            <BookmarkIcon size={16} />
+            <span>Save</span>
+          </button>
+          {product.url && product.url !== '#' && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                window.open(product.url, '_blank', 'noopener,noreferrer');
+              }}
+              className="px-4 py-2 bg-white border-2 border-[#2D9B81] text-[#2D9B81] rounded-md hover:bg-[#D4F1E8] transition-colors"
+              title="Visit store"
+            >
+              <ExternalLink size={16} />
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );

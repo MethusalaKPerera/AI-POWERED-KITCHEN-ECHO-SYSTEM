@@ -7,7 +7,7 @@ import { useCurrency } from '../context/CurrencyContext';
 import { useHistory } from '../context/HistoryContext';
 
 export function Settings() {
-  const { language, setLanguage } = useLanguage();
+  const { language, setLanguage, translations } = useLanguage();
   const { currency, setCurrency } = useCurrency();
   const { clearHistory } = useHistory();
   const [voiceEnabled, setVoiceEnabled] = useState(true);
@@ -19,9 +19,9 @@ export function Settings() {
       <div className="ml-64 min-h-screen">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="mb-8">
-            <h1 className="text-4xl font-bold text-[#1E5245] mb-2">Settings</h1>
+            <h1 className="text-4xl font-bold text-[#1E5245] mb-2">{translations.settingsTitle}</h1>
             <p className="text-[#2D5F4F]">
-              Manage your preferences and account settings
+              {translations.managePreferences}
             </p>
           </div>
           <div className="space-y-6">
@@ -29,11 +29,11 @@ export function Settings() {
               <div className="flex items-center space-x-3 mb-4">
                 <GlobeIcon className="text-[#2D9B81]" size={24} />
                 <h2 className="text-xl font-semibold text-[#1E5245]">
-                  Language
+                  {translations.languageTitle}
                 </h2>
               </div>
               <p className="text-[#2D5F4F] mb-4">
-                Choose your preferred language
+                {translations.chooseLanguage}
               </p>
               <select
                 value={language}
@@ -49,11 +49,11 @@ export function Settings() {
               <div className="flex items-center space-x-3 mb-4">
                 <DollarSignIcon className="text-[#2D9B81]" size={24} />
                 <h2 className="text-xl font-semibold text-[#1E5245]">
-                  Currency
+                  {translations.currencyTitle}
                 </h2>
               </div>
               <p className="text-[#2D5F4F] mb-4">
-                Select your preferred currency
+                {translations.selectCurrency}
               </p>
               <select
                 value={currency}
@@ -71,17 +71,17 @@ export function Settings() {
               <div className="flex items-center space-x-3 mb-4">
                 <BrainIcon className="text-[#2D9B81]" size={24} />
                 <h2 className="text-xl font-semibold text-[#1E5245]">
-                  AI Preferences
+                  {translations.aiPreferences}
                 </h2>
               </div>
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="font-medium text-[#1E5245]">
-                      Enable Voice Input
+                      {translations.enableVoice}
                     </p>
                     <p className="text-sm text-[#2D5F4F]">
-                      Use voice commands for searching
+                      {translations.useVoiceCommands}
                     </p>
                   </div>
                   <label className="relative inline-flex items-center cursor-pointer">
@@ -97,10 +97,10 @@ export function Settings() {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="font-medium text-[#1E5245]">
-                      Save Search History
+                      {translations.saveSearchHistory}
                     </p>
                     <p className="text-sm text-[#2D5F4F]">
-                      Store your searches for future reference
+                      {translations.storeSearches}
                     </p>
                   </div>
                   <label className="relative inline-flex items-center cursor-pointer">
@@ -119,22 +119,22 @@ export function Settings() {
               <div className="flex items-center space-x-3 mb-4">
                 <TrashIcon className="text-red-600" size={24} />
                 <h2 className="text-xl font-semibold text-[#1E5245]">
-                  Data Management
+                  {translations.dataManagement}
                 </h2>
               </div>
               <p className="text-[#2D5F4F] mb-4">
-                Clear all stored data and reset preferences
+                {translations.clearAllData}
               </p>
               <button
                 onClick={() => {
-                  if (window.confirm('Are you sure you want to clear all data?')) {
+                  if (window.confirm(translations.confirmClear)) {
                     clearHistory();
-                    alert('All data has been cleared');
+                    alert(translations.dataCleared);
                   }
                 }}
                 className="px-6 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors"
               >
-                Reset All Data
+                {translations.resetAllData}
               </button>
             </div>
           </div>

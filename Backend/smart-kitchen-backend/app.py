@@ -1,12 +1,25 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_cors import CORS
 import os
+<<<<<<< Updated upstream:Backend/smart-kitchen-backend/app.py
 from dotenv import load_dotenv
+=======
+from datetime import datetime
+>>>>>>> Stashed changes:Backend/app.py
 
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app)
+
+# Configure CORS
+CORS(app, resources={
+    r"/*": {
+        "origins": ["http://localhost:3000", "http://localhost:5000", "http://localhost:5173", "http://127.0.0.1:5173"],
+        "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+        "allow_headers": ["Content-Type", "Authorization"],
+        "supports_credentials": True
+    }
+})
 
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 app.config['UPLOAD_FOLDER'] = 'uploads'
@@ -14,9 +27,17 @@ app.config['UPLOAD_FOLDER'] = 'uploads'
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 os.makedirs('data', exist_ok=True)
 
+<<<<<<< Updated upstream:Backend/smart-kitchen-backend/app.py
 # Import your cooking assistant module
+=======
+# 🔹 Import blueprints
+>>>>>>> Stashed changes:Backend/app.py
 from cooking_assistant.routes import cooking_bp
+from shopping.routes import shopping_bp
+
+# Register blueprints
 app.register_blueprint(cooking_bp, url_prefix='/api/cooking')
+app.register_blueprint(shopping_bp, url_prefix='')  # Registered at root since routes already have /api/shopping
 
 <<<<<<< Updated upstream:Backend/smart-kitchen-backend/app.py
 =======
@@ -49,6 +70,7 @@ def root():
                     'POST /api/cooking/generate-grocery-list'
                 ]
             },
+<<<<<<< Updated upstream:Backend/smart-kitchen-backend/app.py
             'smart_shopping': {
                 'endpoints': [
                     'POST /api/smart-shopping/search',
@@ -58,6 +80,14 @@ def root():
                     'POST /api/smart-shopping/process-query',
                     'POST /api/smart-shopping/convert-currency',
                     'GET /api/smart-shopping/health'
+=======
+            'shopping': {
+                'endpoints': [
+                    'GET /api/shopping/search?q=<query>',
+                    'GET /api/shopping/product/<product_id>',
+                    'GET /api/shopping/history',
+                    'GET /api/shopping/recommendations'
+>>>>>>> Stashed changes:Backend/app.py
                 ]
             }
         }
