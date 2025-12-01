@@ -3,31 +3,55 @@ from flask_cors import CORS
 from flask_pymongo import PyMongo
 from dotenv import load_dotenv
 import os
+import traceback
 
-# 🔹 Load environment variables
+
+# ------------------------------------------------------------
+# LOAD ENVIRONMENT VARIABLES
+# ------------------------------------------------------------
 load_dotenv()
 
-# 🔹 Initialize Flask app
+# ------------------------------------------------------------
+# INITIALIZE FLASK APP
+# ------------------------------------------------------------
 app = Flask(__name__)
 CORS(app)
 
-# 🔹 Basic config
+# ★ Show FULL error logs in terminal ★
+app.config["PROPAGATE_EXCEPTIONS"] = True
+
+# ------------------------------------------------------------
+# BASIC CONFIG
+# ------------------------------------------------------------
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 app.config['UPLOAD_FOLDER'] = 'uploads'
 
-# 🔹 MongoDB config
+# ------------------------------------------------------------
+# MONGODB CONNECTION
+# ------------------------------------------------------------
 app.config["MONGO_URI"] = os.getenv("MONGO_URI")
 mongo = PyMongo(app)
 
-# 🔹 Ensure required folders exist
+# Ensure folders exist
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 os.makedirs('data', exist_ok=True)
 
-# 🔹 Import cooking assistant module
+# ------------------------------------------------------------
+# BLUEPRINT IMPORTS
+# ------------------------------------------------------------
+
+# Cooking Assistant (existing)
 from cooking_assistant.routes import cooking_bp
 app.register_blueprint(cooking_bp, url_prefix='/api/cooking')
 
-# 🔹 Health check endpoint
+# Food Expiry Predictor (your novel module)
+from FoodExpiry.routes.food_routes import food_bp
+app.register_blueprint(food_bp, url_prefix='/api/food')
+
+# ------------------------------------------------------------
+# ROUTES
+# ------------------------------------------------------------
+
 @app.route('/health', methods=['GET'])
 def health_check():
     return jsonify({
@@ -35,12 +59,11 @@ def health_check():
         'message': 'Smart Kitchen Backend is running!'
     }), 200
 
-# 🔹 Root route (overview)
+
 @app.route('/', methods=['GET'])
 def root():
     return jsonify({
         'message': 'Welcome to Smart Kitchen API',
-        'version': '1.0.0',
         'modules': {
             'cooking_assistant': {
                 'endpoints': [
@@ -48,28 +71,34 @@ def root():
                     'POST /api/cooking/search-recipes',
                     'POST /api/cooking/generate-grocery-list'
                 ]
+            },
+            'food_expiry_predictor': {
+                'endpoints': [
+                    'GET /api/food/',
+                    'POST /api/food/add',
+                    'POST /api/food/predict',
+                    'DELETE /api/food/delete/<id>'
+                ]
             }
         }
     }), 200
 
-# 🔹 MongoDB test route
+
 @app.route('/test-db', methods=['GET'])
 def test_db():
     try:
-        db_names = mongo.cx.list_database_names()
-        return jsonify({
-            "status": "connected",
-            "databases": db_names
-        }), 200
+        names = mongo.cx.list_database_names()
+        return jsonify({"status": "connected", "databases": names}), 200
     except Exception as e:
-        return jsonify({
-            "status": "error",
-            "message": str(e)
-        }), 500
+        return jsonify({"status": "error", "message": str(e)}), 500
 
-# 🔹 Run the Flask app
+# ------------------------------------------------------------
+# RUN SERVER
+# ------------------------------------------------------------
 if __name__ == '__main__':
     print("🚀 Starting Smart Kitchen Backend...")
     print("📍 Backend running on: http://localhost:5000")
     print("📍 Frontend should run on: http://localhost:3000")
-    app.run(debug=True, port=5000)
+
+    # ★ Disable reloader to avoid swallowing errors ★
+    app.run(debug=True, port=5000, use_reloader=False)
