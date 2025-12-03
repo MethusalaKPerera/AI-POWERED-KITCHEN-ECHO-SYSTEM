@@ -97,12 +97,15 @@ X_train, X_test, y_train, y_test = train_test_split(
 # TRAIN MODEL
 # --------------------------------------------------------
 model = CatBoostRegressor(
-    depth=10,
-    learning_rate=0.04,
-    iterations=950,
-    loss_function="MAE",
+    depth=8,
+    learning_rate=0.03,
+    iterations=1600,
+    loss_function="RMSE",
+    random_seed=42,
+    l2_leaf_reg=5,
     verbose=False
 )
+
 
 print("\n🚀 Training CatBoost model (Item-Aware + Base Expiry Feature)...")
 model.fit(X_train, y_train)
