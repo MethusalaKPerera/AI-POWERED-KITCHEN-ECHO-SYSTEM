@@ -1,3 +1,3 @@
-import GuidanceForm from "./GuidanceForm";
+import NutritionalGuidance from './NutritionalGuidance';
 
-export default GuidanceForm;
+export default NutritionalGuidance;

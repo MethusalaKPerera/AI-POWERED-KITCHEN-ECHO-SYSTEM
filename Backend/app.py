@@ -4,6 +4,7 @@ from flask_pymongo import PyMongo
 from dotenv import load_dotenv
 import os
 from datetime import datetime
+import traceback
 
 # 🔹 Load environment variables
 load_dotenv()
@@ -24,6 +25,7 @@ CORS(app, resources={
 # 🔹 Basic config
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 app.config['UPLOAD_FOLDER'] = 'uploads'
+app.config["PROPAGATE_EXCEPTIONS"] = True
 
 # 🔹 MongoDB config
 app.config["MONGO_URI"] = os.getenv("MONGO_URI")
@@ -36,10 +38,19 @@ os.makedirs('data', exist_ok=True)
 # 🔹 Import blueprints
 from cooking_assistant.routes import cooking_bp
 from shopping.routes import shopping_bp
+# Food Expiry Predictor
+try:
+    from FoodExpiry.routes.food_routes import food_bp
+    food_bp_available = True
+except ImportError:
+    food_bp_available = False
+    print("Warning: FoodExpiry blueprint could not be imported.")
 
 # Register blueprints
 app.register_blueprint(cooking_bp, url_prefix='/api/cooking')
 app.register_blueprint(shopping_bp, url_prefix='')  # Registered at root since routes already have /api/shopping
+if food_bp_available:
+    app.register_blueprint(food_bp, url_prefix='/api/food')
 
 # 🔹 Health check endpoint
 @app.route('/health', methods=['GET'])
@@ -52,26 +63,38 @@ def health_check():
 # 🔹 Root route (overview)
 @app.route('/', methods=['GET'])
 def root():
+    modules = {
+        'cooking_assistant': {
+            'endpoints': [
+                'POST /api/cooking/analyze-image',
+                'POST /api/cooking/search-recipes',
+                'POST /api/cooking/generate-grocery-list'
+            ]
+        },
+        'shopping': {
+            'endpoints': [
+                'GET /api/shopping/search?q=<query>',
+                'GET /api/shopping/product/<product_id>',
+                'GET /api/shopping/history',
+                'GET /api/shopping/recommendations'
+            ]
+        }
+    }
+    
+    if food_bp_available:
+        modules['food_expiry_predictor'] = {
+            'endpoints': [
+                'GET /api/food/',
+                'POST /api/food/add',
+                'POST /api/food/predict',
+                'DELETE /api/food/delete/<id>'
+            ]
+        }
+
     return jsonify({
         'message': 'Welcome to Smart Kitchen API',
         'version': '1.0.0',
-        'modules': {
-            'cooking_assistant': {
-                'endpoints': [
-                    'POST /api/cooking/analyze-image',
-                    'POST /api/cooking/search-recipes',
-                    'POST /api/cooking/generate-grocery-list'
-                ]
-            },
-            'shopping': {
-                'endpoints': [
-                    'GET /api/shopping/search?q=<query>',
-                    'GET /api/shopping/product/<product_id>',
-                    'GET /api/shopping/history',
-                    'GET /api/shopping/recommendations'
-                ]
-            }
-        }
+        'modules': modules
     }), 200
 
 # 🔹 MongoDB test route
