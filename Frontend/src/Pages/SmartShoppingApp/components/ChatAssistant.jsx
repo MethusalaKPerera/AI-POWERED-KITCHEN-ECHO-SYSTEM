@@ -10,26 +10,57 @@ export function ChatAssistant() {
     timestamp: new Date()
   }]);
   const [input, setInput] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSend = () => {
+  const handleSend = async () => {
     if (!input.trim()) return;
+
     const userMessage = {
       id: Date.now().toString(),
       text: input,
       isUser: true,
       timestamp: new Date()
     };
+
     setMessages(prev => [...prev, userMessage]);
     setInput('');
-    setTimeout(() => {
+    setIsLoading(true);
+
+    try {
+      // Call Gemini API through backend
+      const response = await fetch('http://localhost:5000/api/shopping/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: input,
+          context: 'shopping assistant'
+        })
+      });
+
+      const data = await response.json();
+
       const aiResponse = {
         id: (Date.now() + 1).toString(),
-        text: 'I can help you with that! Let me find the best options for you.',
+        text: data.response || 'I can help you with that! Let me find the best options for you.',
         isUser: false,
         timestamp: new Date()
       };
+
       setMessages(prev => [...prev, aiResponse]);
-    }, 1000);
+    } catch (error) {
+      console.error('Chat error:', error);
+      const errorResponse = {
+        id: (Date.now() + 1).toString(),
+        text: 'Sorry, I encountered an error. Please try again.',
+        isUser: false,
+        timestamp: new Date()
+      };
+      setMessages(prev => [...prev, errorResponse]);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -60,11 +91,10 @@ export function ChatAssistant() {
                 className={`flex ${message.isUser ? 'justify-end' : 'justify-start'}`}
               >
                 <div
-                  className={`max-w-[80%] p-3 rounded-lg ${
-                    message.isUser
-                      ? 'bg-[#2D9B81] text-white rounded-br-none'
-                      : 'bg-gray-100 text-gray-800 rounded-bl-none'
-                  }`}
+                  className={`max-w-[80%] p-3 rounded-lg ${message.isUser
+                    ? 'bg-[#2D9B81] text-white rounded-br-none'
+                    : 'bg-gray-100 text-gray-800 rounded-bl-none'
+                    }`}
                 >
                   <p className="text-sm">{message.text}</p>
                 </div>

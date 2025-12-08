@@ -14,15 +14,15 @@ import { useCurrency } from '../context/CurrencyContext';
 
 export function Sidebar() {
   const location = useLocation();
-  const { language, setLanguage } = useLanguage();
+  const { language, setLanguage, translations } = useLanguage();
   const { currency, setCurrency } = useCurrency();
 
   const navItems = [
-    { path: '/smart-shopping', icon: HomeIcon, label: 'Home' },
-    { path: '/smart-shopping/search', icon: SearchIcon, label: 'Search' },
-    { path: '/smart-shopping/recommendations', icon: StarIcon, label: 'Recommendations' },
-    { path: '/smart-shopping/history', icon: ClockIcon, label: 'History' },
-    { path: '/smart-shopping/settings', icon: SettingsIcon, label: 'Settings' }
+    { path: '/smart-shopping', icon: HomeIcon, label: translations.home },
+    { path: '/smart-shopping/search', icon: SearchIcon, label: translations.search },
+    { path: '/smart-shopping/recommendations', icon: StarIcon, label: translations.recommendations },
+    { path: '/smart-shopping/history', icon: ClockIcon, label: translations.history },
+    { path: '/smart-shopping/settings', icon: SettingsIcon, label: translations.settings }
   ];
 
   return (
@@ -35,17 +35,16 @@ export function Sidebar() {
       <nav className="flex-1 py-6">
         {navItems.map(item => {
           const Icon = item.icon;
-          const isActive = location.pathname === item.path || 
+          const isActive = location.pathname === item.path ||
             (item.path === '/smart-shopping' && location.pathname === '/smart-shopping/');
           return (
             <Link
               key={item.path}
               to={item.path}
-              className={`flex items-center space-x-3 px-6 py-3 transition-colors ${
-                isActive
-                  ? 'bg-teal-700 border-l-4 border-white'
-                  : 'hover:bg-teal-700'
-              }`}
+              className={`flex items-center space-x-3 px-6 py-3 transition-colors ${isActive
+                ? 'bg-teal-700 border-l-4 border-white'
+                : 'hover:bg-teal-700'
+                }`}
             >
               <Icon size={20} />
               <span className="font-medium">{item.label}</span>
@@ -57,7 +56,7 @@ export function Sidebar() {
         <div>
           <label className="flex items-center space-x-2 text-sm mb-2">
             <GlobeIcon size={16} />
-            <span>Language</span>
+            <span>{translations.language}</span>
           </label>
           <select
             value={language}
@@ -72,7 +71,7 @@ export function Sidebar() {
         <div>
           <label className="flex items-center space-x-2 text-sm mb-2">
             <DollarSignIcon size={16} />
-            <span>Currency</span>
+            <span>{translations.currency}</span>
           </label>
           <select
             value={currency}
