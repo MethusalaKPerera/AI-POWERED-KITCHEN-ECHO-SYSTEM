@@ -1,11 +1,16 @@
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = '/api';
 
 // Helper function to handle API requests
 const apiRequest = async (endpoint, method = 'GET', body = null, headers = {}) => {
+  // Check for token
+  const token = localStorage.getItem('token');
+  const authHeader = token ? { 'Authorization': `Bearer ${token}` } : {};
+
   const config = {
     method,
     headers: {
       'Content-Type': 'application/json',
+      ...authHeader,
       ...headers,
     },
     credentials: 'include', // Important for sending cookies and handling CORS
@@ -33,14 +38,14 @@ export const shoppingApi = {
     // Ensure all parameters are properly encoded
     const params = new URLSearchParams();
     params.append('q', query || '');
-    
+
     // Add all filter parameters
     Object.entries(filters).forEach(([key, value]) => {
       if (value !== undefined && value !== null && value !== '') {
         params.append(key, value);
       }
     });
-    
+
     return apiRequest(`/shopping/search?${params.toString()}`);
   },
 

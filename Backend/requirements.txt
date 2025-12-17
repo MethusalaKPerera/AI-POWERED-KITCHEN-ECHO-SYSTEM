@@ -10,3 +10,5 @@ pandas
 numpy
 scikit-learn
 python-dateutil==2.9.0
+flask-bcrypt
+flask-jwt-extended

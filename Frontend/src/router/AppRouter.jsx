@@ -10,6 +10,8 @@ import CookingAssistant from "../Pages/CookingAssistant/CookingAssistant.jsx";
 import MealPlanner from "../Pages/CookingAssistant/MealPlanner.jsx";
 import SmartShopping from "../Pages/SmartShopping.jsx";
 import NutritionalGuidance from "../Pages/NutritionalGuidance";
+import Login from "../Pages/Auth/Login.jsx";
+import Register from "../Pages/Auth/Register.jsx";
 
 // -------------------------------
 // FoodExpiry Dashboard Pages
@@ -37,8 +39,12 @@ function AppRouter() {
         <Route path="/smart-shopping/*" element={<SmartShopping />} />
         <Route path="/nutritional-guidance" element={<NutritionalGuidance />} />
 
+        {/* Auth Routes */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+
         {/* Food Expiry Dashboard */}
-        
+
         <Route path="/food-expiry/predict" element={<Predict />} />
         <Route path="/food-expiry/add" element={<AddFood />} />
         <Route path="/food-expiry/inventory" element={<Inventory />} />

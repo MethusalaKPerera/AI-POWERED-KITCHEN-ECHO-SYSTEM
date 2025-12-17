@@ -28,11 +28,17 @@ export function ChatAssistant() {
 
     try {
       // Call Gemini API through backend
-      const response = await fetch('http://localhost:5000/api/shopping/chat', {
+      const token = localStorage.getItem('token');
+      const headers = {
+        'Content-Type': 'application/json',
+      };
+      if (token) {
+        headers['Authorization'] = `Bearer ${token}`;
+      }
+
+      const response = await fetch('/api/shopping/chat', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: headers,
         body: JSON.stringify({
           message: input,
           context: 'shopping assistant'
