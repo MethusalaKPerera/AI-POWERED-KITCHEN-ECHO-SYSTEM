@@ -5,10 +5,40 @@ import { ChatAssistant } from '../components/ChatAssistant';
 import { useHistory } from '../context/HistoryContext';
 
 export function History() {
-  const { history, deleteFromHistory, updateHistory, clearHistory } = useHistory();
+  const { history, deleteFromHistory, updateHistory, clearHistory, setHistory } = useHistory();
   const [searchTerm, setSearchTerm] = useState('');
   const [editingId, setEditingId] = useState(null);
   const [editValue, setEditValue] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  // Fetch history from backend on mount
+  React.useEffect(() => {
+    const fetchHistory = async () => {
+      setLoading(true);
+      try {
+        const token = localStorage.getItem('token');
+        if (token) {
+          // We need to define shoppingApi properly or use direct fetch
+          // Assuming shoppingApi is available via props or context or import
+          // But for now let's use the one imported in Search.jsx pattern
+          const response = await fetch('/api/shopping/history', {
+            headers: {
+              'Authorization': `Bearer ${token}`
+            }
+          });
+          if (response.ok) {
+            const data = await response.json();
+            if (setHistory) setHistory(data);
+          }
+        }
+      } catch (error) {
+        console.error("Failed to fetch history", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchHistory();
+  }, [setHistory]);
 
   const filteredHistory = history.filter(item =>
     item.query.toLowerCase().includes(searchTerm.toLowerCase())

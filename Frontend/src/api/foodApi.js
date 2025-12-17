@@ -3,7 +3,7 @@ import axios from "axios";
 
 // Change this to your actual backend URL
 const API = axios.create({
-  baseURL: "http://localhost:5000/api/food",
+  baseURL: "/api/food",
 });
 
 // Extract readable error

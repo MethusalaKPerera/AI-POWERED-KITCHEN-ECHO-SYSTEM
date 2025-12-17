@@ -54,7 +54,8 @@ export function HistoryProvider({ children }) {
         addToHistory,
         deleteFromHistory,
         updateHistory,
-        clearHistory
+        clearHistory,
+        setHistory
       }}
     >
       {children}

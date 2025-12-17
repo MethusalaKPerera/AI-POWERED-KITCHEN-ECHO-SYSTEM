@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-from flask_pymongo import PyMongo
+# from flask_pymongo import PyMongo # DISABLED: Mongo not running
+from extensions import mongo, bcrypt, jwt
 from dotenv import load_dotenv
 import os
 from datetime import datetime
@@ -27,9 +28,13 @@ app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 app.config['UPLOAD_FOLDER'] = 'uploads'
 app.config["PROPAGATE_EXCEPTIONS"] = True
 
-# 🔹 MongoDB config
-app.config["MONGO_URI"] = os.getenv("MONGO_URI")
-mongo = PyMongo(app)
+# 🔹 MongoDB & Auth config
+# app.config["MONGO_URI"] = os.getenv("MONGO_URI") # DISABLED
+app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET_KEY", "super-secret-key-change-me")
+
+# mongo.init_app(app) # DISABLED
+bcrypt.init_app(app)
+jwt.init_app(app)
 
 # 🔹 Ensure required folders exist
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
@@ -38,6 +43,7 @@ os.makedirs('data', exist_ok=True)
 # 🔹 Import blueprints
 from cooking_assistant.routes import cooking_bp
 from shopping.routes import shopping_bp
+from auth.routes import auth_bp
 # Food Expiry Predictor
 try:
     from FoodExpiry.routes.food_routes import food_bp
@@ -49,6 +55,7 @@ except ImportError:
 # Register blueprints
 app.register_blueprint(cooking_bp, url_prefix='/api/cooking')
 app.register_blueprint(shopping_bp, url_prefix='')  # Registered at root since routes already have /api/shopping
+app.register_blueprint(auth_bp, url_prefix='/api/auth')
 if food_bp_available:
     app.register_blueprint(food_bp, url_prefix='/api/food')
 
@@ -97,20 +104,21 @@ def root():
         'modules': modules
     }), 200
 
-# 🔹 MongoDB test route
+# 🔹 MongoDB test route (DISABLED)
 @app.route('/test-db', methods=['GET'])
 def test_db():
-    try:
-        db_names = mongo.cx.list_database_names()
-        return jsonify({
-            "status": "connected",
-            "databases": db_names
-        }), 200
-    except Exception as e:
-        return jsonify({
-            "status": "error",
-            "message": str(e)
-        }), 500
+    return jsonify({"status": "disabled", "message": "MongoDB is currently disabled."}), 200
+    # try:
+    #     db_names = mongo.cx.list_database_names()
+    #     return jsonify({
+    #         "status": "connected",
+    #         "databases": db_names
+    #     }), 200
+    # except Exception as e:
+    #     return jsonify({
+    #         "status": "error",
+    #         "message": str(e)
+    #     }), 500
 
 # 🔹 Run the Flask app
 if __name__ == '__main__':
