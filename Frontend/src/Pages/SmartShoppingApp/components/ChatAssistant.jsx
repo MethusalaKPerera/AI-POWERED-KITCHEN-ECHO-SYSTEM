@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { MessageCircleIcon, SendIcon, XIcon } from 'lucide-react';
+import { useChat } from '../context/ChatContext';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 export function ChatAssistant() {
+  const { chatRequest } = useChat();
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([{
     id: '1',
@@ -12,12 +16,57 @@ export function ChatAssistant() {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
+  // Custom styles for markdown content
+  const MarkdownStyles = ({ children, isUser }) => (
+    <div className={`markdown-content ${isUser ? 'prose-invert' : 'prose'}`}>
+      <style>{`
+        .markdown-content { font-size: 0.875rem; line-height: 1.25rem; }
+        .markdown-content p { margin-bottom: 0.5rem; }
+        .markdown-content p:last-child { margin-bottom: 0; }
+        .markdown-content strong { font-weight: 700; color: inherit; }
+        .markdown-content table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; }
+        .markdown-content th, .markdown-content td { padding: 0.5rem; border: 1px solid rgba(0,0,0,0.1); text-align: left; }
+        .markdown-content th { background: rgba(0,0,0,0.05); font-weight: bold; }
+        .markdown-content h1, .markdown-content h2, .markdown-content h3 { font-weight: bold; margin-top: 0.5rem; margin-bottom: 0.25rem; font-size: 1rem; }
+        .markdown-content ul, .markdown-content ol { margin-left: 1.25rem; margin-bottom: 0.5rem; }
+        .markdown-content li { list-style-type: disc; margin-bottom: 0.25rem; }
+      `}</style>
+      <ReactMarkdown remarkPlugins={[remarkGfm]}>
+        {children}
+      </ReactMarkdown>
+    </div>
+  );
+
+  // Listen for external chat triggers (from History page)
+  React.useEffect(() => {
+    if (chatRequest?.message) {
+      setIsOpen(true);
+      // We use a small delay to ensure the component is ready
+      const timer = setTimeout(() => {
+        handleTriggerSend(chatRequest.message);
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [chatRequest]);
+
+  const handleTriggerSend = async (message) => {
+    setInput(message);
+    // Directly call handleSend logic or equivalent
+    // For simplicity, we'll just set the input and let the user click, 
+    // OR we can copy the logic here to auto-send.
+    // Let's auto-send for a better "Re-run" experience.
+    await executeSend(message);
+  };
+
   const handleSend = async () => {
     if (!input.trim()) return;
+    await executeSend(input);
+  };
 
+  const executeSend = async (textToSend) => {
     const userMessage = {
       id: Date.now().toString(),
-      text: input,
+      text: textToSend,
       isUser: true,
       timestamp: new Date()
     };
@@ -40,7 +89,7 @@ export function ChatAssistant() {
         method: 'POST',
         headers: headers,
         body: JSON.stringify({
-          message: input,
+          message: textToSend,
           context: 'shopping assistant'
         })
       });
@@ -97,12 +146,14 @@ export function ChatAssistant() {
                 className={`flex ${message.isUser ? 'justify-end' : 'justify-start'}`}
               >
                 <div
-                  className={`max-w-[80%] p-3 rounded-lg ${message.isUser
-                    ? 'bg-[#2D9B81] text-white rounded-br-none'
-                    : 'bg-gray-100 text-gray-800 rounded-bl-none'
+                  className={`max-w-[90%] p-3 rounded-lg ${message.isUser
+                    ? 'bg-[#2D9B81] text-white rounded-br-none shadow-sm'
+                    : 'bg-gray-100 text-gray-800 rounded-bl-none shadow-sm'
                     }`}
                 >
-                  <p className="text-sm">{message.text}</p>
+                  <MarkdownStyles isUser={message.isUser}>
+                    {message.text}
+                  </MarkdownStyles>
                 </div>
               </div>
             ))}

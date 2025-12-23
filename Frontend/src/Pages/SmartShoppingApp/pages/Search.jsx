@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Sidebar } from '../components/Sidebar';
 import { SearchBar } from '../components/SearchBar';
 import { FilterPanel } from '../components/FilterPanel';
@@ -12,45 +12,6 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Loader2, AlertCircle } from 'lucide-react';
 
-const mockProducts = [
-  {
-    id: '1',
-    name: 'Wireless Bluetooth Headphones',
-    price: 79.99,
-    rating: 4.5,
-    image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400',
-    category: 'electronics',
-    aiReason: 'Recommended because of high ratings and wireless features'
-  },
-  {
-    id: '2',
-    name: 'Smart Fitness Watch',
-    price: 199.99,
-    rating: 4.8,
-    image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400',
-    category: 'electronics',
-    aiReason: 'Popular choice for fitness enthusiasts'
-  },
-  {
-    id: '3',
-    name: 'Eco-Friendly Water Bottle',
-    price: 24.99,
-    rating: 4.3,
-    image: 'https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=400',
-    category: 'home',
-    aiReason: 'Sustainable and highly rated'
-  },
-  {
-    id: '4',
-    name: 'Laptop Backpack',
-    price: 49.99,
-    rating: 4.6,
-    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400',
-    category: 'fashion',
-    aiReason: 'Perfect for professionals and students'
-  }
-];
-
 export function Search() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -59,7 +20,8 @@ export function Search() {
     minPrice: 0,
     maxPrice: 1000,
     category: '',
-    sortBy: 'relevance'
+    sortBy: 'relevance',
+    country: 'us'
   });
   const [searchQuery, setSearchQuery] = useState('');
   const [pagination, setPagination] = useState({
@@ -71,13 +33,22 @@ export function Search() {
   const { addToHistory } = useHistory();
   const { translations } = useLanguage();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // Handle URL query parameters
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const query = params.get('q');
+    if (query) {
+      setSearchQuery(query);
+    }
+  }, [location.search]);
 
   // Fetch products when search query or filters change
   useEffect(() => {
     if (searchQuery) {
       fetchProducts();
     } else {
-      // If no search query, clear the products
       setProducts([]);
       setPagination(prev => ({
         ...prev,
@@ -99,12 +70,11 @@ export function Search() {
         inStock: filters.inStock || false,
         freeShipping: filters.freeShipping || false,
         onSale: filters.onSale || false,
+        country: filters.country,
         page: pagination.page,
         pageSize: pagination.pageSize
       });
 
-      // The response structure should match what your backend is sending
-      // If the backend returns { products: [], total: 0 } adjust accordingly
       const responseData = response.products ? response : { products: response, total: response.length || 0 };
 
       setProducts(responseData.products || responseData || []);
@@ -113,21 +83,7 @@ export function Search() {
         total: responseData.total || (responseData.products ? responseData.products.length : 0)
       }));
 
-      // Add to search history
-      if (searchQuery) {
-        addToHistory(searchQuery, filters);
-        try {
-          await shoppingApi.saveToHistory({
-            query: searchQuery,
-            filters,
-            resultsCount: response.products ? response.products.length : 0,
-            timestamp: new Date().toISOString()
-          });
-        } catch (historyError) {
-          console.error('Error saving to history:', historyError);
-          // Don't fail the entire request if history save fails
-        }
-      }
+      // Note: Backend automatically saves search to history on GET /api/shopping/search
     } catch (err) {
       console.error('Error fetching products:', err);
       setError('Failed to fetch products. Please try again.');
@@ -151,10 +107,6 @@ export function Search() {
     setPagination(prev => ({ ...prev, page: newPage }));
     window.scrollTo(0, 0);
   }, []);
-
-  const handleProductClick = (productId) => {
-    navigate(`/smart-shopping/product/${productId}`);
-  };
 
   return (
     <div className="min-h-screen bg-[#E8F8F3]">
@@ -235,7 +187,6 @@ export function Search() {
                     ))}
                   </div>
 
-                  {/* Pagination */}
                   {pagination.total > pagination.pageSize && (
                     <div className="mt-8 flex justify-center">
                       <nav className="flex items-center space-x-2">
@@ -276,4 +227,3 @@ export function Search() {
     </div>
   );
 }
-

@@ -77,13 +77,29 @@ def append_history(user_id, action_type, query, details=None):
         
         history = load_history()
         
+        # Check for duplication (same user, same query, same type within last 5 mins)
+        now = datetime.datetime.now(datetime.timezone.utc)
+        for item in reversed(history):
+            if item['user_id'] == user_id and item['type'] == action_type and item['query'].lower() == query.lower():
+                try:
+                    ts = datetime.datetime.fromisoformat(item['timestamp'])
+                    if ts.tzinfo is None:
+                        ts = ts.replace(tzinfo=datetime.timezone.utc)
+                    if (now - ts).total_seconds() < 300: # 5 minutes
+                        item['timestamp'] = now.isoformat()
+                        save_history(history)
+                        return
+                except:
+                    pass
+                break # Only check the most recent match
+        
         new_entry = {
             'id': str(len(history) + 1),
             'user_id': user_id,
             'type': action_type,
             'query': query,
             'details': details or {},
-            'timestamp': datetime.datetime.utcnow().isoformat()
+            'timestamp': now.isoformat()
         }
         
         history.append(new_entry)
@@ -93,8 +109,26 @@ def append_history(user_id, action_type, query, details=None):
 
 # =================================== PRODUCT SEARCH ===================================
 
-def search_google_shopping(query, max_results=100):
-    print(f"Searching Google Shopping: {query}")
+def search_google_shopping(query, max_results=20, country='us'):
+    if not query:
+        return []
+
+    # Map full country names or codes to gl codes
+    country_map = {
+        'sri lanka': 'lk',
+        'lk': 'lk',
+        'us': 'us',
+        'united states': 'us',
+        'uk': 'uk',
+        'united kingdom': 'uk',
+        'in': 'in',
+        'india': 'in',
+        'ca': 'ca',
+        'canada': 'ca'
+    }
+    gl = country_map.get(country.lower().strip(), 'us')
+
+    print(f"Searching Google Shopping ({gl}): {query}")
     products = []
 
     if not SERPAPI_KEY:
@@ -108,7 +142,7 @@ def search_google_shopping(query, max_results=100):
             'api_key': SERPAPI_KEY,
             'num': '50',
             'hl': 'en',
-            'gl': 'us'
+            'gl': gl
         }
         response = requests.get(SERPAPI_ENDPOINT, params=params, timeout=15)
 
@@ -134,13 +168,13 @@ def search_google_shopping(query, max_results=100):
                         'inStock': True,
                         'freeShipping': 'free' in item.get('delivery', '').lower(),
                         'onSale': item.get('highlighted', False) or 'sale' in title.lower(),
-                        'aiReason': f"Found on {item.get('source', 'Google Shopping')}",
+                        'aiReason': f"Found on {item.get('source', 'Google Shopping')} ({gl.upper()})",
                         'description': title
                     })
                 except Exception as e:
                     print(f"Error parsing product {i}: {e}")
                     continue
-            print(f"Successfully fetched {len(products)} products")
+            print(f"Successfully fetched {len(products)} products from {gl.upper()}")
         else:
             print(f"SerpAPI failed: {response.status_code}")
             return get_fallback_products(query)
@@ -221,13 +255,6 @@ def chat():
 
         msg_lower = msg.lower()
 
-        # BLOCK NON-SHOPPING QUERIES (recipes, how-to, etc.)
-        if any(kw in msg_lower for kw in ['recipe', 'cook', 'make pasta', 'dhal', 'dal', 'how to make', 'ingredients', 'cook me', 'bake', 'roast', 'fry']):
-            return jsonify({
-                'success': True,
-                'response': "I'm your AI shopping assistant — I help you find and buy products! For recipes, try asking Google or a cooking app. What would you like to shop for today?"
-            })
-
         # TRY GEMINI (working in 2025)
         gemini_response = None
         if GEMINI_API_KEY:
@@ -245,29 +272,50 @@ def chat():
                         history_context = "User's recent activity:\n" + "\n".join([f"- {h['type']}: {h['query']}" for h in recent]) + "\n\n"
 
                 model = genai.GenerativeModel(
-                    'gemini-2.0-flash',
-                    system_instruction=f"{history_context}You are a friendly, expert shopping assistant. Help users find products, compare options, and get the best deals. Keep answers short, helpful, and fun. Never give recipes or cooking instructions. If the user asks about previous searches, use the context provided."
+                    'models/gemini-flash-latest',
+                    system_instruction=f"{history_context}You are a helpful Kitchen Shopping Assistant. "
+                                       f"When users ask how to make a dish or for a recipe, your primary job is to generate a comprehensive SHOPPING LIST of ingredients. "
+                                       f"Briefly describe the ingredients and suggest the best types to buy (e.g., 'San Marzano tomatoes are best for pasta sauce'). "
+                                       f"Keep the cooking instructions very minimal (1-2 sentences) and focus 90% on the shopping aspect. "
+                                       f"Always be friendly and encouraging. Context is provided if available: {history_context}"
                 )
+
+                # Relax safety settings to prevent "finish_reason: 2" blocks for recipe queries
+                safety_settings = [
+                    {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_NONE"},
+                    {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_NONE"},
+                    {"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_NONE"},
+                    {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_ONLY_HIGH"}
+                ]
 
                 response = model.generate_content(
                     msg,
                     generation_config={
-                        "temperature": 0.8,
-                        "max_output_tokens": 500
-                    }
+                        "temperature": 0.7,
+                        "max_output_tokens": 800
+                    },
+                    safety_settings=safety_settings
                 )
-                text = response.text.strip()
-                if text:
-                    print(f"Gemini: {text[:80]}...")
-                    gemini_response = text
+                
+                # Handle blocked responses
+                if response.candidates and response.candidates[0].finish_reason == 3: # SAFETY
+                     gemini_response = "I'm sorry, I can't provide that specific information for safety reasons, but I can help you find prices for common kitchen staples!"
+                elif response.text:
+                     print(f"Gemini: {response.text[:80]}...")
+                     gemini_response = response.text
             except Exception as e:
                 print(f"Gemini failed: {e}")
+                # Fallback handled below
 
         if gemini_response:
              return jsonify({'success': True, 'response': gemini_response})
 
-        # KEYWORD FALLBACK (when Gemini is down or not set)
-        if any(w in msg_lower for w in ['laptop', 'macbook', 'computer', 'notebook']):
+        # KEYWORD FALLBACK (when Gemini is down or blocked)
+        if any(w in msg_lower for w in ['pasta', 'macaroni', 'spaghetti']):
+            response = "For a great pasta, I recommend buying Durum Wheat Semolina pasta, extra virgin olive oil, fresh garlic, and some Parmesan cheese. Should I search for the best prices on these for you?"
+        elif any(w in msg_lower for w in ['recipe', 'cook', 'make', 'eat', 'food', 'ingredients']):
+            response = f"I'd love to help you shop for '{msg}'! Generally, you'll need the fresh produce and key spices. Would you like me to find the best local prices for the main ingredients?"
+        elif any(w in msg_lower for w in ['laptop', 'macbook', 'computer', 'notebook']):
             response = "Looking for a laptop? Top picks: MacBook Air M3, Dell XPS 13, Lenovo ThinkPad. What's your budget? Under $800, $1000–$1500, or premium?"
         elif any(w in msg_lower for w in ['phone', 'iphone', 'samsung', 'pixel']):
             response = "Best phones right now: iPhone 15 Pro, Samsung Galaxy S24, Google Pixel 9. Do you prefer iOS or Android?"
@@ -311,6 +359,7 @@ def search_products():
         page_size = int(request.args.get('pageSize', 12))
         min_price = float(request.args.get('minPrice', 0))
         max_price = float(request.args.get('maxPrice', 100000))
+        country = request.args.get('country', 'us')
 
         # Check for user identity manually
         user_id = None
@@ -322,9 +371,9 @@ def search_products():
         
         # Save to history if logged in and has query
         if user_id and query:
-             append_history(user_id, 'search', query, {'page': page, 'min_price': min_price})
+             append_history(user_id, 'search', query, {'page': page, 'min_price': min_price, 'country': country})
 
-        products = search_google_shopping(query, 100) if query else []
+        products = search_google_shopping(query, 100, country) if query else []
 
         # Price filter
         filtered = [p for p in products if min_price <= p['price'] <= max_price]
@@ -347,6 +396,129 @@ def search_products():
         return jsonify({'success': False, 'error': str(e)}), 500
 
 
+@shopping_bp.route('/api/shopping/recommendations', methods=['GET', 'OPTIONS'])
+@cross_origin(
+    origins=['http://localhost:5173', 'http://127.0.0.1:5173'],
+    methods=['GET', 'OPTIONS'],
+    allow_headers=['Content-Type', 'Authorization'],
+    supports_credentials=True,
+)
+def get_recommendations():
+    if request.method == 'OPTIONS':
+        return jsonify({}), 200
+
+    try:
+        user_id = None
+        try:
+             verify_jwt_in_request(optional=True)
+             user_id = get_jwt_identity()
+        except:
+             pass
+        
+        # Default category if no history
+        recommended_query = "latest electronics"
+        
+        if user_id:
+            history = load_history()
+            # Filter for searches by this user
+            user_history = [h for h in history if h['user_id'] == user_id and h['type'] == 'search']
+            
+            if user_history:
+                # Sort by timestamp descending (newest first)
+                user_history.sort(key=lambda x: x.get('timestamp', ''), reverse=True)
+                
+                # Get unique recent queries (up to 3)
+                seen_queries = set()
+                top_queries = []
+                for h in user_history:
+                    q = h['query'].lower().strip()
+                    if q and q not in seen_queries:
+                        seen_queries.add(q)
+                        top_queries.append(h['query'])
+                    if len(top_queries) >= 3:
+                        break
+                
+                if top_queries:
+                    all_recommended_products = []
+                    # Fetch 4 products for each of the top 3 queries
+                    for q in top_queries:
+                        query_products = search_google_shopping(q, 4)
+                        for p in query_products:
+                            p['recommended_by'] = q # Add metadata about why this was picked
+                        all_recommended_products.extend(query_products)
+                    
+                    # Shuffle to mix them up
+                    import random
+                    random.shuffle(all_recommended_products)
+                    
+                    reason_str = f"Based on your recent interest in {top_queries[0]}"
+                    if len(top_queries) > 1:
+                        others = " and " + " & ".join(top_queries[1:])
+                        reason_str += others
+
+                    return jsonify({
+                        'success': True,
+                        'recommendations': all_recommended_products,
+                        'reason': reason_str,
+                        'source_queries': top_queries
+                    })
+
+        # Fallback if no user history found or no user logged in
+        products = search_google_shopping(recommended_query, 8)
+        
+        return jsonify({
+            'success': True,
+            'recommendations': products,
+            'reason': "Popular today"
+        })
+
+    except Exception as e:
+        print(f"Recommendations error: {e}")
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@shopping_bp.route('/api/shopping/product/<product_id>', methods=['GET', 'OPTIONS'])
+@cross_origin(
+    origins=['http://localhost:5173', 'http://127.0.0.1:5173'],
+    methods=['GET', 'OPTIONS'],
+    allow_headers=['Content-Type', 'Authorization'],
+    supports_credentials=True,
+)
+def get_product(product_id):
+    if request.method == 'OPTIONS':
+        return jsonify({}), 200
+
+    try:
+        # In a real app, you'd fetch from a DB or specific API
+        # For this demo, we'll extract the name from the ID if it's a fallback ID or just return a generic search result
+        # Most of our IDs are google_0, google_1 etc. which aren't very useful alone.
+        # So we might just return a mock or a search result for "product"
+        
+        # If we had a real product DB, we'd use product_id here.
+        # For now, let's return a detailed mock based on common types
+        
+        return jsonify({
+            'success': True,
+            'product': {
+                'id': product_id,
+                'name': "Premium Product",
+                'price': 299.99,
+                'description': "This is a detailed description of the premium product you selected. It features high-quality materials, advanced technology, and a sleek design that fits any lifestyle.",
+                'specs': [
+                    {'label': 'Material', 'value': 'Aerospace Grade Aluminum'},
+                    {'label': 'Warranty', 'value': '2 Years International'},
+                    {'label': 'Weight', 'value': '1.2 kg'}
+                ],
+                'rating': 4.8,
+                'reviews': 156,
+                'image': "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800",
+                'store': "Official Store",
+                'inStock': True,
+                'delivery': "Ships in 24 hours"
+            }
+        })
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
 @shopping_bp.route('/api/shopping/history', methods=['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'])
 @cross_origin(
     origins=['http://localhost:5173', 'http://127.0.0.1:5173'],

@@ -1,28 +1,17 @@
 import React, { useEffect, useState, createContext, useContext } from 'react';
+import { shoppingApi } from '../../../services/api';
 
 const HistoryContext = createContext(undefined);
 
 export function HistoryProvider({ children }) {
   const [history, setHistory] = useState([]);
 
-  useEffect(() => {
-    const saved = localStorage.getItem('searchHistory');
-    if (saved) {
-      const parsed = JSON.parse(saved);
-      setHistory(
-        parsed.map(item => ({
-          ...item,
-          timestamp: new Date(item.timestamp)
-        }))
-      );
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('searchHistory', JSON.stringify(history));
-  }, [history]);
+  // Note: Loading is handled in History.jsx, but we could also do it here.
+  // For now, let's just implement the actions.
 
   const addToHistory = (query, filters) => {
+    // We'll let the backend search/chat routes handle this automatically.
+    // If called manually, it adds to local state.
     const newItem = {
       id: Date.now().toString(),
       query,
@@ -32,19 +21,33 @@ export function HistoryProvider({ children }) {
     setHistory(prev => [newItem, ...prev].slice(0, 50));
   };
 
-  const deleteFromHistory = (id) => {
-    setHistory(prev => prev.filter(item => item.id !== id));
+  const deleteFromHistory = async (id) => {
+    try {
+      await shoppingApi.deleteHistory(id);
+      setHistory(prev => prev.filter(item => item.id !== id));
+    } catch (error) {
+      console.error('Failed to delete history item:', error);
+    }
   };
 
-  const updateHistory = (id, query) => {
-    setHistory(prev =>
-      prev.map(item => (item.id === id ? { ...item, query } : item))
-    );
+  const updateHistory = async (id, query) => {
+    try {
+      await shoppingApi.updateHistory(id, query);
+      setHistory(prev =>
+        prev.map(item => (item.id === id ? { ...item, query } : item))
+      );
+    } catch (error) {
+      console.error('Failed to update history item:', error);
+    }
   };
 
-  const clearHistory = () => {
-    setHistory([]);
-    localStorage.removeItem('searchHistory');
+  const clearHistory = async () => {
+    try {
+      await shoppingApi.clearHistory();
+      setHistory([]);
+    } catch (error) {
+      console.error('Failed to clear history:', error);
+    }
   };
 
   return (
