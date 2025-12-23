@@ -64,9 +64,24 @@ export const shoppingApi = {
     return apiRequest('/shopping/recommendations');
   },
 
-  // Save search to history
+  // Save search to history (usually handled automatically by search/chat endpoints)
   saveToHistory: async (searchData) => {
     return apiRequest('/shopping/history', 'POST', searchData);
+  },
+
+  // Delete history item
+  deleteHistory: async (id) => {
+    return apiRequest(`/shopping/history?id=${id}`, 'DELETE');
+  },
+
+  // Update history item
+  updateHistory: async (id, query) => {
+    return apiRequest('/shopping/history', 'PUT', { id, query });
+  },
+
+  // Clear all history
+  clearHistory: async () => {
+    return apiRequest('/shopping/history?clear_all=true', 'DELETE');
   },
 };
 

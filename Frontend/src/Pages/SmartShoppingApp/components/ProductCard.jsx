@@ -1,22 +1,18 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { StarIcon, BookmarkIcon, ExternalLink } from 'lucide-react';
 import { useCurrency } from '../context/CurrencyContext';
 
 export function ProductCard({ product, onSave }) {
   const { convertPrice } = useCurrency();
+  const navigate = useNavigate();
 
   const handleCardClick = (e) => {
-    // Don't navigate if clicking the save button
+    // Don't navigate if clicking an action button
     if (e.target.closest('button')) return;
 
-    // Open product URL in new tab
-    console.log('Product URL:', product.url);
-    if (product.url && product.url !== '#') {
-      console.log('Opening URL:', product.url);
-      window.open(product.url, '_blank', 'noopener,noreferrer');
-    } else {
-      console.log('No valid URL found');
-    }
+    // Navigate to our internal detail page
+    navigate(`/smart-shopping/product/${product.id}`);
   };
 
   return (
@@ -35,9 +31,11 @@ export function ProductCard({ product, onSave }) {
             <span className="text-xs font-semibold text-[#2D5F4F]">{product.store}</span>
           </div>
         )}
-        {product.aiReason && (
+        {(product.aiReason || product.recommended_by) && (
           <div className="absolute inset-0 bg-black bg-opacity-80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
-            <p className="text-white text-sm text-center">{product.aiReason}</p>
+            <p className="text-white text-sm text-center">
+              {product.aiReason || `Recommended because you searched for "${product.recommended_by}"`}
+            </p>
           </div>
         )}
       </div>
