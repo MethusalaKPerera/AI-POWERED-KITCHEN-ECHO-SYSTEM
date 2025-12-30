@@ -13,6 +13,11 @@ load_dotenv()
 # 🔹 Initialize Flask app
 app = Flask(__name__)
 
+# Base directory + data/store directories (for NutritionGuidance datasets + local storage)
+app.config["BASE_DIR"] = os.path.dirname(os.path.abspath(__file__))
+app.config["DATA_DIR"] = os.path.join(app.config["BASE_DIR"], "data")   # Backend/data/
+app.config["STORE_DIR"] = os.path.join(app.config["BASE_DIR"], "store") # Backend/store/
+
 # Configure CORS
 CORS(app, resources={
     r"/*": {
@@ -38,12 +43,20 @@ jwt.init_app(app)
 
 # 🔹 Ensure required folders exist
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
+
+# ensure the exact folders used by NutritionGuidance exist
+os.makedirs(app.config["DATA_DIR"], exist_ok=True)   # Backend/data/
+os.makedirs(app.config["STORE_DIR"], exist_ok=True)  # Backend/store/
+
+# (keeping your original line too — harmless)
 os.makedirs('data', exist_ok=True)
 
 # 🔹 Import blueprints
 from cooking_assistant.routes import cooking_bp
 from shopping.routes import shopping_bp
 from auth.routes import auth_bp
+from NutritionGuidance.routes import nutrition_bp
+
 # Food Expiry Predictor
 try:
     from FoodExpiry.routes.food_routes import food_bp
@@ -56,6 +69,8 @@ except ImportError:
 app.register_blueprint(cooking_bp, url_prefix='/api/cooking')
 app.register_blueprint(shopping_bp, url_prefix='')  # Registered at root since routes already have /api/shopping
 app.register_blueprint(auth_bp, url_prefix='/api/auth')
+app.register_blueprint(nutrition_bp, url_prefix="/api/nutrition")
+
 if food_bp_available:
     app.register_blueprint(food_bp, url_prefix='/api/food')
 
@@ -84,6 +99,17 @@ def root():
                 'GET /api/shopping/product/<product_id>',
                 'GET /api/shopping/history',
                 'GET /api/shopping/recommendations'
+            ]
+        },
+        'nutrition_guidance': {
+            'endpoints': [
+                'GET /api/nutrition/datasets/status',
+                'GET /api/nutrition/foods/search?q=<query>',
+                'GET /api/nutrition/profile?user_id=<id>',
+                'POST /api/nutrition/profile',
+                'POST /api/nutrition/intake/add',
+                'GET /api/nutrition/intake/summary?user_id=<id>&period=weekly|monthly',
+                'GET /api/nutrition/report?user_id=<id>&period=weekly|monthly'
             ]
         }
     }
@@ -125,4 +151,6 @@ if __name__ == '__main__':
     print("🚀 Starting Smart Kitchen Backend...")
     print("📍 Backend running on: http://localhost:5000")
     print("📍 Frontend should run on: http://localhost:3000")
+    print("DATA_DIR:", app.config["DATA_DIR"])
+    print("STORE_DIR:", app.config["STORE_DIR"])
     app.run(debug=True, port=5000)
