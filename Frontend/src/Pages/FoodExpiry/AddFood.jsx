@@ -8,7 +8,7 @@ import {
   validatePositiveNumber,
   validateDate,
 } from "./validation.js";
-import "./foodExpiry.css";
+import "./foodexpiry.css";
 
 export default function AddFood() {
   const [form, setForm] = useState({

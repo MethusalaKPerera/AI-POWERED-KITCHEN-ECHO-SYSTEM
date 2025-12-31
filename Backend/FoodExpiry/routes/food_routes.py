@@ -5,16 +5,13 @@ import traceback
 
 from FoodExpiry.database.db_connection import foods_col, users_col
 from FoodExpiry.models.expiry_predictor import ExpiryPredictor
-from FoodExpiry.ml.aed_adjuster import apply_aed
+from FoodExpiry.ml.aed_adjuster import apply_aed, update_aed_single
 from FoodExpiry.ml.scp_ranker import scp_score
 
 food_bp = Blueprint("food_bp", __name__)
 predictor = ExpiryPredictor()
 
 
-# ----------------------------------------------------
-# Helper – calculate expiry date
-# ----------------------------------------------------
 def compute_expiry_date(purchase_date_str: str, days: float):
     try:
         dt = datetime.strptime(purchase_date_str, "%Y-%m-%d")
@@ -40,7 +37,7 @@ def get_foods():
 @food_bp.route("/predict", methods=["POST"])
 def predict_only():
     try:
-        data = request.get_json()
+        data = request.get_json() or {}
         print("📩 /predict received:", data)
 
         user_id = data.get("userId")
@@ -51,28 +48,30 @@ def predict_only():
         if not user_id or not category:
             return jsonify({"error": "Missing required fields"}), 400
 
-        # 0. Validate item name (one-hot)
+        # Validate item (must exist in trained one-hot: food_<item>)
         if not predictor.validate_item(item_name):
             return jsonify({
                 "error": f"Unknown item_name '{item_name}'",
                 "allowed_items": predictor.get_allowed_items()
             }), 400
 
-        # 1. ML prediction (final_days)
+        # 1) ML prediction (already includes Step 3 safety rule)
         ml = predictor.predict(data)
         final_days = ml["final_days_until_expiry"]
+        base_days = ml["base_expiry_days"]
 
-        # 2. AED personalization
-        user = users_col.find_one({"username": user_id})
-        user_aed = user.get("expiryAdjustment", {}) if user else {}
-        aed_days = apply_aed(user_aed, category, final_days)
+        # 2) AED personalization (Issue B + C)
+        user = users_col.find_one({"username": user_id}) or {}
+        user_aed = user.get("expiryAdjustment", {}) or {}
+        aed_days = apply_aed(user_aed, item_name, category, final_days, base_days)
 
-        # 3. Final expiry date
+        # 3) Final expiry date
         exp_date = compute_expiry_date(purchase_date, aed_days)
 
         return jsonify({
             "item_name": item_name,
             "category": category,
+            "base_expiry_days": base_days,
             "model_final_days": final_days,
             "aed_adjusted_days": aed_days,
             "predicted_expiry_date": exp_date
@@ -89,7 +88,7 @@ def predict_only():
 @food_bp.route("/add", methods=["POST"])
 def add_food():
     try:
-        data = request.get_json()
+        data = request.get_json() or {}
         print("📩 /add received:", data)
 
         user_id = data.get("userId")
@@ -100,40 +99,40 @@ def add_food():
         if not user_id or not category:
             return jsonify({"error": "Missing required fields"}), 400
 
-        # Validate item
         if not predictor.validate_item(item_name):
             return jsonify({
                 "error": f"Unknown item '{item_name}'",
                 "allowed_items": predictor.get_allowed_items()
             }), 400
 
-        # 1. ML prediction
+        # 1) ML prediction
         ml = predictor.predict(data)
         final_days = ml["final_days_until_expiry"]
+        base_days = ml["base_expiry_days"]
 
-        # 2. AED adjustment
-        user = users_col.find_one({"username": user_id})
-        user_aed = user.get("expiryAdjustment", {}) if user else {}
-        aed_days = apply_aed(user_aed, category, final_days)
+        # 2) AED adjustment (item-level -> category fallback)
+        user = users_col.find_one({"username": user_id}) or {}
+        user_aed = user.get("expiryAdjustment", {}) or {}
+        aed_days = apply_aed(user_aed, item_name, category, final_days, base_days)
 
-        # 3. SCP scoring
+        # 3) SCP scoring
         scp = scp_score(aed_days)
 
-        # 4. Expiry date
+        # 4) Expiry date
         expiry = compute_expiry_date(purchase_date, aed_days)
 
-        # 5. Save
+        # 5) Save
         doc = {
             "userId": user_id,
             "foodName": data.get("foodName"),
             "itemName": item_name,
             "category": category,
             "storageType": data.get("storage_type"),
-
             "purchaseDate": purchase_date,
             "quantity": data.get("quantity"),
-            "used_before_exp": data.get("used_before_expiry"),
+            "used_before_exp": data.get("used_before_expiry", data.get("used_before_exp")),
 
+            "base_expiry_days": base_days,
             "model_final_days": final_days,
             "aed_adjusted_days": aed_days,
             "predictedExpiryDate": expiry,
@@ -151,12 +150,12 @@ def add_food():
 
 
 # ----------------------------------------------------
-# FEEDBACK
+# FEEDBACK (updates BOTH item-level + category-level AED)
 # ----------------------------------------------------
 @food_bp.route("/feedback", methods=["POST"])
 def submit_feedback():
     try:
-        data = request.get_json()
+        data = request.get_json() or {}
         print("📩 /feedback received:", data)
 
         food_id = data.get("foodId")
@@ -172,76 +171,104 @@ def submit_feedback():
         if not food:
             return jsonify({"error": "Food not found"}), 404
 
-        category = food["category"]
-        predicted_days = food.get("aed_adjusted_days") or food.get("model_final_days")
+        category = (food.get("category") or "").lower().strip()
+        item_name = (food.get("itemName") or "").lower().strip()
 
-        # -----------------------------------------------------------
-        # Save raw feedback in food document
-        # -----------------------------------------------------------
+        predicted_days = food.get("aed_adjusted_days") or food.get("model_final_days") or 0
+        base_days = food.get("base_expiry_days") or 7.0
+
+        # Save raw feedback into food doc
         foods_col.update_one(
             {"_id": ObjectId(food_id)},
             {"$set": {"feedback": {"status": status, "actual_days": actual_days}}}
         )
 
-        # -----------------------------------------------------------
-        # Load user AED + feedback stats
-        # -----------------------------------------------------------
+        # Load user AED + stats
         user = users_col.find_one({"username": user_id}) or {}
-        user_adj = user.get("expiryAdjustment", {})
-        stats = user.get("feedbackStats", {}).get(category, {})
+        user_adj = user.get("expiryAdjustment", {}) or {}
+        user_stats = user.get("feedbackStats", {}) or {}
 
-        previous_adj = user_adj.get(category, 0)
+        item_key = f"item:{item_name}"
+        cat_key = f"category:{category}"
 
-        # -----------------------------------------------------------
-        # Compute NEW adjustment using Advanced AED
-        # -----------------------------------------------------------
-        from FoodExpiry.ml.aed_adjuster import update_aed
+        prev_item_adj = float(user_adj.get(item_key, 0) or 0)
+        prev_cat_adj = float(user_adj.get(cat_key, 0) or 0)
 
-        new_adj, new_stats = update_aed(
-            previous_adj=previous_adj,
-            category_feedback=status,
-            actual_days=actual_days,
-            predicted_days=predicted_days,
-            stats=stats
+        item_stats = user_stats.get(item_key, {})
+        cat_stats = user_stats.get(cat_key, {})
+
+        # Update AED values
+        # item adapts faster, category slower
+        new_item_adj, new_item_stats = update_aed_single(
+            previous_adj=prev_item_adj,
+            feedback=status,
+            actual_days=float(actual_days),
+            predicted_days=float(predicted_days),
+            stats=item_stats,
+            learning_rate=0.7
         )
 
-        # -----------------------------------------------------------
+        new_cat_adj, new_cat_stats = update_aed_single(
+            previous_adj=prev_cat_adj,
+            feedback=status,
+            actual_days=float(actual_days),
+            predicted_days=float(predicted_days),
+            stats=cat_stats,
+            learning_rate=0.3
+        )
+
         # Save updated AED & stats
-        # -----------------------------------------------------------
         users_col.update_one(
             {"username": user_id},
             {
                 "$set": {
-                    f"expiryAdjustment.{category}": new_adj,
-                    f"feedbackStats.{category}": new_stats
+                    f"expiryAdjustment.{item_key}": new_item_adj,
+                    f"expiryAdjustment.{cat_key}": new_cat_adj,
+                    f"feedbackStats.{item_key}": new_item_stats,
+                    f"feedbackStats.{cat_key}": new_cat_stats
                 }
             },
             upsert=True
         )
 
+        # Show what final AED would produce now (for debugging)
+        aed_preview = apply_aed(
+            {**user_adj, item_key: new_item_adj, cat_key: new_cat_adj},
+            item_name=item_name,
+            category=category,
+            predicted_days=float(predicted_days),
+            base_days=float(base_days)
+        )
+
         return jsonify({
-            "message": "Feedback saved (Advanced AED applied)",
+            "message": "Feedback saved (Item + Category AED updated)",
+            "item_name": item_name,
             "category": category,
-            "previous_adj": previous_adj,
-            "new_adj": new_adj,
-            "previous_stats": stats,
-            "updated_stats": new_stats
+            "predicted_days_used": predicted_days,
+            "actual_days": actual_days,
+            "previous_item_adj": prev_item_adj,
+            "new_item_adj": new_item_adj,
+            "previous_cat_adj": prev_cat_adj,
+            "new_cat_adj": new_cat_adj,
+            "aed_preview_days_now": aed_preview
         }), 200
 
     except Exception as e:
         traceback.print_exc()
         return jsonify({"error": str(e)}), 500
+
+
 # ----------------------------------------------------
 # UPDATE
 # ----------------------------------------------------
 @food_bp.route("/update/<id>", methods=["PUT"])
 def update_food(id):
     try:
-        data = request.get_json()
+        data = request.get_json() or {}
 
         # Validate itemName if updated
         if "itemName" in data:
-            name = data["itemName"].lower().strip()
+            name = (data["itemName"] or "").lower().strip()
             if not predictor.validate_item(name):
                 return jsonify({
                     "error": f"Unknown item '{name}'",

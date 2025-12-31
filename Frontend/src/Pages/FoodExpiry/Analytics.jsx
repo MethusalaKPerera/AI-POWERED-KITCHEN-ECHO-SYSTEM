@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Sidebar from "../../Components/Dashboard/Sidebar.jsx";
 import Topbar from "../../Components/Dashboard/Topbar.jsx";
 import { getAllFoods } from "../../api/foodApi.js";
-import "./foodExpiry.css";
+import "./foodexpiry.css";
 
 export default function Analytics() {
   const [foods, setFoods] = useState([]);

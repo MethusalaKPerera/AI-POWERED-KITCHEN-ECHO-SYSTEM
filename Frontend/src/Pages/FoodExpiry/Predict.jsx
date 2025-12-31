@@ -8,7 +8,7 @@ import {
   validatePositiveNumber,
   validateDate,
 } from "./validation.js";
-import "./foodExpiry.css";
+import "./foodexpiry.css";
 
 const STORAGE_OPTIONS = ["fridge", "freezer", "pantry"];
 

@@ -1,89 +1,78 @@
 // src/api/foodApi.js
 import axios from "axios";
 
-// Change this to your actual backend URL
-const API = axios.create({
-  baseURL: "/api/food",
+// For Vite: set in .env -> VITE_API_BASE_URL=http://127.0.0.1:5000
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:5000";
+
+const api = axios.create({
+  baseURL: BASE_URL,
+  timeout: 20000,
+  headers: { "Content-Type": "application/json" },
 });
 
-// Extract readable error
-function getErr(err) {
-  return (
+// Normalized error message
+function toMessage(err) {
+  const msg =
     err?.response?.data?.error ||
     err?.response?.data?.message ||
-    err.message ||
-    "Unknown server error"
-  );
+    err?.message ||
+    "Request failed";
+  return new Error(msg);
 }
 
-// -----------------------
-// GET ALL FOODS
-// -----------------------
+// -----------------------------
+// FoodExpiry endpoints (/api/food/*)
+// -----------------------------
 export async function getAllFoods() {
   try {
-    const res = await API.get("/");
+    const res = await api.get("/api/food/");
     return res.data;
   } catch (err) {
-    throw new Error(getErr(err));
+    throw toMessage(err);
   }
 }
 
-// -----------------------
-// PREDICT ONLY
-// -----------------------
 export async function predictExpiry(payload) {
   try {
-    const res = await API.post("/predict", payload);
+    const res = await api.post("/api/food/predict", payload);
     return res.data;
   } catch (err) {
-    throw new Error(getErr(err));
+    throw toMessage(err);
   }
 }
 
-// -----------------------
-// ADD FOOD
-// -----------------------
 export async function addFood(payload) {
   try {
-    const res = await API.post("/add", payload);
+    const res = await api.post("/api/food/add", payload);
     return res.data;
   } catch (err) {
-    throw new Error(getErr(err));
+    throw toMessage(err);
   }
 }
 
-// -----------------------
-// FEEDBACK (AED training)
-// -----------------------
 export async function sendFeedback(payload) {
   try {
-    const res = await API.post("/feedback", payload);
+    const res = await api.post("/api/food/feedback", payload);
     return res.data;
   } catch (err) {
-    throw new Error(getErr(err));
+    throw toMessage(err);
   }
 }
 
-// -----------------------
-// UPDATE FOOD
-// -----------------------
 export async function updateFood(id, payload) {
   try {
-    const res = await API.put(`/update/${id}`, payload);
+    const res = await api.put(`/api/food/update/${id}`, payload);
     return res.data;
   } catch (err) {
-    throw new Error(getErr(err));
+    throw toMessage(err);
   }
 }
 
-// -----------------------
-// DELETE FOOD
-// -----------------------
 export async function deleteFood(id) {
   try {
-    const res = await API.delete(`/delete/${id}`);
+    const res = await api.delete(`/api/food/delete/${id}`);
     return res.data;
   } catch (err) {
-    throw new Error(getErr(err));
+    throw toMessage(err);
   }
 }
