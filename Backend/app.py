@@ -12,6 +12,13 @@ load_dotenv()
 app = Flask(__name__)
 
 # --------------------------------------------------------
+# Base directory + data/store directories
+# --------------------------------------------------------
+app.config["BASE_DIR"] = os.path.dirname(os.path.abspath(__file__))
+app.config["DATA_DIR"] = os.path.join(app.config["BASE_DIR"], "data")    # Backend/data/
+app.config["STORE_DIR"] = os.path.join(app.config["BASE_DIR"], "store")  # Backend/store/
+
+# --------------------------------------------------------
 # CORS
 # --------------------------------------------------------
 CORS(app, resources={
@@ -32,11 +39,11 @@ CORS(app, resources={
 # Basic config
 # --------------------------------------------------------
 app.config["MAX_CONTENT_LENGTH"] = 16 * 1024 * 1024
-app.config["UPLOAD_FOLDER"] = "uploads"
+app.config["UPLOAD_FOLDER"] = os.path.join(app.config["BASE_DIR"], "uploads")
 app.config["PROPAGATE_EXCEPTIONS"] = True
 
 # --------------------------------------------------------
-# ✅ MongoDB & Auth config (ENABLED)
+# ✅ MongoDB & Auth config
 # --------------------------------------------------------
 app.config["MONGO_URI"] = os.getenv("MONGO_URI", "mongodb://localhost:27017/SmartKitchen")
 app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET_KEY", "super-secret-key-change-me")
@@ -50,6 +57,10 @@ jwt.init_app(app)
 # Ensure required folders exist
 # --------------------------------------------------------
 os.makedirs(app.config["UPLOAD_FOLDER"], exist_ok=True)
+os.makedirs(app.config["DATA_DIR"], exist_ok=True)
+os.makedirs(app.config["STORE_DIR"], exist_ok=True)
+
+# (Optional compatibility: if any older code expects relative "./data")
 os.makedirs("data", exist_ok=True)
 
 # --------------------------------------------------------
@@ -58,8 +69,9 @@ os.makedirs("data", exist_ok=True)
 from cooking_assistant.routes import cooking_bp
 from shopping.routes import shopping_bp
 from auth.routes import auth_bp
+from NutritionGuidance.routes import nutrition_bp
 
-# Food Expiry Predictor (safer import)
+# Food Expiry Predictor (safe import)
 food_bp_available = False
 food_bp_error = None
 try:
@@ -75,10 +87,11 @@ except Exception as e:
 # Register blueprints
 # --------------------------------------------------------
 app.register_blueprint(cooking_bp, url_prefix="/api/cooking")
-app.register_blueprint(shopping_bp, url_prefix="")  # already includes /api/shopping in routes
+app.register_blueprint(shopping_bp, url_prefix="")  # routes already include /api/shopping
 app.register_blueprint(auth_bp, url_prefix="/api/auth")
+app.register_blueprint(nutrition_bp, url_prefix="/api/nutrition")
 
-# ✅ FoodExpiry endpoints will be under /api/food/*
+# FoodExpiry endpoints will be under /api/food/*
 if food_bp_available:
     app.register_blueprint(food_bp, url_prefix="/api/food")
 
@@ -121,6 +134,17 @@ def root():
                 "POST /api/auth/register",
                 "POST /api/auth/login"
             ]
+        },
+        "nutrition_guidance": {
+            "endpoints": [
+                "GET /api/nutrition/datasets/status",
+                "GET /api/nutrition/foods/search?q=<query>",
+                "GET /api/nutrition/profile?user_id=<id>",
+                "POST /api/nutrition/profile",
+                "POST /api/nutrition/intake/add",
+                "GET /api/nutrition/intake/summary?user_id=<id>&period=weekly|monthly",
+                "GET /api/nutrition/report?user_id=<id>&period=weekly|monthly"
+            ]
         }
     }
 
@@ -143,22 +167,15 @@ def root():
     }), 200
 
 # --------------------------------------------------------
-# MongoDB test route (ENABLED)
+# MongoDB test route
 # --------------------------------------------------------
 @app.route("/test-db", methods=["GET"])
 def test_db():
     try:
-        # this forces a connection check
         db_names = mongo.cx.list_database_names()
-        return jsonify({
-            "status": "connected",
-            "databases": db_names
-        }), 200
+        return jsonify({"status": "connected", "databases": db_names}), 200
     except Exception as e:
-        return jsonify({
-            "status": "error",
-            "message": str(e)
-        }), 500
+        return jsonify({"status": "error", "message": str(e)}), 500
 
 # --------------------------------------------------------
 # Run the Flask app
@@ -167,5 +184,11 @@ if __name__ == "__main__":
     print("🚀 Starting Smart Kitchen Backend...")
     print("📍 Backend running on: http://localhost:5000")
     print("📍 Frontend should run on: http://localhost:5173 or http://localhost:3000")
-    print("📍 Food Expiry API (if enabled): http://localhost:5000/api/food/")
+    print("📍 DATA_DIR:", app.config["DATA_DIR"])
+    print("📍 STORE_DIR:", app.config["STORE_DIR"])
+    if food_bp_available:
+        print("📍 Food Expiry API: http://localhost:5000/api/food/")
+    else:
+        print("⚠ Food Expiry API disabled:", food_bp_error)
+
     app.run(debug=True, port=5000)
