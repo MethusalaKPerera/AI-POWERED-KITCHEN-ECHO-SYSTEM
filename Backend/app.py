@@ -43,7 +43,7 @@ app.config["UPLOAD_FOLDER"] = os.path.join(app.config["BASE_DIR"], "uploads")
 app.config["PROPAGATE_EXCEPTIONS"] = True
 
 # --------------------------------------------------------
-# ✅ MongoDB & Auth config
+# MongoDB & Auth config
 # --------------------------------------------------------
 app.config["MONGO_URI"] = os.getenv("MONGO_URI", "mongodb://localhost:27017/SmartKitchen")
 app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET_KEY", "super-secret-key-change-me")

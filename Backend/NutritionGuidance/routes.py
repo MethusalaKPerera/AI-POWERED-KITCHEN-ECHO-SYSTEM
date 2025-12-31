@@ -1,10 +1,21 @@
-from flask import Blueprint, current_app, request
-from NutritionGuidance.services.dataset_loader import get_datasets
 
-# ✅ THIS is the object your app.py is trying to import
+from flask import Blueprint, current_app, request
+
+from NutritionGuidance.services.dataset_loader import get_datasets
+from NutritionGuidance.services.food_search import search_foods
+from NutritionGuidance.services.profile_store import get_profile, save_profile
+
+
+# -------------------------------------------------
+# Blueprint
+# -------------------------------------------------
 nutrition_bp = Blueprint("nutrition_bp", __name__)
 
-@nutrition_bp.get("/datasets/status")
+
+# -------------------------------------------------
+# STEP 1: Dataset status (verification)
+# -------------------------------------------------
+@nutrition_bp.route("/datasets/status", methods=["GET"])
 def datasets_status():
     food_df, req_df, cond_df = get_datasets(current_app)
 
@@ -14,33 +25,57 @@ def datasets_status():
         "shapes": {
             "food": [int(food_df.shape[0]), int(food_df.shape[1])],
             "requirements": [int(req_df.shape[0]), int(req_df.shape[1])],
-            "conditions": [int(cond_df.shape[0]), int(cond_df.shape[1])],
+            "conditions": [int(cond_df.shape[0]), int(cond_df.shape[1])]
         },
-        "sample_food_names": food_df["food_name"].head(10).tolist(),
         "sample_food_columns": list(food_df.columns)[:15],
+        "sample_food_names": food_df["food_name"].head(10).tolist(),
     }
 
-@nutrition_bp.get("/foods/search")
+
+# -------------------------------------------------
+# STEP 2: Food search (autocomplete)
+# -------------------------------------------------
+@nutrition_bp.route("/foods/search", methods=["GET"])
 def foods_search():
-    q = (request.args.get("q") or "").strip().lower()
+    q = (request.args.get("q") or "").strip()
     limit = int(request.args.get("limit") or 15)
 
     food_df, _, _ = get_datasets(current_app)
+    return {
+        "items": search_foods(food_df, q, limit=limit)
+    }
 
-    if not q:
-        return {"items": []}
 
-    m = food_df["food_name"].astype(str).str.lower().str.contains(q, na=False)
-    cols = ["food_name"]
+# -------------------------------------------------
+# STEP 3: User profile (GET + POST)
+# -------------------------------------------------
 
-    # include food_id if exists
-    if "food_id" in food_df.columns:
-        cols = ["food_id"] + cols
+# GET profile (accepts /profile and /profile/)
+@nutrition_bp.route("/profile", methods=["GET"])
+@nutrition_bp.route("/profile/", methods=["GET"])
+def profile_get():
+    user_id = (request.args.get("user_id") or "demo").strip()
+    profile = get_profile(current_app, user_id)
+    return {"profile": profile}
 
-    # include serving columns if exist
-    for c in ["serving_basis", "serving_size_g"]:
-        if c in food_df.columns and c not in cols:
-            cols.append(c)
 
-    out = food_df.loc[m, cols].head(limit)
-    return {"items": out.to_dict(orient="records")}
+# POST profile (accepts /profile and /profile/)
+@nutrition_bp.route("/profile", methods=["POST"])
+@nutrition_bp.route("/profile/", methods=["POST"])
+def profile_post():
+    payload = request.get_json(force=True) or {}
+
+    user_id = (payload.get("user_id") or "demo").strip()
+
+    profile_data = {
+        "age": payload.get("age"),
+        "group": payload.get("group"),
+        "conditions": payload.get("conditions"),
+    }
+
+    saved_profile = save_profile(current_app, user_id, profile_data)
+
+    return {
+        "message": "Profile saved successfully",
+        "profile": saved_profile
+    }
