@@ -1,14 +1,6 @@
-import os
-from pymongo import MongoClient
+# FoodExpiry/database/db_connection.py
+from extensions import mongo
 
-MONGO_URI = os.getenv("MONGO_URI")
-
-client = MongoClient(
-    MONGO_URI,
-    tls=True,
-    tlsAllowInvalidCertificates=True
-)
-
-db = client["SmartKitchen"]
-foods_col = db["foods"]
-users_col = db["users"]
+# Use the same DB from MONGO_URI (recommended)
+foods_col = mongo.db.foods
+users_col = mongo.db.users

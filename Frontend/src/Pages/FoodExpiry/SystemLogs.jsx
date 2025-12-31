@@ -2,7 +2,7 @@
 import React from "react";
 import Sidebar from "../../Components/Dashboard/Sidebar.jsx";
 import Topbar from "../../Components/Dashboard/Topbar.jsx";
-import "./foodExpiry.css";
+import "./foodexpiry.css";
 
 export default function SystemLogs() {
   return (

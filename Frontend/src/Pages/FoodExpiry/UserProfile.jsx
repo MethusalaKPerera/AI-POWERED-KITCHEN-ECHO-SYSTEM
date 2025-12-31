@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Sidebar from "../../Components/Dashboard/Sidebar.jsx";
 import Topbar from "../../Components/Dashboard/Topbar.jsx";
-import "./foodExpiry.css";
+import "./foodexpiry.css";
 
 export default function UserProfile() {
   const [userId, setUserId] = useState("demo-user");

@@ -1,21 +1,20 @@
-// src/router/AppRouter.jsx
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Header from "../Components/Header.jsx";
 
-// Existing pages
+// Main site pages
 import Home from "../Pages/Home.jsx";
 import CookingAssistant from "../Pages/CookingAssistant/CookingAssistant.jsx";
 import MealPlanner from "../Pages/CookingAssistant/MealPlanner.jsx";
 import SmartShopping from "../Pages/SmartShopping.jsx";
 import NutritionalGuidance from "../Pages/NutritionalGuidance";
+
+// Auth
 import Login from "../Pages/Auth/Login.jsx";
 import Register from "../Pages/Auth/Register.jsx";
 
-// -------------------------------
-// FoodExpiry Dashboard Pages
-// -------------------------------
+// Food Expiry Dashboard Pages
 import DashboardHome from "../Pages/FoodExpiry/DashboardHome.jsx";
 import Predict from "../Pages/FoodExpiry/Predict.jsx";
 import AddFood from "../Pages/FoodExpiry/AddFood.jsx";
@@ -35,15 +34,19 @@ function AppRouter() {
         <Route path="/" element={<Home />} />
         <Route path="/cooking-assistant" element={<CookingAssistant />} />
         <Route path="/meal-planner" element={<MealPlanner />} />
-        <Route path="/expiry-predictor" element={<DashboardHome />} />
         <Route path="/smart-shopping/*" element={<SmartShopping />} />
         <Route path="/nutritional-guidance" element={<NutritionalGuidance />} />
 
-        {/* Auth Routes */}
+        {/* Auth */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
-        {/* Food Expiry Dashboard */}
+        {/* ----------------------------
+            Food Expiry Dashboard
+           ---------------------------- */}
+
+        {/* Dashboard landing */}
+        <Route path="/food-expiry" element={<DashboardHome />} />
 
         <Route path="/food-expiry/predict" element={<Predict />} />
         <Route path="/food-expiry/add" element={<AddFood />} />
