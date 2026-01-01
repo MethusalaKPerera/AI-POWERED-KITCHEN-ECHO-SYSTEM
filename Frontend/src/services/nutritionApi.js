@@ -98,3 +98,13 @@ export async function getReport(user_id, period = "monthly") {
 
   return request(`/api/nutrition/report?${qs}`, { method: "GET" });
 }
+
+/* -----------------------------
+   Step 9: Conditions list
+------------------------------ */
+export async function getConditions() {
+  return request(`/api/nutrition/conditions`, {
+    method: "GET",
+  });
+}
+

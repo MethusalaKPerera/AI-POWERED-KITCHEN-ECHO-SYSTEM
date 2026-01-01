@@ -1,0 +1,140 @@
+.ud-wrap {
+  max-width: 1000px;
+}
+
+.ud-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.ud-title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.ud-subtitle {
+  margin: 6px 0 0 0;
+  opacity: 0.8;
+}
+
+.ud-refresh {
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 1px solid #cbd5e1;
+  background: white;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.ud-alert {
+  padding: 10px 12px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  border: 1px solid transparent;
+}
+
+.ud-error {
+  background: #fee2e2;
+  color: #991b1b;
+  border-color: #fecaca;
+}
+
+.ud-ok {
+  background: #d1fae5;
+  color: #065f46;
+  border-color: #a7f3d0;
+}
+
+.ud-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 14px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.04);
+}
+
+.ud-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+}
+
+.ud-field {
+  display: grid;
+  gap: 6px;
+}
+
+.ud-label {
+  font-size: 12px;
+  opacity: 0.75;
+  font-weight: 800;
+}
+
+.ud-input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid #cbd5e1;
+  outline: none;
+}
+
+.ud-section {
+  margin-top: 14px;
+}
+
+.ud-section-title {
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+.ud-muted {
+  opacity: 0.75;
+  font-size: 13px;
+}
+
+.ud-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.ud-chip {
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid #cbd5e1;
+  background: white;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.ud-chip.active {
+  border-color: #0ea5e9;
+  background: rgba(14, 165, 233, 0.12);
+}
+
+.ud-actions {
+  margin-top: 14px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.ud-save {
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: none;
+  background: #0ea5e9;
+  color: white;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .ud-grid {
+    grid-template-columns: 1fr;
+  }
+}

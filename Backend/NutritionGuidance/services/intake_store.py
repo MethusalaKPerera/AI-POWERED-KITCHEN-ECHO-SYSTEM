@@ -1,3 +1,4 @@
+# backend/NutritionGuidance/services/intake_store.py
 
 import json
 import os
@@ -77,6 +78,10 @@ def get_summary(app, user_id: str, period: str = "weekly") -> dict:
     """
     Build totals + daily averages for the given period (weekly/monthly),
     using food nutrient values from SL_Food_Nutrition_Master.csv.
+
+    Returns TWO averages:
+    - daily_average_logged_days: totals / days_logged
+    - daily_average_over_period: totals / 7 or totals / 30  ✅ (fix weekly vs monthly display)
     """
     user_id = (user_id or "demo").strip() or "demo"
     period = (period or "weekly").lower()
@@ -100,7 +105,6 @@ def get_summary(app, user_id: str, period: str = "weekly") -> dict:
 
     by_name = {str(r.get("food_name", "")).strip(): r for _, r in food_df.iterrows()}
 
-    # Define nutrients we will sum
     nutrient_cols = [
         "energy_kcal",
         "protein_g",
@@ -115,7 +119,7 @@ def get_summary(app, user_id: str, period: str = "weekly") -> dict:
         "potassium_mg",
         "sodium_mg",
         "vitamin_c_mg",
-        "vitamin_a_ug",     # alias exists if mcg
+        "vitamin_a_ug",
         "vitamin_d_ug",
         "vitamin_b12_ug",
         "folate_ug",
@@ -159,10 +163,15 @@ def get_summary(app, user_id: str, period: str = "weekly") -> dict:
             except Exception:
                 pass
 
-    # Daily average based on how many days user logged something
-    day_count = max(1, len(days_logged))
-    daily_avg = {k: round(v / day_count, 4) for k, v in totals.items()}
     totals = {k: round(v, 4) for k, v in totals.items()}
+
+    # ✅ Average by logged days
+    logged_day_count = max(1, len(days_logged))
+    daily_average_logged_days = {k: round(v / logged_day_count, 4) for k, v in totals.items()}
+
+    # ✅ Average by full period length (7 or 30)
+    period_days = 7 if period == "weekly" else 30 if period == "monthly" else 7
+    daily_average_over_period = {k: round(v / period_days, 4) for k, v in totals.items()}
 
     return {
         "user_id": user_id,
@@ -171,6 +180,10 @@ def get_summary(app, user_id: str, period: str = "weekly") -> dict:
         "date_end": end.isoformat(),
         "days_logged": len(days_logged),
         "logs_used": used_logs,
+        "period_days": period_days,
         "totals": totals,
-        "daily_average": daily_avg,
+        "daily_average_logged_days": daily_average_logged_days,
+        "daily_average_over_period": daily_average_over_period,
+        # keep old key for backward compatibility (uses logged days)
+        "daily_average": daily_average_logged_days,
     }
