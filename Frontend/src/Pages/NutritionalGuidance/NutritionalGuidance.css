@@ -1,4 +1,3 @@
-/* src/Pages/NutritionalGuidance/NutritionalGuidance.css */
 
 .nutritional-guidance-container {
   display: flex;
@@ -7,9 +6,6 @@
   font-family: "Segoe UI", Arial, sans-serif;
 }
 
-/* ----------------------------
-   FIXED SIDEBAR
------------------------------ */
 .sidebar {
   width: 280px;
   background: #066b55;
@@ -27,10 +23,15 @@
   overflow-y: auto; /* sidebar can scroll if content is too long */
 }
 
-/* Sidebar header */
+
 .sidebar-header {
-  padding-bottom: 14px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;      
+  justify-content: center;
+  text-align: center;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .logo-icon {

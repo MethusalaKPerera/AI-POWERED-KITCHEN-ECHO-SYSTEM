@@ -114,7 +114,7 @@ const NutritionalGuidance = () => {
             </div>
           </div>
 
-          {/* ✅ Optional info (helps while testing) */}
+          {/* Optional info (helps while testing) */}
           <div className="dev-userid">
             <span className="dev-label">User:</span> {userId}
           </div>
