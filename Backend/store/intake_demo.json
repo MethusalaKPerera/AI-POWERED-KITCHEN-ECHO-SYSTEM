@@ -62,5 +62,13 @@
     "quantity": 1.0,
     "date": "2026-01-03",
     "ts": "2026-01-01T14:44:41.121409Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SLIN_73c6cd1468",
+    "food_name": "Pasta hot pot",
+    "quantity": 1.0,
+    "date": "2026-01-03",
+    "ts": "2026-01-02T03:35:37.473712Z"
   }
 ]

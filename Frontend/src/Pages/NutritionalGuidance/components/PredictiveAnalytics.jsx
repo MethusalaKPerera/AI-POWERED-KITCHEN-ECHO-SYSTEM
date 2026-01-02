@@ -1,17 +1,15 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { getReport } from "../../../services/nutritionApi";
+import { getReport, getMLRisk } from "../../../services/nutritionApi";
 import "./PredictiveAnalytics.css";
 
 function fmt(num) {
   if (num === null || num === undefined) return "-";
   const n = Number(num);
   if (!Number.isFinite(n)) return "-";
-  // show integers without decimals, else 2 decimals
   return Math.abs(n - Math.round(n)) < 1e-9 ? String(Math.round(n)) : n.toFixed(2);
 }
 
 function labelize(key) {
-  // energy_kcal -> Energy (kcal)
   const map = {
     energy_kcal: "Energy (kcal)",
     protein_g: "Protein (g)",
@@ -57,20 +55,31 @@ function SeverityBadge({ level }) {
 }
 
 export default function PredictiveAnalytics({ userId = "demo" }) {
-  const [period, setPeriod] = useState("monthly"); // weekly | monthly
+  const [period, setPeriod] = useState("monthly");
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState("");
+
   const [report, setReport] = useState(null);
+
+  // ✅ NEW ML state
+  const [mlRisk, setMlRisk] = useState(null);
 
   const loadReport = async () => {
     setLoading(true);
     setErr("");
     try {
-      const data = await getReport(userId, period);
+      // ✅ load report + ml-risk together
+      const [data, riskRes] = await Promise.all([
+        getReport(userId, period),
+        getMLRisk(userId, period),
+      ]);
+
       setReport(data);
+      setMlRisk(riskRes?.ml_deficiency_risk || null);
     } catch (e) {
       setErr(e.message || "Failed to load report");
       setReport(null);
+      setMlRisk(null);
     } finally {
       setLoading(false);
     }
@@ -81,26 +90,31 @@ export default function PredictiveAnalytics({ userId = "demo" }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [period, userId]);
 
+  // ✅ Realistic average: period-based if available
+  const periodAvg = useMemo(() => {
+    const s = report?.intake_summary;
+    return s?.daily_average_over_period || s?.daily_average || {};
+  }, [report]);
+
   const gapRows = useMemo(() => {
     if (!report?.gaps) return [];
+
     const gaps = report.gaps;
     const sev = report.severity || {};
     const req = report.requirements || {};
-    const avg = report.intake_summary?.daily_average || {};
 
     const rows = Object.keys(gaps).map((k) => ({
       key: k,
       label: labelize(k),
       required: req[k],
-      intake: avg[k],
+      intake: periodAvg[k],
       gap: gaps[k],
       severity: sev[k] || "ok",
     }));
 
-    // show biggest missing first (positive gap high -> top)
     rows.sort((a, b) => Number(b.gap || 0) - Number(a.gap || 0));
     return rows;
-  }, [report]);
+  }, [report, periodAvg]);
 
   return (
     <div className="pa-wrap">
@@ -137,13 +151,35 @@ export default function PredictiveAnalytics({ userId = "demo" }) {
       </div>
 
       {err && <div className="pa-alert pa-alert-error">{err}</div>}
-
       {!err && loading && <div className="pa-alert">Loading report...</div>}
 
       {!loading && report && (
         <>
-          {/* Top summary cards */}
           <div className="pa-grid">
+            {/* ✅ ML CARD (NEW) */}
+            {mlRisk && (
+              <div className="pa-card">
+                <div className="pa-card-title">ML Predicted Deficiency Risk</div>
+                <div
+                  style={{
+                    fontSize: 22,
+                    fontWeight: 900,
+                    color:
+                      mlRisk === "HIGH"
+                        ? "#dc2626"
+                        : mlRisk === "MEDIUM"
+                        ? "#f59e0b"
+                        : "#16a34a",
+                  }}
+                >
+                  {mlRisk}
+                </div>
+                <p className="pa-subtitle2">
+                  Generated using a supervised machine learning classifier based on intake patterns and demographic features.
+                </p>
+              </div>
+            )}
+
             <div className="pa-card">
               <div className="pa-card-title">User Profile</div>
               <div className="pa-kv">
@@ -193,10 +229,15 @@ export default function PredictiveAnalytics({ userId = "demo" }) {
                   <div className="k">Logs used</div>
                   <div className="v">{report.intake_summary?.logs_used}</div>
                 </div>
+                <div>
+                  <div className="k">Period days</div>
+                  <div className="v">{report.intake_summary?.period_days ?? "-"}</div>
+                </div>
               </div>
+
               <div className="pa-note">
-                Tip: If “days logged” is low, gaps will look very high. Log meals for multiple days
-                for realistic monthly results.
+                ✅ This report uses <b>period-based daily average</b> (totals / 7 or totals / 30),
+                so weekly/monthly become realistic even with low logs.
               </div>
             </div>
 
@@ -217,7 +258,6 @@ export default function PredictiveAnalytics({ userId = "demo" }) {
             </div>
           </div>
 
-          {/* Gap table */}
           <div className="pa-card pa-table-card">
             <div className="pa-card-title">Nutrient Gaps (Daily)</div>
             <div className="pa-table-wrap">
@@ -226,7 +266,7 @@ export default function PredictiveAnalytics({ userId = "demo" }) {
                   <tr>
                     <th>Nutrient</th>
                     <th>Required</th>
-                    <th>Intake Avg</th>
+                    <th>Intake Avg (period)</th>
                     <th>Gap</th>
                     <th>Severity</th>
                   </tr>
@@ -250,7 +290,6 @@ export default function PredictiveAnalytics({ userId = "demo" }) {
             </div>
           </div>
 
-          {/* Recommendations */}
           <div className="pa-card">
             <div className="pa-card-title">Recommended Foods</div>
             <p className="pa-subtitle2">
@@ -268,7 +307,6 @@ export default function PredictiveAnalytics({ userId = "demo" }) {
                       {f.serving_size_g ? <span>• {f.serving_size_g}g</span> : null}
                     </div>
 
-                    {/* show up to 3 nutrient columns that exist in response */}
                     <div className="rec-nutrients">
                       {Object.entries(f)
                         .filter(([k]) =>
