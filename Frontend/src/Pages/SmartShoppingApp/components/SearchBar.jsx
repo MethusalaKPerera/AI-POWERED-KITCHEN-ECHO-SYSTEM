@@ -22,9 +22,23 @@ export function SearchBar({ onSearch, placeholder = 'Search for products...' }) 
     recognition.interimResults = false;
     recognition.onstart = () => setIsListening(true);
     recognition.onend = () => setIsListening(false);
-    recognition.onerror = () => {
+    recognition.onerror = (event) => {
       setIsListening(false);
-      alert('Voice recognition error occurred');
+      console.error('Voice search error:', event.error);
+
+      let message = 'Voice recognition error occurred';
+      if (event.error === 'not-allowed') {
+        message = 'Microphone access denied. Please allow microphone access in your browser settings.';
+      } else if (event.error === 'network') {
+        message = 'Network connection required for voice search.';
+      } else if (event.error === 'no-speech') {
+        // Optional: don't alert for no speech, just stop listening
+        return;
+      } else if (event.error === 'service-not-allowed') {
+        message = 'Voice recognition service not allowed.';
+      }
+
+      alert(message);
     };
     recognition.onresult = (event) => {
       const transcript = event.results[0][0].transcript;
@@ -47,9 +61,8 @@ export function SearchBar({ onSearch, placeholder = 'Search for products...' }) 
         />
         <button
           onClick={handleVoiceSearch}
-          className={`px-4 py-4 transition-colors ${
-            isListening ? 'bg-red-500 text-white' : 'text-gray-600 hover:text-[#2D9B81]'
-          }`}
+          className={`px-4 py-4 transition-colors ${isListening ? 'bg-red-500 text-white' : 'text-gray-600 hover:text-[#2D9B81]'
+            }`}
           title="Voice search"
         >
           <MicIcon size={24} />

@@ -275,6 +275,7 @@ def chat():
                     'models/gemini-flash-latest',
                     system_instruction=f"{history_context}You are a helpful Kitchen Shopping Assistant. "
                                        f"When users ask how to make a dish or for a recipe, your primary job is to generate a comprehensive SHOPPING LIST of ingredients. "
+                                       f"Format the shopping list as a Markdown table with columns: Ingredient, Quantity, and Shopping Tip. "
                                        f"Briefly describe the ingredients and suggest the best types to buy (e.g., 'San Marzano tomatoes are best for pasta sauce'). "
                                        f"Keep the cooking instructions very minimal (1-2 sentences) and focus 90% on the shopping aspect. "
                                        f"Always be friendly and encouraging. Context is provided if available: {history_context}"
@@ -292,7 +293,7 @@ def chat():
                     msg,
                     generation_config={
                         "temperature": 0.7,
-                        "max_output_tokens": 800
+                        "max_output_tokens": 4000
                     },
                     safety_settings=safety_settings
                 )
