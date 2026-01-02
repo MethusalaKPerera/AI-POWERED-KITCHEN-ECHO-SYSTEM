@@ -4,16 +4,20 @@ from extensions import mongo, bcrypt, jwt
 from dotenv import load_dotenv
 import os
 import traceback
+from werkzeug.exceptions import HTTPException
 
-# 🔹 Load environment variables
-load_dotenv()
+# --------------------------------------------------------
+# ✅ Load environment variables (Windows-safe)
+# --------------------------------------------------------
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+load_dotenv(os.path.join(BASE_DIR, ".env"))
 
 app = Flask(__name__)
 
 # --------------------------------------------------------
 # BASE DIR + DATA/STORE
 # --------------------------------------------------------
-app.config["BASE_DIR"] = os.path.dirname(os.path.abspath(__file__))
+app.config["BASE_DIR"] = BASE_DIR
 app.config["DATA_DIR"] = os.path.join(app.config["BASE_DIR"], "data")
 app.config["STORE_DIR"] = os.path.join(app.config["BASE_DIR"], "store")
 app.config["UPLOAD_FOLDER"] = os.path.join(app.config["BASE_DIR"], "uploads")
@@ -22,7 +26,7 @@ app.config["UPLOAD_FOLDER"] = os.path.join(app.config["BASE_DIR"], "uploads")
 # BASIC CONFIG
 # --------------------------------------------------------
 app.config["MAX_CONTENT_LENGTH"] = 16 * 1024 * 1024
-app.config["PROPAGATE_EXCEPTIONS"] = True
+app.config["PROPAGATE_EXCEPTIONS"] = False  # ✅ prevents turning 404 into 500 via propagation
 app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET_KEY", "super-secret-key-change-me")
 
 # Ensure folders exist
@@ -31,42 +35,33 @@ os.makedirs(app.config["DATA_DIR"], exist_ok=True)
 os.makedirs(app.config["STORE_DIR"], exist_ok=True)
 
 # --------------------------------------------------------
-# ✅ CORS (global)
+# ✅ CORS (single clean config)
 # --------------------------------------------------------
+ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "http://127.0.0.1:3000",
+]
 CORS(
     app,
-    resources={r"/*": {"origins": [
-        "http://localhost:3000",
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-        "http://127.0.0.1:3000",
-    ]}},
+    resources={r"/*": {"origins": ALLOWED_ORIGINS}},
     supports_credentials=True,
     allow_headers=["Content-Type", "Authorization"],
-    methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+    methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
 )
 
-@app.after_request
-def add_global_cors_headers(resp):
-    origin = request.headers.get("Origin")
-    allowed = {
-        "http://localhost:3000",
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-        "http://127.0.0.1:3000",
-    }
-    resp.headers["Access-Control-Allow-Origin"] = origin if origin in allowed else "*"
-    resp.headers["Access-Control-Allow-Credentials"] = "true"
-    resp.headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization"
-    resp.headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE, OPTIONS"
-    return resp
-
 # --------------------------------------------------------
-# ✅ GLOBAL ERROR HANDLER
+# ✅ Error handling (keep HTTP errors as-is)
 # --------------------------------------------------------
 @app.errorhandler(Exception)
 def handle_exception(e):
-    print("❌ ERROR:", str(e))
+    # If it's an HTTPException (404, 405, etc.), keep its status code
+    if isinstance(e, HTTPException):
+        return jsonify({"error": e.name, "message": e.description}), e.code
+
+    # Otherwise, it's a real server error
+    print("❌ INTERNAL ERROR:", str(e))
     traceback.print_exc()
     return jsonify({"error": "Internal Server Error", "message": str(e)}), 500
 
@@ -93,28 +88,24 @@ app.register_blueprint(auth_bp, url_prefix="/api/auth")
 app.register_blueprint(nutrition_bp, url_prefix="/api/nutrition")
 
 # --------------------------------------------------------
-# ✅ FoodExpiry: Only enable if Mongo is configured & available
+# ✅ FoodExpiry: enable if Mongo is configured
 # --------------------------------------------------------
 food_bp_available = False
 
-try:
-    MONGO_URI = os.getenv("MONGO_URI", "").strip()
-    if MONGO_URI:
-        # Try to init Mongo
+MONGO_URI = os.getenv("MONGO_URI", "").strip()
+if MONGO_URI:
+    try:
         app.config["MONGO_URI"] = MONGO_URI
         mongo.init_app(app)
 
-        # Now import FoodExpiry routes safely
         from FoodExpiry.routes.food_routes import food_bp
         app.register_blueprint(food_bp, url_prefix="/api/food")
         food_bp_available = True
-        print("✅ FoodExpiry module enabled (Mongo connected).")
-    else:
-        print("⚠️ FoodExpiry disabled: MONGO_URI not set.")
-except Exception as e:
-    print("⚠️ FoodExpiry disabled due to Mongo error:", str(e))
-    food_bp_available = False
-
+        print("✅ FoodExpiry module enabled (Mongo configured).")
+    except Exception as e:
+        print("⚠️ FoodExpiry disabled due to Mongo error:", str(e))
+else:
+    print("⚠️ FoodExpiry disabled: MONGO_URI not set. (Create Backend/.env)")
 
 # --------------------------------------------------------
 # ROUTES
@@ -146,12 +137,13 @@ def root():
                 "GET /api/food/",
                 "POST /api/food/add",
                 "POST /api/food/predict",
+                "PUT /api/food/update/<id>",
+                "POST /api/food/feedback",
                 "DELETE /api/food/delete/<id>",
             ]
         }
 
     return jsonify({"message": "Welcome to Smart Kitchen API", "version": "1.0.0", "modules": modules}), 200
-
 
 # --------------------------------------------------------
 # RUN
@@ -160,4 +152,5 @@ if __name__ == "__main__":
     print("🚀 Starting Smart Kitchen Backend...")
     print("📍 Backend running on: http://127.0.0.1:5000")
     print("📍 Frontend: http://localhost:5173")
-    app.run(debug=True, port=5000)
+    # ✅ Avoid Windows socket reloader glitch
+    app.run(debug=True, port=5000, use_reloader=False)
