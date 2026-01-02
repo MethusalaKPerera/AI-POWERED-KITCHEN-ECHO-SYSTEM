@@ -1,0 +1,66 @@
+[
+  {
+    "user_id": "demo",
+    "food_id": "SL0069",
+    "food_name": "Green Tea",
+    "quantity": 1.0,
+    "date": "2026-01-01",
+    "ts": "2026-01-01T05:04:49.187289Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SLIN_e1e48dab00",
+    "food_name": "Hot tea (Garam Chai)",
+    "quantity": 1.0,
+    "date": "2026-01-01",
+    "ts": "2026-01-01T06:16:42.619962Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0015",
+    "food_name": "White Rice",
+    "quantity": 2.0,
+    "date": "2026-01-01",
+    "ts": "2026-01-01T06:17:03.036368Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0020",
+    "food_name": "Egg Paratha",
+    "quantity": 5.0,
+    "date": "2026-01-01",
+    "ts": "2026-01-01T14:35:16.216855Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL_NEW_fed5e144",
+    "food_name": "Kottu Roti",
+    "quantity": 1.0,
+    "date": "2026-01-02",
+    "ts": "2026-01-01T14:36:49.902402Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL_NEW_fed5e144",
+    "food_name": "Kottu Roti",
+    "quantity": 2.0,
+    "date": "2026-01-02",
+    "ts": "2026-01-01T14:37:25.731683Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SLIN_67343477d6",
+    "food_name": "Cream buns",
+    "quantity": 1.0,
+    "date": "2026-01-02",
+    "ts": "2026-01-01T14:44:22.938056Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0015",
+    "food_name": "White Rice",
+    "quantity": 1.0,
+    "date": "2026-01-03",
+    "ts": "2026-01-01T14:44:41.121409Z"
+  }
+]

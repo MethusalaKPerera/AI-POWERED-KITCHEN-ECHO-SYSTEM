@@ -1,214 +1,195 @@
-/* Layout Base */
+
 .nutritional-guidance-container {
   display: flex;
   min-height: 100vh;
-  background: #f4faf7;
-  font-family: 'Poppins', sans-serif;
+  background: #f5f7fb;
+  font-family: "Segoe UI", Arial, sans-serif;
 }
 
-/* Sidebar */
 .sidebar {
-  width: 270px;
-  background: linear-gradient(180deg, #0d4d3d 0%, #1fa37e 100%);
+  width: 280px;
+  background: #066b55;
   color: #fff;
   display: flex;
   flex-direction: column;
+  padding: 18px;
+  box-sizing: border-box;
+
+  /* fixed sidebar */
   position: fixed;
   top: 0;
   left: 0;
   height: 100vh;
-  box-shadow: 6px 0 20px rgba(0, 0, 0, 0.1);
-  z-index: 100;
+  overflow-y: auto; /* sidebar can scroll if content is too long */
 }
 
-/* Sidebar Header */
+
 .sidebar-header {
-  padding: 35px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;      
+  justify-content: center;
   text-align: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .logo-icon {
-  font-size: 58px;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  background: rgba(255, 255, 255, 0.12);
   margin-bottom: 10px;
-  animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
 }
 
 .sidebar-header h2 {
-  font-size: 24px;
   margin: 0;
+  font-size: 20px;
   font-weight: 700;
-  letter-spacing: 0.5px;
 }
 
 .tagline {
-  font-size: 13px;
-  font-style: italic;
+  margin: 6px 0 0 0;
+  font-size: 12px;
   opacity: 0.8;
-  margin-top: 4px;
 }
 
-/* Navigation */
+/* Nav */
 .sidebar-nav {
-  flex: 1;
-  padding: 20px 0;
-  overflow-y: auto;
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .nav-item {
   display: flex;
   align-items: center;
-  gap: 15px;
-  padding: 14px 25px;
-  margin: 6px 18px;
-  background: transparent;
-  border: none;
-  color: #fff;
-  font-size: 15px;
-  font-weight: 500;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
   cursor: pointer;
-  border-radius: 10px;
-  transition: all 0.3s ease;
+  user-select: none;
+  transition: background 0.15s ease, transform 0.1s ease;
+  opacity: 0.95;
 }
 
 .nav-item:hover {
-  background: rgba(255, 255, 255, 0.15);
-  transform: translateX(5px);
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateX(1px);
 }
 
 .nav-item.active {
-  background: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  background: rgba(56, 189, 248, 0.18);
+  border: 1px solid rgba(56, 189, 248, 0.28);
 }
 
 .nav-icon {
-  font-size: 22px;
-  min-width: 24px;
+  font-size: 18px;
+  width: 22px;
 }
 
-/* Sidebar Footer */
+/* Footer */
 .sidebar-footer {
-  padding: 20px;
+  margin-top: auto;
+  padding-top: 14px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(0, 0, 0, 0.05);
-}
-
-.health-badge {
-  background: rgba(255, 255, 255, 0.15);
-  padding: 12px 15px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
+  display: grid;
   gap: 10px;
 }
 
+.health-badge {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
 .badge-icon {
-  font-size: 28px;
+  font-size: 18px;
 }
 
 .badge-title {
-  font-weight: 600;
+  font-weight: 700;
   font-size: 13px;
 }
 
 .badge-subtitle {
-  font-size: 11px;
-  opacity: 0.85;
+  font-size: 12px;
+  opacity: 0.8;
 }
 
-/* Main Content */
+/* Optional dev line */
+.dev-userid {
+  font-size: 12px;
+  opacity: 0.85;
+  padding: 0 4px;
+}
+
+.dev-label {
+  opacity: 0.75;
+  margin-right: 6px;
+}
+
+/* ----------------------------
+   MAIN CONTENT (shifted right)
+----------------------------- */
 .main-content {
   flex: 1;
-  padding: 40px 50px;
-  margin-left: 270px;
-  background: #f8fdfa;
-  overflow-y: auto;
-  transition: all 0.3s ease;
-}
+  padding: 22px;
+  box-sizing: border-box;
 
-/* Card Styles */
-.card {
-  background: #fff;
-  border-radius: 16px;
-  padding: 25px 30px;
-  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e9f5ee;
-  margin-bottom: 25px;
-  transition: all 0.3s ease;
-}
+  /* push content to the right of fixed sidebar */
+  margin-left: 280px;
 
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
-}
+  /* ensure visible */
+  background: #f5f7fb;
+  color: #033a18;
 
-.card h3 {
-  color: #164e3b;
-  margin-bottom: 20px;
-  font-size: 18px;
-  font-weight: 600;
-}
-
-/* Primary Button */
-.btn-primary {
-  background: linear-gradient(135deg, #1fa37e, #0d4d3d);
-  color: #fff;
-  border: none;
-  padding: 12px 25px;
-  border-radius: 10px;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(31, 163, 126, 0.3);
-}
-
-/* Scrollbar Styling */
-.sidebar-nav::-webkit-scrollbar,
-.main-content::-webkit-scrollbar {
-  width: 8px;
-}
-
-.sidebar-nav::-webkit-scrollbar-thumb,
-.main-content::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 10px;
+  /* only main content scrolls naturally */
+  min-height: 100vh;
 }
 
 /* Responsive */
-@media (max-width: 992px) {
+@media (max-width: 900px) {
   .sidebar {
-    width: 230px;
+    width: 220px;
   }
-
   .main-content {
-    margin-left: 230px;
-    padding: 30px 25px;
+    margin-left: 220px;
+    padding: 14px;
   }
 }
 
-@media (max-width: 768px) {
+/* On small screens, remove fixed sidebar (mobile friendly) */
+@media (max-width: 720px) {
   .sidebar {
-    position: absolute;
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
+    position: static;
+    width: 100%;
+    height: auto;
+    overflow: visible;
   }
 
-  .sidebar.active {
-    transform: translateX(0);
+  .nutritional-guidance-container {
+    flex-direction: column;
+  }
+
+  .sidebar-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .sidebar-footer {
+    display: none;
   }
 
   .main-content {
     margin-left: 0;
-    padding: 20px;
   }
 }
