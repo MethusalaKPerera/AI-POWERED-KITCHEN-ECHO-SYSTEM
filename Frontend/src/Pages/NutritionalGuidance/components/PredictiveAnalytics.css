@@ -1,0 +1,317 @@
+/* =========================================================
+   Predictive Analytics – Layout
+========================================================= */
+
+.pa-wrap {
+  padding: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.pa-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.pa-title {
+  font-size: 24px;
+  font-weight: 800;
+  margin: 0;
+  color: #0f172a;
+}
+
+.pa-subtitle {
+  font-size: 14px;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+.pa-subtitle2 {
+  font-size: 13px;
+  color: #64748b;
+  margin-top: 8px;
+  line-height: 1.4;
+}
+
+/* =========================================================
+   Controls
+========================================================= */
+
+.pa-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.seg {
+  display: inline-flex;
+  border-radius: 999px;
+  background: #f1f5f9;
+  padding: 3px;
+}
+
+.seg-btn {
+  border: none;
+  background: transparent;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.seg-btn.active {
+  background: #0ea5e9;
+  color: #fff;
+}
+
+.refresh-btn {
+  border: none;
+  background: #0f172a;
+  color: #fff;
+  padding: 8px 14px;
+  font-size: 13px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.refresh-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* =========================================================
+   Alerts
+========================================================= */
+
+.pa-alert {
+  background: #f1f5f9;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+.pa-alert-error {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* =========================================================
+   Grid & Cards
+========================================================= */
+
+.pa-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.pa-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+  border: 1px solid #e2e8f0;
+}
+
+.pa-card-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 10px;
+}
+
+/* =========================================================
+   ML Risk Highlight
+========================================================= */
+
+.pa-card:first-child {
+  border-left: 6px solid #0ea5e9;
+  background: linear-gradient(135deg, #f0f9ff, #ffffff);
+}
+
+/* =========================================================
+   Key–Value Blocks
+========================================================= */
+
+.pa-kv {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.pa-kv .k {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.pa-kv .v {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+/* =========================================================
+   Notes
+========================================================= */
+
+.pa-note {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #475569;
+  background: #f8fafc;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+/* =========================================================
+   Condition Notes
+========================================================= */
+
+.pa-notes {
+  padding-left: 18px;
+  margin: 0;
+}
+
+.pa-notes li {
+  font-size: 13px;
+  margin-bottom: 6px;
+  color: #334155;
+}
+
+/* =========================================================
+   Table
+========================================================= */
+
+.pa-table-card {
+  margin-top: 16px;
+}
+
+.pa-table-wrap {
+  overflow-x: auto;
+}
+
+.pa-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.pa-table th {
+  text-align: left;
+  padding: 10px;
+  background: #f8fafc;
+  color: #334155;
+  font-weight: 700;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.pa-table td {
+  padding: 10px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.pa-table .nut {
+  font-weight: 600;
+}
+
+.gap-pos {
+  color: #dc2626;
+  font-weight: 700;
+}
+
+.gap-ok {
+  color: #16a34a;
+  font-weight: 700;
+}
+
+/* =========================================================
+   Severity Badges
+========================================================= */
+
+.sev {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.sev-ok {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.sev-low {
+  background: #fef9c3;
+  color: #854d0e;
+}
+
+.sev-mod {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.sev-high {
+  background: #fecaca;
+  color: #7f1d1d;
+}
+
+/* =========================================================
+   Recommendations
+========================================================= */
+
+.rec-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.rec-item {
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 12px;
+  background: #f8fafc;
+}
+
+.rec-name {
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: #0f172a;
+}
+
+.rec-meta {
+  font-size: 12px;
+  color: #64748b;
+  margin-bottom: 8px;
+}
+
+.rec-meta span {
+  margin-right: 6px;
+}
+
+.rec-nutrients {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.pill {
+  background: #e0f2fe;
+  color: #0369a1;
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 999px;
+}
+
+.muted {
+  color: #94a3b8;
+  font-size: 13px;
+}

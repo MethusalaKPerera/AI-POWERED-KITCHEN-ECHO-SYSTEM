@@ -6,13 +6,15 @@ export function FilterPanel({ onFilterChange }) {
   const [rating, setRating] = useState(0);
   const [category, setCategory] = useState('');
   const [keyword, setKeyword] = useState('');
+  const [country, setCountry] = useState('us');
 
   const handleApply = () => {
     onFilterChange({
       priceRange,
       rating,
       category,
-      keyword
+      keyword,
+      country
     });
   };
 
@@ -22,6 +24,27 @@ export function FilterPanel({ onFilterChange }) {
         <SlidersHorizontalIcon size={20} />
         <h3>Filters</h3>
       </div>
+
+      <div>
+        <label className="block text-sm font-medium text-[#2D5F4F] mb-2">
+          Region / Country
+        </label>
+        <select
+          value={country}
+          onChange={e => setCountry(e.target.value)}
+          className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#2D9B81]"
+        >
+          <option value="us">United States (Default)</option>
+          <option value="lk">Sri Lanka 🇱🇰</option>
+          <option value="uk">United Kingdom 🇬🇧</option>
+          <option value="in">India 🇮🇳</option>
+          <option value="ca">Canada 🇨🇦</option>
+        </select>
+        <p className="mt-1 text-[10px] text-gray-500 italic">
+          * Selecting Sri Lanka will prioritize local vendors and faster delivery.
+        </p>
+      </div>
+
       <div>
         <label className="block text-sm font-medium text-[#2D5F4F] mb-2">
           Keyword

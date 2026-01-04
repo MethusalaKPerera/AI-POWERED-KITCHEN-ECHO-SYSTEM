@@ -1,0 +1,33 @@
+/* Simple page-level tweaks */
+
+.fe-result-box {
+  background: #f9fafb;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+}
+
+.fe-form__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.fe-table-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom: .75rem;
+}
+
+.fe-muted{ color:#64748b; }
+.fe-small{ font-size:.85rem; }
+.fe-strong{ font-weight:600; }
+.fe-actions{ display:flex; gap:.5rem; }
+
+.fe-modal__header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:.75rem;
+}

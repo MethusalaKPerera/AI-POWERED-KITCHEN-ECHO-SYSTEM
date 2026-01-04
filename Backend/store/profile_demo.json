@@ -1,0 +1,8 @@
+{
+  "user_id": "demo",
+  "age": 25,
+  "group": "female",
+  "conditions": [
+    "diabetes"
+  ]
+}

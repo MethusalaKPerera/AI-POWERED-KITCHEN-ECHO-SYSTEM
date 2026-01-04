@@ -1,171 +1,171 @@
-import React, { useState } from "react";
-import "../styles/UserDetailsForm.css";
+import React, { useEffect, useMemo, useState } from "react";
+import { getProfile, saveProfile, getConditions } from "../../../services/nutritionApi";
+import "./UserDetailsForm.css";
 
-function UserDetailsForm() {
-  const [formData, setFormData] = useState({
-    name: "",
-    age: "",
-    weight: "",
-    height: "",
-    gender: "",
-    allergies: "",
-    sleep: "",
-    goal: "",
-    medication: "",
-    medicalConditions: [],
-    customCondition: "",
-  });
+export default function UserDetailsForm({ userId = "demo" }) {
+  const [loading, setLoading] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [err, setErr] = useState("");
+  const [ok, setOk] = useState("");
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+  const [age, setAge] = useState(22);
+  const [group, setGroup] = useState("male");
+  const [selectedConditions, setSelectedConditions] = useState([]);
+
+  const [conditions, setConditions] = useState([]);
+
+  const loadAll = async () => {
+    setLoading(true);
+    setErr("");
+    setOk("");
+    try {
+      const [p, c] = await Promise.all([getProfile(userId), getConditions()]);
+      const profile = p?.profile || {};
+
+      setAge(profile.age ?? 22);
+      setGroup(profile.group ?? "male");
+      setSelectedConditions(profile.conditions ?? []);
+
+      setConditions(c?.items || []);
+    } catch (e) {
+      setErr(e.message || "Failed to load profile/conditions");
+    } finally {
+      setLoading(false);
+    }
   };
 
-  // ✅ Handle checkbox selections
-  const handleCheckboxChange = (e) => {
-    const { value, checked } = e.target;
-    setFormData((prev) => {
-      const updated = checked
-        ? [...prev.medicalConditions, value]
-        : prev.medicalConditions.filter((cond) => cond !== value);
-      return { ...prev, medicalConditions: updated };
+  useEffect(() => {
+    loadAll();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userId]);
+
+  const toggleCondition = (name) => {
+    setOk("");
+    setErr("");
+    setSelectedConditions((prev) => {
+      const key = String(name || "").trim();
+      if (!key) return prev;
+
+      const has = prev.includes(key);
+      return has ? prev.filter((x) => x !== key) : [...prev, key];
     });
   };
 
-  // ✅ Handle submit
-  const handleSubmit = (e) => {
+  const onSave = async (e) => {
     e.preventDefault();
-    console.log("Form Submitted:", formData);
-    alert("✅ User details submitted successfully!");
+    setSaving(true);
+    setErr("");
+    setOk("");
+
+    const a = Number(age);
+    if (!Number.isFinite(a) || a < 1 || a > 120) {
+      setSaving(false);
+      setErr("Age must be between 1 and 120.");
+      return;
+    }
+
+    try {
+      const payload = {
+        user_id: userId,
+        age: a,
+        group: group,
+        conditions: selectedConditions,
+      };
+
+      const res = await saveProfile(payload);
+      setOk(res?.message || "Profile saved successfully!");
+    } catch (e2) {
+      setErr(e2.message || "Failed to save profile");
+    } finally {
+      setSaving(false);
+    }
   };
 
-  // 🩺 All medical condition options
-  const medicalOptions = [
-    "Diabetes",
-    "High Blood Pressure",
-    "High Cholesterol",
-    "Hypertension",
-    "Heart Disease",
-    "Kidney Disease",
-    "Thyroid Issues",
-    "Asthma",
-  ];
+  const conditionTitle = useMemo(() => {
+    if (!conditions.length) return "Health Conditions";
+    return `Health Conditions (${selectedConditions.length} selected)`;
+  }, [conditions.length, selectedConditions.length]);
 
   return (
-    <section className="section form-section">
-      <h2>Enter Your Details for Personalized Nutrition</h2>
-
-      <form className="user-form" onSubmit={handleSubmit}>
-        {/* 🧍 Personal Information */}
-        <h3 className="form-subtitle">👤 Personal Information</h3>
-        <div className="form-grid">
-          <input
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            placeholder="Full Name"
-            required
-          />
-          <input
-            name="age"
-            type="number"
-            value={formData.age}
-            onChange={handleChange}
-            placeholder="Age"
-            required
-          />
-          <select
-            name="gender"
-            value={formData.gender}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Gender</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">Other</option>
-          </select>
+    <div className="ud-wrap">
+      <div className="ud-head">
+        <div>
+          <h2 className="ud-title">User Profile</h2>
+          <p className="ud-subtitle">
+            Enter your age, group, and health conditions. This will personalize nutrient requirements and deficiency reports.
+          </p>
         </div>
-
-        {/* ⚖️ Health Information */}
-        <h3 className="form-subtitle">🩺 Health Information</h3>
-        <div className="form-grid">
-          <input
-            name="weight"
-            type="number"
-            value={formData.weight}
-            onChange={handleChange}
-            placeholder="Weight (kg)"
-            required
-          />
-          <input
-            name="height"
-            type="number"
-            value={formData.height}
-            onChange={handleChange}
-            placeholder="Height (cm)"
-            required
-          />
-          <input
-            name="allergies"
-            value={formData.allergies}
-            onChange={handleChange}
-            placeholder="Allergies (if any)"
-          />
-          <input
-            name="medication"
-            value={formData.medication}
-            onChange={handleChange}
-            placeholder="Medications (optional)"
-          />
-        </div>
-
-        {/* 💊 Medical Conditions */}
-        <h3 className="form-subtitle">💊 Medical Conditions</h3>
-        <div className="checkbox-grid">
-          {medicalOptions.map((condition) => (
-            <label key={condition} className="checkbox-label">
-              <input
-                type="checkbox"
-                value={condition}
-                checked={formData.medicalConditions.includes(condition)}
-                onChange={handleCheckboxChange}
-              />
-              {condition}
-            </label>
-          ))}
-        </div>
-
-        <input
-          name="customCondition"
-          value={formData.customCondition}
-          onChange={handleChange}
-          placeholder="Other (please specify)"
-        />
-
-        {/* 🌙 Lifestyle */}
-        <h3 className="form-subtitle">🌙 Lifestyle</h3>
-        <div className="form-grid">
-          <input
-            name="sleep"
-            value={formData.sleep}
-            onChange={handleChange}
-            placeholder="Sleep Schedule (e.g. 11 PM - 6 AM)"
-          />
-          <input
-            name="goal"
-            value={formData.goal}
-            onChange={handleChange}
-            placeholder="Fitness Goal (e.g. weight loss)"
-          />
-        </div>
-
-        <button className="btn primary" type="submit">
-          Submit Details
+        <button className="ud-refresh" type="button" onClick={loadAll} disabled={loading}>
+          {loading ? "Loading..." : "Refresh"}
         </button>
+      </div>
+
+      {err && <div className="ud-alert ud-error">{err}</div>}
+      {ok && <div className="ud-alert ud-ok">{ok}</div>}
+
+      <form onSubmit={onSave} className="ud-card">
+        <div className="ud-grid">
+          <div className="ud-field">
+            <label className="ud-label">User ID</label>
+            <input className="ud-input" value={userId} disabled />
+          </div>
+
+          <div className="ud-field">
+            <label className="ud-label">Age</label>
+            <input
+              className="ud-input"
+              type="number"
+              min="1"
+              max="120"
+              value={age}
+              onChange={(e) => setAge(e.target.value)}
+            />
+          </div>
+
+          <div className="ud-field">
+            <label className="ud-label">Group</label>
+            <select className="ud-input" value={group} onChange={(e) => setGroup(e.target.value)}>
+              <option value="male">male</option>
+              <option value="female">female</option>
+            </select>
+          </div>
+        </div>
+
+        <div className="ud-section">
+          <div className="ud-section-title">{conditionTitle}</div>
+
+          {loading ? (
+            <div className="ud-muted">Loading conditions...</div>
+          ) : conditions.length ? (
+            <div className="ud-chips">
+              {conditions.map((c) => {
+                const name = c.condition || c.name || "";
+                const checked = selectedConditions.includes(name);
+                return (
+                  <button
+                    type="button"
+                    key={name}
+                    className={checked ? "ud-chip active" : "ud-chip"}
+                    onClick={() => toggleCondition(name)}
+                  >
+                    {checked ? "✅ " : ""}{name}
+                  </button>
+                );
+              })}
+            </div>
+          ) : (
+            <div className="ud-muted">
+              No conditions list found. Make sure backend endpoint <b>/api/nutrition/conditions</b> works.
+            </div>
+          )}
+        </div>
+
+        <div className="ud-actions">
+          <button className="ud-save" type="submit" disabled={saving}>
+            {saving ? "Saving..." : "Save Profile"}
+          </button>
+        </div>
       </form>
-    </section>
+    </div>
   );
 }
-
-export default UserDetailsForm;
