@@ -1,21 +1,16 @@
-# Flask Backend (Team shared)
 Flask==3.1.2
 flask-pymongo==3.0.1
 flask-cors==6.0.1
 flask-bcrypt
 flask-jwt-extended
 pymongo==4.15.4
-requests==2.32.3
 duckduckgo_search
 beautifulsoup4
+requests==2.32.3
 pandas
 numpy
 scikit-learn
 python-dateutil==2.9.0
-
-# ============================================
-# KAUMADI'S COOKING ASSISTANT DEPENDENCIES
-# ============================================
 sentence-transformers==2.2.2
 chromadb==0.4.22
 transformers==4.40.0
