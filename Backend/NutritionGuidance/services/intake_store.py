@@ -81,12 +81,15 @@ def get_summary(app, user_id: str, period: str = "weekly") -> dict:
 
     Returns TWO averages:
     - daily_average_logged_days: totals / days_logged
-    - daily_average_over_period: totals / 7 or totals / 30  ✅ (fix weekly vs monthly display)
+    - daily_average_over_period: totals / 7 or totals / 30
     """
     user_id = (user_id or "demo").strip() or "demo"
     period = (period or "weekly").lower()
 
     start, end = _period_range(period)
+
+    # Always compute last-30-days coverage (useful for demos/panels)
+    start_30, end_30 = _period_range("monthly")
 
     path = _intake_path(app, user_id)
     logs = []
@@ -129,6 +132,10 @@ def get_summary(app, user_id: str, period: str = "weekly") -> dict:
     days_logged = set()
     used_logs = 0
 
+    # Coverage for last 30 days (independent of selected period)
+    days_logged_last30 = set()
+    used_logs_last30 = 0
+
     for log in logs:
         date_str = log.get("date")
         try:
@@ -136,6 +143,12 @@ def get_summary(app, user_id: str, period: str = "weekly") -> dict:
         except Exception:
             continue
 
+        # Track overall last-30-days coverage
+        if start_30 <= d <= end_30:
+            days_logged_last30.add(d.isoformat())
+            used_logs_last30 += 1
+
+        # Track selected period coverage
         if d < start or d > end:
             continue
 
@@ -165,11 +178,11 @@ def get_summary(app, user_id: str, period: str = "weekly") -> dict:
 
     totals = {k: round(v, 4) for k, v in totals.items()}
 
-    # ✅ Average by logged days
+    # Average by logged days
     logged_day_count = max(1, len(days_logged))
     daily_average_logged_days = {k: round(v / logged_day_count, 4) for k, v in totals.items()}
 
-    # ✅ Average by full period length (7 or 30)
+    # Average by full period length (7 or 30)
     period_days = 7 if period == "weekly" else 30 if period == "monthly" else 7
     daily_average_over_period = {k: round(v / period_days, 4) for k, v in totals.items()}
 
@@ -180,10 +193,16 @@ def get_summary(app, user_id: str, period: str = "weekly") -> dict:
         "date_end": end.isoformat(),
         "days_logged": len(days_logged),
         "logs_used": used_logs,
+
+        # NEW (panel-proof)
+        "days_logged_last30": len(days_logged_last30),
+        "logs_used_last30": used_logs_last30,
+
         "period_days": period_days,
         "totals": totals,
         "daily_average_logged_days": daily_average_logged_days,
         "daily_average_over_period": daily_average_over_period,
+
         # keep old key for backward compatibility (uses logged days)
         "daily_average": daily_average_logged_days,
     }

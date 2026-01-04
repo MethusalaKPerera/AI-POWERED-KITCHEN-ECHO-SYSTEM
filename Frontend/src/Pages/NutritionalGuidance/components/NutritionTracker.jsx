@@ -63,7 +63,8 @@ function MiniBars({ title, items, unit = "" }) {
 }
 
 export default function NutritionTracker({ userId = "demo" }) {
-  const [period, setPeriod] = useState("weekly");
+  // Default to monthly so the first view shows the full 30-day eating pattern.
+  const [period, setPeriod] = useState("monthly");
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState("");
   const [summary, setSummary] = useState(null);
@@ -91,11 +92,8 @@ export default function NutritionTracker({ userId = "demo" }) {
     if (!summary) return [];
     const totals = summary.totals || {};
 
-    // ✅ KEY FIX: Use daily_average_over_period (7 or 30), fallback to daily_average
-    const avg =
-      summary.daily_average_over_period ||
-      summary.daily_average ||
-      {};
+    // Use daily_average_over_period (7 or 30), fallback to daily_average
+    const avg = summary.daily_average_over_period || summary.daily_average || {};
 
     const keys = Object.keys(totals);
 
@@ -134,10 +132,7 @@ export default function NutritionTracker({ userId = "demo" }) {
 
   const topDaily = useMemo(() => {
     if (!summary) return [];
-    const a =
-      summary.daily_average_over_period ||
-      summary.daily_average ||
-      {};
+    const a = summary.daily_average_over_period || summary.daily_average || {};
 
     return [
       { label: "Energy", value: a.energy_kcal || 0 },
@@ -154,7 +149,7 @@ export default function NutritionTracker({ userId = "demo" }) {
         <div>
           <h2 className="nt-title">Nutrition Tracker</h2>
           <p className="nt-subtitle">
-            Weekly/Monthly totals and daily averages (based on full period days).
+            Weekly / Last-30-days totals and daily averages (based on full period days).
           </p>
         </div>
 
@@ -172,7 +167,7 @@ export default function NutritionTracker({ userId = "demo" }) {
               onClick={() => setPeriod("monthly")}
               type="button"
             >
-              Monthly
+              Last 30 Days
             </button>
           </div>
 
@@ -214,8 +209,12 @@ export default function NutritionTracker({ userId = "demo" }) {
               <div className="nt-card-title">Logging</div>
               <div className="nt-kv">
                 <div>
-                  <div className="k">Days logged</div>
+                  <div className="k">Days logged (this view)</div>
                   <div className="v">{summary.days_logged}</div>
+                </div>
+                <div>
+                  <div className="k">Days logged (last 30 days)</div>
+                  <div className="v">{summary.days_logged_last30 ?? "-"}</div>
                 </div>
                 <div>
                   <div className="k">Logs used</div>
@@ -228,7 +227,7 @@ export default function NutritionTracker({ userId = "demo" }) {
               </div>
               <div className="nt-note">
                 Now averages are calculated across the full period ({summary.period_days} days),
-                so weekly/monthly will differ properly.
+                so weekly/last-30-days will differ properly.
               </div>
             </div>
 
@@ -247,11 +246,11 @@ export default function NutritionTracker({ userId = "demo" }) {
                   </tr>
                 </thead>
                 <tbody>
-                  {nutrients.map((r) => (
-                    <tr key={r.key}>
-                      <td className="nut">{r.label}</td>
-                      <td>{fmt(r.total)}</td>
-                      <td>{fmt(r.daily)}</td>
+                  {nutrients.map((n) => (
+                    <tr key={n.key}>
+                      <td>{n.label}</td>
+                      <td>{fmt(n.total)}</td>
+                      <td>{fmt(n.daily)}</td>
                     </tr>
                   ))}
                 </tbody>
