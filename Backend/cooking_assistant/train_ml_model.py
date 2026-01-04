@@ -141,7 +141,18 @@ def train_models(X_train, X_test, y_train, y_test, label_encoder):
         
         # Show classification report
         print(f"\n📊 Classification Report:")
-        print(classification_report(y_test, y_pred, target_names=label_encoder.classes_, zero_division=0))
+        
+        # Get unique labels in test set
+        unique_test_labels = sorted(set(y_test))
+        test_label_names = label_encoder.inverse_transform(unique_test_labels)
+        
+        print(classification_report(
+            y_test, 
+            y_pred, 
+            labels=unique_test_labels,
+            target_names=test_label_names, 
+            zero_division=0
+        ))
     
     return results
 
@@ -224,9 +235,24 @@ def main():
     print("SPLITTING DATA (80% train, 20% test)")
     print("="*80 + "\n")
     
-    X_train, X_test, y_train, y_test = train_test_split(
-        embeddings, labels, test_size=0.2, random_state=42, stratify=labels
-    )
+    # Check if stratification is possible
+    label_counts = {}
+    for label in labels:
+        label_counts[label] = label_counts.get(label, 0) + 1
+    
+    min_samples = min(label_counts.values())
+    
+    if min_samples < 2:
+        print(f"⚠️  Warning: Some classes have only {min_samples} sample(s)")
+        print(f"   Disabling stratification to proceed with training")
+        X_train, X_test, y_train, y_test = train_test_split(
+            embeddings, labels, test_size=0.2, random_state=42, stratify=None
+        )
+    else:
+        print(f"✅ All classes have at least 2 samples - using stratified split")
+        X_train, X_test, y_train, y_test = train_test_split(
+            embeddings, labels, test_size=0.2, random_state=42, stratify=labels
+        )
     
     print(f"Training set: {len(X_train)} samples")
     print(f"Test set: {len(X_test)} samples")
