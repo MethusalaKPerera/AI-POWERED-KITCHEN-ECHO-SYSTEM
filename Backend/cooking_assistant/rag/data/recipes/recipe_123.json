@@ -1,0 +1,41 @@
+{
+  "id": "recipe_123",
+  "name": "Thalaguli (Sesame Balls)",
+  "name_sinhala": "තල ගුලි",
+  "name_tamil": "எள்ளு உருண்டை",
+  "category": "Dessert",
+  "region": "Southern",
+  "description": "Sesame seed and jaggery balls",
+  "ingredients": [
+    "2 cups sesame seeds",
+    "1.5 cups palm jaggery (hakuru)",
+    "1/2 tsp cardamom",
+    "1 tbsp ghee"
+  ],
+  "instructions": [
+    "Dry roast sesame seeds",
+    "Melt jaggery with ghee",
+    "Mix roasted sesame with jaggery",
+    "Add cardamom",
+    "Shape into small balls",
+    "Let cool and set",
+    "Store in container"
+  ],
+  "prep_time_minutes": 15,
+  "cook_time_minutes": 20,
+  "servings": 25,
+  "difficulty": "Easy",
+  "tags": [
+    "southern",
+    "dessert",
+    "healthy",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Nutritious traditional sweet",
+  "authenticity_score": 11.0,
+  "description_sinhala": "තල ඇට සහ හකුරු බෝල",
+  "description_tamil": "எள் விதை மற்றும் வெல்லம் உருண்டைகள்",
+  "cultural_notes_sinhala": "පෝෂ්යදායී සාම්ප්රදායික පැණිරස",
+  "cultural_notes_tamil": "சத்தான பாரம்பரிய இனிப்பு"
+}

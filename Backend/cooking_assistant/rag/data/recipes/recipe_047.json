@@ -1,0 +1,37 @@
+{
+  "id": "recipe_047",
+  "name": "King Coconut Water (Thambili)",
+  "name_sinhala": "තැඹිලි",
+  "name_tamil": "தெண்ணிர்",
+  "category": "Beverage",
+  "region": "General",
+  "description": "Fresh king coconut water, nature's electrolyte drink",
+  "ingredients": [
+    "1 king coconut (orange variety)"
+  ],
+  "instructions": [
+    "Choose tender orange king coconut",
+    "Cut top with machete",
+    "Insert straw",
+    "Drink the water",
+    "Optional: scrape soft flesh and eat"
+  ],
+  "prep_time_minutes": 2,
+  "cook_time_minutes": 0,
+  "servings": 1,
+  "difficulty": "Easy",
+  "tags": [
+    "beverage",
+    "healthy",
+    "natural",
+    "fresh",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "National drink of Sri Lanka, sold by roadside vendors",
+  "authenticity_score": 1.0,
+  "description_sinhala": "නැවුම් රජ පොල් වතුර, සොබාදහමේ ඉලෙක්ට්‍රොලයිට් පානය",
+  "description_tamil": "புதிய ராஜா தேங்காய் தண்ணீர், இயற்கையின் எலக்ட்ரோலைட் பானம்",
+  "cultural_notes_sinhala": "ශ්‍රී ලංකාවේ ජාතික පානය, පාර අයිනේ වෙළෙන්දන් විසින් විකුණනු ලැබේ",
+  "cultural_notes_tamil": "இலங்கையின் தேசிய பானம், சாலையோர வியாபாரிகளால் விற்கப்படுகிறது"
+}

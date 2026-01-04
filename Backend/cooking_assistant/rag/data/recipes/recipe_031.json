@@ -1,0 +1,51 @@
+{
+  "id": "recipe_031",
+  "name": "Chicken Biryani Sri Lankan Style",
+  "name_sinhala": "චිකන් බුරියානි",
+  "name_tamil": "சிக்கன் பிரியாணி",
+  "category": "Rice Dish",
+  "region": "Muslim",
+  "description": "Fragrant rice layered with spiced chicken",
+  "ingredients": [
+    "500g chicken",
+    "2 cups basmati rice",
+    "2 onions, sliced",
+    "1/2 cup yogurt",
+    "1 tbsp ginger-garlic paste",
+    "1 tsp garam masala",
+    "4 cloves",
+    "2 cardamom",
+    "1 cinnamon stick",
+    "Saffron",
+    "Mint leaves",
+    "4 tbsp ghee",
+    "Salt"
+  ],
+  "instructions": [
+    "Marinate chicken with yogurt, ginger-garlic, garam masala",
+    "Cook rice 70% done",
+    "Fry onions until golden",
+    "Layer rice and chicken",
+    "Sprinkle saffron, fried onions, mint",
+    "Cover and cook on low heat (dum)",
+    "Serve hot with raita"
+  ],
+  "prep_time_minutes": 30,
+  "cook_time_minutes": 45,
+  "servings": 6,
+  "difficulty": "Hard",
+  "tags": [
+    "rice-dish",
+    "festive",
+    "muslim",
+    "layered",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Popular at Muslim weddings and celebrations",
+  "authenticity_score": 0.9,
+  "description_sinhala": "කුළුබඩු සහිත කුකුල් මස් තට්ටුවක් සහිත සුවඳ සහල්",
+  "description_tamil": "மசாலா கோழியுடன் அடுக்கப்பட்ட மணம் கொண்ட அரிசி",
+  "cultural_notes_sinhala": "මුස්ලිම් විවාහ උත්සව සහ උත්සවවලදී ජනප්‍රියයි",
+  "cultural_notes_tamil": "முஸ்லீம் திருமணங்கள் மற்றும் கொண்டாட்டங்களில் பிரபலமானது"
+}

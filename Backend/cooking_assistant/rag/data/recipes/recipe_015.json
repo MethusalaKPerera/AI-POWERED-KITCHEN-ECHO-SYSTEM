@@ -1,0 +1,46 @@
+{
+  "id": "recipe_015",
+  "name": "Gotukola Sambol",
+  "name_sinhala": "ගොටුකොළ සම්බෝල",
+  "name_tamil": "வல்லாரை சம்பல்",
+  "category": "Sambol",
+  "region": "General",
+  "description": "Gotu kola leaves salad with coconut",
+  "ingredients": [
+    "2 cups gotu kola leaves, chopped",
+    "1 cup grated coconut",
+    "1 small onion, sliced",
+    "2 green chilies",
+    "1 tbsp lime juice",
+    "1/2 tsp chili powder",
+    "Salt to taste",
+    "Maldive fish (optional) (umbalakada - essential)"
+  ],
+  "instructions": [
+    "Wash and finely chop gotu kola leaves",
+    "Mix with grated coconut",
+    "Add sliced onions and green chilies",
+    "Add lime juice, chili powder, salt",
+    "Mix well",
+    "Add Maldive fish if using",
+    "Serve fresh"
+  ],
+  "prep_time_minutes": 15,
+  "cook_time_minutes": 0,
+  "servings": 4,
+  "difficulty": "Easy",
+  "tags": [
+    "healthy",
+    "no-cook",
+    "herbal",
+    "salad",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Considered very healthy, gotu kola is believed to boost memory Must be freshly made - sambol loses flavor if stored too long. Maldive fish (umbalakada) is essential and irreplaceable. Use coconut scraped fresh, not desiccated.",
+  "authenticity_score": 11.0,
+  "description_sinhala": "ගොටුකොළ පොල් සමග සලාද කොළ",
+  "description_tamil": "கோது கோலா இலை சாலட் தேங்காய்",
+  "cultural_notes_sinhala": "ඉතා සෞඛ්‍ය සම්පන්න යැයි සැලකෙන ගොටුකොළ මතක ශක්තිය වැඩි කරන බව විශ්වාස කෙරේ",
+  "cultural_notes_tamil": "மிகவும் ஆரோக்கியமானதாக கருதப்படும் கோது கோலா நினைவாற்றலை அதிகரிக்கும் என்று நம்பப்படுகிறது"
+}

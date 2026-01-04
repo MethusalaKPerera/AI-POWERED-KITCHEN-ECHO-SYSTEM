@@ -1,0 +1,42 @@
+{
+  "id": "recipe_201",
+  "name": "Parippu Vade (Lentil Fritters)",
+  "name_sinhala": "පරිප්පු වඩේ",
+  "name_tamil": "பருப்பு வடை",
+  "category": "Snack",
+  "region": "General",
+  "description": "Crispy lentil fritters with onions and green chilies. Evening snack favorite.",
+  "ingredients": [
+    "2 cups split chickpeas (kadala parippu), soaked 2 hours",
+    "2 onions, finely chopped",
+    "4 green chilies, chopped",
+    "1 inch ginger, minced",
+    "15 curry leaves, chopped (fresh, not dried)",
+    "1/2 tsp fennel seeds",
+    "1/2 tsp cumin seeds",
+    "1/4 tsp baking soda",
+    "Salt to taste",
+    "Oil for deep frying"
+  ],
+  "instructions": [
+    "Drain chickpeas completely",
+    "Grind coarsely without water",
+    "Add all ingredients and mix well",
+    "Form into small flat patties",
+    "Deep fry in hot oil until golden",
+    "Drain and serve hot with coconut chutney"
+  ],
+  "prep_time_minutes": 130,
+  "cook_time_minutes": 20,
+  "servings": 15,
+  "difficulty": "Easy",
+  "tags": [
+    "snack",
+    "tea time",
+    "crispy",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Different from ulundu wade - uses chickpeas. Must be coarsely ground for texture.",
+  "authenticity_score": 100
+}

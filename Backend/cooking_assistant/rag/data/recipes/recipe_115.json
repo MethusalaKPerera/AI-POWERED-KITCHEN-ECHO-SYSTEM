@@ -1,0 +1,43 @@
+{
+  "id": "recipe_115",
+  "name": "Papadam (Lentil Crackers)",
+  "name_sinhala": "පාපඩම්",
+  "name_tamil": "அப்பளம்",
+  "category": "Snack",
+  "region": "Southern",
+  "description": "Thin crispy lentil crackers, Southern style",
+  "ingredients": [
+    "2 cups urad dal flour",
+    "1 tsp salt",
+    "1/2 tsp asafoetida",
+    "1 tsp black pepper",
+    "1 tsp cumin seeds",
+    "Water as needed"
+  ],
+  "instructions": [
+    "Mix flour with salt, asafoetida",
+    "Add pepper and cumin",
+    "Add water to form stiff dough",
+    "Roll very thin",
+    "Dry in sun for 2 days",
+    "Fry or roast before serving",
+    "Store in airtight container"
+  ],
+  "prep_time_minutes": 30,
+  "cook_time_minutes": 2,
+  "servings": 30,
+  "difficulty": "Hard",
+  "tags": [
+    "southern",
+    "snack",
+    "crispy",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Made in bulk, sun-dried and stored",
+  "authenticity_score": 1.0,
+  "description_sinhala": "සිහින් ක්‍රිස්පි පරිප්පු ක්‍රැකර්ස්, සදර්න් ස්ටයිල්",
+  "description_tamil": "மெல்லிய மிருதுவான பருப்பு பட்டாசு, தெற்கு பாணி",
+  "cultural_notes_sinhala": "තොග වශයෙන් සාදා, අව්වේ වියළා ගබඩා කර ඇත",
+  "cultural_notes_tamil": "மொத்தமாக தயாரிக்கப்பட்டு, வெயிலில் உலர்த்தப்பட்டு சேமிக்கப்படுகிறது"
+}

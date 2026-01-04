@@ -1,0 +1,43 @@
+{
+  "id": "recipe_137",
+  "name": "Kiribath for Vesak",
+  "name_sinhala": "කිරිබත් (වෙසක්)",
+  "name_tamil": "பால் சாதம்",
+  "category": "Rice Dish",
+  "region": "General",
+  "description": "Milk rice for temple offerings",
+  "ingredients": [
+    "3 cups rice",
+    "600ml coconut milk",
+    "Water",
+    "Salt",
+    "Pandan leaves"
+  ],
+  "instructions": [
+    "Cook rice in water",
+    "Add coconut milk and pandan",
+    "Cook until creamy",
+    "Spread on lotus leaves",
+    "Cut into squares",
+    "Offer to Buddha statue",
+    "Serve at temple"
+  ],
+  "prep_time_minutes": 10,
+  "cook_time_minutes": 30,
+  "servings": 12,
+  "difficulty": "Easy",
+  "tags": [
+    "vesak",
+    "offering",
+    "ceremonial",
+    "buddhist",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Traditional temple offering on Vesak",
+  "authenticity_score": 1.0,
+  "description_sinhala": "පන්සලේ පූජාවට කිරිබත්",
+  "description_tamil": "கோவில் பிரசாதத்திற்கு பால் சாதம்",
+  "cultural_notes_sinhala": "වෙසක් දා සාම්ප්‍රදායික පන්සල් පූජාව",
+  "cultural_notes_tamil": "வெசாக் அன்று பாரம்பரிய கோவில் பிரசாதம்"
+}

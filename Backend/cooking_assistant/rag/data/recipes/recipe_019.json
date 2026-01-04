@@ -1,0 +1,49 @@
+{
+  "id": "recipe_019",
+  "name": "Devilled Chicken",
+  "name_sinhala": "ඩෙවල්ඩ් චිකන්",
+  "name_tamil": "டெவில்டு சிக்கன்",
+  "category": "Curry",
+  "region": "Burgher",
+  "description": "Spicy stir-fried chicken with peppers",
+  "ingredients": [
+    "500g chicken, cubed",
+    "2 bell peppers, cubed",
+    "2 onions, cubed",
+    "3 tbsp chili paste",
+    "2 tbsp tomato ketchup",
+    "2 tbsp soy sauce",
+    "1 tbsp vinegar",
+    "3 cloves garlic",
+    "3 tbsp oil",
+    "Salt and pepper"
+  ],
+  "instructions": [
+    "Marinate chicken with salt, pepper, garlic",
+    "Heat oil and fry chicken until golden",
+    "Remove chicken",
+    "Sauté onions and peppers",
+    "Add chili paste, ketchup, soy sauce, vinegar",
+    "Add chicken back",
+    "Toss until coated",
+    "Serve hot"
+  ],
+  "prep_time_minutes": 15,
+  "cook_time_minutes": 20,
+  "servings": 4,
+  "difficulty": "Medium",
+  "tags": [
+    "spicy",
+    "stir-fry",
+    "popular",
+    "indo-chinese",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Burgher-style dish, very popular in restaurants",
+  "authenticity_score": 0.85,
+  "description_sinhala": "ගම්මිරිස් සමග කුළුබඩු කලවම් කළ කුකුල් මස්",
+  "description_tamil": "மிளகுத்தூள் கொண்ட காரமான வறுத்த கோழி",
+  "cultural_notes_sinhala": "බර්ගර් විලාසිතාවේ කෑමක්, අවන්හල්වල ඉතා ජනප්‍රියයි",
+  "cultural_notes_tamil": "பர்கர் பாணி உணவு, உணவகங்களில் மிகவும் பிரபலமானது"
+}

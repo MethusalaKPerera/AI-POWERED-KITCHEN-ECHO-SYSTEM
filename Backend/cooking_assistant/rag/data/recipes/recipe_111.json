@@ -1,0 +1,48 @@
+{
+  "id": "recipe_111",
+  "name": "Murunga Leaves Malluma (Drumstick Leaves)",
+  "name_sinhala": "මුරුංගා මල්ලුම",
+  "name_tamil": "முருங்கை கீரை",
+  "category": "Curry",
+  "region": "Southern",
+  "description": "Drumstick leaves tempered with coconut",
+  "ingredients": [
+    "2 cups drumstick leaves",
+    "1 cup grated coconut",
+    "1 onion, sliced",
+    "2 green chilies",
+    "1 tsp turmeric",
+    "1 tsp mustard seeds",
+    "10 curry leaves (fresh, not dried)",
+    "2 tbsp oil",
+    "Salt"
+  ],
+  "instructions": [
+    "Wash drumstick leaves",
+    "Heat oil and add mustard",
+    "Add onions and chilies",
+    "Add turmeric",
+    "Add drumstick leaves",
+    "Cook until wilted",
+    "Add grated coconut",
+    "Mix and serve"
+  ],
+  "prep_time_minutes": 10,
+  "cook_time_minutes": 10,
+  "servings": 4,
+  "difficulty": "Easy",
+  "tags": [
+    "southern",
+    "vegetarian",
+    "healthy",
+    "greens",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Very nutritious Southern green",
+  "authenticity_score": 11.0,
+  "description_sinhala": "මුරුංගා කොළ පොල් සමග පදම් කර ඇත",
+  "description_tamil": "முருங்கை இலைகள் தேங்காய் துருவல்",
+  "cultural_notes_sinhala": "ඉතා පෝෂ්යදායී දකුණු කොළ",
+  "cultural_notes_tamil": "மிகவும் சத்தான தெற்கு பச்சை"
+}

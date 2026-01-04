@@ -1,0 +1,50 @@
+{
+  "id": "recipe_114",
+  "name": "Karawila Curry (Bitter Gourd)",
+  "name_sinhala": "කරවිල කරිය",
+  "name_tamil": "பாகற்காய் கறி",
+  "category": "Curry",
+  "region": "Southern",
+  "description": "Bitter gourd curry with coconut",
+  "ingredients": [
+    "3 bitter gourds, sliced",
+    "200ml coconut milk",
+    "2 onions, sliced",
+    "2 green chilies",
+    "1 tsp turmeric",
+    "1 tbsp curry powder",
+    "10 curry leaves (fresh, not dried)",
+    "2 tbsp oil",
+    "Salt"
+  ],
+  "instructions": [
+    "Slice bitter gourd and soak in salt water",
+    "Squeeze out water",
+    "Fry in oil until slightly crispy",
+    "Remove and set aside",
+    "Fry onions in same oil",
+    "Add curry powder and turmeric",
+    "Add fried bitter gourd",
+    "Add coconut milk",
+    "Add curry leaves (Curry leaves must be fresh for authentic taste)",
+    "Simmer and serve"
+  ],
+  "prep_time_minutes": 20,
+  "cook_time_minutes": 20,
+  "servings": 4,
+  "difficulty": "Medium",
+  "tags": [
+    "southern",
+    "vegetarian",
+    "healthy",
+    "bitter",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Believed to be very healthy, acquired taste",
+  "authenticity_score": 10.95,
+  "description_sinhala": "පොල් සමග කරවිල කරවිල",
+  "description_tamil": "தேங்காயுடன் பாகற்காய் கறி",
+  "cultural_notes_sinhala": "ඉතා සෞඛ්ය සම්පන්න, අත්පත් කරගත් රසය බව විශ්වාස කෙරේ",
+  "cultural_notes_tamil": "மிகவும் ஆரோக்கியமான, வாங்கிய சுவை என்று நம்பப்படுகிறது"
+}

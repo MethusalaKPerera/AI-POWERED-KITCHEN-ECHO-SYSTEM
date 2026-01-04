@@ -1,0 +1,48 @@
+{
+  "id": "recipe_213",
+  "name": "Parippu (Red Lentil Curry)",
+  "name_sinhala": "පරිප්පු",
+  "name_tamil": "பருப்பு",
+  "category": "Curry",
+  "region": "General",
+  "description": "Everyday red lentil curry with turmeric and coconut milk. Rice and curry staple.",
+  "ingredients": [
+    "1 cup red lentils",
+    "3 cups water",
+    "1 cup thin coconut milk",
+    "1/2 cup thick coconut milk",
+    "1 onion, chopped",
+    "2 green chilies",
+    "1 tsp turmeric",
+    "10 curry leaves (fresh, not dried)",
+    "2 cloves garlic",
+    "1/2 tsp cumin seeds",
+    "2 tbsp coconut oil (traditional - do not substitute)",
+    "Salt to taste"
+  ],
+  "instructions": [
+    "Wash lentils and boil with water and turmeric",
+    "Cook until lentils are soft and mushy",
+    "Heat oil for tempering",
+    "Add cumin, curry leaves, garlic, onion (Curry leaves must be fresh for authentic taste)",
+    "Sauté until golden",
+    "Add to cooked lentils",
+    "Add thin coconut milk and green chilies",
+    "Simmer for 10 minutes",
+    "Add thick coconut milk and salt",
+    "Cook for 5 more minutes"
+  ],
+  "prep_time_minutes": 10,
+  "cook_time_minutes": 25,
+  "servings": 4,
+  "difficulty": "Easy",
+  "tags": [
+    "everyday",
+    "protein",
+    "vegetarian",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Most common curry in Sri Lanka. Must be on every rice and curry spread. Comfort food.",
+  "authenticity_score": 100
+}

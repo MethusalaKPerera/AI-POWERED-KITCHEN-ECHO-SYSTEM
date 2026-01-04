@@ -1,0 +1,49 @@
+{
+  "id": "recipe_197",
+  "name": "Jaffna Crab Curry",
+  "name_sinhala": "යාපනය කකුළු කරිය",
+  "name_tamil": "யாழ்ப்பாண நண்டு கறி",
+  "category": "Curry",
+  "region": "Jaffna Tamil",
+  "description": "Fiery crab curry with roasted Jaffna curry powder. No coconut milk - just pure spice and crab.",
+  "ingredients": [
+    "4 large crabs, cleaned and cut",
+    "4 tbsp Jaffna curry powder",
+    "2 tbsp chili powder",
+    "1 tbsp fennel seeds, roasted and ground",
+    "10 curry leaves (fresh, not dried)",
+    "2 onions, finely chopped",
+    "1 tomato, chopped",
+    "5 cloves garlic, minced",
+    "2 inch ginger, minced",
+    "3 green chilies",
+    "2 tbsp tamarind pulp",
+    "3 tbsp sesame oil",
+    "Salt to taste"
+  ],
+  "instructions": [
+    "Heat sesame oil and fry curry leaves (Curry leaves must be fresh for authentic taste)",
+    "Add onions, sauté until soft",
+    "Add ginger-garlic paste, fry well",
+    "Add all dry spices and fry until fragrant",
+    "Add tomatoes and cook until mushy",
+    "Add crab pieces and coat with masala",
+    "Add tamarind water and enough water to cover",
+    "Cover and cook on low heat for 20 minutes",
+    "Add green chilies and simmer until thick gravy forms"
+  ],
+  "prep_time_minutes": 25,
+  "cook_time_minutes": 30,
+  "servings": 4,
+  "difficulty": "Medium",
+  "tags": [
+    "jaffna",
+    "spicy",
+    "seafood",
+    "tamil",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Jaffna style never uses coconut milk. The sesame oil and fennel are signature flavors. Best with pittu.",
+  "authenticity_score": 100
+}

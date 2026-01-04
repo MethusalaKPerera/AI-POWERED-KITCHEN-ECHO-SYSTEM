@@ -1,0 +1,42 @@
+{
+  "id": "recipe_007",
+  "name": "String Hoppers (Idiyappam)",
+  "name_sinhala": "ඉඳි ආප්ප",
+  "name_tamil": "இடியப்பம்",
+  "category": "Bread",
+  "region": "General",
+  "description": "Steamed rice noodle cakes, a breakfast favorite",
+  "ingredients": [
+    "2 cups rice flour",
+    "2 cups water",
+    "1 tsp salt",
+    "Oil for greasing"
+  ],
+  "instructions": [
+    "Boil water with salt",
+    "Slowly add rice flour while stirring",
+    "Mix to form a dough",
+    "Let cool slightly",
+    "Fill string hopper press with dough",
+    "Press onto greased molds in circular patterns",
+    "Steam for 5-7 minutes",
+    "Serve hot"
+  ],
+  "prep_time_minutes": 20,
+  "cook_time_minutes": 10,
+  "servings": 6,
+  "difficulty": "Medium",
+  "tags": [
+    "breakfast",
+    "steamed",
+    "traditional",
+    "gluten-free",
+    "authentic"
+  ],
+  "cultural_notes": "Traditional breakfast served with curry and sambol",
+  "authenticity_score": 1.0,
+  "description_sinhala": "තැම්බූ සහල් නූඩ්ල් කේක්, උදේ ආහාරය ප්‍රියතම එකක්",
+  "description_tamil": "வேகவைத்த அரிசி நூடுல் கேக்குகள், காலை உணவுக்கு பிடித்தமானவை",
+  "cultural_notes_sinhala": "සාම්ප්‍රදායික උදෑසන ආහාරය ව්‍යංජන සහ සම්බෝල සමඟ පිරිනමනු ලැබේ",
+  "cultural_notes_tamil": "பாரம்பரிய காலை உணவு கறி மற்றும் சாம்போல் பரிமாறப்பட்டது"
+}

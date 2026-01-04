@@ -1,0 +1,49 @@
+{
+  "id": "recipe_143",
+  "name": "Aasmi (Eid Sweet)",
+  "name_sinhala": "ආස්මි (ඊද්)",
+  "name_tamil": "ஆஸ்மி",
+  "category": "Dessert",
+  "region": "Muslim",
+  "description": "Crispy swirled sweets in sugar syrup",
+  "ingredients": [
+    "1.5 cups rice flour",
+    "1/2 cup wheat flour",
+    "2 eggs",
+    "1.5 cups sugar",
+    "1 cup water",
+    "1 tsp cardamom",
+    "Food coloring",
+    "Oil for frying"
+  ],
+  "instructions": [
+    "Make sugar syrup with cardamom",
+    "Beat eggs",
+    "Mix with flours and water",
+    "Make smooth batter",
+    "Divide and add colors",
+    "Heat oil",
+    "Drizzle batter in swirl patterns",
+    "Fry until crispy",
+    "Dip in sugar syrup",
+    "Drain and serve"
+  ],
+  "prep_time_minutes": 25,
+  "cook_time_minutes": 35,
+  "servings": 30,
+  "difficulty": "Medium",
+  "tags": [
+    "eid",
+    "muslim",
+    "sweet",
+    "colorful",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Colorful Eid sweet, very popular",
+  "authenticity_score": 1.0,
+  "description_sinhala": "සීනි සිරප් වල හැපෙනසුළු කරකැවෙන රසකැවිලි",
+  "description_tamil": "சர்க்கரை பாகில் மிருதுவான சுழல் இனிப்புகள்",
+  "cultural_notes_sinhala": "වර්ණවත් ඊද් මිහිරි, ඉතා ජනප්‍රිය",
+  "cultural_notes_tamil": "வண்ணமயமான ஈத் இனிப்பு, மிகவும் பிரபலமானது"
+}

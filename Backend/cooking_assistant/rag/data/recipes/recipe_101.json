@@ -1,0 +1,49 @@
+{
+  "id": "recipe_101",
+  "name": "Bonda (Potato Fritters)",
+  "name_sinhala": "බොන්ඩා",
+  "name_tamil": "போண்டா",
+  "category": "Snack",
+  "region": "Jaffna",
+  "description": "Spiced potato balls in gram flour batter",
+  "ingredients": [
+    "4 potatoes, boiled and mashed",
+    "2 onions, chopped",
+    "2 green chilies",
+    "1 tsp ginger, minced",
+    "10 curry leaves (fresh, not dried)",
+    "1 cup gram flour",
+    "1/2 tsp chili powder",
+    "1/4 tsp asafoetida",
+    "1/2 tsp baking soda",
+    "Oil for frying",
+    "Salt"
+  ],
+  "instructions": [
+    "Mix mashed potato with onions, chilies, ginger, curry leaves (Curry leaves must be fresh for authentic taste)",
+    "Add salt and shape into small balls",
+    "Make batter with gram flour, chili powder, asafoetida, salt",
+    "Add baking soda just before frying",
+    "Dip potato balls in batter",
+    "Deep fry until golden",
+    "Serve hot with chutney"
+  ],
+  "prep_time_minutes": 20,
+  "cook_time_minutes": 20,
+  "servings": 15,
+  "difficulty": "Medium",
+  "tags": [
+    "jaffna",
+    "snack",
+    "fried",
+    "popular",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Popular tea-time snack",
+  "authenticity_score": 10.95,
+  "description_sinhala": "ග්‍රෑම් පිටි බැටරයේ කුළුබඩු සහිත අර්තාපල් බෝල",
+  "description_tamil": "கிராம் மாவு மாவில் மசாலா உருளைக்கிழங்கு உருண்டைகள்",
+  "cultural_notes_sinhala": "ජනප්‍රිය තේ ටයිම් ස්නැක්",
+  "cultural_notes_tamil": "பிரபலமான தேநீர் நேர சிற்றுண்டி"
+}

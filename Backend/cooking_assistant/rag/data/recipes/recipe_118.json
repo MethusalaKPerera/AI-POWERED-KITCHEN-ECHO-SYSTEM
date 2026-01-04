@@ -1,0 +1,45 @@
+{
+  "id": "recipe_118",
+  "name": "Kiri Aluwa (Milk Toffee Squares)",
+  "name_sinhala": "කිරි අලුව",
+  "name_tamil": "பால் அலுவா",
+  "category": "Dessert",
+  "region": "Southern",
+  "description": "Creamy milk fudge with cashews",
+  "ingredients": [
+    "3 cups milk powder",
+    "2 cups sugar",
+    "1 cup water",
+    "1 cup cashews, chopped",
+    "1 tsp cardamom powder",
+    "2 tbsp butter"
+  ],
+  "instructions": [
+    "Boil sugar in water to syrup",
+    "Add milk powder gradually",
+    "Stir constantly on low heat",
+    "Add butter",
+    "Mixture will thicken",
+    "Add cashews and cardamom",
+    "Pour into greased tray",
+    "Cool and cut squares"
+  ],
+  "prep_time_minutes": 10,
+  "cook_time_minutes": 35,
+  "servings": 30,
+  "difficulty": "Medium",
+  "tags": [
+    "southern",
+    "dessert",
+    "sweet",
+    "festive",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Popular gift during festivals",
+  "authenticity_score": 0.9,
+  "description_sinhala": "කජු සමග ක්‍රීමි කිරි ෆජ්",
+  "description_tamil": "முந்திரியுடன் கிரீம் பால் ஃபட்ஜ்",
+  "cultural_notes_sinhala": "උත්සව සමයේදී ජනප්‍රිය තෑග්ගක්",
+  "cultural_notes_tamil": "பண்டிகைகளின் போது பிரபலமான பரிசு"
+}

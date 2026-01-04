@@ -1,0 +1,40 @@
+{
+  "id": "recipe_105",
+  "name": "Pol Roti with Lunumiris",
+  "name_sinhala": "පොල් රොටි ලුණු මිරිස් සමග",
+  "name_tamil": "தேங்காய் ரொட்டி",
+  "category": "Bread",
+  "region": "Southern",
+  "description": "Coconut flatbread with chili sambol",
+  "ingredients": [
+    "For roti: 3 cups flour, 2 cups coconut, 1 onion, 2 chilies, salt",
+    "For lunumiris: 5 chilies, 1 onion, Maldive fish, lime, salt (umbalakada - essential)"
+  ],
+  "instructions": [
+    "Mix flour, coconut, chopped onion, chilies",
+    "Add water to form dough",
+    "Roll into flat circles",
+    "Cook on griddle",
+    "For sambol: grind chilies, onion, Maldive fish",
+    "Add lime juice",
+    "Serve roti with lunumiris"
+  ],
+  "prep_time_minutes": 25,
+  "cook_time_minutes": 20,
+  "servings": 8,
+  "difficulty": "Easy",
+  "tags": [
+    "southern",
+    "breakfast",
+    "coconut",
+    "simple",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Daily Southern breakfast staple",
+  "authenticity_score": 11.0,
+  "description_sinhala": "මිරිස් සම්බෝලයක් සමග පොල් තට්ටම්",
+  "description_tamil": "மிளகாய் சாம்போலுடன் தேங்காய் துருவல்",
+  "cultural_notes_sinhala": "දෛනික දකුණු උදෑසන ආහාරය ප්‍රධාන ආහාරය",
+  "cultural_notes_tamil": "தினசரி தெற்கு காலை உணவு"
+}

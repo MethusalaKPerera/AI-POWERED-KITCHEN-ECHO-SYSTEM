@@ -1,0 +1,51 @@
+{
+  "id": "recipe_155",
+  "name": "Garlic Curry",
+  "name_sinhala": "",
+  "name_tamil": "",
+  "category": "Curry",
+  "region": "General",
+  "description": "",
+  "ingredients": [
+    "1. 50 cloves garlic (4 People)",
+    "2. 1 tsp salt",
+    "1/2 tsp turmeric powder",
+    "3. 1/2 red onion (medium)",
+    "1 green chilies",
+    "12 curry leaves (fresh, not dried)",
+    "4 pieces pandan",
+    "1 piece of cinnamon (1 x 2 cm)",
+    "4. 2 tbsp oil",
+    "5. 1/2 tsp chili powder",
+    "6. 4 tsp roasted curry powder",
+    "7. 1 1/2 cups thin coconut milk"
+  ],
+  "instructions": [
+    "1. Cut the end of the garlic clove, cut into half and peel.",
+    "2. Mix no: 1 and 2 ingredients.",
+    "3. Add oil into a saucepan and use high heat until the oil",
+    "smokes.",
+    "4. Add no: 3 ingredients and fry until onion caramelize.",
+    "5. Change the heat to medium.",
+    "6. Add garlic and stir.",
+    "7. Add chili powder and stir.",
+    "8. Add roasted curry powder and stir.",
+    "9. Add coconut milk and stir.",
+    "10. Cover and cook for around 30min till the curry very thick",
+    "(stir every 5min)",
+    "--- PAGE 8 ---"
+  ],
+  "prep_time_minutes": 30,
+  "cook_time_minutes": 30,
+  "servings": 4,
+  "difficulty": "Medium",
+  "tags": [
+    "pdf-extracted",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Extracted from cookbook",
+  "authenticity_score": 10.85,
+  "cultural_notes_sinhala": "ඉවුම් පිහුම් පොතෙන් උපුටා ගන්නා ලදී",
+  "cultural_notes_tamil": "சமையல் புத்தகத்திலிருந்து பிரித்தெடுக்கப்பட்டது"
+}

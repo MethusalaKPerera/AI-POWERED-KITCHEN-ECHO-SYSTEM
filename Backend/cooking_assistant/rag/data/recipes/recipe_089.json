@@ -1,0 +1,48 @@
+{
+  "id": "recipe_089",
+  "name": "Prawn Varuval (Dry Prawn Fry)",
+  "name_sinhala": "ඉස්සෝ වරුවල්",
+  "name_tamil": "இறால் வறுவல்",
+  "category": "Curry",
+  "region": "Jaffna",
+  "description": "Spicy dry fried prawns",
+  "ingredients": [
+    "500g prawns, cleaned",
+    "2 tbsp Jaffna curry powder",
+    "1 tsp chili powder",
+    "1/2 tsp turmeric",
+    "2 onions, sliced",
+    "5 curry leaves (fresh, not dried)",
+    "1 tsp fennel seeds",
+    "3 tbsp oil",
+    "Salt"
+  ],
+  "instructions": [
+    "Marinate prawns with curry powder, chili, turmeric, salt",
+    "Heat oil and add fennel seeds",
+    "Add onions and fry",
+    "Add marinated prawns",
+    "Fry on high heat until dry",
+    "Add curry leaves (Curry leaves must be fresh for authentic taste)",
+    "Cook until prawns are crispy",
+    "Serve as side dish"
+  ],
+  "prep_time_minutes": 15,
+  "cook_time_minutes": 15,
+  "servings": 4,
+  "difficulty": "Easy",
+  "tags": [
+    "jaffna",
+    "seafood",
+    "dry",
+    "spicy",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Popular side dish with rice",
+  "authenticity_score": 10.95,
+  "description_sinhala": "කුළුබඩු සහිත වියළි බැදපු ඉස්සන්",
+  "description_tamil": "காரமான உலர்ந்த வறுத்த இறால்",
+  "cultural_notes_sinhala": "සහල් සමඟ ජනප්‍රිය අතුරු කෑමක්",
+  "cultural_notes_tamil": "அரிசியுடன் பிரபலமான சைட் டிஷ்"
+}

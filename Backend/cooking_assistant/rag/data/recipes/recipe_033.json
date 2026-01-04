@@ -1,0 +1,48 @@
+{
+  "id": "recipe_033",
+  "name": "Patties (Curry Puffs)",
+  "name_sinhala": "පැටිස්",
+  "name_tamil": "பட்டீஸ்",
+  "category": "Snack",
+  "region": "Burgher",
+  "description": "Flaky pastry filled with spiced meat or fish",
+  "ingredients": [
+    "2 cups flour",
+    "100g butter",
+    "1 egg",
+    "200g beef or fish",
+    "1 onion, chopped",
+    "1 tbsp curry powder",
+    "1 tsp chili powder",
+    "Salt",
+    "Oil for frying"
+  ],
+  "instructions": [
+    "Make pastry with flour, butter, egg",
+    "Rest for 30 minutes",
+    "Cook filling with meat, onions, curry powder",
+    "Roll pastry thin",
+    "Cut circles",
+    "Fill with mixture",
+    "Fold and seal edges",
+    "Deep fry until golden"
+  ],
+  "prep_time_minutes": 45,
+  "cook_time_minutes": 20,
+  "servings": 15,
+  "difficulty": "Hard",
+  "tags": [
+    "snack",
+    "fried",
+    "flaky",
+    "burgher",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Popular street food and party snack",
+  "authenticity_score": 0.9,
+  "description_sinhala": "කුළුබඩු සහිත මස් හෝ මාළු පිරවූ පියලි පේස්ට්‍රි",
+  "description_tamil": "மசாலா இறைச்சி அல்லது மீன் நிரப்பப்பட்ட மெல்லிய பேஸ்ட்ரி",
+  "cultural_notes_sinhala": "ජනප්‍රිය වීදි ආහාර සහ උත්සව සුලු කෑම",
+  "cultural_notes_tamil": "பிரபலமான தெரு உணவு மற்றும் விருந்து சிற்றுண்டி"
+}

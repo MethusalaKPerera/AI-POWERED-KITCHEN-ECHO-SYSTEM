@@ -1,0 +1,40 @@
+{
+  "id": "recipe_195",
+  "name": "Kevum (Deep Fried Sweet)",
+  "name_sinhala": "කැවුම්",
+  "name_tamil": "கேவும்",
+  "category": "Dessert",
+  "region": "Sinhala New Year",
+  "description": "Traditional oil cake made for Sinhala New Year with rice flour and treacle. Diamond-shaped crispy sweets.",
+  "ingredients": [
+    "2 cups rice flour",
+    "1 cup kithul treacle",
+    "1/4 cup coconut milk",
+    "1/2 tsp cardamom powder",
+    "Pinch of salt",
+    "Oil for deep frying"
+  ],
+  "instructions": [
+    "Mix rice flour with salt and cardamom",
+    "Warm treacle slightly and add to flour",
+    "Add coconut milk gradually to make thick dough",
+    "Knead well and rest for 30 minutes",
+    "Heat oil in a deep pan",
+    "Take small portions and shape into diamonds",
+    "Deep fry on medium heat until dark brown",
+    "Drain and cool completely before storing"
+  ],
+  "prep_time_minutes": 45,
+  "cook_time_minutes": 40,
+  "servings": 20,
+  "difficulty": "Hard",
+  "tags": [
+    "festive",
+    "new year",
+    "sweet",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Essential for Sinhala New Year. Must be fried slowly to cook through. Stored in airtight containers for weeks.",
+  "authenticity_score": 100
+}

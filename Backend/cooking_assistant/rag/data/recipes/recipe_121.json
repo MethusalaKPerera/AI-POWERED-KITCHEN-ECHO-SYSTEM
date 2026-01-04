@@ -1,0 +1,44 @@
+{
+  "id": "recipe_121",
+  "name": "Aluwa (Diamond Shaped Sweet)",
+  "name_sinhala": "අලුව",
+  "name_tamil": "அலுவா",
+  "category": "Dessert",
+  "region": "Southern",
+  "description": "Rice flour sweet with jaggery",
+  "ingredients": [
+    "2 cups rice flour, roasted",
+    "1.5 cups palm jaggery (hakuru), melted",
+    "1 cup grated coconut",
+    "1/2 cup cashews",
+    "1 tsp cardamom",
+    "Water"
+  ],
+  "instructions": [
+    "Roast rice flour",
+    "Mix with melted jaggery",
+    "Add coconut and cashews",
+    "Add cardamom",
+    "Add water to bind",
+    "Spread on greased tray",
+    "Cut diamond shapes",
+    "Let set"
+  ],
+  "prep_time_minutes": 15,
+  "cook_time_minutes": 15,
+  "servings": 30,
+  "difficulty": "Easy",
+  "tags": [
+    "southern",
+    "dessert",
+    "traditional",
+    "festive",
+    "authentic"
+  ],
+  "cultural_notes": "Essential New Year sweet",
+  "authenticity_score": 11.0,
+  "description_sinhala": "සහල් පිටි හකුරු සමග පැණිරසයි",
+  "description_tamil": "வெல்லத்துடன் அரிசி மாவு இனிப்பு",
+  "cultural_notes_sinhala": "අත්යවශ්ය අලුත් අවුරුද්ද මිහිරි",
+  "cultural_notes_tamil": "அத்தியாவசிய புத்தாண்டு இனிப்பு"
+}

@@ -1,0 +1,51 @@
+{
+  "id": "recipe_147",
+  "name": "Christmas Cake (Burgher)",
+  "name_sinhala": "ක්‍රිස්මස් කේක් (බර්ගර්)",
+  "name_tamil": "கிறிஸ்துமஸ் கேக்",
+  "category": "Dessert",
+  "region": "Burgher",
+  "description": "Rich fruit cake soaked in brandy",
+  "ingredients": [
+    "500g mixed dried fruits",
+    "200ml brandy",
+    "250g butter",
+    "250g sugar",
+    "5 eggs",
+    "300g flour",
+    "1 tsp baking powder",
+    "1 tsp mixed spice",
+    "1 tsp vanilla",
+    "Treacle"
+  ],
+  "instructions": [
+    "Soak fruits in brandy for 1 week",
+    "Cream butter and sugar",
+    "Add eggs one by one",
+    "Add vanilla and treacle",
+    "Fold in flour and spices",
+    "Add soaked fruits",
+    "Pour into lined tin",
+    "Bake at 150°C for 2-3 hours",
+    "Cool and wrap in brandy-soaked cloth",
+    "Store for 1 month before serving"
+  ],
+  "prep_time_minutes": 40,
+  "cook_time_minutes": 180,
+  "servings": 20,
+  "difficulty": "Hard",
+  "tags": [
+    "christmas",
+    "burgher",
+    "cake",
+    "rich",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Made 2 months before Christmas",
+  "authenticity_score": 1.0,
+  "description_sinhala": "බ්රැන්ඩි පොඟවා පොහොසත් පළතුරු කේක්",
+  "description_tamil": "பிராந்தியில் ஊறவைத்த பணக்கார பழ கேக்",
+  "cultural_notes_sinhala": "නත්තලට මාස 2කට කලින් හැදුවා",
+  "cultural_notes_tamil": "கிறிஸ்துமஸுக்கு 2 மாதங்களுக்கு முன்பு செய்யப்பட்டது"
+}

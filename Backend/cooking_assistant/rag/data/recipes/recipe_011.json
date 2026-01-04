@@ -1,0 +1,44 @@
+{
+  "id": "recipe_011",
+  "name": "Watalappan",
+  "name_sinhala": "වටලප්පන්",
+  "name_tamil": "வாதளப்பான்",
+  "category": "Dessert",
+  "region": "Malay",
+  "description": "Sri Lankan coconut custard pudding with jaggery",
+  "ingredients": [
+    "6 eggs",
+    "400ml coconut milk",
+    "200g palm jaggery (hakuru), melted",
+    "1/2 tsp cardamom powder",
+    "1/2 tsp nutmeg",
+    "Few cashew nuts"
+  ],
+  "instructions": [
+    "Beat eggs well",
+    "Add melted jaggery",
+    "Add coconut milk, cardamom, nutmeg",
+    "Strain mixture",
+    "Pour into greased mold",
+    "Add cashews on top",
+    "Steam for 30-40 minutes until set",
+    "Cool and serve"
+  ],
+  "prep_time_minutes": 15,
+  "cook_time_minutes": 40,
+  "servings": 8,
+  "difficulty": "Medium",
+  "tags": [
+    "dessert",
+    "sweet",
+    "steamed",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Malay-origin dessert, essential at Eid celebrations",
+  "authenticity_score": 11.0,
+  "description_sinhala": "හකුරු සමග ශ්‍රී ලංකාවේ පොල් කස්ටඩ් පුඩිං",
+  "description_tamil": "வெல்லத்துடன் இலங்கை தேங்காய் கொழுக்கட்டை",
+  "cultural_notes_sinhala": "මැලේ සම්භවයක් ඇති අතුරුපස, ඊද් උත්සවවලදී අත්‍යවශ්‍ය වේ",
+  "cultural_notes_tamil": "மலாய் வம்சாவளி இனிப்பு, ஈத் கொண்டாட்டங்களில் அவசியம்"
+}

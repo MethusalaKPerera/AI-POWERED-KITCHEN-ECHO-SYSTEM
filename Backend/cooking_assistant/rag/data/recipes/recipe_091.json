@@ -1,0 +1,52 @@
+{
+  "id": "recipe_091",
+  "name": "Thayir Sadam (Curd Rice)",
+  "name_sinhala": "දධි සදම්",
+  "name_tamil": "தயிர் சாதம்",
+  "category": "Rice Dish",
+  "region": "Jaffna",
+  "description": "Cooling yogurt rice with tempering",
+  "ingredients": [
+    "2 cups cooked rice",
+    "1 cup yogurt",
+    "1/2 cup milk",
+    "1 tsp mustard seeds",
+    "1 tsp urad dal",
+    "2 green chilies",
+    "1 inch ginger, chopped",
+    "10 curry leaves (fresh, not dried)",
+    "2 tbsp oil",
+    "Salt",
+    "Coriander leaves"
+  ],
+  "instructions": [
+    "Mash cooked rice slightly",
+    "Mix with yogurt and milk",
+    "Add salt",
+    "Heat oil and add mustard seeds",
+    "Add urad dal until golden",
+    "Add chilies, ginger, curry leaves (Curry leaves must be fresh for authentic taste)",
+    "Pour over rice mixture",
+    "Mix well",
+    "Garnish with coriander",
+    "Serve chilled"
+  ],
+  "prep_time_minutes": 10,
+  "cook_time_minutes": 10,
+  "servings": 4,
+  "difficulty": "Easy",
+  "tags": [
+    "jaffna",
+    "rice",
+    "cooling",
+    "probiotic",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Cooling meal for hot weather, aids digestion",
+  "authenticity_score": 11.0,
+  "description_sinhala": "යෝගට් බත් තෙම්පරාදු කර සිසිල් කිරීම",
+  "description_tamil": "தயிர் சாதம் குளிர்ச்சியுடன்",
+  "cultural_notes_sinhala": "උණුසුම් කාලගුණය සඳහා සිසිල් ආහාර, ආහාර දිරවීමට උපකාරී වේ",
+  "cultural_notes_tamil": "Cooling meal for hot weather, aids digestion"
+}

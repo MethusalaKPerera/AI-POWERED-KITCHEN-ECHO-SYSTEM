@@ -1,0 +1,38 @@
+{
+  "id": "recipe_204",
+  "name": "Kothamalli Sambol (Coriander Sambol)",
+  "name_sinhala": "කොත්තමල්ලි සම්බෝල",
+  "name_tamil": "கொத்தமல்லி சம்பல்",
+  "category": "Sambol",
+  "region": "General",
+  "description": "Fresh coriander chutney with Maldive fish and lime. Perfect accompaniment.",
+  "ingredients": [
+    "2 cups coriander leaves",
+    "1/4 cup grated coconut",
+    "2 tbsp Maldive fish, crushed (umbalakada - essential)",
+    "2 green chilies",
+    "1 shallot",
+    "Juice of 1 lime",
+    "Salt to taste"
+  ],
+  "instructions": [
+    "Roughly chop coriander",
+    "Blend all ingredients except lime juice",
+    "Grind to coarse paste",
+    "Add lime juice and mix",
+    "Serve fresh with rice and curry"
+  ],
+  "prep_time_minutes": 10,
+  "cook_time_minutes": 0,
+  "servings": 4,
+  "difficulty": "Easy",
+  "tags": [
+    "fresh",
+    "chutney",
+    "quick",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Maldive fish is essential for authentic taste. Must be made fresh daily. Must be freshly made - sambol loses flavor if stored too long. Maldive fish (umbalakada) is essential and irreplaceable. Use coconut scraped fresh, not desiccated.",
+  "authenticity_score": 100
+}

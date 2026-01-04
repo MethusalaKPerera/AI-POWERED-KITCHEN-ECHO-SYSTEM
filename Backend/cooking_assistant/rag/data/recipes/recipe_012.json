@@ -1,0 +1,45 @@
+{
+  "id": "recipe_012",
+  "name": "Seeni Sambol",
+  "name_sinhala": "සීනි සම්බෝල",
+  "name_tamil": "சீனி சம்பல்",
+  "category": "Sambol",
+  "region": "General",
+  "description": "Caramelized onion sambol with Maldive fish",
+  "ingredients": [
+    "4 large onions, sliced thin",
+    "3 tbsp Maldive fish (umbalakada - essential)",
+    "2 tbsp chili powder",
+    "2 tbsp tamarind paste",
+    "2 tbsp sugar",
+    "1 sprig curry leaves (fresh, not dried)",
+    "3 tbsp oil",
+    "Salt to taste"
+  ],
+  "instructions": [
+    "Heat oil in pan",
+    "Add onions and fry until golden",
+    "Add curry leaves (Curry leaves must be fresh for authentic taste)",
+    "Add chili powder and Maldive fish",
+    "Add tamarind paste and sugar",
+    "Cook until caramelized and thick",
+    "Cool and store"
+  ],
+  "prep_time_minutes": 10,
+  "cook_time_minutes": 30,
+  "servings": 8,
+  "difficulty": "Medium",
+  "tags": [
+    "condiment",
+    "sweet-spicy",
+    "caramelized",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Essential condiment for bread, served at breakfast Must be freshly made - sambol loses flavor if stored too long. Maldive fish (umbalakada) is essential and irreplaceable. Use coconut scraped fresh, not desiccated.",
+  "authenticity_score": 11.0,
+  "description_sinhala": "මාලදිවයිනේ මාළු සමග කැරමල් කළ ලූනු සම්බෝලය",
+  "description_tamil": "மாலத்தீவு மீன்களுடன் கேரமல் செய்யப்பட்ட வெங்காய சாம்போல்",
+  "cultural_notes_sinhala": "පාන් සඳහා අත්‍යවශ්‍ය කුළුබඩුවක්, උදේ ආහාරය සඳහා සේවය කරයි",
+  "cultural_notes_tamil": "ரொட்டிக்கு அத்தியாவசியமான காண்டிமென்ட், காலை உணவில் பரிமாறப்படுகிறது"
+}

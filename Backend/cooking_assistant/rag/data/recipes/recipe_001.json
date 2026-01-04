@@ -1,0 +1,70 @@
+{
+  "id": "recipe_001",
+  "name": "Chicken Curry (Kukul Mas Curry)",
+  "name_sinhala": "කුකුල් මස් කරිය",
+  "name_tamil": "கோழி கறி",
+  "category": "Curry",
+  "region": "Sinhalese",
+  "description": "A rich, aromatic chicken curry with roasted Sri Lankan spices and coconut milk",
+  "ingredients": [
+    "1 kg chicken, cut into pieces",
+    "400ml thick coconut milk",
+    "200ml thin coconut milk",
+    "3 tbsp roasted curry powder",
+    "1 tbsp chili powder",
+    "1 tsp turmeric powder",
+    "2 large onions, sliced",
+    "4 cloves garlic, minced",
+    "1 inch ginger, minced",
+    "2-3 green chilies",
+    "1 sprig curry leaves (fresh, not dried)",
+    "1 stick cinnamon",
+    "3 cardamom pods",
+    "4 cloves",
+    "2 tbsp vegetable oil",
+    "Salt to taste"
+  ],
+  "instructions": [
+    "Marinate chicken with turmeric, chili powder, and salt for 30 minutes",
+    "Heat oil in a large pan and add cinnamon, cardamom, and cloves",
+    "Add curry leaves and sauté until fragrant (Curry leaves must be fresh for authentic taste)",
+    "Add sliced onions and cook until golden brown",
+    "Add garlic, ginger, and green chilies; sauté for 2 minutes",
+    "Add roasted curry powder and cook for 1 minute",
+    "Add marinated chicken and mix well",
+    "Pour in thin coconut milk and bring to a simmer gently (Never boil coconut milk vigorously - it will curdle)",
+    "Reduce heat and simmer for 30 minutes until chicken is tender",
+    "Add thick coconut milk and simmer for 10 more minutes",
+    "Adjust seasoning and serve hot with rice"
+  ],
+  "prep_time_minutes": 30,
+  "cook_time_minutes": 45,
+  "servings": 6,
+  "difficulty": "Medium",
+  "tags": [
+    "spicy",
+    "coconut-based",
+    "main-dish",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "This is the most popular Sri Lankan chicken curry, typically served at special occasions and family gatherings Roast curry powder in a dry pan first for authentic flavor. Use fresh curry leaves, not dried. Coconut milk should be added in two stages - thin first, thick at the end.",
+  "tips": {
+    "sinhala": [
+      "ඉඟුරු ගෙඩිය කැබලි කර යුෂ ගමුකර ඇටකිරි වලින් රස වැඩි වේ"
+    ],
+    "tamil": [
+      "சமையலுக்கு முன் கோழியை மசாலாவில் ஊறவைக்கவும்"
+    ],
+    "english": [
+      "Use freshly roasted curry powder for best flavor",
+      "Marinating overnight enhances the taste"
+    ]
+  },
+  "authenticity_score": 10.95,
+  "source": "Traditional Sri Lankan recipe",
+  "description_sinhala": "බැදපු ශ්‍රී ලාංකීය කුළුබඩු සහ පොල් කිරි සමග පොහොසත්, ඇරෝමැටික චිකන් කරියක්",
+  "description_tamil": "வறுத்த இலங்கை மசாலா மற்றும் தேங்காய்ப்பால் கொண்ட செழுமையான, நறுமணமுள்ள கோழிக் கறி",
+  "cultural_notes_sinhala": "මෙය වඩාත් ජනප්‍රිය ශ්‍රී ලාංකික කුකුල් මස් ව්‍යංජනය වන අතර, සාමාන්‍යයෙන් විශේෂ අවස්ථා සහ පවුලේ රැස්වීම් වලදී පිළිගන්වනු ලැබේ",
+  "cultural_notes_tamil": "இது மிகவும் பிரபலமான இலங்கை கோழிக் கறியாகும், இது பொதுவாக விசேஷ சந்தர்ப்பங்களில் மற்றும் குடும்பக் கூட்டங்களில் பரிமாறப்படுகிறது"
+}

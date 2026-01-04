@@ -1,0 +1,47 @@
+{
+  "id": "recipe_108",
+  "name": "Pol Maalu (Coconut Fish)",
+  "name_sinhala": "පොල් මාලු",
+  "name_tamil": "தேங்காய் மீன்",
+  "category": "Curry",
+  "region": "Southern",
+  "description": "Fish tempered with coconut",
+  "ingredients": [
+    "500g fish, sliced",
+    "2 cups grated coconut",
+    "2 onions, sliced",
+    "3 green chilies",
+    "1 tsp turmeric",
+    "10 curry leaves (fresh, not dried)",
+    "2 tbsp oil",
+    "Salt"
+  ],
+  "instructions": [
+    "Marinate fish with turmeric and salt",
+    "Fry fish lightly",
+    "In same pan, fry onions",
+    "Add grated coconut",
+    "Add chilies and curry leaves (Curry leaves must be fresh for authentic taste)",
+    "Add fried fish",
+    "Mix gently",
+    "Serve with rice"
+  ],
+  "prep_time_minutes": 15,
+  "cook_time_minutes": 15,
+  "servings": 4,
+  "difficulty": "Easy",
+  "tags": [
+    "southern",
+    "seafood",
+    "coconut",
+    "simple",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Quick Southern fish dish",
+  "authenticity_score": 10.95,
+  "description_sinhala": "මාළු පොල් සමග තෙම්පරාදු කර ඇත",
+  "description_tamil": "தேங்காய் காய்ச்சிய மீன்",
+  "cultural_notes_sinhala": "ඉක්මන් දකුණු මාළු කෑමක්",
+  "cultural_notes_tamil": "விரைவான தெற்கு மீன் உணவு"
+}

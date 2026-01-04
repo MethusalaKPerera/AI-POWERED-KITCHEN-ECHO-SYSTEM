@@ -1,0 +1,48 @@
+{
+  "id": "recipe_029",
+  "name": "Batu Moju (Bean Pickle)",
+  "name_sinhala": "බෝංචි මොජු",
+  "name_tamil": "பீன்ஸ் ஊறுகாய்",
+  "category": "Sambol",
+  "region": "General",
+  "description": "Sweet and sour green bean pickle",
+  "ingredients": [
+    "300g green beans, cut",
+    "2 onions, sliced",
+    "2 tbsp mustard seeds",
+    "2 tbsp vinegar",
+    "2 tbsp sugar",
+    "1 tbsp chili powder",
+    "1 sprig curry leaves (fresh, not dried)",
+    "Oil for frying",
+    "Salt to taste"
+  ],
+  "instructions": [
+    "Blanch beans in boiling water",
+    "Drain well",
+    "Fry beans until slightly crispy",
+    "Fry onions separately",
+    "In same oil, add mustard seeds",
+    "Add curry leaves (Curry leaves must be fresh for authentic taste)",
+    "Add beans, onions",
+    "Add vinegar, sugar, chili, salt",
+    "Mix well and cool"
+  ],
+  "prep_time_minutes": 15,
+  "cook_time_minutes": 20,
+  "servings": 6,
+  "difficulty": "Easy",
+  "tags": [
+    "pickle",
+    "vegetarian",
+    "sweet-sour",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Popular side dish that pairs well with rice",
+  "authenticity_score": 10.9,
+  "description_sinhala": "පැණිරස හා ඇඹුල් කොළ බෝංචි අච්චාරු",
+  "description_tamil": "இனிப்பு மற்றும் புளிப்பு பச்சை பீன் ஊறுகாய்",
+  "cultural_notes_sinhala": "සහල් සමඟ හොඳින් සම්බන්ධ වන ජනප්‍රිය අතුරු කෑමක්",
+  "cultural_notes_tamil": "அரிசியுடன் நன்றாக இணைக்கும் பிரபலமான சைட் டிஷ்"
+}

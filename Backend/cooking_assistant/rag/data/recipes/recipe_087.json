@@ -1,0 +1,49 @@
+{
+  "id": "recipe_087",
+  "name": "Masala Vadai",
+  "name_sinhala": "මසාලා වඩේ",
+  "name_tamil": "மசாலா வடை",
+  "category": "Snack",
+  "region": "Jaffna",
+  "description": "Spiced chana dal fritters",
+  "ingredients": [
+    "2 cups chana dal, soaked",
+    "4 dried red chilies",
+    "1 tsp fennel seeds",
+    "2 onions, chopped",
+    "1 inch ginger",
+    "10 curry leaves (fresh, not dried)",
+    "1/2 tsp asafoetida",
+    "Salt",
+    "Oil for frying"
+  ],
+  "instructions": [
+    "Soak dal for 2 hours",
+    "Drain and grind coarsely with chilies",
+    "Add fennel, ginger, asafoetida",
+    "Add onions and curry leaves (Curry leaves must be fresh for authentic taste)",
+    "Add salt",
+    "Heat oil",
+    "Drop spoonfuls into oil",
+    "Fry until golden",
+    "Drain and serve hot"
+  ],
+  "prep_time_minutes": 20,
+  "cook_time_minutes": 20,
+  "servings": 20,
+  "difficulty": "Easy",
+  "tags": [
+    "jaffna",
+    "snack",
+    "spicy",
+    "fried",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Popular street food in Jaffna town",
+  "authenticity_score": 10.95,
+  "description_sinhala": "කුළුබඩු සහිත චනා පරිප්පු බැදපු",
+  "description_tamil": "மசாலா சனா பருப்பு பொரியல்",
+  "cultural_notes_sinhala": "යාපනය නගරයේ ජනප්‍රිය වීදි ආහාර",
+  "cultural_notes_tamil": "யாழ்ப்பாண நகரத்தில் பிரபலமான தெரு உணவு"
+}

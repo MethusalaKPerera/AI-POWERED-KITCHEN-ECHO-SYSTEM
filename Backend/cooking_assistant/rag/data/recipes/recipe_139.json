@@ -1,0 +1,44 @@
+{
+  "id": "recipe_139",
+  "name": "Poson Porridge",
+  "name_sinhala": "පොසොන් කැඳ",
+  "name_tamil": "பொசன் கஞ்சி",
+  "category": "Rice Dish",
+  "region": "General",
+  "description": "Sweet coconut milk porridge for Poson",
+  "ingredients": [
+    "2 cups rice flour",
+    "4 cups coconut milk",
+    "1 cup palm jaggery (hakuru)",
+    "1 tsp cardamom",
+    "Cashews",
+    "Water"
+  ],
+  "instructions": [
+    "Mix rice flour with water",
+    "Boil coconut milk with jaggery (Never boil coconut milk vigorously - it will curdle)",
+    "Add rice flour mixture",
+    "Stir until thick",
+    "Add cardamom",
+    "Garnish with cashews",
+    "Serve warm"
+  ],
+  "prep_time_minutes": 10,
+  "cook_time_minutes": 20,
+  "servings": 8,
+  "difficulty": "Easy",
+  "tags": [
+    "poson",
+    "sweet",
+    "porridge",
+    "buddhist",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Offered at temples during Poson",
+  "authenticity_score": 10.95,
+  "description_sinhala": "පොසොන් එකට පැණි පොල් කිරි කැඳ",
+  "description_tamil": "பொசனுக்கு இனிப்பு தேங்காய் பால் கஞ்சி",
+  "cultural_notes_sinhala": "පොසොන් කාලෙට පන්සල්වල පූජා කරනවා",
+  "cultural_notes_tamil": "போசன் காலத்தில் கோவில்களில் பிரசாதம் வழங்கப்படும்"
+}

@@ -1,0 +1,43 @@
+{
+  "id": "recipe_119",
+  "name": "Rasa Kavili (Red Rice Flour Sweet)",
+  "name_sinhala": "රස කැවිලි",
+  "name_tamil": "ரசக்கவிலி",
+  "category": "Dessert",
+  "region": "Southern",
+  "description": "Sweet rice flour diamonds",
+  "ingredients": [
+    "2 cups red rice flour",
+    "1 cup palm jaggery (hakuru), melted",
+    "1 cup grated coconut",
+    "1 tsp cardamom",
+    "Water as needed"
+  ],
+  "instructions": [
+    "Roast rice flour until fragrant",
+    "Mix with melted jaggery",
+    "Add grated coconut",
+    "Add cardamom",
+    "Add water to bind",
+    "Spread on tray",
+    "Cut into diamond shapes",
+    "Let set and serve"
+  ],
+  "prep_time_minutes": 15,
+  "cook_time_minutes": 10,
+  "servings": 25,
+  "difficulty": "Easy",
+  "tags": [
+    "southern",
+    "dessert",
+    "traditional",
+    "no-fry",
+    "authentic"
+  ],
+  "cultural_notes": "Healthy traditional sweet",
+  "authenticity_score": 11.0,
+  "description_sinhala": "මිහිරි සහල් පිටි දියමන්ති",
+  "description_tamil": "இனிப்பு அரிசி மாவு வைரங்கள்",
+  "cultural_notes_sinhala": "සෞඛ්ය සම්පන්න සාම්ප්රදායික පැණිරස",
+  "cultural_notes_tamil": "ஆரோக்கியமான பாரம்பரிய இனிப்பு"
+}

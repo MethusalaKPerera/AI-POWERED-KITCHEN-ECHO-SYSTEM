@@ -1,0 +1,44 @@
+{
+  "id": "recipe_146",
+  "name": "Samosa (Eid Snack)",
+  "name_sinhala": "සමෝසා (ඊද්)",
+  "name_tamil": "சமோசா",
+  "category": "Snack",
+  "region": "Muslim",
+  "description": "Crispy pastry triangles with spiced filling",
+  "ingredients": [
+    "For dough: 3 cups flour, water, salt, oil",
+    "For filling: 500g beef, 2 onions, 2 potatoes, curry powder, chili, peas"
+  ],
+  "instructions": [
+    "Make dough with flour, salt, oil",
+    "Rest 30 minutes",
+    "Cook filling with meat and vegetables",
+    "Season well",
+    "Roll dough thin",
+    "Cut into strips",
+    "Form cone shape",
+    "Fill with mixture",
+    "Seal edges",
+    "Deep fry until golden",
+    "Serve hot with chutney"
+  ],
+  "prep_time_minutes": 45,
+  "cook_time_minutes": 25,
+  "servings": 25,
+  "difficulty": "Hard",
+  "tags": [
+    "eid",
+    "muslim",
+    "fried",
+    "savory",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Popular Eid snack, served to guests",
+  "authenticity_score": 0.95,
+  "description_sinhala": "කුළුබඩු පිරවුමක් සහිත රසට හැපෙන පේස්ට්‍රි ත්‍රිකෝණ",
+  "description_tamil": "மசாலா நிரப்பப்பட்ட மிருதுவான பேஸ்ட்ரி முக்கோணங்கள்",
+  "cultural_notes_sinhala": "ජනප්‍රිය Eid snack, අමුත්තන්ට සේවය කරයි",
+  "cultural_notes_tamil": "பிரபலமான ஈத் சிற்றுண்டி, விருந்தினர்களுக்கு வழங்கப்பட்டது"
+}

@@ -1,0 +1,44 @@
+{
+  "id": "recipe_099",
+  "name": "Idli (Steamed Rice Cakes)",
+  "name_sinhala": "ඉඩ්ලි",
+  "name_tamil": "இட்லி",
+  "category": "Bread",
+  "region": "Jaffna",
+  "description": "Soft steamed fermented rice cakes",
+  "ingredients": [
+    "2 cups parboiled rice",
+    "1 cup urad dal",
+    "1 tsp fenugreek",
+    "Salt to taste",
+    "Water for grinding"
+  ],
+  "instructions": [
+    "Soak rice, dal, fenugreek separately for 6 hours",
+    "Grind dal to fluffy batter",
+    "Grind rice to slightly coarse batter",
+    "Mix both batters",
+    "Add salt and ferment overnight",
+    "Pour into greased idli molds",
+    "Steam for 12-15 minutes",
+    "Serve hot with sambar and chutney"
+  ],
+  "prep_time_minutes": 20,
+  "cook_time_minutes": 15,
+  "servings": 20,
+  "difficulty": "Medium",
+  "tags": [
+    "jaffna",
+    "breakfast",
+    "fermented",
+    "healthy",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Healthy breakfast, easy to digest",
+  "authenticity_score": 1.0,
+  "description_sinhala": "මෘදු තැම්බූ පැසුණු සහල් කේක්",
+  "description_tamil": "மென்மையான வேகவைத்த புளித்த அரிசி கேக்குகள்",
+  "cultural_notes_sinhala": "සෞඛ්‍ය සම්පන්න උදෑසන ආහාරය, දිරවීමට පහසුය",
+  "cultural_notes_tamil": "ஆரோக்கியமான காலை உணவு, ஜீரணிக்க எளிதானது"
+}

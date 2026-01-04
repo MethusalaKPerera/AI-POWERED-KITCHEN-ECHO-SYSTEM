@@ -1,0 +1,45 @@
+{
+  "id": "recipe_046",
+  "name": "Woodapple Juice",
+  "name_sinhala": "දිවුල් ජූස්",
+  "name_tamil": "விளாம்பழம் ஜூஸ்",
+  "category": "Beverage",
+  "region": "General",
+  "description": "Refreshing juice from wood apple fruit",
+  "ingredients": [
+    "2 wood apples",
+    "1/2 cup palm jaggery (hakuru) or sugar",
+    "4 cups water",
+    "Pinch of salt",
+    "Ice cubes"
+  ],
+  "instructions": [
+    "Break open wood apples",
+    "Scoop out pulp",
+    "Mix with water",
+    "Strain to remove seeds",
+    "Add jaggery or sugar",
+    "Add pinch of salt",
+    "Mix well until dissolved",
+    "Chill",
+    "Serve with ice"
+  ],
+  "prep_time_minutes": 15,
+  "cook_time_minutes": 0,
+  "servings": 4,
+  "difficulty": "Easy",
+  "tags": [
+    "beverage",
+    "fresh",
+    "healthy",
+    "cooling",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Cooling drink for hot weather, very healthy",
+  "authenticity_score": 11.0,
+  "description_sinhala": "ලී ඇපල් ගෙඩියෙන් යුෂ නැවුම් කරයි",
+  "description_tamil": "மர ஆப்பிள் பழத்திலிருந்து புத்துணர்ச்சியூட்டும் சாறு",
+  "cultural_notes_sinhala": "උණුසුම් කාලගුණය සඳහා සිසිල් බීම, ඉතා සෞඛ්ය සම්පන්න",
+  "cultural_notes_tamil": "வெப்பமான காலநிலைக்கு குளிர்பானம், மிகவும் ஆரோக்கியமானது"
+}

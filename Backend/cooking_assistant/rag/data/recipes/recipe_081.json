@@ -1,0 +1,45 @@
+{
+  "id": "recipe_081",
+  "name": "Jaffna Dosai",
+  "name_sinhala": "යාපනය දොසයි",
+  "name_tamil": "யாழ்ப்பாண தோசை",
+  "category": "Bread",
+  "region": "Jaffna",
+  "description": "Crispy fermented rice and lentil crepes",
+  "ingredients": [
+    "2 cups parboiled rice",
+    "1 cup urad dal",
+    "1/2 tsp fenugreek seeds",
+    "Salt to taste",
+    "Water for grinding",
+    "Oil for cooking"
+  ],
+  "instructions": [
+    "Soak rice, dal, and fenugreek overnight",
+    "Drain and grind to smooth batter",
+    "Add salt and ferment for 8-12 hours",
+    "Heat griddle and grease lightly",
+    "Pour batter and spread thin",
+    "Cook until crispy and golden",
+    "Flip and cook other side",
+    "Serve with sambol or chutney"
+  ],
+  "prep_time_minutes": 20,
+  "cook_time_minutes": 5,
+  "servings": 10,
+  "difficulty": "Medium",
+  "tags": [
+    "jaffna",
+    "breakfast",
+    "fermented",
+    "crispy",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Daily breakfast staple in Jaffna homes",
+  "authenticity_score": 1.0,
+  "description_sinhala": "ක්‍රිස්පි පැසුණු බත් සහ පරිප්පු ක්‍රේප්",
+  "description_tamil": "மிருதுவான புளித்த அரிசி மற்றும் பருப்பு க்ரீப்ஸ்",
+  "cultural_notes_sinhala": "යාපනයේ නිවෙස්වල දෛනික උදෑසන ආහාරය",
+  "cultural_notes_tamil": "யாழ்ப்பாண வீடுகளில் தினசரி காலை உணவு"
+}

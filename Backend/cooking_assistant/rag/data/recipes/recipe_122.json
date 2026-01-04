@@ -1,0 +1,40 @@
+{
+  "id": "recipe_122",
+  "name": "Welithalapa (Pancake Rolls)",
+  "name_sinhala": "වැලිතලප",
+  "name_tamil": "வெலித்தலப",
+  "category": "Dessert",
+  "region": "Southern",
+  "description": "Thin pancakes filled with jaggery coconut",
+  "ingredients": [
+    "For pancake: 2 cups flour, 2 eggs, milk, salt",
+    "For filling: 2 cups coconut, 1 cup palm jaggery (hakuru), cardamom"
+  ],
+  "instructions": [
+    "Make thin batter with flour, eggs, milk",
+    "Make very thin pancakes",
+    "For filling: cook coconut with jaggery",
+    "Add cardamom",
+    "Place filling on pancake",
+    "Roll tightly",
+    "Serve warm"
+  ],
+  "prep_time_minutes": 25,
+  "cook_time_minutes": 30,
+  "servings": 15,
+  "difficulty": "Medium",
+  "tags": [
+    "southern",
+    "dessert",
+    "sweet",
+    "festive",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Traditional Sinhala New Year sweet",
+  "authenticity_score": 11.0,
+  "description_sinhala": "හකුරු පොල් පිරවූ තුනී පෑන්කේක්",
+  "description_tamil": "வெல்லம் தேங்காய் நிரப்பப்பட்ட மெல்லிய அப்பங்கள்",
+  "cultural_notes_sinhala": "සාම්ප්‍රදායික සිංහල අලුත් අවුරුදු මිහිරි",
+  "cultural_notes_tamil": "பாரம்பரிய சிங்கள புத்தாண்டு இனிப்பு"
+}

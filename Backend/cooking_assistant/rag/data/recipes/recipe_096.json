@@ -1,0 +1,50 @@
+{
+  "id": "recipe_096",
+  "name": "Elumichai Sadam (Lemon Rice)",
+  "name_sinhala": "ලෙමන් සදම්",
+  "name_tamil": "எலுமிச்சை சாதம்",
+  "category": "Rice Dish",
+  "region": "Jaffna",
+  "description": "Tangy lemon-flavored rice",
+  "ingredients": [
+    "2 cups cooked rice",
+    "Juice of 2 lemons",
+    "1 tsp mustard seeds",
+    "1 tsp urad dal",
+    "2 green chilies",
+    "10 cashew nuts",
+    "10 curry leaves (fresh, not dried)",
+    "1/2 tsp turmeric",
+    "3 tbsp oil",
+    "Salt"
+  ],
+  "instructions": [
+    "Cook rice and cool",
+    "Heat oil and add mustard seeds",
+    "Add urad dal and cashews",
+    "Add curry leaves and chilies (Curry leaves must be fresh for authentic taste)",
+    "Add turmeric",
+    "Pour over rice",
+    "Add lemon juice and salt",
+    "Mix gently",
+    "Serve at room temperature"
+  ],
+  "prep_time_minutes": 10,
+  "cook_time_minutes": 10,
+  "servings": 4,
+  "difficulty": "Easy",
+  "tags": [
+    "jaffna",
+    "rice",
+    "tangy",
+    "quick",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Popular travel food, stays fresh",
+  "authenticity_score": 11.0,
+  "description_sinhala": "ටැන්ජි ලෙමන් රසැති සහල්",
+  "description_tamil": "கசப்பான எலுமிச்சை சுவை கொண்ட அரிசி",
+  "cultural_notes_sinhala": "ජනප්‍රිය සංචාරක ආහාර, නැවුම්ව පවතී",
+  "cultural_notes_tamil": "பிரபலமான பயண உணவு, புதியதாக இருக்கும்"
+}

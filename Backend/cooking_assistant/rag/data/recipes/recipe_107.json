@@ -1,0 +1,44 @@
+{
+  "id": "recipe_107",
+  "name": "Katta Sambol (Chili Paste)",
+  "name_sinhala": "කට්ට සම්බෝල",
+  "name_tamil": "கட்ட சம்பல்",
+  "category": "Sambol",
+  "region": "Southern",
+  "description": "Fiery dried fish chili paste",
+  "ingredients": [
+    "10 dried red chilies",
+    "1/2 cup dried sprats",
+    "1 onion, chopped",
+    "2 tbsp Maldive fish (umbalakada - essential)",
+    "2 tbsp lime juice",
+    "Salt to taste"
+  ],
+  "instructions": [
+    "Roast dried chilies",
+    "Roast dried sprats separately",
+    "Grind chilies coarsely",
+    "Add sprats and grind",
+    "Add onion and Maldive fish",
+    "Add lime juice and salt",
+    "Mix to paste",
+    "Store in jar"
+  ],
+  "prep_time_minutes": 15,
+  "cook_time_minutes": 10,
+  "servings": 10,
+  "difficulty": "Easy",
+  "tags": [
+    "southern",
+    "spicy",
+    "condiment",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Extremely spicy, Southern favorite Must be freshly made - sambol loses flavor if stored too long. Maldive fish (umbalakada) is essential and irreplaceable. Use coconut scraped fresh, not desiccated.",
+  "authenticity_score": 11.0,
+  "description_sinhala": "ගිනියම් කරවල මිරිස් පේස්ට්",
+  "description_tamil": "உமிழும் உலர்ந்த மீன் மிளகாய் விழுது",
+  "cultural_notes_sinhala": "අතිශයින්ම කුළුබඩු සහිත, දකුණු ප්රියතම",
+  "cultural_notes_tamil": "மிகவும் காரமான, தெற்கு பிடித்தது"
+}

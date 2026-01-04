@@ -1,0 +1,49 @@
+{
+  "id": "recipe_131",
+  "name": "Kokis (New Year Cookies)",
+  "name_sinhala": "කොකිස් (අලුත් අවුරුද්ද)",
+  "name_tamil": "கோக்கிஸ்",
+  "category": "Dessert",
+  "region": "General",
+  "description": "Crispy flower-shaped cookies, New Year essential",
+  "ingredients": [
+    "2.5 cups rice flour",
+    "1/2 cup coconut milk",
+    "3 eggs",
+    "1 tbsp sugar",
+    "1/2 tsp salt",
+    "1/4 tsp turmeric powder",
+    "Oil for deep frying"
+  ],
+  "instructions": [
+    "Beat eggs with sugar",
+    "Add coconut milk and mix",
+    "Gradually add rice flour",
+    "Add salt and turmeric",
+    "Mix to smooth flowing batter",
+    "Heat oil in deep pan",
+    "Heat kokis mold in oil",
+    "Dip hot mold in batter (don't cover top)",
+    "Immerse in hot oil",
+    "Kokis will drop off when ready",
+    "Fry until crispy and golden",
+    "Drain and store"
+  ],
+  "prep_time_minutes": 20,
+  "cook_time_minutes": 45,
+  "servings": 40,
+  "difficulty": "Hard",
+  "tags": [
+    "new-year",
+    "crispy",
+    "traditional",
+    "festive",
+    "authentic"
+  ],
+  "cultural_notes": "Symbol of New Year, requires special mold",
+  "authenticity_score": 1.0,
+  "description_sinhala": "හැපෙනසුළු මල් හැඩැති කුකීස්, අලුත් අවුරුදු අත්යවශ්යයි",
+  "description_tamil": "மிருதுவான பூ வடிவ குக்கீகள், புத்தாண்டு அவசியம்",
+  "cultural_notes_sinhala": "අලුත් අවුරුද්දේ සංකේතය, විශේෂ අච්චුව අවශ්ය වේ",
+  "cultural_notes_tamil": "புத்தாண்டு சின்னம், சிறப்பு அச்சு தேவைப்படுகிறது"
+}

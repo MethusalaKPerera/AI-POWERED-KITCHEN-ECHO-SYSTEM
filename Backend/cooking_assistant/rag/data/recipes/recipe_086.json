@@ -1,0 +1,49 @@
+{
+  "id": "recipe_086",
+  "name": "Thengai Sadam (Coconut Rice)",
+  "name_sinhala": "පොල් බත්",
+  "name_tamil": "தேங்காய் சாதம்",
+  "category": "Rice Dish",
+  "region": "Jaffna",
+  "description": "Fragrant coconut rice with cashews",
+  "ingredients": [
+    "2 cups basmati rice",
+    "1 cup grated coconut",
+    "10 cashew nuts",
+    "1 tsp mustard seeds",
+    "1 tsp urad dal",
+    "2 green chilies",
+    "10 curry leaves (fresh, not dried)",
+    "1/2 tsp turmeric",
+    "3 tbsp ghee",
+    "Salt"
+  ],
+  "instructions": [
+    "Cook rice and cool",
+    "Fry cashews in ghee",
+    "Add mustard seeds and urad dal",
+    "Add curry leaves and chilies (Curry leaves must be fresh for authentic taste)",
+    "Add grated coconut and turmeric",
+    "Mix with rice",
+    "Season with salt",
+    "Serve at room temperature"
+  ],
+  "prep_time_minutes": 15,
+  "cook_time_minutes": 20,
+  "servings": 4,
+  "difficulty": "Easy",
+  "tags": [
+    "jaffna",
+    "rice",
+    "coconut",
+    "simple",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Traditional temple offering and festival food",
+  "authenticity_score": 11.0,
+  "description_sinhala": "කජු සමග සුවඳ පොල් බත්",
+  "description_tamil": "முந்திரியுடன் கூடிய வாசனை தேங்காய் சாதம்",
+  "cultural_notes_sinhala": "සාම්ප්‍රදායික පන්සල් පූජාව සහ උත්සව ආහාර",
+  "cultural_notes_tamil": "பாரம்பரிய கோவில் பிரசாதம் மற்றும் திருவிழா உணவு"
+}

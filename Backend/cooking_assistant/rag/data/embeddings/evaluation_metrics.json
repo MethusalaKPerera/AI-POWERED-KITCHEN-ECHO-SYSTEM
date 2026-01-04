@@ -1,0 +1,14 @@
+{
+  "overall_accuracy": 20.0,
+  "total_queries": 5,
+  "correct_predictions": 1,
+  "category_accuracy": {
+    "Curry": 33.33333333333333,
+    "Sambol": 0.0
+  },
+  "language_accuracy": {
+    "english": 33.33333333333333,
+    "sinhala": 0.0,
+    "tamil": 0.0
+  }
+}

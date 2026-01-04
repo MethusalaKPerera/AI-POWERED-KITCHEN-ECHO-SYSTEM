@@ -1,0 +1,52 @@
+{
+  "id": "recipe_090",
+  "name": "Rasam (Tamarind Soup)",
+  "name_sinhala": "රසම්",
+  "name_tamil": "ரசம்",
+  "category": "Curry",
+  "region": "Jaffna",
+  "description": "Tangy tamarind soup with spices",
+  "ingredients": [
+    "2 tbsp tamarind paste",
+    "2 tomatoes, chopped",
+    "1 tsp rasam powder",
+    "1/2 tsp turmeric",
+    "1 tsp mustard seeds",
+    "1 tsp cumin seeds",
+    "10 curry leaves (fresh, not dried)",
+    "3 garlic cloves, crushed",
+    "2 cups water",
+    "2 tbsp oil",
+    "Salt",
+    "Coriander leaves"
+  ],
+  "instructions": [
+    "Extract tamarind juice",
+    "Boil with tomatoes, turmeric, salt",
+    "Add rasam powder",
+    "In separate pan, temper mustard and cumin",
+    "Add curry leaves and garlic (Curry leaves must be fresh for authentic taste)",
+    "Add to tamarind mixture",
+    "Bring to boil",
+    "Garnish with coriander",
+    "Serve with rice"
+  ],
+  "prep_time_minutes": 10,
+  "cook_time_minutes": 15,
+  "servings": 4,
+  "difficulty": "Easy",
+  "tags": [
+    "jaffna",
+    "soup",
+    "tangy",
+    "light",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Digestive soup served with every meal",
+  "authenticity_score": 11.0,
+  "description_sinhala": "කුළුබඩු සහිත ටැම්රිඩ් සුප්",
+  "description_tamil": "மசாலாப் பொருட்களுடன் சுவையான புளி சூப்",
+  "cultural_notes_sinhala": "ආහාර දිරවීමේ සුප් සෑම ආහාර වේලක් සමඟම සේවය කරයි",
+  "cultural_notes_tamil": "செரிமான சூப் ஒவ்வொரு உணவிலும் பரிமாறப்படுகிறது"
+}

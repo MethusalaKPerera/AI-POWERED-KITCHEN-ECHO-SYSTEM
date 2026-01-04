@@ -1,0 +1,49 @@
+{
+  "id": "recipe_030",
+  "name": "Achcharu (Mixed Pickle)",
+  "name_sinhala": "අච්චාරු",
+  "name_tamil": "ஊறுகாய்",
+  "category": "Sambol",
+  "region": "General",
+  "description": "Mixed vegetable pickle with mustard",
+  "ingredients": [
+    "1 carrot, julienned",
+    "1 cucumber, julienned",
+    "1 onion, sliced",
+    "2 green chilies",
+    "2 tbsp mustard seeds",
+    "2 tbsp vinegar",
+    "1 tbsp sugar",
+    "1 tsp chili powder",
+    "1/2 tsp turmeric",
+    "Salt to taste"
+  ],
+  "instructions": [
+    "Cut all vegetables into thin strips",
+    "Mix with salt and turmeric",
+    "Let sit for 30 minutes",
+    "Squeeze out excess water",
+    "Grind mustard seeds coarsely",
+    "Mix vegetables with mustard, vinegar, sugar, chili",
+    "Let marinate for 2 hours",
+    "Serve chilled"
+  ],
+  "prep_time_minutes": 20,
+  "cook_time_minutes": 0,
+  "servings": 6,
+  "difficulty": "Easy",
+  "tags": [
+    "pickle",
+    "no-cook",
+    "vegetarian",
+    "tangy",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Popular snack pickle, sold by street vendors",
+  "authenticity_score": 0.95,
+  "description_sinhala": "අබ සමග මිශ්ර එළවළු අච්චාරු",
+  "description_tamil": "கடுகு கலந்த காய்கறி ஊறுகாய்",
+  "cultural_notes_sinhala": "වීදි වෙළෙන්දන් විසින් අලෙවි කරන ජනප්‍රිය ස්නැක් අච්චාරු",
+  "cultural_notes_tamil": "பிரபலமான சிற்றுண்டி ஊறுகாய், தெரு வியாபாரிகளால் விற்கப்படுகிறது"
+}

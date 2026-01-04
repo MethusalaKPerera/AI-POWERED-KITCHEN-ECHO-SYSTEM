@@ -1,0 +1,43 @@
+{
+  "id": "recipe_039",
+  "name": "Kalu Dodol (Black Toffee)",
+  "name_sinhala": "කළු දොඩොල්",
+  "name_tamil": "கருப்பு டோடோல்",
+  "category": "Dessert",
+  "region": "General",
+  "description": "Sticky black toffee made with kithul treacle",
+  "ingredients": [
+    "2 cups kithul treacle",
+    "2 cups coconut milk",
+    "1 cup rice flour",
+    "1/2 cup cashews, chopped",
+    "1/2 tsp cardamom"
+  ],
+  "instructions": [
+    "Mix rice flour with coconut milk",
+    "Add treacle and mix well",
+    "Cook on low heat, stirring constantly",
+    "Mixture will thicken (45-60 min)",
+    "Add cashews and cardamom",
+    "Cook until it doesn't stick to pan",
+    "Pour into greased tray",
+    "Cool and cut into pieces"
+  ],
+  "prep_time_minutes": 15,
+  "cook_time_minutes": 90,
+  "servings": 30,
+  "difficulty": "Hard",
+  "tags": [
+    "dessert",
+    "sweet",
+    "sticky",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Labor-intensive traditional sweet, requires constant stirring",
+  "authenticity_score": 1.0,
+  "description_sinhala": "කිතුල් ට්‍රේකල් වලින් සාදන ලද ඇලෙන සුළු කළු ටොෆි",
+  "description_tamil": "கித்துல் ட்ரீக்கிள் மூலம் செய்யப்பட்ட ஒட்டும் கருப்பு டோஃபி",
+  "cultural_notes_sinhala": "ශ්රම-දැඩි සාම්ප්රදායික පැණිරස, නිරන්තරයෙන් ඇවිස්සීම අවශ්ය වේ",
+  "cultural_notes_tamil": "உழைப்பு மிகுந்த பாரம்பரிய இனிப்பு, தொடர்ந்து கிளறி தேவைப்படுகிறது"
+}

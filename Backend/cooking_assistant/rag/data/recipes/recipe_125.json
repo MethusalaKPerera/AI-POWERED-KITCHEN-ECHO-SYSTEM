@@ -1,0 +1,42 @@
+{
+  "id": "recipe_125",
+  "name": "Thala Guli (Sesame Jaggery Balls)",
+  "name_sinhala": "තල ගුලි",
+  "name_tamil": "எள்ளு வெல்லம் உருண்டை",
+  "category": "Dessert",
+  "region": "Southern",
+  "description": "Roasted sesame balls with jaggery",
+  "ingredients": [
+    "2 cups sesame seeds",
+    "1 cup palm jaggery (hakuru)",
+    "1/2 tsp cardamom",
+    "Ghee for greasing"
+  ],
+  "instructions": [
+    "Roast sesame until golden",
+    "Melt jaggery to soft ball stage",
+    "Mix sesame with jaggery",
+    "Add cardamom",
+    "Grease hands with ghee",
+    "Shape into small balls quickly",
+    "Cool and store"
+  ],
+  "prep_time_minutes": 10,
+  "cook_time_minutes": 15,
+  "servings": 20,
+  "difficulty": "Medium",
+  "tags": [
+    "southern",
+    "dessert",
+    "healthy",
+    "calcium-rich",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Good for bone health, given to children",
+  "authenticity_score": 11.0,
+  "description_sinhala": "හකුරු සමග බැදපු තල බෝල",
+  "description_tamil": "வெல்லத்துடன் வறுத்த எள் உருண்டைகள்",
+  "cultural_notes_sinhala": "අස්ථි සෞඛ්යයට හොඳයි, දරුවන්ට ලබා දෙයි",
+  "cultural_notes_tamil": "எலும்பு ஆரோக்கியத்திற்கு நல்லது, குழந்தைகளுக்கு கொடுக்கப்படுகிறது"
+}

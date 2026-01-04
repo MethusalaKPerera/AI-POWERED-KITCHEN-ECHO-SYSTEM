@@ -1,0 +1,46 @@
+{
+  "id": "recipe_156",
+  "name": "Potato Curry",
+  "name_sinhala": "",
+  "name_tamil": "",
+  "category": "Curry",
+  "region": "General",
+  "description": "",
+  "ingredients": [
+    "1. 4 medium size potatoes (4 People)",
+    "2. 1/2 red onion",
+    "2 cloves of garlic",
+    "1green chilies",
+    "12 curry leaves (fresh, not dried)",
+    "4 pieces pandan",
+    "1-piece cinnamon (1 x 2 cm)",
+    "3. 1 1/2 tsp salt",
+    "2 tsp unroasted curry powder",
+    "3/4 tsp turmeric powder",
+    "1/2 tsp fenugreek seeds (optional)",
+    "4. 1 1/2 cups thin coconut milk",
+    "5. 1 cup thick coconut milk"
+  ],
+  "instructions": [
+    "1. Boil potatoes & peel.",
+    "2. Cut into cubes.",
+    "3. Add no: 2,3 and 4 ingredients.",
+    "4. Cook till boils on high heat.",
+    "5. Add thick coconut milk & keep stirring until simmer gentlys again & (Never boil coconut milk vigorously - it will curdle)",
+    "turn off the heat.",
+    "--- PAGE 9 ---"
+  ],
+  "prep_time_minutes": 30,
+  "cook_time_minutes": 30,
+  "servings": 4,
+  "difficulty": "Medium",
+  "tags": [
+    "pdf-extracted",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Extracted from cookbook",
+  "authenticity_score": 10.85,
+  "cultural_notes_sinhala": "ඉවුම් පිහුම් පොතෙන් උපුටා ගන්නා ලදී",
+  "cultural_notes_tamil": "சமையல் புத்தகத்திலிருந்து பிரித்தெடுக்கப்பட்டது"
+}

@@ -1,0 +1,42 @@
+{
+  "id": "recipe_136",
+  "name": "Dansala Rice (Vesak Free Food)",
+  "name_sinhala": "දන්සල් බත්",
+  "name_tamil": "தான் சாலை சாதம்",
+  "category": "Rice Dish",
+  "region": "General",
+  "description": "Simple rice meal distributed free during Vesak",
+  "ingredients": [
+    "5 kg rice",
+    "3 liters coconut milk",
+    "10 liters water",
+    "Salt to taste",
+    "Curry leaves (fresh, not dried)"
+  ],
+  "instructions": [
+    "Cook large quantity of rice",
+    "Add coconut milk for richness",
+    "Season with salt",
+    "Serve hot to devotees",
+    "Typically served with simple curry",
+    "Free distribution to all"
+  ],
+  "prep_time_minutes": 30,
+  "cook_time_minutes": 45,
+  "servings": 50,
+  "difficulty": "Easy",
+  "tags": [
+    "vesak",
+    "dansala",
+    "free-food",
+    "buddhist",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Offered free to public during Vesak",
+  "authenticity_score": 11.0,
+  "description_sinhala": "වෙසක් සමයේ නොමිලේ බෙදා දෙන සරල බත් වේලක්",
+  "description_tamil": "வெசாக் காலத்தில் எளிய அரிசி உணவு இலவசமாக வழங்கப்படும்",
+  "cultural_notes_sinhala": "වෙසක් සමයේ මහජනතාවට නොමිලේ පිරිනැමේ",
+  "cultural_notes_tamil": "வெசாக் காலத்தில் பொதுமக்களுக்கு இலவசமாக வழங்கப்படும்"
+}

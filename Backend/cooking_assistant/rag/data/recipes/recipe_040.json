@@ -1,0 +1,48 @@
+{
+  "id": "recipe_040",
+  "name": "Aasmi (Crispy Sweets)",
+  "name_sinhala": "ආස්මි",
+  "name_tamil": "ஆஸ்மி",
+  "category": "Dessert",
+  "region": "Muslim",
+  "description": "Crispy fried swirls dipped in sugar syrup",
+  "ingredients": [
+    "1 cup rice flour",
+    "1/2 cup wheat flour",
+    "1 egg",
+    "1 cup sugar",
+    "1/2 cup water",
+    "1/2 tsp cardamom",
+    "Oil for frying",
+    "Food coloring (optional)"
+  ],
+  "instructions": [
+    "Make sugar syrup with water",
+    "Add cardamom to syrup",
+    "Mix flours with egg and water",
+    "Make smooth batter",
+    "Heat oil",
+    "Drizzle batter in circular patterns",
+    "Fry until crispy",
+    "Dip in sugar syrup",
+    "Drain and serve"
+  ],
+  "prep_time_minutes": 20,
+  "cook_time_minutes": 30,
+  "servings": 25,
+  "difficulty": "Medium",
+  "tags": [
+    "dessert",
+    "sweet",
+    "crispy",
+    "muslim",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Muslim Eid specialty, colorful and festive",
+  "authenticity_score": 0.95,
+  "description_sinhala": "සීනි සිරප් වල ගිල්වන ලද හැපෙනසුළු ෆ්රයිඩ් කරකැවිල්ල",
+  "description_tamil": "மிருதுவான வறுத்த சுழிகள் சர்க்கரை பாகில் தோய்த்து",
+  "cultural_notes_sinhala": "මුස්ලිම් ඊද් විශේෂත්වය, වර්ණවත් සහ උත්සව",
+  "cultural_notes_tamil": "முஸ்லிம் ஈத் சிறப்பு, வண்ணமயமான மற்றும் பண்டிகை"
+}

@@ -1,0 +1,49 @@
+{
+  "id": "recipe_192",
+  "name": "Rathu Malu Curry (Red Fish Curry)",
+  "name_sinhala": "රතු මාළු කරිය",
+  "name_tamil": "சிவப்பு மீன் கறி",
+  "category": "Curry",
+  "region": "Southern",
+  "description": "A deep red fish curry made with roasted spices and goraka. The hallmark of Southern coastal cooking with intense flavors.",
+  "ingredients": [
+    "500g seer fish or tuna, cut into pieces",
+    "3 pieces dried goraka (garcinia) (garcinia - cannot substitute)",
+    "3 tbsp roasted curry powder",
+    "2 tbsp chili powder",
+    "1 tsp turmeric powder",
+    "10 curry leaves (fresh, not dried)",
+    "2 onions, sliced",
+    "3 green chilies, slit",
+    "1 piece rampe (pandan leaf)",
+    "2 cups thin coconut milk",
+    "1 cup thick coconut milk",
+    "3 tbsp coconut oil (traditional - do not substitute)",
+    "Salt to taste"
+  ],
+  "instructions": [
+    "Soak goraka in warm water for 10 minutes",
+    "Mix fish with turmeric and salt, set aside",
+    "Heat coconut oil and temper curry leaves (Curry leaves must be fresh for authentic taste)",
+    "Add onions and sauté until golden",
+    "Add all dry spices and fry for 2 minutes",
+    "Pour thin coconut milk and add goraka water",
+    "Add fish pieces carefully",
+    "Simmer on low heat for 15 minutes",
+    "Add thick coconut milk and green chilies",
+    "Cook for 5 more minutes without stirring"
+  ],
+  "prep_time_minutes": 20,
+  "cook_time_minutes": 25,
+  "servings": 4,
+  "difficulty": "Medium",
+  "tags": [
+    "southern",
+    "spicy",
+    "traditional",
+    "coastal",
+    "authentic"
+  ],
+  "cultural_notes": "The sourness from goraka is irreplaceable - never substitute with tamarind. Best eaten with red rice. Use fresh fish from coastal markets. Goraka (garcinia) is essential for authentic sour taste - never substitute with tamarind. The curry should have a deep red color from roasted spices.",
+  "authenticity_score": 100
+}

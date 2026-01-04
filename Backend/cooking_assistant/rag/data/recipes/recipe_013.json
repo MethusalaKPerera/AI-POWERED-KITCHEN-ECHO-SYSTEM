@@ -1,0 +1,42 @@
+{
+  "id": "recipe_013",
+  "name": "Kiribath (Milk Rice)",
+  "name_sinhala": "කිරිබත්",
+  "name_tamil": "பால் சாதம்",
+  "category": "Rice Dish",
+  "region": "General",
+  "description": "Rice cooked in coconut milk, cut into diamond shapes",
+  "ingredients": [
+    "2 cups white rice",
+    "400ml coconut milk",
+    "2 cups water",
+    "1 tsp salt"
+  ],
+  "instructions": [
+    "Wash rice thoroughly",
+    "Cook rice in water until almost done",
+    "Add coconut milk and salt",
+    "Simmer until thick and creamy",
+    "Pour onto flat plate",
+    "Let cool and set",
+    "Cut into diamond shapes",
+    "Serve with lunu miris"
+  ],
+  "prep_time_minutes": 5,
+  "cook_time_minutes": 25,
+  "servings": 6,
+  "difficulty": "Easy",
+  "tags": [
+    "traditional",
+    "breakfast",
+    "ceremonial",
+    "simple",
+    "authentic"
+  ],
+  "cultural_notes": "Ceremonial dish served at New Year and auspicious occasions Kiribath is served on all auspicious occasions. Must be eaten with lunu miris (chili sambol) and kithul treacle. Cut in diamond shapes for good luck.",
+  "authenticity_score": 11.0,
+  "description_sinhala": "පොල් කිරිවලින් පිසූ බත්, දියමන්ති හැඩයට කපා",
+  "description_tamil": "தேங்காய் பாலில் சமைத்த அரிசி, வைர வடிவங்களில் வெட்டப்பட்டது",
+  "cultural_notes_sinhala": "චාරිත්‍රානුකූලව අලුත් අවුරුද්දේ සහ නැකැත් අවස්ථාවන්හිදී පිරිනමනු ලැබේ",
+  "cultural_notes_tamil": "புத்தாண்டு மற்றும் மங்களகரமான சந்தர்ப்பங்களில் பரிமாறப்படும் சடங்கு உணவு"
+}

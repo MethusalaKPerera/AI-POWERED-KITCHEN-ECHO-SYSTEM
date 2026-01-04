@@ -1,0 +1,48 @@
+{
+  "id": "recipe_024",
+  "name": "Ambul Thiyal (Sour Fish Curry)",
+  "name_sinhala": "අඹුල් තියල",
+  "name_tamil": "புளி மீன் கறி",
+  "category": "Curry",
+  "region": "Southern",
+  "description": "Dry fish curry with goraka, a Southern specialty",
+  "ingredients": [
+    "500g tuna, cubed",
+    "5 pieces goraka (garcinia - cannot substitute)",
+    "2 tbsp curry powder",
+    "1 tsp chili powder",
+    "1 tsp black pepper",
+    "2 onions, sliced",
+    "1 sprig curry leaves (fresh, not dried)",
+    "1 stick cinnamon",
+    "2 tbsp oil",
+    "Salt to taste"
+  ],
+  "instructions": [
+    "Soak goraka in water",
+    "Marinate fish with curry powder, chili, pepper, salt",
+    "Heat oil and fry onions",
+    "Add fish and goraka water",
+    "Add cinnamon and curry leaves (Curry leaves must be fresh for authentic taste)",
+    "Cook on low heat until dry",
+    "No coconut milk used",
+    "Serve at room temperature"
+  ],
+  "prep_time_minutes": 15,
+  "cook_time_minutes": 45,
+  "servings": 6,
+  "difficulty": "Medium",
+  "tags": [
+    "dry-curry",
+    "sour",
+    "traditional",
+    "southern",
+    "authentic"
+  ],
+  "cultural_notes": "Traditional Southern dish that keeps for days without refrigeration Use fresh fish from coastal markets. Goraka (garcinia) is essential for authentic sour taste - never substitute with tamarind. The curry should have a deep red color from roasted spices.",
+  "authenticity_score": 11.0,
+  "description_sinhala": "දකුණේ විශේෂ ආහාරයක් වන ගොරකා සමග කරවල කරපිංචා",
+  "description_tamil": "கோரக்காவுடன் உலர் மீன் குழம்பு, தென்னக ஸ்பெஷல்",
+  "cultural_notes_sinhala": "ශීතකරණ නොමැතිව දින ගණනක් තබා ගන්නා සම්ප්‍රදායික දක්ෂිණ ආහාරය",
+  "cultural_notes_tamil": "குளிர்சாதனப்பெட்டியில் இல்லாமல் நாட்கள் வைத்திருக்கும் பாரம்பரிய தெற்கு உணவு"
+}

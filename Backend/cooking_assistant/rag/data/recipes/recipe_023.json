@@ -1,0 +1,41 @@
+{
+  "id": "recipe_023",
+  "name": "Lunu Miris",
+  "name_sinhala": "ලුණු මිරිස්",
+  "name_tamil": "உப்பு மிளகாய்",
+  "category": "Sambol",
+  "region": "General",
+  "description": "Simple onion and chili paste",
+  "ingredients": [
+    "5 dried red chilies",
+    "1 small onion, chopped",
+    "1/2 tsp Maldive fish (umbalakada - essential)",
+    "1 tbsp lime juice",
+    "Salt to taste"
+  ],
+  "instructions": [
+    "Grind chilies coarsely",
+    "Add onion and grind",
+    "Add Maldive fish and salt",
+    "Add lime juice",
+    "Mix to paste consistency",
+    "Serve with kiribath or bread"
+  ],
+  "prep_time_minutes": 10,
+  "cook_time_minutes": 0,
+  "servings": 4,
+  "difficulty": "Easy",
+  "tags": [
+    "condiment",
+    "spicy",
+    "traditional",
+    "no-cook",
+    "authentic"
+  ],
+  "cultural_notes": "Essential accompaniment to kiribath at breakfast",
+  "authenticity_score": 11.0,
+  "description_sinhala": "සරල ලූනු සහ මිරිස් පේස්ට්",
+  "description_tamil": "எளிய வெங்காயம் மற்றும் மிளகாய் விழுது",
+  "cultural_notes_sinhala": "උදෑසන ආහාර වේලෙහි කිරිබත් සඳහා අත්‍යවශ්‍ය සහායකය",
+  "cultural_notes_tamil": "காலை உணவில் கிரிபாத்தின் இன்றியமையாத துணை"
+}

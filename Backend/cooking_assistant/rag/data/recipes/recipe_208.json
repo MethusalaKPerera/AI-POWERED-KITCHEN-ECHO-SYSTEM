@@ -1,0 +1,43 @@
+{
+  "id": "recipe_208",
+  "name": "Kiri Hodi (Coconut Milk Gravy)",
+  "name_sinhala": "කිරි හොදි",
+  "name_tamil": "தேங்காய் பால் குழம்பு",
+  "category": "Curry",
+  "region": "General",
+  "description": "Mild coconut milk curry served with string hoppers. Morning favorite.",
+  "ingredients": [
+    "2 cups thick coconut milk",
+    "1 cup thin coconut milk",
+    "2 onions, sliced",
+    "3 green chilies, slit",
+    "10 curry leaves (fresh, not dried)",
+    "1/2 tsp turmeric",
+    "1 piece pandan leaf",
+    "1 piece rampe",
+    "Juice of 1 lime",
+    "Salt to taste"
+  ],
+  "instructions": [
+    "Boil thin coconut milk with turmeric, pandan, rampe (Never boil coconut milk vigorously - it will curdle)",
+    "Add onions and cook until soft",
+    "Add green chilies and curry leaves (Curry leaves must be fresh for authentic taste)",
+    "Add thick coconut milk and salt",
+    "Simmer gently, don't boil",
+    "Add lime juice and remove from heat",
+    "Serve hot with string hoppers"
+  ],
+  "prep_time_minutes": 10,
+  "cook_time_minutes": 15,
+  "servings": 4,
+  "difficulty": "Easy",
+  "tags": [
+    "breakfast",
+    "mild",
+    "coconut",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Never boil after adding thick coconut milk. Essential with string hoppers and sambol.",
+  "authenticity_score": 100
+}

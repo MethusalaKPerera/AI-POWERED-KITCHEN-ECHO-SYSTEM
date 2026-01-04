@@ -1,0 +1,43 @@
+{
+  "id": "recipe_191",
+  "name": "Kola Kenda (Herbal Porridge)",
+  "name_sinhala": "කොළ කැඳ",
+  "name_tamil": "கீரை கஞ்சி",
+  "category": "Breakfast",
+  "region": "Village Traditional",
+  "description": "A nutritious herbal porridge made with green leaves, rice, and coconut milk. A traditional village breakfast known for its medicinal properties and given to new mothers.",
+  "ingredients": [
+    "1 cup gotukola leaves (or spinach)",
+    "1/2 cup mukunuwenna leaves",
+    "1/4 cup raw rice, soaked",
+    "2 cups thin coconut milk",
+    "1 cup thick coconut milk",
+    "2 shallots, sliced",
+    "2 cloves garlic",
+    "1 piece pandan leaf",
+    "Salt to taste"
+  ],
+  "instructions": [
+    "Wash and chop all leaves finely",
+    "Grind soaked rice with shallots and garlic to a paste",
+    "Boil thin coconut milk with pandan leaf (Never boil coconut milk vigorously - it will curdle)",
+    "Add rice paste and stir continuously",
+    "Add chopped leaves and cook for 10 minutes",
+    "Add thick coconut milk and salt",
+    "Simmer for 5 more minutes",
+    "Serve hot with lunu miris"
+  ],
+  "prep_time_minutes": 15,
+  "cook_time_minutes": 20,
+  "servings": 4,
+  "difficulty": "Easy",
+  "tags": [
+    "traditional",
+    "healthy",
+    "breakfast",
+    "herbal",
+    "authentic"
+  ],
+  "cultural_notes": "Given to new mothers for strength and health. Each family has their own combination of greens.",
+  "authenticity_score": 100
+}

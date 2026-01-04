@@ -1,0 +1,48 @@
+{
+  "id": "recipe_085",
+  "name": "Ulundu Vadai (Lentil Donuts)",
+  "name_sinhala": "උලුඳු වඩේ",
+  "name_tamil": "உளுந்து வடை",
+  "category": "Snack",
+  "region": "Jaffna",
+  "description": "Crispy urad dal fritters with onions",
+  "ingredients": [
+    "2 cups urad dal, soaked",
+    "3 green chilies",
+    "2 onions, chopped",
+    "1 inch ginger",
+    "10 curry leaves (fresh, not dried)",
+    "1 tsp cumin seeds",
+    "Salt to taste",
+    "Oil for frying"
+  ],
+  "instructions": [
+    "Soak dal for 4 hours",
+    "Drain and grind coarsely",
+    "Add chilies, ginger, cumin",
+    "Add onions and curry leaves (Curry leaves must be fresh for authentic taste)",
+    "Add salt and mix",
+    "Heat oil",
+    "Shape into donuts with hole",
+    "Fry until golden brown",
+    "Serve with chutney"
+  ],
+  "prep_time_minutes": 20,
+  "cook_time_minutes": 20,
+  "servings": 15,
+  "difficulty": "Medium",
+  "tags": [
+    "jaffna",
+    "snack",
+    "fried",
+    "crispy",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Popular tea-time snack in Jaffna",
+  "authenticity_score": 11.0,
+  "description_sinhala": "ලූනු සමඟ හැපෙනසුළු උරාඩ් පරිප්පු බැදපු",
+  "description_tamil": "வெங்காயத்துடன் மிருதுவான உளுத்தம் பருப்பு பொரியல்",
+  "cultural_notes_sinhala": "යාපනයේ ජනප්‍රිය තේ-කාල කෙටි කෑමක්",
+  "cultural_notes_tamil": "யாழ்ப்பாணத்தில் பிரபலமான தேநீர் நேர சிற்றுண்டி"
+}

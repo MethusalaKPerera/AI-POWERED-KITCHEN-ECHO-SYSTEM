@@ -1,0 +1,44 @@
+{
+  "id": "recipe_126",
+  "name": "Mun Kavum (Mung Bean Cakes)",
+  "name_sinhala": "මුං කැවුම්",
+  "name_tamil": "பயறு கேக்",
+  "category": "Dessert",
+  "region": "Southern",
+  "description": "Sweet mung bean oil cakes",
+  "ingredients": [
+    "1 cup mung flour",
+    "1/2 cup rice flour",
+    "1 cup kithul treacle",
+    "1/4 cup coconut milk",
+    "1/2 tsp cardamom",
+    "Oil for frying"
+  ],
+  "instructions": [
+    "Mix flours with treacle",
+    "Add coconut milk",
+    "Add cardamom",
+    "Rest for 30 minutes",
+    "Heat oil",
+    "Drop spoonfuls and fry",
+    "Fry until dark brown",
+    "Drain and cool"
+  ],
+  "prep_time_minutes": 15,
+  "cook_time_minutes": 25,
+  "servings": 20,
+  "difficulty": "Medium",
+  "tags": [
+    "southern",
+    "dessert",
+    "fried",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Lighter version of regular kavum",
+  "authenticity_score": 0.95,
+  "description_sinhala": "මිහිරි මුං ඇට තෙල් කේක්",
+  "description_tamil": "இனிப்பு வெண்டைக்காய் எண்ணெய் கேக்குகள்",
+  "cultural_notes_sinhala": "සාමාන්‍ය කැවුම් වල සැහැල්ලු අනුවාදය",
+  "cultural_notes_tamil": "வழக்கமான காவும் இலகுவான பதிப்பு"
+}

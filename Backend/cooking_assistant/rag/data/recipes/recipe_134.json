@@ -1,0 +1,47 @@
+{
+  "id": "recipe_134",
+  "name": "Konda Kavum (Round Oil Cakes)",
+  "name_sinhala": "කොණ්ඩ කැවුම්",
+  "name_tamil": "கொண்ட கவும்",
+  "category": "Dessert",
+  "region": "General",
+  "description": "Round sweet cakes with treacle",
+  "ingredients": [
+    "2 cups rice flour",
+    "1 cup kithul treacle",
+    "1/4 cup coconut milk",
+    "1/2 tsp cardamom",
+    "Pinch of salt",
+    "Oil for frying"
+  ],
+  "instructions": [
+    "Mix rice flour with treacle",
+    "Add coconut milk gradually",
+    "Add cardamom and salt",
+    "Mix to thick batter",
+    "Rest for 1-2 hours",
+    "Heat oil for deep frying",
+    "Drop rounded spoonfuls",
+    "Fry until dark brown and cooked through",
+    "Drain well",
+    "Cool and store"
+  ],
+  "prep_time_minutes": 15,
+  "cook_time_minutes": 30,
+  "servings": 20,
+  "difficulty": "Medium",
+  "tags": [
+    "new-year",
+    "sweet",
+    "fried",
+    "round",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Variant of regular kavum, rounder shape",
+  "authenticity_score": 0.95,
+  "description_sinhala": "ට්‍රේකල් සමඟ රවුම් මිහිරි කේක්",
+  "description_tamil": "வட்டமான இனிப்பு கேக்குகள்",
+  "cultural_notes_sinhala": "සාමාන්‍ය කැවුම් වල ප්‍රභේදය, රවුම් හැඩය",
+  "cultural_notes_tamil": "வழக்கமான காவும், உருண்டை வடிவத்தின் மாறுபாடு"
+}

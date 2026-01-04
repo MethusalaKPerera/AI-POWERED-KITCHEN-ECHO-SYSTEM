@@ -1,0 +1,46 @@
+{
+  "id": "recipe_044",
+  "name": "Ginger Beer",
+  "name_sinhala": "ඉඟුරු බියර්",
+  "name_tamil": "இஞ்சி பீர்",
+  "category": "Beverage",
+  "region": "General",
+  "description": "Homemade ginger drink, fizzy and spicy",
+  "ingredients": [
+    "100g ginger, crushed",
+    "2 cups sugar",
+    "2 liters water",
+    "1/2 tsp cream of tartar",
+    "1/4 tsp yeast",
+    "Juice of 2 limes"
+  ],
+  "instructions": [
+    "Boil ginger with 1 liter water",
+    "Strain and cool",
+    "Add sugar and stir to dissolve",
+    "Add cream of tartar",
+    "Add remaining water",
+    "Add yeast and lime juice",
+    "Pour into bottles",
+    "Leave for 24 hours to ferment",
+    "Chill and serve"
+  ],
+  "prep_time_minutes": 20,
+  "cook_time_minutes": 15,
+  "servings": 8,
+  "difficulty": "Easy",
+  "tags": [
+    "beverage",
+    "fizzy",
+    "spicy",
+    "fermented",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Traditional homemade soda, Christmas favorite",
+  "authenticity_score": 0.95,
+  "description_sinhala": "ගෙදර හැදූ ඉඟුරු බීම, ෆීසි සහ කුළුබඩු",
+  "description_tamil": "வீட்டில் தயாரிக்கப்பட்ட இஞ்சி பானம், ஃபிஸி மற்றும் காரமான",
+  "cultural_notes_sinhala": "සාම්ප්රදායික ගෙදර හැදූ සෝඩා, නත්තල් ප්රියතම",
+  "cultural_notes_tamil": "பாரம்பரிய வீட்டில் தயாரிக்கப்பட்ட சோடா, கிறிஸ்துமஸ் பிடித்தது"
+}

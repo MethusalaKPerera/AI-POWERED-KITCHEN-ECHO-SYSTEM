@@ -1,0 +1,45 @@
+{
+  "id": "recipe_128",
+  "name": "Kiribath (Milk Rice - New Year Special)",
+  "name_sinhala": "කිරිබත් (අලුත් අවුරුද්ද)",
+  "name_tamil": "பால் சாதம்",
+  "category": "Rice Dish",
+  "region": "General",
+  "description": "Auspicious milk rice for New Year",
+  "ingredients": [
+    "3 cups white rice",
+    "600ml thick coconut milk",
+    "3 cups water",
+    "2 tsp salt",
+    "Pandan leaves"
+  ],
+  "instructions": [
+    "Wash rice thoroughly",
+    "Cook with water until almost done",
+    "Add thick coconut milk and salt",
+    "Add pandan leaves",
+    "Stir gently and simmer",
+    "Cook until very creamy",
+    "Pour onto banana leaf or flat plate",
+    "Let set for 30 minutes",
+    "Cut into diamond shapes",
+    "Serve with lunu miris at auspicious time"
+  ],
+  "prep_time_minutes": 10,
+  "cook_time_minutes": 30,
+  "servings": 10,
+  "difficulty": "Easy",
+  "tags": [
+    "new-year",
+    "ceremonial",
+    "auspicious",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Must be made at auspicious time on New Year morning Kiribath is served on all auspicious occasions. Must be eaten with lunu miris (chili sambol) and kithul treacle. Cut in diamond shapes for good luck.",
+  "authenticity_score": 11.0,
+  "description_sinhala": "අලුත් අවුරුද්දට නැකත් කිරිබත්",
+  "description_tamil": "புத்தாண்டுக்கு உகந்த பால் சாதம்",
+  "cultural_notes_sinhala": "අලුත් අවුරුදු උදෑසන නැකතට කළ යුතුය",
+  "cultural_notes_tamil": "புத்தாண்டு காலை மங்கள நேரத்தில் செய்ய வேண்டும்"
+}

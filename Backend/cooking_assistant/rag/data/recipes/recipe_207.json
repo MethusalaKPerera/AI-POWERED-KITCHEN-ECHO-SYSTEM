@@ -1,0 +1,34 @@
+{
+  "id": "recipe_207",
+  "name": "Pani Pol (Treacle Pancake)",
+  "name_sinhala": "පැණි පොල්",
+  "name_tamil": "பனிபோல்",
+  "category": "Dessert",
+  "region": "Sinhala New Year",
+  "description": "Coconut and treacle filled pancakes. Traditional New Year sweet.",
+  "ingredients": [
+    "For pancake: 2 cups flour, 1 egg, 1 cup coconut milk, pinch salt",
+    "For filling: 2 cups grated coconut, 1 cup kithul treacle, 1/2 tsp cardamom"
+  ],
+  "instructions": [
+    "Make thin pancake batter with flour, egg, coconut milk, salt",
+    "Cook thin pancakes",
+    "Mix grated coconut with treacle and cardamom for filling",
+    "Place filling on half of each pancake",
+    "Fold into half-moon shape",
+    "Serve at room temperature"
+  ],
+  "prep_time_minutes": 20,
+  "cook_time_minutes": 30,
+  "servings": 10,
+  "difficulty": "Easy",
+  "tags": [
+    "dessert",
+    "new year",
+    "sweet",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Essential for Sinhala New Year. Kithul treacle is traditional - not palm sugar.",
+  "authenticity_score": 100
+}

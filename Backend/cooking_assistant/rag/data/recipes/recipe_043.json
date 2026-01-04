@@ -1,0 +1,43 @@
+{
+  "id": "recipe_043",
+  "name": "Pani Pol (Coconut Toffee)",
+  "name_sinhala": "පැණි පොල්",
+  "name_tamil": "தேங்காய் கேண்டி",
+  "category": "Dessert",
+  "region": "General",
+  "description": "Sweet coconut jaggery toffee",
+  "ingredients": [
+    "2 cups palm jaggery (hakuru)",
+    "2 cups grated coconut",
+    "1/2 tsp cardamom",
+    "Cashews (optional)"
+  ],
+  "instructions": [
+    "Melt jaggery in pan",
+    "Add grated coconut",
+    "Cook stirring constantly",
+    "Mixture will become thick",
+    "Add cardamom",
+    "Test by dropping in water",
+    "Should form a ball",
+    "Pour into greased tray",
+    "Cut while warm"
+  ],
+  "prep_time_minutes": 10,
+  "cook_time_minutes": 25,
+  "servings": 20,
+  "difficulty": "Medium",
+  "tags": [
+    "dessert",
+    "sweet",
+    "coconut",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Simple traditional sweet, made at home",
+  "authenticity_score": 11.0,
+  "description_sinhala": "පැණිරස පොල් හකුරු ටොෆි",
+  "description_tamil": "இனிப்பு தேங்காய் வெல்லம் டோஃபி",
+  "cultural_notes_sinhala": "සරල සාම්ප්‍රදායික රසකැවිලි, ගෙදර හැදූ",
+  "cultural_notes_tamil": "எளிய பாரம்பரிய இனிப்பு, வீட்டில் தயாரிக்கப்படுகிறது"
+}

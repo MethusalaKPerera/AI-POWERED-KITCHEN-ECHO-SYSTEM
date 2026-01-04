@@ -1,0 +1,49 @@
+{
+  "id": "recipe_006",
+  "name": "Egg Curry (Bittara Curry)",
+  "name_sinhala": "බිත්තර කරිය",
+  "name_tamil": "முட்டை கறி",
+  "category": "Curry",
+  "region": "General",
+  "description": "Hard-boiled eggs in rich coconut gravy",
+  "ingredients": [
+    "6 hard-boiled eggs",
+    "300ml coconut milk",
+    "2 tbsp curry powder",
+    "1 tsp chili powder",
+    "1 tsp turmeric",
+    "2 onions, sliced",
+    "3 cloves garlic",
+    "1 sprig curry leaves (fresh, not dried)",
+    "2 green chilies",
+    "2 tbsp oil",
+    "Salt to taste"
+  ],
+  "instructions": [
+    "Peel and halve the boiled eggs",
+    "Lightly fry eggs until golden, set aside",
+    "In same pan, sauté onions and garlic",
+    "Add curry powder, chili, turmeric",
+    "Add coconut milk and simmer",
+    "Gently add eggs to the gravy",
+    "Simmer for 10 minutes",
+    "Garnish with curry leaves (Curry leaves must be fresh for authentic taste)"
+  ],
+  "prep_time_minutes": 15,
+  "cook_time_minutes": 20,
+  "servings": 4,
+  "difficulty": "Easy",
+  "tags": [
+    "protein-rich",
+    "everyday",
+    "coconut-based",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Popular breakfast curry, often eaten with bread or roti Hard-boil eggs and lightly fry them before adding to curry for better texture and color. This is the traditional village method.",
+  "authenticity_score": 10.92,
+  "description_sinhala": "පොහොසත් පොල් හොදි වල තදින් තම්බා බිත්තර",
+  "description_tamil": "வளமான தேங்காய் குழம்பில் கடின வேகவைத்த முட்டைகள்",
+  "cultural_notes_sinhala": "ජනප්‍රිය උදෑසන ආහාර ව්‍යංජනය, බොහෝ විට පාන් හෝ රොටි සමඟ අනුභව කරනු ලැබේ",
+  "cultural_notes_tamil": "பிரபலமான காலை உணவு கறி, அடிக்கடி ரொட்டி அல்லது ரொட்டியுடன் உண்ணப்படுகிறது"
+}

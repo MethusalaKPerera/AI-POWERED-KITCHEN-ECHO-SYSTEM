@@ -1,0 +1,44 @@
+{
+  "id": "recipe_042",
+  "name": "Bombai Muttai (Candy Floss)",
+  "name_sinhala": "බොම්බේ මුට්ටෙ",
+  "name_tamil": "பாம்பே முட்டை",
+  "category": "Dessert",
+  "region": "General",
+  "description": "Crispy meringue balls, light and sweet",
+  "ingredients": [
+    "4 egg whites",
+    "2 cups sugar",
+    "1/2 tsp vinegar",
+    "1/4 tsp cream of tartar",
+    "Pink food coloring"
+  ],
+  "instructions": [
+    "Beat egg whites until stiff",
+    "Gradually add sugar",
+    "Add vinegar and cream of tartar",
+    "Add food coloring",
+    "Pipe onto baking tray",
+    "Bake at very low temp (100°C)",
+    "Dry for 2-3 hours",
+    "Store in airtight container"
+  ],
+  "prep_time_minutes": 20,
+  "cook_time_minutes": 180,
+  "servings": 30,
+  "difficulty": "Medium",
+  "tags": [
+    "dessert",
+    "sweet",
+    "baked",
+    "crispy",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Popular children's sweet, sold at fairs",
+  "authenticity_score": 0.8,
+  "description_sinhala": "හැපෙනසුළු මෙරිංගු බෝල, සැහැල්ලු හා පැණිරස",
+  "description_tamil": "மிருதுவான மெரிங்கு பந்துகள், ஒளி மற்றும் இனிப்பு",
+  "cultural_notes_sinhala": "ජනප්‍රිය ළමා රසකැවිලි, ප්‍රදර්ශනවල විකුණනු ලැබේ",
+  "cultural_notes_tamil": "பிரபலமான குழந்தைகள் இனிப்பு, கண்காட்சிகளில் விற்கப்படுகிறது"
+}

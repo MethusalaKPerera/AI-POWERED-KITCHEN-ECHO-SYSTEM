@@ -1,0 +1,45 @@
+{
+  "id": "recipe_113",
+  "name": "Pol Sambol (Southern Spicy Version)",
+  "name_sinhala": "පොල් සම්බෝල (දකුණු)",
+  "name_tamil": "தேங்காய் சம்பல்",
+  "category": "Sambol",
+  "region": "Southern",
+  "description": "Extra spicy coconut sambol",
+  "ingredients": [
+    "2 cups grated coconut",
+    "2 onions, chopped",
+    "10 dried red chilies",
+    "3 tbsp Maldive fish (umbalakada - essential)",
+    "3 tbsp lime juice",
+    "2 tsp chili powder",
+    "Salt"
+  ],
+  "instructions": [
+    "Grind chilies coarsely",
+    "Mix with grated coconut",
+    "Add chopped onions",
+    "Add Maldive fish",
+    "Add extra chili powder",
+    "Add lime juice and salt",
+    "Mix well",
+    "Serve fresh"
+  ],
+  "prep_time_minutes": 15,
+  "cook_time_minutes": 0,
+  "servings": 6,
+  "difficulty": "Easy",
+  "tags": [
+    "southern",
+    "spicy",
+    "sambol",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Southern version is notably spicier Must be freshly made - sambol loses flavor if stored too long. Maldive fish (umbalakada) is essential and irreplaceable. Use coconut scraped fresh, not desiccated.",
+  "authenticity_score": 11.0,
+  "description_sinhala": "අමතර සැර පොල් සම්බෝලයක්",
+  "description_tamil": "கூடுதல் காரமான தேங்காய் சாம்போல்",
+  "cultural_notes_sinhala": "දකුණු අනුවාදය සැලකිය යුතු ලෙස කුළුබඩු සහිතයි",
+  "cultural_notes_tamil": "தெற்கு பதிப்பு குறிப்பிடத்தக்க வகையில் காரமானது"
+}

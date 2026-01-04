@@ -1,0 +1,51 @@
+{
+  "id": "recipe_080",
+  "name": "Crab Kool (Crab Soup)",
+  "name_sinhala": "කකුළු කූල්",
+  "name_tamil": "நண்டு கூழ்",
+  "category": "Curry",
+  "region": "Jaffna",
+  "description": "Thick crab soup with palmyrah flour",
+  "ingredients": [
+    "500g crab meat",
+    "1 cup palmyrah flour",
+    "2 onions, chopped",
+    "4 garlic cloves",
+    "1 inch ginger",
+    "2 green chilies",
+    "1 tsp turmeric",
+    "1 tsp black pepper",
+    "1 liter water",
+    "2 tbsp oil",
+    "Salt"
+  ],
+  "instructions": [
+    "Extract crab meat",
+    "Sauté onions, garlic, ginger in oil",
+    "Add turmeric and pepper",
+    "Add water and bring to boil",
+    "Mix palmyrah flour with water",
+    "Add to pot while stirring",
+    "Add crab meat",
+    "Simmer until thick",
+    "Add chilies",
+    "Serve hot"
+  ],
+  "prep_time_minutes": 25,
+  "cook_time_minutes": 30,
+  "servings": 4,
+  "difficulty": "Medium",
+  "tags": [
+    "jaffna",
+    "soup",
+    "seafood",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Ancient Jaffna recipe using palmyrah flour",
+  "authenticity_score": 1.0,
+  "description_sinhala": "තල් පිටි සමග ඝන කකුළුවන් සුප්",
+  "description_tamil": "பனைவெல்லம் கொண்ட கெட்டியான நண்டு சூப்",
+  "cultural_notes_sinhala": "තල් පිටි භාවිතා කරන පුරාණ යාපනය වට්ටෝරුව",
+  "cultural_notes_tamil": "பனை மாவு பயன்படுத்தி பழங்கால யாழ்ப்பாண செய்முறை"
+}

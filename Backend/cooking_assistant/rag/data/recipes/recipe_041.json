@@ -1,0 +1,45 @@
+{
+  "id": "recipe_041",
+  "name": "Milk Toffee",
+  "name_sinhala": "කිරි ටොෆි",
+  "name_tamil": "பால் டாஃபி",
+  "category": "Dessert",
+  "region": "General",
+  "description": "Creamy milk fudge with cashews",
+  "ingredients": [
+    "2 cups full cream milk powder",
+    "1 cup sugar",
+    "1/2 cup water",
+    "1/2 cup cashews, chopped",
+    "1/2 tsp cardamom",
+    "1 tbsp butter"
+  ],
+  "instructions": [
+    "Boil sugar and water to syrup",
+    "Add milk powder gradually",
+    "Stir constantly on low heat",
+    "Add butter",
+    "Mixture will thicken",
+    "Add cashews and cardamom",
+    "Pour into greased tray",
+    "Cool and cut into squares"
+  ],
+  "prep_time_minutes": 10,
+  "cook_time_minutes": 30,
+  "servings": 25,
+  "difficulty": "Medium",
+  "tags": [
+    "dessert",
+    "sweet",
+    "fudge",
+    "popular",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Modern Sri Lankan favorite, popular gift item",
+  "authenticity_score": 0.85,
+  "description_sinhala": "කජු සමග ක්‍රීමි කිරි ෆජ්",
+  "description_tamil": "முந்திரியுடன் கிரீம் பால் ஃபட்ஜ்",
+  "cultural_notes_sinhala": "නූතන ශ්‍රී ලාංකික ප්‍රියතම, ජනප්‍රිය තෑගි භාණ්ඩය",
+  "cultural_notes_tamil": "நவீன இலங்கையின் விருப்பமான, பிரபலமான பரிசுப் பொருள்"
+}

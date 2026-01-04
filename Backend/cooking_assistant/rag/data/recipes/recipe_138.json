@@ -1,0 +1,44 @@
+{
+  "id": "recipe_138",
+  "name": "Dansala Noodles",
+  "name_sinhala": "දන්සල් නූඩ්ල්ස්",
+  "name_tamil": "நூடுல்ஸ்",
+  "category": "Rice Dish",
+  "region": "General",
+  "description": "Fried noodles for Vesak distribution",
+  "ingredients": [
+    "2 kg noodles",
+    "1 kg mixed vegetables",
+    "500g chicken (optional)",
+    "Soy sauce",
+    "Chili sauce",
+    "Oil",
+    "Salt"
+  ],
+  "instructions": [
+    "Boil noodles",
+    "Stir-fry vegetables",
+    "Add noodles",
+    "Season with sauces",
+    "Serve in paper cones",
+    "Distribute to public"
+  ],
+  "prep_time_minutes": 20,
+  "cook_time_minutes": 25,
+  "servings": 40,
+  "difficulty": "Medium",
+  "tags": [
+    "vesak",
+    "dansala",
+    "street-food",
+    "modern",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Modern dansala favorite",
+  "authenticity_score": 0.8,
+  "description_sinhala": "වෙසක් බෙදාහැරීම සඳහා බැදපු නූඩ්ල්ස්",
+  "description_tamil": "வெசாக் விநியோகத்திற்காக வறுத்த நூடுல்ஸ்",
+  "cultural_notes_sinhala": "නවීන දන්සල ප්රියතම",
+  "cultural_notes_tamil": "நவீன தஞ்சை பிடித்தது"
+}

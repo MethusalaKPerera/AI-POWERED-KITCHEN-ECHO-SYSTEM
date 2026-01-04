@@ -1,0 +1,35 @@
+{
+  "id": "recipe_203",
+  "name": "Pittu (Steamed Rice Flour)",
+  "name_sinhala": "පිටු",
+  "name_tamil": "புட்டு",
+  "category": "Bread",
+  "region": "General",
+  "description": "Steamed cylinders of rice flour and coconut. Traditional breakfast staple.",
+  "ingredients": [
+    "2 cups red rice flour (or white rice flour)",
+    "1 cup grated coconut",
+    "Warm water as needed",
+    "1 tsp salt"
+  ],
+  "instructions": [
+    "Sprinkle water on rice flour and mix to breadcrumb texture",
+    "Add salt and mix well",
+    "Layer coconut and flour mixture in pittu bamboo",
+    "Start with coconut, then flour, alternating",
+    "Steam in pittu maker for 10 minutes",
+    "Remove and serve hot with curry"
+  ],
+  "prep_time_minutes": 15,
+  "cook_time_minutes": 10,
+  "servings": 4,
+  "difficulty": "Medium",
+  "tags": [
+    "breakfast",
+    "steamed",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Requires special pittu bamboo cylinder. Perfect with kadala curry or fish curry.",
+  "authenticity_score": 100
+}

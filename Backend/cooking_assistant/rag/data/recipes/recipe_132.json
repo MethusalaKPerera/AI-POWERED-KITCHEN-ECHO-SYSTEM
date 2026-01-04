@@ -1,0 +1,49 @@
+{
+  "id": "recipe_132",
+  "name": "Aluwa (New Year Diamond Sweet)",
+  "name_sinhala": "අලුව (අලුත් අවුරුද්ද)",
+  "name_tamil": "அலுவா",
+  "category": "Dessert",
+  "region": "General",
+  "description": "Diamond-shaped rice flour sweet",
+  "ingredients": [
+    "3 cups rice flour, roasted",
+    "2 cups palm jaggery (hakuru), melted",
+    "1.5 cups grated coconut",
+    "1 cup cashews, chopped",
+    "1 tsp cardamom powder",
+    "1/2 cup water"
+  ],
+  "instructions": [
+    "Roast rice flour until fragrant",
+    "Melt jaggery with water",
+    "Strain jaggery syrup",
+    "Mix rice flour with jaggery syrup",
+    "Add grated coconut",
+    "Add cashews and cardamom",
+    "Mix well to form mass",
+    "Spread on greased tray",
+    "Press flat with greased spatula",
+    "Cut diamond shapes while warm",
+    "Let set completely",
+    "Store in container"
+  ],
+  "prep_time_minutes": 20,
+  "cook_time_minutes": 15,
+  "servings": 35,
+  "difficulty": "Easy",
+  "tags": [
+    "new-year",
+    "sweet",
+    "no-fry",
+    "diamond-cut",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Easier to make than fried sweets",
+  "authenticity_score": 11.0,
+  "description_sinhala": "දියමන්ති හැඩැති සහල් පිටි පැණිරසයි",
+  "description_tamil": "வைர வடிவ அரிசி மாவு இனிப்பு",
+  "cultural_notes_sinhala": "බදින ලද රසකැවිලි වලට වඩා සෑදීම පහසුය",
+  "cultural_notes_tamil": "வறுத்த இனிப்புகளை விட செய்வது எளிது"
+}

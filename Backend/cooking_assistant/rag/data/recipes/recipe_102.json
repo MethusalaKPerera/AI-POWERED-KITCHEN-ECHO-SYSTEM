@@ -1,0 +1,44 @@
+{
+  "id": "recipe_102",
+  "name": "Kanji (Rice Porridge)",
+  "name_sinhala": "කඤ්ජි",
+  "name_tamil": "கஞ்சி",
+  "category": "Rice Dish",
+  "region": "Jaffna",
+  "description": "Simple rice porridge, comfort food",
+  "ingredients": [
+    "1 cup rice",
+    "6 cups water",
+    "1 tsp salt",
+    "1 tsp cumin seeds",
+    "1/2 tsp pepper",
+    "1 tbsp ghee"
+  ],
+  "instructions": [
+    "Wash rice",
+    "Boil with water until very soft and creamy",
+    "Add salt",
+    "Mash slightly",
+    "Temper cumin and pepper in ghee",
+    "Pour over kanji",
+    "Serve hot with papadum and pickle"
+  ],
+  "prep_time_minutes": 5,
+  "cook_time_minutes": 30,
+  "servings": 4,
+  "difficulty": "Easy",
+  "tags": [
+    "jaffna",
+    "comfort",
+    "simple",
+    "healing",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Given to sick people, easy to digest",
+  "authenticity_score": 1.0,
+  "description_sinhala": "සරල බත් කැඳ, සුවපහසු ආහාර",
+  "description_tamil": "எளிய அரிசிக் கஞ்சி, ஆறுதல் உணவு",
+  "cultural_notes_sinhala": "රෝගී පුද්ගලයින්ට ලබා දී ඇත, දිරවීමට පහසුය",
+  "cultural_notes_tamil": "நோய்வாய்ப்பட்டவர்களுக்கு கொடுக்கப்பட்டது, ஜீரணிக்க எளிதானது"
+}

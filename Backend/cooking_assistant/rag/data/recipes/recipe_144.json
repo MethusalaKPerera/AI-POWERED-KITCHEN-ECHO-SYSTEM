@@ -1,0 +1,49 @@
+{
+  "id": "recipe_144",
+  "name": "Bole (Eid Bread)",
+  "name_sinhala": "බෝල් (ඊද්)",
+  "name_tamil": "போல்",
+  "category": "Bread",
+  "region": "Muslim",
+  "description": "Sweet bread for Eid breakfast",
+  "ingredients": [
+    "4 cups flour",
+    "1 cup sugar",
+    "1/2 cup ghee",
+    "2 eggs",
+    "1 cup coconut milk",
+    "1 tbsp yeast",
+    "1 tsp cardamom",
+    "Sesame seeds"
+  ],
+  "instructions": [
+    "Activate yeast with warm coconut milk",
+    "Mix flour, sugar, cardamom",
+    "Add eggs and ghee",
+    "Add yeast mixture",
+    "Knead to soft dough",
+    "Let rise for 2 hours",
+    "Shape into buns",
+    "Brush with egg",
+    "Sprinkle sesame seeds",
+    "Bake at 180°C for 20 minutes"
+  ],
+  "prep_time_minutes": 30,
+  "cook_time_minutes": 20,
+  "servings": 15,
+  "difficulty": "Medium",
+  "tags": [
+    "eid",
+    "muslim",
+    "bread",
+    "sweet",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Eid morning breakfast staple",
+  "authenticity_score": 0.95,
+  "description_sinhala": "ඊද් උදෑසන ආහාරය සඳහා පැණිරස පාන්",
+  "description_tamil": "ஈத் காலை உணவுக்கு இனிப்பு ரொட்டி",
+  "cultural_notes_sinhala": "ඊද් උදෑසන උදෑසන ආහාරය ප්‍රධාන ආහාරය",
+  "cultural_notes_tamil": "ஈத் காலை காலை உணவு முக்கிய உணவு"
+}

@@ -1,0 +1,16 @@
+{
+  "total_recipes": 3,
+  "categories": {
+    "Curry": 2,
+    "Sambol": 1
+  },
+  "total_unique_ingredients": 25,
+  "average_prep_time": 18.333333333333332,
+  "average_cook_time": 23.333333333333332,
+  "trilingual_support": true,
+  "authenticity_scores": {
+    "high": 3,
+    "medium": 0,
+    "low": 0
+  }
+}

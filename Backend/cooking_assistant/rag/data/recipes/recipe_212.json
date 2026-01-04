@@ -1,0 +1,42 @@
+{
+  "id": "recipe_212",
+  "name": "Aluwa (Sticky Toffee)",
+  "name_sinhala": "අලුවා",
+  "name_tamil": "அலுவா",
+  "category": "Dessert",
+  "region": "Sinhala New Year",
+  "description": "Sticky rice flour toffee with cashews. New Year essential sweet.",
+  "ingredients": [
+    "2 cups rice flour",
+    "2 cups sugar",
+    "1 cup water",
+    "1/2 cup cashews, chopped",
+    "1/4 cup ghee",
+    "1/2 tsp cardamom powder",
+    "Pink food coloring (optional)"
+  ],
+  "instructions": [
+    "Roast rice flour lightly until fragrant",
+    "Make sugar syrup with water to soft ball stage",
+    "Add roasted rice flour gradually",
+    "Stir continuously to avoid lumps",
+    "Add ghee, cardamom, cashews",
+    "Add food coloring if using",
+    "Pour into greased tray",
+    "Cut into diamond shapes while warm",
+    "Cool completely before removing"
+  ],
+  "prep_time_minutes": 10,
+  "cook_time_minutes": 30,
+  "servings": 20,
+  "difficulty": "Medium",
+  "tags": [
+    "festive",
+    "sweet",
+    "new year",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Must be sticky and chewy. Pink color is traditional. Stores well in airtight containers.",
+  "authenticity_score": 100
+}

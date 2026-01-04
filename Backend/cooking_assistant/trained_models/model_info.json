@@ -1,0 +1,19 @@
+{
+  "model_type": "Logistic Regression",
+  "accuracy": 0.868421052631579,
+  "num_classes": 8,
+  "classes": [
+    "Beverage",
+    "Bread",
+    "Breakfast",
+    "Curry",
+    "Dessert",
+    "Rice Dish",
+    "Sambol",
+    "Snack"
+  ],
+  "embedding_model": "paraphrase-multilingual-MiniLM-L12-v2",
+  "embedding_dim": 384,
+  "training_samples": 190,
+  "date": "2026-01-04"
+}

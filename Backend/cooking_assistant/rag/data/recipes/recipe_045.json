@@ -1,0 +1,47 @@
+{
+  "id": "recipe_045",
+  "name": "Faluda",
+  "name_sinhala": "ෆලූඩා",
+  "name_tamil": "பலூடா",
+  "category": "Beverage",
+  "region": "Muslim",
+  "description": "Rose-flavored milk drink with jelly and ice cream",
+  "ingredients": [
+    "2 cups milk",
+    "4 tbsp rose syrup",
+    "2 tbsp basil seeds (soaked)",
+    "100g agar jelly, cubed",
+    "Vanilla ice cream",
+    "Cashews and raisins",
+    "Ice cubes"
+  ],
+  "instructions": [
+    "Soak basil seeds for 30 minutes",
+    "Prepare agar jelly and cut into cubes",
+    "In tall glass, add rose syrup",
+    "Add basil seeds and jelly cubes",
+    "Pour chilled milk",
+    "Add ice cubes",
+    "Top with ice cream",
+    "Garnish with cashews",
+    "Serve with spoon and straw"
+  ],
+  "prep_time_minutes": 40,
+  "cook_time_minutes": 5,
+  "servings": 4,
+  "difficulty": "Easy",
+  "tags": [
+    "beverage",
+    "sweet",
+    "cold",
+    "festive",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Popular Ramadan drink, sold by Muslim vendors",
+  "authenticity_score": 0.9,
+  "description_sinhala": "ජෙලි සහ අයිස්ක්‍රීම් සමඟ රෝස රසැති කිරි පානය",
+  "description_tamil": "ஜெல்லி மற்றும் ஐஸ்கிரீமுடன் ரோஸ்-ஃப்ளேவர் பால் பானம்",
+  "cultural_notes_sinhala": "ජනප්‍රිය රාමසාන් පානය, මුස්ලිම් වෙළෙන්දන් විසින් විකුණනු ලැබේ",
+  "cultural_notes_tamil": "பிரபலமான ரமலான் பானம், முஸ்லீம் விற்பனையாளர்களால் விற்கப்படுகிறது"
+}

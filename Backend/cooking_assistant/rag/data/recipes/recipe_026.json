@@ -1,0 +1,48 @@
+{
+  "id": "recipe_026",
+  "name": "Brinjal Moju (Eggplant Pickle)",
+  "name_sinhala": "වම්බටු මොජු",
+  "name_tamil": "கத்தரிக்காய் ஊறுகாய்",
+  "category": "Sambol",
+  "region": "General",
+  "description": "Sweet and sour eggplant pickle",
+  "ingredients": [
+    "4 large brinjals, sliced",
+    "3 onions, sliced",
+    "2 tbsp mustard seeds",
+    "10 curry leaves (fresh, not dried)",
+    "3 tbsp vinegar",
+    "3 tbsp sugar",
+    "2 tsp chili powder",
+    "Oil for frying",
+    "Salt to taste"
+  ],
+  "instructions": [
+    "Fry brinjal slices until golden",
+    "Fry onions separately",
+    "In same oil, add mustard seeds",
+    "Add curry leaves (Curry leaves must be fresh for authentic taste)",
+    "Add fried brinjal and onions",
+    "Add vinegar, sugar, chili, salt",
+    "Cook until thick",
+    "Cool and store"
+  ],
+  "prep_time_minutes": 15,
+  "cook_time_minutes": 30,
+  "servings": 8,
+  "difficulty": "Medium",
+  "tags": [
+    "pickle",
+    "sweet-sour",
+    "fried",
+    "condiment",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Essential accompaniment for rice and curry, stores well",
+  "authenticity_score": 10.95,
+  "description_sinhala": "පැණිරස හා ඇඹුල් වම්බටු අච්චාරු",
+  "description_tamil": "இனிப்பு மற்றும் புளிப்பு கத்திரிக்காய் ஊறுகாய்",
+  "cultural_notes_sinhala": "බත් සහ ව්‍යංජන සඳහා අත්‍යවශ්‍ය සහායකය, හොඳින් ගබඩා කරයි",
+  "cultural_notes_tamil": "சாதம் மற்றும் கறிக்கு அத்தியாவசியமான துணை, நன்றாக சேமித்து வைக்கிறது"
+}

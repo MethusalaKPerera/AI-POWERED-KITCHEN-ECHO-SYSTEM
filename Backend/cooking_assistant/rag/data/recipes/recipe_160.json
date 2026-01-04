@@ -1,0 +1,47 @@
+{
+  "id": "recipe_160",
+  "name": "Recipe",
+  "name_sinhala": "",
+  "name_tamil": "",
+  "category": "Curry",
+  "region": "General",
+  "description": "",
+  "ingredients": [
+    "1. 6 large potatoes",
+    "2. 1 large onion sliced",
+    "3. 2 tsp. crushed red chilies",
+    "4. 1/2 tsp. chili powder",
+    "5. 1/2 tsp. turmeric powder",
+    "6. 1 tsp. mustard seeds",
+    "7. 1 sprig curry leaves (fresh, not dried)",
+    "8. 1 stick cinnamon",
+    "9. Salt to taste",
+    "10. 2 or 3 dried red whole chilies"
+  ],
+  "instructions": [
+    "Peel the potatoes and cut them into 2cm cubes. Add sufficient",
+    "salt and deep fry them until golden brown. In a bowl, combine",
+    "sliced onions, crushed red chilies, chili powder, turmeric powder,",
+    "curry leaves, cinnamon, 1/2 tsp salt, and mix well. Heat 1 tsp (Curry leaves must be fresh for authentic taste)",
+    "cooking oil in a pan, then add mustard seeds and when it starts",
+    "to splatter add 2 or 3 dried whole red chilies. Let it fry for a",
+    "few seconds and then add the onion mixture to it. Stir fry until",
+    "golden brown. Finally add the fried potato cubes, mix well and",
+    "remove from fire.",
+    "--- PAGE 14 ---",
+    "HOT & SPICY SRI LANKAN"
+  ],
+  "prep_time_minutes": 30,
+  "cook_time_minutes": 30,
+  "servings": 4,
+  "difficulty": "Medium",
+  "tags": [
+    "pdf-extracted",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Extracted from cookbook",
+  "authenticity_score": 10.85,
+  "cultural_notes_sinhala": "ඉවුම් පිහුම් පොතෙන් උපුටා ගන්නා ලදී",
+  "cultural_notes_tamil": "சமையல் புத்தகத்திலிருந்து பிரித்தெடுக்கப்பட்டது"
+}

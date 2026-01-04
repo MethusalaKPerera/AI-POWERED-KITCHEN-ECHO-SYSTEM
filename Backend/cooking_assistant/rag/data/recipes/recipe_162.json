@@ -1,0 +1,53 @@
+{
+  "id": "recipe_162",
+  "name": "Sri Lankan",
+  "name_sinhala": "",
+  "name_tamil": "",
+  "category": "Curry",
+  "region": "General",
+  "description": "",
+  "ingredients": [
+    "1. 1 lb. Beef",
+    "2. 1/4 lb. potatoes",
+    "3. 2 level dessert spoons red chili powder",
+    "4. 3 dessert spn vinegar",
+    "5. salt to taste",
+    "6. 2”-piece cinnamon",
+    "7. few cloves",
+    "8. 2 bulb garlic finely chopped",
+    "9. 2 cardamoms",
+    "10. 1 small piece ginger finely chopped",
+    "11. 1 tsp sugar",
+    "12. 1/2 lime and 2\" lemon grass(sera)",
+    "13. Cooking oil",
+    "14. a sprig of curry leaves and a piece of rampe (fresh, not dried)",
+    "15. 1 medium onion sliced"
+  ],
+  "instructions": [
+    "Cut the beef in 1/2-inch cubes and season with vinegar,",
+    "salt and ground chili powder. Add chopped garlic,",
+    "ginger, cinnamon, cloves, cardamoms and lemongrass and set aside.",
+    "Then cut the potatoes in small cubes and season",
+    "with a little salt and deep fry until golden brown and set aside. Now",
+    "heat a pan with little oil and add rampe,",
+    "curry leaves and onion and stir (Curry leaves must be fresh for authentic taste)",
+    "until onions are light brown. Then add the beef mixture and stir well.",
+    "Stir occasionally, scraping off the bottom.",
+    "When cooked, add the fried potato cubes and spread the lime juice and",
+    "sugar. Before serving drain the excess oil and stir the curry well.",
+    "--- PAGE 17 ---"
+  ],
+  "prep_time_minutes": 30,
+  "cook_time_minutes": 30,
+  "servings": 4,
+  "difficulty": "Medium",
+  "tags": [
+    "pdf-extracted",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Extracted from cookbook",
+  "authenticity_score": 10.85,
+  "cultural_notes_sinhala": "ඉවුම් පිහුම් පොතෙන් උපුටා ගන්නා ලදී",
+  "cultural_notes_tamil": "சமையல் புத்தகத்திலிருந்து பிரித்தெடுக்கப்பட்டது"
+}

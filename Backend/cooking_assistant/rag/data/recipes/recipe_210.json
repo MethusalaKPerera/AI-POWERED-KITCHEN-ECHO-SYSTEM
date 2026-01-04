@@ -1,0 +1,46 @@
+{
+  "id": "recipe_210",
+  "name": "Seeni Sambol (Caramelized Onion Sambol)",
+  "name_sinhala": "සීනි සම්බෝල",
+  "name_tamil": "வெங்காய சம்பல்",
+  "category": "Sambol",
+  "region": "General",
+  "description": "Sweet and spicy caramelized onion relish with Maldive fish. Breakfast favorite.",
+  "ingredients": [
+    "5 large onions, thinly sliced",
+    "3 tbsp Maldive fish, crushed (umbalakada - essential)",
+    "2 tbsp chili powder",
+    "1 tsp chili flakes",
+    "10 curry leaves (fresh, not dried)",
+    "2 pieces pandan leaf",
+    "1 piece cinnamon",
+    "3 cardamom pods",
+    "2 tbsp sugar",
+    "2 tbsp tamarind pulp",
+    "1/4 cup oil",
+    "Salt to taste"
+  ],
+  "instructions": [
+    "Heat oil and add cinnamon, cardamom, pandan",
+    "Add sliced onions and cook on medium heat",
+    "Stir frequently until onions caramelize",
+    "Add curry leaves and Maldive fish (Curry leaves must be fresh for authentic taste)",
+    "Add chili powder and chili flakes",
+    "Add tamarind and sugar",
+    "Cook until thick and caramelized",
+    "Adjust seasoning and cool before storing"
+  ],
+  "prep_time_minutes": 15,
+  "cook_time_minutes": 45,
+  "servings": 10,
+  "difficulty": "Medium",
+  "tags": [
+    "condiment",
+    "sweet-spicy",
+    "breakfast",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Patience is key - must caramelize slowly. Stores for weeks. Essential with bread and string hoppers. Must be freshly made - sambol loses flavor if stored too long. Maldive fish (umbalakada) is essential and irreplaceable. Use coconut scraped fresh, not desiccated.",
+  "authenticity_score": 100
+}

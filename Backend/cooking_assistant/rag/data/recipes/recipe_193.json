@@ -1,0 +1,45 @@
+{
+  "id": "recipe_193",
+  "name": "Murunga Leaves Mallung",
+  "name_sinhala": "මුරුංගා කොළ මැල්ලුං",
+  "name_tamil": "முருங்கை கீரை மல்லுங்",
+  "category": "Sambol",
+  "region": "General",
+  "description": "Finely chopped drumstick leaves tempered with coconut and spices. A nutritious village favorite.",
+  "ingredients": [
+    "2 cups murunga (drumstick) leaves, finely chopped",
+    "1/2 cup grated coconut",
+    "1 onion, finely chopped",
+    "2 green chilies, chopped",
+    "1/2 tsp turmeric powder",
+    "1 tsp chili powder",
+    "10 curry leaves (fresh, not dried)",
+    "1/2 tsp mustard seeds",
+    "1 tbsp coconut oil (traditional - do not substitute)",
+    "Salt to taste",
+    "Juice of half lime"
+  ],
+  "instructions": [
+    "Heat oil and add mustard seeds",
+    "Add onions and green chilies, sauté",
+    "Add turmeric and chili powder",
+    "Add finely chopped murunga leaves",
+    "Add salt and mix well",
+    "Add grated coconut",
+    "Cook on low heat for 5 minutes",
+    "Add lime juice and curry leaves (Curry leaves must be fresh for authentic taste)",
+    "Mix and remove from heat"
+  ],
+  "prep_time_minutes": 15,
+  "cook_time_minutes": 10,
+  "servings": 4,
+  "difficulty": "Easy",
+  "tags": [
+    "healthy",
+    "traditional",
+    "quick",
+    "authentic"
+  ],
+  "cultural_notes": "Murunga leaves are considered a superfood in villages. Must be finely chopped for proper texture.",
+  "authenticity_score": 100
+}

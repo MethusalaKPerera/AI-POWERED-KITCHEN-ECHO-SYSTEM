@@ -1,0 +1,44 @@
+{
+  "id": "recipe_211",
+  "name": "Isso Thel Dala (Prawn Stir Fry)",
+  "name_sinhala": "ඉස්සෝ තෙල් දාල",
+  "name_tamil": "இறால் வறுவல்",
+  "category": "Curry",
+  "region": "Coastal",
+  "description": "Dry prawn stir fry with onions and spices. Rice puller specialty.",
+  "ingredients": [
+    "500g prawns, cleaned",
+    "3 onions, sliced",
+    "4 green chilies, sliced",
+    "20 curry leaves (fresh, not dried)",
+    "2 tbsp chili powder",
+    "1 tsp turmeric",
+    "1 tsp black pepper",
+    "3 tbsp coconut oil (traditional - do not substitute)",
+    "Salt to taste"
+  ],
+  "instructions": [
+    "Devein and clean prawns",
+    "Heat coconut oil in pan",
+    "Add curry leaves and onions (Curry leaves must be fresh for authentic taste)",
+    "Sauté until onions are golden",
+    "Add all spices and fry",
+    "Add prawns and green chilies",
+    "Stir fry on high heat for 5 minutes",
+    "Cook until prawns are done and dry",
+    "Adjust salt and serve"
+  ],
+  "prep_time_minutes": 15,
+  "cook_time_minutes": 15,
+  "servings": 4,
+  "difficulty": "Easy",
+  "tags": [
+    "seafood",
+    "quick",
+    "dry curry",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Must be dry, not gravy. High heat cooking preserves prawn texture. Called 'thel dala' meaning fried in oil.",
+  "authenticity_score": 100
+}

@@ -1,0 +1,43 @@
+{
+  "id": "recipe_120",
+  "name": "Pol Toffee (Coconut Toffee)",
+  "name_sinhala": "පොල් ටොෆි",
+  "name_tamil": "தேங்காய் டாஃபி",
+  "category": "Dessert",
+  "region": "Southern",
+  "description": "Chewy coconut jaggery toffee",
+  "ingredients": [
+    "3 cups grated coconut",
+    "2 cups palm jaggery (hakuru)",
+    "1 tsp cardamom",
+    "1/2 cup cashews"
+  ],
+  "instructions": [
+    "Melt jaggery in pan",
+    "Add grated coconut",
+    "Cook stirring constantly",
+    "Mixture will thicken",
+    "Add cardamom and cashews",
+    "Test by dropping in water",
+    "Should form soft ball",
+    "Pour into greased tray",
+    "Cool and cut"
+  ],
+  "prep_time_minutes": 10,
+  "cook_time_minutes": 30,
+  "servings": 25,
+  "difficulty": "Medium",
+  "tags": [
+    "southern",
+    "dessert",
+    "chewy",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Made during coconut season",
+  "authenticity_score": 11.0,
+  "description_sinhala": "හපන පොල් හකුරු ටොෆි",
+  "description_tamil": "Chewy coconut jaggery toffee",
+  "cultural_notes_sinhala": "පොල් කාලෙට හදනවා",
+  "cultural_notes_tamil": "தேங்காய் பருவத்தில் தயாரிக்கப்படுகிறது"
+}
