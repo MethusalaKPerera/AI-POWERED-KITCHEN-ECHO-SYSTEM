@@ -1,0 +1,48 @@
+{
+  "id": "recipe_018",
+  "name": "Parippu (Red Lentil Curry)",
+  "name_sinhala": "පරිප්පු",
+  "name_tamil": "பருப்பு",
+  "category": "Curry",
+  "region": "General",
+  "description": "Simple red lentil curry, daily staple",
+  "ingredients": [
+    "1 cup red lentils",
+    "200ml coconut milk",
+    "2 cups water",
+    "1 tsp turmeric",
+    "1 tsp cumin seeds",
+    "2 green chilies",
+    "1 sprig curry leaves (fresh, not dried)",
+    "1 onion, sliced",
+    "2 tbsp oil",
+    "Salt to taste"
+  ],
+  "instructions": [
+    "Wash lentils",
+    "Boil with water and turmeric until soft",
+    "Add coconut milk",
+    "For tempering: heat oil, add cumin",
+    "Add curry leaves, onions, chilies (Curry leaves must be fresh for authentic taste)",
+    "Pour over lentils",
+    "Mix and serve"
+  ],
+  "prep_time_minutes": 5,
+  "cook_time_minutes": 20,
+  "servings": 4,
+  "difficulty": "Easy",
+  "tags": [
+    "everyday",
+    "vegetarian",
+    "protein-rich",
+    "simple",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Eaten daily with rice, essential Sri Lankan dish",
+  "authenticity_score": 11.0,
+  "description_sinhala": "සරල රතු පරිප්පු ව්‍යංජනය, දෛනික ප්‍රධාන ආහාරය",
+  "description_tamil": "எளிய சிவப்பு பருப்பு கறி, தினசரி முக்கிய உணவு",
+  "cultural_notes_sinhala": "ශ්‍රී ලංකාවේ අත්‍යවශ්‍ය ආහාරයක් වන බත් සමඟ දිනපතා අනුභව කරනු ලැබේ",
+  "cultural_notes_tamil": "இலங்கையின் அத்தியாவசிய உணவான அரிசியுடன் தினமும் சாப்பிடலாம்"
+}

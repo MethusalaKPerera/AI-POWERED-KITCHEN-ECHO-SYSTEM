@@ -1,0 +1,44 @@
+{
+  "id": "recipe_027",
+  "name": "Kiri Hodi (Coconut Milk Gravy)",
+  "name_sinhala": "කිරි හොදි",
+  "name_tamil": "தேங்காய் பால் குழம்பு",
+  "category": "Curry",
+  "region": "General",
+  "description": "Mild coconut milk curry, served with kiribath",
+  "ingredients": [
+    "400ml coconut milk",
+    "1 onion, sliced",
+    "2 green chilies",
+    "1/2 tsp turmeric",
+    "1 sprig curry leaves (fresh, not dried)",
+    "Juice of 1 lime",
+    "Salt to taste"
+  ],
+  "instructions": [
+    "Heat coconut milk gently",
+    "Add onions, chilies, curry leaves (Curry leaves must be fresh for authentic taste)",
+    "Add turmeric and salt",
+    "Simmer for 10 minutes",
+    "Add lime juice at the end",
+    "Don't boil after adding lime",
+    "Serve with kiribath"
+  ],
+  "prep_time_minutes": 5,
+  "cook_time_minutes": 15,
+  "servings": 4,
+  "difficulty": "Easy",
+  "tags": [
+    "mild",
+    "vegetarian",
+    "coconut-based",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Traditional accompaniment to kiribath at New Year",
+  "authenticity_score": 11.0,
+  "description_sinhala": "මෘදු පොල් කිරි ව්‍යංජනය, කිරිබත් සමඟ පිළිගැන්වේ",
+  "description_tamil": "லேசான தேங்காய் பால் கறி, கிரிபாத்துடன் பரிமாறப்பட்டது",
+  "cultural_notes_sinhala": "අලුත් අවුරුද්දේ කිරිබත් සඳහා සම්ප්‍රදායික වාදනය",
+  "cultural_notes_tamil": "புத்தாண்டில் கிரிபாத்தின் பாரம்பரிய துணை"
+}

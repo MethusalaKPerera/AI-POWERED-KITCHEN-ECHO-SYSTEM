@@ -1,0 +1,49 @@
+{
+  "id": "recipe_028",
+  "name": "Cuttlefish Curry",
+  "name_sinhala": "දැල්ල කරිය",
+  "name_tamil": "கணவாய் கறி",
+  "category": "Curry",
+  "region": "Coastal",
+  "description": "Tender cuttlefish in spicy curry",
+  "ingredients": [
+    "500g cuttlefish, cleaned and cut",
+    "300ml coconut milk",
+    "2 tbsp curry powder",
+    "1 tbsp chili powder",
+    "1 tsp turmeric",
+    "2 onions, sliced",
+    "1 sprig curry leaves (fresh, not dried)",
+    "2 tbsp tamarind paste",
+    "3 tbsp oil",
+    "Salt to taste"
+  ],
+  "instructions": [
+    "Clean cuttlefish thoroughly",
+    "Cut into rings",
+    "Heat oil and sauté onions",
+    "Add curry powder, chili, turmeric",
+    "Add cuttlefish and mix",
+    "Add tamarind paste",
+    "Add coconut milk",
+    "Simmer until tender (30-40 min)",
+    "Add curry leaves (Curry leaves must be fresh for authentic taste)"
+  ],
+  "prep_time_minutes": 25,
+  "cook_time_minutes": 40,
+  "servings": 4,
+  "difficulty": "Medium",
+  "tags": [
+    "seafood",
+    "spicy",
+    "tangy",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Requires slow cooking to make cuttlefish tender Use fresh fish from coastal markets. Goraka (garcinia) is essential for authentic sour taste - never substitute with tamarind. The curry should have a deep red color from roasted spices.",
+  "authenticity_score": 10.92,
+  "description_sinhala": "කුළුබඩු සහිත කරිවල ටෙන්ඩර් කට්ල්ෆිෂ්",
+  "description_tamil": "காரமான கறியில் மென்மையான கட்ஃபிஷ்",
+  "cultural_notes_sinhala": "කට්ල්ෆිෂ් ටෙන්ඩර් කිරීම සඳහා මන්දගාමී ආහාර පිසීම අවශ්ය වේ",
+  "cultural_notes_tamil": "கட்ஃபிஷை மென்மையாக்க மெதுவாக சமைக்க வேண்டும்"
+}

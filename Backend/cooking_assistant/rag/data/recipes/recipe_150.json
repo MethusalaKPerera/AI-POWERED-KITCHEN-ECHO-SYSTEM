@@ -1,0 +1,49 @@
+{
+  "id": "recipe_150",
+  "name": "Lamprais (Christmas Special)",
+  "name_sinhala": "ලම්ප්‍රයිස් (නත්තල)",
+  "name_tamil": "லம்ப்ரைஸ்",
+  "category": "Rice Dish",
+  "region": "Burgher",
+  "description": "Dutch Burgher rice packet for Christmas",
+  "ingredients": [
+    "3 cups rice",
+    "Chicken curry",
+    "Beef curry",
+    "Brinjal moju",
+    "Seeni sambol",
+    "Boiled eggs",
+    "Prawn blachan",
+    "Banana leaves",
+    "Stock"
+  ],
+  "instructions": [
+    "Cook rice in meat stock",
+    "Prepare all curries and sambols",
+    "Cut banana leaves into squares",
+    "Place rice in center",
+    "Add all accompaniments",
+    "Fold into neat packet",
+    "Tie with string",
+    "Bake at 180°C for 25 minutes",
+    "Serve hot in packet"
+  ],
+  "prep_time_minutes": 90,
+  "cook_time_minutes": 50,
+  "servings": 8,
+  "difficulty": "Hard",
+  "tags": [
+    "christmas",
+    "burgher",
+    "rice",
+    "elaborate",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Grand Christmas lunch centerpiece",
+  "authenticity_score": 1.0,
+  "description_sinhala": "නත්තලට ලන්දේසි බර්ගර් බත් පැකට්ටුව",
+  "description_tamil": "கிறிஸ்மஸுக்கான டச்சு பர்கர் அரிசி பாக்கெட்",
+  "cultural_notes_sinhala": "මහා නත්තල් දිවා ආහාර මධ්යස්ථානය",
+  "cultural_notes_tamil": "கிராண்ட் கிறிஸ்துமஸ் மதிய உணவு மையப்பகுதி"
+}

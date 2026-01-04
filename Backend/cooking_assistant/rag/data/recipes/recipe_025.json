@@ -1,0 +1,51 @@
+{
+  "id": "recipe_025",
+  "name": "Isso Curry (Prawn Curry)",
+  "name_sinhala": "ඉස්සෝ කරිය",
+  "name_tamil": "இறால் கறி",
+  "category": "Curry",
+  "region": "Coastal",
+  "description": "Rich prawn curry with coconut milk",
+  "ingredients": [
+    "500g prawns, cleaned",
+    "400ml coconut milk",
+    "2 tbsp curry powder",
+    "1 tsp chili powder",
+    "1 tsp turmeric",
+    "2 onions, sliced",
+    "4 cloves garlic",
+    "1 inch ginger",
+    "1 sprig curry leaves (fresh, not dried)",
+    "3 green chilies",
+    "2 tbsp oil",
+    "Salt to taste"
+  ],
+  "instructions": [
+    "Devein and clean prawns",
+    "Marinate with turmeric and salt",
+    "Heat oil, sauté onions, garlic, ginger",
+    "Add curry powder and chili",
+    "Add thin coconut milk",
+    "Add prawns and simmer",
+    "Add thick coconut milk",
+    "Add curry leaves (Curry leaves must be fresh for authentic taste)",
+    "Cook for 5 minutes"
+  ],
+  "prep_time_minutes": 20,
+  "cook_time_minutes": 15,
+  "servings": 4,
+  "difficulty": "Medium",
+  "tags": [
+    "seafood",
+    "coconut-based",
+    "spicy",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Coastal specialty, best with fresh prawns",
+  "authenticity_score": 10.95,
+  "description_sinhala": "පොල් කිරි සමග පොහොසත් ඉස්සන් කරිය",
+  "description_tamil": "தேங்காய் பாலுடன் நிறைந்த இறால் கறி",
+  "cultural_notes_sinhala": "වෙරළබඩ විශේෂත්වය, නැවුම් ඉස්සන් සමඟ හොඳම",
+  "cultural_notes_tamil": "கடற்கரை சிறப்பு, புதிய இறால்களுடன் சிறந்தது"
+}

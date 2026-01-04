@@ -1,0 +1,50 @@
+{
+  "id": "recipe_112",
+  "name": "Batu Moju (Southern Style)",
+  "name_sinhala": "බෝංචි මොජු දකුණු විලාසය",
+  "name_tamil": "பீன்ஸ் ஊறுகாய்",
+  "category": "Sambol",
+  "region": "Southern",
+  "description": "Sweet and sour bean pickle with extra spices",
+  "ingredients": [
+    "300g green beans",
+    "2 onions, sliced",
+    "3 tbsp mustard seeds",
+    "3 tbsp vinegar",
+    "3 tbsp sugar",
+    "2 tbsp chili powder",
+    "1 tsp turmeric",
+    "15 curry leaves (fresh, not dried)",
+    "Oil for frying",
+    "Salt"
+  ],
+  "instructions": [
+    "Cut beans and blanch",
+    "Fry until crispy",
+    "Fry onions separately",
+    "In oil, add mustard seeds",
+    "Add turmeric and chili powder",
+    "Add fried beans and onions",
+    "Add vinegar and sugar",
+    "Add curry leaves (Curry leaves must be fresh for authentic taste)",
+    "Mix and cool"
+  ],
+  "prep_time_minutes": 15,
+  "cook_time_minutes": 25,
+  "servings": 8,
+  "difficulty": "Medium",
+  "tags": [
+    "southern",
+    "pickle",
+    "sweet-sour",
+    "spicy",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Spicier than other regional versions",
+  "authenticity_score": 10.95,
+  "description_sinhala": "අතිරේක කුළු බඩු සමග පැණිරස හා ඇඹුල් බෝංචි අච්චාරු",
+  "description_tamil": "கூடுதல் மசாலாப் பொருட்களுடன் இனிப்பு மற்றும் புளிப்பு பீன் ஊறுகாய்",
+  "cultural_notes_sinhala": "අනෙකුත් කලාපීය අනුවාදවලට වඩා තියුණුය",
+  "cultural_notes_tamil": "மற்ற பிராந்திய பதிப்புகளை விட காரமானது"
+}

@@ -1,0 +1,48 @@
+{
+  "id": "recipe_098",
+  "name": "Tomato Thokku (Tomato Chutney)",
+  "name_sinhala": "තක්කාලි තොක්කු",
+  "name_tamil": "தக்காளி தொக்கு",
+  "category": "Sambol",
+  "region": "Jaffna",
+  "description": "Spicy tomato preserve",
+  "ingredients": [
+    "1kg tomatoes, chopped",
+    "10 garlic cloves",
+    "2 tbsp chili powder",
+    "1 tsp mustard seeds",
+    "1 tsp fenugreek seeds",
+    "10 curry leaves (fresh, not dried)",
+    "1/2 cup oil",
+    "Salt to taste",
+    "1 tsp palm jaggery (hakuru)"
+  ],
+  "instructions": [
+    "Heat oil and add mustard, fenugreek",
+    "Add garlic and fry",
+    "Add tomatoes and salt",
+    "Cook until soft and mushy",
+    "Add chili powder",
+    "Cook until oil separates",
+    "Add curry leaves and jaggery (Curry leaves must be fresh for authentic taste)",
+    "Cool and store"
+  ],
+  "prep_time_minutes": 10,
+  "cook_time_minutes": 30,
+  "servings": 20,
+  "difficulty": "Easy",
+  "tags": [
+    "jaffna",
+    "condiment",
+    "spicy",
+    "preserve",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Long-lasting condiment, stored in clay pots",
+  "authenticity_score": 11.0,
+  "description_sinhala": "කුළුබඩු සහිත තක්කාලි සංරක්ෂණය",
+  "description_tamil": "காரமான தக்காளி பாதுகாப்பு",
+  "cultural_notes_sinhala": "දිගු කල් පවතින කුළුබඩු, මැටි භාජන වල ගබඩා කර ඇත",
+  "cultural_notes_tamil": "களிமண் பானைகளில் சேமித்து வைக்கப்படும் நீண்ட கால மசாலா"
+}

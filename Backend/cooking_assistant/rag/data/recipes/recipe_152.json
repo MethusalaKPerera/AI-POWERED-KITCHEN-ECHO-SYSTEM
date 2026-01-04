@@ -1,0 +1,47 @@
+{
+  "id": "recipe_152",
+  "name": "Ginger Beer (Christmas)",
+  "name_sinhala": "ඉඟුරු බියර් (නත්තල)",
+  "name_tamil": "இஞ்சி பீர்",
+  "category": "Beverage",
+  "region": "Burgher",
+  "description": "Homemade ginger beer for Christmas",
+  "ingredients": [
+    "150g fresh ginger, crushed",
+    "2.5 cups sugar",
+    "3 liters water",
+    "1 tsp cream of tartar",
+    "1/2 tsp yeast",
+    "Juice of 3 limes"
+  ],
+  "instructions": [
+    "Boil ginger in 1 liter water",
+    "Strain ginger water",
+    "Add sugar and stir to dissolve",
+    "Add cream of tartar",
+    "Add remaining water",
+    "Cool to lukewarm",
+    "Add yeast and lime juice",
+    "Pour into bottles",
+    "Leave at room temp 24-48 hours",
+    "Refrigerate before serving"
+  ],
+  "prep_time_minutes": 25,
+  "cook_time_minutes": 15,
+  "servings": 12,
+  "difficulty": "Easy",
+  "tags": [
+    "christmas",
+    "burgher",
+    "beverage",
+    "fermented",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Traditional Christmas drink, non-alcoholic",
+  "authenticity_score": 1.0,
+  "description_sinhala": "නත්තල් සඳහා ගෙදර හැදූ ජින්ජර් බියර්",
+  "description_tamil": "கிறிஸ்துமஸுக்கு வீட்டில் தயாரிக்கப்பட்ட இஞ்சி பீர்",
+  "cultural_notes_sinhala": "සාම්ප්‍රදායික නත්තල් බීම, මධ්‍යසාර නොවන",
+  "cultural_notes_tamil": "பாரம்பரிய கிறிஸ்துமஸ் பானம், மது அல்லாதது"
+}

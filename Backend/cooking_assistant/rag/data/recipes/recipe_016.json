@@ -1,0 +1,40 @@
+{
+  "id": "recipe_016",
+  "name": "Pittu",
+  "name_sinhala": "පිට්ටු",
+  "name_tamil": "புட்டு",
+  "category": "Bread",
+  "region": "General",
+  "description": "Steamed cylinders of rice flour and coconut",
+  "ingredients": [
+    "2 cups rice flour",
+    "1 cup grated coconut",
+    "Water as needed",
+    "Salt to taste"
+  ],
+  "instructions": [
+    "Mix rice flour with water to get breadcrumb consistency",
+    "Add salt",
+    "Layer rice flour and coconut in pittu maker",
+    "Alternate layers",
+    "Steam for 10-15 minutes",
+    "Remove and serve hot",
+    "Serve with curry or banana and sugar"
+  ],
+  "prep_time_minutes": 15,
+  "cook_time_minutes": 15,
+  "servings": 4,
+  "difficulty": "Medium",
+  "tags": [
+    "breakfast",
+    "steamed",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Traditional breakfast, can be eaten sweet or savory",
+  "authenticity_score": 1.0,
+  "description_sinhala": "සහල් පිටි සහ පොල් තැම්බූ සිලින්ඩර",
+  "description_tamil": "அரிசி மாவு மற்றும் தேங்காய் வேகவைத்த சிலிண்டர்கள்",
+  "cultural_notes_sinhala": "සාම්ප්‍රදායික උදෑසන ආහාරය, පැණිරස හෝ රසවත් ලෙස අනුභව කළ හැකිය",
+  "cultural_notes_tamil": "பாரம்பரிய காலை உணவை இனிப்பு அல்லது காரமாக உண்ணலாம்"
+}

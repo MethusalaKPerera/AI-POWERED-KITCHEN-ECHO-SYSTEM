@@ -1,0 +1,3421 @@
+{
+  "total_ingredients": 262,
+  "by_category": {
+    "Spices & Seasonings": 60,
+    "Proteins": 36,
+    "Vegetables": 22,
+    "Dairy & Liquids": 18,
+    "Staples": 57,
+    "Other": 69
+  },
+  "ingredients": [
+    {
+      "name": "Salt To Taste",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 43,
+      "common": true,
+      "used_in_recipes": 43,
+      "example_recipes": [
+        "Chicken Curry (Kukul Mas Curry)",
+        "Dhal Curry (Parippu Curry)",
+        "Fish Curry (Malu Curry)"
+      ]
+    },
+    {
+      "name": "Salt",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 40,
+      "common": true,
+      "used_in_recipes": 40,
+      "example_recipes": [
+        "Coconut Sambol (Pol Sambol)",
+        "String Hoppers (Idiyappam)",
+        "Kiribath (Milk Rice)"
+      ]
+    },
+    {
+      "name": "Reen Chilies",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 37,
+      "common": true,
+      "used_in_recipes": 37,
+      "example_recipes": [
+        "Dhal Curry (Parippu Curry)",
+        "Fish Curry (Malu Curry)",
+        "Potato Curry (Ala Curry)"
+      ]
+    },
+    {
+      "name": "Oil",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 35,
+      "common": true,
+      "used_in_recipes": 35,
+      "example_recipes": [
+        "Dhal Curry (Parippu Curry)",
+        "Fish Curry (Malu Curry)",
+        "Potato Curry (Ala Curry)"
+      ]
+    },
+    {
+      "name": "Chili Powder",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 32,
+      "common": true,
+      "used_in_recipes": 32,
+      "example_recipes": [
+        "Chicken Curry (Kukul Mas Curry)",
+        "Dhal Curry (Parippu Curry)",
+        "Coconut Sambol (Pol Sambol)"
+      ]
+    },
+    {
+      "name": "Oil For Frying",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 29,
+      "common": true,
+      "used_in_recipes": 29,
+      "example_recipes": [
+        "Isso Wade (Prawn Fritters)",
+        "Kokis",
+        "Brinjal Moju (Eggplant Pickle)"
+      ]
+    },
+    {
+      "name": "Coconut Milk",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Dairy & Liquids",
+      "usage_count": 28,
+      "common": true,
+      "used_in_recipes": 28,
+      "example_recipes": [
+        "Dhal Curry (Parippu Curry)",
+        "Fish Curry (Malu Curry)",
+        "Potato Curry (Ala Curry)"
+      ]
+    },
+    {
+      "name": "2 Onions",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Vegetables",
+      "usage_count": 27,
+      "common": true,
+      "used_in_recipes": 27,
+      "example_recipes": [
+        "Egg Curry (Bittara Curry)",
+        "Devilled Chicken",
+        "Ambul Thiyal (Sour Fish Curry)"
+      ]
+    },
+    {
+      "name": "Rice Flour",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 26,
+      "common": true,
+      "used_in_recipes": 26,
+      "example_recipes": [
+        "String Hoppers (Idiyappam)",
+        "Hoppers (Appa)",
+        "Pittu"
+      ]
+    },
+    {
+      "name": "Sugar",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 26,
+      "common": true,
+      "used_in_recipes": 26,
+      "example_recipes": [
+        "Hoppers (Appa)",
+        "Seeni Sambol",
+        "Kokis"
+      ]
+    },
+    {
+      "name": "1 Sprig",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 23,
+      "common": true,
+      "used_in_recipes": 23,
+      "example_recipes": [
+        "Chicken Curry (Kukul Mas Curry)",
+        "Dhal Curry (Parippu Curry)",
+        "Fish Curry (Malu Curry)"
+      ]
+    },
+    {
+      "name": "Coconut",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 23,
+      "common": true,
+      "used_in_recipes": 23,
+      "example_recipes": [
+        "Gotukola Sambol",
+        "Pittu",
+        "Pol Roti (Coconut Roti)"
+      ]
+    },
+    {
+      "name": "10 Curry Leaves",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 23,
+      "common": true,
+      "used_in_recipes": 23,
+      "example_recipes": [
+        "Brinjal Moju (Eggplant Pickle)",
+        "Brinjal Moju (Eggplant Pickle)",
+        "Jaffna Mutton Curry"
+      ]
+    },
+    {
+      "name": "1 Onion",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Vegetables",
+      "usage_count": 22,
+      "common": true,
+      "used_in_recipes": 22,
+      "example_recipes": [
+        "Potato Curry (Ala Curry)",
+        "Kottu Roti",
+        "Isso Wade (Prawn Fritters)"
+      ]
+    },
+    {
+      "name": "Mustard Seeds",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 20,
+      "common": true,
+      "used_in_recipes": 20,
+      "example_recipes": [
+        "Dhal Curry (Parippu Curry)",
+        "Potato Curry (Ala Curry)",
+        "Beetroot Curry"
+      ]
+    },
+    {
+      "name": "Curry Powder",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 20,
+      "common": true,
+      "used_in_recipes": 20,
+      "example_recipes": [
+        "Fish Curry (Malu Curry)",
+        "Potato Curry (Ala Curry)",
+        "Egg Curry (Bittara Curry)"
+      ]
+    },
+    {
+      "name": "Jaggery",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 18,
+      "common": true,
+      "used_in_recipes": 18,
+      "example_recipes": [
+        "Watalappan",
+        "Aggala (Sweet Balls)",
+        "Athirasa (Jaggery Pancakes)"
+      ]
+    },
+    {
+      "name": "1/ Cardamom",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 18,
+      "common": true,
+      "used_in_recipes": 18,
+      "example_recipes": [
+        "Athirasa (Jaggery Pancakes)",
+        "Kalu Dodol (Black Toffee)",
+        "Aasmi (Crispy Sweets)"
+      ]
+    },
+    {
+      "name": "Ginger",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Vegetables",
+      "usage_count": 17,
+      "common": true,
+      "used_in_recipes": 17,
+      "example_recipes": [
+        "Chicken Curry (Kukul Mas Curry)",
+        "Fish Curry (Malu Curry)",
+        "Isso Curry (Prawn Curry)"
+      ]
+    },
+    {
+      "name": "Water",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 17,
+      "common": true,
+      "used_in_recipes": 17,
+      "example_recipes": [
+        "Dhal Curry (Parippu Curry)",
+        "String Hoppers (Idiyappam)",
+        "Kiribath (Milk Rice)"
+      ]
+    },
+    {
+      "name": "Turmeric",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 15,
+      "common": true,
+      "used_in_recipes": 15,
+      "example_recipes": [
+        "Fish Curry (Malu Curry)",
+        "Egg Curry (Bittara Curry)",
+        "Parippu (Red Lentil Curry)"
+      ]
+    },
+    {
+      "name": "1/ Turmeric",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 13,
+      "common": true,
+      "used_in_recipes": 13,
+      "example_recipes": [
+        "Potato Curry (Ala Curry)",
+        "Beetroot Curry",
+        "Cashew Curry"
+      ]
+    },
+    {
+      "name": "Cardamom",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 12,
+      "common": true,
+      "used_in_recipes": 12,
+      "example_recipes": [
+        "Bibikkan (Coconut Cake)",
+        "Bibikkan (Coconut Cake)",
+        "Rasa Kavili (Red Rice Flour Sweet)"
+      ]
+    },
+    {
+      "name": "1/ Coconut Milk",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Dairy & Liquids",
+      "usage_count": 11,
+      "common": true,
+      "used_in_recipes": 11,
+      "example_recipes": [
+        "Hoppers (Appa)",
+        "Kokis",
+        "Kavum (Oil Cakes)"
+      ]
+    },
+    {
+      "name": "Butter",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Dairy & Liquids",
+      "usage_count": 11,
+      "common": true,
+      "used_in_recipes": 11,
+      "example_recipes": [
+        "Patties (Curry Puffs)",
+        "Murukku (Crispy Snack)",
+        "Milk Toffee"
+      ]
+    },
+    {
+      "name": "Kithul Treacle",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 11,
+      "common": true,
+      "used_in_recipes": 11,
+      "example_recipes": [
+        "Kavum (Oil Cakes)",
+        "Kalu Dodol (Black Toffee)",
+        "Curd with Treacle"
+      ]
+    },
+    {
+      "name": "1/ Cashews",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Proteins",
+      "usage_count": 10,
+      "common": true,
+      "used_in_recipes": 10,
+      "example_recipes": [
+        "Kalu Dodol (Black Toffee)",
+        "Milk Toffee",
+        "Bibikkan (Coconut Cake)"
+      ]
+    },
+    {
+      "name": "Cumin Seeds",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 9,
+      "common": true,
+      "used_in_recipes": 9,
+      "example_recipes": [
+        "Dhal Curry (Parippu Curry)",
+        "Parippu (Red Lentil Curry)",
+        "Murukku (Crispy Snack)"
+      ]
+    },
+    {
+      "name": "Urad Dal",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Proteins",
+      "usage_count": 9,
+      "common": true,
+      "used_in_recipes": 9,
+      "example_recipes": [
+        "Isso Wade (Prawn Fritters)",
+        "Wade (Lentil Fritters)",
+        "Wade (Lentil Fritters)"
+      ]
+    },
+    {
+      "name": "Cashews",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Proteins",
+      "usage_count": 9,
+      "common": true,
+      "used_in_recipes": 9,
+      "example_recipes": [
+        "Cashew Curry",
+        "Pani Pol (Coconut Toffee)",
+        "Pani Pol (Coconut Toffee)"
+      ]
+    },
+    {
+      "name": "Water As Needed",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 8,
+      "common": true,
+      "used_in_recipes": 8,
+      "example_recipes": [
+        "Pittu",
+        "Pol Roti (Coconut Roti)",
+        "Aggala (Sweet Balls)"
+      ]
+    },
+    {
+      "name": "Vinegar",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 8,
+      "common": true,
+      "used_in_recipes": 8,
+      "example_recipes": [
+        "Devilled Chicken",
+        "Brinjal Moju (Eggplant Pickle)",
+        "Batu Moju (Bean Pickle)"
+      ]
+    },
+    {
+      "name": "Arlic Cloves",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 8,
+      "common": true,
+      "used_in_recipes": 8,
+      "example_recipes": [
+        "Jaffna Crab Curry",
+        "Jaffna Mutton Curry",
+        "Crab Kool (Crab Soup)"
+      ]
+    },
+    {
+      "name": "2 Eggs",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Proteins",
+      "usage_count": 7,
+      "common": true,
+      "used_in_recipes": 7,
+      "example_recipes": [
+        "Kottu Roti",
+        "Kokis",
+        "Cutlets (Potato Croquettes)"
+      ]
+    },
+    {
+      "name": "Tamarind Paste",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 7,
+      "common": true,
+      "used_in_recipes": 7,
+      "example_recipes": [
+        "Seeni Sambol",
+        "Cuttlefish Curry",
+        "Cuttlefish Curry"
+      ]
+    },
+    {
+      "name": "Ghee",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Dairy & Liquids",
+      "usage_count": 7,
+      "common": true,
+      "used_in_recipes": 7,
+      "example_recipes": [
+        "Chicken Biryani Sri Lankan Style",
+        "Chicken Biryani Sri Lankan Style",
+        "Thengai Sadam (Coconut Rice)"
+      ]
+    },
+    {
+      "name": "1/ Water",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 7,
+      "common": true,
+      "used_in_recipes": 7,
+      "example_recipes": [
+        "Athirasa (Jaggery Pancakes)",
+        "Aasmi (Crispy Sweets)",
+        "Milk Toffee"
+      ]
+    },
+    {
+      "name": "2 Tomatoes",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Vegetables",
+      "usage_count": 7,
+      "common": true,
+      "used_in_recipes": 7,
+      "example_recipes": [
+        "Jaffna Crab Curry",
+        "Jaffna Mutton Curry",
+        "Rasam (Tamarind Soup)"
+      ]
+    },
+    {
+      "name": "Rice",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 7,
+      "common": true,
+      "used_in_recipes": 7,
+      "example_recipes": [
+        "Thayir Sadam (Curd Rice)",
+        "Elumichai Sadam (Lemon Rice)",
+        "Pongal (Savory Rice)"
+      ]
+    },
+    {
+      "name": "Cardamom Powder",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 7,
+      "common": true,
+      "used_in_recipes": 7,
+      "example_recipes": [
+        "Kiri Aluwa (Milk Toffee Squares)",
+        "Mung Kavum (New Year Special)",
+        "Athirasa (New Year Pancakes)"
+      ]
+    },
+    {
+      "name": "Chicken",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Proteins",
+      "usage_count": 6,
+      "common": true,
+      "used_in_recipes": 6,
+      "example_recipes": [
+        "Chicken Curry (Kukul Mas Curry)",
+        "Kottu Roti",
+        "Devilled Chicken"
+      ]
+    },
+    {
+      "name": "Lime Juice",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 6,
+      "common": true,
+      "used_in_recipes": 6,
+      "example_recipes": [
+        "Coconut Sambol (Pol Sambol)",
+        "Gotukola Sambol",
+        "Lunu Miris"
+      ]
+    },
+    {
+      "name": "Maldive Fish",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Proteins",
+      "usage_count": 6,
+      "common": true,
+      "used_in_recipes": 6,
+      "example_recipes": [
+        "Coconut Sambol (Pol Sambol)",
+        "Seeni Sambol",
+        "Gotukola Sambol"
+      ]
+    },
+    {
+      "name": "Black Pepper",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 6,
+      "common": true,
+      "used_in_recipes": 6,
+      "example_recipes": [
+        "Ambul Thiyal (Sour Fish Curry)",
+        "Ambul Thiyal (Sour Fish Curry)",
+        "Jaffna Crab Curry"
+      ]
+    },
+    {
+      "name": "Oil For",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 6,
+      "common": true,
+      "used_in_recipes": 6,
+      "example_recipes": [
+        "Athirasa (Jaggery Pancakes)",
+        "Athirasa (Jaggery Pancakes)",
+        "Kuzhi Paniyaram"
+      ]
+    },
+    {
+      "name": "Basmati Rice",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 5,
+      "common": true,
+      "used_in_recipes": 5,
+      "example_recipes": [
+        "Lamprais",
+        "Chicken Biryani Sri Lankan Style",
+        "Chicken Biryani Sri Lankan Style"
+      ]
+    },
+    {
+      "name": "1/ Cardamom Powder",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 5,
+      "common": true,
+      "used_in_recipes": 5,
+      "example_recipes": [
+        "Watalappan",
+        "Kavum (Oil Cakes)",
+        "Aggala (Sweet Balls)"
+      ]
+    },
+    {
+      "name": "1/ Nutmeg",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 5,
+      "common": true,
+      "used_in_recipes": 5,
+      "example_recipes": [
+        "Watalappan",
+        "Bibikkan (Coconut Cake)",
+        "Bibikkan (Coconut Cake)"
+      ]
+    },
+    {
+      "name": "Prawns",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Proteins",
+      "usage_count": 5,
+      "common": true,
+      "used_in_recipes": 5,
+      "example_recipes": [
+        "Isso Wade (Prawn Fritters)",
+        "Isso Curry (Prawn Curry)",
+        "Isso Curry (Prawn Curry)"
+      ]
+    },
+    {
+      "name": "1/ Chili Powder",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 5,
+      "common": true,
+      "used_in_recipes": 5,
+      "example_recipes": [
+        "Gotukola Sambol",
+        "Murukku (Crispy Snack)",
+        "Murukku (Crispy Snack)"
+      ]
+    },
+    {
+      "name": "3 Onions",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Vegetables",
+      "usage_count": 5,
+      "common": true,
+      "used_in_recipes": 5,
+      "example_recipes": [
+        "Brinjal Moju (Eggplant Pickle)",
+        "Brinjal Moju (Eggplant Pickle)",
+        "Jaffna Crab Curry"
+      ]
+    },
+    {
+      "name": "Flour",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 5,
+      "common": true,
+      "used_in_recipes": 5,
+      "example_recipes": [
+        "Patties (Curry Puffs)",
+        "Patties (Curry Puffs)",
+        "Bole (Eid Bread)"
+      ]
+    },
+    {
+      "name": "Sesame Seeds",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 5,
+      "common": true,
+      "used_in_recipes": 5,
+      "example_recipes": [
+        "Murukku (Crispy Snack)",
+        "Murukku (Crispy Snack)",
+        "Thalaguli (Sesame Balls)"
+      ]
+    },
+    {
+      "name": "Ice Cubes",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 5,
+      "common": true,
+      "used_in_recipes": 5,
+      "example_recipes": [
+        "Faluda",
+        "Woodapple Juice",
+        "Faluda"
+      ]
+    },
+    {
+      "name": "Pinch Of Salt",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 5,
+      "common": true,
+      "used_in_recipes": 5,
+      "example_recipes": [
+        "Woodapple Juice",
+        "Woodapple Juice",
+        "Mung Kavum (New Year Special)"
+      ]
+    },
+    {
+      "name": "1/ Rice Flour",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 5,
+      "common": true,
+      "used_in_recipes": 5,
+      "example_recipes": [
+        "Mung Kavum",
+        "Mung Kavum",
+        "Milagai Bajji (Chili Fritters)"
+      ]
+    },
+    {
+      "name": "1. Jaggery",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 5,
+      "common": true,
+      "used_in_recipes": 5,
+      "example_recipes": [
+        "Aluwa (Diamond Shaped Sweet)",
+        "Thalaguli (Sesame Balls)",
+        "Unduwel (Sweet Coconut Balls)"
+      ]
+    },
+    {
+      "name": "4 Cloves Garlic",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 4,
+      "common": false,
+      "used_in_recipes": 4,
+      "example_recipes": [
+        "Chicken Curry (Kukul Mas Curry)",
+        "Fish Curry (Malu Curry)",
+        "Isso Curry (Prawn Curry)"
+      ]
+    },
+    {
+      "name": "Fish",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Proteins",
+      "usage_count": 4,
+      "common": false,
+      "used_in_recipes": 4,
+      "example_recipes": [
+        "Fish Curry (Malu Curry)",
+        "Kool (Seafood Soup)",
+        "Galle Fish Curry"
+      ]
+    },
+    {
+      "name": "1/ Salt",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 4,
+      "common": false,
+      "used_in_recipes": 4,
+      "example_recipes": [
+        "Hoppers (Appa)",
+        "Kokis",
+        "Kokis (Southern Style)"
+      ]
+    },
+    {
+      "name": "4 Potatoes",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Vegetables",
+      "usage_count": 4,
+      "common": false,
+      "used_in_recipes": 4,
+      "example_recipes": [
+        "Cutlets (Potato Croquettes)",
+        "Cutlets (Potato Croquettes)",
+        "Bonda (Potato Fritters)"
+      ]
+    },
+    {
+      "name": "1 Egg",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Proteins",
+      "usage_count": 4,
+      "common": false,
+      "used_in_recipes": 4,
+      "example_recipes": [
+        "Patties (Curry Puffs)",
+        "Aasmi (Crispy Sweets)",
+        "Patties (Curry Puffs)"
+      ]
+    },
+    {
+      "name": "1/ Cream",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Dairy & Liquids",
+      "usage_count": 4,
+      "common": false,
+      "used_in_recipes": 4,
+      "example_recipes": [
+        "Bombai Muttai (Candy Floss)",
+        "Ginger Beer",
+        "Bombai Muttai (Candy Floss)"
+      ]
+    },
+    {
+      "name": "Iters Water",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 4,
+      "common": false,
+      "used_in_recipes": 4,
+      "example_recipes": [
+        "Ginger Beer",
+        "Ginger Beer",
+        "Dansala Rice (Vesak Free Food)"
+      ]
+    },
+    {
+      "name": "Mung Flour",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Proteins",
+      "usage_count": 4,
+      "common": false,
+      "used_in_recipes": 4,
+      "example_recipes": [
+        "Mung Kavum",
+        "Mung Kavum",
+        "Mun Kavum (Mung Bean Cakes)"
+      ]
+    },
+    {
+      "name": "Fennel Seeds",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 4,
+      "common": false,
+      "used_in_recipes": 4,
+      "example_recipes": [
+        "Jaffna Crab Curry",
+        "Masala Vadai",
+        "Prawn Varuval (Dry Prawn Fry)"
+      ]
+    },
+    {
+      "name": "1/ Asafoetida",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 4,
+      "common": false,
+      "used_in_recipes": 4,
+      "example_recipes": [
+        "Masala Vadai",
+        "Milagai Bajji (Chili Fritters)",
+        "Bonda (Potato Fritters)"
+      ]
+    },
+    {
+      "name": "Thick Coconut Milk",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Dairy & Liquids",
+      "usage_count": 3,
+      "common": false,
+      "used_in_recipes": 3,
+      "example_recipes": [
+        "Chicken Curry (Kukul Mas Curry)",
+        "Galle Fish Curry",
+        "Kiribath (Milk Rice - New Year Special)"
+      ]
+    },
+    {
+      "name": "Roasted Curry Powder",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 3,
+      "common": false,
+      "used_in_recipes": 3,
+      "example_recipes": [
+        "Chicken Curry (Kukul Mas Curry)",
+        "Jaffna Crab Curry",
+        "Jaffna Mutton Curry"
+      ]
+    },
+    {
+      "name": "1 Stick Cinnamon",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 3,
+      "common": false,
+      "used_in_recipes": 3,
+      "example_recipes": [
+        "Chicken Curry (Kukul Mas Curry)",
+        "Ambul Thiyal (Sour Fish Curry)",
+        "Ambul Thiyal (Sour Fish Curry)"
+      ]
+    },
+    {
+      "name": "4 Cloves",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 3,
+      "common": false,
+      "used_in_recipes": 3,
+      "example_recipes": [
+        "Chicken Curry (Kukul Mas Curry)",
+        "Chicken Biryani Sri Lankan Style",
+        "Chicken Biryani Sri Lankan Style"
+      ]
+    },
+    {
+      "name": "Red Lentils",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Proteins",
+      "usage_count": 3,
+      "common": false,
+      "used_in_recipes": 3,
+      "example_recipes": [
+        "Dhal Curry (Parippu Curry)",
+        "Parippu (Red Lentil Curry)",
+        "Parippu Pol Sambol"
+      ]
+    },
+    {
+      "name": "Arge Onion",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Vegetables",
+      "usage_count": 3,
+      "common": false,
+      "used_in_recipes": 3,
+      "example_recipes": [
+        "Dhal Curry (Parippu Curry)",
+        "Coconut Sambol (Pol Sambol)",
+        "Fish Curry (Malu Curry)"
+      ]
+    },
+    {
+      "name": "Goraka",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 3,
+      "common": false,
+      "used_in_recipes": 3,
+      "example_recipes": [
+        "Fish Curry (Malu Curry)",
+        "Ambul Thiyal (Sour Fish Curry)",
+        "Ambul Thiyal (Sour Fish Curry)"
+      ]
+    },
+    {
+      "name": "2 Carrots",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Vegetables",
+      "usage_count": 3,
+      "common": false,
+      "used_in_recipes": 3,
+      "example_recipes": [
+        "Kottu Roti",
+        "Aviyal (Mixed Vegetable Curry)",
+        "Kootu (Vegetable with Lentils)"
+      ]
+    },
+    {
+      "name": "4 Eggs",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Proteins",
+      "usage_count": 3,
+      "common": false,
+      "used_in_recipes": 3,
+      "example_recipes": [
+        "Lamprais",
+        "Bibikkan (Coconut Cake)",
+        "Bibikkan (Coconut Cake)"
+      ]
+    },
+    {
+      "name": "1/ Fennel Seeds",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 3,
+      "common": false,
+      "used_in_recipes": 3,
+      "example_recipes": [
+        "Isso Wade (Prawn Fritters)",
+        "Wade (Lentil Fritters)",
+        "Wade (Lentil Fritters)"
+      ]
+    },
+    {
+      "name": "Salt And Pepper",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 3,
+      "common": false,
+      "used_in_recipes": 3,
+      "example_recipes": [
+        "Devilled Chicken",
+        "Cutlets (Potato Croquettes)",
+        "Cutlets (Potato Croquettes)"
+      ]
+    },
+    {
+      "name": "Green Beans",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Vegetables",
+      "usage_count": 3,
+      "common": false,
+      "used_in_recipes": 3,
+      "example_recipes": [
+        "Batu Moju (Bean Pickle)",
+        "Batu Moju (Bean Pickle)",
+        "Batu Moju (Southern Style)"
+      ]
+    },
+    {
+      "name": "1 Carrot",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Vegetables",
+      "usage_count": 3,
+      "common": false,
+      "used_in_recipes": 3,
+      "example_recipes": [
+        "Achcharu (Mixed Pickle)",
+        "Achcharu (Mixed Pickle)",
+        "Sambar (Lentil Vegetable Stew)"
+      ]
+    },
+    {
+      "name": "1/ Yogurt",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Dairy & Liquids",
+      "usage_count": 3,
+      "common": false,
+      "used_in_recipes": 3,
+      "example_recipes": [
+        "Chicken Biryani Sri Lankan Style",
+        "Chicken Biryani Sri Lankan Style",
+        "Aviyal (Mixed Vegetable Curry)"
+      ]
+    },
+    {
+      "name": "Ginger-Garlic Paste",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Vegetables",
+      "usage_count": 3,
+      "common": false,
+      "used_in_recipes": 3,
+      "example_recipes": [
+        "Chicken Biryani Sri Lankan Style",
+        "Chicken Biryani Sri Lankan Style",
+        "Buriyani (Eid Feast)"
+      ]
+    },
+    {
+      "name": "Garam Masala",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 3,
+      "common": false,
+      "used_in_recipes": 3,
+      "example_recipes": [
+        "Chicken Biryani Sri Lankan Style",
+        "Chicken Biryani Sri Lankan Style",
+        "Buriyani (Eid Feast)"
+      ]
+    },
+    {
+      "name": "1 Cinnamon Stick",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 3,
+      "common": false,
+      "used_in_recipes": 3,
+      "example_recipes": [
+        "Chicken Biryani Sri Lankan Style",
+        "Chicken Biryani Sri Lankan Style",
+        "Jaffna Mutton Curry"
+      ]
+    },
+    {
+      "name": "Saffron",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 3,
+      "common": false,
+      "used_in_recipes": 3,
+      "example_recipes": [
+        "Chicken Biryani Sri Lankan Style",
+        "Chicken Biryani Sri Lankan Style",
+        "Buriyani (Eid Feast)"
+      ]
+    },
+    {
+      "name": "Mint Leaves",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 3,
+      "common": false,
+      "used_in_recipes": 3,
+      "example_recipes": [
+        "Chicken Biryani Sri Lankan Style",
+        "Chicken Biryani Sri Lankan Style",
+        "Buriyani (Eid Feast)"
+      ]
+    },
+    {
+      "name": "1/ Wheat Flour",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 3,
+      "common": false,
+      "used_in_recipes": 3,
+      "example_recipes": [
+        "Aasmi (Crispy Sweets)",
+        "Aasmi (Crispy Sweets)",
+        "Aasmi (Eid Sweet)"
+      ]
+    },
+    {
+      "name": "Food Coloring",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 3,
+      "common": false,
+      "used_in_recipes": 3,
+      "example_recipes": [
+        "Aasmi (Crispy Sweets)",
+        "Aasmi (Crispy Sweets)",
+        "Aasmi (Eid Sweet)"
+      ]
+    },
+    {
+      "name": "1/ Yeast",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 3,
+      "common": false,
+      "used_in_recipes": 3,
+      "example_recipes": [
+        "Ginger Beer",
+        "Ginger Beer",
+        "Ginger Beer (Christmas)"
+      ]
+    },
+    {
+      "name": "Juice Of Imes",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 3,
+      "common": false,
+      "used_in_recipes": 3,
+      "example_recipes": [
+        "Ginger Beer",
+        "Ginger Beer",
+        "Ginger Beer (Christmas)"
+      ]
+    },
+    {
+      "name": "Milk",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Dairy & Liquids",
+      "usage_count": 3,
+      "common": false,
+      "used_in_recipes": 3,
+      "example_recipes": [
+        "Faluda",
+        "Faluda",
+        "Falooda (Eid Drink)"
+      ]
+    },
+    {
+      "name": "Rose Syrup",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 3,
+      "common": false,
+      "used_in_recipes": 3,
+      "example_recipes": [
+        "Faluda",
+        "Faluda",
+        "Falooda (Eid Drink)"
+      ]
+    },
+    {
+      "name": "Basil Seeds",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 3,
+      "common": false,
+      "used_in_recipes": 3,
+      "example_recipes": [
+        "Faluda",
+        "Faluda",
+        "Falooda (Eid Drink)"
+      ]
+    },
+    {
+      "name": "Agar Jelly",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 3,
+      "common": false,
+      "used_in_recipes": 3,
+      "example_recipes": [
+        "Faluda",
+        "Faluda",
+        "Falooda (Eid Drink)"
+      ]
+    },
+    {
+      "name": "Vanilla Ice Cream",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Dairy & Liquids",
+      "usage_count": 3,
+      "common": false,
+      "used_in_recipes": 3,
+      "example_recipes": [
+        "Faluda",
+        "Faluda",
+        "Falooda (Eid Drink)"
+      ]
+    },
+    {
+      "name": "1/ Raisins",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 3,
+      "common": false,
+      "used_in_recipes": 3,
+      "example_recipes": [
+        "Bibikkan (Coconut Cake)",
+        "Bibikkan (Coconut Cake)",
+        "Wattalappam (Eid Special)"
+      ]
+    },
+    {
+      "name": "Jaffna Curry Powder",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 3,
+      "common": false,
+      "used_in_recipes": 3,
+      "example_recipes": [
+        "Jaffna Crab Curry",
+        "Jaffna Mutton Curry",
+        "Prawn Varuval (Dry Prawn Fry)"
+      ]
+    },
+    {
+      "name": "Palmyrah Flour",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 3,
+      "common": false,
+      "used_in_recipes": 3,
+      "example_recipes": [
+        "Crab Kool (Crab Soup)",
+        "Kool (Seafood Soup)",
+        "Odiyal Kool"
+      ]
+    },
+    {
+      "name": "Parboiled Rice",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 3,
+      "common": false,
+      "used_in_recipes": 3,
+      "example_recipes": [
+        "Jaffna Dosai",
+        "Kuzhi Paniyaram",
+        "Idli (Steamed Rice Cakes)"
+      ]
+    },
+    {
+      "name": "Water For Grinding",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 3,
+      "common": false,
+      "used_in_recipes": 3,
+      "example_recipes": [
+        "Jaffna Dosai",
+        "Kuzhi Paniyaram",
+        "Idli (Steamed Rice Cakes)"
+      ]
+    },
+    {
+      "name": "Cumin",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 3,
+      "common": false,
+      "used_in_recipes": 3,
+      "example_recipes": [
+        "Odiyal Kool",
+        "Aviyal (Mixed Vegetable Curry)",
+        "Kootu (Vegetable with Lentils)"
+      ]
+    },
+    {
+      "name": "10 Cashew Nuts",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Proteins",
+      "usage_count": 3,
+      "common": false,
+      "used_in_recipes": 3,
+      "example_recipes": [
+        "Thengai Sadam (Coconut Rice)",
+        "Elumichai Sadam (Lemon Rice)",
+        "Pongal (Savory Rice)"
+      ]
+    },
+    {
+      "name": "Coriander Leaves",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 3,
+      "common": false,
+      "used_in_recipes": 3,
+      "example_recipes": [
+        "Rasam (Tamarind Soup)",
+        "Thayir Sadam (Curd Rice)",
+        "Sambar (Lentil Vegetable Stew)"
+      ]
+    },
+    {
+      "name": "8 Eggs",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Proteins",
+      "usage_count": 3,
+      "common": false,
+      "used_in_recipes": 3,
+      "example_recipes": [
+        "Wattalappam (Eid Special)",
+        "Love Cake (Burgher Christmas)",
+        "Bolo Fiado (Layer Cake)"
+      ]
+    },
+    {
+      "name": "Turmeric Powder",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Chicken Curry (Kukul Mas Curry)",
+        "Dhal Curry (Parippu Curry)"
+      ]
+    },
+    {
+      "name": "Arge Onions",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Vegetables",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Chicken Curry (Kukul Mas Curry)",
+        "Seeni Sambol"
+      ]
+    },
+    {
+      "name": "3 Cloves Garlic",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Egg Curry (Bittara Curry)",
+        "Devilled Chicken"
+      ]
+    },
+    {
+      "name": "Yeast",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Hoppers (Appa)",
+        "Bole (Eid Bread)"
+      ]
+    },
+    {
+      "name": "Chicken Curry",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Lamprais",
+        "Lamprais (Christmas Special)"
+      ]
+    },
+    {
+      "name": "Beef Curry",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Lamprais",
+        "Lamprais (Christmas Special)"
+      ]
+    },
+    {
+      "name": "Brinjal Moju",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Vegetables",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Lamprais",
+        "Lamprais (Christmas Special)"
+      ]
+    },
+    {
+      "name": "Seeni Sambol",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Lamprais",
+        "Lamprais (Christmas Special)"
+      ]
+    },
+    {
+      "name": "Banana Leaves",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Lamprais",
+        "Lamprais (Christmas Special)"
+      ]
+    },
+    {
+      "name": "White Rice",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Kiribath (Milk Rice)",
+        "Kiribath (Milk Rice - New Year Special)"
+      ]
+    },
+    {
+      "name": "1 Small Onion",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Vegetables",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Gotukola Sambol",
+        "Lunu Miris"
+      ]
+    },
+    {
+      "name": "Oil For Cooking",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Pol Roti (Coconut Roti)",
+        "Jaffna Dosai"
+      ]
+    },
+    {
+      "name": "Soy Sauce",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Devilled Chicken",
+        "Dansala Noodles"
+      ]
+    },
+    {
+      "name": "Tuna",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Ambul Thiyal (Sour Fish Curry)",
+        "Ambul Thiyal (Sour Fish Curry)"
+      ]
+    },
+    {
+      "name": "Arge Brinjals",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Vegetables",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Brinjal Moju (Eggplant Pickle)",
+        "Brinjal Moju (Eggplant Pickle)"
+      ]
+    },
+    {
+      "name": "Juice Of Ime",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Kiri Hodi (Coconut Milk Gravy)",
+        "Kiri Hodi (Coconut Milk Gravy)"
+      ]
+    },
+    {
+      "name": "Cuttlefish",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Proteins",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Cuttlefish Curry",
+        "Cuttlefish Curry"
+      ]
+    },
+    {
+      "name": "1 Cucumber",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Vegetables",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Achcharu (Mixed Pickle)",
+        "Achcharu (Mixed Pickle)"
+      ]
+    },
+    {
+      "name": "2 Cardamom",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Chicken Biryani Sri Lankan Style",
+        "Chicken Biryani Sri Lankan Style"
+      ]
+    },
+    {
+      "name": "Beef Or Chicken",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Proteins",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Cutlets (Potato Croquettes)",
+        "Cutlets (Potato Croquettes)"
+      ]
+    },
+    {
+      "name": "Breadcrumbs",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Cutlets (Potato Croquettes)",
+        "Cutlets (Potato Croquettes)"
+      ]
+    },
+    {
+      "name": "Beef Or Fish",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Proteins",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Patties (Curry Puffs)",
+        "Patties (Curry Puffs)"
+      ]
+    },
+    {
+      "name": "1/ Urad",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Murukku (Crispy Snack)",
+        "Murukku (Crispy Snack)"
+      ]
+    },
+    {
+      "name": "Salt Pinch",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Kavum (Oil Cakes)",
+        "Kavum (Oil Cakes)"
+      ]
+    },
+    {
+      "name": "Roasted Rice Flour",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Aggala (Sweet Balls)",
+        "Aggala (Sweet Balls)"
+      ]
+    },
+    {
+      "name": "Full Cream",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Dairy & Liquids",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Milk Toffee",
+        "Milk Toffee"
+      ]
+    },
+    {
+      "name": "4 Egg Whites",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Proteins",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Bombai Muttai (Candy Floss)",
+        "Bombai Muttai (Candy Floss)"
+      ]
+    },
+    {
+      "name": "1/ Vinegar",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Bombai Muttai (Candy Floss)",
+        "Bombai Muttai (Candy Floss)"
+      ]
+    },
+    {
+      "name": "Pink Food Coloring",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Bombai Muttai (Candy Floss)",
+        "Bombai Muttai (Candy Floss)"
+      ]
+    },
+    {
+      "name": "Cashews And Raisins",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Proteins",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Faluda",
+        "Faluda"
+      ]
+    },
+    {
+      "name": "2 Wood Apples",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Woodapple Juice",
+        "Woodapple Juice"
+      ]
+    },
+    {
+      "name": "1/ Jaggery",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Woodapple Juice",
+        "Woodapple Juice"
+      ]
+    },
+    {
+      "name": "1 King Coconut",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "King Coconut Water (Thambili)",
+        "King Coconut Water (Thambili)"
+      ]
+    },
+    {
+      "name": "1 Clay",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Curd with Treacle",
+        "Curd with Treacle"
+      ]
+    },
+    {
+      "name": "Cashew Nuts",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Proteins",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Curd with Treacle",
+        "Curd with Treacle"
+      ]
+    },
+    {
+      "name": "1/ Semolina",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Bibikkan (Coconut Cake)",
+        "Bibikkan (Coconut Cake)"
+      ]
+    },
+    {
+      "name": "Arge Crabs",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Jaffna Crab Curry",
+        "Matara Crab Curry"
+      ]
+    },
+    {
+      "name": "4 Cardamom",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Jaffna Mutton Curry",
+        "Buriyani (Eid Feast)"
+      ]
+    },
+    {
+      "name": "Iter Water",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Crab Kool (Crab Soup)",
+        "Odiyal Kool"
+      ]
+    },
+    {
+      "name": "Chana Dal",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Proteins",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Masala Vadai",
+        "Kootu (Vegetable with Lentils)"
+      ]
+    },
+    {
+      "name": "Fenugreek",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Kuzhi Paniyaram",
+        "Idli (Steamed Rice Cakes)"
+      ]
+    },
+    {
+      "name": "Yogurt",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Dairy & Liquids",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Thayir Sadam (Curd Rice)",
+        "Buriyani (Eid Feast)"
+      ]
+    },
+    {
+      "name": "1 Drumstick",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Aviyal (Mixed Vegetable Curry)",
+        "Sambar (Lentil Vegetable Stew)"
+      ]
+    },
+    {
+      "name": "1 Raw Banana",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Aviyal (Mixed Vegetable Curry)",
+        "Kootu (Vegetable with Lentils)"
+      ]
+    },
+    {
+      "name": "Coconut Oil",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Aviyal (Mixed Vegetable Curry)",
+        "Kootu (Vegetable with Lentils)"
+      ]
+    },
+    {
+      "name": "Toor Dal",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Proteins",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Paruppu Urundai Kulambu (Lentil Ball Curry)",
+        "Sambar (Lentil Vegetable Stew)"
+      ]
+    },
+    {
+      "name": "Sambar Powder",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Paruppu Urundai Kulambu (Lentil Ball Curry)",
+        "Sambar (Lentil Vegetable Stew)"
+      ]
+    },
+    {
+      "name": "Gram Flour",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Milagai Bajji (Chili Fritters)",
+        "Bonda (Potato Fritters)"
+      ]
+    },
+    {
+      "name": "1/ Baking Soda",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Milagai Bajji (Chili Fritters)",
+        "Bonda (Potato Fritters)"
+      ]
+    },
+    {
+      "name": "10 Dried",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Katta Sambol (Chili Paste)",
+        "Pol Sambol (Southern Spicy Version)"
+      ]
+    },
+    {
+      "name": "3 Eggs",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Proteins",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Kokis (Southern Style)",
+        "Kokis (New Year Cookies)"
+      ]
+    },
+    {
+      "name": "Ghee For Greasing",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Dairy & Liquids",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Thala Guli (Sesame Jaggery Balls)",
+        "Pani Dodol (Jaggery Coconut Toffee)"
+      ]
+    },
+    {
+      "name": "Pandan Leaves",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Kiribath (Milk Rice - New Year Special)",
+        "Kiribath for Vesak"
+      ]
+    },
+    {
+      "name": "Semolina",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Love Cake (Burgher Christmas)",
+        "Bolo Fiado (Layer Cake)"
+      ]
+    },
+    {
+      "name": "Rose Water",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Love Cake (Burgher Christmas)",
+        "Bolo Fiado (Layer Cake)"
+      ]
+    },
+    {
+      "name": "Cinnamon",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 2,
+      "common": false,
+      "used_in_recipes": 2,
+      "example_recipes": [
+        "Breudher (Dutch Cookies)",
+        "Bolo Fiado (Layer Cake)"
+      ]
+    },
+    {
+      "name": "Thin Coconut Milk",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Dairy & Liquids",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Chicken Curry (Kukul Mas Curry)"
+      ]
+    },
+    {
+      "name": "2-Reen Chilies",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Chicken Curry (Kukul Mas Curry)"
+      ]
+    },
+    {
+      "name": "3 Cardamom Pods",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Chicken Curry (Kukul Mas Curry)"
+      ]
+    },
+    {
+      "name": "Vegetable Oil",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Chicken Curry (Kukul Mas Curry)"
+      ]
+    },
+    {
+      "name": "2 Cloves Garlic",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Dhal Curry (Parippu Curry)"
+      ]
+    },
+    {
+      "name": "Freshly Grated Coconut",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Coconut Sambol (Pol Sambol)"
+      ]
+    },
+    {
+      "name": "Few Curry Leaves",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Coconut Sambol (Pol Sambol)"
+      ]
+    },
+    {
+      "name": "Potatoes",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Vegetables",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Potato Curry (Ala Curry)"
+      ]
+    },
+    {
+      "name": "6 Hard-Boiled Eggs",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Proteins",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Egg Curry (Bittara Curry)"
+      ]
+    },
+    {
+      "name": "Oil For Greasing",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "String Hoppers (Idiyappam)"
+      ]
+    },
+    {
+      "name": "Warm Water",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Hoppers (Appa)"
+      ]
+    },
+    {
+      "name": "Odamba Roti",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Kottu Roti"
+      ]
+    },
+    {
+      "name": "Eek",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Kottu Roti"
+      ]
+    },
+    {
+      "name": "Chicken Stock",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Proteins",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Lamprais"
+      ]
+    },
+    {
+      "name": "6 Eggs",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Proteins",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Watalappan"
+      ]
+    },
+    {
+      "name": "Few Cashew Nuts",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Proteins",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Watalappan"
+      ]
+    },
+    {
+      "name": "Gotu Kola Leaves",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Vegetables",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Gotukola Sambol"
+      ]
+    },
+    {
+      "name": "Wheat Flour",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Pol Roti (Coconut Roti)"
+      ]
+    },
+    {
+      "name": "2 Bell Peppers",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Devilled Chicken"
+      ]
+    },
+    {
+      "name": "Chili Paste",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Devilled Chicken"
+      ]
+    },
+    {
+      "name": "Tomato Ketchup",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Vegetables",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Devilled Chicken"
+      ]
+    },
+    {
+      "name": "Arge Beetroots",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Vegetables",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Beetroot Curry"
+      ]
+    },
+    {
+      "name": "5 Dried",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Lunu Miris"
+      ]
+    },
+    {
+      "name": "1/ Maldive Fish",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Proteins",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Lunu Miris"
+      ]
+    },
+    {
+      "name": "2 Sprigs",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Jaffna Crab Curry"
+      ]
+    },
+    {
+      "name": "Mutton",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Jaffna Mutton Curry"
+      ]
+    },
+    {
+      "name": "3 Cloves",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Jaffna Mutton Curry"
+      ]
+    },
+    {
+      "name": "Crab Meat",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Crab Kool (Crab Soup)"
+      ]
+    },
+    {
+      "name": "1/ Fenugreek Seeds",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Jaffna Dosai"
+      ]
+    },
+    {
+      "name": "Squid",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Kool (Seafood Soup)"
+      ]
+    },
+    {
+      "name": "Pepper",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Kool (Seafood Soup)"
+      ]
+    },
+    {
+      "name": "1.Iters Water",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Kool (Seafood Soup)"
+      ]
+    },
+    {
+      "name": "Odiyal Root",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Odiyal Kool"
+      ]
+    },
+    {
+      "name": "Fennel",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Odiyal Kool"
+      ]
+    },
+    {
+      "name": "Puttu Flour",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Puttu (Steamed Rice Cake)"
+      ]
+    },
+    {
+      "name": "4 Dried",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Masala Vadai"
+      ]
+    },
+    {
+      "name": "1/ Urad Dal",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Proteins",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Kuzhi Paniyaram"
+      ]
+    },
+    {
+      "name": "5 Curry Leaves",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Prawn Varuval (Dry Prawn Fry)"
+      ]
+    },
+    {
+      "name": "Rasam Powder",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Rasam (Tamarind Soup)"
+      ]
+    },
+    {
+      "name": "1/ Milk",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Dairy & Liquids",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Thayir Sadam (Curd Rice)"
+      ]
+    },
+    {
+      "name": "10 Beans",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Vegetables",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Aviyal (Mixed Vegetable Curry)"
+      ]
+    },
+    {
+      "name": "3 Dried",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Paruppu Urundai Kulambu (Lentil Ball Curry)"
+      ]
+    },
+    {
+      "name": "1/ Grated Coconut",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Kootu (Vegetable with Lentils)"
+      ]
+    },
+    {
+      "name": "Juice Of Emons",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Elumichai Sadam (Lemon Rice)"
+      ]
+    },
+    {
+      "name": "Arge Green Chilies",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Milagai Bajji (Chili Fritters)"
+      ]
+    },
+    {
+      "name": "Water For Batter",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Milagai Bajji (Chili Fritters)"
+      ]
+    },
+    {
+      "name": "Tomatoes",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Vegetables",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Tomato Thokku (Tomato Chutney)"
+      ]
+    },
+    {
+      "name": "Fenugreek Seeds",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Tomato Thokku (Tomato Chutney)"
+      ]
+    },
+    {
+      "name": "1/ Oil",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Tomato Thokku (Tomato Chutney)"
+      ]
+    },
+    {
+      "name": "1/ Moong Dal",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Proteins",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Pongal (Savory Rice)"
+      ]
+    },
+    {
+      "name": "1/ Pepper",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Kanji (Rice Porridge)"
+      ]
+    },
+    {
+      "name": "Oraka Pieces",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Galle Fish Curry"
+      ]
+    },
+    {
+      "name": "2 Pandan Leaves",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Galle Fish Curry"
+      ]
+    },
+    {
+      "name": "For Roti: Flour",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Pol Roti with Lunumiris"
+      ]
+    },
+    {
+      "name": "For Lunumiris:",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Pol Roti with Lunumiris"
+      ]
+    },
+    {
+      "name": "1/ Dried Sprats",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Katta Sambol (Chili Paste)"
+      ]
+    },
+    {
+      "name": "1 Can",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Snoek Fish Curry"
+      ]
+    },
+    {
+      "name": "Drumstick Leaves",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Murunga Leaves Malluma (Drumstick Leaves)"
+      ]
+    },
+    {
+      "name": "15 Curry Leaves",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Batu Moju (Southern Style)"
+      ]
+    },
+    {
+      "name": "3 Bitter Gourds",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Karawila Curry (Bitter Gourd)"
+      ]
+    },
+    {
+      "name": "Urad Dal Flour",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Proteins",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Papadam (Lentil Crackers)"
+      ]
+    },
+    {
+      "name": "Okra",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Bandakka Curry (Okra)"
+      ]
+    },
+    {
+      "name": "Milk Powder",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Dairy & Liquids",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Kiri Aluwa (Milk Toffee Squares)"
+      ]
+    },
+    {
+      "name": "Red Rice Flour",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Rasa Kavili (Red Rice Flour Sweet)"
+      ]
+    },
+    {
+      "name": "For Pancake: Flour",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Welithalapa (Pancake Rolls)"
+      ]
+    },
+    {
+      "name": "For Filling: Coconut",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Welithalapa (Pancake Rolls)"
+      ]
+    },
+    {
+      "name": "1. Kithul Treacle",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Mung Kavum (New Year Special)"
+      ]
+    },
+    {
+      "name": "2. Rice Flour",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Kokis (New Year Cookies)"
+      ]
+    },
+    {
+      "name": "1/ Turmeric Powder",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Kokis (New Year Cookies)"
+      ]
+    },
+    {
+      "name": "1. Grated Coconut",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Aluwa (New Year Diamond Sweet)"
+      ]
+    },
+    {
+      "name": "Iters Coconut Milk",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Dairy & Liquids",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Dansala Rice (Vesak Free Food)"
+      ]
+    },
+    {
+      "name": "Curry Leaves",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Dansala Rice (Vesak Free Food)"
+      ]
+    },
+    {
+      "name": "Noodles",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Dansala Noodles"
+      ]
+    },
+    {
+      "name": "Mixed Vegetables",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Dansala Noodles"
+      ]
+    },
+    {
+      "name": "Chili Sauce",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Dansala Noodles"
+      ]
+    },
+    {
+      "name": "1/ Nutmeg Powder",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Wattalappam (Eid Special)"
+      ]
+    },
+    {
+      "name": "Chicken/Mutton",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Proteins",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Buriyani (Eid Feast)"
+      ]
+    },
+    {
+      "name": "6 Cloves",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Buriyani (Eid Feast)"
+      ]
+    },
+    {
+      "name": "2 Cinnamon Sticks",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Buriyani (Eid Feast)"
+      ]
+    },
+    {
+      "name": "1. Rice Flour",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Aasmi (Eid Sweet)"
+      ]
+    },
+    {
+      "name": "1. Sugar",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Aasmi (Eid Sweet)"
+      ]
+    },
+    {
+      "name": "1/ Ghee",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Dairy & Liquids",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Bole (Eid Bread)"
+      ]
+    },
+    {
+      "name": "Almonds",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Falooda (Eid Drink)"
+      ]
+    },
+    {
+      "name": "For Dough: Flour",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Samosa (Eid Snack)"
+      ]
+    },
+    {
+      "name": "For Filling: Beef",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Proteins",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Samosa (Eid Snack)"
+      ]
+    },
+    {
+      "name": "Mixed Dried Fruits",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Christmas Cake (Burgher)"
+      ]
+    },
+    {
+      "name": "Brandy",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Christmas Cake (Burgher)"
+      ]
+    },
+    {
+      "name": "5 Eggs",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Proteins",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Christmas Cake (Burgher)"
+      ]
+    },
+    {
+      "name": "Baking Powder",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Christmas Cake (Burgher)"
+      ]
+    },
+    {
+      "name": "Mixed Spice",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Christmas Cake (Burgher)"
+      ]
+    },
+    {
+      "name": "Vanilla",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Christmas Cake (Burgher)"
+      ]
+    },
+    {
+      "name": "Treacle",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Christmas Cake (Burgher)"
+      ]
+    },
+    {
+      "name": "Honey",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Love Cake (Burgher Christmas)"
+      ]
+    },
+    {
+      "name": "Nutmeg",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Love Cake (Burgher Christmas)"
+      ]
+    },
+    {
+      "name": "Pumpkin Preserve",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Love Cake (Burgher Christmas)"
+      ]
+    },
+    {
+      "name": "1/ Cloves Powder",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Spices & Seasonings",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Breudher (Dutch Cookies)"
+      ]
+    },
+    {
+      "name": "Boiled Eggs",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Proteins",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Lamprais (Christmas Special)"
+      ]
+    },
+    {
+      "name": "Prawn Blachan",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Proteins",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Lamprais (Christmas Special)"
+      ]
+    },
+    {
+      "name": "Stock",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Lamprais (Christmas Special)"
+      ]
+    },
+    {
+      "name": "Red Food Coloring",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Other",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Bolo Fiado (Layer Cake)"
+      ]
+    },
+    {
+      "name": "2. Sugar",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Staples",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Ginger Beer (Christmas)"
+      ]
+    },
+    {
+      "name": "Cream Of Tartar",
+      "name_sinhala": "",
+      "name_tamil": "",
+      "category": "Dairy & Liquids",
+      "usage_count": 1,
+      "common": false,
+      "used_in_recipes": 1,
+      "example_recipes": [
+        "Ginger Beer (Christmas)"
+      ]
+    }
+  ]
+}

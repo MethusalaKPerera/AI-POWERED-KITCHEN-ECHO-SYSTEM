@@ -1,0 +1,40 @@
+{
+  "id": "recipe_215",
+  "name": "Talapa (Steamed Coconut Cakes)",
+  "name_sinhala": "තලප",
+  "name_tamil": "தலப்பா",
+  "category": "Dessert",
+  "region": "Traditional",
+  "description": "Coconut treacle mixture steamed in kenda leaves. Village sweet treat.",
+  "ingredients": [
+    "2 cups rice flour",
+    "1 cup grated coconut",
+    "1 cup kithul treacle",
+    "1/2 tsp cardamom powder",
+    "Pinch of salt",
+    "Kenda leaves (banana leaves as substitute)"
+  ],
+  "instructions": [
+    "Mix rice flour, coconut, and salt",
+    "Warm treacle and add to mixture",
+    "Add cardamom and mix to thick batter",
+    "Cut kenda leaves into squares",
+    "Place spoonful of batter on each leaf",
+    "Fold leaf into packet",
+    "Steam for 15 minutes",
+    "Cool before opening"
+  ],
+  "prep_time_minutes": 20,
+  "cook_time_minutes": 15,
+  "servings": 12,
+  "difficulty": "Medium",
+  "tags": [
+    "dessert",
+    "steamed",
+    "traditional",
+    "village",
+    "authentic"
+  ],
+  "cultural_notes": "Kenda leaf gives unique flavor. Village specialty. Often made for temple offerings.",
+  "authenticity_score": 100
+}

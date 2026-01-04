@@ -1,0 +1,49 @@
+{
+  "id": "recipe_093",
+  "name": "Paruppu Urundai Kulambu (Lentil Ball Curry)",
+  "name_sinhala": "පරුප්පු උරුන්ඩයි",
+  "name_tamil": "பருப்பு உருண்டை குழம்பு",
+  "category": "Curry",
+  "region": "Jaffna",
+  "description": "Lentil balls in tamarind gravy",
+  "ingredients": [
+    "1 cup toor dal",
+    "3 dried red chilies",
+    "1 tsp fennel seeds",
+    "2 tbsp tamarind paste",
+    "2 tomatoes",
+    "1 tsp sambar powder",
+    "1 tsp mustard seeds",
+    "10 curry leaves (fresh, not dried)",
+    "2 tbsp oil",
+    "Salt"
+  ],
+  "instructions": [
+    "Soak and grind dal with chilies and fennel",
+    "Shape into small balls",
+    "Steam for 15 minutes",
+    "Make tamarind gravy with tomatoes, sambar powder",
+    "Add steamed balls to gravy",
+    "Temper with mustard and curry leaves (Curry leaves must be fresh for authentic taste)",
+    "Simmer for 10 minutes",
+    "Serve with rice"
+  ],
+  "prep_time_minutes": 25,
+  "cook_time_minutes": 30,
+  "servings": 4,
+  "difficulty": "Medium",
+  "tags": [
+    "jaffna",
+    "vegetarian",
+    "protein-rich",
+    "tangy",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Special Sunday curry in Jaffna homes",
+  "authenticity_score": 10.95,
+  "description_sinhala": "සියඹලා හොදි වල පරිප්පු බෝල",
+  "description_tamil": "புளி குழம்பில் பருப்பு உருண்டைகள்",
+  "cultural_notes_sinhala": "යාපනයේ නිවෙස්වල විශේෂ ඉරිදා ව්‍යංජනය",
+  "cultural_notes_tamil": "யாழ்ப்பாண வீடுகளில் ஞாயிறு ஸ்பெஷல் கறி"
+}

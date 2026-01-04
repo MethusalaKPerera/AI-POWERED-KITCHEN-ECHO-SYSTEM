@@ -1,0 +1,36 @@
+{
+  "id": "recipe_154",
+  "name": "Papadam",
+  "name_sinhala": "",
+  "name_tamil": "",
+  "category": "Curry",
+  "region": "General",
+  "description": "",
+  "ingredients": [
+    "…… papadam",
+    "1 – 2 cups oil",
+    "Plate with tissues (to absorb excess oil)"
+  ],
+  "instructions": [
+    "1. Break papadam into small pieces.",
+    "(8 pieces per papadam)",
+    "2. Add oil to a wok & use high until the oil smokes.",
+    "3. Then change the heat to medium.",
+    "4. Add 1 papadam (8 pieces) at once & remove from the",
+    "oil when the color has slightly changed (few seconds)",
+    "--- PAGE 7 ---"
+  ],
+  "prep_time_minutes": 30,
+  "cook_time_minutes": 30,
+  "servings": 4,
+  "difficulty": "Medium",
+  "tags": [
+    "pdf-extracted",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Extracted from cookbook",
+  "authenticity_score": 0.85,
+  "cultural_notes_sinhala": "ඉවුම් පිහුම් පොතෙන් උපුටා ගන්නා ලදී",
+  "cultural_notes_tamil": "சமையல் புத்தகத்திலிருந்து பிரித்தெடுக்கப்பட்டது"
+}

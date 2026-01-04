@@ -1,0 +1,49 @@
+{
+  "id": "recipe_100",
+  "name": "Pongal (Savory Rice)",
+  "name_sinhala": "පොංගල්",
+  "name_tamil": "பொங்கல்",
+  "category": "Rice Dish",
+  "region": "Jaffna",
+  "description": "Creamy rice and lentil dish",
+  "ingredients": [
+    "1 cup rice",
+    "1/2 cup moong dal",
+    "1 tsp cumin seeds",
+    "1 tsp black pepper",
+    "1 inch ginger, chopped",
+    "10 cashew nuts",
+    "10 curry leaves (fresh, not dried)",
+    "4 cups water",
+    "3 tbsp ghee",
+    "Salt"
+  ],
+  "instructions": [
+    "Dry roast dal lightly",
+    "Cook rice and dal together until very soft",
+    "Mash slightly",
+    "Heat ghee and add cumin, pepper",
+    "Add ginger, cashews, curry leaves (Curry leaves must be fresh for authentic taste)",
+    "Pour over rice mixture",
+    "Add salt and mix",
+    "Serve hot with chutney"
+  ],
+  "prep_time_minutes": 10,
+  "cook_time_minutes": 25,
+  "servings": 4,
+  "difficulty": "Easy",
+  "tags": [
+    "jaffna",
+    "rice",
+    "comfort",
+    "festive",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Made during Pongal festival, comfort food",
+  "authenticity_score": 11.0,
+  "description_sinhala": "ක්‍රීමි බත් සහ පරිප්පු කෑම",
+  "description_tamil": "கிரீமி அரிசி மற்றும் பருப்பு உணவு",
+  "cultural_notes_sinhala": "පොංගල් උත්සවයේදී සාදන ලද, සුවපහසු ආහාර",
+  "cultural_notes_tamil": "பொங்கல் பண்டிகையின் போது செய்யப்படும், ஆறுதல் உணவு"
+}

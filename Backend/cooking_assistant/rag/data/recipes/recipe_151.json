@@ -1,0 +1,50 @@
+{
+  "id": "recipe_151",
+  "name": "Bolo Fiado (Layer Cake)",
+  "name_sinhala": "බොලෝ ෆියඩෝ",
+  "name_tamil": "போலோ ஃபியடோ",
+  "category": "Dessert",
+  "region": "Burgher",
+  "description": "Layered semolina cake, Burgher specialty",
+  "ingredients": [
+    "300g semolina",
+    "300g sugar",
+    "8 eggs, separated",
+    "200g butter",
+    "1 tsp cinnamon",
+    "1/2 tsp nutmeg",
+    "1/2 tsp cardamom",
+    "Rose water",
+    "Red food coloring"
+  ],
+  "instructions": [
+    "Beat egg yolks with sugar",
+    "Add melted butter",
+    "Add roasted semolina",
+    "Add spices and rose water",
+    "Beat egg whites stiff",
+    "Fold in",
+    "Divide batter in two",
+    "Color one half pink",
+    "Bake in layers alternating colors",
+    "Cool and layer with jam"
+  ],
+  "prep_time_minutes": 35,
+  "cook_time_minutes": 40,
+  "servings": 12,
+  "difficulty": "Hard",
+  "tags": [
+    "christmas",
+    "burgher",
+    "layered",
+    "colorful",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Elaborate Christmas dessert",
+  "authenticity_score": 0.95,
+  "description_sinhala": "ස්ථර සෙමොලිනා කේක්, බර්ගර් විශේෂත්වය",
+  "description_tamil": "Layered semolina cake, Burgher specialty",
+  "cultural_notes_sinhala": "විස්තීර්ණ නත්තල් අතුරුපස",
+  "cultural_notes_tamil": "விரிவான கிறிஸ்துமஸ் இனிப்பு"
+}

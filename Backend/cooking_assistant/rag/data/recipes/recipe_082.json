@@ -1,0 +1,52 @@
+{
+  "id": "recipe_082",
+  "name": "Kool (Seafood Soup)",
+  "name_sinhala": "කූල්",
+  "name_tamil": "கூழ்",
+  "category": "Curry",
+  "region": "Jaffna",
+  "description": "Hearty seafood soup with mixed seafood",
+  "ingredients": [
+    "200g prawns",
+    "200g squid",
+    "200g fish",
+    "1 cup palmyrah flour",
+    "2 onions",
+    "5 garlic cloves",
+    "1 inch ginger",
+    "1 tsp pepper",
+    "1 tsp turmeric",
+    "2 green chilies",
+    "1.5 liters water",
+    "Salt"
+  ],
+  "instructions": [
+    "Clean all seafood",
+    "Boil water with onions, garlic, ginger",
+    "Add turmeric and pepper",
+    "Add seafood",
+    "Mix palmyrah flour with water",
+    "Add to pot while stirring",
+    "Cook until thick",
+    "Add chilies",
+    "Season and serve"
+  ],
+  "prep_time_minutes": 30,
+  "cook_time_minutes": 25,
+  "servings": 6,
+  "difficulty": "Medium",
+  "tags": [
+    "jaffna",
+    "seafood",
+    "soup",
+    "hearty",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Traditional Jaffna comfort food",
+  "authenticity_score": 1.0,
+  "description_sinhala": "මිශ්ර මුහුදු ආහාර සමඟ හෘදයාංගම මුහුදු ආහාර සුප්",
+  "description_tamil": "கலந்த கடல் உணவுகளுடன் இதயம் நிறைந்த கடல் உணவு சூப்",
+  "cultural_notes_sinhala": "යාපනයේ සාම්ප්‍රදායික සුවපහසු ආහාර",
+  "cultural_notes_tamil": "யாழ்ப்பாண பாரம்பரிய உணவு"
+}

@@ -1,0 +1,52 @@
+{
+  "id": "recipe_104",
+  "name": "Matara Crab Curry",
+  "name_sinhala": "මාතර කකුළු කරිය",
+  "name_tamil": "மாத்தறை நண்டு கறி",
+  "category": "Curry",
+  "region": "Southern",
+  "description": "Spicy crab curry with coconut and spices",
+  "ingredients": [
+    "6 large crabs",
+    "400ml coconut milk",
+    "4 tbsp curry powder",
+    "1 tbsp chili powder",
+    "10 curry leaves (fresh, not dried)",
+    "2 onions, sliced",
+    "5 garlic cloves",
+    "1 inch ginger",
+    "2 tomatoes",
+    "3 tbsp oil",
+    "Salt"
+  ],
+  "instructions": [
+    "Clean and cut crabs",
+    "Grind curry powder with garlic, ginger",
+    "Fry onions in oil",
+    "Add ground paste",
+    "Add tomatoes",
+    "Add crabs and mix",
+    "Add coconut milk",
+    "Add curry leaves (Curry leaves must be fresh for authentic taste)",
+    "Cook until crabs are done",
+    "Serve with rice"
+  ],
+  "prep_time_minutes": 30,
+  "cook_time_minutes": 25,
+  "servings": 4,
+  "difficulty": "Hard",
+  "tags": [
+    "southern",
+    "seafood",
+    "spicy",
+    "special",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Matara's famous crab preparation",
+  "authenticity_score": 11.0,
+  "description_sinhala": "පොල් සහ කුළුබඩු සහිත කුළුබඩු සහිත කකුළුවන් කරිය",
+  "description_tamil": "தேங்காய் மற்றும் மசாலாப் பொருட்களுடன் காரமான நண்டு கறி",
+  "cultural_notes_sinhala": "මාතර ප්‍රසිද්ධ කකුළුවන් සූදානම",
+  "cultural_notes_tamil": "மாத்தறையின் புகழ்பெற்ற நண்டு தயாரிப்பு"
+}

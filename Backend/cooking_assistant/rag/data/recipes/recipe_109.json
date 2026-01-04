@@ -1,0 +1,47 @@
+{
+  "id": "recipe_109",
+  "name": "Ala Thel Dala (Fried Potatoes)",
+  "name_sinhala": "අල තෙල් දළ",
+  "name_tamil": "உருளைக்கிழங்கு பொரியல்",
+  "category": "Curry",
+  "region": "Southern",
+  "description": "Tempered fried potatoes, Southern style",
+  "ingredients": [
+    "4 potatoes, cubed",
+    "2 onions, sliced",
+    "1 tsp mustard seeds",
+    "10 curry leaves (fresh, not dried)",
+    "1 tsp turmeric",
+    "1 tsp chili powder",
+    "3 tbsp oil",
+    "Salt"
+  ],
+  "instructions": [
+    "Boil potatoes until tender",
+    "Heat oil and add mustard seeds",
+    "Add onions and fry",
+    "Add turmeric and chili",
+    "Add boiled potatoes",
+    "Add curry leaves (Curry leaves must be fresh for authentic taste)",
+    "Toss until crispy",
+    "Serve as side"
+  ],
+  "prep_time_minutes": 10,
+  "cook_time_minutes": 15,
+  "servings": 4,
+  "difficulty": "Easy",
+  "tags": [
+    "southern",
+    "vegetarian",
+    "quick",
+    "crispy",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Common Southern side dish",
+  "authenticity_score": 10.9,
+  "description_sinhala": "තෙම්පරාදු කළ බදින ලද අර්තාපල්, දක්ෂිණ විලාසිතාව",
+  "description_tamil": "வறுத்த உருளைக்கிழங்கு, தெற்கு பாணி",
+  "cultural_notes_sinhala": "පොදු දකුණු පැත්තේ කෑමක්",
+  "cultural_notes_tamil": "பொதுவான தெற்கு பக்க உணவு"
+}

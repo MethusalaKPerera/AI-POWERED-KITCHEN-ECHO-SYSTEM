@@ -1,0 +1,49 @@
+{
+  "id": "recipe_110",
+  "name": "Snoek Fish Curry",
+  "name_sinhala": "හුරුල්ලො කරිය",
+  "name_tamil": "ஸ்னோக் மீன் கறி",
+  "category": "Curry",
+  "region": "Southern",
+  "description": "Canned snoek fish curry, Southern favorite",
+  "ingredients": [
+    "1 can snoek fish",
+    "300ml coconut milk",
+    "2 tbsp curry powder",
+    "1 tsp chili powder",
+    "2 onions, sliced",
+    "2 tomatoes, chopped",
+    "10 curry leaves (fresh, not dried)",
+    "2 tbsp oil",
+    "Salt"
+  ],
+  "instructions": [
+    "Open can and drain oil",
+    "Heat oil and fry onions",
+    "Add curry powder and chili",
+    "Add tomatoes",
+    "Add snoek fish",
+    "Add coconut milk",
+    "Add curry leaves (Curry leaves must be fresh for authentic taste)",
+    "Simmer for 10 minutes",
+    "Serve with bread"
+  ],
+  "prep_time_minutes": 10,
+  "cook_time_minutes": 15,
+  "servings": 4,
+  "difficulty": "Easy",
+  "tags": [
+    "southern",
+    "seafood",
+    "quick",
+    "convenient",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Popular store-cupboard meal Use fresh fish from coastal markets. Goraka (garcinia) is essential for authentic sour taste - never substitute with tamarind. The curry should have a deep red color from roasted spices.",
+  "authenticity_score": 10.85,
+  "description_sinhala": "ටින් කළ ස්නෝක් මාළු ව්‍යංජනය, දකුණු ප්‍රියතමය",
+  "description_tamil": "டின்னில் அடைக்கப்பட்ட ஸ்னோக் மீன் குழம்பு, தெற்குப் பிடித்தமானது",
+  "cultural_notes_sinhala": "ජනප්‍රිය වෙළඳසැල්-කබඩ් කෑමක්",
+  "cultural_notes_tamil": "பிரபலமான கடை-அலமாரி உணவு"
+}

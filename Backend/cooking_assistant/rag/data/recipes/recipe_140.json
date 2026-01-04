@@ -1,0 +1,41 @@
+{
+  "id": "recipe_140",
+  "name": "Vesak Kavili (Festival Sweet)",
+  "name_sinhala": "වෙසක් කැවිලි",
+  "name_tamil": "வேசாக் இனிப்பு",
+  "category": "Dessert",
+  "region": "General",
+  "description": "Simple sweet for Vesak distribution",
+  "ingredients": [
+    "2 cups rice flour",
+    "1 cup palm jaggery (hakuru)",
+    "1 cup coconut",
+    "Cardamom",
+    "Water"
+  ],
+  "instructions": [
+    "Roast rice flour",
+    "Melt jaggery",
+    "Mix all ingredients",
+    "Form into shapes",
+    "Distribute at dansala"
+  ],
+  "prep_time_minutes": 15,
+  "cook_time_minutes": 15,
+  "servings": 25,
+  "difficulty": "Easy",
+  "tags": [
+    "vesak",
+    "sweet",
+    "simple",
+    "dansala",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Simple sweet for mass distribution",
+  "authenticity_score": 10.9,
+  "description_sinhala": "වෙසක් බෙදාහැරීම සඳහා සරල පැණිරස",
+  "description_tamil": "வெசாக் விநியோகத்திற்கான எளிய இனிப்பு",
+  "cultural_notes_sinhala": "මහා බෙදාහැරීම සඳහා සරල පැණිරස",
+  "cultural_notes_tamil": "வெகுஜன விநியோகத்திற்கான எளிய இனிப்பு"
+}

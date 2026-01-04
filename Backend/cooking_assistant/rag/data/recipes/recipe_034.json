@@ -1,0 +1,47 @@
+{
+  "id": "recipe_034",
+  "name": "Murukku (Crispy Snack)",
+  "name_sinhala": "මුරුක්කු",
+  "name_tamil": "முறுக்கு",
+  "category": "Snack",
+  "region": "Tamil",
+  "description": "Crispy spiral-shaped rice flour snack",
+  "ingredients": [
+    "2 cups rice flour",
+    "1/2 cup urad dal flour",
+    "1 tsp cumin seeds",
+    "1 tsp sesame seeds",
+    "1/2 tsp chili powder",
+    "2 tbsp butter",
+    "Salt to taste",
+    "Oil for frying"
+  ],
+  "instructions": [
+    "Mix all dry ingredients",
+    "Add melted butter",
+    "Add water to form dough",
+    "Fill murukku press",
+    "Press spirals into hot oil",
+    "Fry until golden and crispy",
+    "Drain and cool",
+    "Store in airtight container"
+  ],
+  "prep_time_minutes": 20,
+  "cook_time_minutes": 30,
+  "servings": 20,
+  "difficulty": "Medium",
+  "tags": [
+    "snack",
+    "crispy",
+    "tamil",
+    "savory",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Traditional Tamil snack for festivals",
+  "authenticity_score": 0.95,
+  "description_sinhala": "හැපෙනසුළු සර්පිලාකාර හැඩැති සහල් පිටි ස්නැක්",
+  "description_tamil": "மிருதுவான சுழல் வடிவ அரிசி மாவு சிற்றுண்டி",
+  "cultural_notes_sinhala": "උත්සව සඳහා සාම්ප්‍රදායික දෙමළ කෑම",
+  "cultural_notes_tamil": "பண்டிகைகளுக்கான பாரம்பரிய தமிழ் சிற்றுண்டி"
+}

@@ -1,0 +1,4813 @@
+{
+  "metadata": {
+    "total_recipes": 44,
+    "languages": [
+      "english"
+    ],
+    "source": "Manual entry"
+  },
+  "recipes": [
+    {
+      "id": "007",
+      "name": {
+        "en": "Chicken Curry",
+        "si": "කුකුල් මස් කරිය",
+        "ta": "கோழி கறி"
+      },
+      "cuisine": "Sri Lankan",
+      "meal_type": "Main Dish",
+      "difficulty": "Medium",
+      "prep_time": 20,
+      "cook_time": 45,
+      "servings": 6,
+      "ingredients": {
+        "en": [
+          "1 kg chicken, cut into pieces",
+          "2 onions, sliced",
+          "3 cloves garlic, minced",
+          "1 inch ginger, minced",
+          "2 green chilies, sliced",
+          "2 tbsp curry powder",
+          "1 tsp chili powder",
+          "1/2 tsp turmeric powder",
+          "1 tsp roasted curry powder",
+          "2 stalks curry leaves",
+          "1 cup coconut milk",
+          "2 tbsp vegetable oil",
+          "Salt to taste"
+        ],
+        "si": [
+          "කිලෝ 1 කුකුල් මස්, කැබලිවලට කපන ලද",
+          "ලූනු 2, පෙති කපන ලද",
+          "සුදුලූණු කරාබු 3",
+          "ඉඟුරු අඟල් 1",
+          "මිරිස් 2",
+          "මේස හැඳි 2 කරි කුඩු",
+          "තේ හැඳි 1 මිරිස් කුඩු",
+          "තේ හැඳි 1/2 කහ කුඩු",
+          "තේ හැඳි 1 බැදපු කරි කුඩු",
+          "කරපිංචා ගෙඩි 2",
+          "කෝප්ප 1 පොල්කිරි",
+          "මේස හැඳි 2 තෙල්",
+          "ලුණු ප්‍රමාණයට"
+        ],
+        "ta": [
+          "1 கிலோ கோழி, துண்டுகளாக வெட்டியது",
+          "2 வெங்காயம், நறுக்கியது",
+          "3 பல் பூண்டு",
+          "1 அங்குல இஞ்சி",
+          "2 பச்சை மிளகாய்",
+          "2 தேக்கரண்டி கறி பொடி",
+          "1 தேக்கரண்டி மிளகாய் பொடி",
+          "1/2 தேக்கரண்டி மஞ்சள் பொடி",
+          "1 தேக்கரண்டி வறுத்த கறி பொடி",
+          "2 கருவேப்பிலை",
+          "1 கோப்பை தேங்காய் பால்",
+          "2 தேக்கரண்டி எண்ணெய்",
+          "உப்பு தேவைக்கேற்ப"
+        ]
+      },
+      "instructions": {
+        "en": [
+          "Heat oil in a large pot and sauté onions until golden brown",
+          "Add garlic, ginger, and green chilies, cook for 2 minutes",
+          "Add curry powder, chili powder, and turmeric, stir well",
+          "Add chicken pieces and mix to coat with spices",
+          "Add curry leaves and salt, cook covered on low heat for 20 minutes",
+          "Add coconut milk and simmer for 15 minutes until chicken is tender",
+          "Add roasted curry powder and cook for 5 more minutes",
+          "Serve hot with rice"
+        ],
+        "si": [
+          "හොද බඳුනක තෙල් රත් කර ලූනු රන්වන් පාටට බද ගන්න",
+          "සුදුලූණු, ඉඟුරු සහ මිරිස් එකතු කර මිනිත්තු 2ක් උයන්න",
+          "කරි කුඩු, මිරිස් කුඩු සහ කහ එකතු කර හොඳින් මිශ්‍ර කරන්න",
+          "කුකුල් මස් කැබලි එකතු කර කුඩු සමඟ මිශ්‍ර කරන්න",
+          "කරපිංචා සහ ලුණු එකතු කර වසා තබා මිනිත්තු 20ක් අඩු ගින්දරින් උයන්න",
+          "පොල්කිරි එකතු කර කුකුල් මස් මෘදු වන තුරු මිනිත්තු 15ක් තම්බා ගන්න",
+          "බැදපු කරි කුඩු එකතු කර තව මිනිත්තු 5ක් උයන්න",
+          "බතට උණුසුම්ව සේවය කරන්න"
+        ],
+        "ta": [
+          "பெரிய பாத்திரத்தில் எண்ணெய் சூடாக்கி வெங்காயம் பொன்னிறமாகும் வரை வதக்கவும்",
+          "பூண்டு, இஞ்சி மற்றும் பச்சை மிளகாய் சேர்த்து 2 நிமிடம் வதக்கவும்",
+          "கறி பொடி, மிளகாய் பொடி மற்றும் மஞ்சள் சேர்த்து நன்கு கலக்கவும்",
+          "கோழி துண்டுகளை சேர்த்து மசாலாவுடன் கலக்கவும்",
+          "கருவேப்பிலை மற்றும் உப்பு சேர்த்து மூடி 20 நிமிடம் குறைந்த தீயில் சமைக்கவும்",
+          "தேங்காய் பால் சேர்த்து கோழி மென்மையாகும் வரை 15 நிமிடம் கொதிக்க விடவும்",
+          "வறுத்த கறி பொடி சேர்த்து மேலும் 5 நிமிடம் சமைக்கவும்",
+          "சூடாக சாதத்துடன் பரிமாறவும்"
+        ]
+      },
+      "nutritional_info": {
+        "calories": 380,
+        "protein": "42g",
+        "carbs": "12g",
+        "fat": "18g"
+      },
+      "tags": [
+        "sri lankan",
+        "curry",
+        "chicken",
+        "main dish",
+        "spicy",
+        "coconut milk"
+      ],
+      "dietary_restrictions": [
+        "gluten-free"
+      ],
+      "allergens": [],
+      "image_url": "recipe_007.jpg"
+    },
+    {
+      "id": "008",
+      "name": {
+        "en": "Fish Curry",
+        "si": "මාළු කරිය",
+        "ta": "மீன் கறி"
+      },
+      "cuisine": "Sri Lankan",
+      "meal_type": "Main Dish",
+      "difficulty": "Easy",
+      "prep_time": 15,
+      "cook_time": 30,
+      "servings": 4,
+      "ingredients": {
+        "en": [
+          "500g fish (tuna or seer), cut into pieces",
+          "1 onion, sliced",
+          "2 green chilies, sliced",
+          "1 inch ginger, minced",
+          "2 cloves garlic, minced",
+          "2 stalks curry leaves",
+          "2 tbsp fish curry powder",
+          "1 tsp chili powder",
+          "1/2 tsp turmeric powder",
+          "1 cup thin coconut milk",
+          "1/2 cup thick coconut milk",
+          "2 pieces goraka (garcinia)",
+          "Salt to taste"
+        ],
+        "si": [
+          "ග්‍රෑම් 500 මාළු (කෙලව ලා හෝ පාර), කැබලිවලට කපන ලද",
+          "ලූනු 1, පෙති කපන ලද",
+          "මිරිස් 2",
+          "ඉඟුරු අඟල් 1",
+          "සුදුලූණු කරාබු 2",
+          "කරපිංචා ගෙඩි 2",
+          "මේස හැඳි 2 මාළු කරි කුඩු",
+          "තේ හැඳි 1 මිරිස් කුඩු",
+          "තේ හැඳි 1/2 කහ කුඩු",
+          "කෝප්ප 1 තුනී පොල්කිරි",
+          "කෝප්ප 1/2 ඝන පොල්කිරි",
+          "ගෝරකා කෑලි 2",
+          "ලුණු ප්‍රමාණයට"
+        ],
+        "ta": [
+          "500 கிராம் மீன் (சூரை அல்லது வஞ்சிரம்), துண்டுகளாக்கியது",
+          "1 வெங்காயம், நறுக்கியது",
+          "2 பச்சை மிளகாய்",
+          "1 அங்குல இஞ்சி",
+          "2 பல் பூண்டு",
+          "2 கருவேப்பிலை",
+          "2 தேக்கரண்டி மீன் கறி பொடி",
+          "1 தேக்கரண்டி மிளகாய் பொடி",
+          "1/2 தேக்கரண்டி மஞ்சள் பொடி",
+          "1 கோப்பை மெல்லிய தேங்காய் பால்",
+          "1/2 கோப்பை அடர்த்தியான தேங்காய் பால்",
+          "2 கொடம்புளி துண்டுகள்",
+          "உப்பு தேவைக்கேற்ப"
+        ]
+      },
+      "instructions": {
+        "en": [
+          "Wash goraka and soak in water for 5 minutes",
+          "Mix fish with turmeric and salt, set aside",
+          "In a clay pot, add onions, garlic, ginger, green chilies, and curry leaves",
+          "Add fish curry powder, chili powder, thin coconut milk, and goraka",
+          "Bring to a boil, then add fish pieces carefully",
+          "Cook on medium heat for 15 minutes without stirring",
+          "Add thick coconut milk and simmer for 5 minutes",
+          "Serve hot with rice"
+        ],
+        "si": [
+          "ගෝරකා සෝදා මිනිත්තු 5ක් වතුරේ පොඟවන්න",
+          "මාළු කහ සහ ලුණු සමඟ මිශ්‍ර කර පැත්තකට තබන්න",
+          "මැටි බඳුනක ලූනු, සුදුලූණු, ඉඟුරු, මිරිස් සහ කරපිංචා එකතු කරන්න",
+          "මාළු කරි කුඩු, මිරිස් කුඩු, තුනී පොල්කිරි සහ ගෝරකා එකතු කරන්න",
+          "උතුරා ගත්තාම, මාළු කැබලි සැලකිල්ලෙන් එකතු කරන්න",
+          "මිනිත්තු 15ක් මධ්‍යම ගින්දරින් නොකලවා උයන්න",
+          "ඝන පොල්කිරි එකතු කර මිනිත්තු 5ක් තම්බා ගන්න",
+          "බතට උණුසුම්ව සේවය කරන්න"
+        ],
+        "ta": [
+          "கொடம்புளியை கழுவி 5 நிமிடம் ஊற வைக்கவும்",
+          "மீனை மஞ்சள் மற்றும் உப்பில் கலந்து ஒதுக்கி வைக்கவும்",
+          "மண்பாண்டத்தில் வெங்காயம், பூண்டு, இஞ்சி, பச்சை மிளகாய், கருவேப்பிலை சேர்க்கவும்",
+          "மீன் கறி பொடி, மிளகாய் பொடி, மெல்லிய தேங்காய் பால், கொடம்புளி சேர்க்கவும்",
+          "கொதி வந்ததும், மீன் துண்டுகளை கவனமாக சேர்க்கவும்",
+          "15 நிமிடம் நடுத்தர தீயில் கிளறாமல் சமைக்கவும்",
+          "அடர்த்தியான தேங்காய் பால் சேர்த்து 5 நிமிடம் கொதிக்க விடவும்",
+          "சூடாக சாதத்துடன் பரிமாறவும்"
+        ]
+      },
+      "nutritional_info": {
+        "calories": 280,
+        "protein": "32g",
+        "carbs": "8g",
+        "fat": "14g"
+      },
+      "tags": [
+        "sri lankan",
+        "curry",
+        "fish",
+        "seafood",
+        "main dish"
+      ],
+      "dietary_restrictions": [
+        "gluten-free",
+        "dairy-free"
+      ],
+      "allergens": [
+        "fish"
+      ],
+      "image_url": "recipe_008.jpg"
+    },
+    {
+      "id": "009",
+      "name": {
+        "en": "Dhal Curry (Parippu)",
+        "si": "පරිප්පු කරිය",
+        "ta": "பருப்பு கறி"
+      },
+      "cuisine": "Sri Lankan",
+      "meal_type": "Side Dish",
+      "difficulty": "Easy",
+      "prep_time": 10,
+      "cook_time": 25,
+      "servings": 4,
+      "ingredients": {
+        "en": [
+          "1 cup red lentils",
+          "2 cups water",
+          "1 onion, chopped",
+          "2 green chilies",
+          "1 tsp turmeric",
+          "1 stalk curry leaves",
+          "1/2 cup coconut milk",
+          "1 tbsp oil",
+          "Salt to taste"
+        ],
+        "si": [
+          "කෝප්ප 1 රතු පරිප්පු",
+          "කෝප්ප 2 වතුර",
+          "ලූනු 1, කප ලද",
+          "මිරිස් 2",
+          "තේ හැඳි 1 කහ",
+          "කරපිංචා ගෙඩි 1",
+          "කෝප්ප 1/2 පොල්කිරි",
+          "මේස හැඳි 1 තෙල්",
+          "ලුණු ප්‍රමාණයට"
+        ],
+        "ta": [
+          "1 கோப்பை சிவப்பு பருப்பு",
+          "2 கோப்பை தண்ணீர்",
+          "1 வெங்காயம், நறுக்கியது",
+          "2 பச்சை மிளகாய்",
+          "1 தேக்கரண்டி மஞ்சள்",
+          "1 கருவேப்பிலை",
+          "1/2 கோப்பை தேங்காய் பால்",
+          "1 தேக்கரண்டி எண்ணெய்",
+          "உப்பு தேவைக்கேற்ப"
+        ]
+      },
+      "instructions": {
+        "en": [
+          "Wash lentils thoroughly",
+          "Boil lentils with turmeric and salt until soft",
+          "Heat oil and sauté onions and green chilies",
+          "Add curry leaves",
+          "Add boiled lentils and mash slightly",
+          "Add coconut milk and simmer for 5 minutes",
+          "Serve with rice"
+        ],
+        "si": [
+          "පරිප්පු හොඳින් සෝදන්න",
+          "පරිප්පු කහ සහ ලුණු සමඟ මෘදු වන තුරු උයන්න",
+          "තෙල් රත් කර ලූනු සහ මිරිස් බද ගන්න",
+          "කරපිංචා එකතු කරන්න",
+          "උයන ලද පරිප්පු එකතු කර තරමක් පොඩි කරන්න",
+          "පොල්කිරි එකතු කර මිනිත්තු 5ක් තම්බා ගන්න",
+          "බතට සේවය කරන්න"
+        ],
+        "ta": [
+          "பருப்பை நன்கு கழுவவும்",
+          "பருப்பை மஞ்சள் மற்றும் உப்புடன் மென்மையாகும் வரை வேக வைக்கவும்",
+          "எண்ணெய் சூடாக்கி வெங்காயம் மற்றும் பச்சை மிளகாய் வதக்கவும்",
+          "கருவேப்பிலை சேர்க்கவும்",
+          "வேக வைத்த பருப்பை சேர்த்து சிறிது நசுக்கவும்",
+          "தேங்காய் பால் சேர்த்து 5 நிமிடம் கொதிக்க விடவும்",
+          "சாதத்துடன் பரிமாறவும்"
+        ]
+      },
+      "nutritional_info": {
+        "calories": 180,
+        "protein": "12g",
+        "carbs": "28g",
+        "fat": "4g"
+      },
+      "tags": [
+        "sri lankan",
+        "dhal",
+        "vegetarian",
+        "protein",
+        "side dish"
+      ],
+      "dietary_restrictions": [
+        "vegetarian",
+        "vegan",
+        "gluten-free"
+      ],
+      "allergens": [],
+      "image_url": "recipe_009.jpg"
+    },
+    {
+      "id": "010",
+      "name": {
+        "en": "String Hoppers",
+        "si": "ඉඳි ආප්ප",
+        "ta": "இடியாப்பம்"
+      },
+      "cuisine": "Sri Lankan",
+      "meal_type": "Breakfast",
+      "difficulty": "Medium",
+      "prep_time": 30,
+      "cook_time": 15,
+      "servings": 4,
+      "ingredients": {
+        "en": [
+          "2 cups red rice flour",
+          "2 cups water",
+          "1 tsp salt",
+          "String hopper maker"
+        ],
+        "si": [
+          "කෝප්ප 2 රතු හාල් පිටි",
+          "කෝප්ප 2 වතුර",
+          "තේ හැඳි 1 ලුණු",
+          "ඉඳිආප්ප යන්ත්‍රය"
+        ],
+        "ta": [
+          "2 கோப்பை சிவப்பு அரிசி மாவு",
+          "2 கோப்பை தண்ணீர்",
+          "1 தேக்கரண்டி உப்பு",
+          "இடியாப்ப இயந்திரம்"
+        ]
+      },
+      "instructions": {
+        "en": [
+          "Boil water with salt",
+          "Add flour gradually and mix to form a dough",
+          "Knead well until smooth",
+          "Fill the string hopper maker with dough",
+          "Steam small round mats",
+          "Press dough in circular motions onto mats",
+          "Steam for 5-7 minutes until cooked",
+          "Serve with curry and sambol"
+        ],
+        "si": [
+          "ලුණු සමඟ වතුර උතුරා ගන්න",
+          "පිටි ක්‍රමයෙන් එකතු කර ගුළිය සාදන්න",
+          "හොඳින් මිරිකා සුමට කරන්න",
+          "ඉඳිආප්ප යන්ත්‍රයට ගුළිය පුරවන්න",
+          "කුඩා වට පඟුන් වාෂ්ප කරන්න",
+          "පඟුන් මත වට රටාවෙන් ගුළිය පීඩනය කරන්න",
+          "මිනිත්තු 5-7ක් වාෂ්ප කරන්න",
+          "කරි සහ සම්බෝල් සමඟ සේවය කරන්න"
+        ],
+        "ta": [
+          "உப்புடன் தண்ணீரை கொதிக்க வைக்கவும்",
+          "மாவை படிப்படியாக சேர்த்து பிசைந்து கொள்ளவும்",
+          "நன்கு பிசைந்து மென்மையாக்கவும்",
+          "இடியாப்ப இயந்திரத்தை மாவால் நிரப்பவும்",
+          "சிறிய வட்ட பாத்திரங்களை ஆவியில் வைக்கவும்",
+          "பாத்திரங்களில் வட்ட முறையில் மாவை அழுத்தவும்",
+          "5-7 நிமிடம் ஆவியில் வேக வைக்கவும்",
+          "கறி மற்றும் சம்பலுடன் பரிமாறவும்"
+        ]
+      },
+      "nutritional_info": {
+        "calories": 220,
+        "protein": "5g",
+        "carbs": "48g",
+        "fat": "1g"
+      },
+      "tags": [
+        "sri lankan",
+        "breakfast",
+        "string hoppers",
+        "steamed",
+        "rice flour"
+      ],
+      "dietary_restrictions": [
+        "vegetarian",
+        "vegan",
+        "gluten-free"
+      ],
+      "allergens": [],
+      "image_url": "recipe_010.jpg"
+    },
+    {
+      "id": "011",
+      "name": {
+        "en": "Pol Sambol",
+        "si": "පොල් සම්බෝල්",
+        "ta": "தேங்காய் சம்பல்"
+      },
+      "cuisine": "Sri Lankan",
+      "meal_type": "Side Dish",
+      "difficulty": "Easy",
+      "prep_time": 10,
+      "cook_time": 0,
+      "servings": 4,
+      "ingredients": {
+        "en": [
+          "Ingredients to be added"
+        ],
+        "si": [
+          "අමුද්‍රව්‍ය එකතු කළ යුතුය"
+        ],
+        "ta": [
+          "பொருட்கள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "instructions": {
+        "en": [
+          "Instructions to be added"
+        ],
+        "si": [
+          "උපදෙස් එකතු කළ යුතුය"
+        ],
+        "ta": [
+          "வழிமுறைகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "nutritional_info": {
+        "calories": 0,
+        "protein": "0g",
+        "carbs": "0g",
+        "fat": "0g"
+      },
+      "tags": [
+        "sri lankan",
+        "side dish"
+      ],
+      "dietary_restrictions": [],
+      "allergens": [],
+      "image_url": "recipe_011.jpg"
+    },
+    {
+      "id": "012",
+      "name": {
+        "en": "Hoppers (Appa)",
+        "si": "ආප්ප",
+        "ta": "ஆப்பம்"
+      },
+      "cuisine": "Sri Lankan",
+      "meal_type": "Breakfast",
+      "difficulty": "Medium",
+      "prep_time": 60,
+      "cook_time": 20,
+      "servings": 4,
+      "ingredients": {
+        "en": [
+          "Ingredients to be added"
+        ],
+        "si": [
+          "අමුද්‍රව්‍ය එකතු කළ යුතුය"
+        ],
+        "ta": [
+          "பொருட்கள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "instructions": {
+        "en": [
+          "Instructions to be added"
+        ],
+        "si": [
+          "උපදෙස් එකතු කළ යුතුය"
+        ],
+        "ta": [
+          "வழிமுறைகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "nutritional_info": {
+        "calories": 0,
+        "protein": "0g",
+        "carbs": "0g",
+        "fat": "0g"
+      },
+      "tags": [
+        "sri lankan",
+        "breakfast"
+      ],
+      "dietary_restrictions": [],
+      "allergens": [],
+      "image_url": "recipe_012.jpg"
+    },
+    {
+      "id": "SL_013",
+      "names": {
+        "english": "Prawn Curry",
+        "sinhala": "ඉස්සෝ කරිය",
+        "tamil": "இறால் கறி"
+      },
+      "category": {
+        "english": "Main Dish",
+        "sinhala": "ප්‍රධාන ආහාර",
+        "tamil": "முக்கிய உணவு"
+      },
+      "difficulty": {
+        "english": "Medium",
+        "sinhala": "මධ්‍යම",
+        "tamil": "நடுத்தர"
+      },
+      "prep_time_mins": 20,
+      "cook_time_mins": 25,
+      "servings": 4,
+      "region": {
+        "english": "Island-wide",
+        "sinhala": "දිවයින පුරා",
+        "tamil": "தீவு முழுவதும்"
+      },
+      "spice_level": 2,
+      "is_authentic": true,
+      "ingredients": [
+        {
+          "item": {
+            "english": "Ingredients to be added",
+            "sinhala": "අමුද්‍රව්‍ය එකතු කළ යුතුයි",
+            "tamil": "பொருட்கள் சேர்க்கப்பட வேண்டும்"
+          },
+          "amount": "As needed",
+          "essential": true
+        }
+      ],
+      "equipment": {
+        "english": [
+          "Standard cooking utensils"
+        ],
+        "sinhala": [
+          "සාමාන්‍ය ඉවුම් උපකරණ"
+        ],
+        "tamil": [
+          "நியமான சமையல் பாத்திரங்கள்"
+        ]
+      },
+      "method": {
+        "english": [
+          "Detailed cooking instructions to be added"
+        ],
+        "sinhala": [
+          "විස්තරාත්මක උපදෙස් එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "விரிவான வழிமுறைகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tips": {
+        "english": [
+          "Cooking tips to be added"
+        ],
+        "sinhala": [
+          "ඉවුම් ඉඟි එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "சமையல் குறிப்புகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tags": {
+        "english": [
+          "sri lankan",
+          "authentic",
+          "main dish"
+        ],
+        "sinhala": [
+          "ශ්‍රී ලාංකික",
+          "අව්‍යයථාබූ"
+        ],
+        "tamil": [
+          "இலங்கை",
+          "உண்மையான"
+        ]
+      },
+      "nutrition_per_serving": {
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0
+      },
+      "cultural_note": {
+        "english": "Prawn Curry is a traditional Sri Lankan dish enjoyed across the island.",
+        "sinhala": "ඉස්සෝ කරිය දිවයින පුරා රස විඳින සාම්ප්‍රදායික ශ්‍රී ලාංකික ආහාරයකි.",
+        "tamil": "இறால் கறி தீவு முழுவதும் விரும்பப்படும் பாரம்பரிய இலங்கை உணவாகும்."
+      },
+      "serving_suggestions": {
+        "english": [
+          "Serve with rice",
+          "Accompanies curry meals"
+        ],
+        "sinhala": [
+          "බතට සේවය කරන්න",
+          "කරි ආහාර සමඟ"
+        ],
+        "tamil": [
+          "சாதத்துடன் பரிமாறவும்",
+          "கறி உணவுகளுடன்"
+        ]
+      }
+    },
+    {
+      "id": "SL_014",
+      "names": {
+        "english": "Beef Curry",
+        "sinhala": "හරක් මස් කරිය",
+        "tamil": "மாட்டிறைச்சி கறி"
+      },
+      "category": {
+        "english": "Main Dish",
+        "sinhala": "ප්‍රධාන ආහාර",
+        "tamil": "முக்கிய உணவு"
+      },
+      "difficulty": {
+        "english": "Medium",
+        "sinhala": "මධ්‍යම",
+        "tamil": "நடுத்தர"
+      },
+      "prep_time_mins": 20,
+      "cook_time_mins": 75,
+      "servings": 4,
+      "region": {
+        "english": "Island-wide",
+        "sinhala": "දිවයින පුරා",
+        "tamil": "தீவு முழுவதும்"
+      },
+      "spice_level": 2,
+      "is_authentic": true,
+      "ingredients": [
+        {
+          "item": {
+            "english": "Ingredients to be added",
+            "sinhala": "අමුද්‍රව්‍ය එකතු කළ යුතුයි",
+            "tamil": "பொருட்கள் சேர்க்கப்பட வேண்டும்"
+          },
+          "amount": "As needed",
+          "essential": true
+        }
+      ],
+      "equipment": {
+        "english": [
+          "Standard cooking utensils"
+        ],
+        "sinhala": [
+          "සාමාන්‍ය ඉවුම් උපකරණ"
+        ],
+        "tamil": [
+          "நியமான சமையல் பாத்திரங்கள்"
+        ]
+      },
+      "method": {
+        "english": [
+          "Detailed cooking instructions to be added"
+        ],
+        "sinhala": [
+          "විස්තරාත්මක උපදෙස් එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "விரிவான வழிமுறைகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tips": {
+        "english": [
+          "Cooking tips to be added"
+        ],
+        "sinhala": [
+          "ඉවුම් ඉඟි එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "சமையல் குறிப்புகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tags": {
+        "english": [
+          "sri lankan",
+          "authentic",
+          "main dish"
+        ],
+        "sinhala": [
+          "ශ්‍රී ලාංකික",
+          "අව්‍යයථාබූ"
+        ],
+        "tamil": [
+          "இலங்கை",
+          "உண்மையான"
+        ]
+      },
+      "nutrition_per_serving": {
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0
+      },
+      "cultural_note": {
+        "english": "Beef Curry is a traditional Sri Lankan dish enjoyed across the island.",
+        "sinhala": "හරක් මස් කරිය දිවයින පුරා රස විඳින සාම්ප්‍රදායික ශ්‍රී ලාංකික ආහාරයකි.",
+        "tamil": "மாட்டிறைச்சி கறி தீவு முழுவதும் விரும்பப்படும் பாரம்பரிய இலங்கை உணவாகும்."
+      },
+      "serving_suggestions": {
+        "english": [
+          "Serve with rice",
+          "Accompanies curry meals"
+        ],
+        "sinhala": [
+          "බතට සේවය කරන්න",
+          "කරි ආහාර සමඟ"
+        ],
+        "tamil": [
+          "சாதத்துடன் பரிமாறவும்",
+          "கறி உணவுகளுடன்"
+        ]
+      }
+    },
+    {
+      "id": "SL_015",
+      "names": {
+        "english": "Mutton Curry",
+        "sinhala": "එළු මස් කරිය",
+        "tamil": "ஆட்டிறைச்சி கறி"
+      },
+      "category": {
+        "english": "Main Dish",
+        "sinhala": "ප්‍රධාන ආහාර",
+        "tamil": "முக்கிய உணவு"
+      },
+      "difficulty": {
+        "english": "Medium",
+        "sinhala": "මධ්‍යම",
+        "tamil": "நடுத்தர"
+      },
+      "prep_time_mins": 20,
+      "cook_time_mins": 60,
+      "servings": 4,
+      "region": {
+        "english": "Island-wide",
+        "sinhala": "දිවයින පුරා",
+        "tamil": "தீவு முழுவதும்"
+      },
+      "spice_level": 2,
+      "is_authentic": true,
+      "ingredients": [
+        {
+          "item": {
+            "english": "Ingredients to be added",
+            "sinhala": "අමුද්‍රව්‍ය එකතු කළ යුතුයි",
+            "tamil": "பொருட்கள் சேர்க்கப்பட வேண்டும்"
+          },
+          "amount": "As needed",
+          "essential": true
+        }
+      ],
+      "equipment": {
+        "english": [
+          "Standard cooking utensils"
+        ],
+        "sinhala": [
+          "සාමාන්‍ය ඉවුම් උපකරණ"
+        ],
+        "tamil": [
+          "நியமான சமையல் பாத்திரங்கள்"
+        ]
+      },
+      "method": {
+        "english": [
+          "Detailed cooking instructions to be added"
+        ],
+        "sinhala": [
+          "විස්තරාත්මක උපදෙස් එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "விரிவான வழிமுறைகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tips": {
+        "english": [
+          "Cooking tips to be added"
+        ],
+        "sinhala": [
+          "ඉවුම් ඉඟි එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "சமையல் குறிப்புகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tags": {
+        "english": [
+          "sri lankan",
+          "authentic",
+          "main dish"
+        ],
+        "sinhala": [
+          "ශ්‍රී ලාංකික",
+          "අව්‍යයථාබූ"
+        ],
+        "tamil": [
+          "இலங்கை",
+          "உண்மையான"
+        ]
+      },
+      "nutrition_per_serving": {
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0
+      },
+      "cultural_note": {
+        "english": "Mutton Curry is a traditional Sri Lankan dish enjoyed across the island.",
+        "sinhala": "එළු මස් කරිය දිවයින පුරා රස විඳින සාම්ප්‍රදායික ශ්‍රී ලාංකික ආහාරයකි.",
+        "tamil": "ஆட்டிறைச்சி கறி தீவு முழுவதும் விரும்பப்படும் பாரம்பரிய இலங்கை உணவாகும்."
+      },
+      "serving_suggestions": {
+        "english": [
+          "Serve with rice",
+          "Accompanies curry meals"
+        ],
+        "sinhala": [
+          "බතට සේවය කරන්න",
+          "කරි ආහාර සමඟ"
+        ],
+        "tamil": [
+          "சாதத்துடன் பரிமாறவும்",
+          "கறி உணவுகளுடன்"
+        ]
+      }
+    },
+    {
+      "id": "SL_016",
+      "names": {
+        "english": "Pork Curry",
+        "sinhala": "ඌරු මස් කරිය",
+        "tamil": "பன்றி இறைச்சி கறி"
+      },
+      "category": {
+        "english": "Main Dish",
+        "sinhala": "ප්‍රධාන ආහාර",
+        "tamil": "முக்கிய உணவு"
+      },
+      "difficulty": {
+        "english": "Medium",
+        "sinhala": "මධ්‍යම",
+        "tamil": "நடுத்தர"
+      },
+      "prep_time_mins": 20,
+      "cook_time_mins": 60,
+      "servings": 4,
+      "region": {
+        "english": "Island-wide",
+        "sinhala": "දිවයින පුරා",
+        "tamil": "தீவு முழுவதும்"
+      },
+      "spice_level": 2,
+      "is_authentic": true,
+      "ingredients": [
+        {
+          "item": {
+            "english": "Ingredients to be added",
+            "sinhala": "අමුද්‍රව්‍ය එකතු කළ යුතුයි",
+            "tamil": "பொருட்கள் சேர்க்கப்பட வேண்டும்"
+          },
+          "amount": "As needed",
+          "essential": true
+        }
+      ],
+      "equipment": {
+        "english": [
+          "Standard cooking utensils"
+        ],
+        "sinhala": [
+          "සාමාන්‍ය ඉවුම් උපකරණ"
+        ],
+        "tamil": [
+          "நியமான சமையல் பாத்திரங்கள்"
+        ]
+      },
+      "method": {
+        "english": [
+          "Detailed cooking instructions to be added"
+        ],
+        "sinhala": [
+          "විස්තරාත්මක උපදෙස් එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "விரிவான வழிமுறைகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tips": {
+        "english": [
+          "Cooking tips to be added"
+        ],
+        "sinhala": [
+          "ඉවුම් ඉඟි එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "சமையல் குறிப்புகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tags": {
+        "english": [
+          "sri lankan",
+          "authentic",
+          "main dish"
+        ],
+        "sinhala": [
+          "ශ්‍රී ලාංකික",
+          "අව්‍යයථාබූ"
+        ],
+        "tamil": [
+          "இலங்கை",
+          "உண்மையான"
+        ]
+      },
+      "nutrition_per_serving": {
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0
+      },
+      "cultural_note": {
+        "english": "Pork Curry is a traditional Sri Lankan dish enjoyed across the island.",
+        "sinhala": "ඌරු මස් කරිය දිවයින පුරා රස විඳින සාම්ප්‍රදායික ශ්‍රී ලාංකික ආහාරයකි.",
+        "tamil": "பன்றி இறைச்சி கறி தீவு முழுவதும் விரும்பப்படும் பாரம்பரிய இலங்கை உணவாகும்."
+      },
+      "serving_suggestions": {
+        "english": [
+          "Serve with rice",
+          "Accompanies curry meals"
+        ],
+        "sinhala": [
+          "බතට සේවය කරන්න",
+          "කරි ආහාර සමඟ"
+        ],
+        "tamil": [
+          "சாதத்துடன் பரிமாறவும்",
+          "கறி உணவுகளுடன்"
+        ]
+      }
+    },
+    {
+      "id": "SL_017",
+      "names": {
+        "english": "Fish Ambul Thiyal",
+        "sinhala": "මාළු අම්බුල් තියල්",
+        "tamil": "மீன் புளி கறி"
+      },
+      "category": {
+        "english": "Main Dish",
+        "sinhala": "ප්‍රධාන ආහාර",
+        "tamil": "முக்கிய உணவு"
+      },
+      "difficulty": {
+        "english": "Medium",
+        "sinhala": "මධ්‍යම",
+        "tamil": "நடுத்தர"
+      },
+      "prep_time_mins": 20,
+      "cook_time_mins": 40,
+      "servings": 4,
+      "region": {
+        "english": "Island-wide",
+        "sinhala": "දිවයින පුරා",
+        "tamil": "தீவு முழுவதும்"
+      },
+      "spice_level": 2,
+      "is_authentic": true,
+      "ingredients": [
+        {
+          "item": {
+            "english": "Ingredients to be added",
+            "sinhala": "අමුද්‍රව්‍ය එකතු කළ යුතුයි",
+            "tamil": "பொருட்கள் சேர்க்கப்பட வேண்டும்"
+          },
+          "amount": "As needed",
+          "essential": true
+        }
+      ],
+      "equipment": {
+        "english": [
+          "Standard cooking utensils"
+        ],
+        "sinhala": [
+          "සාමාන්‍ය ඉවුම් උපකරණ"
+        ],
+        "tamil": [
+          "நியமான சமையல் பாத்திரங்கள்"
+        ]
+      },
+      "method": {
+        "english": [
+          "Detailed cooking instructions to be added"
+        ],
+        "sinhala": [
+          "විස්තරාත්මක උපදෙස් එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "விரிவான வழிமுறைகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tips": {
+        "english": [
+          "Cooking tips to be added"
+        ],
+        "sinhala": [
+          "ඉවුම් ඉඟි එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "சமையல் குறிப்புகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tags": {
+        "english": [
+          "sri lankan",
+          "authentic",
+          "main dish"
+        ],
+        "sinhala": [
+          "ශ්‍රී ලාංකික",
+          "අව්‍යයථාබූ"
+        ],
+        "tamil": [
+          "இலங்கை",
+          "உண்மையான"
+        ]
+      },
+      "nutrition_per_serving": {
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0
+      },
+      "cultural_note": {
+        "english": "Fish Ambul Thiyal is a traditional Sri Lankan dish enjoyed across the island.",
+        "sinhala": "මාළු අම්බුල් තියල් දිවයින පුරා රස විඳින සාම්ප්‍රදායික ශ්‍රී ලාංකික ආහාරයකි.",
+        "tamil": "மீன் புளி கறி தீவு முழுவதும் விரும்பப்படும் பாரம்பரிய இலங்கை உணவாகும்."
+      },
+      "serving_suggestions": {
+        "english": [
+          "Serve with rice",
+          "Accompanies curry meals"
+        ],
+        "sinhala": [
+          "බතට සේවය කරන්න",
+          "කරි ආහාර සමඟ"
+        ],
+        "tamil": [
+          "சாதத்துடன் பரிமாறவும்",
+          "கறி உணவுகளுடன்"
+        ]
+      }
+    },
+    {
+      "id": "SL_018",
+      "names": {
+        "english": "Dried Fish Curry",
+        "sinhala": "කරවල කරිය",
+        "tamil": "காய்ந்த மீன் கறி"
+      },
+      "category": {
+        "english": "Main Dish",
+        "sinhala": "ප්‍රධාන ආහාර",
+        "tamil": "முக்கிய உணவு"
+      },
+      "difficulty": {
+        "english": "Easy",
+        "sinhala": "පහසු",
+        "tamil": "எளிதான"
+      },
+      "prep_time_mins": 15,
+      "cook_time_mins": 30,
+      "servings": 4,
+      "region": {
+        "english": "Island-wide",
+        "sinhala": "දිවයින පුරා",
+        "tamil": "தீவு முழுவதும்"
+      },
+      "spice_level": 2,
+      "is_authentic": true,
+      "ingredients": [
+        {
+          "item": {
+            "english": "Ingredients to be added",
+            "sinhala": "අමුද්‍රව්‍ය එකතු කළ යුතුයි",
+            "tamil": "பொருட்கள் சேர்க்கப்பட வேண்டும்"
+          },
+          "amount": "As needed",
+          "essential": true
+        }
+      ],
+      "equipment": {
+        "english": [
+          "Standard cooking utensils"
+        ],
+        "sinhala": [
+          "සාමාන්‍ය ඉවුම් උපකරණ"
+        ],
+        "tamil": [
+          "நியமான சமையல் பாத்திரங்கள்"
+        ]
+      },
+      "method": {
+        "english": [
+          "Detailed cooking instructions to be added"
+        ],
+        "sinhala": [
+          "විස්තරාත්මක උපදෙස් එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "விரிவான வழிமுறைகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tips": {
+        "english": [
+          "Cooking tips to be added"
+        ],
+        "sinhala": [
+          "ඉවුම් ඉඟි එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "சமையல் குறிப்புகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tags": {
+        "english": [
+          "sri lankan",
+          "authentic",
+          "main dish"
+        ],
+        "sinhala": [
+          "ශ්‍රී ලාංකික",
+          "අව්‍යයථාබූ"
+        ],
+        "tamil": [
+          "இலங்கை",
+          "உண்மையான"
+        ]
+      },
+      "nutrition_per_serving": {
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0
+      },
+      "cultural_note": {
+        "english": "Dried Fish Curry is a traditional Sri Lankan dish enjoyed across the island.",
+        "sinhala": "කරවල කරිය දිවයින පුරා රස විඳින සාම්ප්‍රදායික ශ්‍රී ලාංකික ආහාරයකි.",
+        "tamil": "காய்ந்த மீன் கறி தீவு முழுவதும் விரும்பப்படும் பாரம்பரிய இலங்கை உணவாகும்."
+      },
+      "serving_suggestions": {
+        "english": [
+          "Serve with rice",
+          "Accompanies curry meals"
+        ],
+        "sinhala": [
+          "බතට සේවය කරන්න",
+          "කරි ආහාර සමඟ"
+        ],
+        "tamil": [
+          "சாதத்துடன் பரிமாறவும்",
+          "கறி உணவுகளுடன்"
+        ]
+      }
+    },
+    {
+      "id": "SL_019",
+      "names": {
+        "english": "Cuttlefish Curry",
+        "sinhala": "දැල්ලෝ කරිය",
+        "tamil": "கணவாய் கறி"
+      },
+      "category": {
+        "english": "Main Dish",
+        "sinhala": "ප්‍රධාන ආහාර",
+        "tamil": "முக்கிய உணவு"
+      },
+      "difficulty": {
+        "english": "Medium",
+        "sinhala": "මධ්‍යම",
+        "tamil": "நடுத்தர"
+      },
+      "prep_time_mins": 25,
+      "cook_time_mins": 30,
+      "servings": 4,
+      "region": {
+        "english": "Island-wide",
+        "sinhala": "දිවයින පුරා",
+        "tamil": "தீவு முழுவதும்"
+      },
+      "spice_level": 2,
+      "is_authentic": true,
+      "ingredients": [
+        {
+          "item": {
+            "english": "Ingredients to be added",
+            "sinhala": "අමුද්‍රව්‍ය එකතු කළ යුතුයි",
+            "tamil": "பொருட்கள் சேர்க்கப்பட வேண்டும்"
+          },
+          "amount": "As needed",
+          "essential": true
+        }
+      ],
+      "equipment": {
+        "english": [
+          "Standard cooking utensils"
+        ],
+        "sinhala": [
+          "සාමාන්‍ය ඉවුම් උපකරණ"
+        ],
+        "tamil": [
+          "நியமான சமையல் பாத்திரங்கள்"
+        ]
+      },
+      "method": {
+        "english": [
+          "Detailed cooking instructions to be added"
+        ],
+        "sinhala": [
+          "විස්තරාත්මක උපදෙස් එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "விரிவான வழிமுறைகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tips": {
+        "english": [
+          "Cooking tips to be added"
+        ],
+        "sinhala": [
+          "ඉවුම් ඉඟි එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "சமையல் குறிப்புகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tags": {
+        "english": [
+          "sri lankan",
+          "authentic",
+          "main dish"
+        ],
+        "sinhala": [
+          "ශ්‍රී ලාංකික",
+          "අව්‍යයථාබූ"
+        ],
+        "tamil": [
+          "இலங்கை",
+          "உண்மையான"
+        ]
+      },
+      "nutrition_per_serving": {
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0
+      },
+      "cultural_note": {
+        "english": "Cuttlefish Curry is a traditional Sri Lankan dish enjoyed across the island.",
+        "sinhala": "දැල්ලෝ කරිය දිවයින පුරා රස විඳින සාම්ප්‍රදායික ශ්‍රී ලාංකික ආහාරයකි.",
+        "tamil": "கணவாய் கறி தீவு முழுவதும் விரும்பப்படும் பாரம்பரிய இலங்கை உணவாகும்."
+      },
+      "serving_suggestions": {
+        "english": [
+          "Serve with rice",
+          "Accompanies curry meals"
+        ],
+        "sinhala": [
+          "බතට සේවය කරන්න",
+          "කරි ආහාර සමඟ"
+        ],
+        "tamil": [
+          "சாதத்துடன் பரிமாறவும்",
+          "கறி உணவுகளுடன்"
+        ]
+      }
+    },
+    {
+      "id": "SL_020",
+      "names": {
+        "english": "Crab Curry",
+        "sinhala": "කකුළුවෝ කරිය",
+        "tamil": "நண்டு கறி"
+      },
+      "category": {
+        "english": "Main Dish",
+        "sinhala": "ප්‍රධාන ආහාර",
+        "tamil": "முக்கிய உணவு"
+      },
+      "difficulty": {
+        "english": "Hard",
+        "sinhala": "අපහසු",
+        "tamil": "கடினமான"
+      },
+      "prep_time_mins": 30,
+      "cook_time_mins": 30,
+      "servings": 4,
+      "region": {
+        "english": "Island-wide",
+        "sinhala": "දිවයින පුරා",
+        "tamil": "தீவு முழுவதும்"
+      },
+      "spice_level": 2,
+      "is_authentic": true,
+      "ingredients": [
+        {
+          "item": {
+            "english": "Ingredients to be added",
+            "sinhala": "අමුද්‍රව්‍ය එකතු කළ යුතුයි",
+            "tamil": "பொருட்கள் சேர்க்கப்பட வேண்டும்"
+          },
+          "amount": "As needed",
+          "essential": true
+        }
+      ],
+      "equipment": {
+        "english": [
+          "Standard cooking utensils"
+        ],
+        "sinhala": [
+          "සාමාන්‍ය ඉවුම් උපකරණ"
+        ],
+        "tamil": [
+          "நியமான சமையல் பாத்திரங்கள்"
+        ]
+      },
+      "method": {
+        "english": [
+          "Detailed cooking instructions to be added"
+        ],
+        "sinhala": [
+          "විස්තරාත්මක උපදෙස් එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "விரிவான வழிமுறைகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tips": {
+        "english": [
+          "Cooking tips to be added"
+        ],
+        "sinhala": [
+          "ඉවුම් ඉඟි එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "சமையல் குறிப்புகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tags": {
+        "english": [
+          "sri lankan",
+          "authentic",
+          "main dish"
+        ],
+        "sinhala": [
+          "ශ්‍රී ලාංකික",
+          "අව්‍යයථාබූ"
+        ],
+        "tamil": [
+          "இலங்கை",
+          "உண்மையான"
+        ]
+      },
+      "nutrition_per_serving": {
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0
+      },
+      "cultural_note": {
+        "english": "Crab Curry is a traditional Sri Lankan dish enjoyed across the island.",
+        "sinhala": "කකුළුවෝ කරිය දිවයින පුරා රස විඳින සාම්ප්‍රදායික ශ්‍රී ලාංකික ආහාරයකි.",
+        "tamil": "நண்டு கறி தீவு முழுவதும் விரும்பப்படும் பாரம்பரிய இலங்கை உணவாகும்."
+      },
+      "serving_suggestions": {
+        "english": [
+          "Serve with rice",
+          "Accompanies curry meals"
+        ],
+        "sinhala": [
+          "බතට සේවය කරන්න",
+          "කරි ආහාර සමඟ"
+        ],
+        "tamil": [
+          "சாதத்துடன் பரிமாறவும்",
+          "கறி உணவுகளுடன்"
+        ]
+      }
+    },
+    {
+      "id": "SL_021",
+      "names": {
+        "english": "Egg Curry",
+        "sinhala": "බිත්තර කරිය",
+        "tamil": "முட்டை கறி"
+      },
+      "category": {
+        "english": "Main Dish",
+        "sinhala": "ප්‍රධාන ආහාර",
+        "tamil": "முக்கிய உணவு"
+      },
+      "difficulty": {
+        "english": "Easy",
+        "sinhala": "පහසු",
+        "tamil": "எளிதான"
+      },
+      "prep_time_mins": 10,
+      "cook_time_mins": 20,
+      "servings": 4,
+      "region": {
+        "english": "Island-wide",
+        "sinhala": "දිවයින පුරා",
+        "tamil": "தீவு முழுவதும்"
+      },
+      "spice_level": 2,
+      "is_authentic": true,
+      "ingredients": [
+        {
+          "item": {
+            "english": "Ingredients to be added",
+            "sinhala": "අමුද්‍රව්‍ය එකතු කළ යුතුයි",
+            "tamil": "பொருட்கள் சேர்க்கப்பட வேண்டும்"
+          },
+          "amount": "As needed",
+          "essential": true
+        }
+      ],
+      "equipment": {
+        "english": [
+          "Standard cooking utensils"
+        ],
+        "sinhala": [
+          "සාමාන්‍ය ඉවුම් උපකරණ"
+        ],
+        "tamil": [
+          "நியமான சமையல் பாத்திரங்கள்"
+        ]
+      },
+      "method": {
+        "english": [
+          "Detailed cooking instructions to be added"
+        ],
+        "sinhala": [
+          "විස්තරාත්මක උපදෙස් එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "விரிவான வழிமுறைகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tips": {
+        "english": [
+          "Cooking tips to be added"
+        ],
+        "sinhala": [
+          "ඉවුම් ඉඟි එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "சமையல் குறிப்புகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tags": {
+        "english": [
+          "sri lankan",
+          "authentic",
+          "main dish"
+        ],
+        "sinhala": [
+          "ශ්‍රී ලාංකික",
+          "අව්‍යයථාබූ"
+        ],
+        "tamil": [
+          "இலங்கை",
+          "உண்மையான"
+        ]
+      },
+      "nutrition_per_serving": {
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0
+      },
+      "cultural_note": {
+        "english": "Egg Curry is a traditional Sri Lankan dish enjoyed across the island.",
+        "sinhala": "බිත්තර කරිය දිවයින පුරා රස විඳින සාම්ප්‍රදායික ශ්‍රී ලාංකික ආහාරයකි.",
+        "tamil": "முட்டை கறி தீவு முழுவதும் விரும்பப்படும் பாரம்பரிய இலங்கை உணவாகும்."
+      },
+      "serving_suggestions": {
+        "english": [
+          "Serve with rice",
+          "Accompanies curry meals"
+        ],
+        "sinhala": [
+          "බතට සේවය කරන්න",
+          "කරි ආහාර සමඟ"
+        ],
+        "tamil": [
+          "சாதத்துடன் பரிமாறவும்",
+          "கறி உணவுகளுடன்"
+        ]
+      }
+    },
+    {
+      "id": "SL_022",
+      "names": {
+        "english": "Potato Curry",
+        "sinhala": "අල කරිය",
+        "tamil": "உருளைக்கிழங்கு கறி"
+      },
+      "category": {
+        "english": "Side Dish",
+        "sinhala": "අතුරු ආහාර",
+        "tamil": "துணை உணவு"
+      },
+      "difficulty": {
+        "english": "Easy",
+        "sinhala": "පහසු",
+        "tamil": "எளிதான"
+      },
+      "prep_time_mins": 10,
+      "cook_time_mins": 20,
+      "servings": 4,
+      "region": {
+        "english": "Island-wide",
+        "sinhala": "දිවයින පුරා",
+        "tamil": "தீவு முழுவதும்"
+      },
+      "spice_level": 2,
+      "is_authentic": true,
+      "ingredients": [
+        {
+          "item": {
+            "english": "Ingredients to be added",
+            "sinhala": "අමුද්‍රව්‍ය එකතු කළ යුතුයි",
+            "tamil": "பொருட்கள் சேர்க்கப்பட வேண்டும்"
+          },
+          "amount": "As needed",
+          "essential": true
+        }
+      ],
+      "equipment": {
+        "english": [
+          "Standard cooking utensils"
+        ],
+        "sinhala": [
+          "සාමාන්‍ය ඉවුම් උපකරණ"
+        ],
+        "tamil": [
+          "நியமான சமையல் பாத்திரங்கள்"
+        ]
+      },
+      "method": {
+        "english": [
+          "Detailed cooking instructions to be added"
+        ],
+        "sinhala": [
+          "විස්තරාත්මක උපදෙස් එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "விரிவான வழிமுறைகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tips": {
+        "english": [
+          "Cooking tips to be added"
+        ],
+        "sinhala": [
+          "ඉවුම් ඉඟි එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "சமையல் குறிப்புகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tags": {
+        "english": [
+          "sri lankan",
+          "authentic",
+          "side dish"
+        ],
+        "sinhala": [
+          "ශ්‍රී ලාංකික",
+          "අව්‍යයථාබූ"
+        ],
+        "tamil": [
+          "இலங்கை",
+          "உண்மையான"
+        ]
+      },
+      "nutrition_per_serving": {
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0
+      },
+      "cultural_note": {
+        "english": "Potato Curry is a traditional Sri Lankan dish enjoyed across the island.",
+        "sinhala": "අල කරිය දිවයින පුරා රස විඳින සාම්ප්‍රදායික ශ්‍රී ලාංකික ආහාරයකි.",
+        "tamil": "உருளைக்கிழங்கு கறி தீவு முழுவதும் விரும்பப்படும் பாரம்பரிய இலங்கை உணவாகும்."
+      },
+      "serving_suggestions": {
+        "english": [
+          "Serve with rice",
+          "Accompanies curry meals"
+        ],
+        "sinhala": [
+          "බතට සේවය කරන්න",
+          "කරි ආහාර සමඟ"
+        ],
+        "tamil": [
+          "சாதத்துடன் பரிமாறவும்",
+          "கறி உணவுகளுடன்"
+        ]
+      }
+    },
+    {
+      "id": "SL_023",
+      "names": {
+        "english": "Jackfruit Curry (Polos)",
+        "sinhala": "පොලොස් කරිය",
+        "tamil": "பலாக்காய் கறி"
+      },
+      "category": {
+        "english": "Main Dish",
+        "sinhala": "ප්‍රධාන ආහාර",
+        "tamil": "முக்கிய உணவு"
+      },
+      "difficulty": {
+        "english": "Medium",
+        "sinhala": "මධ්‍යම",
+        "tamil": "நடுத்தர"
+      },
+      "prep_time_mins": 30,
+      "cook_time_mins": 45,
+      "servings": 4,
+      "region": {
+        "english": "Island-wide",
+        "sinhala": "දිවයින පුරා",
+        "tamil": "தீவு முழுவதும்"
+      },
+      "spice_level": 2,
+      "is_authentic": true,
+      "ingredients": [
+        {
+          "item": {
+            "english": "Ingredients to be added",
+            "sinhala": "අමුද්‍රව්‍ය එකතු කළ යුතුයි",
+            "tamil": "பொருட்கள் சேர்க்கப்பட வேண்டும்"
+          },
+          "amount": "As needed",
+          "essential": true
+        }
+      ],
+      "equipment": {
+        "english": [
+          "Standard cooking utensils"
+        ],
+        "sinhala": [
+          "සාමාන්‍ය ඉවුම් උපකරණ"
+        ],
+        "tamil": [
+          "நியமான சமையல் பாத்திரங்கள்"
+        ]
+      },
+      "method": {
+        "english": [
+          "Detailed cooking instructions to be added"
+        ],
+        "sinhala": [
+          "විස්තරාත්මක උපදෙස් එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "விரிவான வழிமுறைகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tips": {
+        "english": [
+          "Cooking tips to be added"
+        ],
+        "sinhala": [
+          "ඉවුම් ඉඟි එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "சமையல் குறிப்புகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tags": {
+        "english": [
+          "sri lankan",
+          "authentic",
+          "main dish"
+        ],
+        "sinhala": [
+          "ශ්‍රී ලාංකික",
+          "අව්‍යයථාබූ"
+        ],
+        "tamil": [
+          "இலங்கை",
+          "உண்மையான"
+        ]
+      },
+      "nutrition_per_serving": {
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0
+      },
+      "cultural_note": {
+        "english": "Jackfruit Curry (Polos) is a traditional Sri Lankan dish enjoyed across the island.",
+        "sinhala": "පොලොස් කරිය දිවයින පුරා රස විඳින සාම්ප්‍රදායික ශ්‍රී ලාංකික ආහාරයකි.",
+        "tamil": "பலாக்காய் கறி தீவு முழுவதும் விரும்பப்படும் பாரம்பரிய இலங்கை உணவாகும்."
+      },
+      "serving_suggestions": {
+        "english": [
+          "Serve with rice",
+          "Accompanies curry meals"
+        ],
+        "sinhala": [
+          "බතට සේවය කරන්න",
+          "කරි ආහාර සමඟ"
+        ],
+        "tamil": [
+          "சாதத்துடன் பரிமாறவும்",
+          "கறி உணவுகளுடன்"
+        ]
+      }
+    },
+    {
+      "id": "SL_024",
+      "names": {
+        "english": "Brinjal Curry",
+        "sinhala": "වම්බටු කරිය",
+        "tamil": "கத்திரிக்காய் கறி"
+      },
+      "category": {
+        "english": "Side Dish",
+        "sinhala": "අතුරු ආහාර",
+        "tamil": "துணை உணவு"
+      },
+      "difficulty": {
+        "english": "Easy",
+        "sinhala": "පහසු",
+        "tamil": "எளிதான"
+      },
+      "prep_time_mins": 10,
+      "cook_time_mins": 25,
+      "servings": 4,
+      "region": {
+        "english": "Island-wide",
+        "sinhala": "දිවයින පුරා",
+        "tamil": "தீவு முழுவதும்"
+      },
+      "spice_level": 2,
+      "is_authentic": true,
+      "ingredients": [
+        {
+          "item": {
+            "english": "Ingredients to be added",
+            "sinhala": "අමුද්‍රව්‍ය එකතු කළ යුතුයි",
+            "tamil": "பொருட்கள் சேர்க்கப்பட வேண்டும்"
+          },
+          "amount": "As needed",
+          "essential": true
+        }
+      ],
+      "equipment": {
+        "english": [
+          "Standard cooking utensils"
+        ],
+        "sinhala": [
+          "සාමාන්‍ය ඉවුම් උපකරණ"
+        ],
+        "tamil": [
+          "நியமான சமையல் பாத்திரங்கள்"
+        ]
+      },
+      "method": {
+        "english": [
+          "Detailed cooking instructions to be added"
+        ],
+        "sinhala": [
+          "විස්තරාත්මක උපදෙස් එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "விரிவான வழிமுறைகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tips": {
+        "english": [
+          "Cooking tips to be added"
+        ],
+        "sinhala": [
+          "ඉවුම් ඉඟි එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "சமையல் குறிப்புகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tags": {
+        "english": [
+          "sri lankan",
+          "authentic",
+          "side dish"
+        ],
+        "sinhala": [
+          "ශ්‍රී ලාංකික",
+          "අව්‍යයථාබූ"
+        ],
+        "tamil": [
+          "இலங்கை",
+          "உண்மையான"
+        ]
+      },
+      "nutrition_per_serving": {
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0
+      },
+      "cultural_note": {
+        "english": "Brinjal Curry is a traditional Sri Lankan dish enjoyed across the island.",
+        "sinhala": "වම්බටු කරිය දිවයින පුරා රස විඳින සාම්ප්‍රදායික ශ්‍රී ලාංකික ආහාරයකි.",
+        "tamil": "கத்திரிக்காய் கறி தீவு முழுவதும் விரும்பப்படும் பாரம்பரிய இலங்கை உணவாகும்."
+      },
+      "serving_suggestions": {
+        "english": [
+          "Serve with rice",
+          "Accompanies curry meals"
+        ],
+        "sinhala": [
+          "බතට සේවය කරන්න",
+          "කරි ආහාර සමඟ"
+        ],
+        "tamil": [
+          "சாதத்துடன் பரிமாறவும்",
+          "கறி உணவுகளுடன்"
+        ]
+      }
+    },
+    {
+      "id": "SL_025",
+      "names": {
+        "english": "Okra Curry",
+        "sinhala": "බණ්ඩක්කා කරිය",
+        "tamil": "வெண்டைக்காய் கறி"
+      },
+      "category": {
+        "english": "Side Dish",
+        "sinhala": "අතුරු ආහාර",
+        "tamil": "துணை உணவு"
+      },
+      "difficulty": {
+        "english": "Easy",
+        "sinhala": "පහසු",
+        "tamil": "எளிதான"
+      },
+      "prep_time_mins": 10,
+      "cook_time_mins": 20,
+      "servings": 4,
+      "region": {
+        "english": "Island-wide",
+        "sinhala": "දිවයින පුරා",
+        "tamil": "தீவு முழுவதும்"
+      },
+      "spice_level": 2,
+      "is_authentic": true,
+      "ingredients": [
+        {
+          "item": {
+            "english": "Ingredients to be added",
+            "sinhala": "අමුද්‍රව්‍ය එකතු කළ යුතුයි",
+            "tamil": "பொருட்கள் சேர்க்கப்பட வேண்டும்"
+          },
+          "amount": "As needed",
+          "essential": true
+        }
+      ],
+      "equipment": {
+        "english": [
+          "Standard cooking utensils"
+        ],
+        "sinhala": [
+          "සාමාන්‍ය ඉවුම් උපකරණ"
+        ],
+        "tamil": [
+          "நியமான சமையல் பாத்திரங்கள்"
+        ]
+      },
+      "method": {
+        "english": [
+          "Detailed cooking instructions to be added"
+        ],
+        "sinhala": [
+          "විස්තරාත්මක උපදෙස් එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "விரிவான வழிமுறைகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tips": {
+        "english": [
+          "Cooking tips to be added"
+        ],
+        "sinhala": [
+          "ඉවුම් ඉඟි එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "சமையல் குறிப்புகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tags": {
+        "english": [
+          "sri lankan",
+          "authentic",
+          "side dish"
+        ],
+        "sinhala": [
+          "ශ්‍රී ලාංකික",
+          "අව්‍යයථාබූ"
+        ],
+        "tamil": [
+          "இலங்கை",
+          "உண்மையான"
+        ]
+      },
+      "nutrition_per_serving": {
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0
+      },
+      "cultural_note": {
+        "english": "Okra Curry is a traditional Sri Lankan dish enjoyed across the island.",
+        "sinhala": "බණ්ඩක්කා කරිය දිවයින පුරා රස විඳින සාම්ප්‍රදායික ශ්‍රී ලාංකික ආහාරයකි.",
+        "tamil": "வெண்டைக்காய் கறி தீவு முழுவதும் விரும்பப்படும் பாரம்பரிய இலங்கை உணவாகும்."
+      },
+      "serving_suggestions": {
+        "english": [
+          "Serve with rice",
+          "Accompanies curry meals"
+        ],
+        "sinhala": [
+          "බතට සේවය කරන්න",
+          "කරි ආහාර සමඟ"
+        ],
+        "tamil": [
+          "சாதத்துடன் பரிமாறவும்",
+          "கறி உணவுகளுடன்"
+        ]
+      }
+    },
+    {
+      "id": "SL_026",
+      "names": {
+        "english": "Pumpkin Curry",
+        "sinhala": "වට්ටක්කා කරිය",
+        "tamil": "பூசணி கறி"
+      },
+      "category": {
+        "english": "Side Dish",
+        "sinhala": "අතුරු ආහාර",
+        "tamil": "துணை உணவு"
+      },
+      "difficulty": {
+        "english": "Easy",
+        "sinhala": "පහසු",
+        "tamil": "எளிதான"
+      },
+      "prep_time_mins": 10,
+      "cook_time_mins": 20,
+      "servings": 4,
+      "region": {
+        "english": "Island-wide",
+        "sinhala": "දිවයින පුරා",
+        "tamil": "தீவு முழுவதும்"
+      },
+      "spice_level": 2,
+      "is_authentic": true,
+      "ingredients": [
+        {
+          "item": {
+            "english": "Ingredients to be added",
+            "sinhala": "අමුද්‍රව්‍ය එකතු කළ යුතුයි",
+            "tamil": "பொருட்கள் சேர்க்கப்பட வேண்டும்"
+          },
+          "amount": "As needed",
+          "essential": true
+        }
+      ],
+      "equipment": {
+        "english": [
+          "Standard cooking utensils"
+        ],
+        "sinhala": [
+          "සාමාන්‍ය ඉවුම් උපකරණ"
+        ],
+        "tamil": [
+          "நியமான சமையல் பாத்திரங்கள்"
+        ]
+      },
+      "method": {
+        "english": [
+          "Detailed cooking instructions to be added"
+        ],
+        "sinhala": [
+          "විස්තරාත්මක උපදෙස් එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "விரிவான வழிமுறைகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tips": {
+        "english": [
+          "Cooking tips to be added"
+        ],
+        "sinhala": [
+          "ඉවුම් ඉඟි එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "சமையல் குறிப்புகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tags": {
+        "english": [
+          "sri lankan",
+          "authentic",
+          "side dish"
+        ],
+        "sinhala": [
+          "ශ්‍රී ලාංකික",
+          "අව්‍යයථාබූ"
+        ],
+        "tamil": [
+          "இலங்கை",
+          "உண்மையான"
+        ]
+      },
+      "nutrition_per_serving": {
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0
+      },
+      "cultural_note": {
+        "english": "Pumpkin Curry is a traditional Sri Lankan dish enjoyed across the island.",
+        "sinhala": "වට්ටක්කා කරිය දිවයින පුරා රස විඳින සාම්ප්‍රදායික ශ්‍රී ලාංකික ආහාරයකි.",
+        "tamil": "பூசணி கறி தீவு முழுவதும் விரும்பப்படும் பாரம்பரிய இலங்கை உணவாகும்."
+      },
+      "serving_suggestions": {
+        "english": [
+          "Serve with rice",
+          "Accompanies curry meals"
+        ],
+        "sinhala": [
+          "බතට සේවය කරන්න",
+          "කරි ආහාර සමඟ"
+        ],
+        "tamil": [
+          "சாதத்துடன் பரிமாறவும்",
+          "கறி உணவுகளுடன்"
+        ]
+      }
+    },
+    {
+      "id": "SL_027",
+      "names": {
+        "english": "Green Bean Curry",
+        "sinhala": "බෝංචි කරිය",
+        "tamil": "பீன்ஸ் கறி"
+      },
+      "category": {
+        "english": "Side Dish",
+        "sinhala": "අතුරු ආහාර",
+        "tamil": "துணை உணவு"
+      },
+      "difficulty": {
+        "english": "Easy",
+        "sinhala": "පහසු",
+        "tamil": "எளிதான"
+      },
+      "prep_time_mins": 10,
+      "cook_time_mins": 20,
+      "servings": 4,
+      "region": {
+        "english": "Island-wide",
+        "sinhala": "දිවයින පුරා",
+        "tamil": "தீவு முழுவதும்"
+      },
+      "spice_level": 2,
+      "is_authentic": true,
+      "ingredients": [
+        {
+          "item": {
+            "english": "Ingredients to be added",
+            "sinhala": "අමුද්‍රව්‍ය එකතු කළ යුතුයි",
+            "tamil": "பொருட்கள் சேர்க்கப்பட வேண்டும்"
+          },
+          "amount": "As needed",
+          "essential": true
+        }
+      ],
+      "equipment": {
+        "english": [
+          "Standard cooking utensils"
+        ],
+        "sinhala": [
+          "සාමාන්‍ය ඉවුම් උපකරණ"
+        ],
+        "tamil": [
+          "நியமான சமையல் பாத்திரங்கள்"
+        ]
+      },
+      "method": {
+        "english": [
+          "Detailed cooking instructions to be added"
+        ],
+        "sinhala": [
+          "විස්තරාත්මක උපදෙස් එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "விரிவான வழிமுறைகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tips": {
+        "english": [
+          "Cooking tips to be added"
+        ],
+        "sinhala": [
+          "ඉවුම් ඉඟි එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "சமையல் குறிப்புகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tags": {
+        "english": [
+          "sri lankan",
+          "authentic",
+          "side dish"
+        ],
+        "sinhala": [
+          "ශ්‍රී ලාංකික",
+          "අව්‍යයථාබූ"
+        ],
+        "tamil": [
+          "இலங்கை",
+          "உண்மையான"
+        ]
+      },
+      "nutrition_per_serving": {
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0
+      },
+      "cultural_note": {
+        "english": "Green Bean Curry is a traditional Sri Lankan dish enjoyed across the island.",
+        "sinhala": "බෝංචි කරිය දිවයින පුරා රස විඳින සාම්ප්‍රදායික ශ්‍රී ලාංකික ආහාරයකි.",
+        "tamil": "பீன்ஸ் கறி தீவு முழுவதும் விரும்பப்படும் பாரம்பரிய இலங்கை உணவாகும்."
+      },
+      "serving_suggestions": {
+        "english": [
+          "Serve with rice",
+          "Accompanies curry meals"
+        ],
+        "sinhala": [
+          "බතට සේවය කරන්න",
+          "කරි ආහාර සමඟ"
+        ],
+        "tamil": [
+          "சாதத்துடன் பரிமாறவும்",
+          "கறி உணவுகளுடன்"
+        ]
+      }
+    },
+    {
+      "id": "SL_028",
+      "names": {
+        "english": "Egg Hoppers",
+        "sinhala": "බිත්තර ආප්ප",
+        "tamil": "முட்டை ஆப்பம்"
+      },
+      "category": {
+        "english": "Breakfast",
+        "sinhala": "උදෑසන ආහාර",
+        "tamil": "காலை உணவு"
+      },
+      "difficulty": {
+        "english": "Medium",
+        "sinhala": "මධ්‍යම",
+        "tamil": "நடுத்தர"
+      },
+      "prep_time_mins": 60,
+      "cook_time_mins": 25,
+      "servings": 4,
+      "region": {
+        "english": "Island-wide",
+        "sinhala": "දිවයින පුරා",
+        "tamil": "தீவு முழுவதும்"
+      },
+      "spice_level": 2,
+      "is_authentic": true,
+      "ingredients": [
+        {
+          "item": {
+            "english": "Ingredients to be added",
+            "sinhala": "අමුද්‍රව්‍ය එකතු කළ යුතුයි",
+            "tamil": "பொருட்கள் சேர்க்கப்பட வேண்டும்"
+          },
+          "amount": "As needed",
+          "essential": true
+        }
+      ],
+      "equipment": {
+        "english": [
+          "Standard cooking utensils"
+        ],
+        "sinhala": [
+          "සාමාන්‍ය ඉවුම් උපකරණ"
+        ],
+        "tamil": [
+          "நியமான சமையல் பாத்திரங்கள்"
+        ]
+      },
+      "method": {
+        "english": [
+          "Detailed cooking instructions to be added"
+        ],
+        "sinhala": [
+          "විස්තරාත්මක උපදෙස් එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "விரிவான வழிமுறைகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tips": {
+        "english": [
+          "Cooking tips to be added"
+        ],
+        "sinhala": [
+          "ඉවුම් ඉඟි එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "சமையல் குறிப்புகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tags": {
+        "english": [
+          "sri lankan",
+          "authentic",
+          "breakfast"
+        ],
+        "sinhala": [
+          "ශ්‍රී ලාංකික",
+          "අව්‍යයථාබූ"
+        ],
+        "tamil": [
+          "இலங்கை",
+          "உண்மையான"
+        ]
+      },
+      "nutrition_per_serving": {
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0
+      },
+      "cultural_note": {
+        "english": "Egg Hoppers is a traditional Sri Lankan dish enjoyed across the island.",
+        "sinhala": "බිත්තර ආප්ප දිවයින පුරා රස විඳින සාම්ප්‍රදායික ශ්‍රී ලාංකික ආහාරයකි.",
+        "tamil": "முட்டை ஆப்பம் தீவு முழுவதும் விரும்பப்படும் பாரம்பரிய இலங்கை உணவாகும்."
+      },
+      "serving_suggestions": {
+        "english": [
+          "Serve with rice",
+          "Accompanies curry meals"
+        ],
+        "sinhala": [
+          "බතට සේවය කරන්න",
+          "කරි ආහාර සමඟ"
+        ],
+        "tamil": [
+          "சாதத்துடன் பரிமாறவும்",
+          "கறி உணவுகளுடன்"
+        ]
+      }
+    },
+    {
+      "id": "SL_029",
+      "names": {
+        "english": "Milk Rice (Kiribath)",
+        "sinhala": "කිරිබත්",
+        "tamil": "பால் சாதம்"
+      },
+      "category": {
+        "english": "Breakfast",
+        "sinhala": "උදෑසන ආහාර",
+        "tamil": "காலை உணவு"
+      },
+      "difficulty": {
+        "english": "Easy",
+        "sinhala": "පහසු",
+        "tamil": "எளிதான"
+      },
+      "prep_time_mins": 5,
+      "cook_time_mins": 30,
+      "servings": 4,
+      "region": {
+        "english": "Island-wide",
+        "sinhala": "දිවයින පුරා",
+        "tamil": "தீவு முழுவதும்"
+      },
+      "spice_level": 2,
+      "is_authentic": true,
+      "ingredients": [
+        {
+          "item": {
+            "english": "Ingredients to be added",
+            "sinhala": "අමුද්‍රව්‍ය එකතු කළ යුතුයි",
+            "tamil": "பொருட்கள் சேர்க்கப்பட வேண்டும்"
+          },
+          "amount": "As needed",
+          "essential": true
+        }
+      ],
+      "equipment": {
+        "english": [
+          "Standard cooking utensils"
+        ],
+        "sinhala": [
+          "සාමාන්‍ය ඉවුම් උපකරණ"
+        ],
+        "tamil": [
+          "நியமான சமையல் பாத்திரங்கள்"
+        ]
+      },
+      "method": {
+        "english": [
+          "Detailed cooking instructions to be added"
+        ],
+        "sinhala": [
+          "විස්තරාත්මක උපදෙස් එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "விரிவான வழிமுறைகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tips": {
+        "english": [
+          "Cooking tips to be added"
+        ],
+        "sinhala": [
+          "ඉවුම් ඉඟි එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "சமையல் குறிப்புகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tags": {
+        "english": [
+          "sri lankan",
+          "authentic",
+          "breakfast"
+        ],
+        "sinhala": [
+          "ශ්‍රී ලාංකික",
+          "අව්‍යයථාබූ"
+        ],
+        "tamil": [
+          "இலங்கை",
+          "உண்மையான"
+        ]
+      },
+      "nutrition_per_serving": {
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0
+      },
+      "cultural_note": {
+        "english": "Milk Rice (Kiribath) is a traditional Sri Lankan dish enjoyed across the island.",
+        "sinhala": "කිරිබත් දිවයින පුරා රස විඳින සාම්ප්‍රදායික ශ්‍රී ලාංකික ආහාරයකි.",
+        "tamil": "பால் சாதம் தீவு முழுவதும் விரும்பப்படும் பாரம்பரிய இலங்கை உணவாகும்."
+      },
+      "serving_suggestions": {
+        "english": [
+          "Serve with rice",
+          "Accompanies curry meals"
+        ],
+        "sinhala": [
+          "බතට සේවය කරන්න",
+          "කරි ආහාර සමඟ"
+        ],
+        "tamil": [
+          "சாதத்துடன் பரிமாறவும்",
+          "கறி உணவுகளுடன்"
+        ]
+      }
+    },
+    {
+      "id": "SL_030",
+      "names": {
+        "english": "Pittu",
+        "sinhala": "පිට්ටු",
+        "tamil": "புட்டு"
+      },
+      "category": {
+        "english": "Breakfast",
+        "sinhala": "උදෑසන ආහාර",
+        "tamil": "காலை உணவு"
+      },
+      "difficulty": {
+        "english": "Medium",
+        "sinhala": "මධ්‍යම",
+        "tamil": "நடுத்தர"
+      },
+      "prep_time_mins": 20,
+      "cook_time_mins": 15,
+      "servings": 4,
+      "region": {
+        "english": "Island-wide",
+        "sinhala": "දිවයින පුරා",
+        "tamil": "தீவு முழுவதும்"
+      },
+      "spice_level": 2,
+      "is_authentic": true,
+      "ingredients": [
+        {
+          "item": {
+            "english": "Ingredients to be added",
+            "sinhala": "අමුද්‍රව්‍ය එකතු කළ යුතුයි",
+            "tamil": "பொருட்கள் சேர்க்கப்பட வேண்டும்"
+          },
+          "amount": "As needed",
+          "essential": true
+        }
+      ],
+      "equipment": {
+        "english": [
+          "Standard cooking utensils"
+        ],
+        "sinhala": [
+          "සාමාන්‍ය ඉවුම් උපකරණ"
+        ],
+        "tamil": [
+          "நியமான சமையல் பாத்திரங்கள்"
+        ]
+      },
+      "method": {
+        "english": [
+          "Detailed cooking instructions to be added"
+        ],
+        "sinhala": [
+          "විස්තරාත්මක උපදෙස් එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "விரிவான வழிமுறைகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tips": {
+        "english": [
+          "Cooking tips to be added"
+        ],
+        "sinhala": [
+          "ඉවුම් ඉඟි එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "சமையல் குறிப்புகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tags": {
+        "english": [
+          "sri lankan",
+          "authentic",
+          "breakfast"
+        ],
+        "sinhala": [
+          "ශ්‍රී ලාංකික",
+          "අව්‍යයථාබූ"
+        ],
+        "tamil": [
+          "இலங்கை",
+          "உண்மையான"
+        ]
+      },
+      "nutrition_per_serving": {
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0
+      },
+      "cultural_note": {
+        "english": "Pittu is a traditional Sri Lankan dish enjoyed across the island.",
+        "sinhala": "පිට්ටු දිවයින පුරා රස විඳින සාම්ප්‍රදායික ශ්‍රී ලාංකික ආහාරයකි.",
+        "tamil": "புட்டு தீவு முழுவதும் விரும்பப்படும் பாரம்பரிய இலங்கை உணவாகும்."
+      },
+      "serving_suggestions": {
+        "english": [
+          "Serve with rice",
+          "Accompanies curry meals"
+        ],
+        "sinhala": [
+          "බතට සේවය කරන්න",
+          "කරි ආහාර සමඟ"
+        ],
+        "tamil": [
+          "சாதத்துடன் பரிமாறவும்",
+          "கறி உணவுகளுடன்"
+        ]
+      }
+    },
+    {
+      "id": "SL_031",
+      "names": {
+        "english": "Pol Roti",
+        "sinhala": "පොල් රොටි",
+        "tamil": "தேங்காய் ரொட்டி"
+      },
+      "category": {
+        "english": "Breakfast",
+        "sinhala": "උදෑසන ආහාර",
+        "tamil": "காலை உணவு"
+      },
+      "difficulty": {
+        "english": "Easy",
+        "sinhala": "පහසු",
+        "tamil": "எளிதான"
+      },
+      "prep_time_mins": 15,
+      "cook_time_mins": 20,
+      "servings": 4,
+      "region": {
+        "english": "Island-wide",
+        "sinhala": "දිවයින පුරා",
+        "tamil": "தீவு முழுவதும்"
+      },
+      "spice_level": 2,
+      "is_authentic": true,
+      "ingredients": [
+        {
+          "item": {
+            "english": "Ingredients to be added",
+            "sinhala": "අමුද්‍රව්‍ය එකතු කළ යුතුයි",
+            "tamil": "பொருட்கள் சேர்க்கப்பட வேண்டும்"
+          },
+          "amount": "As needed",
+          "essential": true
+        }
+      ],
+      "equipment": {
+        "english": [
+          "Standard cooking utensils"
+        ],
+        "sinhala": [
+          "සාමාන්‍ය ඉවුම් උපකරණ"
+        ],
+        "tamil": [
+          "நியமான சமையல் பாத்திரங்கள்"
+        ]
+      },
+      "method": {
+        "english": [
+          "Detailed cooking instructions to be added"
+        ],
+        "sinhala": [
+          "විස්තරාත්මක උපදෙස් එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "விரிவான வழிமுறைகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tips": {
+        "english": [
+          "Cooking tips to be added"
+        ],
+        "sinhala": [
+          "ඉවුම් ඉඟි එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "சமையல் குறிப்புகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tags": {
+        "english": [
+          "sri lankan",
+          "authentic",
+          "breakfast"
+        ],
+        "sinhala": [
+          "ශ්‍රී ලාංකික",
+          "අව්‍යයථාබූ"
+        ],
+        "tamil": [
+          "இலங்கை",
+          "உண்மையான"
+        ]
+      },
+      "nutrition_per_serving": {
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0
+      },
+      "cultural_note": {
+        "english": "Pol Roti is a traditional Sri Lankan dish enjoyed across the island.",
+        "sinhala": "පොල් රොටි දිවයින පුරා රස විඳින සාම්ප්‍රදායික ශ්‍රී ලාංකික ආහාරයකි.",
+        "tamil": "தேங்காய் ரொட்டி தீவு முழுவதும் விரும்பப்படும் பாரம்பரிய இலங்கை உணவாகும்."
+      },
+      "serving_suggestions": {
+        "english": [
+          "Serve with rice",
+          "Accompanies curry meals"
+        ],
+        "sinhala": [
+          "බතට සේවය කරන්න",
+          "කරි ආහාර සමඟ"
+        ],
+        "tamil": [
+          "சாதத்துடன் பரிமாறவும்",
+          "கறி உணவுகளுடன்"
+        ]
+      }
+    },
+    {
+      "id": "SL_032",
+      "names": {
+        "english": "Godamba Roti",
+        "sinhala": "ගොඩම්බ රොටි",
+        "tamil": "கோதம்பு ரொட்டி"
+      },
+      "category": {
+        "english": "Breakfast",
+        "sinhala": "උදෑසන ආහාර",
+        "tamil": "காலை உணவு"
+      },
+      "difficulty": {
+        "english": "Hard",
+        "sinhala": "අපහසු",
+        "tamil": "கடினமான"
+      },
+      "prep_time_mins": 30,
+      "cook_time_mins": 20,
+      "servings": 4,
+      "region": {
+        "english": "Island-wide",
+        "sinhala": "දිවයින පුරා",
+        "tamil": "தீவு முழுவதும்"
+      },
+      "spice_level": 2,
+      "is_authentic": true,
+      "ingredients": [
+        {
+          "item": {
+            "english": "Ingredients to be added",
+            "sinhala": "අමුද්‍රව්‍ය එකතු කළ යුතුයි",
+            "tamil": "பொருட்கள் சேர்க்கப்பட வேண்டும்"
+          },
+          "amount": "As needed",
+          "essential": true
+        }
+      ],
+      "equipment": {
+        "english": [
+          "Standard cooking utensils"
+        ],
+        "sinhala": [
+          "සාමාන්‍ය ඉවුම් උපකරණ"
+        ],
+        "tamil": [
+          "நியமான சமையல் பாத்திரங்கள்"
+        ]
+      },
+      "method": {
+        "english": [
+          "Detailed cooking instructions to be added"
+        ],
+        "sinhala": [
+          "විස්තරාත්මක උපදෙස් එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "விரிவான வழிமுறைகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tips": {
+        "english": [
+          "Cooking tips to be added"
+        ],
+        "sinhala": [
+          "ඉවුම් ඉඟි එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "சமையல் குறிப்புகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tags": {
+        "english": [
+          "sri lankan",
+          "authentic",
+          "breakfast"
+        ],
+        "sinhala": [
+          "ශ්‍රී ලාංකික",
+          "අව්‍යයථාබූ"
+        ],
+        "tamil": [
+          "இலங்கை",
+          "உண்மையான"
+        ]
+      },
+      "nutrition_per_serving": {
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0
+      },
+      "cultural_note": {
+        "english": "Godamba Roti is a traditional Sri Lankan dish enjoyed across the island.",
+        "sinhala": "ගොඩම්බ රොටි දිවයින පුරා රස විඳින සාම්ප්‍රදායික ශ්‍රී ලාංකික ආහාරයකි.",
+        "tamil": "கோதம்பு ரொட்டி தீவு முழுவதும் விரும்பப்படும் பாரம்பரிய இலங்கை உணவாகும்."
+      },
+      "serving_suggestions": {
+        "english": [
+          "Serve with rice",
+          "Accompanies curry meals"
+        ],
+        "sinhala": [
+          "බතට සේවය කරන්න",
+          "කරි ආහාර සමඟ"
+        ],
+        "tamil": [
+          "சாதத்துடன் பரிமாறவும்",
+          "கறி உணவுகளுடன்"
+        ]
+      }
+    },
+    {
+      "id": "SL_033",
+      "names": {
+        "english": "Kottu Roti",
+        "sinhala": "කොත්තු රොටි",
+        "tamil": "கொத்து ரொட்டி"
+      },
+      "category": {
+        "english": "Dinner",
+        "sinhala": "රාත්‍රී ආහාර",
+        "tamil": "இரவு உணவு"
+      },
+      "difficulty": {
+        "english": "Easy",
+        "sinhala": "පහසු",
+        "tamil": "எளிதான"
+      },
+      "prep_time_mins": 15,
+      "cook_time_mins": 20,
+      "servings": 4,
+      "region": {
+        "english": "Island-wide",
+        "sinhala": "දිවයින පුරා",
+        "tamil": "தீவு முழுவதும்"
+      },
+      "spice_level": 2,
+      "is_authentic": true,
+      "ingredients": [
+        {
+          "item": {
+            "english": "Ingredients to be added",
+            "sinhala": "අමුද්‍රව්‍ය එකතු කළ යුතුයි",
+            "tamil": "பொருட்கள் சேர்க்கப்பட வேண்டும்"
+          },
+          "amount": "As needed",
+          "essential": true
+        }
+      ],
+      "equipment": {
+        "english": [
+          "Standard cooking utensils"
+        ],
+        "sinhala": [
+          "සාමාන්‍ය ඉවුම් උපකරණ"
+        ],
+        "tamil": [
+          "நியமான சமையல் பாத்திரங்கள்"
+        ]
+      },
+      "method": {
+        "english": [
+          "Detailed cooking instructions to be added"
+        ],
+        "sinhala": [
+          "විස්තරාත්මක උපදෙස් එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "விரிவான வழிமுறைகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tips": {
+        "english": [
+          "Cooking tips to be added"
+        ],
+        "sinhala": [
+          "ඉවුම් ඉඟි එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "சமையல் குறிப்புகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tags": {
+        "english": [
+          "sri lankan",
+          "authentic",
+          "dinner"
+        ],
+        "sinhala": [
+          "ශ්‍රී ලාංකික",
+          "අව්‍යයථාබූ"
+        ],
+        "tamil": [
+          "இலங்கை",
+          "உண்மையான"
+        ]
+      },
+      "nutrition_per_serving": {
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0
+      },
+      "cultural_note": {
+        "english": "Kottu Roti is a traditional Sri Lankan dish enjoyed across the island.",
+        "sinhala": "කොත්තු රොටි දිවයින පුරා රස විඳින සාම්ප්‍රදායික ශ්‍රී ලාංකික ආහාරයකි.",
+        "tamil": "கொத்து ரொட்டி தீவு முழுவதும் விரும்பப்படும் பாரம்பரிய இலங்கை உணவாகும்."
+      },
+      "serving_suggestions": {
+        "english": [
+          "Serve with rice",
+          "Accompanies curry meals"
+        ],
+        "sinhala": [
+          "බතට සේවය කරන්න",
+          "කරි ආහාර සමඟ"
+        ],
+        "tamil": [
+          "சாதத்துடன் பரிமாறவும்",
+          "கறி உணவுகளுடன்"
+        ]
+      }
+    },
+    {
+      "id": "SL_034",
+      "names": {
+        "english": "Idli",
+        "sinhala": "ඉඩ්ලි",
+        "tamil": "இட்லி"
+      },
+      "category": {
+        "english": "Breakfast",
+        "sinhala": "උදෑසන ආහාර",
+        "tamil": "காலை உணவு"
+      },
+      "difficulty": {
+        "english": "Medium",
+        "sinhala": "මධ්‍යම",
+        "tamil": "நடுத்தர"
+      },
+      "prep_time_mins": 480,
+      "cook_time_mins": 15,
+      "servings": 4,
+      "region": {
+        "english": "Island-wide",
+        "sinhala": "දිවයින පුරා",
+        "tamil": "தீவு முழுவதும்"
+      },
+      "spice_level": 2,
+      "is_authentic": true,
+      "ingredients": [
+        {
+          "item": {
+            "english": "Ingredients to be added",
+            "sinhala": "අමුද්‍රව්‍ය එකතු කළ යුතුයි",
+            "tamil": "பொருட்கள் சேர்க்கப்பட வேண்டும்"
+          },
+          "amount": "As needed",
+          "essential": true
+        }
+      ],
+      "equipment": {
+        "english": [
+          "Standard cooking utensils"
+        ],
+        "sinhala": [
+          "සාමාන්‍ය ඉවුම් උපකරණ"
+        ],
+        "tamil": [
+          "நியமான சமையல் பாத்திரங்கள்"
+        ]
+      },
+      "method": {
+        "english": [
+          "Detailed cooking instructions to be added"
+        ],
+        "sinhala": [
+          "විස්තරාත්මක උපදෙස් එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "விரிவான வழிமுறைகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tips": {
+        "english": [
+          "Cooking tips to be added"
+        ],
+        "sinhala": [
+          "ඉවුම් ඉඟි එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "சமையல் குறிப்புகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tags": {
+        "english": [
+          "sri lankan",
+          "authentic",
+          "breakfast"
+        ],
+        "sinhala": [
+          "ශ්‍රී ලාංකික",
+          "අව්‍යයථාබූ"
+        ],
+        "tamil": [
+          "இலங்கை",
+          "உண்மையான"
+        ]
+      },
+      "nutrition_per_serving": {
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0
+      },
+      "cultural_note": {
+        "english": "Idli is a traditional Sri Lankan dish enjoyed across the island.",
+        "sinhala": "ඉඩ්ලි දිවයින පුරා රස විඳින සාම්ප්‍රදායික ශ්‍රී ලාංකික ආහාරයකි.",
+        "tamil": "இட்லி தீவு முழுவதும் விரும்பப்படும் பாரம்பரிய இலங்கை உணவாகும்."
+      },
+      "serving_suggestions": {
+        "english": [
+          "Serve with rice",
+          "Accompanies curry meals"
+        ],
+        "sinhala": [
+          "බතට සේවය කරන්න",
+          "කරි ආහාර සමඟ"
+        ],
+        "tamil": [
+          "சாதத்துடன் பரிமாறவும்",
+          "கறி உணவுகளுடன்"
+        ]
+      }
+    },
+    {
+      "id": "SL_035",
+      "names": {
+        "english": "Seeni Sambol",
+        "sinhala": "සීනි සම්බෝල්",
+        "tamil": "வெங்காய சம்பல்"
+      },
+      "category": {
+        "english": "Side Dish",
+        "sinhala": "අතුරු ආහාර",
+        "tamil": "துணை உணவு"
+      },
+      "difficulty": {
+        "english": "Medium",
+        "sinhala": "මධ්‍යම",
+        "tamil": "நடுத்தர"
+      },
+      "prep_time_mins": 10,
+      "cook_time_mins": 30,
+      "servings": 4,
+      "region": {
+        "english": "Island-wide",
+        "sinhala": "දිවයින පුරා",
+        "tamil": "தீவு முழுவதும்"
+      },
+      "spice_level": 2,
+      "is_authentic": true,
+      "ingredients": [
+        {
+          "item": {
+            "english": "Ingredients to be added",
+            "sinhala": "අමුද්‍රව්‍ය එකතු කළ යුතුයි",
+            "tamil": "பொருட்கள் சேர்க்கப்பட வேண்டும்"
+          },
+          "amount": "As needed",
+          "essential": true
+        }
+      ],
+      "equipment": {
+        "english": [
+          "Standard cooking utensils"
+        ],
+        "sinhala": [
+          "සාමාන්‍ය ඉවුම් උපකරණ"
+        ],
+        "tamil": [
+          "நியமான சமையல் பாத்திரங்கள்"
+        ]
+      },
+      "method": {
+        "english": [
+          "Detailed cooking instructions to be added"
+        ],
+        "sinhala": [
+          "විස්තරාත්මක උපදෙස් එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "விரிவான வழிமுறைகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tips": {
+        "english": [
+          "Cooking tips to be added"
+        ],
+        "sinhala": [
+          "ඉවුම් ඉඟි එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "சமையல் குறிப்புகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tags": {
+        "english": [
+          "sri lankan",
+          "authentic",
+          "side dish"
+        ],
+        "sinhala": [
+          "ශ්‍රී ලාංකික",
+          "අව්‍යයථාබූ"
+        ],
+        "tamil": [
+          "இலங்கை",
+          "உண்மையான"
+        ]
+      },
+      "nutrition_per_serving": {
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0
+      },
+      "cultural_note": {
+        "english": "Seeni Sambol is a traditional Sri Lankan dish enjoyed across the island.",
+        "sinhala": "සීනි සම්බෝල් දිවයින පුරා රස විඳින සාම්ප්‍රදායික ශ්‍රී ලාංකික ආහාරයකි.",
+        "tamil": "வெங்காய சம்பல் தீவு முழுவதும் விரும்பப்படும் பாரம்பரிய இலங்கை உணவாகும்."
+      },
+      "serving_suggestions": {
+        "english": [
+          "Serve with rice",
+          "Accompanies curry meals"
+        ],
+        "sinhala": [
+          "බතට සේවය කරන්න",
+          "කරි ආහාර සමඟ"
+        ],
+        "tamil": [
+          "சாதத்துடன் பரிமாறவும்",
+          "கறி உணவுகளுடன்"
+        ]
+      }
+    },
+    {
+      "id": "SL_036",
+      "names": {
+        "english": "Lunu Miris",
+        "sinhala": "ලූනු මිරිස්",
+        "tamil": "வெங்காய மிளகாய்"
+      },
+      "category": {
+        "english": "Side Dish",
+        "sinhala": "අතුරු ආහාර",
+        "tamil": "துணை உணவு"
+      },
+      "difficulty": {
+        "english": "Easy",
+        "sinhala": "පහසු",
+        "tamil": "எளிதான"
+      },
+      "prep_time_mins": 5,
+      "cook_time_mins": 0,
+      "servings": 4,
+      "region": {
+        "english": "Island-wide",
+        "sinhala": "දිවයින පුරා",
+        "tamil": "தீவு முழுவதும்"
+      },
+      "spice_level": 2,
+      "is_authentic": true,
+      "ingredients": [
+        {
+          "item": {
+            "english": "Ingredients to be added",
+            "sinhala": "අමුද්‍රව්‍ය එකතු කළ යුතුයි",
+            "tamil": "பொருட்கள் சேர்க்கப்பட வேண்டும்"
+          },
+          "amount": "As needed",
+          "essential": true
+        }
+      ],
+      "equipment": {
+        "english": [
+          "Standard cooking utensils"
+        ],
+        "sinhala": [
+          "සාමාන්‍ය ඉවුම් උපකරණ"
+        ],
+        "tamil": [
+          "நியமான சமையல் பாத்திரங்கள்"
+        ]
+      },
+      "method": {
+        "english": [
+          "Detailed cooking instructions to be added"
+        ],
+        "sinhala": [
+          "විස්තරාත්මක උපදෙස් එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "விரிவான வழிமுறைகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tips": {
+        "english": [
+          "Cooking tips to be added"
+        ],
+        "sinhala": [
+          "ඉවුම් ඉඟි එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "சமையல் குறிப்புகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tags": {
+        "english": [
+          "sri lankan",
+          "authentic",
+          "side dish"
+        ],
+        "sinhala": [
+          "ශ්‍රී ලාංකික",
+          "අව්‍යයථාබූ"
+        ],
+        "tamil": [
+          "இலங்கை",
+          "உண்மையான"
+        ]
+      },
+      "nutrition_per_serving": {
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0
+      },
+      "cultural_note": {
+        "english": "Lunu Miris is a traditional Sri Lankan dish enjoyed across the island.",
+        "sinhala": "ලූනු මිරිස් දිවයින පුරා රස විඳින සාම්ප්‍රදායික ශ්‍රී ලාංකික ආහාරයකි.",
+        "tamil": "வெங்காய மிளகாய் தீவு முழுவதும் விரும்பப்படும் பாரம்பரிய இலங்கை உணவாகும்."
+      },
+      "serving_suggestions": {
+        "english": [
+          "Serve with rice",
+          "Accompanies curry meals"
+        ],
+        "sinhala": [
+          "බතට සේවය කරන්න",
+          "කරි ආහාර සමඟ"
+        ],
+        "tamil": [
+          "சாதத்துடன் பரிமாறவும்",
+          "கறி உணவுகளுடன்"
+        ]
+      }
+    },
+    {
+      "id": "SL_037",
+      "names": {
+        "english": "Gotukola Sambol",
+        "sinhala": "ගොටුකොළ සම්බෝල්",
+        "tamil": "வல்லாரை சம்பல்"
+      },
+      "category": {
+        "english": "Side Dish",
+        "sinhala": "අතුරු ආහාර",
+        "tamil": "துணை உணவு"
+      },
+      "difficulty": {
+        "english": "Easy",
+        "sinhala": "පහසු",
+        "tamil": "எளிதான"
+      },
+      "prep_time_mins": 10,
+      "cook_time_mins": 0,
+      "servings": 4,
+      "region": {
+        "english": "Island-wide",
+        "sinhala": "දිවයින පුරා",
+        "tamil": "தீவு முழுவதும்"
+      },
+      "spice_level": 2,
+      "is_authentic": true,
+      "ingredients": [
+        {
+          "item": {
+            "english": "Ingredients to be added",
+            "sinhala": "අමුද්‍රව්‍ය එකතු කළ යුතුයි",
+            "tamil": "பொருட்கள் சேர்க்கப்பட வேண்டும்"
+          },
+          "amount": "As needed",
+          "essential": true
+        }
+      ],
+      "equipment": {
+        "english": [
+          "Standard cooking utensils"
+        ],
+        "sinhala": [
+          "සාමාන්‍ය ඉවුම් උපකරණ"
+        ],
+        "tamil": [
+          "நியமான சமையல் பாத்திரங்கள்"
+        ]
+      },
+      "method": {
+        "english": [
+          "Detailed cooking instructions to be added"
+        ],
+        "sinhala": [
+          "විස්තරාත්මක උපදෙස් එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "விரிவான வழிமுறைகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tips": {
+        "english": [
+          "Cooking tips to be added"
+        ],
+        "sinhala": [
+          "ඉවුම් ඉඟි එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "சமையல் குறிப்புகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tags": {
+        "english": [
+          "sri lankan",
+          "authentic",
+          "side dish"
+        ],
+        "sinhala": [
+          "ශ්‍රී ලාංකික",
+          "අව්‍යයථාබූ"
+        ],
+        "tamil": [
+          "இலங்கை",
+          "உண்மையான"
+        ]
+      },
+      "nutrition_per_serving": {
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0
+      },
+      "cultural_note": {
+        "english": "Gotukola Sambol is a traditional Sri Lankan dish enjoyed across the island.",
+        "sinhala": "ගොටුකොළ සම්බෝල් දිවයින පුරා රස විඳින සාම්ප්‍රදායික ශ්‍රී ලාංකික ආහාරයකි.",
+        "tamil": "வல்லாரை சம்பல் தீவு முழுவதும் விரும்பப்படும் பாரம்பரிய இலங்கை உணவாகும்."
+      },
+      "serving_suggestions": {
+        "english": [
+          "Serve with rice",
+          "Accompanies curry meals"
+        ],
+        "sinhala": [
+          "බතට සේවය කරන්න",
+          "කරි ආහාර සමඟ"
+        ],
+        "tamil": [
+          "சாதத்துடன் பரிமாறவும்",
+          "கறி உணவுகளுடன்"
+        ]
+      }
+    },
+    {
+      "id": "SL_038",
+      "names": {
+        "english": "Wambatu Moju",
+        "sinhala": "වම්බටු මෝජු",
+        "tamil": "கத்திரி ஊறுகாய்"
+      },
+      "category": {
+        "english": "Side Dish",
+        "sinhala": "අතුරු ආහාර",
+        "tamil": "துணை உணவு"
+      },
+      "difficulty": {
+        "english": "Easy",
+        "sinhala": "පහසු",
+        "tamil": "எளிதான"
+      },
+      "prep_time_mins": 10,
+      "cook_time_mins": 20,
+      "servings": 4,
+      "region": {
+        "english": "Island-wide",
+        "sinhala": "දිවයින පුරා",
+        "tamil": "தீவு முழுவதும்"
+      },
+      "spice_level": 2,
+      "is_authentic": true,
+      "ingredients": [
+        {
+          "item": {
+            "english": "Ingredients to be added",
+            "sinhala": "අමුද්‍රව්‍ය එකතු කළ යුතුයි",
+            "tamil": "பொருட்கள் சேர்க்கப்பட வேண்டும்"
+          },
+          "amount": "As needed",
+          "essential": true
+        }
+      ],
+      "equipment": {
+        "english": [
+          "Standard cooking utensils"
+        ],
+        "sinhala": [
+          "සාමාන්‍ය ඉවුම් උපකරණ"
+        ],
+        "tamil": [
+          "நியமான சமையல் பாத்திரங்கள்"
+        ]
+      },
+      "method": {
+        "english": [
+          "Detailed cooking instructions to be added"
+        ],
+        "sinhala": [
+          "විස්තරාත්මක උපදෙස් එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "விரிவான வழிமுறைகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tips": {
+        "english": [
+          "Cooking tips to be added"
+        ],
+        "sinhala": [
+          "ඉවුම් ඉඟි එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "சமையல் குறிப்புகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tags": {
+        "english": [
+          "sri lankan",
+          "authentic",
+          "side dish"
+        ],
+        "sinhala": [
+          "ශ්‍රී ලාංකික",
+          "අව්‍යයථාබූ"
+        ],
+        "tamil": [
+          "இலங்கை",
+          "உண்மையான"
+        ]
+      },
+      "nutrition_per_serving": {
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0
+      },
+      "cultural_note": {
+        "english": "Wambatu Moju is a traditional Sri Lankan dish enjoyed across the island.",
+        "sinhala": "වම්බටු මෝජු දිවයින පුරා රස විඳින සාම්ප්‍රදායික ශ්‍රී ලාංකික ආහාරයකි.",
+        "tamil": "கத்திரி ஊறுகாய் தீவு முழுவதும் விரும்பப்படும் பாரம்பரிய இலங்கை உணவாகும்."
+      },
+      "serving_suggestions": {
+        "english": [
+          "Serve with rice",
+          "Accompanies curry meals"
+        ],
+        "sinhala": [
+          "බතට සේවය කරන්න",
+          "කරි ආහාර සමඟ"
+        ],
+        "tamil": [
+          "சாதத்துடன் பரிமாறவும்",
+          "கறி உணவுகளுடன்"
+        ]
+      }
+    },
+    {
+      "id": "SL_039",
+      "names": {
+        "english": "Kiri Hodi",
+        "sinhala": "කිරි හොඳි",
+        "tamil": "பால் குழம்பு"
+      },
+      "category": {
+        "english": "Side Dish",
+        "sinhala": "අතුරු ආහාර",
+        "tamil": "துணை உணவு"
+      },
+      "difficulty": {
+        "english": "Easy",
+        "sinhala": "පහසු",
+        "tamil": "எளிதான"
+      },
+      "prep_time_mins": 5,
+      "cook_time_mins": 15,
+      "servings": 4,
+      "region": {
+        "english": "Island-wide",
+        "sinhala": "දිවයින පුරා",
+        "tamil": "தீவு முழுவதும்"
+      },
+      "spice_level": 2,
+      "is_authentic": true,
+      "ingredients": [
+        {
+          "item": {
+            "english": "Ingredients to be added",
+            "sinhala": "අමුද්‍රව්‍ය එකතු කළ යුතුයි",
+            "tamil": "பொருட்கள் சேர்க்கப்பட வேண்டும்"
+          },
+          "amount": "As needed",
+          "essential": true
+        }
+      ],
+      "equipment": {
+        "english": [
+          "Standard cooking utensils"
+        ],
+        "sinhala": [
+          "සාමාන්‍ය ඉවුම් උපකරණ"
+        ],
+        "tamil": [
+          "நியமான சமையல் பாத்திரங்கள்"
+        ]
+      },
+      "method": {
+        "english": [
+          "Detailed cooking instructions to be added"
+        ],
+        "sinhala": [
+          "විස්තරාත්මක උපදෙස් එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "விரிவான வழிமுறைகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tips": {
+        "english": [
+          "Cooking tips to be added"
+        ],
+        "sinhala": [
+          "ඉවුම් ඉඟි එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "சமையல் குறிப்புகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tags": {
+        "english": [
+          "sri lankan",
+          "authentic",
+          "side dish"
+        ],
+        "sinhala": [
+          "ශ්‍රී ලාංකික",
+          "අව්‍යයථාබූ"
+        ],
+        "tamil": [
+          "இலங்கை",
+          "உண்மையான"
+        ]
+      },
+      "nutrition_per_serving": {
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0
+      },
+      "cultural_note": {
+        "english": "Kiri Hodi is a traditional Sri Lankan dish enjoyed across the island.",
+        "sinhala": "කිරි හොඳි දිවයින පුරා රස විඳින සාම්ප්‍රදායික ශ්‍රී ලාංකික ආහාරයකි.",
+        "tamil": "பால் குழம்பு தீவு முழுவதும் விரும்பப்படும் பாரம்பரிய இலங்கை உணவாகும்."
+      },
+      "serving_suggestions": {
+        "english": [
+          "Serve with rice",
+          "Accompanies curry meals"
+        ],
+        "sinhala": [
+          "බතට සේවය කරන්න",
+          "කරි ආහාර සමඟ"
+        ],
+        "tamil": [
+          "சாதத்துடன் பரிமாறவும்",
+          "கறி உணவுகளுடன்"
+        ]
+      }
+    },
+    {
+      "id": "SL_040",
+      "names": {
+        "english": "Pol Mallung",
+        "sinhala": "පොල් මල්ලුං",
+        "tamil": "தேங்காய் மல்லுங்"
+      },
+      "category": {
+        "english": "Side Dish",
+        "sinhala": "අතුරු ආහාර",
+        "tamil": "துணை உணவு"
+      },
+      "difficulty": {
+        "english": "Easy",
+        "sinhala": "පහසු",
+        "tamil": "எளிதான"
+      },
+      "prep_time_mins": 10,
+      "cook_time_mins": 10,
+      "servings": 4,
+      "region": {
+        "english": "Island-wide",
+        "sinhala": "දිවයින පුරා",
+        "tamil": "தீவு முழுவதும்"
+      },
+      "spice_level": 2,
+      "is_authentic": true,
+      "ingredients": [
+        {
+          "item": {
+            "english": "Ingredients to be added",
+            "sinhala": "අමුද්‍රව්‍ය එකතු කළ යුතුයි",
+            "tamil": "பொருட்கள் சேர்க்கப்பட வேண்டும்"
+          },
+          "amount": "As needed",
+          "essential": true
+        }
+      ],
+      "equipment": {
+        "english": [
+          "Standard cooking utensils"
+        ],
+        "sinhala": [
+          "සාමාන්‍ය ඉවුම් උපකරණ"
+        ],
+        "tamil": [
+          "நியமான சமையல் பாத்திரங்கள்"
+        ]
+      },
+      "method": {
+        "english": [
+          "Detailed cooking instructions to be added"
+        ],
+        "sinhala": [
+          "විස්තරාත්මක උපදෙස් එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "விரிவான வழிமுறைகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tips": {
+        "english": [
+          "Cooking tips to be added"
+        ],
+        "sinhala": [
+          "ඉවුම් ඉඟි එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "சமையல் குறிப்புகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tags": {
+        "english": [
+          "sri lankan",
+          "authentic",
+          "side dish"
+        ],
+        "sinhala": [
+          "ශ්‍රී ලාංකික",
+          "අව්‍යයථාබූ"
+        ],
+        "tamil": [
+          "இலங்கை",
+          "உண்மையான"
+        ]
+      },
+      "nutrition_per_serving": {
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0
+      },
+      "cultural_note": {
+        "english": "Pol Mallung is a traditional Sri Lankan dish enjoyed across the island.",
+        "sinhala": "පොල් මල්ලුං දිවයින පුරා රස විඳින සාම්ප්‍රදායික ශ්‍රී ලාංකික ආහාරයකි.",
+        "tamil": "தேங்காய் மல்லுங் தீவு முழுவதும் விரும்பப்படும் பாரம்பரிய இலங்கை உணவாகும்."
+      },
+      "serving_suggestions": {
+        "english": [
+          "Serve with rice",
+          "Accompanies curry meals"
+        ],
+        "sinhala": [
+          "බතට සේවය කරන්න",
+          "කරි ආහාර සමඟ"
+        ],
+        "tamil": [
+          "சாதத்துடன் பரிமாறவும்",
+          "கறி உணவுகளுடன்"
+        ]
+      }
+    },
+    {
+      "id": "SL_041",
+      "names": {
+        "english": "Chicken Biriyani",
+        "sinhala": "කුකුල් බිරියානි",
+        "tamil": "கோழி பிரியாணி"
+      },
+      "category": {
+        "english": "Lunch",
+        "sinhala": "දහවල් ආහාර",
+        "tamil": "மதிய உணவு"
+      },
+      "difficulty": {
+        "english": "Hard",
+        "sinhala": "අපහසු",
+        "tamil": "கடினமான"
+      },
+      "prep_time_mins": 40,
+      "cook_time_mins": 60,
+      "servings": 4,
+      "region": {
+        "english": "Island-wide",
+        "sinhala": "දිවයින පුරා",
+        "tamil": "தீவு முழுவதும்"
+      },
+      "spice_level": 2,
+      "is_authentic": true,
+      "ingredients": [
+        {
+          "item": {
+            "english": "Ingredients to be added",
+            "sinhala": "අමුද්‍රව්‍ය එකතු කළ යුතුයි",
+            "tamil": "பொருட்கள் சேர்க்கப்பட வேண்டும்"
+          },
+          "amount": "As needed",
+          "essential": true
+        }
+      ],
+      "equipment": {
+        "english": [
+          "Standard cooking utensils"
+        ],
+        "sinhala": [
+          "සාමාන්‍ය ඉවුම් උපකරණ"
+        ],
+        "tamil": [
+          "நியமான சமையல் பாத்திரங்கள்"
+        ]
+      },
+      "method": {
+        "english": [
+          "Detailed cooking instructions to be added"
+        ],
+        "sinhala": [
+          "විස්තරාත්මක උපදෙස් එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "விரிவான வழிமுறைகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tips": {
+        "english": [
+          "Cooking tips to be added"
+        ],
+        "sinhala": [
+          "ඉවුම් ඉඟි එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "சமையல் குறிப்புகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tags": {
+        "english": [
+          "sri lankan",
+          "authentic",
+          "lunch"
+        ],
+        "sinhala": [
+          "ශ්‍රී ලාංකික",
+          "අව්‍යයථාබූ"
+        ],
+        "tamil": [
+          "இலங்கை",
+          "உண்மையான"
+        ]
+      },
+      "nutrition_per_serving": {
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0
+      },
+      "cultural_note": {
+        "english": "Chicken Biriyani is a traditional Sri Lankan dish enjoyed across the island.",
+        "sinhala": "කුකුල් බිරියානි දිවයින පුරා රස විඳින සාම්ප්‍රදායික ශ්‍රී ලාංකික ආහාරයකි.",
+        "tamil": "கோழி பிரியாணி தீவு முழுவதும் விரும்பப்படும் பாரம்பரிய இலங்கை உணவாகும்."
+      },
+      "serving_suggestions": {
+        "english": [
+          "Serve with rice",
+          "Accompanies curry meals"
+        ],
+        "sinhala": [
+          "බතට සේවය කරන්න",
+          "කරි ආහාර සමඟ"
+        ],
+        "tamil": [
+          "சாதத்துடன் பரிமாறவும்",
+          "கறி உணவுகளுடன்"
+        ]
+      }
+    },
+    {
+      "id": "SL_042",
+      "names": {
+        "english": "Lamprais",
+        "sinhala": "ලම්ප්‍රයිස්",
+        "tamil": "லம்பிரைஸ்"
+      },
+      "category": {
+        "english": "Lunch",
+        "sinhala": "දහවල් ආහාර",
+        "tamil": "மதிய உணவு"
+      },
+      "difficulty": {
+        "english": "Hard",
+        "sinhala": "අපහසු",
+        "tamil": "கடினமான"
+      },
+      "prep_time_mins": 60,
+      "cook_time_mins": 90,
+      "servings": 4,
+      "region": {
+        "english": "Island-wide",
+        "sinhala": "දිවයින පුරා",
+        "tamil": "தீவு முழுவதும்"
+      },
+      "spice_level": 2,
+      "is_authentic": true,
+      "ingredients": [
+        {
+          "item": {
+            "english": "Ingredients to be added",
+            "sinhala": "අමුද්‍රව්‍ය එකතු කළ යුතුයි",
+            "tamil": "பொருட்கள் சேர்க்கப்பட வேண்டும்"
+          },
+          "amount": "As needed",
+          "essential": true
+        }
+      ],
+      "equipment": {
+        "english": [
+          "Standard cooking utensils"
+        ],
+        "sinhala": [
+          "සාමාන්‍ය ඉවුම් උපකරණ"
+        ],
+        "tamil": [
+          "நியமான சமையல் பாத்திரங்கள்"
+        ]
+      },
+      "method": {
+        "english": [
+          "Detailed cooking instructions to be added"
+        ],
+        "sinhala": [
+          "විස්තරාත්මක උපදෙස් එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "விரிவான வழிமுறைகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tips": {
+        "english": [
+          "Cooking tips to be added"
+        ],
+        "sinhala": [
+          "ඉවුම් ඉඟි එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "சமையல் குறிப்புகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tags": {
+        "english": [
+          "sri lankan",
+          "authentic",
+          "lunch"
+        ],
+        "sinhala": [
+          "ශ්‍රී ලාංකික",
+          "අව්‍යයථාබූ"
+        ],
+        "tamil": [
+          "இலங்கை",
+          "உண்மையான"
+        ]
+      },
+      "nutrition_per_serving": {
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0
+      },
+      "cultural_note": {
+        "english": "Lamprais is a traditional Sri Lankan dish enjoyed across the island.",
+        "sinhala": "ලම්ප්‍රයිස් දිවයින පුරා රස විඳින සාම්ප්‍රදායික ශ්‍රී ලාංකික ආහාරයකි.",
+        "tamil": "லம்பிரைஸ் தீவு முழுவதும் விரும்பப்படும் பாரம்பரிய இலங்கை உணவாகும்."
+      },
+      "serving_suggestions": {
+        "english": [
+          "Serve with rice",
+          "Accompanies curry meals"
+        ],
+        "sinhala": [
+          "බතට සේවය කරන්න",
+          "කරි ආහාර සමඟ"
+        ],
+        "tamil": [
+          "சாதத்துடன் பரிமாறவும்",
+          "கறி உணவுகளுடன்"
+        ]
+      }
+    },
+    {
+      "id": "SL_043",
+      "names": {
+        "english": "Fried Rice",
+        "sinhala": "බදින ලද බත්",
+        "tamil": "வறுத்த சாதம்"
+      },
+      "category": {
+        "english": "Lunch",
+        "sinhala": "දහවල් ආහාර",
+        "tamil": "மதிய உணவு"
+      },
+      "difficulty": {
+        "english": "Easy",
+        "sinhala": "පහසු",
+        "tamil": "எளிதான"
+      },
+      "prep_time_mins": 15,
+      "cook_time_mins": 15,
+      "servings": 4,
+      "region": {
+        "english": "Island-wide",
+        "sinhala": "දිවයින පුරා",
+        "tamil": "தீவு முழுவதும்"
+      },
+      "spice_level": 2,
+      "is_authentic": true,
+      "ingredients": [
+        {
+          "item": {
+            "english": "Ingredients to be added",
+            "sinhala": "අමුද්‍රව්‍ය එකතු කළ යුතුයි",
+            "tamil": "பொருட்கள் சேர்க்கப்பட வேண்டும்"
+          },
+          "amount": "As needed",
+          "essential": true
+        }
+      ],
+      "equipment": {
+        "english": [
+          "Standard cooking utensils"
+        ],
+        "sinhala": [
+          "සාමාන්‍ය ඉවුම් උපකරණ"
+        ],
+        "tamil": [
+          "நியமான சமையல் பாத்திரங்கள்"
+        ]
+      },
+      "method": {
+        "english": [
+          "Detailed cooking instructions to be added"
+        ],
+        "sinhala": [
+          "විස්තරාත්මක උපදෙස් එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "விரிவான வழிமுறைகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tips": {
+        "english": [
+          "Cooking tips to be added"
+        ],
+        "sinhala": [
+          "ඉවුම් ඉඟි එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "சமையல் குறிப்புகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tags": {
+        "english": [
+          "sri lankan",
+          "authentic",
+          "lunch"
+        ],
+        "sinhala": [
+          "ශ්‍රී ලාංකික",
+          "අව්‍යයථාබූ"
+        ],
+        "tamil": [
+          "இலங்கை",
+          "உண்மையான"
+        ]
+      },
+      "nutrition_per_serving": {
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0
+      },
+      "cultural_note": {
+        "english": "Fried Rice is a traditional Sri Lankan dish enjoyed across the island.",
+        "sinhala": "බදින ලද බත් දිවයින පුරා රස විඳින සාම්ප්‍රදායික ශ්‍රී ලාංකික ආහාරයකි.",
+        "tamil": "வறுத்த சாதம் தீவு முழுவதும் விரும்பப்படும் பாரம்பரிய இலங்கை உணவாகும்."
+      },
+      "serving_suggestions": {
+        "english": [
+          "Serve with rice",
+          "Accompanies curry meals"
+        ],
+        "sinhala": [
+          "බතට සේවය කරන්න",
+          "කරි ආහාර සමඟ"
+        ],
+        "tamil": [
+          "சாதத்துடன் பரிமாறவும்",
+          "கறி உணவுகளுடன்"
+        ]
+      }
+    },
+    {
+      "id": "SL_044",
+      "names": {
+        "english": "Yellow Rice",
+        "sinhala": "කහ බත්",
+        "tamil": "மஞ்சள் சாதம்"
+      },
+      "category": {
+        "english": "Lunch",
+        "sinhala": "දහවල් ආහාර",
+        "tamil": "மதிய உணவு"
+      },
+      "difficulty": {
+        "english": "Easy",
+        "sinhala": "පහසු",
+        "tamil": "எளிதான"
+      },
+      "prep_time_mins": 10,
+      "cook_time_mins": 25,
+      "servings": 4,
+      "region": {
+        "english": "Island-wide",
+        "sinhala": "දිවයින පුරා",
+        "tamil": "தீவு முழுவதும்"
+      },
+      "spice_level": 2,
+      "is_authentic": true,
+      "ingredients": [
+        {
+          "item": {
+            "english": "Ingredients to be added",
+            "sinhala": "අමුද්‍රව්‍ය එකතු කළ යුතුයි",
+            "tamil": "பொருட்கள் சேர்க்கப்பட வேண்டும்"
+          },
+          "amount": "As needed",
+          "essential": true
+        }
+      ],
+      "equipment": {
+        "english": [
+          "Standard cooking utensils"
+        ],
+        "sinhala": [
+          "සාමාන්‍ය ඉවුම් උපකරණ"
+        ],
+        "tamil": [
+          "நியமான சமையல் பாத்திரங்கள்"
+        ]
+      },
+      "method": {
+        "english": [
+          "Detailed cooking instructions to be added"
+        ],
+        "sinhala": [
+          "විස්තරාත්මක උපදෙස් එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "விரிவான வழிமுறைகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tips": {
+        "english": [
+          "Cooking tips to be added"
+        ],
+        "sinhala": [
+          "ඉවුම් ඉඟි එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "சமையல் குறிப்புகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tags": {
+        "english": [
+          "sri lankan",
+          "authentic",
+          "lunch"
+        ],
+        "sinhala": [
+          "ශ්‍රී ලාංකික",
+          "අව්‍යයථාබූ"
+        ],
+        "tamil": [
+          "இலங்கை",
+          "உண்மையான"
+        ]
+      },
+      "nutrition_per_serving": {
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0
+      },
+      "cultural_note": {
+        "english": "Yellow Rice is a traditional Sri Lankan dish enjoyed across the island.",
+        "sinhala": "කහ බත් දිවයින පුරා රස විඳින සාම්ප්‍රදායික ශ්‍රී ලාංකික ආහාරයකි.",
+        "tamil": "மஞ்சள் சாதம் தீவு முழுவதும் விரும்பப்படும் பாரம்பரிய இலங்கை உணவாகும்."
+      },
+      "serving_suggestions": {
+        "english": [
+          "Serve with rice",
+          "Accompanies curry meals"
+        ],
+        "sinhala": [
+          "බතට සේවය කරන්න",
+          "කරි ආහාර සමඟ"
+        ],
+        "tamil": [
+          "சாதத்துடன் பரிமாறவும்",
+          "கறி உணவுகளுடன்"
+        ]
+      }
+    },
+    {
+      "id": "SL_045",
+      "names": {
+        "english": "Coconut Rice",
+        "sinhala": "පොල් බත්",
+        "tamil": "தேங்காய் சாதம்"
+      },
+      "category": {
+        "english": "Lunch",
+        "sinhala": "දහවල් ආහාර",
+        "tamil": "மதிய உணவு"
+      },
+      "difficulty": {
+        "english": "Easy",
+        "sinhala": "පහසු",
+        "tamil": "எளிதான"
+      },
+      "prep_time_mins": 10,
+      "cook_time_mins": 25,
+      "servings": 4,
+      "region": {
+        "english": "Island-wide",
+        "sinhala": "දිවයින පුරා",
+        "tamil": "தீவு முழுவதும்"
+      },
+      "spice_level": 2,
+      "is_authentic": true,
+      "ingredients": [
+        {
+          "item": {
+            "english": "Ingredients to be added",
+            "sinhala": "අමුද්‍රව්‍ය එකතු කළ යුතුයි",
+            "tamil": "பொருட்கள் சேர்க்கப்பட வேண்டும்"
+          },
+          "amount": "As needed",
+          "essential": true
+        }
+      ],
+      "equipment": {
+        "english": [
+          "Standard cooking utensils"
+        ],
+        "sinhala": [
+          "සාමාන්‍ය ඉවුම් උපකරණ"
+        ],
+        "tamil": [
+          "நியமான சமையல் பாத்திரங்கள்"
+        ]
+      },
+      "method": {
+        "english": [
+          "Detailed cooking instructions to be added"
+        ],
+        "sinhala": [
+          "විස්තරාත්මක උපදෙස් එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "விரிவான வழிமுறைகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tips": {
+        "english": [
+          "Cooking tips to be added"
+        ],
+        "sinhala": [
+          "ඉවුම් ඉඟි එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "சமையல் குறிப்புகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tags": {
+        "english": [
+          "sri lankan",
+          "authentic",
+          "lunch"
+        ],
+        "sinhala": [
+          "ශ්‍රී ලාංකික",
+          "අව්‍යයථාබූ"
+        ],
+        "tamil": [
+          "இலங்கை",
+          "உண்மையான"
+        ]
+      },
+      "nutrition_per_serving": {
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0
+      },
+      "cultural_note": {
+        "english": "Coconut Rice is a traditional Sri Lankan dish enjoyed across the island.",
+        "sinhala": "පොල් බත් දිවයින පුරා රස විඳින සාම්ප්‍රදායික ශ්‍රී ලාංකික ආහාරයකි.",
+        "tamil": "தேங்காய் சாதம் தீவு முழுவதும் விரும்பப்படும் பாரம்பரிய இலங்கை உணவாகும்."
+      },
+      "serving_suggestions": {
+        "english": [
+          "Serve with rice",
+          "Accompanies curry meals"
+        ],
+        "sinhala": [
+          "බතට සේවය කරන්න",
+          "කරි ආහාර සමඟ"
+        ],
+        "tamil": [
+          "சாதத்துடன் பரிமாறவும்",
+          "கறி உணவுகளுடன்"
+        ]
+      }
+    },
+    {
+      "id": "SL_046",
+      "names": {
+        "english": "Watalappan",
+        "sinhala": "වටලප්පං",
+        "tamil": "வட்டலப்பம்"
+      },
+      "category": {
+        "english": "Dessert",
+        "sinhala": "අතුරුපස",
+        "tamil": "இனிப்பு"
+      },
+      "difficulty": {
+        "english": "Medium",
+        "sinhala": "මධ්‍යම",
+        "tamil": "நடுத்தர"
+      },
+      "prep_time_mins": 15,
+      "cook_time_mins": 45,
+      "servings": 4,
+      "region": {
+        "english": "Island-wide",
+        "sinhala": "දිවයින පුරා",
+        "tamil": "தீவு முழுவதும்"
+      },
+      "spice_level": 2,
+      "is_authentic": true,
+      "ingredients": [
+        {
+          "item": {
+            "english": "Ingredients to be added",
+            "sinhala": "අමුද්‍රව්‍ය එකතු කළ යුතුයි",
+            "tamil": "பொருட்கள் சேர்க்கப்பட வேண்டும்"
+          },
+          "amount": "As needed",
+          "essential": true
+        }
+      ],
+      "equipment": {
+        "english": [
+          "Standard cooking utensils"
+        ],
+        "sinhala": [
+          "සාමාන්‍ය ඉවුම් උපකරණ"
+        ],
+        "tamil": [
+          "நியமான சமையல் பாத்திரங்கள்"
+        ]
+      },
+      "method": {
+        "english": [
+          "Detailed cooking instructions to be added"
+        ],
+        "sinhala": [
+          "විස්තරාත්මක උපදෙස් එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "விரிவான வழிமுறைகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tips": {
+        "english": [
+          "Cooking tips to be added"
+        ],
+        "sinhala": [
+          "ඉවුම් ඉඟි එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "சமையல் குறிப்புகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tags": {
+        "english": [
+          "sri lankan",
+          "authentic",
+          "dessert"
+        ],
+        "sinhala": [
+          "ශ්‍රී ලාංකික",
+          "අව්‍යයථාබූ"
+        ],
+        "tamil": [
+          "இலங்கை",
+          "உண்மையான"
+        ]
+      },
+      "nutrition_per_serving": {
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0
+      },
+      "cultural_note": {
+        "english": "Watalappan is a traditional Sri Lankan dish enjoyed across the island.",
+        "sinhala": "වටලප්පං දිවයින පුරා රස විඳින සාම්ප්‍රදායික ශ්‍රී ලාංකික ආහාරයකි.",
+        "tamil": "வட்டலப்பம் தீவு முழுவதும் விரும்பப்படும் பாரம்பரிய இலங்கை உணவாகும்."
+      },
+      "serving_suggestions": {
+        "english": [
+          "Serve with rice",
+          "Accompanies curry meals"
+        ],
+        "sinhala": [
+          "බතට සේවය කරන්න",
+          "කරි ආහාර සමඟ"
+        ],
+        "tamil": [
+          "சாதத்துடன் பரிமாறவும்",
+          "கறி உணவுகளுடன்"
+        ]
+      }
+    },
+    {
+      "id": "SL_047",
+      "names": {
+        "english": "Kokis",
+        "sinhala": "කොකිස්",
+        "tamil": "கொக்கிஸ்"
+      },
+      "category": {
+        "english": "Dessert",
+        "sinhala": "අතුරුපස",
+        "tamil": "இனிப்பு"
+      },
+      "difficulty": {
+        "english": "Medium",
+        "sinhala": "මධ්‍යම",
+        "tamil": "நடுத்தர"
+      },
+      "prep_time_mins": 20,
+      "cook_time_mins": 30,
+      "servings": 4,
+      "region": {
+        "english": "Island-wide",
+        "sinhala": "දිවයින පුරා",
+        "tamil": "தீவு முழுவதும்"
+      },
+      "spice_level": 2,
+      "is_authentic": true,
+      "ingredients": [
+        {
+          "item": {
+            "english": "Ingredients to be added",
+            "sinhala": "අමුද්‍රව්‍ය එකතු කළ යුතුයි",
+            "tamil": "பொருட்கள் சேர்க்கப்பட வேண்டும்"
+          },
+          "amount": "As needed",
+          "essential": true
+        }
+      ],
+      "equipment": {
+        "english": [
+          "Standard cooking utensils"
+        ],
+        "sinhala": [
+          "සාමාන්‍ය ඉවුම් උපකරණ"
+        ],
+        "tamil": [
+          "நியமான சமையல் பாத்திரங்கள்"
+        ]
+      },
+      "method": {
+        "english": [
+          "Detailed cooking instructions to be added"
+        ],
+        "sinhala": [
+          "විස්තරාත්මක උපදෙස් එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "விரிவான வழிமுறைகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tips": {
+        "english": [
+          "Cooking tips to be added"
+        ],
+        "sinhala": [
+          "ඉවුම් ඉඟි එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "சமையல் குறிப்புகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tags": {
+        "english": [
+          "sri lankan",
+          "authentic",
+          "dessert"
+        ],
+        "sinhala": [
+          "ශ්‍රී ලාංකික",
+          "අව්‍යයථාබූ"
+        ],
+        "tamil": [
+          "இலங்கை",
+          "உண்மையான"
+        ]
+      },
+      "nutrition_per_serving": {
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0
+      },
+      "cultural_note": {
+        "english": "Kokis is a traditional Sri Lankan dish enjoyed across the island.",
+        "sinhala": "කොකිස් දිවයින පුරා රස විඳින සාම්ප්‍රදායික ශ්‍රී ලාංකික ආහාරයකි.",
+        "tamil": "கொக்கிஸ் தீவு முழுவதும் விரும்பப்படும் பாரம்பரிய இலங்கை உணவாகும்."
+      },
+      "serving_suggestions": {
+        "english": [
+          "Serve with rice",
+          "Accompanies curry meals"
+        ],
+        "sinhala": [
+          "බතට සේවය කරන්න",
+          "කරි ආහාර සමඟ"
+        ],
+        "tamil": [
+          "சாதத்துடன் பரிமாறவும்",
+          "கறி உணவுகளுடன்"
+        ]
+      }
+    },
+    {
+      "id": "SL_048",
+      "names": {
+        "english": "Bibikkan",
+        "sinhala": "බිබික්කං",
+        "tamil": "பிபிக்கம்"
+      },
+      "category": {
+        "english": "Dessert",
+        "sinhala": "අතුරුපස",
+        "tamil": "இனிப்பு"
+      },
+      "difficulty": {
+        "english": "Medium",
+        "sinhala": "මධ්‍යම",
+        "tamil": "நடுத்தர"
+      },
+      "prep_time_mins": 20,
+      "cook_time_mins": 45,
+      "servings": 4,
+      "region": {
+        "english": "Island-wide",
+        "sinhala": "දිවයින පුරා",
+        "tamil": "தீவு முழுவதும்"
+      },
+      "spice_level": 2,
+      "is_authentic": true,
+      "ingredients": [
+        {
+          "item": {
+            "english": "Ingredients to be added",
+            "sinhala": "අමුද්‍රව්‍ය එකතු කළ යුතුයි",
+            "tamil": "பொருட்கள் சேர்க்கப்பட வேண்டும்"
+          },
+          "amount": "As needed",
+          "essential": true
+        }
+      ],
+      "equipment": {
+        "english": [
+          "Standard cooking utensils"
+        ],
+        "sinhala": [
+          "සාමාන්‍ය ඉවුම් උපකරණ"
+        ],
+        "tamil": [
+          "நியமான சமையல் பாத்திரங்கள்"
+        ]
+      },
+      "method": {
+        "english": [
+          "Detailed cooking instructions to be added"
+        ],
+        "sinhala": [
+          "විස්තරාත්මක උපදෙස් එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "விரிவான வழிமுறைகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tips": {
+        "english": [
+          "Cooking tips to be added"
+        ],
+        "sinhala": [
+          "ඉවුම් ඉඟි එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "சமையல் குறிப்புகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tags": {
+        "english": [
+          "sri lankan",
+          "authentic",
+          "dessert"
+        ],
+        "sinhala": [
+          "ශ්‍රී ලාංකික",
+          "අව්‍යයථාබූ"
+        ],
+        "tamil": [
+          "இலங்கை",
+          "உண்மையான"
+        ]
+      },
+      "nutrition_per_serving": {
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0
+      },
+      "cultural_note": {
+        "english": "Bibikkan is a traditional Sri Lankan dish enjoyed across the island.",
+        "sinhala": "බිබික්කං දිවයින පුරා රස විඳින සාම්ප්‍රදායික ශ්‍රී ලාංකික ආහාරයකි.",
+        "tamil": "பிபிக்கம் தீவு முழுவதும் விரும்பப்படும் பாரம்பரிய இலங்கை உணவாகும்."
+      },
+      "serving_suggestions": {
+        "english": [
+          "Serve with rice",
+          "Accompanies curry meals"
+        ],
+        "sinhala": [
+          "බතට සේවය කරන්න",
+          "කරි ආහාර සමඟ"
+        ],
+        "tamil": [
+          "சாதத்துடன் பரிமாறவும்",
+          "கறி உணவுகளுடன்"
+        ]
+      }
+    },
+    {
+      "id": "SL_049",
+      "names": {
+        "english": "Aluwa",
+        "sinhala": "අලුවා",
+        "tamil": "அலுவா"
+      },
+      "category": {
+        "english": "Dessert",
+        "sinhala": "අතුරුපස",
+        "tamil": "இனிப்பு"
+      },
+      "difficulty": {
+        "english": "Easy",
+        "sinhala": "පහසු",
+        "tamil": "எளிதான"
+      },
+      "prep_time_mins": 10,
+      "cook_time_mins": 20,
+      "servings": 4,
+      "region": {
+        "english": "Island-wide",
+        "sinhala": "දිවයින පුරා",
+        "tamil": "தீவு முழுவதும்"
+      },
+      "spice_level": 2,
+      "is_authentic": true,
+      "ingredients": [
+        {
+          "item": {
+            "english": "Ingredients to be added",
+            "sinhala": "අමුද්‍රව්‍ය එකතු කළ යුතුයි",
+            "tamil": "பொருட்கள் சேர்க்கப்பட வேண்டும்"
+          },
+          "amount": "As needed",
+          "essential": true
+        }
+      ],
+      "equipment": {
+        "english": [
+          "Standard cooking utensils"
+        ],
+        "sinhala": [
+          "සාමාන්‍ය ඉවුම් උපකරණ"
+        ],
+        "tamil": [
+          "நியமான சமையல் பாத்திரங்கள்"
+        ]
+      },
+      "method": {
+        "english": [
+          "Detailed cooking instructions to be added"
+        ],
+        "sinhala": [
+          "විස්තරාත්මක උපදෙස් එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "விரிவான வழிமுறைகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tips": {
+        "english": [
+          "Cooking tips to be added"
+        ],
+        "sinhala": [
+          "ඉවුම් ඉඟි එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "சமையல் குறிப்புகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tags": {
+        "english": [
+          "sri lankan",
+          "authentic",
+          "dessert"
+        ],
+        "sinhala": [
+          "ශ්‍රී ලාංකික",
+          "අව්‍යයථාබූ"
+        ],
+        "tamil": [
+          "இலங்கை",
+          "உண்மையான"
+        ]
+      },
+      "nutrition_per_serving": {
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0
+      },
+      "cultural_note": {
+        "english": "Aluwa is a traditional Sri Lankan dish enjoyed across the island.",
+        "sinhala": "අලුවා දිවයින පුරා රස විඳින සාම්ප්‍රදායික ශ්‍රී ලාංකික ආහාරයකි.",
+        "tamil": "அலுவா தீவு முழுவதும் விரும்பப்படும் பாரம்பரிய இலங்கை உணவாகும்."
+      },
+      "serving_suggestions": {
+        "english": [
+          "Serve with rice",
+          "Accompanies curry meals"
+        ],
+        "sinhala": [
+          "බතට සේවය කරන්න",
+          "කරි ආහාර සමඟ"
+        ],
+        "tamil": [
+          "சாதத்துடன் பரிமாறவும்",
+          "கறி உணவுகளுடன்"
+        ]
+      }
+    },
+    {
+      "id": "SL_050",
+      "names": {
+        "english": "Wood Apple Juice",
+        "sinhala": "දිවුල්",
+        "tamil": "விளாம்பழ சாறு"
+      },
+      "category": {
+        "english": "Drink",
+        "sinhala": "බීම",
+        "tamil": "பானம்"
+      },
+      "difficulty": {
+        "english": "Easy",
+        "sinhala": "පහසු",
+        "tamil": "எளிதான"
+      },
+      "prep_time_mins": 10,
+      "cook_time_mins": 0,
+      "servings": 4,
+      "region": {
+        "english": "Island-wide",
+        "sinhala": "දිවයින පුරා",
+        "tamil": "தீவு முழுவதும்"
+      },
+      "spice_level": 2,
+      "is_authentic": true,
+      "ingredients": [
+        {
+          "item": {
+            "english": "Ingredients to be added",
+            "sinhala": "අමුද්‍රව්‍ය එකතු කළ යුතුයි",
+            "tamil": "பொருட்கள் சேர்க்கப்பட வேண்டும்"
+          },
+          "amount": "As needed",
+          "essential": true
+        }
+      ],
+      "equipment": {
+        "english": [
+          "Standard cooking utensils"
+        ],
+        "sinhala": [
+          "සාමාන්‍ය ඉවුම් උපකරණ"
+        ],
+        "tamil": [
+          "நியமான சமையல் பாத்திரங்கள்"
+        ]
+      },
+      "method": {
+        "english": [
+          "Detailed cooking instructions to be added"
+        ],
+        "sinhala": [
+          "විස්තරාත්මක උපදෙස් එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "விரிவான வழிமுறைகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tips": {
+        "english": [
+          "Cooking tips to be added"
+        ],
+        "sinhala": [
+          "ඉවුම් ඉඟි එකතු කළ යුතුයි"
+        ],
+        "tamil": [
+          "சமையல் குறிப்புகள் சேர்க்கப்பட வேண்டும்"
+        ]
+      },
+      "tags": {
+        "english": [
+          "sri lankan",
+          "authentic",
+          "drink"
+        ],
+        "sinhala": [
+          "ශ්‍රී ලාංකික",
+          "අව්‍යයථාබූ"
+        ],
+        "tamil": [
+          "இலங்கை",
+          "உண்மையான"
+        ]
+      },
+      "nutrition_per_serving": {
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0
+      },
+      "cultural_note": {
+        "english": "Wood Apple Juice is a traditional Sri Lankan dish enjoyed across the island.",
+        "sinhala": "දිවුල් දිවයින පුරා රස විඳින සාම්ප්‍රදායික ශ්‍රී ලාංකික ආහාරයකි.",
+        "tamil": "விளாம்பழ சாறு தீவு முழுவதும் விரும்பப்படும் பாரம்பரிய இலங்கை உணவாகும்."
+      },
+      "serving_suggestions": {
+        "english": [
+          "Serve with rice",
+          "Accompanies curry meals"
+        ],
+        "sinhala": [
+          "බතට සේවය කරන්න",
+          "කරි ආහාර සමඟ"
+        ],
+        "tamil": [
+          "சாதத்துடன் பரிமாறவும்",
+          "கறி உணவுகளுடன்"
+        ]
+      }
+    }
+  ]
+}

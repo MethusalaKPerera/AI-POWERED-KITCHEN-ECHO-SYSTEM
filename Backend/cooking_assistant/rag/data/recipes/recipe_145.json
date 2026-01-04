@@ -1,0 +1,49 @@
+{
+  "id": "recipe_145",
+  "name": "Falooda (Eid Drink)",
+  "name_sinhala": "ෆලූඩා (ඊද්)",
+  "name_tamil": "பலூடா",
+  "category": "Beverage",
+  "region": "Muslim",
+  "description": "Rose-flavored milk drink for Eid",
+  "ingredients": [
+    "3 cups milk",
+    "6 tbsp rose syrup",
+    "3 tbsp basil seeds (soaked)",
+    "150g agar jelly, cubed",
+    "Vanilla ice cream",
+    "Cashews",
+    "Almonds",
+    "Ice cubes"
+  ],
+  "instructions": [
+    "Soak basil seeds 30 minutes",
+    "Prepare and cube agar jelly",
+    "In tall glasses, add rose syrup",
+    "Add basil seeds",
+    "Add jelly cubes",
+    "Pour chilled milk",
+    "Add ice",
+    "Top with ice cream scoop",
+    "Garnish with nuts",
+    "Serve with spoon and straw"
+  ],
+  "prep_time_minutes": 40,
+  "cook_time_minutes": 10,
+  "servings": 6,
+  "difficulty": "Easy",
+  "tags": [
+    "eid",
+    "muslim",
+    "drink",
+    "festive",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Must-have Eid drink, very refreshing",
+  "authenticity_score": 1.0,
+  "description_sinhala": "ඊද් සඳහා රෝස රසැති කිරි පානය",
+  "description_tamil": "Rose-flavored milk drink for Eid",
+  "cultural_notes_sinhala": "තිබිය යුතුම Eid පානය, ඉතා ප්‍රබෝධමත්",
+  "cultural_notes_tamil": "கண்டிப்பாக சாப்பிட வேண்டிய ஈத் பானம், மிகவும் புத்துணர்ச்சி தரும்"
+}

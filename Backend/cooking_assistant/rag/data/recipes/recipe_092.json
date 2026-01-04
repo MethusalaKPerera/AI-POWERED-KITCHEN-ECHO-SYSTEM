@@ -1,0 +1,49 @@
+{
+  "id": "recipe_092",
+  "name": "Aviyal (Mixed Vegetable Curry)",
+  "name_sinhala": "අවියල්",
+  "name_tamil": "அவியல்",
+  "category": "Curry",
+  "region": "Jaffna",
+  "description": "Mild vegetable curry with coconut and yogurt",
+  "ingredients": [
+    "2 carrots, cubed",
+    "1 drumstick, cut",
+    "1 raw banana, cubed",
+    "10 beans, cut",
+    "1 cup grated coconut",
+    "2 green chilies",
+    "1 tsp cumin",
+    "1/2 cup yogurt",
+    "10 curry leaves (fresh, not dried)",
+    "1 tbsp coconut oil (traditional - do not substitute)",
+    "Salt"
+  ],
+  "instructions": [
+    "Boil vegetables with turmeric and salt until tender",
+    "Grind coconut, cumin, chilies to paste",
+    "Add to vegetables",
+    "Add yogurt and mix",
+    "Simmer for 5 minutes",
+    "Add curry leaves and coconut oil (Curry leaves must be fresh for authentic taste)",
+    "Mix and serve"
+  ],
+  "prep_time_minutes": 20,
+  "cook_time_minutes": 20,
+  "servings": 6,
+  "difficulty": "Medium",
+  "tags": [
+    "jaffna",
+    "vegetarian",
+    "healthy",
+    "mild",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Traditional feast dish, very nutritious",
+  "authenticity_score": 11.0,
+  "description_sinhala": "පොල් සහ යෝගට් සමග මෘදු එළවළු කරිය",
+  "description_tamil": "தேங்காய் மற்றும் தயிர் கொண்ட லேசான காய்கறி கறி",
+  "cultural_notes_sinhala": "සාම්ප්‍රදායික උත්සව කෑමක්, ඉතා පෝෂ්‍යදායී",
+  "cultural_notes_tamil": "பாரம்பரிய விருந்து உணவு, மிகவும் சத்தானது"
+}

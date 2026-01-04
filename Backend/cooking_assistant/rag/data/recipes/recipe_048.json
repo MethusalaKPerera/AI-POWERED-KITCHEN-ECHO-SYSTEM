@@ -1,0 +1,38 @@
+{
+  "id": "recipe_048",
+  "name": "Curd with Treacle",
+  "name_sinhala": "මී කිරි",
+  "name_tamil": "தயிர் மற்றும் பன்னீர்",
+  "category": "Dessert",
+  "region": "General",
+  "description": "Buffalo curd served with palm treacle",
+  "ingredients": [
+    "1 clay pot buffalo curd",
+    "4 tbsp kithul treacle",
+    "1 tbsp cashew nuts (optional)"
+  ],
+  "instructions": [
+    "Open curd pot",
+    "Pour treacle over curd",
+    "Mix gently",
+    "Add cashews if desired",
+    "Serve immediately"
+  ],
+  "prep_time_minutes": 2,
+  "cook_time_minutes": 0,
+  "servings": 2,
+  "difficulty": "Easy",
+  "tags": [
+    "dessert",
+    "healthy",
+    "traditional",
+    "no-cook",
+    "authentic"
+  ],
+  "cultural_notes": "Traditional dessert, curd in clay pots is special",
+  "authenticity_score": 1.0,
+  "description_sinhala": "මී හරක් හොද්ද තල් ට්‍රේකල් සමඟ සේවය කරයි",
+  "description_tamil": "பனை வெல்லத்துடன் பரிமாறப்படும் எருமை தயிர்",
+  "cultural_notes_sinhala": "සාම්ප්‍රදායික අතුරුපස, මැටි මුට්ටිවල කිරිබත් විශේෂයි",
+  "cultural_notes_tamil": "பாரம்பரிய இனிப்பு, மண் பானைகளில் தயிர் சிறப்பு"
+}

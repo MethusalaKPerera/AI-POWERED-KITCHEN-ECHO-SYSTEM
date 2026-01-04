@@ -1,0 +1,44 @@
+{
+  "id": "recipe_127",
+  "name": "Dodol (Sticky Toffee)",
+  "name_sinhala": "දොඩොල්",
+  "name_tamil": "டோடோல்",
+  "category": "Dessert",
+  "region": "Southern",
+  "description": "Sticky coconut jaggery toffee",
+  "ingredients": [
+    "3 cups kithul treacle",
+    "3 cups coconut milk",
+    "2 cups rice flour",
+    "1 cup cashews",
+    "1 tsp cardamom"
+  ],
+  "instructions": [
+    "Mix rice flour with coconut milk",
+    "Add treacle",
+    "Cook on low heat stirring constantly",
+    "Stir for 60-90 minutes",
+    "Mixture will become very thick",
+    "Add cashews and cardamom",
+    "Pour into greased tray",
+    "Cool and cut"
+  ],
+  "prep_time_minutes": 15,
+  "cook_time_minutes": 120,
+  "servings": 40,
+  "difficulty": "Hard",
+  "tags": [
+    "southern",
+    "dessert",
+    "sticky",
+    "labor-intensive",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Labor of love, requires constant stirring",
+  "authenticity_score": 1.0,
+  "description_sinhala": "ඇලෙන සුළු පොල් හකුරු ටොෆි",
+  "description_tamil": "ஒட்டும் தேங்காய் வெல்லம் டோஃபி",
+  "cultural_notes_sinhala": "ආදරයේ ශ්රමය, නිරන්තරයෙන් ඇවිස්සීම අවශ්ය වේ",
+  "cultural_notes_tamil": "அன்பின் உழைப்பு, தொடர்ந்து கிளறல் தேவைப்படுகிறது"
+}

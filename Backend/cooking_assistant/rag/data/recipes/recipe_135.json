@@ -1,0 +1,46 @@
+{
+  "id": "recipe_135",
+  "name": "Pani Dodol (Jaggery Coconut Toffee)",
+  "name_sinhala": "පැණි දොඩොල්",
+  "name_tamil": "பணிடோல்",
+  "category": "Dessert",
+  "region": "General",
+  "description": "Quick jaggery coconut sweet for New Year",
+  "ingredients": [
+    "3 cups palm jaggery (hakuru), chopped",
+    "2 cups grated coconut",
+    "1 tsp cardamom powder",
+    "1/2 cup cashews, chopped",
+    "Ghee for greasing"
+  ],
+  "instructions": [
+    "Melt jaggery in heavy pan",
+    "Add grated coconut",
+    "Stir constantly on medium heat",
+    "Cook until thick (15-20 min)",
+    "Add cardamom",
+    "Test by dropping in water - should form ball",
+    "Add cashews",
+    "Pour into greased tray",
+    "Cool slightly and cut",
+    "Let set completely"
+  ],
+  "prep_time_minutes": 10,
+  "cook_time_minutes": 25,
+  "servings": 25,
+  "difficulty": "Medium",
+  "tags": [
+    "new-year",
+    "sweet",
+    "coconut",
+    "quick",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Faster version of traditional dodol",
+  "authenticity_score": 10.95,
+  "description_sinhala": "අලුත් අවුරුද්දට ඉක්මන් හකුරු පොල් පැණි",
+  "description_tamil": "புத்தாண்டுக்கு விரைவு வெல்லம் தேங்காய் இனிப்பு",
+  "cultural_notes_sinhala": "සාම්ප්රදායික ඩොඩොල්හි වේගවත් අනුවාදය",
+  "cultural_notes_tamil": "பாரம்பரிய டோடோலின் வேகமான பதிப்பு"
+}

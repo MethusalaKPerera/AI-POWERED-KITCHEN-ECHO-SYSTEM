@@ -1,0 +1,52 @@
+{
+  "id": "recipe_094",
+  "name": "Sambar (Lentil Vegetable Stew)",
+  "name_sinhala": "සම්බාර්",
+  "name_tamil": "சாம்பார்",
+  "category": "Curry",
+  "region": "Jaffna",
+  "description": "Tangy lentil stew with vegetables",
+  "ingredients": [
+    "1 cup toor dal",
+    "2 tomatoes",
+    "1 drumstick, cut",
+    "1 carrot, cubed",
+    "1 onion, chopped",
+    "2 tbsp sambar powder",
+    "1 tbsp tamarind paste",
+    "1 tsp mustard seeds",
+    "10 curry leaves (fresh, not dried)",
+    "2 tbsp oil",
+    "Salt",
+    "Coriander leaves"
+  ],
+  "instructions": [
+    "Cook dal until soft",
+    "Boil vegetables with turmeric",
+    "Mash dal slightly",
+    "Add vegetables to dal",
+    "Add tamarind and sambar powder",
+    "Simmer for 10 minutes",
+    "Temper mustard, curry leaves in oil (Curry leaves must be fresh for authentic taste)",
+    "Add to sambar",
+    "Garnish with coriander"
+  ],
+  "prep_time_minutes": 15,
+  "cook_time_minutes": 25,
+  "servings": 6,
+  "difficulty": "Easy",
+  "tags": [
+    "jaffna",
+    "vegetarian",
+    "tangy",
+    "daily",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Essential accompaniment to rice, dosai, idli",
+  "authenticity_score": 11.0,
+  "description_sinhala": "එළවළු සමග ටැන්ජි පරිප්පු ඉස්ටුවක්",
+  "description_tamil": "காய்கறிகளுடன் கசப்பான பருப்பு குண்டு",
+  "cultural_notes_sinhala": "බත්, දෝසායි, ඉඩ්ලි සඳහා අත්‍යවශ්‍ය සහායකය",
+  "cultural_notes_tamil": "சாதம், தோசை, இட்லிக்கு இன்றியமையாத துணை"
+}

@@ -1,0 +1,44 @@
+{
+  "id": "recipe_209",
+  "name": "Kadala Curry (Chickpea Curry)",
+  "name_sinhala": "කඩල කරිය",
+  "name_tamil": "கொண்டைக்கடலை கறி",
+  "category": "Curry",
+  "region": "General",
+  "description": "Spicy black chickpea curry. Perfect pairing with pittu or bread.",
+  "ingredients": [
+    "2 cups black chickpeas, soaked overnight",
+    "1 cup thick coconut milk",
+    "2 onions, chopped",
+    "3 green chilies",
+    "2 tbsp curry powder",
+    "1 tsp chili powder",
+    "1/2 tsp turmeric",
+    "10 curry leaves (fresh, not dried)",
+    "1 piece pandan leaf",
+    "2 tbsp coconut oil (traditional - do not substitute)",
+    "Salt to taste"
+  ],
+  "instructions": [
+    "Pressure cook chickpeas until soft",
+    "Heat oil, add curry leaves and pandan (Curry leaves must be fresh for authentic taste)",
+    "Add onions and green chilies, sauté",
+    "Add all dry spices, fry well",
+    "Add cooked chickpeas with water",
+    "Simmer for 15 minutes",
+    "Add coconut milk",
+    "Cook for 5 more minutes"
+  ],
+  "prep_time_minutes": 480,
+  "cook_time_minutes": 30,
+  "servings": 6,
+  "difficulty": "Easy",
+  "tags": [
+    "vegetarian",
+    "protein",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Must use black chickpeas, not white. Perfect partner for pittu. The curry should be thick and coating.",
+  "authenticity_score": 100
+}

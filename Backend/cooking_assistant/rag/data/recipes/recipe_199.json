@@ -1,0 +1,38 @@
+{
+  "id": "recipe_199",
+  "name": "Kiribath (Milk Rice)",
+  "name_sinhala": "කිරිබත්",
+  "name_tamil": "பால் சோறு",
+  "category": "Rice Dish",
+  "region": "General",
+  "description": "Coconut milk rice served on auspicious occasions. The first food eaten on Sinhala New Year.",
+  "ingredients": [
+    "2 cups white rice",
+    "3 cups water",
+    "2 cups thick coconut milk",
+    "1 tsp salt",
+    "1 piece pandan leaf"
+  ],
+  "instructions": [
+    "Wash rice and cook with water and pandan leaf",
+    "When rice is 80% cooked and water absorbed",
+    "Add coconut milk and salt",
+    "Stir gently and cook on low heat",
+    "When all liquid absorbed, turn off heat",
+    "Spread on flat tray to 1-inch thickness",
+    "Cool slightly and cut into diamond shapes",
+    "Serve with lunu miris"
+  ],
+  "prep_time_minutes": 10,
+  "cook_time_minutes": 30,
+  "servings": 8,
+  "difficulty": "Easy",
+  "tags": [
+    "festive",
+    "auspicious",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Must be the first food on New Year. Cut in diamond shapes. Always served with lunu miris and jaggery. Kiribath is served on all auspicious occasions. Must be eaten with lunu miris (chili sambol) and kithul treacle. Cut in diamond shapes for good luck.",
+  "authenticity_score": 100
+}

@@ -1,0 +1,50 @@
+{
+  "id": "recipe_083",
+  "name": "Odiyal Kool",
+  "name_sinhala": "ඔඩියල් කූල්",
+  "name_tamil": "ஒடியல் கூழ்",
+  "category": "Curry",
+  "region": "Jaffna",
+  "description": "Vegetarian version of kool with odiyal root",
+  "ingredients": [
+    "500g odiyal root, diced",
+    "1 cup palmyrah flour",
+    "2 onions",
+    "3 garlic cloves",
+    "1 tsp cumin",
+    "1 tsp fennel",
+    "2 green chilies",
+    "1 liter water",
+    "2 tbsp oil",
+    "Salt"
+  ],
+  "instructions": [
+    "Peel and dice odiyal root",
+    "Boil until tender",
+    "In separate pot, fry spices",
+    "Add onions and garlic",
+    "Add boiled odiyal",
+    "Add water",
+    "Mix palmyrah flour with water",
+    "Add to pot stirring continuously",
+    "Cook until thick",
+    "Serve hot"
+  ],
+  "prep_time_minutes": 20,
+  "cook_time_minutes": 30,
+  "servings": 4,
+  "difficulty": "Medium",
+  "tags": [
+    "jaffna",
+    "vegetarian",
+    "traditional",
+    "soup",
+    "authentic"
+  ],
+  "cultural_notes": "Healthy Jaffna soup made during fasting",
+  "authenticity_score": 1.0,
+  "description_sinhala": "ඔඩියල් මූල සහිත කූල් වල නිර්මාංශ අනුවාදය",
+  "description_tamil": "ஒடியல் வேர் கொண்ட கூலின் சைவ பதிப்பு",
+  "cultural_notes_sinhala": "උපවාසයේදී සාදන සෞඛ්‍ය සම්පන්න යාපනය සුප්",
+  "cultural_notes_tamil": "நோன்பின் போது செய்யப்படும் ஆரோக்கியமான யாழ்ப்பாண சூப்"
+}

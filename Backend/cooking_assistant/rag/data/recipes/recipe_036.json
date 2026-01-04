@@ -1,0 +1,45 @@
+{
+  "id": "recipe_036",
+  "name": "Kavum (Oil Cakes)",
+  "name_sinhala": "කැවුම්",
+  "name_tamil": "கவும்",
+  "category": "Dessert",
+  "region": "General",
+  "description": "Deep-fried rice flour cakes with treacle",
+  "ingredients": [
+    "2 cups rice flour",
+    "1 cup kithul treacle",
+    "1/4 cup coconut milk",
+    "1/2 tsp cardamom powder",
+    "Salt pinch",
+    "Oil for frying"
+  ],
+  "instructions": [
+    "Mix rice flour with treacle",
+    "Add coconut milk to form thick batter",
+    "Add cardamom and salt",
+    "Let rest for 2 hours",
+    "Heat oil for deep frying",
+    "Drop spoonfuls of batter",
+    "Fry until dark brown",
+    "Drain and cool"
+  ],
+  "prep_time_minutes": 20,
+  "cook_time_minutes": 30,
+  "servings": 20,
+  "difficulty": "Medium",
+  "tags": [
+    "dessert",
+    "sweet",
+    "fried",
+    "new-year",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Essential New Year sweet, made with kithul treacle",
+  "authenticity_score": 1.0,
+  "description_sinhala": "ගැඹුරු තෙලේ බැදපු සහල් පිටි කේක්",
+  "description_tamil": "ஆழத்தில் வறுத்த அரிசி மாவு கேக்குகள்",
+  "cultural_notes_sinhala": "අත්‍යවශ්‍ය අලුත් අවුරුදු රසකැවිලි, කිතුල් කරල් වලින් සාදා ඇත",
+  "cultural_notes_tamil": "அத்தியாவசிய புத்தாண்டு இனிப்பு, கித்துல் ட்ரீக்கிள் மூலம் செய்யப்படுகிறது"
+}

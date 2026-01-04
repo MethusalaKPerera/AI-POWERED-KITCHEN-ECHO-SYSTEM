@@ -1,0 +1,45 @@
+{
+  "id": "recipe_008",
+  "name": "Hoppers (Appa)",
+  "name_sinhala": "ආප්ප",
+  "name_tamil": "ஆப்பம்",
+  "category": "Bread",
+  "region": "General",
+  "description": "Bowl-shaped fermented rice pancakes with crispy edges",
+  "ingredients": [
+    "2 cups rice flour",
+    "1/2 cup coconut milk",
+    "1 tsp sugar",
+    "1 tsp yeast",
+    "1 cup warm water",
+    "1/2 tsp salt"
+  ],
+  "instructions": [
+    "Mix yeast with warm water and sugar, let sit 10 minutes",
+    "Combine rice flour and salt",
+    "Add yeast mixture and coconut milk",
+    "Mix to smooth batter",
+    "Let ferment for 4-6 hours",
+    "Heat hopper pan, grease lightly",
+    "Pour batter and swirl to form bowl shape",
+    "Cover and cook until edges are crispy",
+    "Center should be soft"
+  ],
+  "prep_time_minutes": 20,
+  "cook_time_minutes": 5,
+  "servings": 8,
+  "difficulty": "Hard",
+  "tags": [
+    "breakfast",
+    "fermented",
+    "traditional",
+    "crispy",
+    "authentic"
+  ],
+  "cultural_notes": "Often served with egg in the center for egg hoppers",
+  "authenticity_score": 1.0,
+  "description_sinhala": "හැපෙනසුළු දාර සහිත බඳුනක හැඩැති පැසුණු සහල් පෑන්කේක්",
+  "description_tamil": "மிருதுவான விளிம்புகளுடன் கிண்ண வடிவ புளித்த அரிசி அப்பங்கள்",
+  "cultural_notes_sinhala": "බොහෝ විට බිත්තර ආප්ප සඳහා මධ්‍යයේ බිත්තරයක් සමඟ සේවය කරයි",
+  "cultural_notes_tamil": "முட்டை ஹாப்பர்களுக்கு மையத்தில் முட்டையுடன் அடிக்கடி பரிமாறப்படுகிறது"
+}

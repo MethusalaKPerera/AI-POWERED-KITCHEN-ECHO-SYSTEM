@@ -1,0 +1,41 @@
+{
+  "id": "recipe_084",
+  "name": "Puttu (Steamed Rice Cake)",
+  "name_sinhala": "පුට්ටු",
+  "name_tamil": "புட்டு",
+  "category": "Bread",
+  "region": "Jaffna",
+  "description": "Cylindrical steamed rice cake with coconut",
+  "ingredients": [
+    "2 cups puttu flour (rice flour)",
+    "1 cup grated coconut",
+    "Water as needed",
+    "Salt to taste"
+  ],
+  "instructions": [
+    "Mix rice flour with water to breadcrumb consistency",
+    "Add salt",
+    "Layer flour and coconut in puttu maker",
+    "Alternate layers",
+    "Steam for 10-12 minutes",
+    "Remove and serve hot",
+    "Traditionally served with banana and jaggery"
+  ],
+  "prep_time_minutes": 15,
+  "cook_time_minutes": 12,
+  "servings": 4,
+  "difficulty": "Medium",
+  "tags": [
+    "jaffna",
+    "breakfast",
+    "steamed",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Breakfast staple, eaten sweet or with curry",
+  "authenticity_score": 1.0,
+  "description_sinhala": "පොල් සමග සිලින්ඩරාකාර තැම්බූ සහල් කේක්",
+  "description_tamil": "தேங்காய் சேர்த்து உருளை வடிவ அரிசி கேக்",
+  "cultural_notes_sinhala": "උදේ ආහාරය ප්‍රධාන ආහාරය, පැණිරස හෝ ව්‍යංජන සමඟ අනුභව කරනු ලැබේ",
+  "cultural_notes_tamil": "காலை உணவு பிரதானமானது, இனிப்பு அல்லது கறியுடன் உண்ணப்படுகிறது"
+}

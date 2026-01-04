@@ -1,0 +1,49 @@
+{
+  "id": "recipe_005",
+  "name": "Potato Curry (Ala Curry)",
+  "name_sinhala": "අල කරිය",
+  "name_tamil": "உருளைக்கிழங்கு கறி",
+  "category": "Curry",
+  "region": "General",
+  "description": "Simple and flavorful potato curry, an everyday Sri Lankan staple",
+  "ingredients": [
+    "500g potatoes, cubed",
+    "200ml coconut milk",
+    "1 tbsp curry powder",
+    "1 tsp chili powder",
+    "1/2 tsp turmeric",
+    "1 onion, sliced",
+    "1 sprig curry leaves (fresh, not dried)",
+    "1 tsp mustard seeds",
+    "2 green chilies",
+    "2 tbsp oil",
+    "Salt to taste"
+  ],
+  "instructions": [
+    "Heat oil and add mustard seeds",
+    "Add curry leaves and onions (Curry leaves must be fresh for authentic taste)",
+    "Add curry powder, chili, turmeric",
+    "Add potato cubes and mix well",
+    "Add water to cover and simmer until potatoes are tender",
+    "Add coconut milk and simmer for 5 minutes",
+    "Adjust seasoning"
+  ],
+  "prep_time_minutes": 10,
+  "cook_time_minutes": 20,
+  "servings": 4,
+  "difficulty": "Easy",
+  "tags": [
+    "vegetarian",
+    "everyday",
+    "simple",
+    "coconut-based",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "A daily staple in Sri Lankan households, often served with rice and dhal",
+  "authenticity_score": 10.98,
+  "description_sinhala": "සරළ සහ රසවත් අර්තාපල් ව්‍යංජනය, එදිනෙදා ශ්‍රී ලාංකික ප්‍රධාන ආහාරය",
+  "description_tamil": "எளிய மற்றும் சுவையான உருளைக்கிழங்கு கறி, இலங்கையின் அன்றாட உணவாகும்",
+  "cultural_notes_sinhala": "ශ්‍රී ලාංකීය නිවෙස්වල දෛනික ප්‍රධාන ආහාරය, බොහෝ විට බත් සහ පරිප්පු සමඟ සේවය කරයි",
+  "cultural_notes_tamil": "இலங்கை வீடுகளில் தினசரி பிரதான உணவு, பெரும்பாலும் அரிசி மற்றும் பருப்புடன் பரிமாறப்படுகிறது"
+}

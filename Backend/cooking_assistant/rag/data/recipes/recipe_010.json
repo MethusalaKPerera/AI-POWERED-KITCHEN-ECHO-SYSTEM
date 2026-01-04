@@ -1,0 +1,46 @@
+{
+  "id": "recipe_010",
+  "name": "Lamprais",
+  "name_sinhala": "ලම්ප්‍රයිස්",
+  "name_tamil": "லம்ப்ரைஸ்",
+  "category": "Rice Dish",
+  "region": "Burgher",
+  "description": "Dutch Burgher rice packet with multiple curries baked in banana leaf",
+  "ingredients": [
+    "2 cups basmati rice",
+    "200g chicken curry",
+    "100g beef curry",
+    "4 eggs, hard-boiled",
+    "Brinjal moju",
+    "Seeni sambol",
+    "Banana leaves",
+    "2 cups chicken stock"
+  ],
+  "instructions": [
+    "Cook rice in chicken stock",
+    "Cut banana leaves into squares",
+    "Place rice in center of leaf",
+    "Add chicken curry, beef curry, egg, moju, sambol",
+    "Fold banana leaf into packet",
+    "Bake at 180°C for 20 minutes",
+    "Serve hot in the packet"
+  ],
+  "prep_time_minutes": 60,
+  "cook_time_minutes": 40,
+  "servings": 4,
+  "difficulty": "Hard",
+  "tags": [
+    "special-occasion",
+    "burgher",
+    "baked",
+    "festive",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Dutch Burgher specialty, traditionally served at parties",
+  "authenticity_score": 0.95,
+  "description_sinhala": "කෙසෙල් කොළයේ පුලුස්සන ලද බහු ව්‍යංජන සහිත ලන්දේසි බර්ගර් බත් පැකට්ටුව",
+  "description_tamil": "வாழை இலையில் சுடப்பட்ட பல கறிகளுடன் கூடிய டச்சு பர்கர் ரைஸ் பாக்கெட்",
+  "cultural_notes_sinhala": "ලන්දේසි බර්ගර් විශේෂත්වය, සම්ප්‍රදායිකව සාදවල සේවය කරයි",
+  "cultural_notes_tamil": "பாரம்பரியமாக விருந்துகளில் பரிமாறப்படும் டச்சு பர்கர் சிறப்பு"
+}

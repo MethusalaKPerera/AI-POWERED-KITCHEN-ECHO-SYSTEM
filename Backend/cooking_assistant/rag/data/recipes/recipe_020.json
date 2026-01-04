@@ -1,0 +1,46 @@
+{
+  "id": "recipe_020",
+  "name": "Kokis",
+  "name_sinhala": "කොකිස්",
+  "name_tamil": "அச்சப்பம்",
+  "category": "Dessert",
+  "region": "General",
+  "description": "Crispy flower-shaped cookies for New Year",
+  "ingredients": [
+    "2 cups rice flour",
+    "1/2 cup coconut milk",
+    "2 eggs",
+    "1 tsp sugar",
+    "1/2 tsp salt",
+    "Oil for frying"
+  ],
+  "instructions": [
+    "Beat eggs with sugar",
+    "Add coconut milk",
+    "Gradually add rice flour and salt",
+    "Mix to smooth batter",
+    "Heat oil for deep frying",
+    "Dip kokis mold in hot oil",
+    "Dip mold in batter",
+    "Fry in hot oil until crispy",
+    "Remove and cool"
+  ],
+  "prep_time_minutes": 15,
+  "cook_time_minutes": 30,
+  "servings": 20,
+  "difficulty": "Hard",
+  "tags": [
+    "dessert",
+    "crispy",
+    "new-year",
+    "festive",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Essential Sinhala and Tamil New Year sweet",
+  "authenticity_score": 1.0,
+  "description_sinhala": "අලුත් අවුරුද්ද සඳහා හැපෙනසුළු මල් හැඩැති කුකීස්",
+  "description_tamil": "புத்தாண்டுக்கான மிருதுவான மலர் வடிவ குக்கீகள்",
+  "cultural_notes_sinhala": "අත්‍යවශ්‍ය සිංහල සහ දෙමළ අලුත් අවුරුද්ද මිහිරි",
+  "cultural_notes_tamil": "இன்றியமையாத சிங்கள மற்றும் தமிழ் புத்தாண்டு இனிப்பு"
+}

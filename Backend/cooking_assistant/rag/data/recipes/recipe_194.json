@@ -1,0 +1,46 @@
+{
+  "id": "recipe_194",
+  "name": "Wade (Lentil Fritters)",
+  "name_sinhala": "වඩේ",
+  "name_tamil": "வடை",
+  "category": "Snack",
+  "region": "Tamil",
+  "description": "Crispy deep-fried lentil fritters sold by street vendors. Perfect tea-time snack.",
+  "ingredients": [
+    "2 cups ulundu (urad dal), soaked 3 hours",
+    "2 onions, finely chopped",
+    "3 green chilies, chopped",
+    "1 inch ginger, minced",
+    "15 curry leaves, chopped (fresh, not dried)",
+    "1/2 tsp fennel seeds",
+    "1/2 tsp cumin seeds",
+    "1/4 tsp asafoetida (hing)",
+    "Salt to taste",
+    "Oil for deep frying"
+  ],
+  "instructions": [
+    "Drain soaked dal completely",
+    "Grind coarsely with minimal water to a thick batter",
+    "Add all other ingredients to batter",
+    "Mix well without adding extra water",
+    "Heat oil for deep frying",
+    "Wet hands and take small portions",
+    "Flatten into discs with a hole in center",
+    "Deep fry until golden brown",
+    "Drain on paper and serve hot"
+  ],
+  "prep_time_minutes": 180,
+  "cook_time_minutes": 30,
+  "servings": 15,
+  "difficulty": "Medium",
+  "tags": [
+    "snack",
+    "tamil",
+    "street food",
+    "tea time",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Must be eaten hot and crispy. The hole in the center ensures even frying. Every corner shop sells these.",
+  "authenticity_score": 100
+}

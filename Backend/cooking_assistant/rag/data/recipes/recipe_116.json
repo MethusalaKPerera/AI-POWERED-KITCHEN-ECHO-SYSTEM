@@ -1,0 +1,48 @@
+{
+  "id": "recipe_116",
+  "name": "Bandakka Curry (Okra)",
+  "name_sinhala": "බණ්ඩක්කා කරිය",
+  "name_tamil": "வெண்டைக்காய் கறி",
+  "category": "Curry",
+  "region": "Southern",
+  "description": "Okra curry with mustard seeds",
+  "ingredients": [
+    "300g okra, cut",
+    "1 onion, sliced",
+    "2 green chilies",
+    "1 tsp mustard seeds",
+    "1 tsp turmeric",
+    "10 curry leaves (fresh, not dried)",
+    "100ml coconut milk",
+    "2 tbsp oil",
+    "Salt"
+  ],
+  "instructions": [
+    "Wash and dry okra completely",
+    "Cut into pieces",
+    "Heat oil and add mustard",
+    "Add onions and fry",
+    "Add okra and fry on high heat",
+    "Add turmeric and salt",
+    "Add coconut milk",
+    "Add curry leaves (Curry leaves must be fresh for authentic taste)",
+    "Cook until tender"
+  ],
+  "prep_time_minutes": 15,
+  "cook_time_minutes": 15,
+  "servings": 4,
+  "difficulty": "Easy",
+  "tags": [
+    "southern",
+    "vegetarian",
+    "simple",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Important to dry okra well",
+  "authenticity_score": 10.9,
+  "description_sinhala": "අබ ඇට සහිත බණ්ඩක්කා කරිය",
+  "description_tamil": "கடுகு கொண்ட வெண்டைக்காய் கறி",
+  "cultural_notes_sinhala": "බණ්ඩක්කා හොඳින් වියලීම වැදගත් වේ",
+  "cultural_notes_tamil": "ஓக்ராவை நன்கு உலர்த்துவது முக்கியம்"
+}

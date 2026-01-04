@@ -1,0 +1,49 @@
+{
+  "id": "recipe_009",
+  "name": "Kottu Roti",
+  "name_sinhala": "කොත්තු රොටි",
+  "name_tamil": "கொத்து ரொட்டி",
+  "category": "Rice Dish",
+  "region": "General",
+  "description": "Chopped roti stir-fried with vegetables and meat",
+  "ingredients": [
+    "4 godamba roti, chopped",
+    "200g chicken, diced",
+    "1 onion, sliced",
+    "2 carrots, julienned",
+    "1 leek, sliced",
+    "2 eggs",
+    "2 tbsp curry powder",
+    "1 tsp chili powder",
+    "3 tbsp oil",
+    "Salt to taste"
+  ],
+  "instructions": [
+    "Heat oil in large wok or griddle",
+    "Fry chicken until cooked",
+    "Add onions, carrots, leek",
+    "Add curry powder and chili",
+    "Push to side, scramble eggs",
+    "Add chopped roti",
+    "Chop and mix everything together with metal spatulas",
+    "Season and serve hot"
+  ],
+  "prep_time_minutes": 15,
+  "cook_time_minutes": 15,
+  "servings": 4,
+  "difficulty": "Medium",
+  "tags": [
+    "street-food",
+    "spicy",
+    "dinner",
+    "popular",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Famous Sri Lankan street food with rhythmic chopping sounds",
+  "authenticity_score": 1.0,
+  "description_sinhala": "එළවළු සහ මස් සමග කබලෙන් කපන ලද රොටි",
+  "description_tamil": "காய்கறிகள் மற்றும் இறைச்சியுடன் வறுத்த நறுக்கப்பட்ட ரொட்டி",
+  "cultural_notes_sinhala": "රිද්මයානුකූලව කපන ශබ්ද සහිත සුප්‍රසිද්ධ ශ්‍රී ලාංකික වීදි ආහාර",
+  "cultural_notes_tamil": "இலங்கையின் பிரபலமான தெரு உணவு, தாளமாக நறுக்கும் ஒலிகள்"
+}

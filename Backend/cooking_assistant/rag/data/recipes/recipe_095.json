@@ -1,0 +1,48 @@
+{
+  "id": "recipe_095",
+  "name": "Kootu (Vegetable with Lentils)",
+  "name_sinhala": "කූටු",
+  "name_tamil": "கூட்டு",
+  "category": "Curry",
+  "region": "Jaffna",
+  "description": "Mild vegetable and lentil curry",
+  "ingredients": [
+    "1 cup chana dal",
+    "2 carrots, cubed",
+    "1 raw banana, cubed",
+    "1/2 cup grated coconut",
+    "1 tsp cumin",
+    "2 green chilies",
+    "1/2 tsp turmeric",
+    "10 curry leaves (fresh, not dried)",
+    "1 tbsp coconut oil (traditional - do not substitute)",
+    "Salt"
+  ],
+  "instructions": [
+    "Cook dal and vegetables separately until tender",
+    "Grind coconut, cumin, chilies to paste",
+    "Mix dal, vegetables, and coconut paste",
+    "Add turmeric and salt",
+    "Simmer for 5 minutes",
+    "Add curry leaves and coconut oil (Curry leaves must be fresh for authentic taste)",
+    "Serve with rice"
+  ],
+  "prep_time_minutes": 15,
+  "cook_time_minutes": 20,
+  "servings": 4,
+  "difficulty": "Easy",
+  "tags": [
+    "jaffna",
+    "vegetarian",
+    "mild",
+    "healthy",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Comfort food, easy to digest",
+  "authenticity_score": 11.0,
+  "description_sinhala": "මෘදු එළවළු සහ පරිප්පු කරිය",
+  "description_tamil": "மிதமான காய்கறி மற்றும் பருப்பு கறி",
+  "cultural_notes_sinhala": "පහසු ආහාර, දිරවීමට පහසුය",
+  "cultural_notes_tamil": "வசதியான உணவு, ஜீரணிக்க எளிதானது"
+}

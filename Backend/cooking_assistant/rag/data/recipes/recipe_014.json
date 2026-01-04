@@ -1,0 +1,46 @@
+{
+  "id": "recipe_014",
+  "name": "Isso Wade (Prawn Fritters)",
+  "name_sinhala": "ඉස්සෝ වඩේ",
+  "name_tamil": "இறால் வடை",
+  "category": "Snack",
+  "region": "General",
+  "description": "Crispy lentil fritters with prawns",
+  "ingredients": [
+    "1 cup urad dal, soaked",
+    "200g prawns, chopped",
+    "2 green chilies, chopped",
+    "1 onion, chopped fine",
+    "1 sprig curry leaves (fresh, not dried)",
+    "1/2 tsp fennel seeds",
+    "Oil for frying",
+    "Salt to taste"
+  ],
+  "instructions": [
+    "Grind soaked dal coarsely",
+    "Mix in prawns, chilies, onion, curry leaves, fennel (Curry leaves must be fresh for authentic taste)",
+    "Add salt",
+    "Heat oil for deep frying",
+    "Shape mixture into small patties",
+    "Fry until golden brown",
+    "Drain and serve hot"
+  ],
+  "prep_time_minutes": 20,
+  "cook_time_minutes": 15,
+  "servings": 6,
+  "difficulty": "Medium",
+  "tags": [
+    "snack",
+    "fried",
+    "seafood",
+    "crispy",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Popular tea-time snack, sold by street vendors",
+  "authenticity_score": 10.95,
+  "description_sinhala": "ඉස්සන් සමග හැපෙනසුළු පරිප්පු බැදපු",
+  "description_tamil": "இறாலுடன் மிருதுவான பருப்பு பொரியல்",
+  "cultural_notes_sinhala": "වීදි වෙළෙන්දන් විසින් අලෙවි කරන ජනප්‍රිය තේ-කාල කෙටි කෑම",
+  "cultural_notes_tamil": "பிரபலமான தேநீர் நேர சிற்றுண்டி, தெரு வியாபாரிகளால் விற்கப்படுகிறது"
+}

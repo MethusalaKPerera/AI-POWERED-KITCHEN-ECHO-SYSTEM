@@ -1,0 +1,67 @@
+{
+  "id": "recipe_002",
+  "name": "Dhal Curry (Parippu Curry)",
+  "name_sinhala": "පරිප්පු කරිය",
+  "name_tamil": "பருப்பு கறி",
+  "category": "Curry",
+  "region": "General",
+  "description": "Creamy red lentil curry with coconut milk and tempered spices",
+  "ingredients": [
+    "1 cup red lentils (masoor dal)",
+    "200ml coconut milk",
+    "2 cups water",
+    "1 tsp turmeric powder",
+    "1 tsp chili powder",
+    "1 large onion, diced",
+    "2 cloves garlic, minced",
+    "1 sprig curry leaves (fresh, not dried)",
+    "1 tsp mustard seeds",
+    "1 tsp cumin seeds",
+    "2 green chilies",
+    "2 tbsp oil",
+    "Salt to taste"
+  ],
+  "instructions": [
+    "Wash lentils thoroughly and drain",
+    "In a pot, combine lentils, water, turmeric, and salt",
+    "Bring to a boil and simmer for 20 minutes until lentils are soft",
+    "Add coconut milk and chili powder; simmer for 5 minutes",
+    "For tempering: heat oil in a small pan",
+    "Add mustard seeds and cumin; let them splutter",
+    "Add curry leaves, onions, garlic, and green chilies (Curry leaves must be fresh for authentic taste)",
+    "Sauté until onions are golden",
+    "Pour tempering over the dhal curry",
+    "Mix well and serve hot"
+  ],
+  "prep_time_minutes": 10,
+  "cook_time_minutes": 25,
+  "servings": 4,
+  "difficulty": "Easy",
+  "tags": [
+    "vegetarian",
+    "protein-rich",
+    "everyday",
+    "coconut-based",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Dhal curry is a staple in Sri Lankan cuisine, eaten daily with rice",
+  "tips": {
+    "sinhala": [
+      "පරිප්පු මදි වැඩියෙන් තම්බා රස අඩු වේ"
+    ],
+    "tamil": [
+      "பருப்பை நன்கு வேகவிடவும்"
+    ],
+    "english": [
+      "Don't overcook lentils or they'll become mushy",
+      "Adjust consistency with water"
+    ]
+  },
+  "authenticity_score": 10.98,
+  "source": "Traditional Sri Lankan recipe",
+  "description_sinhala": "පොල් කිරි සහ තෙම්පරාදු කළ කුළුබඩු සහිත ක්‍රීම් රතු පරිප්පු කරිය",
+  "description_tamil": "தேங்காய் பால் மற்றும் பதப்படுத்தப்பட்ட மசாலாப் பொருட்களுடன் கிரீம் சிவப்பு பருப்பு கறி",
+  "cultural_notes_sinhala": "පරිප්පු ව්‍යංජනය ශ්‍රී ලාංකීය ආහාරවල ප්‍රධාන ආහාරයක් වන අතර එය දිනපතා බත් සමඟ අනුභව කරනු ලැබේ",
+  "cultural_notes_tamil": "பருப்பு கறி இலங்கை உணவு வகைகளில் பிரதானமானது, தினமும் அரிசியுடன் உண்ணப்படுகிறது"
+}

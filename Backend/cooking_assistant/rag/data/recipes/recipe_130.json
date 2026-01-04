@@ -1,0 +1,48 @@
+{
+  "id": "recipe_130",
+  "name": "Athirasa (New Year Pancakes)",
+  "name_sinhala": "අතිරස (අලුත් අවුරුද්ද)",
+  "name_tamil": "அதிரசம்",
+  "category": "Dessert",
+  "region": "General",
+  "description": "Sweet rice pancakes fried until puffed",
+  "ingredients": [
+    "3 cups rice flour",
+    "1.5 cups palm jaggery (hakuru)",
+    "1 cup water",
+    "1 tsp cardamom powder",
+    "Pinch of salt",
+    "Oil for deep frying"
+  ],
+  "instructions": [
+    "Melt jaggery in water and strain",
+    "Cool jaggery syrup completely",
+    "Mix rice flour with jaggery syrup",
+    "Add cardamom and salt",
+    "Knead to smooth dough",
+    "Rest overnight covered",
+    "Heat oil for frying",
+    "Flatten small balls into thin discs",
+    "Fry until puffed and golden",
+    "Drain and cool",
+    "Store in container"
+  ],
+  "prep_time_minutes": 30,
+  "cook_time_minutes": 40,
+  "servings": 30,
+  "difficulty": "Medium",
+  "tags": [
+    "new-year",
+    "sweet",
+    "fried",
+    "puffed",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Must rest overnight for best puffing",
+  "authenticity_score": 11.0,
+  "description_sinhala": "පැණිරස බත් පෑන්කේක් පිම්බෙන තෙක් බදින ලද",
+  "description_tamil": "இனிப்பு அரிசி அப்பத்தை கொப்பளிக்கும் வரை வறுக்கவும்",
+  "cultural_notes_sinhala": "හොඳම පිම්ම සඳහා එක රැයකින් විවේක ගත යුතුය",
+  "cultural_notes_tamil": "Must rest overnight for best puffing"
+}

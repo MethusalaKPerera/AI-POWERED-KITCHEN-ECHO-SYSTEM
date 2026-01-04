@@ -1,0 +1,46 @@
+{
+  "id": "recipe_133",
+  "name": "Aggala (Sweet Balls)",
+  "name_sinhala": "අග්ගල (අලුත් අවුරුද්ද)",
+  "name_tamil": "அக்கல",
+  "category": "Dessert",
+  "region": "General",
+  "description": "Roasted rice flour balls with jaggery",
+  "ingredients": [
+    "3 cups rice flour, roasted",
+    "1.5 cups palm jaggery (hakuru), melted",
+    "1 cup grated coconut",
+    "1 tsp cardamom powder",
+    "Water as needed"
+  ],
+  "instructions": [
+    "Roast rice flour until aromatic",
+    "Cool completely",
+    "Melt jaggery and strain",
+    "Mix roasted flour with jaggery",
+    "Add grated coconut",
+    "Add cardamom",
+    "Add water if needed to bind",
+    "Shape into small balls",
+    "Let dry for few hours",
+    "Store in airtight container"
+  ],
+  "prep_time_minutes": 25,
+  "cook_time_minutes": 15,
+  "servings": 40,
+  "difficulty": "Easy",
+  "tags": [
+    "new-year",
+    "sweet",
+    "healthy",
+    "no-fry",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Healthy option, no oil used",
+  "authenticity_score": 11.0,
+  "description_sinhala": "හකුරු සමග බැදපු හාල් පිටි බෝල",
+  "description_tamil": "வெல்லத்துடன் வறுத்த அரிசி மாவு உருண்டைகள்",
+  "cultural_notes_sinhala": "සෞඛ්ය සම්පන්න විකල්පය, තෙල් භාවිතා නොවේ",
+  "cultural_notes_tamil": "ஆரோக்கியமான விருப்பம், எண்ணெய் பயன்படுத்தப்படவில்லை"
+}

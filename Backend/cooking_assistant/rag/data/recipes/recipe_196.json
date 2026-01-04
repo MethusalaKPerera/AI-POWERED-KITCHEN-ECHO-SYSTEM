@@ -1,0 +1,42 @@
+{
+  "id": "recipe_196",
+  "name": "Appa (Hoppers)",
+  "name_sinhala": "ආප්ප",
+  "name_tamil": "ஆப்பம்",
+  "category": "Bread",
+  "region": "General",
+  "description": "Bowl-shaped pancakes with crispy edges and soft center. Made with fermented rice batter and coconut milk.",
+  "ingredients": [
+    "2 cups rice flour",
+    "1 cup raw rice, soaked overnight",
+    "1 tsp active dry yeast",
+    "1 tsp sugar",
+    "1 cup coconut milk",
+    "1 cup warm water",
+    "1/2 tsp salt",
+    "Oil for greasing"
+  ],
+  "instructions": [
+    "Grind soaked rice with little water to smooth paste",
+    "Mix yeast with sugar and warm water, let foam",
+    "Combine rice paste, rice flour, coconut milk",
+    "Add yeast mixture and salt",
+    "Mix to pancake batter consistency",
+    "Cover and ferment for 4-6 hours or overnight",
+    "Heat hopper pan and grease lightly",
+    "Pour ladle of batter and swirl to coat edges",
+    "Cover and cook until edges are crispy and center is soft"
+  ],
+  "prep_time_minutes": 360,
+  "cook_time_minutes": 45,
+  "servings": 15,
+  "difficulty": "Medium",
+  "tags": [
+    "breakfast",
+    "traditional",
+    "fermented",
+    "authentic"
+  ],
+  "cultural_notes": "Requires special hopper pan. Eat with sambol and curry. Morning favorite across all communities.",
+  "authenticity_score": 100
+}

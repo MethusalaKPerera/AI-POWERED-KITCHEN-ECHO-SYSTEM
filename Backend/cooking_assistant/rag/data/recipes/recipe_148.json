@@ -1,0 +1,50 @@
+{
+  "id": "recipe_148",
+  "name": "Love Cake (Burgher Christmas)",
+  "name_sinhala": "ලව් කේක්",
+  "name_tamil": "லவ் கேக்",
+  "category": "Dessert",
+  "region": "Burgher",
+  "description": "Semolina cashew cake with rose water",
+  "ingredients": [
+    "250g semolina",
+    "250g cashews, ground",
+    "250g sugar",
+    "8 eggs",
+    "250g butter",
+    "2 tbsp honey",
+    "1 tsp rose water",
+    "1 tsp cardamom",
+    "1 tsp nutmeg",
+    "Pumpkin preserve (optional)"
+  ],
+  "instructions": [
+    "Roast semolina lightly",
+    "Cream butter and sugar",
+    "Separate eggs",
+    "Beat yolks into butter mixture",
+    "Add semolina and ground cashews",
+    "Add honey, rose water, spices",
+    "Beat egg whites stiff",
+    "Fold into mixture",
+    "Pour into greased tin",
+    "Bake at 160°C for 45 minutes"
+  ],
+  "prep_time_minutes": 30,
+  "cook_time_minutes": 45,
+  "servings": 16,
+  "difficulty": "Hard",
+  "tags": [
+    "christmas",
+    "burgher",
+    "cake",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Iconic Burgher Christmas cake",
+  "authenticity_score": 1.0,
+  "description_sinhala": "රෝස වතුර සමග සෙමොලිනා කජු කේක්",
+  "description_tamil": "ரோஸ் வாட்டருடன் ரவை முந்திரி கேக்",
+  "cultural_notes_sinhala": "Iconic Burgher Christmas cake",
+  "cultural_notes_tamil": "சின்னமான பர்கர் கிறிஸ்துமஸ் கேக்"
+}

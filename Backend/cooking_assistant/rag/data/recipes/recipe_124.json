@@ -1,0 +1,42 @@
+{
+  "id": "recipe_124",
+  "name": "Unduwel (Sweet Coconut Balls)",
+  "name_sinhala": "උඳුවැල්",
+  "name_tamil": "இனிப்பு தேங்காய் உருண்டை",
+  "category": "Dessert",
+  "region": "Southern",
+  "description": "Soft coconut jaggery balls",
+  "ingredients": [
+    "3 cups grated coconut",
+    "1.5 cups palm jaggery (hakuru)",
+    "1/2 cup rice flour",
+    "1 tsp cardamom"
+  ],
+  "instructions": [
+    "Cook coconut with jaggery",
+    "Stir until thick",
+    "Add rice flour",
+    "Cook until mixture leaves pan",
+    "Add cardamom",
+    "Cool slightly",
+    "Shape into balls",
+    "Serve at room temperature"
+  ],
+  "prep_time_minutes": 10,
+  "cook_time_minutes": 25,
+  "servings": 20,
+  "difficulty": "Medium",
+  "tags": [
+    "southern",
+    "dessert",
+    "soft",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Soft sweet for elders and children",
+  "authenticity_score": 11.0,
+  "description_sinhala": "මෘදු පොල් හකුරු බෝල",
+  "description_tamil": "மென்மையான தேங்காய் வெல்லம் உருண்டைகள்",
+  "cultural_notes_sinhala": "වැඩිහිටියන් හා ළමුන් සඳහා මෘදු පැණිරස",
+  "cultural_notes_tamil": "பெரியவர்களுக்கும் குழந்தைகளுக்கும் மென்மையான இனிப்பு"
+}

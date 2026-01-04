@@ -1,0 +1,48 @@
+{
+  "id": "recipe_117",
+  "name": "Kokis (Southern Style)",
+  "name_sinhala": "කොකිස් (දකුණු)",
+  "name_tamil": "கோக்கிஸ்",
+  "category": "Dessert",
+  "region": "Southern",
+  "description": "Crispy flower-shaped cookies",
+  "ingredients": [
+    "2 cups rice flour",
+    "1/2 cup coconut milk",
+    "3 eggs",
+    "1 tbsp sugar",
+    "1/2 tsp salt",
+    "1/4 tsp turmeric",
+    "Oil for frying"
+  ],
+  "instructions": [
+    "Beat eggs with sugar",
+    "Add coconut milk",
+    "Gradually add rice flour",
+    "Add salt and turmeric",
+    "Mix to smooth batter",
+    "Heat oil",
+    "Dip kokis mold in hot oil",
+    "Dip in batter",
+    "Fry until crispy",
+    "Store in airtight container"
+  ],
+  "prep_time_minutes": 15,
+  "cook_time_minutes": 40,
+  "servings": 30,
+  "difficulty": "Hard",
+  "tags": [
+    "southern",
+    "dessert",
+    "crispy",
+    "festive",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "New Year essential, yellow color is traditional",
+  "authenticity_score": 1.0,
+  "description_sinhala": "හැපෙනසුළු මල් හැඩැති කුකීස්",
+  "description_tamil": "மிருதுவான பூ வடிவ குக்கீகள்",
+  "cultural_notes_sinhala": "අලුත් අවුරුදු අත්යවශ්ය, කහ වර්ණය සාම්ප්රදායික වේ",
+  "cultural_notes_tamil": "புத்தாண்டு அவசியம், மஞ்சள் நிறம் பாரம்பரியமானது"
+}

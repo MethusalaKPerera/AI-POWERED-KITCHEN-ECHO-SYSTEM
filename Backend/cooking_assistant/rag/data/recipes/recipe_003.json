@@ -1,0 +1,59 @@
+{
+  "id": "recipe_003",
+  "name": "Coconut Sambol (Pol Sambol)",
+  "name_sinhala": "පොල් සම්බෝල",
+  "name_tamil": "தேங்காய் சம்பல்",
+  "category": "Sambol",
+  "region": "General",
+  "description": "Spicy coconut condiment with chili, onions, and lime",
+  "ingredients": [
+    "2 cups freshly grated coconut",
+    "1 large onion, finely chopped",
+    "2 tbsp chili powder (or to taste)",
+    "1 tsp salt",
+    "2 tbsp lime juice",
+    "1 tsp Maldive fish (optional) (umbalakada - essential)",
+    "Few curry leaves, chopped (fresh, not dried)"
+  ],
+  "instructions": [
+    "In a large bowl, combine grated coconut and salt",
+    "Add chili powder and mix well",
+    "Add finely chopped onions",
+    "Add Maldive fish if using",
+    "Add chopped curry leaves (Curry leaves must be fresh for authentic taste)",
+    "Squeeze lime juice over the mixture",
+    "Mix everything thoroughly with your hands",
+    "Adjust seasoning to taste",
+    "Serve immediately or store in refrigerator"
+  ],
+  "prep_time_minutes": 15,
+  "cook_time_minutes": 0,
+  "servings": 6,
+  "difficulty": "Easy",
+  "tags": [
+    "condiment",
+    "spicy",
+    "no-cook",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Pol sambol is the most essential Sri Lankan condiment, served with every meal Must be freshly made - sambol loses flavor if stored too long. Maldive fish (umbalakada) is essential and irreplaceable. Use coconut scraped fresh, not desiccated.",
+  "tips": {
+    "sinhala": [
+      "අත්තම පොල් ගාලා හැදුවොත් රස වැඩි"
+    ],
+    "tamil": [
+      "புதிய தேங்காய் பயன்படுத்தவும்"
+    ],
+    "english": [
+      "Use fresh coconut for best taste",
+      "Can be stored for 2-3 days refrigerated"
+    ]
+  },
+  "authenticity_score": 11.0,
+  "source": "Traditional Sri Lankan recipe",
+  "description_sinhala": "මිරිස්, ළූණු සහ දෙහි සමග සැර පොල් කුළු බඩු",
+  "description_tamil": "மிளகாய், வெங்காயம் மற்றும் சுண்ணாம்பு கொண்ட காரமான தேங்காய் கான்டிமென்ட்",
+  "cultural_notes_sinhala": "පොල් සම්බෝලය සෑම ආහාර වේලක් සමඟම පිරිනැමෙන ශ්‍රී ලංකාවේ අත්‍යවශ්‍යම කුළුබඩුවක් වේ",
+  "cultural_notes_tamil": "போல் சம்போல் என்பது இலங்கையின் மிகவும் அத்தியாவசியமான காண்டிமென்ட் ஆகும்"
+}

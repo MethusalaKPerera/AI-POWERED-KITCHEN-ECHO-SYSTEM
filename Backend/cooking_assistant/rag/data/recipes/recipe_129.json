@@ -1,0 +1,48 @@
+{
+  "id": "recipe_129",
+  "name": "Mung Kavum (New Year Special)",
+  "name_sinhala": "මුං කැවුම් (අලුත් අවුරුද්ද)",
+  "name_tamil": "பயறு கவும்",
+  "category": "Dessert",
+  "region": "General",
+  "description": "Traditional New Year sweet made with mung flour",
+  "ingredients": [
+    "2 cups mung flour",
+    "1 cup rice flour",
+    "1.5 cups kithul treacle",
+    "1/2 cup coconut milk",
+    "1 tsp cardamom powder",
+    "Pinch of salt",
+    "Oil for deep frying"
+  ],
+  "instructions": [
+    "Mix mung flour and rice flour",
+    "Warm treacle and coconut milk",
+    "Add to flour mixture",
+    "Add cardamom and salt",
+    "Mix to thick batter",
+    "Rest for 2 hours",
+    "Heat oil for deep frying",
+    "Drop spoonfuls of batter",
+    "Fry until dark golden brown",
+    "Drain on paper",
+    "Cool and store in airtight container"
+  ],
+  "prep_time_minutes": 20,
+  "cook_time_minutes": 30,
+  "servings": 25,
+  "difficulty": "Medium",
+  "tags": [
+    "new-year",
+    "sweet",
+    "fried",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Essential New Year sweet, represents prosperity",
+  "authenticity_score": 1.0,
+  "description_sinhala": "මුං පිටි වලින් සාදන ලද සාම්ප්‍රදායික අලුත් අවුරුදු රසකැවිලි",
+  "description_tamil": "வெண்டைக்காய் மாவில் செய்யப்படும் பாரம்பரிய புத்தாண்டு இனிப்பு",
+  "cultural_notes_sinhala": "අත්යවශ්ය අලුත් අවුරුද්ද මිහිරි, සමෘද්ධිය නියෝජනය කරයි",
+  "cultural_notes_tamil": "அத்தியாவசிய புத்தாண்டு இனிப்பு, செழிப்பைக் குறிக்கிறது"
+}

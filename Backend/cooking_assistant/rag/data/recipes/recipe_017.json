@@ -1,0 +1,46 @@
+{
+  "id": "recipe_017",
+  "name": "Pol Roti (Coconut Roti)",
+  "name_sinhala": "පොල් රොටි",
+  "name_tamil": "தேங்காய் ரொட்டி",
+  "category": "Bread",
+  "region": "General",
+  "description": "Whole wheat flatbread with coconut",
+  "ingredients": [
+    "2 cups wheat flour",
+    "1 cup grated coconut",
+    "1 onion, chopped fine",
+    "2 green chilies, chopped",
+    "Water as needed",
+    "Salt to taste",
+    "Oil for cooking"
+  ],
+  "instructions": [
+    "Mix flour, coconut, onion, chilies, salt",
+    "Add water to form dough",
+    "Knead well",
+    "Divide into balls",
+    "Roll into thin circles",
+    "Cook on hot griddle with oil",
+    "Flip when brown spots appear",
+    "Serve hot"
+  ],
+  "prep_time_minutes": 20,
+  "cook_time_minutes": 20,
+  "servings": 6,
+  "difficulty": "Easy",
+  "tags": [
+    "breakfast",
+    "flatbread",
+    "coconut",
+    "quick",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Popular breakfast roti, often served with curry",
+  "authenticity_score": 0.98,
+  "description_sinhala": "පොල් සමග සම්පූර්ණ තිරිඟු පැතලි පාන්",
+  "description_tamil": "தேங்காயுடன் முழு கோதுமை பிளாட்பிரெட்",
+  "cultural_notes_sinhala": "ජනප්‍රිය උදේ ආහාරය රොටි, බොහෝ විට ව්‍යංජන සමඟ සේවය කරයි",
+  "cultural_notes_tamil": "பிரபலமான காலை உணவு ரொட்டி, பெரும்பாலும் கறியுடன் பரிமாறப்படுகிறது"
+}

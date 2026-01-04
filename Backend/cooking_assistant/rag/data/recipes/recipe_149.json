@@ -1,0 +1,49 @@
+{
+  "id": "recipe_149",
+  "name": "Breudher (Dutch Cookies)",
+  "name_sinhala": "බ්‍රූඩර්",
+  "name_tamil": "ப்ரூடர்",
+  "category": "Dessert",
+  "region": "Burgher",
+  "description": "Spiced butter cookies, Dutch heritage",
+  "ingredients": [
+    "500g flour",
+    "250g butter",
+    "200g sugar",
+    "2 eggs",
+    "1 tsp cinnamon",
+    "1/2 tsp nutmeg",
+    "1/2 tsp cardamom",
+    "1/2 tsp cloves powder"
+  ],
+  "instructions": [
+    "Cream butter and sugar",
+    "Add eggs",
+    "Add spices",
+    "Gradually add flour",
+    "Form soft dough",
+    "Roll thin",
+    "Cut with cookie cutters",
+    "Place on baking tray",
+    "Bake at 180°C for 12-15 minutes",
+    "Cool on wire rack"
+  ],
+  "prep_time_minutes": 25,
+  "cook_time_minutes": 15,
+  "servings": 50,
+  "difficulty": "Medium",
+  "tags": [
+    "christmas",
+    "burgher",
+    "cookies",
+    "spiced",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Dutch heritage Christmas cookie",
+  "authenticity_score": 1.0,
+  "description_sinhala": "කුළුබඩු සහිත බටර් කුකීස්, ලන්දේසි උරුමය",
+  "description_tamil": "மசாலா வெண்ணெய் குக்கீகள், டச்சு பாரம்பரியம்",
+  "cultural_notes_sinhala": "ලන්දේසි උරුම නත්තල් කුකීස්",
+  "cultural_notes_tamil": "டச்சு பாரம்பரிய கிறிஸ்துமஸ் குக்கீ"
+}

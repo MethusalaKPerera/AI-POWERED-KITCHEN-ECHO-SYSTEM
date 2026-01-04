@@ -1,0 +1,34 @@
+{
+  "id": "recipe_164",
+  "name": "Contents Meals",
+  "name_sinhala": "",
+  "name_tamil": "",
+  "category": "Curry",
+  "region": "General",
+  "description": "National low salt cooking challenge 2021 was held in Sri Lanka organized by the",
+  "ingredients": [
+    "meal they were requested to prepare a low salt-preserved food which",
+    "complements the main meal. There were 20 teams selected from the first round",
+    "that participated.",
+    "--- PAGE 9 ---",
+    "MEASURES SNACKS &",
+    "RICE & CHICKEN & FISH &",
+    "& VEGETARIAN SALADS SOUPS LIGHT PRESERVATIVE"
+  ],
+  "instructions": [],
+  "prep_time_minutes": 30,
+  "cook_time_minutes": 30,
+  "servings": 4,
+  "difficulty": "Medium",
+  "tags": [
+    "pdf-extracted",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Extracted from cookbook",
+  "authenticity_score": 0.85,
+  "description_sinhala": "විසින් සංවිධානය කරන ලද ජාතික අඩු ලුණු ඉවුම් පිහුම් අභියෝගය 2021 ශ්‍රී ලංකාවේදී පැවැත්විණි",
+  "description_tamil": "தேசிய குறைந்த உப்பு சமையல் சவால் 2021 இலங்கையில் ஏற்பாடு செய்யப்பட்டது",
+  "cultural_notes_sinhala": "ඉවුම් පිහුම් පොතෙන් උපුටා ගන්නා ලදී",
+  "cultural_notes_tamil": "சமையல் புத்தகத்திலிருந்து பிரித்தெடுக்கப்பட்டது"
+}

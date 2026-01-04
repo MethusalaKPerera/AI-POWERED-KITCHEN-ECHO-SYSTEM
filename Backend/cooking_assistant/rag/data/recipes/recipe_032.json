@@ -1,0 +1,48 @@
+{
+  "id": "recipe_032",
+  "name": "Cutlets (Potato Croquettes)",
+  "name_sinhala": "කට්ලට්",
+  "name_tamil": "கட்லட்",
+  "category": "Snack",
+  "region": "Burgher",
+  "description": "Spiced potato croquettes, breaded and fried",
+  "ingredients": [
+    "4 potatoes, boiled and mashed",
+    "100g beef or chicken, minced",
+    "1 onion, chopped",
+    "2 green chilies",
+    "1 tsp curry powder",
+    "2 eggs",
+    "Breadcrumbs",
+    "Oil for frying",
+    "Salt and pepper"
+  ],
+  "instructions": [
+    "Fry minced meat with onions, curry powder (Fry until aromatic and oil separates - this is key to authentic flavor)",
+    "Mix with mashed potato",
+    "Season with salt, pepper, chilies",
+    "Shape into cylinders",
+    "Dip in beaten egg",
+    "Coat with breadcrumbs",
+    "Deep fry until golden",
+    "Serve hot"
+  ],
+  "prep_time_minutes": 30,
+  "cook_time_minutes": 20,
+  "servings": 12,
+  "difficulty": "Medium",
+  "tags": [
+    "snack",
+    "fried",
+    "burgher",
+    "popular",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Favorite tea-time snack, Burgher specialty",
+  "authenticity_score": 10.88,
+  "description_sinhala": "කුළුබඩු සහිත අර්තාපල් croquettes, පාන් සහ ෆ්රයිඩ්",
+  "description_tamil": "மசாலா உருளைக்கிழங்கு croquettes, ரொட்டி மற்றும் வறுத்த",
+  "cultural_notes_sinhala": "ප්‍රියතම තේ-කාල ස්නැක්, බර්ගර් විශේෂත්වය",
+  "cultural_notes_tamil": "பிடித்தமான தேநீர் நேர சிற்றுண்டி, பர்கர் சிறப்பு"
+}

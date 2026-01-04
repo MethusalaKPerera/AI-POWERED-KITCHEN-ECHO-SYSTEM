@@ -1,0 +1,45 @@
+{
+  "id": "recipe_198",
+  "name": "Elabatu Curry (Brinjal Curry)",
+  "name_sinhala": "එළබටු කරිය",
+  "name_tamil": "கத்தரிக்காய் கறி",
+  "category": "Curry",
+  "region": "Village Traditional",
+  "description": "Smoky brinjal curry cooked with mustard seeds and fenugreek. Village-style preparation.",
+  "ingredients": [
+    "4 large brinjals",
+    "1 cup thick coconut milk",
+    "2 onions, sliced",
+    "3 green chilies",
+    "1 tsp mustard seeds",
+    "1/2 tsp fenugreek seeds",
+    "1 tsp chili powder",
+    "1/2 tsp turmeric",
+    "10 curry leaves (fresh, not dried)",
+    "2 tbsp coconut oil (traditional - do not substitute)",
+    "Salt to taste"
+  ],
+  "instructions": [
+    "Roast brinjals directly on flame until skin is charred",
+    "Peel skin and mash the flesh",
+    "Heat coconut oil, add mustard and fenugreek",
+    "When seeds pop, add curry leaves and onions (Curry leaves must be fresh for authentic taste)",
+    "Add green chilies and spices",
+    "Add mashed brinjal and mix well",
+    "Add coconut milk and simmer for 10 minutes",
+    "Adjust salt and serve"
+  ],
+  "prep_time_minutes": 15,
+  "cook_time_minutes": 20,
+  "servings": 4,
+  "difficulty": "Easy",
+  "tags": [
+    "vegetarian",
+    "village",
+    "smoky",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Roasting over open flame gives authentic smoky flavor. Fenugreek is essential for village taste.",
+  "authenticity_score": 100
+}

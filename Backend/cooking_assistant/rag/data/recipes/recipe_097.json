@@ -1,0 +1,48 @@
+{
+  "id": "recipe_097",
+  "name": "Milagai Bajji (Chili Fritters)",
+  "name_sinhala": "මිරිස් බජ්ජි",
+  "name_tamil": "மிளகாய் பஜ்ஜி",
+  "category": "Snack",
+  "region": "Jaffna",
+  "description": "Batter-fried green chilies",
+  "ingredients": [
+    "10 large green chilies",
+    "1 cup gram flour",
+    "1/4 cup rice flour",
+    "1/2 tsp chili powder",
+    "1/4 tsp asafoetida",
+    "1/2 tsp baking soda",
+    "Salt to taste",
+    "Water for batter",
+    "Oil for frying"
+  ],
+  "instructions": [
+    "Slit chilies lengthwise, remove seeds",
+    "Mix flours, chili powder, asafoetida, salt",
+    "Add water to make thick batter",
+    "Add baking soda just before frying",
+    "Dip chilies in batter",
+    "Deep fry until golden",
+    "Drain and serve hot",
+    "Serve with chutney"
+  ],
+  "prep_time_minutes": 15,
+  "cook_time_minutes": 15,
+  "servings": 10,
+  "difficulty": "Easy",
+  "tags": [
+    "jaffna",
+    "snack",
+    "fried",
+    "spicy",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Rainy day favorite snack",
+  "authenticity_score": 0.95,
+  "description_sinhala": "බැටරයෙන් බැදගත් අමු මිරිස්",
+  "description_tamil": "வறுத்த பச்சை மிளகாய்",
+  "cultural_notes_sinhala": "වැසි දින ප්රියතම කෙටි කෑමක්",
+  "cultural_notes_tamil": "மழை நாளில் பிடித்தமான சிற்றுண்டி"
+}

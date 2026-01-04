@@ -1,0 +1,45 @@
+{
+  "id": "recipe_038",
+  "name": "Athirasa (Jaggery Pancakes)",
+  "name_sinhala": "අතිරස",
+  "name_tamil": "அதிரசம்",
+  "category": "Dessert",
+  "region": "General",
+  "description": "Sweet rice flour pancakes fried in oil",
+  "ingredients": [
+    "2 cups rice flour",
+    "1 cup palm jaggery (hakuru)",
+    "1/2 cup water",
+    "1/2 tsp cardamom",
+    "Oil for deep frying"
+  ],
+  "instructions": [
+    "Melt jaggery in water",
+    "Strain and cool",
+    "Mix with rice flour to form dough",
+    "Add cardamom",
+    "Let rest overnight",
+    "Heat oil for frying",
+    "Flatten small balls into discs",
+    "Fry until puffed and golden",
+    "Drain and cool"
+  ],
+  "prep_time_minutes": 20,
+  "cook_time_minutes": 30,
+  "servings": 20,
+  "difficulty": "Medium",
+  "tags": [
+    "dessert",
+    "sweet",
+    "fried",
+    "festive",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Popular Tamil and Sinhala sweet for festivals",
+  "authenticity_score": 11.0,
+  "description_sinhala": "පැණිරස හාල් පිටි පෑන්කේක් තෙල් බදින ලද",
+  "description_tamil": "எண்ணெயில் பொரித்த இனிப்பு அரிசி மாவு அப்பத்தை",
+  "cultural_notes_sinhala": "උත්සව සඳහා ජනප්‍රිය දෙමළ සහ සිංහල රසකැවිලි",
+  "cultural_notes_tamil": "பண்டிகைகளுக்கு பிரபலமான தமிழ் மற்றும் சிங்கள இனிப்பு"
+}

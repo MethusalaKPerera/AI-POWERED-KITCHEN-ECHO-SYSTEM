@@ -1,0 +1,42 @@
+{
+  "dataset_overview": {
+    "total_recipes": 190,
+    "total_unique_ingredients": 262,
+    "categories": 8,
+    "trilingual_support": true,
+    "date_created": "2026-01-02"
+  },
+  "category_distribution": {
+    "Curry": 56,
+    "Sambol": 21,
+    "Bread": 11,
+    "Rice Dish": 18,
+    "Dessert": 53,
+    "Snack": 20,
+    "Beverage": 10,
+    "Breakfast": 1
+  },
+  "difficulty_distribution": {
+    "Medium": 94,
+    "Easy": 74,
+    "Hard": 22
+  },
+  "time_statistics": {
+    "avg_prep_time": 26.7,
+    "avg_cook_time": 29.10857142857143,
+    "avg_total_time": 53.011428571428574,
+    "min_total_time": 15,
+    "max_total_time": 375
+  },
+  "ingredient_statistics": {
+    "avg_ingredients_per_recipe": 10.094736842105263,
+    "min_ingredients": 1,
+    "max_ingredients": 347
+  },
+  "quality_metrics": {
+    "high_authenticity_recipes": 180,
+    "high_authenticity_percentage": 94.73684210526315,
+    "recipes_with_cultural_notes": 190,
+    "recipes_with_tips": 3
+  }
+}

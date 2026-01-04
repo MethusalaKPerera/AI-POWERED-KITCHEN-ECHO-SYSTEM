@@ -1,0 +1,45 @@
+{
+  "id": "recipe_159",
+  "name": "Pickle Recipe",
+  "name_sinhala": "",
+  "name_tamil": "",
+  "category": "Curry",
+  "region": "General",
+  "description": "",
+  "ingredients": [
+    "1. 1 lbs Eggplant",
+    "2. Cooking oil for frying",
+    "3. 10 to 15 small red onions (shallots)",
+    "4. About 10 Green Chilies",
+    "5. 2 dessert spoons mustard seeds",
+    "6. 8 dessert spoons vinegar (approx.)",
+    "7. Salt to taste",
+    "8. 2 tsp raw chili powder",
+    "9. 1 tsp sugar",
+    "10. 1/2 tsp turmeric powder"
+  ],
+  "instructions": [
+    "Soak the mustard seeds in a little vinegar for about 30 minutes.",
+    "While waiting, wash and slice the eggplant in rounds (optionally half",
+    "circles). Rub turmeric powder and a little salt. Deep fry in cooking",
+    "oil. Remove to a colander and let it cool. Cut the red onions in",
+    "length wise. Grind the soaked mustard seeds into a fine paste. Mix",
+    "all the ingredients together. Cover up in a bowl for a short while",
+    "and it will be ready to eat. This pickle keeps well for a week or",
+    "two in the refrigerator.",
+    "--- PAGE 13 ---"
+  ],
+  "prep_time_minutes": 30,
+  "cook_time_minutes": 30,
+  "servings": 4,
+  "difficulty": "Medium",
+  "tags": [
+    "pdf-extracted",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Extracted from cookbook",
+  "authenticity_score": 0.85,
+  "cultural_notes_sinhala": "ඉවුම් පිහුම් පොතෙන් උපුටා ගන්නා ලදී",
+  "cultural_notes_tamil": "சமையல் புத்தகத்திலிருந்து பிரித்தெடுக்கப்பட்டது"
+}

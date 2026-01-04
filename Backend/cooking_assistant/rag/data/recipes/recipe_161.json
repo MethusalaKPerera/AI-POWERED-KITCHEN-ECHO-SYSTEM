@@ -1,0 +1,53 @@
+{
+  "id": "recipe_161",
+  "name": "Curry Recipe",
+  "name_sinhala": "",
+  "name_tamil": "",
+  "category": "Curry",
+  "region": "General",
+  "description": "",
+  "ingredients": [
+    "1. 1 lb Chicken breast",
+    "2. 1 large Onion",
+    "3. 1 large tomato",
+    "4. 2 Banana Peppers (Malu miris) or green bell pepper",
+    "5. Turmeric powder",
+    "6. Chopped 2 cloves Garlic",
+    "7. Chopped Ginger",
+    "8. Rampe",
+    "9. Curry leaves (fresh, not dried)",
+    "10. 1-inch stick of cinnamon",
+    "11. slightly crushed Black Pepper",
+    "12. Tamarind",
+    "13. Salt to taste"
+  ],
+  "instructions": [
+    "14. Cooking Oil",
+    "Slice the half of the onion the regular way and the other half in to",
+    "2-inch size pieces. Cut the Chicken breasts in to small pieces. Slice the",
+    "outside of the Tomato in to 2-inch pieces and chop the middle part and",
+    "leave it aside. Heat the cooking oil and add the chopped Onions, rampe,",
+    "curry leaves, chopped green chilies and cinnamon and let it fry. Then add (Curry leaves must be fresh for authentic taste)",
+    "chopped garlic, ginger, turmeric powder, salt, sliced chicken and Tamarind",
+    "juice and let it boil for a while. You will get a nice yellow curry. Do not",
+    "add water or coconut milk in to it. When it's done add the chopped middle",
+    "part of the tomato. Then add crushed pepper, sliced tomato (big pieces),",
+    "sliced banana pepper, onions (2 inch sliced) and a bit of salt and let it",
+    "simmer for a while and enjoy it. You can add a little bit of chili powder",
+    "but make black pepper the main ingredient.",
+    "--- PAGE 16 ---"
+  ],
+  "prep_time_minutes": 30,
+  "cook_time_minutes": 30,
+  "servings": 4,
+  "difficulty": "Medium",
+  "tags": [
+    "pdf-extracted",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Extracted from cookbook",
+  "authenticity_score": 10.85,
+  "cultural_notes_sinhala": "ඉවුම් පිහුම් පොතෙන් උපුටා ගන්නා ලදී",
+  "cultural_notes_tamil": "சமையல் புத்தகத்திலிருந்து பிரித்தெடுக்கப்பட்டது"
+}

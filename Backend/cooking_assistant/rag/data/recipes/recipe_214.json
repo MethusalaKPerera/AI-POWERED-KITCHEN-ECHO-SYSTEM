@@ -1,0 +1,48 @@
+{
+  "id": "recipe_214",
+  "name": "Wambatu Moju (Brinjal Pickle)",
+  "name_sinhala": "වම්බටු මොජු",
+  "name_tamil": "கத்தரிக்காய் ஊறுகாய்",
+  "category": "Sambol",
+  "region": "General",
+  "description": "Sweet and sour brinjal pickle. Essential accompaniment for rice and curry.",
+  "ingredients": [
+    "4 large brinjals, cubed",
+    "2 onions, sliced",
+    "4 green chilies, sliced",
+    "1/4 cup vinegar",
+    "3 tbsp sugar",
+    "2 tbsp chili powder",
+    "1 tsp turmeric",
+    "10 curry leaves (fresh, not dried)",
+    "1 inch ginger, julienned",
+    "2 cloves garlic, sliced",
+    "Oil for frying",
+    "Salt to taste"
+  ],
+  "instructions": [
+    "Deep fry brinjal cubes until golden, drain",
+    "Heat little oil, add mustard seeds",
+    "Add curry leaves, onions, ginger, garlic (Curry leaves must be fresh for authentic taste)",
+    "Sauté until onions are soft",
+    "Add spices and fry",
+    "Add vinegar, sugar, salt",
+    "Simmer until syrupy",
+    "Add fried brinjal and green chilies",
+    "Mix gently and cool",
+    "Store in fridge"
+  ],
+  "prep_time_minutes": 15,
+  "cook_time_minutes": 30,
+  "servings": 8,
+  "difficulty": "Medium",
+  "tags": [
+    "pickle",
+    "sweet-sour",
+    "condiment",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Balances spicy curries. Must be sweet-sour-spicy. Stores for 2 weeks refrigerated.",
+  "authenticity_score": 100
+}

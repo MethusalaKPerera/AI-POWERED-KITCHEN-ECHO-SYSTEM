@@ -1,0 +1,44 @@
+{
+  "id": "recipe_200",
+  "name": "Isso Wade (Prawn Cutlets)",
+  "name_sinhala": "ඉස්සෝ වඩේ",
+  "name_tamil": "இறால் வடை",
+  "category": "Snack",
+  "region": "Coastal",
+  "description": "Crispy prawn fritters mixed with lentils and spices. Popular tea-time snack.",
+  "ingredients": [
+    "1 cup prawns, finely chopped",
+    "1 cup ulundu (urad dal), soaked",
+    "1 onion, finely chopped",
+    "2 green chilies, chopped",
+    "1/2 tsp fennel seeds",
+    "10 curry leaves (fresh, not dried)",
+    "1/2 tsp chili flakes",
+    "Salt to taste",
+    "Oil for deep frying"
+  ],
+  "instructions": [
+    "Grind soaked dal coarsely",
+    "Mix in chopped prawns",
+    "Add onions, chilies, fennel, curry leaves (Curry leaves must be fresh for authentic taste)",
+    "Add salt and chili flakes",
+    "Mix to thick batter",
+    "Heat oil for deep frying",
+    "Drop spoonfuls of batter into hot oil",
+    "Fry until golden and crispy",
+    "Serve hot with chili sauce"
+  ],
+  "prep_time_minutes": 180,
+  "cook_time_minutes": 25,
+  "servings": 12,
+  "difficulty": "Medium",
+  "tags": [
+    "snack",
+    "seafood",
+    "tea time",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Coastal version of wade with prawns. Must be crispy outside and soft inside.",
+  "authenticity_score": 100
+}

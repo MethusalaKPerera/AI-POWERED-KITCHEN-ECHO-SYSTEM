@@ -1,0 +1,48 @@
+{
+  "id": "recipe_022",
+  "name": "Cashew Curry",
+  "name_sinhala": "කජු කරිය",
+  "name_tamil": "முந்திரி கறி",
+  "category": "Curry",
+  "region": "General",
+  "description": "Rich curry with cashew nuts",
+  "ingredients": [
+    "1 cup raw cashews",
+    "300ml coconut milk",
+    "1 onion, sliced",
+    "2 tbsp curry powder",
+    "1 tsp chili powder",
+    "1/2 tsp turmeric",
+    "1 sprig curry leaves (fresh, not dried)",
+    "2 green chilies",
+    "2 tbsp oil",
+    "Salt to taste"
+  ],
+  "instructions": [
+    "Soak cashews for 1 hour",
+    "Heat oil and sauté onions",
+    "Add curry powder, chili, turmeric",
+    "Add cashews and mix",
+    "Add coconut milk",
+    "Simmer until cashews are soft",
+    "Add curry leaves and chilies (Curry leaves must be fresh for authentic taste)",
+    "Serve hot"
+  ],
+  "prep_time_minutes": 10,
+  "cook_time_minutes": 25,
+  "servings": 4,
+  "difficulty": "Medium",
+  "tags": [
+    "vegetarian",
+    "rich",
+    "special-occasion",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Considered a luxury curry, often served at special meals",
+  "authenticity_score": 10.92,
+  "description_sinhala": "කජු සමග පොහොසත් කරි",
+  "description_tamil": "முந்திரி பருப்புடன் நிறைந்த கறி",
+  "cultural_notes_sinhala": "සුඛෝපභෝගී ව්‍යංජනයක් ලෙස සලකනු ලැබේ, බොහෝ විට විශේෂ ආහාර වේලෙහි සේවය කරනු ලැබේ",
+  "cultural_notes_tamil": "ஆடம்பரமான கறியாகக் கருதப்படுகிறது, இது பெரும்பாலும் சிறப்பு உணவுகளில் பரிமாறப்படுகிறது"
+}

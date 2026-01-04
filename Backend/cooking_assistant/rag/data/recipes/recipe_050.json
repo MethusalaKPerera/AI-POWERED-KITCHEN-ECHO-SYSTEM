@@ -1,0 +1,48 @@
+{
+  "id": "recipe_050",
+  "name": "Bibikkan (Coconut Cake)",
+  "name_sinhala": "බිබික්කන්",
+  "name_tamil": "பிபிக்கன்",
+  "category": "Dessert",
+  "region": "General",
+  "description": "Rich coconut and jaggery cake with cashews",
+  "ingredients": [
+    "2 cups grated coconut",
+    "1 cup palm jaggery (hakuru)",
+    "1 cup rice flour",
+    "1/2 cup semolina",
+    "1/2 cup cashews",
+    "1/2 cup raisins",
+    "1 tsp cardamom",
+    "1/2 tsp nutmeg",
+    "4 eggs"
+  ],
+  "instructions": [
+    "Melt jaggery with little water",
+    "Mix coconut, rice flour, semolina",
+    "Add melted jaggery",
+    "Add beaten eggs",
+    "Add cashews, raisins, spices",
+    "Mix well",
+    "Pour into greased pan",
+    "Bake at 180°C for 45 minutes",
+    "Cool and cut"
+  ],
+  "prep_time_minutes": 20,
+  "cook_time_minutes": 45,
+  "servings": 12,
+  "difficulty": "Medium",
+  "tags": [
+    "dessert",
+    "baked",
+    "rich",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Traditional Christmas and New Year cake",
+  "authenticity_score": 11.0,
+  "description_sinhala": "කජු සමග පොහොසත් පොල් සහ හකුරු කේක්",
+  "description_tamil": "முந்திரியுடன் நிறைந்த தேங்காய் மற்றும் வெல்லம் கேக்",
+  "cultural_notes_sinhala": "සාම්ප්රදායික නත්තල් සහ අලුත් අවුරුදු කේක්",
+  "cultural_notes_tamil": "பாரம்பரிய கிறிஸ்துமஸ் மற்றும் புத்தாண்டு கேக்"
+}

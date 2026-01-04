@@ -1,0 +1,44 @@
+{
+  "id": "recipe_088",
+  "name": "Kuzhi Paniyaram",
+  "name_sinhala": "කුෂි පණියාරම්",
+  "name_tamil": "குழி பணியாரம்",
+  "category": "Snack",
+  "region": "Jaffna",
+  "description": "Small round fermented rice balls",
+  "ingredients": [
+    "2 cups parboiled rice",
+    "1/2 cup urad dal",
+    "Salt to taste",
+    "1 tsp fenugreek",
+    "Water for grinding",
+    "Oil for paniyaram pan"
+  ],
+  "instructions": [
+    "Soak rice, dal, fenugreek overnight",
+    "Grind to smooth batter",
+    "Ferment for 8 hours",
+    "Add salt",
+    "Heat paniyaram pan with oil in each cavity",
+    "Pour batter into cavities",
+    "Cook until golden on both sides",
+    "Serve with chutney"
+  ],
+  "prep_time_minutes": 20,
+  "cook_time_minutes": 15,
+  "servings": 25,
+  "difficulty": "Medium",
+  "tags": [
+    "jaffna",
+    "snack",
+    "fermented",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Made in special paniyaram pan with round cavities",
+  "authenticity_score": 1.0,
+  "description_sinhala": "කුඩා රවුම් පැසුණු සහල් බෝල",
+  "description_tamil": "சிறிய உருண்டையான புளித்த அரிசி உருண்டைகள்",
+  "cultural_notes_sinhala": "රවුම් කුහර සහිත විශේෂ පනියාරම් පෑන් තුළ සාදා ඇත",
+  "cultural_notes_tamil": "உருண்டையான துவாரங்களுடன் கூடிய சிறப்பு பணியாரம் சட்டியில் செய்யப்பட்டது"
+}

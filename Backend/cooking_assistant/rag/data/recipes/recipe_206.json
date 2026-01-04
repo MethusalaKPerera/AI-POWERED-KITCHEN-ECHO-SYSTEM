@@ -1,0 +1,38 @@
+{
+  "id": "recipe_206",
+  "name": "Lunumiris (Chili Onion Sambol)",
+  "name_sinhala": "ලුණුමිරිස්",
+  "name_tamil": "உப்பு மிளகாய்",
+  "category": "Sambol",
+  "region": "General",
+  "description": "Spicy ground mixture of chili, onions, and Maldive fish. Essential with kiribath.",
+  "ingredients": [
+    "10 dried red chilies",
+    "1 large onion, roughly chopped",
+    "3 tbsp Maldive fish (umbalakada - essential)",
+    "1 tsp salt",
+    "Juice of 1 lime",
+    "1 tbsp chili flakes (optional)"
+  ],
+  "instructions": [
+    "Remove seeds from chilies if you want less heat",
+    "Grind chilies, onion, Maldive fish, and salt together",
+    "Grind to coarse paste, not fine",
+    "Add lime juice and mix",
+    "Adjust salt and spice",
+    "Store in fridge for up to a week"
+  ],
+  "prep_time_minutes": 10,
+  "cook_time_minutes": 0,
+  "servings": 8,
+  "difficulty": "Easy",
+  "tags": [
+    "condiment",
+    "spicy",
+    "essential",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Must be on the table for kiribath. Every family has their own heat level. Texture should be coarse, not smooth. Must be freshly made - sambol loses flavor if stored too long. Maldive fish (umbalakada) is essential and irreplaceable. Use coconut scraped fresh, not desiccated.",
+  "authenticity_score": 100
+}

@@ -1,0 +1,46 @@
+{
+  "id": "recipe_035",
+  "name": "Wade (Lentil Fritters)",
+  "name_sinhala": "වඩේ",
+  "name_tamil": "வடை",
+  "category": "Snack",
+  "region": "Tamil",
+  "description": "Savory lentil donuts, crispy outside, soft inside",
+  "ingredients": [
+    "1 cup urad dal, soaked",
+    "2 green chilies",
+    "1 onion, chopped",
+    "1 sprig curry leaves (fresh, not dried)",
+    "1/2 tsp fennel seeds",
+    "Salt to taste",
+    "Oil for frying"
+  ],
+  "instructions": [
+    "Drain soaked dal",
+    "Grind coarsely (not smooth)",
+    "Add chilies, onions, curry leaves, fennel (Curry leaves must be fresh for authentic taste)",
+    "Add salt and mix",
+    "Heat oil for frying",
+    "Shape into donuts with hole in center",
+    "Fry until golden brown",
+    "Serve hot with sambol"
+  ],
+  "prep_time_minutes": 20,
+  "cook_time_minutes": 20,
+  "servings": 12,
+  "difficulty": "Medium",
+  "tags": [
+    "snack",
+    "fried",
+    "tamil",
+    "protein-rich",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Classic tea-time snack, sold everywhere",
+  "authenticity_score": 10.98,
+  "description_sinhala": "රසවත් පරිප්පු ඩෝනට්ස්, පිටත හැපෙනසුළු, ඇතුළත මෘදුයි",
+  "description_tamil": "சுவையான பருப்பு டோனட்ஸ், வெளியில் மிருதுவானது, உள்ளே மென்மையானது",
+  "cultural_notes_sinhala": "සම්භාව්‍ය තේ-කාල ස්නැක්, සෑම තැනකම විකුණනු ලැබේ",
+  "cultural_notes_tamil": "உன்னதமான தேநீர் நேர சிற்றுண்டி, எல்லா இடங்களிலும் விற்கப்படுகிறது"
+}

@@ -1,0 +1,36 @@
+{
+  "id": "recipe_205",
+  "name": "Malu Paan (Fish Buns)",
+  "name_sinhala": "මාළු පාන්",
+  "name_tamil": "மீன் பான்",
+  "category": "Snack",
+  "region": "General",
+  "description": "Soft buns filled with spicy fish mixture. Bakery favorite breakfast item.",
+  "ingredients": [
+    "For dough: 4 cups flour, 1 packet yeast, 2 tbsp sugar, 1/2 cup butter, 1 cup warm milk, 1 egg, 1 tsp salt",
+    "For filling: 400g canned tuna, 2 onions chopped, 3 green chilies, curry leaves, 1 tsp chili powder, 1 tsp curry powder, lime juice (fresh, not dried)"
+  ],
+  "instructions": [
+    "Make dough: Mix yeast, sugar, warm milk. Add to flour with egg, butter, salt",
+    "Knead to soft dough, proof for 1 hour",
+    "For filling: Sauté onions, add spices, add drained tuna, add chilies and lime",
+    "Roll dough, cut circles",
+    "Fill with fish mixture, seal edges",
+    "Proof for 30 minutes",
+    "Brush with egg wash",
+    "Bake at 180°C for 20 minutes until golden"
+  ],
+  "prep_time_minutes": 120,
+  "cook_time_minutes": 20,
+  "servings": 12,
+  "difficulty": "Medium",
+  "tags": [
+    "bakery",
+    "breakfast",
+    "buns",
+    "traditional",
+    "authentic"
+  ],
+  "cultural_notes": "Every Sri Lankan bakery sells these. Morning commuters' favorite. Must be soft and fluffy.",
+  "authenticity_score": 100
+}
