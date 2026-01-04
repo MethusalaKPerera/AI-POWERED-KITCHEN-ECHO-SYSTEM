@@ -70,5 +70,13 @@
     "quantity": 1.0,
     "date": "2026-01-03",
     "ts": "2026-01-02T03:35:37.473712Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0035",
+    "food_name": "Tea Biscuits",
+    "quantity": 1.0,
+    "date": "2026-01-04",
+    "ts": "2026-01-04T04:23:20.711267Z"
   }
 ]
