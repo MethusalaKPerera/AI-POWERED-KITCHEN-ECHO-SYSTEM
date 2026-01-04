@@ -1,9 +1,4 @@
-# AI-Powered Kitchen Ecosystem - Backend Requirements
-# Python 3.14 Compatible
-
-# ============================================
-# Flask Backend & Web Framework
-# ============================================
+# Flask Backend (Team shared)
 Flask==3.1.2
 flask-pymongo==3.0.1
 flask-cors==6.0.1
@@ -11,65 +6,26 @@ flask-bcrypt
 flask-jwt-extended
 pymongo==4.15.4
 requests==2.32.3
-
-# ============================================
-# Web Scraping & Search
-# ============================================
 duckduckgo_search
 beautifulsoup4
+pandas
+numpy
+scikit-learn
+python-dateutil==2.9.0
 
 # ============================================
-# Data Science & ML Core
-# ============================================
-pandas>=2.2.0
-numpy>=1.26.0
-scikit-learn>=1.5.0
-
-# ============================================
-# RAG & NLP Packages (Cooking Assistant)
+# KAUMADI'S COOKING ASSISTANT DEPENDENCIES
 # ============================================
 sentence-transformers==2.2.2
 chromadb==0.4.22
 transformers==4.40.0
 torch>=2.1.0
 faiss-cpu
-
-# ============================================
-# PDF Processing (Recipe Extraction)
-# ============================================
 PyPDF2==3.0.1
 pdfplumber==0.10.3
-
-# ============================================
-# Translation (Trilingual Support)
-# ============================================
-# Note: googletrans==4.0.0rc1 is incompatible with Python 3.14
-# Using deep-translator instead
 deep-translator
-
-# ============================================
-# Fuzzy Matching (Ingredient Matching)
-# ============================================
 fuzzywuzzy
 python-Levenshtein
-
-# ============================================
-# Evaluation & Visualization
-# ============================================
 matplotlib>=3.8.0
 seaborn>=0.13.0
-
-# ============================================
-# Utilities
-# ============================================
-python-dateutil==2.9.0
-python-dotenv==1.0.0
 tqdm==4.66.1
-
-# ============================================
-# Optional: For Enhanced Features
-# ============================================
-# Uncomment if needed:
-# opencv-python  # For image processing
-# pillow  # For image handling
-# google-cloud-vision  # For Google Cloud Vision API
