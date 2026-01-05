@@ -2,6 +2,9 @@
 
 const BASE = "http://127.0.0.1:5000";
 
+// ✅ Add this export so components can import it
+export const DEFAULT_USER_ID = "demo";
+
 async function request(path, options = {}) {
   const url = path.startsWith("http") ? path : `${BASE}${path}`;
 
@@ -24,10 +27,7 @@ async function request(path, options = {}) {
   }
 
   if (!res.ok) {
-    const msg =
-      data?.message ||
-      data?.error ||
-      `Request failed (${res.status})`;
+    const msg = data?.message || data?.error || `Request failed (${res.status})`;
     throw new Error(msg);
   }
 
@@ -57,8 +57,8 @@ export async function addIntake(payload) {
 /* -----------------------------
    Step 4: Get Summary
 ------------------------------ */
-export async function getIntakeSummary(userId = "demo", period = "weekly") {
-  const uid = encodeURIComponent(userId || "demo");
+export async function getIntakeSummary(userId = DEFAULT_USER_ID, period = "weekly") {
+  const uid = encodeURIComponent(userId || DEFAULT_USER_ID);
   const p = encodeURIComponent(period || "weekly");
   return request(`/api/nutrition/intake/summary?user_id=${uid}&period=${p}`, {
     method: "GET",
@@ -68,8 +68,8 @@ export async function getIntakeSummary(userId = "demo", period = "weekly") {
 /* -----------------------------
    Step 5/7: Predictive Report
 ------------------------------ */
-export async function getReport(userId = "demo", period = "monthly") {
-  const uid = encodeURIComponent(userId || "demo");
+export async function getReport(userId = DEFAULT_USER_ID, period = "monthly") {
+  const uid = encodeURIComponent(userId || DEFAULT_USER_ID);
   const p = encodeURIComponent(period || "monthly");
   return request(`/api/nutrition/report?user_id=${uid}&period=${p}`, {
     method: "GET",
@@ -79,8 +79,8 @@ export async function getReport(userId = "demo", period = "monthly") {
 /* -----------------------------
    Step 9: User Profile
 ------------------------------ */
-export async function getProfile(userId = "demo") {
-  const uid = encodeURIComponent(userId || "demo");
+export async function getProfile(userId = DEFAULT_USER_ID) {
+  const uid = encodeURIComponent(userId || DEFAULT_USER_ID);
   return request(`/api/nutrition/profile?user_id=${uid}`, {
     method: "GET",
   });
@@ -101,10 +101,10 @@ export async function getConditions() {
 }
 
 /* -----------------------------
-   ✅ NEW: ML Deficiency Risk
+   ✅ ML Deficiency Risk
 ------------------------------ */
-export async function getMLRisk(userId = "demo", period = "monthly") {
-  const uid = encodeURIComponent(userId || "demo");
+export async function getMLRisk(userId = DEFAULT_USER_ID, period = "monthly") {
+  const uid = encodeURIComponent(userId || DEFAULT_USER_ID);
   const p = encodeURIComponent(period || "monthly");
   return request(`/api/nutrition/ml-risk?user_id=${uid}&period=${p}`, {
     method: "GET",

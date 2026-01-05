@@ -1,7 +1,8 @@
 // src/Pages/NutritionalGuidance/Components/MealLogger.jsx
 
 import React, { useEffect, useMemo, useState } from "react";
-import { addIntake, searchFoods } from "../../../services/nutritionApi";
+import { addIntake, searchFoods, DEFAULT_USER_ID } from "../../../services/nutritionApi";
+import "./MealLogger.css";
 
 // Helper: today YYYY-MM-DD
 function todayStr() {
@@ -12,7 +13,7 @@ function todayStr() {
   return `${yyyy}-${mm}-${dd}`;
 }
 
-export default function MealLogger({ userId = "demo" }) {
+export default function MealLogger({ userId = DEFAULT_USER_ID }) {
   const [query, setQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [selected, setSelected] = useState(null);
@@ -58,8 +59,9 @@ export default function MealLogger({ userId = "demo" }) {
 
   const placeholder = useMemo(() => {
     if (!selected) return "Type a food name (e.g., Tea, Rice, Egg)";
-    return `${selected.food_name} (${selected.serving_basis || ""}${selected.serving_size_g ? `, ${selected.serving_size_g}g` : ""
-      })`;
+    const basis = selected.serving_basis || "serving";
+    const grams = selected.serving_size_g ? ` • ${selected.serving_size_g}g` : "";
+    return `${selected.food_name} (${basis}${grams})`;
   }, [selected]);
 
   const onPick = (item) => {
@@ -92,9 +94,9 @@ export default function MealLogger({ userId = "demo" }) {
     setSaving(true);
     try {
       const payload = {
-        user_id: userId,
-        food_id: selected.food_id || "",
-        food_name: selected.food_name || query.trim(),
+        user_id: userId || DEFAULT_USER_ID,
+        food_id: selected?.food_id || "",
+        food_name: selected?.food_name || query.trim(),
         quantity: q,
         date: date,
       };
@@ -115,152 +117,101 @@ export default function MealLogger({ userId = "demo" }) {
   };
 
   return (
-    <div style={{ maxWidth: 720 }}>
-      <h2 style={{ marginBottom: 10 }}>Meal Logger</h2>
-      <p style={{ marginTop: 0, opacity: 0.8 }}>
-        Search a food, select it, enter quantity and date, then save your intake.
-      </p>
-
-      <form onSubmit={onSubmit} style={{ display: "grid", gap: 12 }}>
-        <div style={{ position: "relative" }}>
-          <label style={{ display: "block", marginBottom: 6 }}>Food</label>
-          <input
-            value={query}
-            onChange={(e) => {
-              setQuery(e.target.value);
-              setSelected(null);
-            }}
-            placeholder={placeholder}
-            style={{
-              width: "100%",
-              padding: "10px 12px",
-              borderRadius: 10,
-              border: "1px solid #cbd5e1",
-              outline: "none",
-            }}
-          />
-
-          {loading && (
-            <div style={{ marginTop: 6, fontSize: 13, opacity: 0.75 }}>
-              Searching...
-            </div>
-          )}
-
-          {suggestions.length > 0 && (
-            <div
-              style={{
-                position: "absolute",
-                zIndex: 50,
-                top: "100%",
-                left: 0,
-                right: 0,
-                background: "white",
-                border: "1px solid #e2e8f0",
-                borderRadius: 10,
-                marginTop: 6,
-                maxHeight: 260,
-                overflowY: "auto",
-                boxShadow: "0 10px 25px rgba(0,0,0,0.08)",
-              }}
-            >
-              {suggestions.map((it) => (
-                <div
-                  key={it.food_id || it.food_name}
-                  onClick={() => onPick(it)}
-                  style={{
-                    padding: "10px 12px",
-                    cursor: "pointer",
-                    borderBottom: "1px solid #f1f5f9",
-                  }}
-                >
-                  <div style={{ fontWeight: 600 }}>{it.food_name}</div>
-                  <div style={{ fontSize: 12, opacity: 0.75 }}>
-                    {it.food_id ? `ID: ${it.food_id} • ` : ""}
-                    {it.serving_basis || "serving"}
-                    {it.serving_size_g ? ` • ${it.serving_size_g}g` : ""}
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
+    <div className="ml-wrap">
+      <div className="ml-hero">
+        <div>
+          <h2 className="ml-title">Meal Logger</h2>
+          <p className="ml-subtitle">
+            Search a food, select it, enter quantity and date, then save your intake.
+          </p>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
-          <div>
-            <label style={{ display: "block", marginBottom: 6 }}>Date</label>
+        <div className="ml-meta">
+          <div className="ml-pill">
+            User: <b>{userId || DEFAULT_USER_ID}</b>
+          </div>
+        </div>
+      </div>
+
+      <form onSubmit={onSubmit} className="ml-card">
+        <div className="ml-grid">
+          {/* Food search */}
+          <div className="ml-field ml-food">
+            <label className="ml-label">Food</label>
+            <div className="ml-inputWrap">
+              <input
+                className="ml-input"
+                value={query}
+                onChange={(e) => {
+                  setQuery(e.target.value);
+                  setSelected(null);
+                }}
+                placeholder={placeholder}
+              />
+
+              {loading && <div className="ml-inlineHint">Searching…</div>}
+
+              {suggestions.length > 0 && (
+                <div className="ml-dropdown">
+                  {suggestions.map((it) => (
+                    <button
+                      type="button"
+                      key={it.food_id || it.food_name}
+                      className="ml-item"
+                      onClick={() => onPick(it)}
+                    >
+                      <div className="ml-itemTop">
+                        <span className="ml-itemName">{it.food_name}</span>
+                        {it.food_id ? <span className="ml-id">ID: {it.food_id}</span> : null}
+                      </div>
+                      <div className="ml-itemSub">
+                        {(it.serving_basis || "serving")}
+                        {it.serving_size_g ? ` • ${it.serving_size_g}g` : ""}
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Date */}
+          <div className="ml-field">
+            <label className="ml-label">Date</label>
             <input
+              className="ml-input"
               type="date"
               value={date}
               onChange={(e) => setDate(e.target.value)}
-              style={{
-                width: "100%",
-                padding: "10px 12px",
-                borderRadius: 10,
-                border: "1px solid #cbd5e1",
-                outline: "none",
-              }}
             />
           </div>
 
-          <div>
-            <label style={{ display: "block", marginBottom: 6 }}>
-              Quantity (servings)
-            </label>
+          {/* Quantity */}
+          <div className="ml-field">
+            <label className="ml-label">Quantity (servings)</label>
             <input
+              className="ml-input"
               type="number"
               step="0.25"
               min="0.25"
               value={quantity}
               onChange={(e) => setQuantity(e.target.value)}
-              style={{
-                width: "100%",
-                padding: "10px 12px",
-                borderRadius: 10,
-                border: "1px solid #cbd5e1",
-                outline: "none",
-              }}
             />
           </div>
         </div>
 
-        {error && (
-          <div
-            style={{
-              color: "#b91c1c",
-              background: "#fee2e2",
-              padding: 10,
-              borderRadius: 10,
-            }}
-          >
-            {error}
-          </div>
-        )}
-        {success && (
-          <div
-            style={{
-              color: "#065f46",
-              background: "#d1fae5",
-              padding: 10,
-              borderRadius: 10,
-            }}
-          >
-            {success}
-          </div>
-        )}
+        {error && <div className="ml-alert ml-error">{error}</div>}
+        {success && <div className="ml-alert ml-ok">{success}</div>}
 
-        <button
-          type="submit"
-          disabled={saving}
-          style={{
-            padding: "10px 14px",
-            borderRadius: 12,
-            border: "none",
-            cursor: saving ? "not-allowed" : "pointer",
-            fontWeight: 700,
-          }}
-        >
-          {saving ? "Saving..." : "Add Intake"}
-        </button>
+        <div className="ml-actions">
+          <button type="submit" className="ml-btn" disabled={saving}>
+            {saving ? "Saving..." : "Add Intake"}
+          </button>
+
+          <div className="ml-tip">
+            Tip: Logging meals improves the accuracy of your deficiency analysis.
+          </div>
+        </div>
       </form>
     </div>
   );

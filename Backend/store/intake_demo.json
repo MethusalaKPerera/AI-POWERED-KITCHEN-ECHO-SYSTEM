@@ -518,5 +518,45 @@
     "quantity": 1.0,
     "date": "2026-01-04",
     "ts": "2026-01-04T06:03:27.874495Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0298",
+    "food_name": "Paneer in butter sauce",
+    "quantity": 1.0,
+    "date": "2026-01-05",
+    "ts": "2026-01-05T02:01:24.840133Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0834",
+    "food_name": "Cream buns",
+    "quantity": 1.0,
+    "date": "2026-01-05",
+    "ts": "2026-01-05T07:56:16.775923Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0179",
+    "food_name": "Chapati/Roti",
+    "quantity": 1.0,
+    "date": "2026-01-05",
+    "ts": "2026-01-05T08:01:17.989059Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0090",
+    "food_name": "Pineapple Ice Cream",
+    "quantity": 1.0,
+    "date": "2025-12-31",
+    "ts": "2026-01-05T08:01:31.560327Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0360",
+    "food_name": "Carrot kheer (Gajar ki kheer)",
+    "quantity": 1.0,
+    "date": "2025-12-31",
+    "ts": "2026-01-05T08:01:41.102389Z"
   }
 ]
