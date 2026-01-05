@@ -12,7 +12,7 @@ export function ProductCard({ product, onSave }) {
     if (e.target.closest('button')) return;
 
     // Navigate to our internal detail page
-    navigate(`/smart-shopping/product/${product.id}`);
+    navigate(`/smart-shopping/product/${product.id}`, { state: { product } });
   };
 
   return (

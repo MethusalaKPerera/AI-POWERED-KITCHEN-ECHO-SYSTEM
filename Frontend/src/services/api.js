@@ -59,6 +59,11 @@ export const shoppingApi = {
     return apiRequest('/shopping/history');
   },
 
+  // Analyze product for wastage (NEW)
+  analyzeProduct: async (productName) => {
+    return apiRequest('/shopping/analyze-product', 'POST', { product_name: productName });
+  },
+
   // Get recommendations
   getRecommendations: async () => {
     return apiRequest('/shopping/recommendations');
