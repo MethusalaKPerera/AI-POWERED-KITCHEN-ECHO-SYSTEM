@@ -79,6 +79,10 @@ def get_summary(app, user_id: str, period: str = "weekly") -> dict:
     Build totals + daily averages for the given period (weekly/monthly),
     using food nutrient values from SL_Food_Nutrition_Master.csv.
 
+    ✅ Also returns:
+    - top_foods (top 3 most frequently eaten)
+    - food_frequency (full map)
+
     Returns TWO averages:
     - daily_average_logged_days: totals / days_logged
     - daily_average_over_period: totals / 7 or totals / 30
@@ -102,11 +106,13 @@ def get_summary(app, user_id: str, period: str = "weekly") -> dict:
 
     # Build fast lookup maps
     by_id = {}
-    if "food_id" in food_df.columns:
+    if food_df is not None and not food_df.empty and "food_id" in food_df.columns:
         for _, r in food_df.iterrows():
             by_id[str(r.get("food_id", "")).strip()] = r
 
-    by_name = {str(r.get("food_name", "")).strip(): r for _, r in food_df.iterrows()}
+    by_name = {}
+    if food_df is not None and not food_df.empty and "food_name" in food_df.columns:
+        by_name = {str(r.get("food_name", "")).strip(): r for _, r in food_df.iterrows()}
 
     nutrient_cols = [
         "energy_kcal",
@@ -132,9 +138,13 @@ def get_summary(app, user_id: str, period: str = "weekly") -> dict:
     days_logged = set()
     used_logs = 0
 
-    # Coverage for last 30 days (independent of selected period)
+    # Coverage for last 30 days
     days_logged_last30 = set()
     used_logs_last30 = 0
+
+    # ✅ NEW: food frequency tracking for selected period
+    food_frequency = {}          # counts by food_name
+    food_servings = {}           # total quantity/servings by food_name
 
     for log in logs:
         date_str = log.get("date")
@@ -159,12 +169,28 @@ def get_summary(app, user_id: str, period: str = "weekly") -> dict:
         fname = str(log.get("food_name") or "").strip()
         qty = float(log.get("quantity") or 1.0)
 
+        # Resolve dataset row for nutrients + consistent naming
         row = None
         if fid and fid in by_id:
             row = by_id[fid]
         elif fname and fname in by_name:
             row = by_name[fname]
 
+        # Prefer dataset official name if exists
+        resolved_name = None
+        if row is not None:
+            try:
+                resolved_name = str(row.get("food_name", "")).strip() or None
+            except Exception:
+                resolved_name = None
+
+        final_name = resolved_name or fname or fid or "Unknown"
+
+        # ✅ Track frequency + servings (even if nutrients missing)
+        food_frequency[final_name] = food_frequency.get(final_name, 0) + 1
+        food_servings[final_name] = round(food_servings.get(final_name, 0.0) + qty, 4)
+
+        # Nutrient totals
         if row is None:
             continue
 
@@ -186,6 +212,13 @@ def get_summary(app, user_id: str, period: str = "weekly") -> dict:
     period_days = 7 if period == "weekly" else 30 if period == "monthly" else 7
     daily_average_over_period = {k: round(v / period_days, 4) for k, v in totals.items()}
 
+    # ✅ Build top foods
+    top_foods = sorted(
+        [{"food_name": n, "count": c, "servings": food_servings.get(n, 0.0)} for n, c in food_frequency.items()],
+        key=lambda x: (x["count"], x["servings"]),
+        reverse=True
+    )[:3]
+
     return {
         "user_id": user_id,
         "period": period,
@@ -194,7 +227,6 @@ def get_summary(app, user_id: str, period: str = "weekly") -> dict:
         "days_logged": len(days_logged),
         "logs_used": used_logs,
 
-        # NEW (panel-proof)
         "days_logged_last30": len(days_logged_last30),
         "logs_used_last30": used_logs_last30,
 
@@ -205,4 +237,8 @@ def get_summary(app, user_id: str, period: str = "weekly") -> dict:
 
         # keep old key for backward compatibility (uses logged days)
         "daily_average": daily_average_logged_days,
+
+        # ✅ NEW for dashboard
+        "food_frequency": food_frequency,
+        "top_foods": top_foods,
     }
