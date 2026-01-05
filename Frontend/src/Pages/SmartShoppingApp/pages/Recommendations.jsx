@@ -10,6 +10,7 @@ export function Recommendations() {
   const [recommendations, setRecommendations] = useState([]);
   const [loading, setLoading] = useState(true);
   const [reason, setReason] = useState('Popular today');
+  const [shoppingList, setShoppingList] = useState([]);
 
   useEffect(() => {
     const fetchRecommendations = async () => {
@@ -19,6 +20,7 @@ export function Recommendations() {
         if (response.success) {
           setRecommendations(response.recommendations || []);
           setReason(response.reason || 'Popular today');
+          setShoppingList(response.source_queries || []);
         }
       } catch (error) {
         console.error('Failed to fetch recommendations:', error);
@@ -54,6 +56,27 @@ export function Recommendations() {
               {reason}
             </p>
           </div>
+
+          {/* AI Shopping List Section */}
+          {!loading && shoppingList.length > 0 && (
+            <div className="mb-8 bg-white p-6 rounded-xl shadow-sm border border-[#2D9B81]/20">
+              <h2 className="text-lg font-bold text-[#1E5245] mb-3 flex items-center">
+                <Sparkles size={16} className="mr-2 text-[#2D9B81]" />
+                AI-Curated Shopping List
+              </h2>
+              <div className="flex flex-wrap gap-3">
+                {shoppingList.map((item, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center space-x-2 bg-[#E8F8F3] px-4 py-2 rounded-full border border-[#2D9B81]/30 transition-transform hover:scale-105"
+                  >
+                    <div className="w-2 h-2 rounded-full bg-[#2D9B81]"></div>
+                    <span className="text-[#1E5245] font-medium capitalize">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
           <div className="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <p className="text-[#2D5F4F]">
@@ -108,4 +131,3 @@ export function Recommendations() {
     </div>
   );
 }
-

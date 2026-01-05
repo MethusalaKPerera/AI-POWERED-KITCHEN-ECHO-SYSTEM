@@ -420,47 +420,94 @@ def get_recommendations():
         recommended_query = "latest electronics"
         
         if user_id:
+            # 1. FETCH SHOPPING HISTORY (Standalone)
             history = load_history()
-            # Filter for searches by this user
-            user_history = [h for h in history if h['user_id'] == user_id and h['type'] == 'search']
-            
+            user_history = [h for h in history if h['user_id'] == user_id]
+
             if user_history:
-                # Sort by timestamp descending (newest first)
+                # ---------------------------------------------------------
+                # NEW: AI-POWERED ANALYSIS (Gemini) - STANDALONE
+                # ---------------------------------------------------------
+                if GEMINI_API_KEY:
+                    try:
+                        import google.generativeai as genai
+                        genai.configure(api_key=GEMINI_API_KEY)
+                        
+                        # Prepare history context (last 10 interactions)
+                        sorted_history = sorted(user_history, key=lambda x: x.get('timestamp', ''), reverse=True)[:10]
+                        history_text = "\n".join([f"- {h['type'].upper()}: {h['query']}" for h in sorted_history])
+                        
+                        model = genai.GenerativeModel('models/gemini-flash-latest')
+                        
+                        prompt = (
+                            f"Act as a Professional Personal Shopper. \n"
+                            f"User's recent activity:\n{history_text}\n\n"
+                            f"Task: Suggest a 'Smart Shopping List' of 4 specific, distinct items based on their recent interests.\n"
+                            f"Rules:\n"
+                            f"1. Focus on complementary items (e.g., if they searched for 'Camera', suggest 'SD Card').\n"
+                            f"2. Return ONLY a raw JSON array of strings (e.g. [\"Lenses\", \"Camera Bag\"]).\n"
+                            f"3. Do not include markdown or explanations."
+                        )
+                        
+                        response = model.generate_content(prompt)
+                        text_response = response.text.strip()
+                        
+                        # Cleanup markdown
+                        if text_response.startswith('```json'):
+                            text_response = text_response.replace('```json', '').replace('```', '')
+                        if text_response.startswith('```'):
+                             text_response = text_response.replace('```', '')
+
+                        suggested_queries = json.loads(text_response)
+                        
+                        if isinstance(suggested_queries, list) and len(suggested_queries) > 0:
+                            print(f"AI Health Suggestions: {suggested_queries}")
+                            
+                            all_recommended_products = []
+                            for q in suggested_queries[:4]:
+                                query_products = search_google_shopping(q, 1) 
+                                if query_products:
+                                    p = query_products[0]
+                                    p['aiReason'] = f"Smart Suggestion: {q}" 
+                                    all_recommended_products.append(p)
+                            
+                            if all_recommended_products:
+                                return jsonify({
+                                    'success': True,
+                                    'recommendations': all_recommended_products,
+                                    'reason': "AI Curated Shopping List",
+                                    'source_queries': suggested_queries
+                                })
+                                
+                    except Exception as ai_error:
+                        print(f"AI Recommendation failed: {ai_error}")
+                        traceback.print_exc()
+
+                # Fallback to simple logic if AI fails...
                 user_history.sort(key=lambda x: x.get('timestamp', ''), reverse=True)
-                
-                # Get unique recent queries (up to 3)
-                seen_queries = set()
                 top_queries = []
+                seen = set()
                 for h in user_history:
-                    q = h['query'].lower().strip()
-                    if q and q not in seen_queries:
-                        seen_queries.add(q)
-                        top_queries.append(h['query'])
-                    if len(top_queries) >= 3:
-                        break
-                
+                     if h['type'] == 'search':
+                        q = h['query'].lower().strip()
+                        if q and q not in seen:
+                            seen.add(q)
+                            top_queries.append(h['query'])
+                        if len(top_queries) >= 3:
+                            break
+
                 if top_queries:
                     all_recommended_products = []
-                    # Fetch 4 products for each of the top 3 queries
                     for q in top_queries:
-                        query_products = search_google_shopping(q, 4)
-                        for p in query_products:
-                            p['recommended_by'] = q # Add metadata about why this was picked
-                        all_recommended_products.extend(query_products)
+                         items = search_google_shopping(q, 4)
+                         all_recommended_products.extend(items)
                     
-                    # Shuffle to mix them up
                     import random
                     random.shuffle(all_recommended_products)
-                    
-                    reason_str = f"Based on your recent interest in {top_queries[0]}"
-                    if len(top_queries) > 1:
-                        others = " and " + " & ".join(top_queries[1:])
-                        reason_str += others
-
                     return jsonify({
                         'success': True,
                         'recommendations': all_recommended_products,
-                        'reason': reason_str,
+                        'reason': f"Based on recent searches: {', '.join(top_queries[:2])}",
                         'source_queries': top_queries
                     })
 
@@ -475,6 +522,65 @@ def get_recommendations():
 
     except Exception as e:
         print(f"Recommendations error: {e}")
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@shopping_bp.route('/api/shopping/analyze-product', methods=['POST', 'OPTIONS'])
+@cross_origin(
+    origins=['http://localhost:5173', 'http://127.0.0.1:5173'],
+    methods=['POST', 'OPTIONS'],
+    allow_headers=['Content-Type', 'Authorization'],
+    supports_credentials=True,
+)
+def analyze_product_wastage():
+    if request.method == 'OPTIONS':
+        return jsonify({}), 200
+
+    try:
+        data = request.get_json()
+        product_name = data.get('product_name', '')
+        
+        if not product_name:
+             return jsonify({'success': False, 'error': 'No product name provided'}), 400
+
+        # MOCK FALLBACK (Fast response)
+        analysis = {
+            "shelf_life": "7-10 Days",
+            "storage_tip": "Store in a cool, dry place.",
+            "wastage_risk": "Medium",
+            "eco_tip": "Buy only what you need for the week."
+        }
+
+        # REAL AI ANALYSIS
+        if GEMINI_API_KEY:
+            try:
+                import google.generativeai as genai
+                genai.configure(api_key=GEMINI_API_KEY)
+                model = genai.GenerativeModel('models/gemini-flash-latest')
+                
+                prompt = (
+                    f"Analyze the food item '{product_name}' for kitchen wastage management.\n"
+                    f"Provide a JSON response with these keys:\n"
+                    f"- shelf_life: (e.g. '3-5 Days' or '1 Month')\n"
+                    f"- storage_tip: (Best way to prolong freshness, max 10 words)\n"
+                    f"- wastage_risk: ('High', 'Medium', or 'Low')\n"
+                    f"- eco_tip: (Advice to reduce waste, max 10 words)\n"
+                    f"Return ONLY raw JSON. No markdown."
+                )
+                
+                response = model.generate_content(prompt)
+                text = response.text.replace('```json', '').replace('```', '').strip()
+                analysis = json.loads(text)
+            except Exception as e:
+                print(f"AI Analysis failed: {e}")
+
+        return jsonify({
+            'success': True,
+            'analysis': analysis
+        })
+
+    except Exception as e:
+        print(f"Analyze error: {e}")
         return jsonify({'success': False, 'error': str(e)}), 500
 
 
