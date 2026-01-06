@@ -1,8 +1,13 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { getProfile, saveProfile, getConditions } from "../../../services/nutritionApi";
+import {
+  getProfile,
+  saveProfile,
+  getConditions,
+  DEFAULT_USER_ID,
+} from "../../../services/nutritionApi";
 import "./UserDetailsForm.css";
 
-export default function UserDetailsForm({ userId = "demo" }) {
+export default function UserDetailsForm({ userId = DEFAULT_USER_ID }) {
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
   const [err, setErr] = useState("");
@@ -11,7 +16,6 @@ export default function UserDetailsForm({ userId = "demo" }) {
   const [age, setAge] = useState(22);
   const [group, setGroup] = useState("male");
   const [selectedConditions, setSelectedConditions] = useState([]);
-
   const [conditions, setConditions] = useState([]);
 
   const loadAll = async () => {
@@ -25,7 +29,6 @@ export default function UserDetailsForm({ userId = "demo" }) {
       setAge(profile.age ?? 22);
       setGroup(profile.group ?? "male");
       setSelectedConditions(profile.conditions ?? []);
-
       setConditions(c?.items || []);
     } catch (e) {
       setErr(e.message || "Failed to load profile/conditions");
@@ -66,7 +69,7 @@ export default function UserDetailsForm({ userId = "demo" }) {
 
     try {
       const payload = {
-        user_id: userId,
+        user_id: userId || DEFAULT_USER_ID,
         age: a,
         group: group,
         conditions: selectedConditions,
@@ -88,16 +91,20 @@ export default function UserDetailsForm({ userId = "demo" }) {
 
   return (
     <div className="ud-wrap">
-      <div className="ud-head">
+      {/* ✅ Hero header (same style as MealLogger / NutritionTracker) */}
+      <div className="ud-hero">
         <div>
           <h2 className="ud-title">User Profile</h2>
           <p className="ud-subtitle">
-            Enter your age, group, and health conditions. This will personalize nutrient requirements and deficiency reports.
+            Update your age, gender and health conditions to generate accurate requirements and deficiency reports.
           </p>
         </div>
-        <button className="ud-refresh" type="button" onClick={loadAll} disabled={loading}>
-          {loading ? "Loading..." : "Refresh"}
-        </button>
+
+        <div className="ud-meta">
+          <div className="ud-pill">
+            User: <b>{userId || DEFAULT_USER_ID}</b>
+          </div>
+        </div>
       </div>
 
       {err && <div className="ud-alert ud-error">{err}</div>}
@@ -106,8 +113,8 @@ export default function UserDetailsForm({ userId = "demo" }) {
       <form onSubmit={onSave} className="ud-card">
         <div className="ud-grid">
           <div className="ud-field">
-            <label className="ud-label">User ID</label>
-            <input className="ud-input" value={userId} disabled />
+            <label className="ud-label">User Name</label>
+            <input className="ud-input" value={userId || DEFAULT_USER_ID} disabled />
           </div>
 
           <div className="ud-field">
@@ -123,7 +130,7 @@ export default function UserDetailsForm({ userId = "demo" }) {
           </div>
 
           <div className="ud-field">
-            <label className="ud-label">Group</label>
+            <label className="ud-label">Gender</label>
             <select className="ud-input" value={group} onChange={(e) => setGroup(e.target.value)}>
               <option value="male">male</option>
               <option value="female">female</option>
@@ -148,7 +155,8 @@ export default function UserDetailsForm({ userId = "demo" }) {
                     className={checked ? "ud-chip active" : "ud-chip"}
                     onClick={() => toggleCondition(name)}
                   >
-                    {checked ? "✅ " : ""}{name}
+                    {checked ? "✅ " : ""}
+                    {name}
                   </button>
                 );
               })}
@@ -164,6 +172,10 @@ export default function UserDetailsForm({ userId = "demo" }) {
           <button className="ud-save" type="submit" disabled={saving}>
             {saving ? "Saving..." : "Save Profile"}
           </button>
+
+          <div className="ud-tip">
+            Tip: Keep your profile updated for better nutrient targets and more accurate reports.
+          </div>
         </div>
       </form>
     </div>

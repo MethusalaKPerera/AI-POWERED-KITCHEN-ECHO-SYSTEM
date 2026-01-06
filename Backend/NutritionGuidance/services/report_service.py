@@ -1,7 +1,8 @@
-# backend/NutritionGuidance/services/report_service.py
 
 import math
 from typing import Dict, List, Tuple
+
+import pandas as pd
 
 from NutritionGuidance.services.dataset_loader import get_datasets
 from NutritionGuidance.services.profile_store import get_profile
@@ -34,7 +35,6 @@ def _pick_requirement_row(req_df, age: int, group: str) -> Dict:
     if not group:
         group = "male"
 
-    # exact band
     band = req_df[
         (req_df["group"].astype(str).str.lower() == group)
         & (req_df["age_min"] <= age)
@@ -44,13 +44,10 @@ def _pick_requirement_row(req_df, age: int, group: str) -> Dict:
     if not band.empty:
         return band.iloc[0].to_dict()
 
-    # fallback: closest age band
     only_group = req_df[req_df["group"].astype(str).str.lower() == group]
     if only_group.empty:
-        # last fallback: first row
         return req_df.iloc[0].to_dict()
 
-    # choose closest by distance to band midpoint
     def dist(row):
         mid = (float(row["age_min"]) + float(row["age_max"])) / 2.0
         return abs(mid - age)
@@ -66,23 +63,10 @@ def _clean_numeric_dict(d: Dict) -> Dict:
             continue
         if _is_number(v):
             out[k] = float(v)
-        else:
-            # keep non-numeric keys if they are useful (rare)
-            pass
     return out
 
 
 def _apply_condition_rules(base_req: Dict, cond_df, conditions: List[str]) -> Tuple[Dict, List[Dict]]:
-    """
-    Health_Condition_Nutrient_Adjustments.csv columns:
-      condition, nutrient, rule_type, value, note
-
-    rule_type supported:
-      - multiplier: req[nutrient] *= value
-      - add: req[nutrient] += value
-      - set: req[nutrient] = value
-      - upper_limit: req[nutrient+"_upper"] = min(existing, value) OR set if missing
-    """
     req = dict(base_req)
     notes = []
 
@@ -109,7 +93,6 @@ def _apply_condition_rules(base_req: Dict, cond_df, conditions: List[str]) -> Tu
         if not nutrient:
             continue
 
-        # record notes always (even if rule can't be applied)
         notes.append({
             "condition": c,
             "nutrient": nutrient,
@@ -120,7 +103,6 @@ def _apply_condition_rules(base_req: Dict, cond_df, conditions: List[str]) -> Tu
             continue
         val = float(val)
 
-        # Apply rule safely
         if rule_type == "multiplier":
             if nutrient in req and _is_number(req[nutrient]):
                 req[nutrient] = float(req[nutrient]) * val
@@ -141,19 +123,10 @@ def _apply_condition_rules(base_req: Dict, cond_df, conditions: List[str]) -> Tu
             else:
                 req[upper_key] = val
 
-        else:
-            # unknown rule_type -> ignore but keep note
-            continue
-
     return req, notes
 
 
 def _severity_from_gap(gap: float, req_value: float) -> str:
-    """
-    Severity for deficiency gaps:
-    - ok if gap <= 0
-    else ratio = gap / req
-    """
     if gap <= 0:
         return "ok"
     if not _is_number(req_value) or float(req_value) <= 0:
@@ -167,111 +140,142 @@ def _severity_from_gap(gap: float, req_value: float) -> str:
     return "low"
 
 
-def _pick_recommendations(food_df, gaps: Dict, limit: int = 8) -> List[Dict]:
+def _pick_recommendations(food_df, gaps: Dict, requirements: Dict, limit: int = 8) -> List[Dict]:
     """
-    Pick foods to cover top nutrient gaps.
-    Strategy: take top 2-3 nutrients with biggest positive gaps and rank foods by that nutrient amount.
+    Improved recommendation logic:
+    - Choose top deficient nutrients by GAP RATIO (gap / requirement), not raw gap amount.
+      This prevents potassium_mg from dominating just because it's in mg.
+    - Score each food by how well it covers MULTIPLE deficient nutrients.
     """
-    if food_df is None or food_df.empty:
+    if food_df is None or getattr(food_df, "empty", True):
         return []
 
-    # Choose top gap nutrients (exclude upper-limit keys)
-    gap_items = [(k, float(v)) for k, v in gaps.items() if _is_number(v) and float(v) > 0 and not k.endswith("_upper")]
-    gap_items.sort(key=lambda x: x[1], reverse=True)
-    top_nutrients = [k for k, _ in gap_items[:3]]
-
-    if not top_nutrients:
-        return []
-
-    # filter keywords (optional): remove spice mixes etc.
+    # Avoid recommending spice mixes etc.
     bad_words = ["masala", "powder", "spice blend", "seasoning", "mix", "blend"]
+
     def ok_food_name(name: str) -> bool:
         n = (name or "").lower()
-        return not any(w in n for w in bad_words)
+        return bool(name) and not any(w in n for w in bad_words)
 
-    recs = []
-    used = set()
-
-    for nutr in top_nutrients:
-        if nutr not in food_df.columns:
+    # Build candidate deficient nutrients using GAP RATIO
+    candidates = []
+    for k, gap in (gaps or {}).items():
+        if k.endswith("_upper"):
+            continue
+        if not _is_number(gap) or float(gap) <= 0:
+            continue
+        req = requirements.get(k)
+        if not _is_number(req) or float(req) <= 0:
+            continue
+        if k not in food_df.columns:
             continue
 
-        tmp = food_df[["food_id", "food_name", "serving_basis", "serving_size_g", nutr]].copy()
-        tmp = tmp.dropna(subset=["food_name", nutr])
+        ratio = float(gap) / float(req)  # <-- key fix
+        candidates.append((k, float(gap), float(req), float(ratio)))
 
-        # numeric sort
-        tmp[nutr] = tmp[nutr].astype(float, errors="ignore")
-        tmp = tmp.sort_values(by=nutr, ascending=False)
+    # Sort by ratio (severity) not by raw values
+    candidates.sort(key=lambda x: x[3], reverse=True)
 
-        for _, r in tmp.head(50).iterrows():
-            fid = str(r.get("food_id", "")).strip()
-            fname = str(r.get("food_name", "")).strip()
-            if not fname:
+    # Pick a set of nutrients (prefer variety, up to 6)
+    top = candidates[:6]
+    if not top:
+        return []
+
+    top_nutrients = [t[0] for t in top]
+    weight_by_nutr = {k: max(0.15, min(ratio, 2.0)) for k, _, _, ratio in top}  # clamp weights
+
+    # Prepare a working dataframe with required columns
+    base_cols = ["food_id", "food_name", "serving_basis", "serving_size_g"]
+    cols = [c for c in base_cols if c in food_df.columns] + top_nutrients
+    df = food_df[cols].copy()
+
+    # Ensure numeric
+    for nutr in top_nutrients:
+        df[nutr] = pd.to_numeric(df[nutr], errors="coerce")
+
+    df = df.dropna(subset=["food_name"])
+    df = df[df["food_name"].astype(str).map(ok_food_name)]
+
+    # Compute multi-nutrient score:
+    # score = Σ ( (value / requirement) * weight )
+    # cap each nutrient contribution so one nutrient doesn't dominate
+    def compute_score(row) -> float:
+        s = 0.0
+        for nutr in top_nutrients:
+            v = row.get(nutr, None)
+            if v is None or not _is_number(v):
                 continue
-            key = fname.lower()
-
-            if key in used:
+            req = float(requirements.get(nutr, 1.0) or 1.0)
+            if req <= 0:
                 continue
-            if not ok_food_name(fname):
-                continue
+            contrib = float(v) / req
+            contrib = min(contrib, 1.5)  # cap
+            s += contrib * float(weight_by_nutr.get(nutr, 0.2))
+        return s
 
-            item = {
-                "food_id": fid,
-                "food_name": fname,
-                "serving_basis": r.get("serving_basis", ""),
-                "serving_size_g": r.get("serving_size_g", None),
-                nutr: float(r.get(nutr, 0.0)),
-            }
+    df["_score"] = df.apply(compute_score, axis=1)
+    df = df.sort_values(by="_score", ascending=False)
 
-            # include a second important nutrient if exists
-            for extra in ["calcium_mg", "iron_mg", "protein_g", "fiber_g", "potassium_mg", "vitamin_c_mg"]:
-                if extra != nutr and extra in food_df.columns and extra in r.index and _is_number(r.get(extra)):
-                    item[extra] = float(r.get(extra))
-                    break
+    # Deduplicate by food_name
+    used = set()
+    recs = []
 
-            recs.append(item)
-            used.add(key)
-            if len(recs) >= limit:
-                return recs
+    for _, r in df.head(200).iterrows():
+        fname = str(r.get("food_name", "")).strip()
+        if not fname:
+            continue
+        key = fname.lower()
+        if key in used:
+            continue
 
-    return recs[:limit]
+        item = {
+            "food_id": str(r.get("food_id", "")).strip(),
+            "food_name": fname,
+            "serving_basis": r.get("serving_basis", ""),
+            "serving_size_g": r.get("serving_size_g", None),
+        }
+
+        # Attach multiple nutrient values (top 4)
+        nutr_values = []
+        for nutr in top_nutrients:
+            v = r.get(nutr, None)
+            if _is_number(v) and float(v) > 0:
+                nutr_values.append((nutr, float(v)))
+
+        nutr_values.sort(key=lambda x: x[1], reverse=True)
+        for nutr, v in nutr_values[:4]:
+            item[nutr] = v
+
+        recs.append(item)
+        used.add(key)
+
+        if len(recs) >= limit:
+            break
+
+    return recs
 
 
 def build_report(app, user_id: str, period: str = "monthly") -> Dict:
     """
     GET /api/nutrition/report?user_id=demo&period=monthly
-
-    Returns:
-      profile
-      requirements_base
-      requirements (condition adjusted)
-      condition_notes
-      intake_summary
-      gaps
-      severity
-      recommendations
     """
     user_id = (user_id or "demo").strip() or "demo"
     period = (period or "monthly").strip().lower()
 
-    # datasets
     food_df, req_df, cond_df = get_datasets(app)
     if req_df is None or req_df.empty:
         raise RuntimeError("Requirements dataset is empty or not loaded.")
 
-    # profile
     profile = get_profile(app, user_id) or {}
     age = profile.get("age", 22)
     group = profile.get("group", "male")
     conditions = profile.get("conditions", []) or []
 
-    # sanitize age
     try:
         age = int(age)
     except Exception:
         age = 22
 
-    # requirements base row
     base_row = _pick_requirement_row(req_df, age, group)
 
     requirements_base = {
@@ -281,16 +285,11 @@ def build_report(app, user_id: str, period: str = "monthly") -> Dict:
         **_clean_numeric_dict(base_row),
     }
 
-    # apply condition adjustments
     requirements, condition_notes = _apply_condition_rules(requirements_base, cond_df, conditions)
 
-    # intake summary (contains totals + daily averages)
     intake_summary = get_summary(app, user_id, period)
-
-    # ✅ Use period-based daily average for gap calculation (realistic)
     intake_daily = intake_summary.get("daily_average_over_period") or intake_summary.get("daily_average") or {}
 
-    # gaps + severity
     gaps = {}
     severity = {}
 
@@ -303,10 +302,9 @@ def build_report(app, user_id: str, period: str = "monthly") -> Dict:
         req_val = float(req_val)
         intake_val = float(intake_daily.get(k, 0.0)) if _is_number(intake_daily.get(k)) else 0.0
 
-        # Upper limits: treat as "excess"
         if k.endswith("_upper"):
             excess = intake_val - req_val
-            gaps[k] = round(excess, 4)  # >0 means exceeded
+            gaps[k] = round(excess, 4)
             severity[k] = "high" if excess > 0 else "ok"
             continue
 
@@ -314,11 +312,10 @@ def build_report(app, user_id: str, period: str = "monthly") -> Dict:
         gaps[k] = round(gap, 4)
         severity[k] = _severity_from_gap(gap, req_val)
 
-    # recommendations based on gap nutrients
-    recommendations = _pick_recommendations(food_df, gaps, limit=8)
+    # recommendations: ratio-based + multi-nutrient scoring
+    recommendations = _pick_recommendations(food_df, gaps, requirements, limit=8)
 
-    # final shape
-    out = {
+    return {
         "user_id": user_id,
         "period": period,
         "profile": {
@@ -335,5 +332,3 @@ def build_report(app, user_id: str, period: str = "monthly") -> Dict:
         "severity": severity,
         "recommendations": recommendations,
     }
-
-    return out

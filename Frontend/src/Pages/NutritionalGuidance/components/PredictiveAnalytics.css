@@ -1,179 +1,195 @@
-/* =========================================================
-   Predictive Analytics – Layout
-========================================================= */
+/* src/Pages/NutritionalGuidance/Components/PredictiveAnalytics.css */
 
 .pa-wrap {
-  padding: 24px;
-  max-width: 1400px;
-  margin: 0 auto;
+  max-width: 1200px;
 }
 
-.pa-head {
+/* ✅ Hero like MealLogger (no SmartKitchen) */
+.pa-hero {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 16px;
-  margin-bottom: 20px;
+  gap: 14px;
+  margin-bottom: 14px;
+
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(23, 176, 108, 0.35);
+  background:
+    radial-gradient(900px 320px at 15% 0%, rgba(20, 168, 94, 0.25), transparent),
+    radial-gradient(900px 320px at 85% 30%, rgba(34, 197, 94, 0.18), transparent),
+    linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(16, 185, 129, 0.22));
+  box-shadow: 0 12px 28px rgba(2, 6, 23, 0.18);
 }
 
 .pa-title {
-  font-size: 24px;
-  font-weight: 800;
   margin: 0;
-  color: #0f172a;
+  font-size: 22px;
+  font-weight: 1000;
+  color: #e2e8f0;
 }
 
 .pa-subtitle {
-  font-size: 14px;
-  color: #64748b;
-  margin-top: 4px;
-}
-
-.pa-subtitle2 {
+  margin: 6px 0 0 0;
+  color: rgba(226, 232, 240, 0.82);
   font-size: 13px;
-  color: #64748b;
-  margin-top: 8px;
-  line-height: 1.4;
+  line-height: 1.45;
 }
 
-/* =========================================================
-   Controls
-========================================================= */
-
-.pa-controls {
+.pa-meta {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
+.pa-pill {
+  padding: 8px 10px;
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: 12px;
+  color: rgba(226, 232, 240, 0.95);
+  border: 1px solid rgba(20, 168, 94, 0.35);
+  background: rgba(15, 23, 42, 0.35);
+  box-shadow: 0 0 0 6px rgba(16, 185, 129, 0.10);
+}
+
+/* controls row */
+.pa-controlsRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.pa-hint {
+  font-size: 12px;
+  color: rgba(15, 23, 42, 0.65);
+}
+
+/* Segmented control */
 .seg {
   display: inline-flex;
   border-radius: 999px;
-  background: #f1f5f9;
+  background: rgba(15, 23, 42, 0.06);
   padding: 3px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
 }
 
 .seg-btn {
   border: none;
   background: transparent;
-  padding: 6px 14px;
+  padding: 7px 14px;
   font-size: 13px;
-  font-weight: 600;
-  color: #334155;
+  font-weight: 900;
+  color: rgba(15, 23, 42, 0.80);
   border-radius: 999px;
   cursor: pointer;
 }
 
 .seg-btn.active {
-  background: #0ea5e9;
+  background: linear-gradient(135deg, rgba(5, 150, 105, 0.95), rgba(16, 185, 129, 0.88));
   color: #fff;
 }
 
-.refresh-btn {
-  border: none;
-  background: #0f172a;
-  color: #fff;
-  padding: 8px 14px;
-  font-size: 13px;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.refresh-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-/* =========================================================
-   Alerts
-========================================================= */
-
+/* Alerts */
 .pa-alert {
-  background: #f1f5f9;
-  padding: 12px;
-  border-radius: 10px;
-  margin-bottom: 16px;
-  font-size: 14px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(148, 163, 184, 0.25);
+  margin-bottom: 12px;
+  font-weight: 800;
+  font-size: 13px;
 }
 
 .pa-alert-error {
-  background: #fee2e2;
-  color: #991b1b;
+  background: rgba(239, 68, 68, 0.10);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  color: rgba(127, 29, 29, 0.95);
 }
 
-/* =========================================================
-   Grid & Cards
-========================================================= */
-
+/* Grid & Cards */
 .pa-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 16px;
-  margin-bottom: 18px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 12px;
 }
 
 .pa-card {
-  background: #ffffff;
-  border-radius: 14px;
-  padding: 16px;
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
-  border: 1px solid #e2e8f0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(241, 245, 249, 0.94));
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 16px;
+  padding: 14px;
+  box-shadow: 0 10px 24px rgba(2, 6, 23, 0.08);
 }
 
 .pa-card-title {
-  font-size: 14px;
-  font-weight: 700;
-  color: #0f172a;
+  font-weight: 1000;
   margin-bottom: 10px;
+  color: rgba(15, 23, 42, 0.9);
 }
 
-/* =========================================================
-   ML Risk Highlight
-========================================================= */
-
-.pa-card:first-child {
-  border-left: 6px solid #0ea5e9;
-  background: linear-gradient(135deg, #f0f9ff, #ffffff);
+.pa-subtitle2 {
+  font-size: 12px;
+  color: rgba(15, 23, 42, 0.65);
+  margin-top: 8px;
+  line-height: 1.45;
 }
 
-/* =========================================================
-   Key–Value Blocks
-========================================================= */
+/* ML card */
+.pa-ml {
+  border-left: 6px solid rgba(16, 185, 129, 0.55);
+}
 
+.pa-riskValue {
+  font-size: 24px;
+  font-weight: 1100;
+  margin-top: 2px;
+}
+
+.risk-low .pa-riskValue {
+  color: rgba(22, 163, 74, 1);
+}
+
+.risk-med .pa-riskValue {
+  color: rgba(245, 158, 11, 1);
+}
+
+.risk-high .pa-riskValue {
+  color: rgba(220, 38, 38, 1);
+}
+
+/* Key–Value blocks */
 .pa-kv {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
+  gap: 10px;
 }
 
 .pa-kv .k {
   font-size: 12px;
-  color: #64748b;
+  color: rgba(15, 23, 42, 0.65);
+  font-weight: 900;
 }
 
 .pa-kv .v {
   font-size: 14px;
-  font-weight: 700;
-  color: #0f172a;
+  font-weight: 1000;
+  color: rgba(15, 23, 42, 0.92);
 }
-
-/* =========================================================
-   Notes
-========================================================= */
 
 .pa-note {
   margin-top: 10px;
-  font-size: 13px;
-  color: #475569;
-  background: #f8fafc;
+  font-size: 12px;
+  color: rgba(15, 23, 42, 0.70);
+  background: rgba(16, 185, 129, 0.08);
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(16, 185, 129, 0.18);
 }
 
-/* =========================================================
-   Condition Notes
-========================================================= */
-
+/* Condition notes */
 .pa-notes {
   padding-left: 18px;
   margin: 0;
@@ -182,15 +198,12 @@
 .pa-notes li {
   font-size: 13px;
   margin-bottom: 6px;
-  color: #334155;
+  color: rgba(15, 23, 42, 0.78);
 }
 
-/* =========================================================
-   Table
-========================================================= */
-
+/* Table */
 .pa-table-card {
-  margin-top: 16px;
+  margin-bottom: 12px;
 }
 
 .pa-table-wrap {
@@ -203,98 +216,85 @@
   font-size: 13px;
 }
 
-.pa-table th {
-  text-align: left;
-  padding: 10px;
-  background: #f8fafc;
-  color: #334155;
-  font-weight: 700;
-  border-bottom: 1px solid #e2e8f0;
-}
-
+.pa-table th,
 .pa-table td {
-  padding: 10px;
-  border-bottom: 1px solid #e2e8f0;
+  text-align: left;
+  padding: 10px 8px;
+  border-bottom: 1px solid rgba(241, 245, 249, 1);
 }
 
-.pa-table .nut {
-  font-weight: 600;
+.pa-table th {
+  font-size: 12px;
+  color: rgba(15, 23, 42, 0.60);
+  font-weight: 1000;
+}
+
+.nut {
+  font-weight: 1000;
 }
 
 .gap-pos {
-  color: #dc2626;
-  font-weight: 700;
+  color: rgba(220, 38, 38, 1);
+  font-weight: 1000;
 }
 
 .gap-ok {
-  color: #16a34a;
-  font-weight: 700;
+  color: rgba(22, 163, 74, 1);
+  font-weight: 1000;
 }
 
-/* =========================================================
-   Severity Badges
-========================================================= */
-
+/* Severity badges */
 .sev {
   padding: 4px 10px;
   border-radius: 999px;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 1000;
 }
 
 .sev-ok {
-  background: #dcfce7;
-  color: #166534;
+  background: rgba(16, 185, 129, 0.12);
+  color: rgba(6, 95, 70, 0.95);
+  border: 1px solid rgba(16, 185, 129, 0.25);
 }
 
 .sev-low {
-  background: #fef9c3;
-  color: #854d0e;
+  background: rgba(245, 158, 11, 0.12);
+  color: rgba(120, 53, 15, 0.95);
+  border: 1px solid rgba(245, 158, 11, 0.25);
 }
 
 .sev-mod {
-  background: #fee2e2;
-  color: #991b1b;
+  background: rgba(239, 68, 68, 0.10);
+  color: rgba(127, 29, 29, 0.95);
+  border: 1px solid rgba(239, 68, 68, 0.25);
 }
 
 .sev-high {
-  background: #fecaca;
-  color: #7f1d1d;
+  background: rgba(239, 68, 68, 0.14);
+  color: rgba(127, 29, 29, 0.95);
+  border: 1px solid rgba(239, 68, 68, 0.30);
 }
 
-/* =========================================================
-   Recommendations
-========================================================= */
-
+/* Recommendations */
 .rec-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 14px;
+  gap: 12px;
   margin-top: 10px;
 }
 
 .rec-item {
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 14px;
   padding: 12px;
-  background: #f8fafc;
+  background: rgba(255, 255, 255, 0.85);
 }
 
 .rec-name {
-  font-weight: 700;
+  font-weight: 1100;
   font-size: 14px;
-  margin-bottom: 6px;
-  color: #0f172a;
-}
-
-.rec-meta {
-  font-size: 12px;
-  color: #64748b;
   margin-bottom: 8px;
-}
-
-.rec-meta span {
-  margin-right: 6px;
+  color: rgba(15, 23, 42, 0.92);
 }
 
 .rec-nutrients {
@@ -304,14 +304,37 @@
 }
 
 .pill {
-  background: #e0f2fe;
-  color: #0369a1;
+  background: rgba(16, 185, 129, 0.12);
+  color: rgba(5, 150, 105, 1);
   font-size: 11px;
-  padding: 4px 8px;
+  padding: 4px 10px;
   border-radius: 999px;
+  border: 1px solid rgba(16, 185, 129, 0.22);
+  font-weight: 900;
 }
 
 .muted {
-  color: #94a3b8;
+  color: rgba(15, 23, 42, 0.55);
   font-size: 13px;
+}
+
+@media (max-width: 950px) {
+  .pa-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pa-hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .pa-meta {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .pa-controlsRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
