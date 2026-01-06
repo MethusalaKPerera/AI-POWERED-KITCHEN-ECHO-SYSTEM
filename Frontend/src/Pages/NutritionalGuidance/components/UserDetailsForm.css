@@ -1,10 +1,9 @@
-/* src/Pages/NutritionalGuidance/Components/UserDetailsForm.css */
 
 .ud-wrap {
   max-width: 1000px;
 }
 
-/* ✅ Hero / Header (same style as MealLogger) */
+/*  Hero / Header  */
 .ud-hero {
   display: flex;
   justify-content: space-between;

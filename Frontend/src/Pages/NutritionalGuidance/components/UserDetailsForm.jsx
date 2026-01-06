@@ -91,7 +91,7 @@ export default function UserDetailsForm({ userId = DEFAULT_USER_ID }) {
 
   return (
     <div className="ud-wrap">
-      {/* ✅ Hero header (same style as MealLogger / NutritionTracker) */}
+      {/* Hero header (same style as MealLogger / NutritionTracker) */}
       <div className="ud-hero">
         <div>
           <h2 className="ud-title">User Profile</h2>

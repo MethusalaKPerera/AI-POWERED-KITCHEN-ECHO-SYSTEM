@@ -574,5 +574,37 @@
     "quantity": 1.0,
     "date": "2026-01-06",
     "ts": "2026-01-06T05:14:35.930108Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0074",
+    "food_name": "Kottu Roti",
+    "quantity": 1.0,
+    "date": "2026-01-06",
+    "ts": "2026-01-06T17:20:03.752714Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0073",
+    "food_name": "Pol Roti",
+    "quantity": 1.0,
+    "date": "2026-01-07",
+    "ts": "2026-01-06T18:31:36.904555Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0073",
+    "food_name": "Pol Roti",
+    "quantity": 1.0,
+    "date": "2026-01-07",
+    "ts": "2026-01-06T18:45:39.573845Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0005",
+    "food_name": "Boiled Egg",
+    "quantity": 1.0,
+    "date": "2026-01-07",
+    "ts": "2026-01-06T18:49:44.023882Z"
   }
 ]

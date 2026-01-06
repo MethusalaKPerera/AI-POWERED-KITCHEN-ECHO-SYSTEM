@@ -1,10 +1,9 @@
-/* src/Pages/NutritionalGuidance/Components/NutritionTracker.css */
 
 .nt-wrap {
   max-width: 1100px;
 }
 
-/* ✅ Hero / Header (same as MealLogger) */
+/* Hero / Header section */
 .nt-hero {
   display: flex;
   justify-content: space-between;

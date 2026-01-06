@@ -140,7 +140,7 @@ export default function NutritionTracker({ userId = DEFAULT_USER_ID }) {
 
   return (
     <div className="nt-wrap">
-      {/* ✅ HERO (same style as MealLogger, no SmartKitchen text) */}
+      {/*  HERO section */}
       <div className="nt-hero">
         <div>
           <h2 className="nt-title">Nutrition Tracker</h2>
