@@ -1,6 +1,6 @@
 from flask import Blueprint, current_app, request
 
-# ✅ IMPORT SERVICES ONLY (NO ROUTE IMPORTS)
+# IMPORT SERVICES ONLY (NO ROUTE IMPORTS)
 from NutritionGuidance.services.profile_store import get_profile, save_profile
 from NutritionGuidance.services.food_search import search_foods
 from NutritionGuidance.services.intake_store import add_intake, get_summary
@@ -121,16 +121,35 @@ def ml_risk():
     user_id = request.args.get("user_id", "demo")
     period = request.args.get("period", "monthly")
 
-    profile = get_profile(current_app, user_id)
-    age = int(profile.get("age", 22))
+    profile = get_profile(current_app, user_id) or {}
 
-    summary = get_summary(current_app, user_id, period)
-    avg = summary.get("daily_average_over_period", {})
+    # Safe age parsing
+    try:
+        age = int(profile.get("age") or 22)
+    except Exception:
+        age = 22
 
-    risk = predict_risk(age, avg)
+    # Summary + avg fallback
+    summary = get_summary(current_app, user_id, period) or {}
+    avg = summary.get("daily_average_over_period") or summary.get("daily_average") or {}
+
+    # Condition: pick first (you can enhance later to support multiple)
+    conditions = profile.get("conditions") or []
+    condition = conditions[0] if isinstance(conditions, list) and len(conditions) > 0 else None
+
+    risk = predict_risk(age, avg, condition=condition)
 
     return {
         "user_id": user_id,
         "period": period,
         "ml_deficiency_risk": risk,
+        "age": age,
+        "condition": condition,
+        "inputs_used": {
+            "energy_kcal": float(avg.get("energy_kcal", 0) or 0),
+            "protein_g": float(avg.get("protein_g", 0) or 0),
+            "calcium_mg": float(avg.get("calcium_mg", 0) or 0),
+            "iron_mg": float(avg.get("iron_mg", 0) or 0),
+        }
     }
+

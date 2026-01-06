@@ -1,4 +1,3 @@
-// src/Pages/NutritionalGuidance/Components/MealLogger.jsx
 
 import React, { useEffect, useMemo, useState } from "react";
 import { addIntake, searchFoods, DEFAULT_USER_ID } from "../../../services/nutritionApi";
