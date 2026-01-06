@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { getIntakeSummary } from "../../../services/nutritionApi";
+import { getIntakeSummary, DEFAULT_USER_ID } from "../../../services/nutritionApi";
 import "./NutritionTracker.css";
 
 function fmt(num) {
@@ -62,8 +62,7 @@ function MiniBars({ title, items, unit = "" }) {
   );
 }
 
-export default function NutritionTracker({ userId = "demo" }) {
-  // Default to monthly so the first view shows the full 30-day eating pattern.
+export default function NutritionTracker({ userId = DEFAULT_USER_ID }) {
   const [period, setPeriod] = useState("monthly");
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState("");
@@ -73,7 +72,7 @@ export default function NutritionTracker({ userId = "demo" }) {
     setLoading(true);
     setErr("");
     try {
-      const data = await getIntakeSummary(userId, period);
+      const data = await getIntakeSummary(userId || DEFAULT_USER_ID, period);
       setSummary(data);
     } catch (e) {
       setErr(e.message || "Failed to load summary");
@@ -91,10 +90,7 @@ export default function NutritionTracker({ userId = "demo" }) {
   const nutrients = useMemo(() => {
     if (!summary) return [];
     const totals = summary.totals || {};
-
-    // Use daily_average_over_period (7 or 30), fallback to daily_average
     const avg = summary.daily_average_over_period || summary.daily_average || {};
-
     const keys = Object.keys(totals);
 
     const priority = [
@@ -133,7 +129,6 @@ export default function NutritionTracker({ userId = "demo" }) {
   const topDaily = useMemo(() => {
     if (!summary) return [];
     const a = summary.daily_average_over_period || summary.daily_average || {};
-
     return [
       { label: "Energy", value: a.energy_kcal || 0 },
       { label: "Protein", value: a.protein_g || 0 },
@@ -145,7 +140,8 @@ export default function NutritionTracker({ userId = "demo" }) {
 
   return (
     <div className="nt-wrap">
-      <div className="nt-head">
+      {/* ✅ HERO (same style as MealLogger, no SmartKitchen text) */}
+      <div className="nt-hero">
         <div>
           <h2 className="nt-title">Nutrition Tracker</h2>
           <p className="nt-subtitle">
@@ -153,26 +149,31 @@ export default function NutritionTracker({ userId = "demo" }) {
           </p>
         </div>
 
-        <div className="nt-controls">
-          <div className="seg">
-            <button
-              className={period === "weekly" ? "seg-btn active" : "seg-btn"}
-              onClick={() => setPeriod("weekly")}
-              type="button"
-            >
-              Weekly
-            </button>
-            <button
-              className={period === "monthly" ? "seg-btn active" : "seg-btn"}
-              onClick={() => setPeriod("monthly")}
-              type="button"
-            >
-              Last 30 Days
-            </button>
+        <div className="nt-meta">
+          <div className="nt-pill">
+            User: <b>{userId || DEFAULT_USER_ID}</b>
           </div>
+        </div>
+      </div>
 
-          <button className="refresh-btn" onClick={load} type="button" disabled={loading}>
-            {loading ? "Loading..." : "Refresh"}
+      {/* Period toggle (no refresh button) */}
+      <div className="nt-controls">
+        <div className="seg">
+          <button
+            className={period === "weekly" ? "seg-btn active" : "seg-btn"}
+            onClick={() => setPeriod("weekly")}
+            type="button"
+            disabled={loading}
+          >
+            Weekly
+          </button>
+          <button
+            className={period === "monthly" ? "seg-btn active" : "seg-btn"}
+            onClick={() => setPeriod("monthly")}
+            type="button"
+            disabled={loading}
+          >
+            Last 30 Days
           </button>
         </div>
       </div>
@@ -225,9 +226,9 @@ export default function NutritionTracker({ userId = "demo" }) {
                   <div className="v">{summary.user_id}</div>
                 </div>
               </div>
+
               <div className="nt-note">
-                Now averages are calculated across the full period ({summary.period_days} days),
-                so weekly/last-30-days will differ properly.
+                Averages are calculated across the full period ({summary.period_days} days).
               </div>
             </div>
 

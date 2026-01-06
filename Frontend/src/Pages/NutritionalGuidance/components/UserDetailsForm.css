@@ -1,60 +1,91 @@
+/* src/Pages/NutritionalGuidance/Components/UserDetailsForm.css */
+
 .ud-wrap {
   max-width: 1000px;
 }
 
-.ud-head {
+/* ✅ Hero / Header (same style as MealLogger) */
+.ud-hero {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 12px;
-  margin-bottom: 12px;
+  gap: 14px;
+  margin-bottom: 14px;
+
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(23, 176, 108, 0.35);
+  background:
+    radial-gradient(900px 320px at 15% 0%, rgba(20, 168, 94, 0.25), transparent),
+    radial-gradient(900px 320px at 85% 30%, rgba(34, 197, 94, 0.18), transparent),
+    linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(16, 185, 129, 0.22));
+  box-shadow: 0 12px 28px rgba(2, 6, 23, 0.18);
 }
 
 .ud-title {
   margin: 0;
   font-size: 22px;
-  font-weight: 900;
+  font-weight: 1000;
+  color: #e2e8f0;
 }
 
 .ud-subtitle {
   margin: 6px 0 0 0;
-  opacity: 0.8;
+  color: rgba(226, 232, 240, 0.82);
+  font-size: 13px;
+  line-height: 1.45;
 }
 
-.ud-refresh {
-  padding: 8px 12px;
-  border-radius: 12px;
-  border: 1px solid #cbd5e1;
-  background: white;
-  font-weight: 800;
-  cursor: pointer;
+.ud-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
+.ud-pill {
+  padding: 8px 10px;
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: 12px;
+  color: rgba(226, 232, 240, 0.95);
+  border: 1px solid rgba(20, 168, 94, 0.35);
+  background: rgba(15, 23, 42, 0.35);
+  box-shadow: 0 0 0 6px rgba(16, 185, 129, 0.10);
+}
+
+/* Alerts */
 .ud-alert {
+  margin-top: 12px;
   padding: 10px 12px;
   border-radius: 12px;
-  margin-bottom: 10px;
   border: 1px solid transparent;
+  font-weight: 800;
+  font-size: 13px;
 }
 
 .ud-error {
-  background: #fee2e2;
-  color: #991b1b;
-  border-color: #fecaca;
+  background: rgba(239, 68, 68, 0.10);
+  border-color: rgba(239, 68, 68, 0.25);
+  color: rgba(127, 29, 29, 0.95);
 }
 
 .ud-ok {
-  background: #d1fae5;
-  color: #065f46;
-  border-color: #a7f3d0;
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.25);
+  color: rgba(6, 95, 70, 0.95);
 }
 
+/* Card */
 .ud-card {
-  background: white;
-  border: 1px solid #e2e8f0;
-  border-radius: 14px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.94),
+    rgba(241, 245, 249, 0.94)
+  );
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 16px;
   padding: 14px;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 10px 24px rgba(2, 6, 23, 0.08);
 }
 
 .ud-grid {
@@ -70,16 +101,23 @@
 
 .ud-label {
   font-size: 12px;
-  opacity: 0.75;
-  font-weight: 800;
+  font-weight: 950;
+  color: rgba(15, 23, 42, 0.85);
 }
 
 .ud-input {
   width: 100%;
   padding: 10px 12px;
   border-radius: 12px;
-  border: 1px solid #cbd5e1;
+  border: 1px solid rgba(148, 163, 184, 0.55);
   outline: none;
+  background: rgba(255, 255, 255, 0.88);
+  color: rgba(15, 23, 42, 0.95);
+}
+
+.ud-input:focus {
+  border-color: rgba(16, 185, 129, 0.60);
+  box-shadow: 0 0 0 5px rgba(16, 185, 129, 0.14);
 }
 
 .ud-section {
@@ -87,8 +125,9 @@
 }
 
 .ud-section-title {
-  font-weight: 900;
+  font-weight: 1000;
   margin-bottom: 10px;
+  color: rgba(15, 23, 42, 0.9);
 }
 
 .ud-muted {
@@ -105,36 +144,78 @@
 .ud-chip {
   padding: 8px 12px;
   border-radius: 999px;
-  border: 1px solid #cbd5e1;
-  background: white;
+  border: 1px solid rgba(148, 163, 184, 0.55);
+  background: rgba(255, 255, 255, 0.9);
   cursor: pointer;
-  font-weight: 800;
+  font-weight: 900;
   font-size: 13px;
 }
 
-.ud-chip.active {
-  border-color: #0ea5e9;
-  background: rgba(14, 165, 233, 0.12);
+.ud-chip:hover {
+  background: rgba(16, 185, 129, 0.08);
 }
 
+.ud-chip.active {
+  border-color: rgba(16, 185, 129, 0.55);
+  background: rgba(16, 185, 129, 0.12);
+}
+
+/* Actions (center button) */
 .ud-actions {
   margin-top: 14px;
+
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
 .ud-save {
-  padding: 10px 14px;
-  border-radius: 12px;
+  padding: 11px 18px;
+  border-radius: 14px;
   border: none;
-  background: #0ea5e9;
-  color: white;
-  font-weight: 900;
   cursor: pointer;
+  font-weight: 1000;
+  color: white;
+
+  min-width: 220px;
+  text-align: center;
+
+  background: linear-gradient(135deg, rgba(5, 150, 105, 0.95), rgba(16, 185, 129, 0.88));
+  box-shadow: 0 12px 24px rgba(16, 185, 129, 0.18);
 }
 
+.ud-save:hover {
+  transform: translateY(-1px);
+}
+
+.ud-save:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.ud-tip {
+  font-size: 12px;
+  color: rgba(15, 23, 42, 0.65);
+  text-align: center;
+  max-width: 520px;
+}
+
+/* Responsive */
 @media (max-width: 900px) {
   .ud-grid {
     grid-template-columns: 1fr;
+  }
+
+  .ud-hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ud-meta {
+    width: 100%;
+    justify-content: flex-start;
   }
 }

@@ -558,5 +558,21 @@
     "quantity": 1.0,
     "date": "2025-12-31",
     "ts": "2026-01-05T08:01:41.102389Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0074",
+    "food_name": "Kottu Roti",
+    "quantity": 1.0,
+    "date": "2026-01-06",
+    "ts": "2026-01-06T04:48:32.596134Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0252",
+    "food_name": "Carrot and fenugreek leaves (Gajar methi)",
+    "quantity": 1.0,
+    "date": "2026-01-06",
+    "ts": "2026-01-06T05:14:35.930108Z"
   }
 ]

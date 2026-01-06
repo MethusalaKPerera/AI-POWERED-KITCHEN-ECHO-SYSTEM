@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { getReport, getMLRisk } from "../../../services/nutritionApi";
+import { getReport, getMLRisk, DEFAULT_USER_ID } from "../../../services/nutritionApi";
 import "./PredictiveAnalytics.css";
 
 function fmt(num) {
@@ -54,26 +54,72 @@ function SeverityBadge({ level }) {
   return <span className={cls}>{text}</span>;
 }
 
-export default function PredictiveAnalytics({ userId = "demo" }) {
+/**
+ * ✅ NEW helper:
+ * Show ALL important nutrient fields that exist in the food row.
+ * (This avoids "only potassium" feeling.)
+ */
+const IMPORTANT_NUTRIENTS = [
+  "energy_kcal",
+  "protein_g",
+  "carbohydrate_g",
+  "fat_g",
+  "fiber_g",
+  "sugar_g",
+  "calcium_mg",
+  "iron_mg",
+  "zinc_mg",
+  "magnesium_mg",
+  "potassium_mg",
+  "sodium_mg",
+  "vitamin_c_mg",
+  "vitamin_a_ug",
+  "vitamin_d_ug",
+  "vitamin_b12_ug",
+  "folate_ug",
+];
+
+function getFoodNutrientPills(food) {
+  if (!food) return [];
+
+  // Take only nutrient keys that exist in the food object
+  const entries = IMPORTANT_NUTRIENTS
+    .filter((k) => Object.prototype.hasOwnProperty.call(food, k))
+    .map((k) => [k, food[k]]);
+
+  // Keep numeric + meaningful values
+  const cleaned = entries
+    .map(([k, v]) => [k, Number(v)])
+    .filter(([_, v]) => Number.isFinite(v) && v > 0);
+
+  // Sort by strongest nutrient amount (descending)
+  cleaned.sort((a, b) => b[1] - a[1]);
+
+  // Show many (but not unlimited). Increase if you want.
+  const MAX_PILLS = 10;
+
+  return cleaned.slice(0, MAX_PILLS).map(([k, v]) => ({
+    key: k,
+    label: labelize(k),
+    value: fmt(v),
+  }));
+}
+
+export default function PredictiveAnalytics({ userId = DEFAULT_USER_ID }) {
   const [period, setPeriod] = useState("monthly");
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState("");
-
   const [report, setReport] = useState(null);
-
-  // ✅ NEW ML state
   const [mlRisk, setMlRisk] = useState(null);
 
   const loadReport = async () => {
     setLoading(true);
     setErr("");
     try {
-      // ✅ load report + ml-risk together
       const [data, riskRes] = await Promise.all([
         getReport(userId, period),
         getMLRisk(userId, period),
       ]);
-
       setReport(data);
       setMlRisk(riskRes?.ml_deficiency_risk || null);
     } catch (e) {
@@ -90,7 +136,6 @@ export default function PredictiveAnalytics({ userId = "demo" }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [period, userId]);
 
-  // ✅ Realistic average: period-based if available
   const periodAvg = useMemo(() => {
     const s = report?.intake_summary;
     return s?.daily_average_over_period || s?.daily_average || {};
@@ -98,7 +143,6 @@ export default function PredictiveAnalytics({ userId = "demo" }) {
 
   const gapRows = useMemo(() => {
     if (!report?.gaps) return [];
-
     const gaps = report.gaps;
     const sev = report.severity || {};
     const req = report.requirements || {};
@@ -116,38 +160,50 @@ export default function PredictiveAnalytics({ userId = "demo" }) {
     return rows;
   }, [report, periodAvg]);
 
+  const riskTone = useMemo(() => {
+    const v = String(mlRisk || "").toUpperCase();
+    if (v === "HIGH") return "risk-high";
+    if (v === "MEDIUM") return "risk-med";
+    return "risk-low";
+  }, [mlRisk]);
+
   return (
     <div className="pa-wrap">
-      <div className="pa-head">
+      {/* Hero */}
+      <div className="pa-hero">
         <div>
           <h2 className="pa-title">Predictive Analytics</h2>
           <p className="pa-subtitle">
-            Deficiency report based on your age group, health conditions, and intake logs.
+            Deficiency report based on your profile, health conditions, and intake logs.
           </p>
         </div>
 
-        <div className="pa-controls">
-          <div className="seg">
-            <button
-              className={period === "weekly" ? "seg-btn active" : "seg-btn"}
-              onClick={() => setPeriod("weekly")}
-              type="button"
-            >
-              Weekly
-            </button>
-            <button
-              className={period === "monthly" ? "seg-btn active" : "seg-btn"}
-              onClick={() => setPeriod("monthly")}
-              type="button"
-            >
-              Monthly
-            </button>
+        <div className="pa-meta">
+          <div className="pa-pill">
+            User: <b>{userId || DEFAULT_USER_ID}</b>
           </div>
+        </div>
+      </div>
 
-          <button className="refresh-btn" onClick={loadReport} type="button" disabled={loading}>
-            {loading ? "Loading..." : "Refresh"}
+      {/* Period controls */}
+      <div className="pa-controlsRow">
+        <div className="seg">
+          <button
+            className={period === "weekly" ? "seg-btn active" : "seg-btn"}
+            onClick={() => setPeriod("weekly")}
+            type="button"
+          >
+            Weekly
+          </button>
+          <button
+            className={period === "monthly" ? "seg-btn active" : "seg-btn"}
+            onClick={() => setPeriod("monthly")}
+            type="button"
+          >
+            Monthly
           </button>
         </div>
+
       </div>
 
       {err && <div className="pa-alert pa-alert-error">{err}</div>}
@@ -156,35 +212,19 @@ export default function PredictiveAnalytics({ userId = "demo" }) {
       {!loading && report && (
         <>
           <div className="pa-grid">
-            {/* ✅ ML CARD (NEW) */}
-            {mlRisk && (
-              <div className="pa-card">
-                <div className="pa-card-title">ML Predicted Deficiency Risk</div>
-                <div
-                  style={{
-                    fontSize: 22,
-                    fontWeight: 900,
-                    color:
-                      mlRisk === "HIGH"
-                        ? "#dc2626"
-                        : mlRisk === "MEDIUM"
-                        ? "#f59e0b"
-                        : "#16a34a",
-                  }}
-                >
-                  {mlRisk}
-                </div>
-                <p className="pa-subtitle2">
-                  Generated using a supervised machine learning classifier based on intake patterns and demographic features.
-                </p>
-              </div>
-            )}
+            <div className={`pa-card pa-ml ${riskTone}`}>
+              <div className="pa-card-title">ML Predicted Deficiency Risk</div>
+              <div className="pa-riskValue">{mlRisk || "N/A"}</div>
+              <p className="pa-subtitle2">
+                Predicted using a supervised ML classifier based on intake patterns and demographic features.
+              </p>
+            </div>
 
             <div className="pa-card">
               <div className="pa-card-title">User Profile</div>
               <div className="pa-kv">
                 <div>
-                  <div className="k">User ID</div>
+                  <div className="k">User</div>
                   <div className="v">{report.profile?.user_id || userId}</div>
                 </div>
                 <div>
@@ -192,7 +232,7 @@ export default function PredictiveAnalytics({ userId = "demo" }) {
                   <div className="v">{report.profile?.age}</div>
                 </div>
                 <div>
-                  <div className="k">Group</div>
+                  <div className="k">Gender</div>
                   <div className="v">{report.profile?.group}</div>
                 </div>
                 <div>
@@ -235,10 +275,6 @@ export default function PredictiveAnalytics({ userId = "demo" }) {
                 </div>
               </div>
 
-              <div className="pa-note">
-                ✅ This report uses <b>period-based daily average</b> (totals / 7 or totals / 30),
-                so weekly/monthly become realistic even with low logs.
-              </div>
             </div>
 
             <div className="pa-card">
@@ -277,12 +313,8 @@ export default function PredictiveAnalytics({ userId = "demo" }) {
                       <td className="nut">{r.label}</td>
                       <td>{fmt(r.required)}</td>
                       <td>{fmt(r.intake)}</td>
-                      <td className={Number(r.gap) > 0 ? "gap-pos" : "gap-ok"}>
-                        {fmt(r.gap)}
-                      </td>
-                      <td>
-                        <SeverityBadge level={r.severity} />
-                      </td>
+                      <td className={Number(r.gap) > 0 ? "gap-pos" : "gap-ok"}>{fmt(r.gap)}</td>
+                      <td><SeverityBadge level={r.severity} /></td>
                     </tr>
                   ))}
                 </tbody>
@@ -290,50 +322,35 @@ export default function PredictiveAnalytics({ userId = "demo" }) {
             </div>
           </div>
 
+          {/* ✅ UPDATED RECOMMENDED FOODS */}
           <div className="pa-card">
             <div className="pa-card-title">Recommended Foods</div>
-            <p className="pa-subtitle2">
-              Foods selected from your dataset to support the top missing nutrients.
-            </p>
-
+      
             {report.recommendations?.length ? (
               <div className="rec-grid">
-                {report.recommendations.map((f) => (
-                  <div className="rec-item" key={f.food_id || f.food_name}>
-                    <div className="rec-name">{f.food_name}</div>
-                    <div className="rec-meta">
-                      {f.food_id ? <span>ID: {f.food_id}</span> : null}
-                      {f.serving_basis ? <span>• {f.serving_basis}</span> : null}
-                      {f.serving_size_g ? <span>• {f.serving_size_g}g</span> : null}
-                    </div>
+                {report.recommendations.map((f) => {
+                  const pills = getFoodNutrientPills(f);
 
-                    <div className="rec-nutrients">
-                      {Object.entries(f)
-                        .filter(([k]) =>
-                          [
-                            "protein_g",
-                            "fiber_g",
-                            "calcium_mg",
-                            "iron_mg",
-                            "zinc_mg",
-                            "magnesium_mg",
-                            "potassium_mg",
-                            "vitamin_c_mg",
-                            "vitamin_a_ug",
-                            "vitamin_d_ug",
-                            "vitamin_b12_ug",
-                            "folate_ug",
-                          ].includes(k)
-                        )
-                        .slice(0, 3)
-                        .map(([k, v]) => (
-                          <div className="pill" key={k}>
-                            {labelize(k)}: {fmt(v)}
-                          </div>
-                        ))}
+                  return (
+                    <div className="rec-item" key={f.food_id || f.food_name}>
+                      <div className="rec-name">{f.food_name}</div>
+
+                      {pills.length ? (
+                        <div className="rec-nutrients">
+                          {pills.map((p) => (
+                            <div className="pill" key={p.key}>
+                              {p.label}: {p.value}
+                            </div>
+                          ))}
+                        </div>
+                      ) : (
+                        <div className="muted">
+                          Nutrient values not available in this recommendation row.
+                        </div>
+                      )}
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             ) : (
               <div className="muted">No recommendations available yet.</div>

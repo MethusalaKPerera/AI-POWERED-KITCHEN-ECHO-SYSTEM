@@ -1,38 +1,71 @@
+/* src/Pages/NutritionalGuidance/Components/NutritionTracker.css */
+
 .nt-wrap {
   max-width: 1100px;
 }
 
-.nt-head {
+/* ✅ Hero / Header (same as MealLogger) */
+.nt-hero {
   display: flex;
-  gap: 14px;
-  align-items: flex-start;
   justify-content: space-between;
+  align-items: flex-start;
+  gap: 14px;
   margin-bottom: 14px;
+
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(23, 176, 108, 0.35);
+  background:
+    radial-gradient(900px 320px at 15% 0%, rgba(20, 168, 94, 0.25), transparent),
+    radial-gradient(900px 320px at 85% 30%, rgba(34, 197, 94, 0.18), transparent),
+    linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(16, 185, 129, 0.22));
+  box-shadow: 0 12px 28px rgba(2, 6, 23, 0.18);
 }
 
 .nt-title {
   margin: 0;
   font-size: 22px;
-  font-weight: 800;
+  font-weight: 1000;
+  color: #e2e8f0;
 }
 
 .nt-subtitle {
   margin: 6px 0 0 0;
-  opacity: 0.8;
+  color: rgba(226, 232, 240, 0.82);
+  font-size: 13px;
+  line-height: 1.45;
 }
 
+.nt-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nt-pill {
+  padding: 8px 10px;
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: 12px;
+  color: rgba(226, 232, 240, 0.95);
+  border: 1px solid rgba(20, 168, 94, 0.35);
+  background: rgba(15, 23, 42, 0.35);
+  box-shadow: 0 0 0 6px rgba(16, 185, 129, 0.10);
+}
+
+/* Controls (period toggle only) */
 .nt-controls {
   display: flex;
-  gap: 10px;
-  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 12px;
 }
 
 .seg {
   display: inline-flex;
-  border: 1px solid #cbd5e1;
+  border: 1px solid rgba(148, 163, 184, 0.55);
   border-radius: 12px;
   overflow: hidden;
-  background: white;
+  background: rgba(255, 255, 255, 0.92);
 }
 
 .seg-btn {
@@ -40,28 +73,27 @@
   border: none;
   background: transparent;
   cursor: pointer;
-  font-weight: 700;
+  font-weight: 900;
 }
 
 .seg-btn.active {
-  background: #0ea5e9;
+  background: rgba(5, 150, 105, 0.95);
   color: white;
 }
 
-.refresh-btn {
-  padding: 8px 12px;
-  border-radius: 12px;
-  border: 1px solid #cbd5e1;
-  background: white;
-  cursor: pointer;
-  font-weight: 700;
+.seg-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
+/* Alerts */
 .nt-alert {
   padding: 10px 12px;
   border-radius: 12px;
   background: #e2e8f0;
   margin-bottom: 12px;
+  font-weight: 800;
+  font-size: 13px;
 }
 
 .nt-alert-error {
@@ -69,6 +101,7 @@
   color: #991b1b;
 }
 
+/* Grid */
 .nt-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1.2fr;
@@ -76,17 +109,23 @@
   margin-bottom: 12px;
 }
 
+/* Cards */
 .nt-card {
-  background: white;
-  border: 1px solid #e2e8f0;
-  border-radius: 14px;
-  padding: 12px;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.04);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.94),
+    rgba(241, 245, 249, 0.94)
+  );
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 16px;
+  padding: 14px;
+  box-shadow: 0 10px 24px rgba(2, 6, 23, 0.08);
 }
 
 .nt-card-title {
-  font-weight: 800;
+  font-weight: 900;
   margin-bottom: 10px;
+  color: rgba(15, 23, 42, 0.9);
 }
 
 .nt-kv {
@@ -100,7 +139,7 @@
 }
 
 .nt-kv .v {
-  font-weight: 700;
+  font-weight: 900;
 }
 
 .nt-note {
@@ -123,7 +162,7 @@
 }
 
 .nt-bar-label {
-  font-weight: 800;
+  font-weight: 900;
   font-size: 12px;
   opacity: 0.9;
 }
@@ -137,13 +176,13 @@
 
 .nt-bar-fill {
   height: 100%;
-  background: #22c55e; /* green fill */
+  background: rgba(16, 185, 129, 0.95);
   border-radius: 999px;
 }
 
 .nt-bar-value {
   text-align: right;
-  font-weight: 800;
+  font-weight: 900;
   font-size: 12px;
   opacity: 0.9;
 }
@@ -175,12 +214,21 @@
   opacity: 0.75;
 }
 
-.nut {
-  font-weight: 900;
-}
-
+/* Responsive */
 @media (max-width: 1000px) {
   .nt-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .nt-hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nt-meta {
+    width: 100%;
+    justify-content: flex-start;
   }
 }
