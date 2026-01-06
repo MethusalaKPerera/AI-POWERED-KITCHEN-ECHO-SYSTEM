@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import "./DashboardHomeNG.css";
 
-// ✅ correct path based on your project structure
+// correct path based on your project structure
 import { getIntakeSummary } from "../../../services/nutritionApi";
 
 const DashboardHome = ({ userName = "demo", periodLabel = "This Month" }) => {
@@ -35,9 +35,24 @@ const DashboardHome = ({ userName = "demo", periodLabel = "This Month" }) => {
 
   // Stats (still placeholders - you can connect later)
   const stats = [
-    { title: "Nutrition Status", value: "Good", sub: periodLabel, icon: "🥗", tone: "good" },
+    {
+      title: "Nutrition Status",
+      value: "Good",
+      sub: periodLabel,
+      icon: "🥗",
+      tone: "good",
+    },
     { title: "Avg Calories", value: "2,150", sub: "kcal/day", icon: "⚡", tone: "info" },
-    { title: "Deficiency Risk", value: "LOW", sub: "ML prediction", icon: "🧠", tone: "safe" },
+
+    // ✅ UPDATED HERE
+    {
+      title: "Deficiency Risk",
+      value: "HIGH",
+      sub: "ML prediction",
+      icon: "🧠",
+      tone: "danger",
+    },
+
     { title: "Logged Days", value: "30", sub: "tracked days", icon: "📅", tone: "neutral" },
   ];
 
@@ -66,7 +81,8 @@ const DashboardHome = ({ userName = "demo", periodLabel = "This Month" }) => {
           </p>
 
           <p className="ngdash-note">
-            This module generates personalized nutrition reports using your profile, intake history, and predictive ML risk scoring.
+            This module generates personalized nutrition reports using your profile, intake history, and predictive ML
+            risk scoring.
           </p>
         </div>
 
@@ -102,9 +118,7 @@ const DashboardHome = ({ userName = "demo", periodLabel = "This Month" }) => {
           {err && <div className="ngdash-error">{err}</div>}
 
           {!loading && !err && topFoodNames.length === 0 && (
-            <div className="ngdash-empty">
-              No foods detected for this period. (Check user_id or date range.)
-            </div>
+            <div className="ngdash-empty">No foods detected for this period. (Check user_id or date range.)</div>
           )}
 
           {!loading && !err && topFoodNames.length > 0 && (
@@ -127,7 +141,8 @@ const DashboardHome = ({ userName = "demo", periodLabel = "This Month" }) => {
         <div className="ngdash-card">
           <h3>📄 Deficiency Report</h3>
           <p>
-            Compare your intake against age-based nutrient requirements and highlight deficiencies with clear recommendations.
+            Compare your intake against age-based nutrient requirements and highlight deficiencies with clear
+            recommendations.
           </p>
           <ul>
             <li>✓ Requirements by age</li>
@@ -150,9 +165,7 @@ const DashboardHome = ({ userName = "demo", periodLabel = "This Month" }) => {
 
         <div className="ngdash-card">
           <h3>🍽️ Meal Logging</h3>
-          <p>
-            Log your meals quickly using food search and serving quantities. Better logs give better insights.
-          </p>
+          <p>Log your meals quickly using food search and serving quantities. Better logs give better insights.</p>
           <ul>
             <li>✓ Food search</li>
             <li>✓ Serving-based quantity</li>
@@ -162,9 +175,7 @@ const DashboardHome = ({ userName = "demo", periodLabel = "This Month" }) => {
 
         <div className="ngdash-card">
           <h3>👤 User Profile</h3>
-          <p>
-            Personalize your analysis with name, gender, age and health conditions for accurate targets.
-          </p>
+          <p>Personalize your analysis with name, gender, age and health conditions for accurate targets.</p>
           <ul>
             <li>✓ Age & gender</li>
             <li>✓ Condition selection</li>

@@ -1,6 +1,9 @@
-
 import React, { useEffect, useMemo, useState } from "react";
-import { addIntake, searchFoods, DEFAULT_USER_ID } from "../../../services/nutritionApi";
+import {
+  addIntake,
+  searchFoods,
+  DEFAULT_USER_ID,
+} from "../../../services/nutritionApi";
 import "./MealLogger.css";
 
 // Helper: today YYYY-MM-DD
@@ -18,7 +21,7 @@ export default function MealLogger({ userId = DEFAULT_USER_ID }) {
   const [selected, setSelected] = useState(null);
 
   const [date, setDate] = useState(todayStr());
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(1); // 🔹 any positive number
 
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
@@ -26,20 +29,24 @@ export default function MealLogger({ userId = DEFAULT_USER_ID }) {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-  // Debounced search
+  // --------------------------------------------------
+  // FOOD SEARCH (GUARDED)
+  // --------------------------------------------------
   useEffect(() => {
-    let t = null;
+    if (selected) {
+      setSuggestions([]);
+      return;
+    }
 
-    async function run() {
+    const q = query.trim();
+    if (q.length < 2) {
+      setSuggestions([]);
+      return;
+    }
+
+    const t = setTimeout(async () => {
       setError("");
       setSuccess("");
-
-      const q = query.trim();
-      if (q.length < 2) {
-        setSuggestions([]);
-        return;
-      }
-
       setLoading(true);
       try {
         const res = await searchFoods(q, 15);
@@ -50,27 +57,34 @@ export default function MealLogger({ userId = DEFAULT_USER_ID }) {
       } finally {
         setLoading(false);
       }
-    }
+    }, 300);
 
-    t = setTimeout(run, 300);
     return () => clearTimeout(t);
-  }, [query]);
+  }, [query, selected]);
 
   const placeholder = useMemo(() => {
     if (!selected) return "Type a food name (e.g., Tea, Rice, Egg)";
     const basis = selected.serving_basis || "serving";
-    const grams = selected.serving_size_g ? ` • ${selected.serving_size_g}g` : "";
+    const grams = selected.serving_size_g
+      ? ` • ${selected.serving_size_g}g`
+      : "";
     return `${selected.food_name} (${basis}${grams})`;
   }, [selected]);
 
+  // --------------------------------------------------
+  // PICK FOOD
+  // --------------------------------------------------
   const onPick = (item) => {
     setSelected(item);
     setQuery(item.food_name);
     setSuggestions([]);
-    setSuccess("");
     setError("");
+    setSuccess("");
   };
 
+  // --------------------------------------------------
+  // SUBMIT
+  // --------------------------------------------------
   const onSubmit = async (e) => {
     e.preventDefault();
     setError("");
@@ -80,13 +94,12 @@ export default function MealLogger({ userId = DEFAULT_USER_ID }) {
       setError("Please select a food from the dropdown list.");
       return;
     }
-    if (!date) {
-      setError("Please choose a date.");
-      return;
-    }
+
     const q = Number(quantity);
+
+    // ✅ FLEXIBLE DECIMAL VALIDATION
     if (!Number.isFinite(q) || q <= 0) {
-      setError("Quantity must be a number greater than 0.");
+      setError("Quantity must be a number greater than 0 (e.g., 0.5, 1, 2.25).");
       return;
     }
 
@@ -96,14 +109,14 @@ export default function MealLogger({ userId = DEFAULT_USER_ID }) {
         user_id: userId || DEFAULT_USER_ID,
         food_id: selected?.food_id || "",
         food_name: selected?.food_name || query.trim(),
-        quantity: q,
-        date: date,
+        quantity: q, // 🔹 decimal allowed
+        date,
       };
 
       const res = await addIntake(payload);
       setSuccess(res?.message || "Intake added!");
 
-      // reset for next log
+      // Reset cleanly
       setSelected(null);
       setQuery("");
       setSuggestions([]);
@@ -115,13 +128,17 @@ export default function MealLogger({ userId = DEFAULT_USER_ID }) {
     }
   };
 
+  // --------------------------------------------------
+  // UI
+  // --------------------------------------------------
   return (
     <div className="ml-wrap">
       <div className="ml-hero">
         <div>
           <h2 className="ml-title">Meal Logger</h2>
           <p className="ml-subtitle">
-            Search a food, select it, enter quantity and date, then save your intake.
+            Search a food, select it, enter any serving size and date, then save
+            your intake.
           </p>
         </div>
 
@@ -134,7 +151,7 @@ export default function MealLogger({ userId = DEFAULT_USER_ID }) {
 
       <form onSubmit={onSubmit} className="ml-card">
         <div className="ml-grid">
-          {/* Food search */}
+          {/* Food */}
           <div className="ml-field ml-food">
             <label className="ml-label">Food</label>
             <div className="ml-inputWrap">
@@ -148,7 +165,9 @@ export default function MealLogger({ userId = DEFAULT_USER_ID }) {
                 placeholder={placeholder}
               />
 
-              {loading && <div className="ml-inlineHint">Searching…</div>}
+              {loading && (
+                <div className="ml-inlineHint">Searching…</div>
+              )}
 
               {suggestions.length > 0 && (
                 <div className="ml-dropdown">
@@ -160,12 +179,18 @@ export default function MealLogger({ userId = DEFAULT_USER_ID }) {
                       onClick={() => onPick(it)}
                     >
                       <div className="ml-itemTop">
-                        <span className="ml-itemName">{it.food_name}</span>
-                        {it.food_id ? <span className="ml-id">ID: {it.food_id}</span> : null}
+                        <span className="ml-itemName">
+                          {it.food_name}
+                        </span>
+                        {it.food_id && (
+                          <span className="ml-id">ID: {it.food_id}</span>
+                        )}
                       </div>
                       <div className="ml-itemSub">
-                        {(it.serving_basis || "serving")}
-                        {it.serving_size_g ? ` • ${it.serving_size_g}g` : ""}
+                        {it.serving_basis || "serving"}
+                        {it.serving_size_g
+                          ? ` • ${it.serving_size_g}g`
+                          : ""}
                       </div>
                     </button>
                   ))}
@@ -185,14 +210,14 @@ export default function MealLogger({ userId = DEFAULT_USER_ID }) {
             />
           </div>
 
-          {/* Quantity */}
+          {/* Quantity (ANY SIZE) */}
           <div className="ml-field">
             <label className="ml-label">Quantity (servings)</label>
             <input
               className="ml-input"
               type="number"
-              step="0.25"
-              min="0.25"
+              min="0.01"
+              step="0.01"
               value={quantity}
               onChange={(e) => setQuantity(e.target.value)}
             />
@@ -208,7 +233,7 @@ export default function MealLogger({ userId = DEFAULT_USER_ID }) {
           </button>
 
           <div className="ml-tip">
-            Tip: Logging meals improves the accuracy of your deficiency analysis.
+            Tip: You can log half, quarter, or any serving size you consume.
           </div>
         </div>
       </form>
