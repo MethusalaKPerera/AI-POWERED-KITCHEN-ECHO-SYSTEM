@@ -606,5 +606,109 @@
     "quantity": 1.0,
     "date": "2026-01-07",
     "ts": "2026-01-06T18:49:44.023882Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0324",
+    "food_name": "Tomato fish",
+    "quantity": 1.0,
+    "date": "2026-01-07",
+    "ts": "2026-01-06T19:02:07.926361Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0006",
+    "food_name": "Red Rice",
+    "quantity": 1.0,
+    "date": "2026-01-07",
+    "ts": "2026-01-06T19:06:06.142041Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0035",
+    "food_name": "Brown Bread",
+    "quantity": 1.0,
+    "date": "2026-01-07",
+    "ts": "2026-01-06T19:06:21.123994Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0074",
+    "food_name": "Kottu Roti",
+    "quantity": 1.0,
+    "date": "2026-01-07",
+    "ts": "2026-01-06T19:06:34.141636Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0030",
+    "food_name": "Tea Biscuits",
+    "quantity": 1.0,
+    "date": "2026-01-07",
+    "ts": "2026-01-06T19:07:02.926627Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0834",
+    "food_name": "Cream buns",
+    "quantity": 1.0,
+    "date": "2026-01-07",
+    "ts": "2026-01-06T19:07:12.630989Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0413",
+    "food_name": "Sesame ladoo (Til ke ladoo)",
+    "quantity": 1.0,
+    "date": "2026-01-07",
+    "ts": "2026-01-06T19:07:47.541169Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0074",
+    "food_name": "Kottu Roti",
+    "quantity": 2.0,
+    "date": "2026-01-07",
+    "ts": "2026-01-06T19:08:48.044813Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0039",
+    "food_name": "Fried Fish",
+    "quantity": 1.0,
+    "date": "2026-01-07",
+    "ts": "2026-01-06T19:09:45.575796Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0046",
+    "food_name": "Black Tea",
+    "quantity": 0.25,
+    "date": "2026-01-07",
+    "ts": "2026-01-06T19:11:10.196923Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0049",
+    "food_name": "Green Tea",
+    "quantity": 2.0,
+    "date": "2026-01-07",
+    "ts": "2026-01-06T19:14:18.661158Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0073",
+    "food_name": "Pol Roti",
+    "quantity": 1.5,
+    "date": "2026-01-07",
+    "ts": "2026-01-06T19:14:35.523399Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0006",
+    "food_name": "Red Rice",
+    "quantity": 2.0,
+    "date": "2026-01-07",
+    "ts": "2026-01-06T19:18:13.358341Z"
   }
 ]
