@@ -2,6 +2,33 @@ import React, { useEffect, useMemo, useState } from "react";
 import { getReport, getMLRisk, DEFAULT_USER_ID } from "../../../services/nutritionApi";
 import "./PredictiveAnalytics.css";
 
+// --------------------------------------------------------
+// We standardize to *_ug in the UI to prevent duplicates.
+// --------------------------------------------------------
+const CANONICAL_KEY = {
+  vitamin_a_mcg: "vitamin_a_ug",
+  vitamin_d_mcg: "vitamin_d_ug",
+  vitamin_b12_mcg: "vitamin_b12_ug",
+  folate_mcg: "folate_ug",
+};
+
+function canonicalKey(k) {
+  return CANONICAL_KEY[k] || k;
+}
+
+function getValueByAnyKey(obj, key) {
+  if (!obj) return undefined;
+
+  // Prefer canonical key first
+  if (Object.prototype.hasOwnProperty.call(obj, key)) return obj[key];
+
+  // If canonical key missing, try its alias (mcg key)
+  const alias = Object.keys(CANONICAL_KEY).find((a) => CANONICAL_KEY[a] === key);
+  if (alias && Object.prototype.hasOwnProperty.call(obj, alias)) return obj[alias];
+
+  return undefined;
+}
+
 function fmt(num) {
   if (num === null || num === undefined) return "-";
   const n = Number(num);
@@ -10,6 +37,8 @@ function fmt(num) {
 }
 
 function labelize(key) {
+  key = canonicalKey(key);
+
   const map = {
     energy_kcal: "Energy (kcal)",
     protein_g: "Protein (g)",
@@ -24,11 +53,14 @@ function labelize(key) {
     potassium_mg: "Potassium (mg)",
     sodium_mg: "Sodium (mg)",
     vitamin_c_mg: "Vitamin C (mg)",
+
+    // canonical micronutrient keys (UI standard)
     vitamin_a_ug: "Vitamin A (µg)",
     vitamin_d_ug: "Vitamin D (µg)",
     vitamin_b12_ug: "Vitamin B12 (µg)",
     folate_ug: "Folate (µg)",
   };
+
   return map[key] || key;
 }
 
@@ -55,49 +87,52 @@ function SeverityBadge({ level }) {
 }
 
 /**
- * ✅ NEW helper:
- * Show ALL important nutrient fields that exist in the food row.
- * (This avoids "only potassium" feeling.)
+ * Show important nutrient pills in Recommended Foods section
  */
-const IMPORTANT_NUTRIENTS = [
-  "energy_kcal",
-  "protein_g",
-  "carbohydrate_g",
-  "fat_g",
-  "fiber_g",
-  "sugar_g",
-  "calcium_mg",
-  "iron_mg",
-  "zinc_mg",
-  "magnesium_mg",
-  "potassium_mg",
-  "sodium_mg",
-  "vitamin_c_mg",
-  "vitamin_a_ug",
-  "vitamin_d_ug",
-  "vitamin_b12_ug",
-  "folate_ug",
-];
+const IMPORTANT_NUTRIENTS = Array.from(
+  new Set(
+    [
+      "energy_kcal",
+      "protein_g",
+      "carbohydrate_g",
+      "fat_g",
+      "fiber_g",
+      "sugar_g",
+      "calcium_mg",
+      "iron_mg",
+      "zinc_mg",
+      "magnesium_mg",
+      "potassium_mg",
+      "sodium_mg",
+      "vitamin_c_mg",
+      "vitamin_a_ug",
+      "vitamin_d_ug",
+      "vitamin_b12_ug",
+      "folate_ug",
+
+      // legacy duplicates (will be canonicalized + deduped automatically)
+      "vitamin_a_mcg",
+      "vitamin_d_mcg",
+      "vitamin_b12_mcg",
+      "folate_mcg",
+    ].map(canonicalKey)
+  )
+);
 
 function getFoodNutrientPills(food) {
   if (!food) return [];
 
-  // Take only nutrient keys that exist in the food object
   const entries = IMPORTANT_NUTRIENTS
-    .filter((k) => Object.prototype.hasOwnProperty.call(food, k))
-    .map((k) => [k, food[k]]);
+    .map((k) => [k, getValueByAnyKey(food, k)])
+    .filter(([_, v]) => v !== undefined);
 
-  // Keep numeric + meaningful values
   const cleaned = entries
-    .map(([k, v]) => [k, Number(v)])
+    .map(([k, v]) => [canonicalKey(k), Number(v)])
     .filter(([_, v]) => Number.isFinite(v) && v > 0);
 
-  // Sort by strongest nutrient amount (descending)
   cleaned.sort((a, b) => b[1] - a[1]);
 
-  // Show many (but not unlimited). Increase if you want.
   const MAX_PILLS = 10;
-
   return cleaned.slice(0, MAX_PILLS).map(([k, v]) => ({
     key: k,
     label: labelize(k),
@@ -141,21 +176,51 @@ export default function PredictiveAnalytics({ userId = DEFAULT_USER_ID }) {
     return s?.daily_average_over_period || s?.daily_average || {};
   }, [report]);
 
+  /**
+   * FIX: Duplicate the Nutrient Gaps table rows
+   */
   const gapRows = useMemo(() => {
     if (!report?.gaps) return [];
-    const gaps = report.gaps;
+
+    const gaps = report.gaps || {};
     const sev = report.severity || {};
     const req = report.requirements || {};
 
-    const rows = Object.keys(gaps).map((k) => ({
-      key: k,
-      label: labelize(k),
-      required: req[k],
-      intake: periodAvg[k],
-      gap: gaps[k],
-      severity: sev[k] || "ok",
-    }));
+    const map = new Map();
 
+    for (const k of Object.keys(gaps)) {
+      const ck = canonicalKey(k);
+
+      const existing = map.get(ck) || {
+        key: ck,
+        label: labelize(ck),
+        required: undefined,
+        intake: undefined,
+        gap: undefined,
+        severity: "ok",
+      };
+
+      // Prefer values from canonical key if available; otherwise fall back to alias values.
+      const requiredVal =
+        getValueByAnyKey(req, ck) ?? getValueByAnyKey(req, k) ?? existing.required;
+
+      const intakeVal =
+        getValueByAnyKey(periodAvg, ck) ?? getValueByAnyKey(periodAvg, k) ?? existing.intake;
+
+      const gapVal = gaps[ck] ?? gaps[k] ?? existing.gap;
+
+      const sevVal = sev[ck] || sev[k] || existing.severity;
+
+      map.set(ck, {
+        ...existing,
+        required: requiredVal,
+        intake: intakeVal,
+        gap: gapVal,
+        severity: sevVal,
+      });
+    }
+
+    const rows = Array.from(map.values());
     rows.sort((a, b) => Number(b.gap || 0) - Number(a.gap || 0));
     return rows;
   }, [report, periodAvg]);
@@ -203,7 +268,6 @@ export default function PredictiveAnalytics({ userId = DEFAULT_USER_ID }) {
             Monthly
           </button>
         </div>
-
       </div>
 
       {err && <div className="pa-alert pa-alert-error">{err}</div>}
@@ -274,7 +338,6 @@ export default function PredictiveAnalytics({ userId = DEFAULT_USER_ID }) {
                   <div className="v">{report.intake_summary?.period_days ?? "-"}</div>
                 </div>
               </div>
-
             </div>
 
             <div className="pa-card">
@@ -314,7 +377,9 @@ export default function PredictiveAnalytics({ userId = DEFAULT_USER_ID }) {
                       <td>{fmt(r.required)}</td>
                       <td>{fmt(r.intake)}</td>
                       <td className={Number(r.gap) > 0 ? "gap-pos" : "gap-ok"}>{fmt(r.gap)}</td>
-                      <td><SeverityBadge level={r.severity} /></td>
+                      <td>
+                        <SeverityBadge level={r.severity} />
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -322,10 +387,10 @@ export default function PredictiveAnalytics({ userId = DEFAULT_USER_ID }) {
             </div>
           </div>
 
-          {/* ✅ UPDATED RECOMMENDED FOODS */}
+          {/* Recommended Foods */}
           <div className="pa-card">
             <div className="pa-card-title">Recommended Foods</div>
-      
+
             {report.recommendations?.length ? (
               <div className="rec-grid">
                 {report.recommendations.map((f) => {
