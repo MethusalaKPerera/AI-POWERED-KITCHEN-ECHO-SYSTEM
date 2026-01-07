@@ -690,7 +690,7 @@ def predict_needs():
             try:
                 import google.generativeai as genai
                 genai.configure(api_key=GEMINI_API_KEY)
-                model = genai.GenerativeModel('models/gemini-1.5-flash-latest') # Updated model
+                model = genai.GenerativeModel('models/gemini-flash-latest') # Updated model
                 
                 # Construct a sophisticated prompt that uses the "Model" we just trained
                 prompt = (
@@ -721,7 +721,7 @@ def predict_needs():
                      response = model.generate_content(prompt)
                 except Exception as model_err:
                      print(f"Primary model failed, trying fallback: {model_err}")
-                     model = genai.GenerativeModel('models/gemini-pro')
+                     model = genai.GenerativeModel('models/gemini-pro-latest')
                      response = model.generate_content(prompt)
 
                 text_response = response.text.replace('```json', '').replace('```', '').strip()
