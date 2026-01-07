@@ -273,7 +273,7 @@ export default function PredictiveAnalytics({ userId = DEFAULT_USER_ID }) {
   const [report, setReport] = useState(null);
   const [mlRisk, setMlRisk] = useState(null);
 
-  // ✅ NEW: two-week report
+  //  two-week report
   const [twoWeekOpen, setTwoWeekOpen] = useState(false);
   const [twoWeekLoading, setTwoWeekLoading] = useState(false);
   const [twoWeekErr, setTwoWeekErr] = useState("");
@@ -433,7 +433,7 @@ export default function PredictiveAnalytics({ userId = DEFAULT_USER_ID }) {
               <div className="pa-card-title">ML Predicted Deficiency Risk</div>
               <div className="pa-riskValue">{mlRisk || "N/A"}</div>
               <p className="pa-subtitle2">
-                Predicted using a supervised ML classifier based on intake patterns and demographic features.
+                Predicted using a supervised Random Forest classifier trained on nutrient intake patterns and user profile data.
               </p>
             </div>
 

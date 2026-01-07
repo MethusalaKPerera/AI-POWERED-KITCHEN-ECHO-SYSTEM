@@ -24,6 +24,8 @@ MODEL_PATH = os.path.join(MODEL_DIR, "deficiency_risk_model.pkl")
 RANDOM_SEED = 42
 np.random.seed(RANDOM_SEED)
 
+TRAINED_NUTRIENTS = ["energy_kcal", "protein_g", "calcium_mg", "iron_mg"]
+
 
 # ------------------------------------------------------------
 # HELPERS
@@ -44,8 +46,13 @@ def normalize_food_columns(food_df):
     col_calcium = pick_col(food_df, ["calcium_mg", "calcium"])
     col_iron = pick_col(food_df, ["iron_mg", "iron"])
 
-    missing = [("food", col_food), ("energy", col_energy), ("protein", col_protein),
-               ("calcium", col_calcium), ("iron", col_iron)]
+    missing = [
+        ("food", col_food),
+        ("energy", col_energy),
+        ("protein", col_protein),
+        ("calcium", col_calcium),
+        ("iron", col_iron),
+    ]
     missing = [n for n, c in missing if c is None]
     if missing:
         raise ValueError(
@@ -64,9 +71,6 @@ def normalize_food_columns(food_df):
 
 
 def normalize_req_columns(req_df):
-    """
-    Your requirements CSV uses age_min and age_max.
-    """
     col_age_min = pick_col(req_df, ["age_min", "agemin", "min_age"])
     col_age_max = pick_col(req_df, ["age_max", "agemax", "max_age"])
     col_energy = pick_col(req_df, ["energy_kcal", "energy", "kcal", "calories"])
@@ -91,8 +95,12 @@ def normalize_req_columns(req_df):
 
     out = req_df[[col_age_min, col_age_max, col_energy, col_protein, col_calcium, col_iron]].copy()
     out.columns = [
-        "age_min", "age_max",
-        "req_energy_kcal", "req_protein_g", "req_calcium_mg", "req_iron_mg"
+        "age_min",
+        "age_max",
+        "req_energy_kcal",
+        "req_protein_g",
+        "req_calcium_mg",
+        "req_iron_mg",
     ]
 
     out["age_min"] = pd.to_numeric(out["age_min"], errors="coerce")
@@ -106,51 +114,93 @@ def normalize_req_columns(req_df):
     return out
 
 
-def build_condition_multiplier_table(cond_df):
+def normalize_cond_rules(cond_df):
     """
-    Optional. If your condition file doesn't match, we just ignore it safely.
-    Supports:
-      - energy_mult/protein_mult/... OR
-      - energy_pct/protein_pct/... (percent change)
+    Expects your exact columns:
+      condition, nutrient, rule_type, value, note
+    Returns cleaned dataframe or None.
     """
     if cond_df is None or cond_df.empty:
         return None
 
-    col_cond = pick_col(cond_df, ["condition", "health_condition", "name"])
-    if col_cond is None:
+    required = {"condition", "nutrient", "rule_type", "value"}
+    cols = set([c.strip().lower() for c in cond_df.columns])
+    if not required.issubset(cols):
         return None
 
-    m_energy = pick_col(cond_df, ["energy_mult", "kcal_mult", "calories_mult"])
-    m_protein = pick_col(cond_df, ["protein_mult"])
-    m_calcium = pick_col(cond_df, ["calcium_mult"])
-    m_iron = pick_col(cond_df, ["iron_mult"])
+    df = cond_df.copy()
+    df.columns = [c.strip().lower() for c in df.columns]
 
-    p_energy = pick_col(cond_df, ["energy_pct", "kcal_pct", "calories_pct"])
-    p_protein = pick_col(cond_df, ["protein_pct"])
-    p_calcium = pick_col(cond_df, ["calcium_pct"])
-    p_iron = pick_col(cond_df, ["iron_pct"])
+    df["condition"] = df["condition"].astype(str).str.strip().str.lower()
+    df["nutrient"] = df["nutrient"].astype(str).str.strip()
+    df["rule_type"] = df["rule_type"].astype(str).str.strip().str.lower()
+    df["value"] = pd.to_numeric(df["value"], errors="coerce")
+
+    df = df.dropna(subset=["condition", "nutrient", "rule_type", "value"])
+    return df
+
+
+def build_condition_multiplier_table_from_rules(cond_df_rules, base_req_dict):
+    """
+    Converts rule-style adjustments into per-condition multipliers for the 4 nutrients.
+
+    Output:
+      table[condition] = {"energy": 1.0, "protein": 1.0, "calcium": 1.0, "iron": 1.0}
+
+    Supported rule_type:
+      - multiplier: base * value
+      - add: base + value  -> converted to multiplier approx ( (base+value)/base )
+      - upper_limit: min(base, value) -> multiplier approx (min(base, value)/base)
+      - lower_limit: max(base, value) -> multiplier approx (max(base, value)/base)
+    """
+    if cond_df_rules is None or cond_df_rules.empty:
+        return None
+
+    nutrient_map = {
+        "energy_kcal": "energy",
+        "protein_g": "protein",
+        "calcium_mg": "calcium",
+        "iron_mg": "iron",
+    }
 
     table = {}
-    for _, r in cond_df.iterrows():
-        name = str(r[col_cond]).strip().lower()
 
-        e = pr = ca = ir = 1.0
+    # init each condition with 1.0 multipliers
+    for cond in sorted(set(cond_df_rules["condition"].tolist())):
+        table[cond] = {"energy": 1.0, "protein": 1.0, "calcium": 1.0, "iron": 1.0}
 
-        if any([m_energy, m_protein, m_calcium, m_iron]):
-            if m_energy and pd.notna(r[m_energy]): e = float(r[m_energy])
-            if m_protein and pd.notna(r[m_protein]): pr = float(r[m_protein])
-            if m_calcium and pd.notna(r[m_calcium]): ca = float(r[m_calcium])
-            if m_iron and pd.notna(r[m_iron]): ir = float(r[m_iron])
-        elif any([p_energy, p_protein, p_calcium, p_iron]):
-            if p_energy and pd.notna(r[p_energy]): e = 1.0 + float(r[p_energy]) / 100.0
-            if p_protein and pd.notna(r[p_protein]): pr = 1.0 + float(r[p_protein]) / 100.0
-            if p_calcium and pd.notna(r[p_calcium]): ca = 1.0 + float(r[p_calcium]) / 100.0
-            if p_iron and pd.notna(r[p_iron]): ir = 1.0 + float(r[p_iron]) / 100.0
-        else:
-            # file doesn't have usable multipliers
+    # Apply each rule (approx conversion to multiplier)
+    for _, r in cond_df_rules.iterrows():
+        cond = r["condition"]
+        nutrient = r["nutrient"]
+        rule_type = r["rule_type"]
+        value = float(r["value"])
+
+        if nutrient not in nutrient_map:
             continue
 
-        table[name] = {"energy": e, "protein": pr, "calcium": ca, "iron": ir}
+        key = nutrient_map[nutrient]
+        base = float(base_req_dict.get(nutrient, 0.0) or 0.0)
+        if base <= 0:
+            continue
+
+        if rule_type == "multiplier":
+            mult = value
+        elif rule_type == "add":
+            mult = (base + value) / base
+        elif rule_type == "upper_limit":
+            mult = min(base, value) / base
+        elif rule_type == "lower_limit":
+            mult = max(base, value) / base
+        else:
+            continue
+
+        # safety clamp multipliers (avoid insane req)
+        mult = max(0.2, min(mult, 3.0))
+
+        # If multiple rules exist, multiply them (compounded personalization)
+        table[cond][key] *= mult
+        table[cond][key] = max(0.2, min(table[cond][key], 3.0))
 
     return table if table else None
 
@@ -174,6 +224,7 @@ def label_from_ratios(r_energy, r_protein, r_calcium, r_iron):
 def main():
     print("📄 Loading datasets...")
     print("✅ RUNNING FILE:", __file__)
+
     food_df_raw = pd.read_csv(FOOD_PATH)
     req_df_raw = pd.read_csv(REQ_PATH)
 
@@ -183,16 +234,13 @@ def main():
 
     food_df = normalize_food_columns(food_df_raw)
     req_df = normalize_req_columns(req_df_raw)
-    cond_table = build_condition_multiplier_table(cond_df_raw)
 
-    print("✅ Food rows:", len(food_df), " | Req  uirement rows:", len(req_df))
-    if cond_table:
-        print("✅ Condition rules detected:", len(cond_table))
-    else:
-        print("ℹ️ Condition adjustment table not detected/usable — training baseline only.")
+    # normalize condition rule df (your format)
+    cond_rules_df = normalize_cond_rules(cond_df_raw)
+
+    print("✅ Food rows:", len(food_df), " | Requirement rows:", len(req_df))
 
     foods = food_df.to_dict("records")
-    cond_names = list(cond_table.keys()) if cond_table else [None]
 
     samples = []
     labels = []
@@ -204,29 +252,40 @@ def main():
         age_max = int(rr["age_max"])
 
         base_req = {
-            "energy": float(rr["req_energy_kcal"]),
-            "protein": float(rr["req_protein_g"]),
-            "calcium": float(rr["req_calcium_mg"]),
-            "iron": float(rr["req_iron_mg"]),
+            "energy_kcal": float(rr["req_energy_kcal"]),
+            "protein_g": float(rr["req_protein_g"]),
+            "calcium_mg": float(rr["req_calcium_mg"]),
+            "iron_mg": float(rr["req_iron_mg"]),
         }
+
+        # build condition multiplier table USING THIS req row (so add/limits convert correctly)
+        cond_table = build_condition_multiplier_table_from_rules(cond_rules_df, base_req)
+
+        if cond_table:
+            cond_names = list(cond_table.keys())
+        else:
+            cond_names = [None]
 
         for _ in range(SAMPLES_PER_GROUP):
             age = int(np.random.randint(age_min, age_max + 1))
             condition = np.random.choice(cond_names)
 
-            req = base_req.copy()
+            req_energy = base_req["energy_kcal"]
+            req_protein = base_req["protein_g"]
+            req_calcium = base_req["calcium_mg"]
+            req_iron = base_req["iron_mg"]
+
             has_condition = 0
             if condition and cond_table:
                 has_condition = 1
                 mult = cond_table[condition]
-                req["energy"] *= mult["energy"]
-                req["protein"] *= mult["protein"]
-                req["calcium"] *= mult["calcium"]
-                req["iron"] *= mult["iron"]
+                req_energy *= float(mult["energy"])
+                req_protein *= float(mult["protein"])
+                req_calcium *= float(mult["calcium"])
+                req_iron *= float(mult["iron"])
 
             # simulate daily intake from real foods
             n_items = np.random.randint(3, 9)
-
             total_energy = total_protein = total_calcium = total_iron = 0.0
 
             for _k in range(n_items):
@@ -234,15 +293,15 @@ def main():
                 grams = float(np.random.choice([50, 75, 100, 150, 200, 250, 300]))
                 factor = grams / 100.0
 
-                total_energy += f["energy_kcal"] * factor
-                total_protein += f["protein_g"] * factor
-                total_calcium += f["calcium_mg"] * factor
-                total_iron += f["iron_mg"] * factor
+                total_energy += float(f["energy_kcal"]) * factor
+                total_protein += float(f["protein_g"]) * factor
+                total_calcium += float(f["calcium_mg"]) * factor
+                total_iron += float(f["iron_mg"]) * factor
 
-            r_energy = total_energy / max(req["energy"], 1e-6)
-            r_protein = total_protein / max(req["protein"], 1e-6)
-            r_calcium = total_calcium / max(req["calcium"], 1e-6)
-            r_iron = total_iron / max(req["iron"], 1e-6)
+            r_energy = total_energy / max(req_energy, 1e-6)
+            r_protein = total_protein / max(req_protein, 1e-6)
+            r_calcium = total_calcium / max(req_calcium, 1e-6)
+            r_iron = total_iron / max(req_iron, 1e-6)
 
             risk = label_from_ratios(r_energy, r_protein, r_calcium, r_iron)
 
@@ -253,6 +312,13 @@ def main():
                 has_condition
             ])
             labels.append(risk)
+
+    # Print condition rules detection once (simple check)
+    if cond_rules_df is not None and not cond_rules_df.empty:
+        print("✅ Condition rule rows detected:", len(cond_rules_df))
+        print("✅ Conditions detected:", len(set(cond_rules_df["condition"].tolist())))
+    else:
+        print("ℹ️ Condition adjustment table not detected/usable — training baseline only.")
 
     X = pd.DataFrame(samples, columns=[
         "age",
