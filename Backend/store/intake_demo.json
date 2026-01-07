@@ -4,6 +4,86 @@
     "food_id": "SL0069",
     "food_name": "Green Tea",
     "quantity": 1.0,
+    "date": "2025-12-01",
+    "ts": "2025-12-01T05:08:00.000Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0003",
+    "food_name": "String Hoppers",
+    "quantity": 1.0,
+    "date": "2025-12-01",
+    "ts": "2025-12-01T08:10:00.000Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0015",
+    "food_name": "White Rice",
+    "quantity": 2.0,
+    "date": "2025-12-02",
+    "ts": "2025-12-02T12:40:00.000Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0005",
+    "food_name": "Boiled Egg",
+    "quantity": 1.0,
+    "date": "2025-12-02",
+    "ts": "2025-12-02T15:25:00.000Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0073",
+    "food_name": "Pol Roti",
+    "quantity": 1.0,
+    "date": "2025-12-03",
+    "ts": "2025-12-03T07:35:00.000Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0035",
+    "food_name": "Tea Biscuits",
+    "quantity": 1.0,
+    "date": "2025-12-03",
+    "ts": "2025-12-03T16:05:00.000Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0069",
+    "food_name": "Green Tea",
+    "quantity": 1.0,
+    "date": "2025-12-04",
+    "ts": "2025-12-04T05:12:00.000Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0020",
+    "food_name": "Egg Paratha",
+    "quantity": 2.0,
+    "date": "2025-12-04",
+    "ts": "2025-12-04T13:05:00.000Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0015",
+    "food_name": "White Rice",
+    "quantity": 1.0,
+    "date": "2025-12-05",
+    "ts": "2025-12-05T12:30:00.000Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0005",
+    "food_name": "Boiled Egg",
+    "quantity": 1.0,
+    "date": "2025-12-05",
+    "ts": "2025-12-05T18:20:00.000Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0069",
+    "food_name": "Green Tea",
+    "quantity": 1.0,
     "date": "2025-12-06",
     "ts": "2025-12-06T05:10:00.000Z"
   },
@@ -766,5 +846,21 @@
     "quantity": 1.0,
     "date": "2026-01-07",
     "ts": "2026-01-07T08:45:02.067496Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0072",
+    "food_name": "Kiribath (Milk Rice)",
+    "quantity": 1.0,
+    "date": "2026-01-07",
+    "ts": "2026-01-07T11:26:51.027097Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0014",
+    "food_name": "White Rice",
+    "quantity": 1.0,
+    "date": "2026-01-07",
+    "ts": "2026-01-07T11:36:31.854852Z"
   }
 ]

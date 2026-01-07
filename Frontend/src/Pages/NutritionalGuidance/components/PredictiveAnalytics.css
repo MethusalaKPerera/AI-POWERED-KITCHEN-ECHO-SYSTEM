@@ -338,3 +338,210 @@
     align-items: flex-start;
   }
 }
+/* -----------------------------
+   Next 2 Weeks Report UI
+----------------------------- */
+.tw-openBtn{
+  border: none;
+  cursor: pointer;
+  padding: 9px 14px;
+  border-radius: 999px;
+  font-weight: 1000;
+  font-size: 13px;
+  color: #fff;
+  background: linear-gradient(135deg, rgba(5, 150, 105, 0.95), rgba(16, 185, 129, 0.88));
+  box-shadow: 0 10px 22px rgba(2, 6, 23, 0.14);
+}
+
+.tw-modal{
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(2, 6, 23, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+}
+
+.tw-modal__card{
+  width: min(920px, 96vw);
+  max-height: 90vh;
+  overflow: auto;
+  background: #fff;
+  border-radius: 18px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  box-shadow: 0 20px 60px rgba(0,0,0,.30);
+  padding: 14px;
+}
+
+.tw-modal__header{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(148,163,184,.35);
+  margin-bottom: 12px;
+}
+
+.tw-title{
+  font-size: 18px;
+  font-weight: 1100;
+  color: rgba(15, 23, 42, 0.95);
+}
+
+.tw-sub{
+  margin-top: 4px;
+  font-size: 12px;
+  color: rgba(15, 23, 42, 0.65);
+}
+
+.tw-close{
+  border: none;
+  background: rgba(15,23,42,.06);
+  border: 1px solid rgba(148,163,184,.35);
+  border-radius: 12px;
+  padding: 8px 10px;
+  cursor: pointer;
+  font-weight: 1000;
+}
+
+.tw-section{
+  margin-top: 12px;
+}
+
+.tw-sectionTitle{
+  font-weight: 1100;
+  margin-bottom: 8px;
+  color: rgba(15, 23, 42, 0.92);
+}
+
+.tw-kv{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.tw-kv .k, .tw-miniGrid .k{
+  font-size: 12px;
+  color: rgba(15, 23, 42, 0.65);
+  font-weight: 900;
+}
+
+.tw-kv .v, .tw-miniGrid .v{
+  font-size: 14px;
+  font-weight: 1000;
+  color: rgba(15, 23, 42, 0.92);
+}
+
+.tw-ml{
+  font-weight: 1100;
+  font-size: 16px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(16, 185, 129, 0.10);
+  border: 1px solid rgba(16, 185, 129, 0.22);
+}
+
+.tw-lines{
+  margin: 10px 0 0 18px;
+  color: rgba(15, 23, 42, 0.78);
+  font-size: 13px;
+}
+
+.tw-nutrients{
+  display: grid;
+  gap: 10px;
+}
+
+.tw-nutrient{
+  border: 1px solid rgba(148,163,184,.35);
+  border-radius: 16px;
+  padding: 12px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(241,245,249,0.96));
+}
+
+.tw-nutrientTop{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.tw-nutrientName{
+  font-weight: 1100;
+  color: rgba(15, 23, 42, 0.92);
+}
+
+.tw-miniGrid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.tw-deficit{
+  grid-column: 1 / -1;
+  padding: 10px;
+  border-radius: 14px;
+  background: rgba(239, 68, 68, 0.06);
+  border: 1px solid rgba(239, 68, 68, 0.18);
+}
+
+.tw-chip{
+  font-size: 12px;
+  font-weight: 1100;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(148,163,184,.35);
+}
+
+.tw-ok{ background: rgba(22,163,74,.10); }
+.tw-low{ background: rgba(59,130,246,.10); }
+.tw-mod{ background: rgba(245,158,11,.12); }
+.tw-high{ background: rgba(220,38,38,.12); }
+
+.tw-note{
+  margin-top: 10px;
+  font-size: 12px;
+  color: rgba(15, 23, 42, 0.68);
+  background: rgba(15,23,42,.04);
+  border: 1px solid rgba(148,163,184,.25);
+  padding: 10px;
+  border-radius: 14px;
+}
+
+.tw-footer{
+  display:flex;
+  justify-content:flex-end;
+  margin-top: 12px;
+}
+
+.tw-btn{
+  border:none;
+  cursor:pointer;
+  padding: 9px 14px;
+  border-radius: 12px;
+  font-weight: 1100;
+  color:#fff;
+  background: rgba(15, 23, 42, 0.92);
+}
+
+.tw-toast{
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  z-index: 10000;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.92);
+  color: #fff;
+  font-weight: 900;
+  font-size: 12px;
+  box-shadow: 0 12px 26px rgba(0,0,0,.25);
+}
+
+.tw-toast-err{
+  background: rgba(220, 38, 38, 0.92);
+}

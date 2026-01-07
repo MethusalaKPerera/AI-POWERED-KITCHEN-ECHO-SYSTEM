@@ -1,3 +1,4 @@
+
 from flask import Blueprint, current_app, request
 
 # IMPORT SERVICES ONLY (NO ROUTE IMPORTS)
@@ -7,6 +8,9 @@ from NutritionGuidance.services.intake_store import add_intake, get_summary
 from NutritionGuidance.services.report_service import build_report
 from NutritionGuidance.services.dataset_loader import get_datasets
 from NutritionGuidance.services.ml_risk_service import predict_risk
+
+# trained 2-week report (4 nutrients only)
+from NutritionGuidance.services.trained_report_service import build_trained_two_week_report
 
 # --------------------------------------------------
 # DEFINE BLUEPRINT ONCE
@@ -80,6 +84,7 @@ def foods_search():
 def intake_add():
     data = request.get_json(force=True) or {}
 
+    # accept optional "ts" so old-date logs can keep consistent timestamps
     item = add_intake(
         current_app,
         data.get("user_id", "demo"),
@@ -87,6 +92,7 @@ def intake_add():
         data.get("food_name"),
         data.get("quantity", 1),
         data.get("date"),
+        data.get("ts"),  
     )
 
     return {"message": "Intake saved", "item": item}
@@ -103,7 +109,7 @@ def intake_summary():
     )
 
 # --------------------------------------------------
-# REPORT
+# REPORT (full report with many nutrients)
 # --------------------------------------------------
 @nutrition_bp.route("/report", methods=["GET"])
 def report():
@@ -114,7 +120,23 @@ def report():
     )
 
 # --------------------------------------------------
-# ✅ ML DEFICIENCY RISK
+# TRAINED 4-NUTRIENTS NEXT 2 WEEKS REPORT
+# --------------------------------------------------
+@nutrition_bp.route("/report/trained", methods=["GET"])
+def trained_report():
+    user_id = request.args.get("user_id", "demo")
+    period = request.args.get("period", "monthly")
+    try:
+        days = int(request.args.get("days", 14))
+    except Exception:
+        days = 14
+
+    days = max(1, min(days, 60))  # safety clamp
+
+    return build_trained_two_week_report(current_app, user_id, period, days)
+
+# --------------------------------------------------
+# ML DEFICIENCY RISK
 # --------------------------------------------------
 @nutrition_bp.route("/ml-risk", methods=["GET"])
 def ml_risk():
@@ -131,7 +153,8 @@ def ml_risk():
 
     # Summary + avg fallback
     summary = get_summary(current_app, user_id, period) or {}
-    avg = summary.get("daily_average_over_period") or summary.get("daily_average") or {}
+    # Keep both keys compatibility
+    avg = summary.get("daily_average_over_period") or summary.get("daily_average") or summary.get("daily_average_logged_days") or {}
 
     # Condition: pick first (you can enhance later to support multiple)
     conditions = profile.get("conditions") or []
@@ -150,6 +173,5 @@ def ml_risk():
             "protein_g": float(avg.get("protein_g", 0) or 0),
             "calcium_mg": float(avg.get("calcium_mg", 0) or 0),
             "iron_mg": float(avg.get("iron_mg", 0) or 0),
-        }
+        },
     }
-

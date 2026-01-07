@@ -77,6 +77,26 @@ export async function getReport(userId = DEFAULT_USER_ID, period = "monthly") {
 }
 
 /* -----------------------------
+   ✅ NEW: Trained 4-nutrients Next 2 Weeks Report
+   - clean report (no statistics/charts)
+   - backend endpoint: /api/nutrition/report/trained
+------------------------------ */
+export async function getTrainedTwoWeekReport(
+  userId = DEFAULT_USER_ID,
+  period = "monthly",
+  days = 14
+) {
+  const uid = encodeURIComponent(userId || DEFAULT_USER_ID);
+  const p = encodeURIComponent(period || "monthly");
+  const d = encodeURIComponent(days ?? 14);
+
+  return request(
+    `/api/nutrition/report/trained?user_id=${uid}&period=${p}&days=${d}`,
+    { method: "GET" }
+  );
+}
+
+/* -----------------------------
    Step 9: User Profile
 ------------------------------ */
 export async function getProfile(userId = DEFAULT_USER_ID) {
