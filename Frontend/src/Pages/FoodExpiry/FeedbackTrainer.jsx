@@ -8,17 +8,28 @@ import "./foodexpiry.css";
 function normalizeFood(f) {
   return {
     _id: f._id,
+    // show readable name
     label: `${(f.foodName || f.itemName || f.item_name || "Item")} (${f.category || f.item_category || "unknown"})`,
     category: f.category || f.item_category || "",
-    predictedExpiryDate: f.predictedExpiryDate || f.predicted_expiry_date || "",
+    item_name: (f.itemName || f.item_name || "").toString(),
+    predictedExpiryDate:
+      f.finalExpiryDate ||
+      f.predictedExpiryDate ||
+      f.predicted_expiry_date ||
+      "",
+    userId: f.userId || f.user_id || "", // optional display
   };
 }
 
 export default function FeedbackTrainer() {
   const [foods, setFoods] = useState([]);
   const [selectedId, setSelectedId] = useState("");
+
+  // ✅ MUST MATCH AddFood.jsx key
+  const defaultUser = localStorage.getItem("FE_DEMO_USER_ID") || "U001";
+
   const [form, setForm] = useState({
-    userId: localStorage.getItem("fe_userId") || "demo-user",
+    userId: defaultUser,
     feedback: "early",
     actual_days: "",
   });
@@ -39,6 +50,16 @@ export default function FeedbackTrainer() {
     load();
   }, []);
 
+  // ✅ keep in sync if FE_DEMO_USER_ID changes elsewhere (AddFood Generate button)
+  useEffect(() => {
+    const onStorage = () => {
+      const u = localStorage.getItem("FE_DEMO_USER_ID");
+      if (u) setForm((p) => ({ ...p, userId: u }));
+    };
+    window.addEventListener("storage", onStorage);
+    return () => window.removeEventListener("storage", onStorage);
+  }, []);
+
   const selectedFood = useMemo(
     () => foods.find((f) => f._id === selectedId),
     [foods, selectedId]
@@ -46,14 +67,17 @@ export default function FeedbackTrainer() {
 
   function handleChange(e) {
     const { name, value } = e.target;
+
     setForm((prev) => ({ ...prev, [name]: value }));
-    if (name === "userId") localStorage.setItem("fe_userId", value);
+
+    // ✅ keep same key everywhere in FoodExpiry module
+    if (name === "userId") localStorage.setItem("FE_DEMO_USER_ID", value);
   }
 
   function validate() {
     const newErr = {};
     if (!selectedId) newErr.foodId = "Select a food item";
-    if (!form.userId) newErr.userId = "User ID is required";
+    if (!form.userId?.trim()) newErr.userId = "User ID is required";
 
     const daysErr = validatePositiveNumber(form.actual_days, "Actual days");
     if (daysErr) newErr.actual_days = daysErr;
@@ -72,18 +96,28 @@ export default function FeedbackTrainer() {
     try {
       const payload = {
         foodId: selectedId,
-        userId: form.userId,
+        userId: form.userId.trim(), // ✅ remove spaces
         feedback: form.feedback, // early / on_time / late
         actual_days: Number(form.actual_days),
       };
 
       const data = await sendFeedback(payload);
 
-      // ✅ Match your backend response keys:
-      // new_item_adj, new_cat_adj, predicted_days_used, aed_preview_days_now, etc.
-      setSuccess(
-        `Saved. Item AED: ${Number(data.new_item_adj).toFixed(3)}, Category AED: ${Number(data.new_cat_adj).toFixed(3)}. New predicted ≈ ${data.aed_preview_days_now} days.`
-      );
+      // ✅ Use new backend response keys (per-item counter)
+      const minReq = data.min_required_feedback ?? 5;
+      const countAfter = data.item_feedback_count_after ?? 0;
+      const needed = data.feedback_needed ?? Math.max(0, minReq - countAfter);
+      const activatedNow = !!data.personalization_activated_now;
+
+      if (activatedNow) {
+        setSuccess(
+          `✅ Feedback saved. Personalization is now ACTIVATED for this item (${countAfter}/${minReq}).`
+        );
+      } else {
+        setSuccess(
+          `✅ Feedback saved (${countAfter}/${minReq}). Submit ${needed} more feedback(s) for this SAME item to activate personalization.`
+        );
+      }
 
       setForm((prev) => ({ ...prev, actual_days: "" }));
     } catch (err) {
@@ -101,7 +135,8 @@ export default function FeedbackTrainer() {
             <h2 className="fe-section__title mb-3">Label a Completed Item</h2>
 
             <div className="fe-muted mb-4">
-              Choose an item you already used and tell the system whether it spoiled early/on-time/late. This updates AED instantly.
+              Choose an item and submit feedback. After <strong>5 feedbacks for the same item</strong>,
+              the system will apply personalization for that item.
             </div>
 
             <div className="fe-form__group">
@@ -110,7 +145,7 @@ export default function FeedbackTrainer() {
                 <option value="">-- Select from inventory --</option>
                 {foods.map((f) => (
                   <option key={f._id} value={f._id}>
-                    {f.label} – {f.predictedExpiryDate || "no expiry date"}
+                    {f.label} – {f.predictedExpiryDate || "no expiry yet"}
                   </option>
                 ))}
               </select>
@@ -122,6 +157,9 @@ export default function FeedbackTrainer() {
                 <label>User ID</label>
                 <input type="text" name="userId" value={form.userId} onChange={handleChange} />
                 {errors.userId && <span className="fe-form__error">{errors.userId}</span>}
+                <div className="fe-muted fe-small">
+                  Must match the User ID used when adding/predicting items (stored in FE_DEMO_USER_ID).
+                </div>
               </div>
 
               <div className="fe-form__group">
@@ -150,6 +188,9 @@ export default function FeedbackTrainer() {
               <div className="fe-result-box mt-3">
                 <div className="fe-small fe-muted">Selected item</div>
                 <div className="fe-strong">{selectedFood.label}</div>
+                <div className="fe-muted fe-small">
+                  Item key: <strong>{selectedFood.item_name || "—"}</strong>
+                </div>
               </div>
             )}
 

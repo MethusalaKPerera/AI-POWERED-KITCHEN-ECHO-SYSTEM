@@ -8,18 +8,30 @@ from sklearn.metrics import mean_absolute_error, r2_score
 # --------------------------------------------------------
 # PATHS
 # --------------------------------------------------------
-DATA_MAIN = os.path.join(os.path.dirname(__file__), "..", "data", "food_expiry_tracker_items.csv")
-DATA_BASE_EXPIRY = os.path.join(os.path.dirname(__file__), "..", "data", "item_base_expiry_days.csv")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-MODEL_PATH = os.path.join(os.path.dirname(__file__), "..", "models", "expiry_model.cbm")
-FEATURES_PATH = os.path.join(os.path.dirname(__file__), "..", "models", "feature_columns.txt")
+# ✅ USE PREDICTOR DATASET
+DATA_MAIN = os.path.join(
+    BASE_DIR, "..", "data", "food_expiry_predictor_items.csv"
+)
 
+DATA_BASE_EXPIRY = os.path.join(
+    BASE_DIR, "..", "data", "item_base_expiry_days.csv"
+)
+
+# ✅ SAVE AS SEPARATE MODEL FOR COMPARISON
+MODEL_PATH = os.path.join(
+    BASE_DIR, "..", "models", "expiry_model_predictor.cbm"
+)
+
+FEATURES_PATH = os.path.join(
+    BASE_DIR, "..", "models", "feature_columns_predictor.txt"
+)
 
 # --------------------------------------------------------
 # HELPERS
 # --------------------------------------------------------
 def infer_storage_from_onehot(row) -> str:
-    """Derive storage from one-hot columns in dataset."""
     if row.get("storage_fridge", 0) == 1:
         return "fridge"
     if row.get("storage_freezer", 0) == 1:
@@ -28,13 +40,6 @@ def infer_storage_from_onehot(row) -> str:
 
 
 def build_base_expiry_map(base_df: pd.DataFrame) -> dict:
-    """
-    Expects base_df columns:
-      - item_name
-      - base_fridge_days
-      - base_freezer_days
-      - base_pantry_days
-    """
     base_df = base_df.copy()
     base_df["item_name"] = base_df["item_name"].astype(str).str.lower().str.strip()
 
@@ -52,66 +57,63 @@ def build_base_expiry_map(base_df: pd.DataFrame) -> dict:
 # --------------------------------------------------------
 # LOAD DATA
 # --------------------------------------------------------
-print("📄 Loading main dataset:", DATA_MAIN)
+print(" Loading main dataset:", DATA_MAIN)
 df = pd.read_csv(DATA_MAIN)
 
-print("📄 Loading base expiry dataset:", DATA_BASE_EXPIRY)
+print(" Loading base expiry dataset:", DATA_BASE_EXPIRY)
 base_df = pd.read_csv(DATA_BASE_EXPIRY)
 
-# Clean & standardize
+# Standardize item_name
+if "item_name" not in df.columns:
+    raise ValueError("Dataset must contain 'item_name' column")
+
 df["item_name"] = df["item_name"].astype(str).str.lower().str.strip()
 
 # Target
 TARGET_COL = "days_until_expiry"
 if TARGET_COL not in df.columns:
-    raise ValueError(f"Missing target column '{TARGET_COL}' in dataset")
+    raise ValueError(f"Missing target column '{TARGET_COL}'")
 
 # Build base expiry map
 base_map = build_base_expiry_map(base_df)
 
 # --------------------------------------------------------
-# FIX ISSUE A: compute correct base expiry days per row
+# BASE EXPIRY DAYS PER ROW (AEIF – Issue A FIX)
 # --------------------------------------------------------
 def get_base_days(row):
     item = row["item_name"]
     storage = infer_storage_from_onehot(row)
-
     if item in base_map:
         return base_map[item].get(storage, 7.0)
-    return 7.0  # fallback for unknown items
+    return 7.0
 
 df["item_base_expiry_days"] = df.apply(get_base_days, axis=1)
 
 # --------------------------------------------------------
-# OPTIONAL: normalize booleans to int (prevents FutureWarning)
+# NORMALIZE BOOLEANS
 # --------------------------------------------------------
 df = df.replace({True: 1, False: 0})
 df = df.infer_objects(copy=False)
 
 # --------------------------------------------------------
-# Create item-name one-hot with a clean prefix: food_
-# (This avoids collision with category columns like item_dairy)
+# ITEM NAME ONE-HOT (food_)
 # --------------------------------------------------------
 item_dummies = pd.get_dummies(df["item_name"], prefix="food")
 df = pd.concat([df.drop(columns=["item_name"]), item_dummies], axis=1)
 
 # --------------------------------------------------------
-# Rename category one-hots from item_* to cat_* to avoid confusion
-# (Your dataset has category cols like item_dairy, item_meat, etc.)
+# RENAME CATEGORY ONE-HOTS (item_ → cat_)
 # --------------------------------------------------------
-category_cols = [c for c in df.columns if c.startswith("item_") and c not in ["item_base_expiry_days", "item_base_expiry_scaled"]]
+category_cols = [
+    c for c in df.columns
+    if c.startswith("item_")
+    and c not in ["item_base_expiry_days", "item_base_expiry_scaled"]
+]
 rename_map = {c: c.replace("item_", "cat_", 1) for c in category_cols}
 df = df.rename(columns=rename_map)
 
-# If you already have item_base_expiry_scaled, keep it if you want,
-# but we prefer the biologically meaningful feature:
-# item_base_expiry_days
-# (You can keep both; CatBoost will decide.)
-# --------------------------------------------------------
-
 # --------------------------------------------------------
 # FEATURE SELECTION
-# Drop obvious non-features if present
 # --------------------------------------------------------
 drop_cols = [
     TARGET_COL,
@@ -128,11 +130,15 @@ drop_cols = [c for c in drop_cols if c in df.columns]
 X = df.drop(columns=drop_cols)
 y = df[TARGET_COL].astype(float)
 
-# Ensure no NaNs
 X = X.fillna(0)
 y = y.fillna(y.median())
 
 print("\n🧩 FINAL TRAINING FEATURES:", X.shape[1])
+print(
+    " Includes env features?:",
+    "storage_temperature_c" in X.columns
+    and "storage_humidity_pct" in X.columns
+)
 
 # --------------------------------------------------------
 # TRAIN / TEST SPLIT
@@ -144,13 +150,14 @@ X_train, X_test, y_train, y_test = train_test_split(
 # --------------------------------------------------------
 # TRAIN CATBOOST
 # --------------------------------------------------------
-print("\n🚀 Training CatBoost model (Item-Aware + Correct Base Expiry)...")
+print("\n Training CatBoost model (Extended Dataset)...")
 
 model = CatBoostRegressor(
     iterations=600,
-    learning_rate=0.05,
-    depth=8,
+    learning_rate=0.04,
+    depth=9,
     loss_function="MAE",
+    l2_leaf_reg=3,
     random_seed=42,
     verbose=100
 )
@@ -158,23 +165,23 @@ model = CatBoostRegressor(
 model.fit(X_train, y_train, eval_set=(X_test, y_test), use_best_model=True)
 
 # --------------------------------------------------------
-# EVALUATE
+# EVALUATION
 # --------------------------------------------------------
 pred = model.predict(X_test)
 mae = mean_absolute_error(y_test, pred)
 r2 = r2_score(y_test, pred)
 
-print("\n📊 MODEL PERFORMANCE")
+print("\n PREDICTOR MODEL'S PERFORMANCE")
 print(f"MAE (days): {mae:.4f}")
 print(f"R² score   : {r2:.4f}")
 
 # --------------------------------------------------------
-# SAVE
+# SAVE MODEL + FEATURES
 # --------------------------------------------------------
 model.save_model(MODEL_PATH)
-print("💾 Saved model to:", MODEL_PATH)
+print(" Saved model to:", MODEL_PATH)
 
 with open(FEATURES_PATH, "w", encoding="utf-8") as f:
     f.write("\n".join(list(X.columns)))
 
-print("📄 Saved feature_columns.txt")
+print(" Saved feature_columns_predictor.txt")

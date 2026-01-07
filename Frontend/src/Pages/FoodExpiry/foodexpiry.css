@@ -1,16 +1,176 @@
-/* Simple page-level tweaks */
+/* ======================================================
+   FoodExpiry - Shared Styles (Dashboard / Forms / Tables)
+   ====================================================== */
 
-.fe-result-box {
+/* --------- Global helpers --------- */
+.fe-muted { color: #64748b; }
+.fe-small { font-size: 0.85rem; }
+.fe-strong { font-weight: 600; }
+
+.mt-2 { margin-top: .5rem; }
+.mt-3 { margin-top: .75rem; }
+.mt-4 { margin-top: 1rem; }
+.mt-6 { margin-top: 1.5rem; }
+.mb-3 { margin-bottom: 1rem; }
+.mb-4 { margin-bottom: 1rem; }
+
+/* --------- Layout --------- */
+.fe-layout{
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  background: #eef7f1;
+}
+
+.fe-main{
+  flex: 1;
+  min-width: 0; /* prevents overflow */
+}
+
+.fe-main__content{
+  padding: 18px;
+}
+
+/* --------- Cards --------- */
+.fe-card{
+  background: #fff;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.06);
+  border: 1px solid rgba(2,6,23,0.05);
+}
+
+.fe-section__title{
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* --------- Alerts --------- */
+.fe-alert{
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  border: 1px solid rgba(2,6,23,0.06);
+}
+
+.fe-alert--error{
+  background: rgba(239,68,68,0.10);
+  border-color: rgba(239,68,68,0.25);
+  color: #991b1b;
+}
+
+.fe-alert--success{
+  background: rgba(34,197,94,0.10);
+  border-color: rgba(34,197,94,0.25);
+  color: #166534;
+}
+
+.fe-alert--info{
+  background: rgba(59,130,246,0.10);
+  border-color: rgba(59,130,246,0.25);
+  color: #1e40af;
+}
+
+/* --------- Buttons --------- */
+.fe-btn{
+  border: 1px solid rgba(2,6,23,0.15);
+  background: #fff;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-weight: 600;
+  cursor: pointer;
+  line-height: 1;
+  transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
+  white-space: nowrap;
+}
+
+.fe-btn:disabled{
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.fe-btn:hover{
+  box-shadow: 0 10px 20px rgba(2,6,23,0.10);
+  transform: translateY(-1px);
+}
+
+.fe-btn--primary{
+  background: #16a34a;
+  color: #fff;
+  border-color: rgba(22,163,74,0.4);
+}
+
+.fe-btn--danger{
+  background: #ef4444;
+  color: #fff;
+  border-color: rgba(239,68,68,0.4);
+}
+
+.fe-btn--ghost{
+  background: #fff;
+  color: #0f172a;
+}
+
+/* --------- Forms --------- */
+.fe-form__group{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.fe-form__group label{
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #0f172a;
+}
+
+.fe-form__group input,
+.fe-form__group select,
+.fe-form__group textarea{
+  border: 1px solid rgba(2,6,23,0.15);
+  border-radius: 12px;
+  padding: 10px 12px;
+  outline: none;
+  font-size: 0.95rem;
+  background: #fff;
+}
+
+.fe-form__group input:focus,
+.fe-form__group select:focus,
+.fe-form__group textarea:focus{
+  border-color: rgba(22,163,74,0.55);
+  box-shadow: 0 0 0 4px rgba(22,163,74,0.10);
+}
+
+.fe-form__group--inline{
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+/* grid used across AddFood/Edit modal */
+.fe-form__grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+/* --------- Result box --------- */
+.fe-result-box{
   background: #f9fafb;
   border-radius: 0.75rem;
   padding: 0.75rem 1rem;
   font-size: 0.9rem;
+  width: 100%;
+  overflow-wrap: anywhere;
 }
 
-.fe-form__grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.25rem;
+/* --------- Table --------- */
+.fe-table-wrapper{
+  overflow-x: auto;
 }
 
 .fe-table-header{
@@ -20,14 +180,138 @@
   margin-bottom: .75rem;
 }
 
-.fe-muted{ color:#64748b; }
-.fe-small{ font-size:.85rem; }
-.fe-strong{ font-weight:600; }
-.fe-actions{ display:flex; gap:.5rem; }
+.fe-table{
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 920px; /* keeps layout stable on small screens */
+}
 
+.fe-table th,
+.fe-table td{
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(2,6,23,0.08);
+  vertical-align: top;
+  text-align: left;
+}
+
+.fe-table th{
+  font-size: 0.9rem;
+  color: #0f172a;
+  background: #f8fafc;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.fe-actions{
+  display:flex;
+  gap:.5rem;
+  flex-wrap: wrap;
+}
+
+/* ======================================================
+   MODAL FIX (fit within screen)
+   ====================================================== */
+
+/* ✅ lock background scrolling when modal is open */
+body.fe-modal-open{
+  overflow: hidden;
+}
+
+.fe-modal{
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0,0,0,.55);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 18px; /* prevents touching edges */
+}
+
+.fe-modal__content{
+  width: min(860px, 96vw);
+  background: #fff;
+  border-radius: 16px;
+
+  /* ✅ key fix */
+  max-height: 90vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  box-shadow: 0 20px 60px rgba(0,0,0,.30);
+  padding: 18px;
+}
+
+/* ✅ Replace your existing .fe-modal__header with this */
 .fe-modal__header{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  margin-bottom:.75rem;
+  gap: 12px;
+
+  position: sticky; /* keeps header visible while scrolling */
+  top: 0;
+  background: #fff;
+  z-index: 2;
+
+  padding-bottom: 10px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+/* ✅ Keep action buttons visible too */
+.fe-modal__actions{
+  display:flex;
+  justify-content:flex-end;
+  gap: 10px;
+
+  position: sticky;
+  bottom: 0;
+  background: #fff;
+  z-index: 2;
+
+  padding-top: 12px;
+  margin-top: 12px;
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+
+/* Ensure inputs fit inside modal */
+.fe-modal__content input,
+.fe-modal__content select,
+.fe-modal__content textarea{
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Mobile */
+@media (max-width: 720px){
+  .fe-form__grid{
+    grid-template-columns: 1fr;
+  }
+
+  .fe-main__content{
+    padding: 12px;
+  }
+
+  .fe-modal{
+    padding: 12px;
+  }
+
+  .fe-modal__content{
+    width: 100%;
+    max-height: 92vh;
+    border-radius: 14px;
+  }
+
+  .fe-modal__actions{
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .fe-table{
+    min-width: 860px;
+  }
 }
