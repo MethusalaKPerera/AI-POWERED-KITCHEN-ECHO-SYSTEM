@@ -1,5 +1,10 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { getReport, getMLRisk, DEFAULT_USER_ID } from "../../../services/nutritionApi";
+import {
+  getReport,
+  getMLRisk,
+  getTrainedTwoWeekReport,
+  DEFAULT_USER_ID,
+} from "../../../services/nutritionApi";
 import "./PredictiveAnalytics.css";
 
 // --------------------------------------------------------
@@ -19,10 +24,8 @@ function canonicalKey(k) {
 function getValueByAnyKey(obj, key) {
   if (!obj) return undefined;
 
-  // Prefer canonical key first
   if (Object.prototype.hasOwnProperty.call(obj, key)) return obj[key];
 
-  // If canonical key missing, try its alias (mcg key)
   const alias = Object.keys(CANONICAL_KEY).find((a) => CANONICAL_KEY[a] === key);
   if (alias && Object.prototype.hasOwnProperty.call(obj, alias)) return obj[alias];
 
@@ -54,7 +57,6 @@ function labelize(key) {
     sodium_mg: "Sodium (mg)",
     vitamin_c_mg: "Vitamin C (mg)",
 
-    // canonical micronutrient keys (UI standard)
     vitamin_a_ug: "Vitamin A (µg)",
     vitamin_d_ug: "Vitamin D (µg)",
     vitamin_b12_ug: "Vitamin B12 (µg)",
@@ -86,6 +88,131 @@ function SeverityBadge({ level }) {
   return <span className={cls}>{text}</span>;
 }
 
+function LevelChip({ level }) {
+  const v = String(level || "").toUpperCase();
+  const cls =
+    v === "OK"
+      ? "tw-chip tw-ok"
+      : v === "LOW"
+      ? "tw-chip tw-low"
+      : v === "MODERATE"
+      ? "tw-chip tw-mod"
+      : "tw-chip tw-high";
+  return <span className={cls}>{v || "N/A"}</span>;
+}
+
+function TwoWeekReportModal({ open, onClose, data }) {
+  if (!open) return null;
+
+  const p = data?.profile || {};
+  const nutrients = data?.nutrients || [];
+  const lines = data?.report_text || [];
+
+  return (
+    <div className="tw-modal" role="dialog" aria-modal="true">
+      <div className="tw-modal__card">
+        <div className="tw-modal__header">
+          <div>
+            <div className="tw-title">Next 2 Weeks Nutrient Report</div>
+            <div className="tw-sub">
+              Forecast window: <b>{data?.forecast_start}</b> to <b>{data?.forecast_end}</b>
+            </div>
+          </div>
+
+          <button className="tw-close" onClick={onClose} type="button">
+            ✕
+          </button>
+        </div>
+
+        <div className="tw-section">
+          <div className="tw-sectionTitle">User Profile</div>
+          <div className="tw-kv">
+            <div>
+              <div className="k">User</div>
+              <div className="v">{p.user_id || "-"}</div>
+            </div>
+            <div>
+              <div className="k">Age</div>
+              <div className="v">{p.age ?? "-"}</div>
+            </div>
+            <div>
+              <div className="k">Gender</div>
+              <div className="v">{p.group || "-"}</div>
+            </div>
+            <div>
+              <div className="k">Conditions</div>
+              <div className="v">
+                {(p.conditions || []).length ? p.conditions.join(", ") : "None"}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="tw-section">
+          <div className="tw-sectionTitle">Overall Risk (ML)</div>
+          <div className="tw-ml">{data?.ml_overall_deficiency_risk || "N/A"}</div>
+          {lines.length ? (
+            <ul className="tw-lines">
+              {lines.map((t, i) => (
+                <li key={i}>{t}</li>
+              ))}
+            </ul>
+          ) : null}
+        </div>
+
+        <div className="tw-section">
+          <div className="tw-sectionTitle">Trained Nutrients (14-day forecast)</div>
+
+          <div className="tw-nutrients">
+            {nutrients.map((n) => (
+              <div className="tw-nutrient" key={n.key}>
+                <div className="tw-nutrientTop">
+                  <div className="tw-nutrientName">{n.label}</div>
+                  <LevelChip level={n.deficiency_level_next_14d} />
+                </div>
+
+                <div className="tw-miniGrid">
+                  <div>
+                    <div className="k">Required / day</div>
+                    <div className="v">{fmt(n.required_per_day)}</div>
+                  </div>
+                  <div>
+                    <div className="k">Expected intake / day</div>
+                    <div className="v">{fmt(n.expected_intake_per_day)}</div>
+                  </div>
+                  <div>
+                    <div className="k">Required (14 days)</div>
+                    <div className="v">{fmt(n.required_total_14d)}</div>
+                  </div>
+                  <div>
+                    <div className="k">Expected (14 days)</div>
+                    <div className="v">{fmt(n.expected_total_14d)}</div>
+                  </div>
+                  <div className="tw-deficit">
+                    <div className="k">Deficit (14 days)</div>
+                    <div className="v">{fmt(n.deficit_total_14d)}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="tw-note">
+            Note: This forecast assumes you continue the same intake pattern. If your meals improve, the
+            deficiency levels will reduce.
+          </div>
+        </div>
+
+        <div className="tw-footer">
+          <button className="tw-btn" onClick={onClose} type="button">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /**
  * Show important nutrient pills in Recommended Foods section
  */
@@ -110,7 +237,6 @@ const IMPORTANT_NUTRIENTS = Array.from(
       "vitamin_b12_ug",
       "folate_ug",
 
-      // legacy duplicates (will be canonicalized + deduped automatically)
       "vitamin_a_mcg",
       "vitamin_d_mcg",
       "vitamin_b12_mcg",
@@ -147,14 +273,17 @@ export default function PredictiveAnalytics({ userId = DEFAULT_USER_ID }) {
   const [report, setReport] = useState(null);
   const [mlRisk, setMlRisk] = useState(null);
 
+  // ✅ NEW: two-week report
+  const [twoWeekOpen, setTwoWeekOpen] = useState(false);
+  const [twoWeekLoading, setTwoWeekLoading] = useState(false);
+  const [twoWeekErr, setTwoWeekErr] = useState("");
+  const [twoWeekData, setTwoWeekData] = useState(null);
+
   const loadReport = async () => {
     setLoading(true);
     setErr("");
     try {
-      const [data, riskRes] = await Promise.all([
-        getReport(userId, period),
-        getMLRisk(userId, period),
-      ]);
+      const [data, riskRes] = await Promise.all([getReport(userId, period), getMLRisk(userId, period)]);
       setReport(data);
       setMlRisk(riskRes?.ml_deficiency_risk || null);
     } catch (e) {
@@ -171,14 +300,26 @@ export default function PredictiveAnalytics({ userId = DEFAULT_USER_ID }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [period, userId]);
 
+  const openTwoWeekReport = async () => {
+    setTwoWeekErr("");
+    setTwoWeekLoading(true);
+    setTwoWeekOpen(true);
+    try {
+      const data = await getTrainedTwoWeekReport(userId, period, 14);
+      setTwoWeekData(data);
+    } catch (e) {
+      setTwoWeekErr(e.message || "Failed to load 2-week report");
+      setTwoWeekData(null);
+    } finally {
+      setTwoWeekLoading(false);
+    }
+  };
+
   const periodAvg = useMemo(() => {
     const s = report?.intake_summary;
     return s?.daily_average_over_period || s?.daily_average || {};
   }, [report]);
 
-  /**
-   * FIX: Duplicate the Nutrient Gaps table rows
-   */
   const gapRows = useMemo(() => {
     if (!report?.gaps) return [];
 
@@ -200,7 +341,6 @@ export default function PredictiveAnalytics({ userId = DEFAULT_USER_ID }) {
         severity: "ok",
       };
 
-      // Prefer values from canonical key if available; otherwise fall back to alias values.
       const requiredVal =
         getValueByAnyKey(req, ck) ?? getValueByAnyKey(req, k) ?? existing.required;
 
@@ -208,7 +348,6 @@ export default function PredictiveAnalytics({ userId = DEFAULT_USER_ID }) {
         getValueByAnyKey(periodAvg, ck) ?? getValueByAnyKey(periodAvg, k) ?? existing.intake;
 
       const gapVal = gaps[ck] ?? gaps[k] ?? existing.gap;
-
       const sevVal = sev[ck] || sev[k] || existing.severity;
 
       map.set(ck, {
@@ -234,7 +373,6 @@ export default function PredictiveAnalytics({ userId = DEFAULT_USER_ID }) {
 
   return (
     <div className="pa-wrap">
-      {/* Hero */}
       <div className="pa-hero">
         <div>
           <h2 className="pa-title">Predictive Analytics</h2>
@@ -250,7 +388,6 @@ export default function PredictiveAnalytics({ userId = DEFAULT_USER_ID }) {
         </div>
       </div>
 
-      {/* Period controls */}
       <div className="pa-controlsRow">
         <div className="seg">
           <button
@@ -268,10 +405,26 @@ export default function PredictiveAnalytics({ userId = DEFAULT_USER_ID }) {
             Monthly
           </button>
         </div>
+
+        {/* ✅ NEW button */}
+        <button className="tw-openBtn" onClick={openTwoWeekReport} type="button">
+          Next 2 Weeks Report
+        </button>
       </div>
 
       {err && <div className="pa-alert pa-alert-error">{err}</div>}
       {!err && loading && <div className="pa-alert">Loading report...</div>}
+
+      {/* ✅ Modal */}
+      <TwoWeekReportModal
+        open={twoWeekOpen}
+        onClose={() => setTwoWeekOpen(false)}
+        data={twoWeekData}
+      />
+      {twoWeekOpen && twoWeekLoading && (
+        <div className="tw-toast">Loading Next 2 Weeks Report...</div>
+      )}
+      {twoWeekOpen && twoWeekErr && <div className="tw-toast tw-toast-err">{twoWeekErr}</div>}
 
       {!loading && report && (
         <>
@@ -387,7 +540,6 @@ export default function PredictiveAnalytics({ userId = DEFAULT_USER_ID }) {
             </div>
           </div>
 
-          {/* Recommended Foods */}
           <div className="pa-card">
             <div className="pa-card-title">Recommended Foods</div>
 

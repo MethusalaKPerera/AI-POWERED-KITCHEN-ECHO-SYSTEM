@@ -1,8 +1,7 @@
-# backend/NutritionGuidance/services/intake_store.py
 
 import json
 import os
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, date
 
 from NutritionGuidance.services.dataset_loader import get_datasets
 
@@ -13,11 +12,40 @@ def _intake_path(app, user_id: str) -> str:
     return os.path.join(store_dir, f"intake_{user_id}.json")
 
 
-def add_intake(app, user_id: str, food_id: str, food_name: str, quantity: float, date_str: str) -> dict:
+def _normalize_ts(date_str: str, ts_str: str | None) -> str:
+    """
+    If ts provided, accept it if it looks like ISO.
+    If not, create a stable timestamp:
+      - if date is today -> use utcnow
+      - else -> use date at 12:00:00Z
+    """
+    # If caller passed ts, try to accept it
+    if ts_str:
+        ts_str = str(ts_str).strip()
+        # simple safety: must contain "T"
+        if "T" in ts_str:
+            return ts_str
+
+    # No valid ts passed -> build one
+    try:
+        d = datetime.strptime(date_str, "%Y-%m-%d").date()
+    except Exception:
+        # fallback (should never happen if date validated earlier)
+        return datetime.utcnow().isoformat() + "Z"
+
+    if d == date.today():
+        return datetime.utcnow().isoformat() + "Z"
+
+    # backfilled log: stable midday timestamp
+    return f"{d.isoformat()}T12:00:00.000Z"
+
+
+def add_intake(app, user_id: str, food_id: str, food_name: str, quantity: float, date_str: str, ts_str: str = None) -> dict:
     """
     Store one intake record (a meal/log).
     quantity = number of servings (based on your dataset serving size)
     date_str = YYYY-MM-DD
+    ts_str (optional) = ISO timestamp (used for backfill consistency)
     """
     user_id = (user_id or "demo").strip() or "demo"
     food_id = (food_id or "").strip()
@@ -43,7 +71,7 @@ def add_intake(app, user_id: str, food_id: str, food_name: str, quantity: float,
         "food_name": food_name,
         "quantity": quantity,
         "date": date_str,
-        "ts": datetime.utcnow().isoformat() + "Z",
+        "ts": _normalize_ts(date_str, ts_str),
     }
 
     path = _intake_path(app, user_id)
@@ -79,7 +107,7 @@ def get_summary(app, user_id: str, period: str = "weekly") -> dict:
     Build totals + daily averages for the given period (weekly/monthly),
     using food nutrient values from SL_Food_Nutrition_Master.csv.
 
-    ✅ Also returns:
+    Also returns:
     - top_foods (top 3 most frequently eaten)
     - food_frequency (full map)
 
@@ -142,9 +170,9 @@ def get_summary(app, user_id: str, period: str = "weekly") -> dict:
     days_logged_last30 = set()
     used_logs_last30 = 0
 
-    # ✅ NEW: food frequency tracking for selected period
-    food_frequency = {}          # counts by food_name
-    food_servings = {}           # total quantity/servings by food_name
+    # food frequency tracking
+    food_frequency = {}
+    food_servings = {}
 
     for log in logs:
         date_str = log.get("date")
@@ -153,12 +181,10 @@ def get_summary(app, user_id: str, period: str = "weekly") -> dict:
         except Exception:
             continue
 
-        # Track overall last-30-days coverage
         if start_30 <= d <= end_30:
             days_logged_last30.add(d.isoformat())
             used_logs_last30 += 1
 
-        # Track selected period coverage
         if d < start or d > end:
             continue
 
@@ -169,14 +195,12 @@ def get_summary(app, user_id: str, period: str = "weekly") -> dict:
         fname = str(log.get("food_name") or "").strip()
         qty = float(log.get("quantity") or 1.0)
 
-        # Resolve dataset row for nutrients + consistent naming
         row = None
         if fid and fid in by_id:
             row = by_id[fid]
         elif fname and fname in by_name:
             row = by_name[fname]
 
-        # Prefer dataset official name if exists
         resolved_name = None
         if row is not None:
             try:
@@ -186,11 +210,9 @@ def get_summary(app, user_id: str, period: str = "weekly") -> dict:
 
         final_name = resolved_name or fname or fid or "Unknown"
 
-        # ✅ Track frequency + servings (even if nutrients missing)
         food_frequency[final_name] = food_frequency.get(final_name, 0) + 1
         food_servings[final_name] = round(food_servings.get(final_name, 0.0) + qty, 4)
 
-        # Nutrient totals
         if row is None:
             continue
 
@@ -202,22 +224,14 @@ def get_summary(app, user_id: str, period: str = "weekly") -> dict:
             except Exception:
                 pass
 
-    totals = {k: round(v, 4) for k, v in totals.items()}
+    period_days = 7 if period == "weekly" else 30
+    days_logged_count = max(1, len(days_logged))
 
-    # Average by logged days
-    logged_day_count = max(1, len(days_logged))
-    daily_average_logged_days = {k: round(v / logged_day_count, 4) for k, v in totals.items()}
+    daily_average_logged_days = {k: round(totals[k] / days_logged_count, 6) for k in nutrient_cols}
+    daily_average_over_period = {k: round(totals[k] / period_days, 6) for k in nutrient_cols}
 
-    # Average by full period length (7 or 30)
-    period_days = 7 if period == "weekly" else 30 if period == "monthly" else 7
-    daily_average_over_period = {k: round(v / period_days, 4) for k, v in totals.items()}
-
-    # ✅ Build top foods
-    top_foods = sorted(
-        [{"food_name": n, "count": c, "servings": food_servings.get(n, 0.0)} for n, c in food_frequency.items()],
-        key=lambda x: (x["count"], x["servings"]),
-        reverse=True
-    )[:3]
+    top_foods = sorted(food_frequency.items(), key=lambda x: x[1], reverse=True)[:3]
+    top_foods = [{"food_name": k, "count": v, "servings": food_servings.get(k, 0)} for k, v in top_foods]
 
     return {
         "user_id": user_id,
@@ -226,19 +240,12 @@ def get_summary(app, user_id: str, period: str = "weekly") -> dict:
         "date_end": end.isoformat(),
         "days_logged": len(days_logged),
         "logs_used": used_logs,
-
+        "period_days": period_days,
         "days_logged_last30": len(days_logged_last30),
         "logs_used_last30": used_logs_last30,
-
-        "period_days": period_days,
-        "totals": totals,
+        "totals": {k: round(v, 6) for k, v in totals.items()},
         "daily_average_logged_days": daily_average_logged_days,
         "daily_average_over_period": daily_average_over_period,
-
-        # keep old key for backward compatibility (uses logged days)
-        "daily_average": daily_average_logged_days,
-
-        # ✅ NEW for dashboard
         "food_frequency": food_frequency,
         "top_foods": top_foods,
     }
