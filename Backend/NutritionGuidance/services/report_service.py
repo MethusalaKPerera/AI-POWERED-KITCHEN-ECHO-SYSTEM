@@ -1,4 +1,3 @@
-
 import math
 from typing import Dict, List, Tuple
 
@@ -11,17 +10,79 @@ from NutritionGuidance.services.intake_store import get_summary
 
 NUMERIC_SKIP = {"age_min", "age_max", "group"}
 
+# --------------------------------------------------------
+# De-duplicate micronutrient keys (mcg vs ug)
+# standardize to *_ug and merge values to prevent duplicates in API output.
+# --------------------------------------------------------
+CANONICAL_KEY = {
+    "vitamin_a_mcg": "vitamin_a_ug",
+    "vitamin_d_mcg": "vitamin_d_ug",
+    "vitamin_b12_mcg": "vitamin_b12_ug",
+    "folate_mcg": "folate_ug",
+}
+
 
 def _is_number(x) -> bool:
     try:
         if x is None:
             return False
-        if isinstance(x, bool):
-            return False
         v = float(x)
         return math.isfinite(v)
     except Exception:
         return False
+
+
+def _canonicalize_keys(d: Dict) -> Dict:
+    """
+    Return a new dict with mcg aliases merged into canonical *_ug keys.
+    - If both alias + canonical exist, canonical wins.
+    - Alias keys are removed from output.
+    """
+    if not isinstance(d, dict):
+        return d
+
+    out: Dict = {}
+
+    # Copy keys, mapping aliases -> canonical
+    for k, v in d.items():
+        ck = CANONICAL_KEY.get(k, k)
+
+        if ck in out:
+            prev = out.get(ck)
+
+            # Prefer numeric over non-numeric; otherwise keep first meaningful value
+            if _is_number(prev):
+                continue
+            if _is_number(v) or (v is not None and v != ""):
+                out[ck] = v
+        else:
+            out[ck] = v
+
+    # If both existed originally, force canonical value to win
+    for alias, ck in CANONICAL_KEY.items():
+        if ck in d and alias in d:
+            out[ck] = d.get(ck)
+
+    # Remove alias keys explicitly
+    for alias in CANONICAL_KEY.keys():
+        out.pop(alias, None)
+
+    return out
+
+
+def _clean_numeric_dict(row: Dict) -> Dict:
+    """
+    Convert row values to numeric where possible, skipping non-nutrient columns.
+    """
+    out = {}
+    for k, v in row.items():
+        if k in NUMERIC_SKIP:
+            continue
+        if v is None or (isinstance(v, float) and math.isnan(v)):
+            continue
+        if _is_number(v):
+            out[k] = float(v)
+    return out
 
 
 def _pick_requirement_row(req_df, age: int, group: str) -> Dict:
@@ -35,93 +96,65 @@ def _pick_requirement_row(req_df, age: int, group: str) -> Dict:
     if not group:
         group = "male"
 
-    band = req_df[
-        (req_df["group"].astype(str).str.lower() == group)
-        & (req_df["age_min"] <= age)
-        & (req_df["age_max"] >= age)
-    ]
+    df = req_df.copy()
+    df["group"] = df["group"].astype(str).str.lower()
 
+    # perfect match: group + age band
+    band = df[(df["group"] == group) & (df["age_min"] <= age) & (df["age_max"] >= age)]
     if not band.empty:
         return band.iloc[0].to_dict()
 
-    only_group = req_df[req_df["group"].astype(str).str.lower() == group]
-    if only_group.empty:
-        return req_df.iloc[0].to_dict()
+    # fallback: same group, nearest band
+    same_group = df[df["group"] == group]
+    if not same_group.empty:
+        same_group = same_group.copy()
+        same_group["dist"] = (same_group["age_min"] - age).abs()
+        return same_group.sort_values("dist").iloc[0].to_dict()
 
-    def dist(row):
-        mid = (float(row["age_min"]) + float(row["age_max"])) / 2.0
-        return abs(mid - age)
-
-    best = min([r for _, r in only_group.iterrows()], key=dist)
-    return best.to_dict()
-
-
-def _clean_numeric_dict(d: Dict) -> Dict:
-    out = {}
-    for k, v in d.items():
-        if k in NUMERIC_SKIP:
-            continue
-        if _is_number(v):
-            out[k] = float(v)
-    return out
+    # final fallback: first row
+    return df.iloc[0].to_dict()
 
 
-def _apply_condition_rules(base_req: Dict, cond_df, conditions: List[str]) -> Tuple[Dict, List[Dict]]:
+def _apply_condition_rules(
+    base_req: Dict, cond_df: pd.DataFrame, conditions: List[str]
+) -> Tuple[Dict, List[Dict]]:
+    """
+    Applies condition rules to base requirements (if dataset exists).
+    Output:
+      - adjusted requirements
+      - condition_notes list
+    """
     req = dict(base_req)
     notes = []
 
-    if not conditions:
+    if cond_df is None or cond_df.empty or not conditions:
         return req, notes
 
-    cond_set = {str(c).strip().lower() for c in conditions if str(c).strip()}
-    if not cond_set:
-        return req, notes
+    cond_df = cond_df.copy()
+    cond_df["condition"] = cond_df["condition"].astype(str).str.strip().str.lower()
 
-    if cond_df is None or cond_df.empty:
-        return req, notes
-
-    for _, row in cond_df.iterrows():
-        c = str(row.get("condition", "")).strip().lower()
-        if c not in cond_set:
+    for c in conditions:
+        c_key = str(c).strip().lower()
+        rows = cond_df[cond_df["condition"] == c_key]
+        if rows.empty:
             continue
 
-        nutrient = str(row.get("nutrient", "")).strip()
-        rule_type = str(row.get("rule_type", "")).strip().lower()
-        val = row.get("value", None)
-        note = str(row.get("note", "")).strip()
+        for _, r in rows.iterrows():
+            nutrient = str(r.get("nutrient", "")).strip()
+            adj = r.get("adjustment", 0)
+            note = r.get("note", "")
 
-        if not nutrient:
-            continue
+            if nutrient and nutrient in req and _is_number(req[nutrient]) and _is_number(adj):
+                req[nutrient] = float(req[nutrient]) + float(adj)
 
-        notes.append({
-            "condition": c,
-            "nutrient": nutrient,
-            "note": note or ""
-        })
-
-        if not _is_number(val):
-            continue
-        val = float(val)
-
-        if rule_type == "multiplier":
-            if nutrient in req and _is_number(req[nutrient]):
-                req[nutrient] = float(req[nutrient]) * val
-
-        elif rule_type == "add":
-            if nutrient in req and _is_number(req[nutrient]):
-                req[nutrient] = float(req[nutrient]) + val
-            else:
-                req[nutrient] = val
-
-        elif rule_type == "set":
-            req[nutrient] = val
-
-        elif rule_type in ("upper_limit", "upper", "limit"):
-            upper_key = nutrient if nutrient.endswith("_upper") else f"{nutrient}_upper"
-            if upper_key in req and _is_number(req[upper_key]):
-                req[upper_key] = min(float(req[upper_key]), val)
-            else:
-                req[upper_key] = val
+            notes.append(
+                {
+                    "condition": c,
+                    "nutrient": nutrient,
+                    "adjustment": float(adj) if _is_number(adj) else adj,
+                    "note": note,
+                }
+            )
 
     return req, notes
 
@@ -142,116 +175,45 @@ def _severity_from_gap(gap: float, req_value: float) -> str:
 
 def _pick_recommendations(food_df, gaps: Dict, requirements: Dict, limit: int = 8) -> List[Dict]:
     """
-    Improved recommendation logic:
-    - Choose top deficient nutrients by GAP RATIO (gap / requirement), not raw gap amount.
-      This prevents potassium_mg from dominating just because it's in mg.
-    - Score each food by how well it covers MULTIPLE deficient nutrients.
+    Simple recommendation logic:
+    - find foods rich in nutrients with highest positive gaps
+    - rank by multi-nutrient score
     """
-    if food_df is None or getattr(food_df, "empty", True):
+    if food_df is None or food_df.empty:
         return []
 
-    # Avoid recommending spice mixes etc.
-    bad_words = ["masala", "powder", "spice blend", "seasoning", "mix", "blend"]
+    # choose top lacking nutrients (exclude *_upper keys)
+    gap_items = [(k, v) for k, v in gaps.items() if _is_number(v) and float(v) > 0 and not str(k).endswith("_upper")]
+    gap_items.sort(key=lambda x: float(x[1]), reverse=True)
+    top_keys = [k for k, _ in gap_items[:6]]
 
-    def ok_food_name(name: str) -> bool:
-        n = (name or "").lower()
-        return bool(name) and not any(w in n for w in bad_words)
-
-    # Build candidate deficient nutrients using GAP RATIO
-    candidates = []
-    for k, gap in (gaps or {}).items():
-        if k.endswith("_upper"):
-            continue
-        if not _is_number(gap) or float(gap) <= 0:
-            continue
-        req = requirements.get(k)
-        if not _is_number(req) or float(req) <= 0:
-            continue
-        if k not in food_df.columns:
-            continue
-
-        ratio = float(gap) / float(req)  # <-- key fix
-        candidates.append((k, float(gap), float(req), float(ratio)))
-
-    # Sort by ratio (severity) not by raw values
-    candidates.sort(key=lambda x: x[3], reverse=True)
-
-    # Pick a set of nutrients (prefer variety, up to 6)
-    top = candidates[:6]
-    if not top:
+    if not top_keys:
         return []
 
-    top_nutrients = [t[0] for t in top]
-    weight_by_nutr = {k: max(0.15, min(ratio, 2.0)) for k, _, _, ratio in top}  # clamp weights
+    # score foods by how much they contribute to top gaps
+    df = food_df.copy()
+    df.columns = [str(c).strip() for c in df.columns]
 
-    # Prepare a working dataframe with required columns
-    base_cols = ["food_id", "food_name", "serving_basis", "serving_size_g"]
-    cols = [c for c in base_cols if c in food_df.columns] + top_nutrients
-    df = food_df[cols].copy()
-
-    # Ensure numeric
-    for nutr in top_nutrients:
-        df[nutr] = pd.to_numeric(df[nutr], errors="coerce")
-
-    df = df.dropna(subset=["food_name"])
-    df = df[df["food_name"].astype(str).map(ok_food_name)]
-
-    # Compute multi-nutrient score:
-    # score = Σ ( (value / requirement) * weight )
-    # cap each nutrient contribution so one nutrient doesn't dominate
-    def compute_score(row) -> float:
+    score = []
+    for _, row in df.iterrows():
         s = 0.0
-        for nutr in top_nutrients:
-            v = row.get(nutr, None)
-            if v is None or not _is_number(v):
-                continue
-            req = float(requirements.get(nutr, 1.0) or 1.0)
-            if req <= 0:
-                continue
-            contrib = float(v) / req
-            contrib = min(contrib, 1.5)  # cap
-            s += contrib * float(weight_by_nutr.get(nutr, 0.2))
-        return s
+        for k in top_keys:
+            if k in row and _is_number(row[k]):
+                s += float(row[k])
+        score.append(s)
 
-    df["_score"] = df.apply(compute_score, axis=1)
-    df = df.sort_values(by="_score", ascending=False)
+    df["_score"] = score
+    df = df.sort_values("_score", ascending=False)
 
-    # Deduplicate by food_name
-    used = set()
     recs = []
-
-    for _, r in df.head(200).iterrows():
-        fname = str(r.get("food_name", "")).strip()
-        if not fname:
-            continue
-        key = fname.lower()
-        if key in used:
-            continue
-
-        item = {
-            "food_id": str(r.get("food_id", "")).strip(),
-            "food_name": fname,
-            "serving_basis": r.get("serving_basis", ""),
-            "serving_size_g": r.get("serving_size_g", None),
-        }
-
-        # Attach multiple nutrient values (top 4)
-        nutr_values = []
-        for nutr in top_nutrients:
-            v = r.get(nutr, None)
-            if _is_number(v) and float(v) > 0:
-                nutr_values.append((nutr, float(v)))
-
-        nutr_values.sort(key=lambda x: x[1], reverse=True)
-        for nutr, v in nutr_values[:4]:
-            item[nutr] = v
-
-        recs.append(item)
-        used.add(key)
-
-        if len(recs) >= limit:
-            break
-
+    for _, row in df.head(limit).iterrows():
+        recs.append(
+            {
+                "food_id": row.get("food_id"),
+                "food_name": row.get("food_name") or row.get("name"),
+                **{k: row.get(k) for k in top_keys if k in row},
+            }
+        )
     return recs
 
 
@@ -271,52 +233,65 @@ def build_report(app, user_id: str, period: str = "monthly") -> Dict:
     group = profile.get("group", "male")
     conditions = profile.get("conditions", []) or []
 
-    try:
-        age = int(age)
-    except Exception:
-        age = 22
+    base_row = _pick_requirement_row(req_df, int(age), str(group))
 
-    base_row = _pick_requirement_row(req_df, age, group)
-
-    requirements_base = {
-        "age_min": base_row.get("age_min"),
-        "age_max": base_row.get("age_max"),
-        "group": str(base_row.get("group", group)).lower(),
-        **_clean_numeric_dict(base_row),
-    }
+    # canonicalize base requirements dict (prevents alias keys from surviving)
+    requirements_base = _canonicalize_keys(
+        {
+            "age_min": base_row.get("age_min"),
+            "age_max": base_row.get("age_max"),
+            "group": str(base_row.get("group", group)).lower(),
+            **_clean_numeric_dict(base_row),
+        }
+    )
 
     requirements, condition_notes = _apply_condition_rules(requirements_base, cond_df, conditions)
 
+    # Canonicalize requirements to avoid duplicates (mcg vs ug)
+    requirements = _canonicalize_keys(requirements)
+
     intake_summary = get_summary(app, user_id, period)
     intake_daily = intake_summary.get("daily_average_over_period") or intake_summary.get("daily_average") or {}
+
+    # Canonicalize intake averages too (prevents duplicates from logs)
+    intake_daily = _canonicalize_keys(intake_daily)
+
+    if isinstance(intake_summary, dict):
+        if isinstance(intake_summary.get("daily_average_over_period"), dict):
+            intake_summary["daily_average_over_period"] = intake_daily
+        if isinstance(intake_summary.get("daily_average"), dict):
+            intake_summary["daily_average"] = intake_daily
 
     gaps = {}
     severity = {}
 
     for k, req_val in requirements.items():
-        if k in NUMERIC_SKIP:
+        if k in ("age_min", "age_max", "group"):
             continue
         if not _is_number(req_val):
             continue
 
-        req_val = float(req_val)
-        intake_val = float(intake_daily.get(k, 0.0)) if _is_number(intake_daily.get(k)) else 0.0
+        intake_val = float(intake_daily.get(k, 0) or 0)
 
-        if k.endswith("_upper"):
-            excess = intake_val - req_val
+        # Upper-limit nutrients (like sodium_upper)
+        if str(k).endswith("_upper"):
+            excess = intake_val - float(req_val)
             gaps[k] = round(excess, 4)
             severity[k] = "high" if excess > 0 else "ok"
             continue
 
-        gap = req_val - intake_val
+        gap = float(req_val) - intake_val
         gaps[k] = round(gap, 4)
-        severity[k] = _severity_from_gap(gap, req_val)
+        severity[k] = _severity_from_gap(gap, float(req_val))
+
+    # Canonicalize gaps/severity (safety: in case any alias slipped through)
+    gaps = _canonicalize_keys(gaps)
+    severity = _canonicalize_keys(severity)
 
     # recommendations: ratio-based + multi-nutrient scoring
     recommendations = _pick_recommendations(food_df, gaps, requirements, limit=8)
 
     return {
-        "user_id": user_id,
         "period": period,
         "profile": {
             "user_id": user_id,

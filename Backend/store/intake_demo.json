@@ -710,5 +710,61 @@
     "quantity": 2.0,
     "date": "2026-01-07",
     "ts": "2026-01-06T19:18:13.358341Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0014",
+    "food_name": "White Rice",
+    "quantity": 1.0,
+    "date": "2025-12-31",
+    "ts": "2026-01-07T07:34:02.352383Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0463",
+    "food_name": "Apple cinnamon pie",
+    "quantity": 2.0,
+    "date": "2026-01-07",
+    "ts": "2026-01-07T07:44:24.194497Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0479",
+    "food_name": "Orange cake",
+    "quantity": 2.0,
+    "date": "2026-01-07",
+    "ts": "2026-01-07T07:45:14.143214Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0142",
+    "food_name": "Cornflakes with milk",
+    "quantity": 1.0,
+    "date": "2026-01-07",
+    "ts": "2026-01-07T07:45:30.019692Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0073",
+    "food_name": "Pol Roti",
+    "quantity": 1.0,
+    "date": "2026-01-07",
+    "ts": "2026-01-07T08:03:06.839483Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0062",
+    "food_name": "Herbal Tea",
+    "quantity": 1.0,
+    "date": "2026-01-07",
+    "ts": "2026-01-07T08:25:46.438354Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0016",
+    "food_name": "Fried Egg",
+    "quantity": 1.0,
+    "date": "2026-01-07",
+    "ts": "2026-01-07T08:45:02.067496Z"
   }
 ]
