@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import { Sidebar } from '../components/Sidebar';
 import { ChatAssistant } from '../components/ChatAssistant';
+import { MealForecast } from '../components/MealForecast';
 
 export function Home() {
   const navigate = useNavigate();
@@ -57,6 +58,9 @@ export function Home() {
               <ArrowRightIcon size={20} />
             </button>
           </div>
+
+          <MealForecast />
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
             {features.map((feature, index) => {
               const Icon = feature.icon;

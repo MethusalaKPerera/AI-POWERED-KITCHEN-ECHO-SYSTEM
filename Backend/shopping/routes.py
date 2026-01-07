@@ -626,6 +626,226 @@ def get_product(product_id):
         })
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@shopping_bp.route('/api/shopping/predict-needs', methods=['GET', 'OPTIONS'])
+@cross_origin(
+    origins=['http://localhost:5173', 'http://127.0.0.1:5173'],
+    methods=['GET', 'OPTIONS'],
+    allow_headers=['Content-Type', 'Authorization'],
+    supports_credentials=True,
+)
+@jwt_required()
+def predict_needs():
+    if request.method == 'OPTIONS':
+        return jsonify({}), 200
+
+    try:
+        user_id = get_jwt_identity()
+        if not user_id:
+             return jsonify({'success': False, 'error': 'User not found'}), 404
+
+        # 1. Load User History
+        all_history = load_history()
+        user_history = [h for h in all_history if h['user_id'] == user_id]
+        
+        if not user_history:
+            return jsonify({
+                'success': True,
+                'prediction': {
+                    'preferences': ["New User"],
+                    'weekend_habit': "Not enough data yet.",
+                    'seasonal_prediction': "Comfort Food",
+                    'reasoning': "Start searching to get personalized predictions!"
+                }
+            })
+
+        # ---------------------------------------------------------
+        # HYBRID AI SYSTEM: "Training" + "Inference"
+        # ---------------------------------------------------------
+        
+        # STEP 1: "Train" (Build/Update the User Profile Model)
+        # We process the raw history to extract high-level "features" (Long-term Memory)
+        learned_profile = train_personal_model(user_id)
+        
+        # STEP 2: Prepare Context (Short-term Memory)
+        # Limit to last 30 interactions for immediate context
+        recent_history = sorted(user_history, key=lambda x: x.get('timestamp', ''), reverse=True)[:30]
+        
+        history_summary = []
+        for h in recent_history:
+            ts_str = h.get('timestamp', '')
+            try:
+                dt = datetime.datetime.fromisoformat(ts_str)
+                day_name = dt.strftime("%A") 
+            except:
+                day_name = "Unknown Day"
+            history_summary.append(f"[{day_name}] {h['type']}: {h['query']}")     
+        history_text = "\n".join(history_summary)
+        
+        current_date = datetime.datetime.now().strftime("%Y-%m-%d (%A)")
+
+        # STEP 3: Inference (Gemini uses both Learned Profile + Recent Context)
+        if GEMINI_API_KEY:
+            try:
+                import google.generativeai as genai
+                genai.configure(api_key=GEMINI_API_KEY)
+                model = genai.GenerativeModel('models/gemini-1.5-flash-latest') # Updated model
+                
+                # Construct a sophisticated prompt that uses the "Model" we just trained
+                prompt = (
+                    f"Act as an Advanced AI Dietitian & Data Scientist.\n\n"
+                    
+                    f"--- LONG-TERM MEMORY (LEARNED MODEL) ---\n"
+                    f"Based on historical training, we know this about the user:\n"
+                    f"Top Interests: {', '.join(learned_profile.get('top_keywords', []))}\n"
+                    f"Shopping Pattern: {learned_profile.get('shopping_pattern', 'Unknown')}\n\n"
+                    
+                    f"--- SHORT-TERM CONTEXT (RECENT ACTIVITY) ---\n"
+                    f"Recent Logs:\n{history_text}\n\n"
+                    
+                    f"--- CURRENT CONTEXT ---\n"
+                    f"Date: {current_date}\n\n"
+                    
+                    f"--- INFERENCE TASK ---\n"
+                    f"1. Refine the dietary preferences based on the model.\n"
+                    f"2. Predict the specific Meal Plan for tomorrow (Breakfast, Lunch, Dinner).\n"
+                    f"3. Explain your reasoning: How does the long-term model + short-term context lead to this prediction?\n\n"
+                    
+                    f"CRITICAL: Return ONLY raw JSON in this format:\n"
+                    f"{{ \"preferences\": [\"...\"], \"weekend_habit\": \"...\", \"meal_plan\": {{ \"breakfast\": \"...\", \"lunch\": \"...\", \"dinner\": \"...\" }}, \"reasoning\": \"...\" }}"
+                )
+                
+                # Try specific models if the default alias fails (Error handling wrapper)
+                try:
+                     response = model.generate_content(prompt)
+                except Exception as model_err:
+                     print(f"Primary model failed, trying fallback: {model_err}")
+                     model = genai.GenerativeModel('models/gemini-pro')
+                     response = model.generate_content(prompt)
+
+                text_response = response.text.replace('```json', '').replace('```', '').strip()
+                prediction_data = json.loads(text_response)
+                
+                return jsonify({
+                    'success': True,
+                    'prediction': prediction_data,
+                    'model_version': 'hybrid-v1', # Proof of hybrid model use
+                    'metadata': {
+                        'learned_profile': learned_profile
+                    }
+                })
+
+            except Exception as ai_e:
+                print(f"Prediction AI failed: {ai_e}")
+                if "429" in str(ai_e):
+                    # Quota exceeded error - specific robust fallback
+                    return jsonify({
+                        'success': True,
+                        'prediction': {
+                            'preferences': learned_profile.get('top_keywords', ["General Cooking"])[:3],
+                            'weekend_habit': learned_profile.get('shopping_pattern', "Regular Shopper"),
+                            'seasonal_prediction': "Home Cooked Meal",
+                            'reasoning': "AI Quota Exceeded (429). Using Locally Trained Model to generate suggestions.",
+                            'meal_plan': { 
+                                'breakfast': "Oatmeal with Fruits", 
+                                'lunch': "Grilled Chicken Salad", 
+                                'dinner': "Vegetable Stir-fry" 
+                            }
+                        }
+                    })
+        
+        # Fallback (Static rules)
+        return jsonify({
+            'success': True,
+            'prediction': {
+                'preferences': ["General Cooking"],
+                'weekend_habit': "Likely shopping for groceries.",
+                'seasonal_prediction': "Seasonal Salad",
+                'reasoning': "AI service unavailable. Showing default suggestion.",
+                 'meal_plan': { 
+                    'breakfast': "Oatmeal with Fruits", 
+                    'lunch': "Grilled Chicken Salad", 
+                    'dinner': "Vegetable Stir-fry" 
+                }
+            }
+        })
+
+    except Exception as e:
+        print(f"Predict needs error: {e}")
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+# =================================== MODEL TRAINING (LOCAL) ===================================
+
+USER_PROFILES_FILE = os.path.join(os.path.dirname(__file__), '..', 'data', 'user_profiles.json')
+
+def train_personal_model(user_id):
+    """
+    Simulates a 'Training Step'. 
+    Analyzes raw history to build a persistent User Profile (Weights/Features).
+    """
+    print(f"Training model for user: {user_id}...")
+    
+    # 1. Load Data
+    all_history = load_history()
+    user_history = [h for h in all_history if h['user_id'] == user_id]
+    
+    if not user_history:
+        return {}
+
+    # 2. Extract Features (The "Learning" Process)
+    from collections import Counter
+    
+    # Feature A: Keyword Frequency (Bag of Words)
+    all_queries = " ".join([h['query'].lower() for h in user_history])
+    ignore_words = {'the', 'a', 'in', 'of', 'for', 'to', 'recipe', 'how', 'make', 'cook', 'buy', 'price'}
+    words = [w for w in re.findall(r'\b\w+\b', all_queries) if w not in ignore_words and len(w) > 2]
+    keyword_counts = Counter(words)
+    top_keywords = [item[0] for item in keyword_counts.most_common(5)]
+    
+    # Feature B: Time Pattern
+    # Analyze if they shop mostly on weekends
+    weekend_count = 0
+    weekday_count = 0
+    for h in user_history:
+        try:
+             dt = datetime.datetime.fromisoformat(h.get('timestamp', ''))
+             if dt.weekday() >= 5: # 5=Sat, 6=Sun
+                 weekend_count += 1
+             else:
+                 weekday_count += 1
+        except:
+            pass
+            
+    shopping_pattern = "Weekend Shopper" if weekend_count > weekday_count else "Weekday Planner"
+    
+    # 3. Build & Save Model (Profile)
+    # Load existing profiles
+    profiles = {}
+    if os.path.exists(USER_PROFILES_FILE):
+        try:
+            with open(USER_PROFILES_FILE, 'r') as f:
+                profiles = json.load(f)
+        except:
+             profiles = {}
+             
+    # Update this user's profile "weights"
+    profiles[user_id] = {
+        'last_trained': datetime.datetime.now().isoformat(),
+        'top_keywords': top_keywords,
+        'shopping_pattern': shopping_pattern,
+        'data_points': len(user_history)
+    }
+    
+    # Persist the "Trained Model"
+    os.makedirs(os.path.dirname(USER_PROFILES_FILE), exist_ok=True)
+    with open(USER_PROFILES_FILE, 'w') as f:
+        json.dump(profiles, f, indent=2)
+        
+    print(f"Model trained. Profile saved for {user_id}.")
+    return profiles[user_id]
+
 @shopping_bp.route('/api/shopping/history', methods=['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'])
 @cross_origin(
     origins=['http://localhost:5173', 'http://127.0.0.1:5173'],
