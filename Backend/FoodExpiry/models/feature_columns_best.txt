@@ -1,0 +1,14 @@
+purchase_month
+purchase_day_of_week
+quantity
+used_before_expiry
+item_beverage
+item_dairy
+item_fruit
+item_grain
+item_meat
+item_snack
+item_vegetable
+storage_freezer
+storage_fridge
+storage_pantry

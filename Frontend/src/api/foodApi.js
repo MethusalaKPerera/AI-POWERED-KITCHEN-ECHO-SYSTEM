@@ -76,3 +76,12 @@ export async function deleteFood(id) {
     throw toMessage(err);
   }
 }
+
+export async function getFoodById(id) {
+  try {
+    const res = await api.get(`/api/food/one/${id}`);
+    return res.data;
+  } catch (err) {
+    throw toMessage(err);
+  }
+}

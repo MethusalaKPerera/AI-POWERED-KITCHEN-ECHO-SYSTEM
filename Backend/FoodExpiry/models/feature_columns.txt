@@ -12,6 +12,8 @@ cat_vegetable
 storage_freezer
 storage_fridge
 storage_pantry
+storage_temperature_c
+storage_humidity_pct
 item_base_expiry_days
 food_almond_milk
 food_apple
