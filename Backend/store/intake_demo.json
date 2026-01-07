@@ -862,5 +862,29 @@
     "quantity": 1.0,
     "date": "2026-01-07",
     "ts": "2026-01-07T11:36:31.854852Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0014",
+    "food_name": "White Rice",
+    "quantity": 1.0,
+    "date": "2026-01-08",
+    "ts": "2026-01-07T18:43:01.830783Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0275",
+    "food_name": "Spinach kofta curry (Palak kofta curry)",
+    "quantity": 1.0,
+    "date": "2026-01-08",
+    "ts": "2026-01-07T19:15:17.979596Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0014",
+    "food_name": "White Rice",
+    "quantity": 2.0,
+    "date": "2026-01-08",
+    "ts": "2026-01-07T19:30:51.850291Z"
   }
 ]
