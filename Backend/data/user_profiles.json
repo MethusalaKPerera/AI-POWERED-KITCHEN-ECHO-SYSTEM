@@ -1,18 +1,18 @@
 {
   "1": {
-    "last_trained": "2026-01-07T20:12:02.400167",
+    "last_trained": "2026-01-08T10:09:30.806899",
     "top_keywords": [
+      "rice",
       "chicken",
       "fried",
-      "rice",
       "banana",
       "what"
     ],
     "shopping_pattern": "Weekday Planner",
-    "data_points": 14
+    "data_points": 16
   },
   "2": {
-    "last_trained": "2026-01-07T16:25:12.035595",
+    "last_trained": "2026-01-08T09:16:10.740331",
     "top_keywords": [
       "chicken",
       "chocolate",
