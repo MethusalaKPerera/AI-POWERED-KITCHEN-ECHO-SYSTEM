@@ -49,10 +49,6 @@ To develop an **AI-powered smart kitchen ecosystem** that reduces household food
 The ecosystem follows a **modular architecture**, where each module exposes REST APIs and integrates through the main frontend experience.
 
 <p align="center">
-  <img src="docs/architecture.png" width="750" alt="AI-Powered Kitchen Ecosystem Architecture">
-</p>
-
-<p align="center">
   <em>Figure 1: High-level architecture of the AI-Powered Kitchen Ecosystem</em>
 </p>
 
