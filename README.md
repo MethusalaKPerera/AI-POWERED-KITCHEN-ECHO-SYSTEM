@@ -57,85 +57,76 @@ The ecosystem follows a **modular architecture**, where each module exposes REST
 </p>
 
 
-🧩 Core Modules
-1️. Spontaneous Cooking Assistant
+**Individual Components**
+
+**1️. Spontaneous Cooking Assistant**
 
 Goal: Turn a photo of available ingredients into recipe suggestions.
 
 Key Features :
 
 Multi-item ingredient recognition (single photo → multiple detected items)
-
 Confidence scoring + user correction workflow
-
 Recipe matching and ranking based on ingredient overlap
-
 Missing ingredient hints and substitution suggestions
 
-Tech Focus
+Technical Features
 
 Computer Vision + ingredient-to-recipe retrieval
-
 Efficient indexing/caching for fast recipe search
 
-2️. Nutrition Guidance – Predictive Health Intervention System (Your Component)
+**2️. Nutrition Guidance – Predictive Health Intervention System**
 
 Goal: Transform diet tracking into proactive health intervention.
 
-Key Innovations
+**Key Innovations**
 
 Predictive Health AI Engine: forecasts micro-nutrient deficiency risk 2 weeks ahead using dietary patterns + lifestyle signals.
-
 Chrono/Circadian Nutrition Optimization: aligns meal suggestions with the user’s biological rhythm, work schedule, and sleep cycle.
-
 Goal-Based Nutrition Engine: recommends meals/snacks for goals like weight loss, muscle gain, energy support, and recovery.
-
 Medication–Food Interaction Alerts: warns users about potentially harmful interactions for safer nutrition management.
-
 Interactive Feedback Loop: nudges, progress tracking, and habit-building adaptation over time.
 
-Outputs
+**Outputs**
 
 Weekly/Monthly nutrient summaries
-
 Deficiency risk insights (early warnings)
-
 Personalized recommendations + nudges
-
 Safety alerts (medication-food)
 
 
-3. AI Shopping Agent
+**3. AI Shopping Agent**
 
 Goal: Make shopping smarter, faster, and hands-free.
 
-Key Features
+**Key Features**
 
 Voice-based search for hands-free kitchen usage
-
 NLP intent understanding for smarter product matches
-
 Cross-platform price comparison and currency conversion
-
 Search history management (save/view/update/delete)
-
 Context-aware assistant to guide shopping decisions
 
-4. Behavioral Food Expiry Predictor
+**4. Behavioral Food Expiry Predictor**
 
 Goal: Reduce waste using personalized expiry estimates.
 
-Key Features
+**Key Features**
 
 Learns from purchase date, storage type, and user habits
-
 Predicts expiry/spoilage dynamically (not just label-based)
-
 Feedback-based refinement (user confirms/corrects)
-
 Alerts and reminders for items nearing expiry
 
-Waste analytics dashboard
+**Technical Features**
+
+Personalized food expiry prediction using a CatBoost regression model
+Behavior-driven learning from purchase date, storage type, and consumption history
+User feedback integration (early / on-time / late) to refine predictions
+Dynamic expiry estimation without reliance on printed expiry dates
+Sensor-free design for scalability and real-world usability
+Smart alerts for items approaching predicted expiry
+
 
 ## 👥 Team Members & Responsibilities
 
@@ -168,4 +159,23 @@ Waste analytics dashboard
 - **Styling**: Tailwind CSS, Framer Motion (for animations)
 - **Icons**: Lucide React, React Icons
 - **State Management**: React Context API
+
+## 🚀 Installation & Setup
+
+### Backend
+1. Navigate to the `Backend` directory.
+2. Create environment: `python -m venv .venv`
+3. Activate: `.venv\Scripts\activate` (Windows)
+4. Install dependencies: `pip install -r requirements.txt`
+5. Run server: `python app.py`
+
+### Frontend
+1. Navigate to the `Frontend` directory.
+2. Install dependencies: `npm install`
+3. Run development server: `npm run dev`
+
+## 📦 Key Dependencies
+- **Backend**: `Flask`, `flask-pymongo`, `scikit-learn`, `google-generativeai`, `beautifulsoup4`
+- **Frontend**: `react`, `react-router-dom`, `framer-motion`, `axios`, `tailwindcss`
+
 
