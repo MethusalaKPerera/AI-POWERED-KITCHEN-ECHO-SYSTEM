@@ -65,15 +65,15 @@ Goal: Turn a photo of available ingredients into recipe suggestions.
 
 Key Features :
 
-Multi-item ingredient recognition (single photo → multiple detected items)
-Confidence scoring + user correction workflow
-Recipe matching and ranking based on ingredient overlap
-Missing ingredient hints and substitution suggestions
+- Multi-item ingredient recognition (single photo → multiple detected items)
+- Confidence scoring + user correction workflow
+- Recipe matching and ranking based on ingredient overlap
+- Missing ingredient hints and substitution suggestions
 
 Technical Features
 
-Computer Vision + ingredient-to-recipe retrieval
-Efficient indexing/caching for fast recipe search
+- Computer Vision + ingredient-to-recipe retrieval
+- Efficient indexing/caching for fast recipe search
 
 **2️. Nutrition Guidance – Predictive Health Intervention System**
 
