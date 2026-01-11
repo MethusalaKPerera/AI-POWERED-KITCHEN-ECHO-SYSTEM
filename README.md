@@ -162,7 +162,7 @@ Goal: **Reduce waste using personalized expiry estimates.**
 - **Framework**: Flask (Python)
 - **Database**: MongoDB (via Flask-PyMongo)
 - **AI/ML**: Scikit-learn, Pandas, NumPy, Google Gemini (LLM Integration)
-- **API Integration**: DuckDuckgo Search, Beautiful Soup, multi-site product APIs
+- **API Integration**: SERPAPI,DuckDuckgo Search, Beautiful Soup, multi-site product APIs
 - **Security**: Flask-Bcrypt, Flask-JWT-Extended
 
 ### Frontend
