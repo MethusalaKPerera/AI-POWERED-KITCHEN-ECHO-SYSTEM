@@ -61,7 +61,7 @@ The ecosystem follows a **modular architecture**, where each module exposes REST
 
 **1️. Spontaneous Cooking Assistant**
 
-Goal: Turn a photo of available ingredients into recipe suggestions.
+Goal: **Turn a photo of available ingredients into recipe suggestions.**
 
 Key Features :
 
@@ -77,55 +77,55 @@ Technical Features
 
 **2️. Nutrition Guidance – Predictive Health Intervention System**
 
-Goal: Transform diet tracking into proactive health intervention.
+Goal: **Transform diet tracking into proactive health intervention.**
 
 **Key Innovations**
 
-Predictive Health AI Engine: forecasts micro-nutrient deficiency risk 2 weeks ahead using dietary patterns + lifestyle signals.
-Chrono/Circadian Nutrition Optimization: aligns meal suggestions with the user’s biological rhythm, work schedule, and sleep cycle.
-Goal-Based Nutrition Engine: recommends meals/snacks for goals like weight loss, muscle gain, energy support, and recovery.
-Medication–Food Interaction Alerts: warns users about potentially harmful interactions for safer nutrition management.
-Interactive Feedback Loop: nudges, progress tracking, and habit-building adaptation over time.
+- Predictive Health AI Engine: forecasts micro-nutrient deficiency risk 2 weeks ahead using dietary patterns + lifestyle signals.
+- Chrono/Circadian Nutrition Optimization: aligns meal suggestions with the user’s biological rhythm, work schedule, and sleep cycle.
+- Goal-Based Nutrition Engine: recommends meals/snacks for goals like weight loss, muscle gain, energy support, and recovery.
+- Medication–Food Interaction Alerts: warns users about potentially harmful interactions for safer nutrition management.
+- Interactive Feedback Loop: nudges, progress tracking, and habit-building adaptation over time.
 
 **Outputs**
 
-Weekly/Monthly nutrient summaries
-Deficiency risk insights (early warnings)
-Personalized recommendations + nudges
-Safety alerts (medication-food)
+- Weekly/Monthly nutrient summaries
+- Deficiency risk insights (early warnings)
+- Personalized recommendations + nudges
+- Safety alerts (medication-food)
 
 
 **3. AI Shopping Agent**
 
-Goal: Make shopping smarter, faster, and hands-free.
+Goal: **Make shopping smarter, faster, and hands-free.**
 
 **Key Features**
 
-Voice-based search for hands-free kitchen usage
-NLP intent understanding for smarter product matches
-Cross-platform price comparison and currency conversion
-Search history management (save/view/update/delete)
-Context-aware assistant to guide shopping decisions
+- Voice-based search for hands-free kitchen usage
+- NLP intent understanding for smarter product matches
+- Cross-platform price comparison and currency conversion
+- Search history management (save/view/update/delete)
+- Context-aware assistant to guide shopping decisions
 
 **4. Behavioral Food Expiry Predictor**
 
-Goal: Reduce waste using personalized expiry estimates.
+Goal: **Reduce waste using personalized expiry estimates.**
 
 **Key Features**
 
-Learns from purchase date, storage type, and user habits
-Predicts expiry/spoilage dynamically (not just label-based)
-Feedback-based refinement (user confirms/corrects)
-Alerts and reminders for items nearing expiry
+- Learns from purchase date, storage type, and user habits
+- Predicts expiry/spoilage dynamically (not just label-based)
+- Feedback-based refinement (user confirms/corrects)
+- Alerts and reminders for items nearing expiry
 
 **Technical Features**
 
-Personalized food expiry prediction using a CatBoost regression model
-Behavior-driven learning from purchase date, storage type, and consumption history
-User feedback integration (early / on-time / late) to refine predictions
-Dynamic expiry estimation without reliance on printed expiry dates
-Sensor-free design for scalability and real-world usability
-Smart alerts for items approaching predicted expiry
+- Personalized food expiry prediction using a CatBoost regression model
+- Behavior-driven learning from purchase date, storage type, and consumption history
+- User feedback integration (early / on-time / late) to refine predictions
+- Dynamic expiry estimation without reliance on printed expiry dates
+- Sensor-free design for scalability and real-world usability
+- Smart alerts for items approaching predicted expiry
 
 
 ## 👥 Team Members & Responsibilities
