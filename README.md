@@ -50,7 +50,7 @@ The ecosystem follows a modular architecture where each module exposes REST APIs
 
 ```html
 <p align="center">
-  <img src="Frontend/public/Architecture.png" alt="AI-Powered Kitchen Ecosystem Architecture" width="750" style="max-width: 100%; height: auto;" />
+  <img src="docs/architecture.png" width="750" alt="AI-Powered Kitchen Ecosystem Architecture">
 </p>
 
 🧩 Core Modules
