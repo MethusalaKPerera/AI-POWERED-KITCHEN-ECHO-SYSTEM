@@ -14,7 +14,7 @@ This ecosystem integrates **four intelligent modules** working together in a sin
 3. **AI Shopping Agent** (Voice-enabled product search + cross-platform price comparison)
 4. **Behavioral Food Expiry Predictor** (Personalized spoilage/expiry prediction using user behavior feedback)
 
-## 📌 Project Overview
+## Project Overview
 
 Many existing food-tech applications solve problems in isolation (only recipes, only calorie counting, only shopping lists, only expiry reminders). This project unifies these areas into a **single AI-powered ecosystem** that:
 
@@ -23,7 +23,7 @@ Many existing food-tech applications solve problems in isolation (only recipes, 
 - Supports smarter household purchasing decisions
 - Learns from user habits to continuously improve predictions and recommendations
 
-## ❗ Research Problem
+## Research Problem
 
 Households face two interconnected challenges:
 
@@ -33,7 +33,7 @@ Households face two interconnected challenges:
 Most current solutions are **fragmented**, lack **personalization**, and do not provide **end-to-end support** across the food lifecycle. This research addresses that gap by building an integrated, adaptive smart kitchen platform powered by AI.
 
 
-## 🎯 Research Objectives
+## Research Objectives
 
 ### Main Objective
 To develop an **AI-powered smart kitchen ecosystem** that reduces household food waste, improves nutrition outcomes, and enhances cooking experiences through integrated AI modules, personalization, and adaptive feedback mechanisms.
@@ -44,7 +44,7 @@ To develop an **AI-powered smart kitchen ecosystem** that reduces household food
 - Provide voice-enabled smart shopping with recommendation, comparison, and search history personalization.
 - Predict food expiry/spoilage dynamically using user habits, storage patterns, and feedback loops.
 
-## 🏗️ System Architecture
+## System Architecture
 
 The ecosystem follows a **modular architecture**, where each module exposes REST APIs and integrates through the main frontend experience.
 
@@ -59,41 +59,43 @@ The ecosystem follows a **modular architecture**, where each module exposes REST
 
 **Individual Components**
 
-**1️. Spontaneous Cooking Assistant**
+**1. Spontaneous Cooking Assistant**
 
 Goal: **Turn a photo of available ingredients into recipe suggestions.**
 
-Key Features :
+**Key Innovations**
 
 - Multi-item ingredient recognition (single photo → multiple detected items)
 - Confidence scoring + user correction workflow
 - Recipe matching and ranking based on ingredient overlap
 - Missing ingredient hints and substitution suggestions
 
-Technical Features
+**Technical Features**
 
 - Computer Vision + ingredient-to-recipe retrieval
 - Efficient indexing/caching for fast recipe search
 
-**2️. Nutrition Guidance – Predictive Health Intervention System**
+**2. Nutrition Guidance – Predictive Health Intervention System**
 
 Goal: **Transform diet tracking into proactive health intervention.**
 
 **Key Innovations**
 
-- Predictive Health AI Engine: forecasts micro-nutrient deficiency risk 2 weeks ahead using dietary patterns + lifestyle signals.
-- Chrono/Circadian Nutrition Optimization: aligns meal suggestions with the user’s biological rhythm, work schedule, and sleep cycle.
-- Goal-Based Nutrition Engine: recommends meals/snacks for goals like weight loss, muscle gain, energy support, and recovery.
-- Medication–Food Interaction Alerts: warns users about potentially harmful interactions for safer nutrition management.
-- Interactive Feedback Loop: nudges, progress tracking, and habit-building adaptation over time.
+- Predictive deficiency risk forecasting 2 weeks ahead from intake patterns
+- Temporal intake analysis (weekly/monthly trends) to detect long-term imbalance
+- Personalized risk scoring using user context (age/condition adjustments)
+- Explainable outputs: risk indicators + summary insights for non-technical users
+- Transform diet tracking into proactive health intervention
 
-**Outputs**
+**Technical Features**
 
-- Weekly/Monthly nutrient summaries
-- Deficiency risk insights (early warnings)
-- Personalized recommendations + nudges
-- Safety alerts (medication-food)
-
+- Machine-learning–based prediction of micro-nutrient deficiency risk up to two weeks in advance
+- Weekly and monthly intake trend analysis for long-term imbalance detection
+- Personalized deficiency risk scoring using intake history, age requirements, and health conditions
+- Risk-based nutrition insights generated from predicted deficiency levels.
+- Modular ML architecture separating data aggregation, prediction, and recommendation layers
+- Deficiency indicators and interpretable health summaries
+- Adaptive risk recalculation with continuous intake data updates
 
 **3. AI Shopping Agent**
 
@@ -106,6 +108,14 @@ Goal: **Make shopping smarter, faster, and hands-free.**
 - Cross-platform price comparison and currency conversion
 - Search history management (save/view/update/delete)
 - Context-aware assistant to guide shopping decisions
+
+**Technical Features**
+- Real-time price comparison with currency normalization
+- Context-aware recommendation logic based on search history
+- Integrated Google Gemini for AI-driven wastage analysis.
+- Voice search integration and conversational chat assistant finalized
+- Semantic product matching using keyword and context embeddings
+- Fully functional multi-source product aggregation via API.
 
 **4. Behavioral Food Expiry Predictor**
 
@@ -139,13 +149,13 @@ Goal: **Reduce waste using personalized expiry estimates.**
 
 ---
 
-## 👨‍🏫 Supervision
+## Supervision
 
 * **Supervisor:** Ms. Lokesha Weerasinghe 
 * **Co-Supervisor:** Ms. Chathurya Kumarapperuma
 
 ---
-## 🛠️ Technical Stack
+## Technical Stack
 
 ### Backend 
 - **Framework**: Flask (Python)
@@ -160,7 +170,7 @@ Goal: **Reduce waste using personalized expiry estimates.**
 - **Icons**: Lucide React, React Icons
 - **State Management**: React Context API
 
-## 🚀 Installation & Setup
+## Installation & Setup
 
 ### Backend
 1. Navigate to the `Backend` directory.
@@ -174,7 +184,7 @@ Goal: **Reduce waste using personalized expiry estimates.**
 2. Install dependencies: `npm install`
 3. Run development server: `npm run dev`
 
-## 📦 Key Dependencies
+## Key Dependencies
 - **Backend**: `Flask`, `flask-pymongo`, `scikit-learn`, `google-generativeai`, `beautifulsoup4`
 - **Frontend**: `react`, `react-router-dom`, `framer-motion`, `axios`, `tailwindcss`
 
