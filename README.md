@@ -25,12 +25,15 @@ Many existing food-tech applications solve problems in isolation (only recipes, 
 
 ## Research Problem
 
-Households face two interconnected challenges:
+Households face multiple interconnected challenges that existing food-tech solutions fail to address effectively:
 
-- **Food Waste:** Items are forgotten, stored incorrectly, or used too late.
-- **Poor Nutrition:** People track calories but often miss long-term micro-nutrient imbalance risks.
+- **Food Waste:** Food items are forgotten, improperly stored, or consumed too late due to the lack of adaptive expiry awareness and usage planning.
+- **Poor Nutrition:** Most applications track calories or nutrients but fail to analyze user eating patterns or predict long-term micro-nutrient imbalance risks.
+- **Inefficient Cooking Decisions:** Users often struggle to decide what to cook with available ingredients, leading to underutilization and waste.
+- **Uninformed Shopping Behavior:** Purchasing decisions are often made without considering current inventory, nutritional needs, or price efficiency.
 
-Most current solutions are **fragmented**, lack **personalization**, and do not provide **end-to-end support** across the food lifecycle. This research addresses that gap by building an integrated, adaptive smart kitchen platform powered by AI.
+Current solutions operate in isolated silos, rely on static or reactive logic, and lack personalized, predictive intelligence across the complete food lifecycle.
+This research addresses this gap by developing an integrated AI-powered smart kitchen ecosystem that connects cooking, nutrition guidance, shopping assistance, and food expiry management into a unified, adaptive platform.
 
 
 ## Research Objectives
