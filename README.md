@@ -1,7 +1,7 @@
 # AI-Powered Kitchen Ecosystem
 
-### Topic: Empowering Students with Predictive Intelligence: A Career Guidance System for Sri Lanka
-### Main Research Domain: Software System Technologies (SST)
+### Topic: AI-Powered Kitchen Ecosystem for Food Waste Reduction and Nutrition Optimization
+### Main Research Domain: CoEAI - Centre of Excellence for AI
 ### Project ID: 25-26J-351
 ### Repo Link: https://github.com/MethusalaKPerera/AI-POWERED-KITCHEN-ECHO-SYSTEM.git
 
@@ -36,7 +36,7 @@ Most current solutions are **fragmented**, lack **personalization**, and do not 
 ## 🎯 Research Objectives
 
 ### Main Objective
-To develop an **AI-powered smart kitchen ecosystem** that reduces household food waste, improves nutrition outcomes, and enhances cooking experiences through integrated AI modules, personalization, and adaptive feedback mechanisms. :contentReference[oaicite:1]{index=1}
+To develop an **AI-powered smart kitchen ecosystem** that reduces household food waste, improves nutrition outcomes, and enhances cooking experiences through integrated AI modules, personalization, and adaptive feedback mechanisms.
 
 ### Sub-Objectives (Module-Level)
 - Recognize multiple ingredients from a single image and recommend recipes for spontaneous cooking.
@@ -50,11 +50,11 @@ The ecosystem follows a modular architecture where each module exposes REST APIs
 
 ```html
 <p align="center">
-  <img src="docs/architecture.png" alt="AI-Powered Kitchen Ecosystem Architecture" width="750" style="max-width: 100%; height: auto;" />
+  <img src="Frontend/Architecture.png" alt="AI-Powered Kitchen Ecosystem Architecture" width="750" style="max-width: 100%; height: auto;" />
 </p>
 
 🧩 Core Modules
-1️⃣ Spontaneous Cooking Assistant
+1️. Spontaneous Cooking Assistant
 
 Goal: Turn a photo of available ingredients into recipe suggestions.
 
@@ -74,7 +74,7 @@ Computer Vision + ingredient-to-recipe retrieval
 
 Efficient indexing/caching for fast recipe search
 
-2️⃣ Nutrition Guidance – Predictive Health Intervention System (Your Component)
+2️. Nutrition Guidance – Predictive Health Intervention System (Your Component)
 
 Goal: Transform diet tracking into proactive health intervention.
 
@@ -101,7 +101,7 @@ Personalized recommendations + nudges
 Safety alerts (medication-food)
 
 
-3️⃣ AI Shopping Agent
+3. AI Shopping Agent
 
 Goal: Make shopping smarter, faster, and hands-free.
 
@@ -117,7 +117,7 @@ Search history management (save/view/update/delete)
 
 Context-aware assistant to guide shopping decisions
 
-4️⃣ Behavioral Food Expiry Predictor
+4. Behavioral Food Expiry Predictor
 
 Goal: Reduce waste using personalized expiry estimates.
 
@@ -140,11 +140,19 @@ Waste analytics dashboard
 | Methusala U.M.K.        | IT22131942       | Multi-Item Food Recognition and Recipe Discovery System |
 | Shahmi M T M            | IT22083982       | Predictive Health Intervention System                   |
 | D.H Jayasundara         | IT22117946       | Intelligent E-Commerce Recommendation System            |
-| Muraleswaran D          | IT22339010     | Personalized Expiry Prediction System                   |
+| Muraleswaran D          | IT22339010       | Personalized Expiry Prediction System                   |
 
+---
+
+## 👨‍🏫 Supervision
+
+* **Supervisor:** Ms. Lokesha Weerasinghe 
+* **Co-Supervisor:** Ms. Chathurya Kumarapperuma
+
+---
 ## 🛠️ Technical Stack
 
-### Backend
+### Backend 
 - **Framework**: Flask (Python)
 - **Database**: MongoDB (via Flask-PyMongo)
 - **AI/ML**: Scikit-learn, Pandas, NumPy, Google Gemini (LLM Integration)
