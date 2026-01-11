@@ -1,4 +1,4 @@
-# AI-Powered Kitchen Ecosystem
+ # AI-Powered Kitchen Ecosystem
 
 ### Topic: AI-Powered Kitchen Ecosystem for Food Waste Reduction and Nutrition Optimization
 ### Main Research Domain: CoEAI - Centre of Excellence for AI
@@ -9,10 +9,10 @@
 
 This ecosystem integrates **four intelligent modules** working together in a single workflow:
 
-1. **Spontaneous Cooking Assistant** (Computer Vision + Recipe Discovery)
-2. **Nutrition Guidance – Predictive Health Intervention System** (ML-based deficiency forecasting + personalized guidance)
-3. **AI Shopping Agent** (Voice-enabled product search + cross-platform price comparison)
-4. **Behavioral Food Expiry Predictor** (Personalized spoilage/expiry prediction using user behavior feedback)
+1. **Spontaneous Cooking Assistant - Multi-Item Food Recognition and Recipe Discovery System** (Computer Vision + Recipe Discovery)
+2. **Nutritional Guidance – Predictive Health Intervention System** (ML-based deficiency forecasting + personalized guidance)
+3. **AI Shopping Agent  – Intelligent E-Commerce Recommendation System** (Voice-enabled product search + cross-platform price comparison)
+4. **AI Behavioral Food Expiry Predictor – Personalized Expiry Prediction System** (Personalized spoilage/expiry prediction using user behavior feedback)
 
 ## Project Overview
 
@@ -60,7 +60,7 @@ The ecosystem follows a **modular architecture**, where each module exposes REST
 
 **Individual Components**
 
-**1. Spontaneous Cooking Assistant**
+**1. Spontaneous Cooking Assistant - Multi-Item Food Recognition and Recipe Discovery System**
 
 Goal: **Turn a photo of available ingredients into recipe suggestions.**
 
@@ -76,7 +76,7 @@ Goal: **Turn a photo of available ingredients into recipe suggestions.**
 - Computer Vision + ingredient-to-recipe retrieval
 - Efficient indexing/caching for fast recipe search
 
-**2. Nutrition Guidance – Predictive Health Intervention System**
+**2. Nutritional Guidance – Predictive Health Intervention System**
 
 Goal: **Transform diet tracking into proactive health intervention.**
 
@@ -98,7 +98,7 @@ Goal: **Transform diet tracking into proactive health intervention.**
 - Deficiency indicators and interpretable health summaries
 - Adaptive risk recalculation with continuous intake data updates
 
-**3. AI Shopping Agent**
+**3. AI Shopping Agent  – Intelligent E-Commerce Recommendation System**
 
 Goal: **Make shopping smarter, faster, and hands-free.**
 
@@ -118,7 +118,7 @@ Goal: **Make shopping smarter, faster, and hands-free.**
 - Semantic product matching using keyword and context embeddings
 - Fully functional multi-source product aggregation via API.
 
-**4. Behavioral Food Expiry Predictor**
+**4. AI Behavioral Food Expiry Predictor – Personalized Expiry Prediction System**
 
 Goal: **Reduce waste using personalized expiry estimates.**
 
@@ -139,14 +139,14 @@ Goal: **Reduce waste using personalized expiry estimates.**
 - Smart alerts for items approaching predicted expiry
 
 
-## 👥 Team Members & Responsibilities
+## Team Members & Responsibilities
 
-| Name                    | Registration No  |        Responsibility                                   |
-| -----------------       | ---------------  | --------------------------------------------------------|
-| Methusala U.M.K.        | IT22131942       | Multi-Item Food Recognition and Recipe Discovery System |
-| Shahmi M T M            | IT22083982       | Predictive Health Intervention System                   |
-| D.H Jayasundara         | IT22117946       | Intelligent E-Commerce Recommendation System            |
-| Muraleswaran D          | IT22339010       | Personalized Expiry Prediction System                   |
+| Name                    | Registration No  |        Responsibility                      |
+| -----------------       | ---------------  | -------------------------------------------|
+| Methusala U.M.K.        | IT22131942       | Spontaneous Cooking Assistant              |
+| Shahmi M T M            | IT22083982       | Nutritional Guidance                       |
+| Jayasundara D.H         | IT22117946       | AI Shopping Agent                          |
+| Muraleswaran D          | IT22339010       | AI Behavioral Food Expiry Predictor        |
 
 ---
 
