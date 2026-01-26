@@ -317,7 +317,7 @@ export default function Predict() {
 
           {/* PP1 explanation block */}
           <div className="fe-card mt-4">
-            <h3 className="fe-section__title mb-2">How to Explain to Panel (1 minute)</h3>
+            <h3 className="fe-section__title mb-2">How to use the Expiry Predictor?</h3>
             <div className="fe-muted fe-small">
               1) Add item → stored in inventory. <br />
               2) Predict from Inventory → system calculates <b>baseline</b> (AEIF), then if user has ≥ 5 feedbacks it applies <b>AED personalization</b>. <br />
