@@ -6,7 +6,6 @@ import MealLogger from "./components/MealLogger";
 import NutritionTracker from "./components/NutritionTracker";
 import MedicationAlerts from "./components/MedicationAlerts";
 import PredictiveAnalytics from "./components/PredictiveAnalytics";
-import Settings from "./components/Settings";
 
 import "./NutritionalGuidance.css";
 
@@ -30,8 +29,6 @@ const NutritionalGuidance = () => {
         return <MedicationAlerts userId={userId} />;
       case "predictive-analytics":
         return <PredictiveAnalytics userId={userId} />;
-      case "settings":
-        return <Settings userId={userId} />;
       default:
         return <DashboardHome userId={userId} />;
     }
@@ -73,7 +70,9 @@ const NutritionalGuidance = () => {
           </div>
 
           <div
-            className={`nav-item ${activeTab === "nutrition-tracker" ? "active" : ""}`}
+            className={`nav-item ${
+              activeTab === "nutrition-tracker" ? "active" : ""
+            }`}
             onClick={() => setActiveTab("nutrition-tracker")}
           >
             <span className="nav-icon">📈</span>
@@ -81,7 +80,9 @@ const NutritionalGuidance = () => {
           </div>
 
           <div
-            className={`nav-item ${activeTab === "medication-alerts" ? "active" : ""}`}
+            className={`nav-item ${
+              activeTab === "medication-alerts" ? "active" : ""
+            }`}
             onClick={() => setActiveTab("medication-alerts")}
           >
             <span className="nav-icon">⚠️</span>
@@ -89,19 +90,13 @@ const NutritionalGuidance = () => {
           </div>
 
           <div
-            className={`nav-item ${activeTab === "predictive-analytics" ? "active" : ""}`}
+            className={`nav-item ${
+              activeTab === "predictive-analytics" ? "active" : ""
+            }`}
             onClick={() => setActiveTab("predictive-analytics")}
           >
             <span className="nav-icon">🧠</span>
             <span>Predictive Analytics</span>
-          </div>
-
-          <div
-            className={`nav-item ${activeTab === "settings" ? "active" : ""}`}
-            onClick={() => setActiveTab("settings")}
-          >
-            <span className="nav-icon">⚙️</span>
-            <span>Settings</span>
           </div>
         </nav>
 
