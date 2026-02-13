@@ -4,37 +4,54 @@ import { NavLink } from "react-router-dom";
 import "./dashboard.css";
 
 const navItems = [
-  { to: "/food-expiry", label: "Overview" },
-  { to: "/food-expiry/predict", label: "Predict Expiry" },
-  { to: "/food-expiry/add", label: "Add Food" },
-  { to: "/food-expiry/inventory", label: "Inventory" },
-  { to: "/food-expiry/feedback", label: "Feedback Trainer" },
-  { to: "/food-expiry/analytics", label: "Analytics" },
-  { to: "/food-expiry/profile", label: "User Profile" },
-  { to: "/food-expiry/logs", label: "System Logs" },
+  { to: "/food-expiry", icon: "🏠", label: "Dashboard" },
+  { to: "/food-expiry/predict", icon: "🧠", label: "Predict Expiry" },
+  { to: "/food-expiry/add", icon: "➕", label: "Add Food" },
+  { to: "/food-expiry/inventory", icon: "📦", label: "Inventory" },
+  { to: "/food-expiry/feedback", icon: "📝", label: "Feedback Trainer" },
+  { to: "/food-expiry/analytics", icon: "📊", label: "Analytics" },
 ];
 
 export default function Sidebar() {
+  const userId = localStorage.getItem("FE_USER_ID") || "U001";
+
   return (
-    <aside className="fe-sidebar">
-      <div className="fe-sidebar__brand">
-        <span className="fe-logo-dot" />
-        <span className="fe-brand-text">Food Expiry AI</span>
+    <aside className="sidebar">
+      <div className="sidebar-header">
+        <div className="logo-icon">🍃</div>
+        <div className="sidebar-title">SmartKitchen</div>
+        <div className="sidebar-subtitle">Food Expiry Module</div>
       </div>
 
-      <nav className="fe-sidebar__nav">
+      <nav className="sidebar-nav">
         {navItems.map((item) => (
           <NavLink
             key={item.to}
             to={item.to}
             className={({ isActive }) =>
-              "fe-sidebar__link" + (isActive ? " fe-sidebar__link--active" : "")
+              `nav-item ${isActive ? "active" : ""}`
             }
           >
-            {item.label}
+            <span className="nav-icon">{item.icon}</span>
+            <span className="nav-label">{item.label}</span>
           </NavLink>
         ))}
       </nav>
+
+      <div className="sidebar-footer">
+        <div className="health-badge">
+          <span className="badge-icon">✅</span>
+          <div>
+            <div className="badge-title">System Health</div>
+            <div className="badge-subtitle">Backend Connected</div>
+          </div>
+        </div>
+
+        <div className="dev-userid">
+          <span className="dev-label">User:</span>
+          <b>{userId}</b>
+        </div>
+      </div>
     </aside>
   );
 }

@@ -23,6 +23,7 @@ import FeedbackTrainer from "../Pages/FoodExpiry/FeedbackTrainer.jsx";
 import Analytics from "../Pages/FoodExpiry/Analytics.jsx";
 import UserProfile from "../Pages/FoodExpiry/UserProfile.jsx";
 import SystemLogs from "../Pages/FoodExpiry/SystemLogs.jsx";
+import Use from "../Pages/FoodExpiry/Use.jsx";
 
 function AppRouter() {
   return (
@@ -55,6 +56,7 @@ function AppRouter() {
         <Route path="/food-expiry/analytics" element={<Analytics />} />
         <Route path="/food-expiry/profile" element={<UserProfile />} />
         <Route path="/food-expiry/logs" element={<SystemLogs />} />
+        <Route path="/food-expiry/use" element={<Use />} />
       </Routes>
     </Router>
   );
