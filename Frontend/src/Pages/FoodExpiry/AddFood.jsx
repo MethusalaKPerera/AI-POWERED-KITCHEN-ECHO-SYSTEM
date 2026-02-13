@@ -158,7 +158,7 @@ export default function AddFood() {
           <form className="fe-card fe-form fe-form--wide" onSubmit={handleSubmit}>
             <div className="fe-form__grid">
               <div>
-                <h2 className="fe-section__title mb-4">Basic Details</h2>
+        
 
                 <div className="fe-form__group">
                   <label>User ID (per-user personalization)</label>
@@ -191,7 +191,7 @@ export default function AddFood() {
                 </div>
 
                 <div className="fe-form__group">
-                  <label>Food Name (friendly)</label>
+                  <label> Add your own friendly Food Title </label>
                   <input
                     type="text"
                     name="foodName"
@@ -205,7 +205,7 @@ export default function AddFood() {
                 </div>
 
                 <div className="fe-form__group">
-                  <label>Item Name (model)</label>
+                  <label>Choose the name of the Item you want to add</label>
 
                   {itemOptions.length > 0 ? (
                     <select
@@ -240,7 +240,7 @@ export default function AddFood() {
                 </div>
 
                 <div className="fe-form__group">
-                  <label>Category</label>
+                  <label>Select the Item Category</label>
 
                   {categoryOptions.length > 0 ? (
                     <select
@@ -273,10 +273,9 @@ export default function AddFood() {
               </div>
 
               <div>
-                <h2 className="fe-section__title mb-4">Storage & Dates</h2>
-
+              
                 <div className="fe-form__group">
-                  <label>Purchase Date</label>
+                  <label>Select the Item Purchase Date</label>
                   <input
                     type="date"
                     name="purchase_date"
@@ -291,7 +290,7 @@ export default function AddFood() {
                 </div>
 
                 <div className="fe-form__group">
-                  <label>Printed Expiry Date (optional)</label>
+                  <label>Enter Printed Expiry Date (optional)</label>
                   <input
                     type="date"
                     name="printed_expiry_date"

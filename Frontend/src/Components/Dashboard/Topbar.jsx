@@ -2,19 +2,22 @@
 import React from "react";
 import "./dashboard.css";
 
-export default function Topbar({ title = "Dashboard" }) {
-  return (
-    <header className="fe-topbar">
-      <h1 className="fe-topbar__title">{title}</h1>
+export default function Topbar({ title = "Dashboard", badge = "AI-Powered" }) {
+  const username = localStorage.getItem("FE_NAME") || "User";
+  const role = localStorage.getItem("FE_ROLE") || "Food Expiry";
 
-      <div className="fe-topbar__right">
-        <span className="fe-topbar__badge">Expiry turns easier!</span>
-        <div className="fe-topbar__user">
-          <div className="fe-avatar-circle">S</div>
-          <div className="fe-topbar__user-text">
-            <span className="fe-topbar__username">AI-Powered Kitchen Ecosystem</span>
-            <span className="fe-topbar__role">Personalized Food Expiry Prediction</span>
-          </div>
+  return (
+    <header className="ng-topbar">
+      <div className="ng-topbar-left">
+        <h1 className="ng-topbar-title">{title}</h1>
+        {badge ? <span className="ng-topbar-pill">{badge}</span> : null}
+      </div>
+
+      <div className="ng-topbar-right">
+        <div className="ng-avatar">{String(username).slice(0, 1).toUpperCase()}</div>
+        <div className="ng-user">
+          <div className="ng-user-name">{username}</div>
+          <div className="ng-user-role">{role}</div>
         </div>
       </div>
     </header>

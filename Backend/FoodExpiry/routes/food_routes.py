@@ -1,16 +1,23 @@
 # FoodExpiry/routes/food_routes.py
 
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, Response, send_file
 from bson import ObjectId
 from datetime import datetime, timedelta
 import traceback
 import math
 import re
+import io
+import csv
 
 from FoodExpiry.database.db_connection import foods_col, users_col
 from FoodExpiry.models.expiry_predictor import ExpiryPredictor
 from FoodExpiry.ml.aed_adjuster import apply_aed, update_aed_single
 from FoodExpiry.ml.scp_ranker import scp_score
+
+# PDF (Report)
+from reportlab.lib.pagesizes import A4
+from reportlab.pdfgen import canvas
+from reportlab.lib.units import cm
 
 food_bp = Blueprint("food_bp", __name__)
 predictor = ExpiryPredictor()
@@ -77,7 +84,7 @@ def compute_expiry_date(purchase_date_str: str, days: float):
     """
     try:
         dt = datetime.strptime(purchase_date_str, "%Y-%m-%d")
-        day_int = max(0, int(math.floor(float(days))))
+        day_int = max(0, int(math.ceil(float(days))))
         return (dt + timedelta(days=day_int)).strftime("%Y-%m-%d")
     except Exception:
         return None
@@ -86,6 +93,26 @@ def compute_expiry_date(purchase_date_str: str, days: float):
 def parse_date(date_str):
     try:
         return datetime.strptime(date_str, "%Y-%m-%d").date()
+    except Exception:
+        return None
+
+
+def parse_ts_iso(ts: str):
+    """
+    predictionHistory.ts is saved like: 2026-02-10T10:12:33.123Z
+    """
+    try:
+        if not ts:
+            return None
+        s = str(ts).strip()
+        if s.endswith("Z"):
+            s = s[:-1]
+        # allow ms or no ms
+        try:
+            return datetime.fromisoformat(s)
+        except Exception:
+            # fallback common format
+            return datetime.strptime(s, "%Y-%m-%dT%H:%M:%S")
     except Exception:
         return None
 
@@ -107,6 +134,117 @@ def days_left_from_today(expiry_date_str: str, purchase_date_str: str = None) ->
         return (exp - today).days
     except Exception:
         return 9999
+
+
+def _range_from_query(args):
+    """
+    Supported:
+      - ?period=7d or 30d (default 30d)
+      - OR ?start=YYYY-MM-DD&end=YYYY-MM-DD
+    Returns: (start_dt, end_dt) UTC datetimes (end exclusive)
+    """
+    start = args.get("start")
+    end = args.get("end")
+    period = (args.get("period") or "30d").strip().lower()
+
+    now = datetime.utcnow()
+
+    if start and end:
+        try:
+            s = datetime.strptime(start, "%Y-%m-%d")
+            e = datetime.strptime(end, "%Y-%m-%d") + timedelta(days=1)
+            return s, e
+        except Exception:
+            pass
+
+    if period == "7d":
+        return now - timedelta(days=7), now + timedelta(seconds=1)
+    if period == "30d":
+        return now - timedelta(days=30), now + timedelta(seconds=1)
+
+    # fallback default
+    return now - timedelta(days=30), now + timedelta(seconds=1)
+
+
+def _history_rows_for_user(user_id: str, item: str = None, storage: str = None, start_dt=None, end_dt=None):
+    """
+    Flatten foods.predictionHistory into rows:
+      { ts, itemName, category, storageType, baseline_days, personalized_days, final_expiry_date,
+        days_left, scp, personalization_enabled, printed_cap_applied, printed_expiry_date, foodId }
+    """
+    q = {"userId": user_id}
+    if item and item != "all":
+        q["itemName"] = canonical_item_name(item)
+    if storage and storage != "all":
+        q["storageType"] = canonical_storage(storage)
+
+    foods = list(foods_col.find(q))
+    rows = []
+
+    for f in foods:
+        food_id = str(f.get("_id"))
+        item_name = f.get("itemName") or f.get("item_name")
+        cat = f.get("category") or f.get("item_category")
+        st = f.get("storageType") or f.get("storage_type")
+
+        hist = f.get("predictionHistory", []) or []
+        for h in hist:
+            ts = h.get("ts")
+            ts_dt = parse_ts_iso(ts)
+            if not ts_dt:
+                continue
+
+            if start_dt and ts_dt < start_dt:
+                continue
+            if end_dt and ts_dt >= end_dt:
+                continue
+
+            rows.append({
+                "ts": ts,
+                "ts_dt": ts_dt,
+                "foodId": food_id,
+
+                "item_name": item_name,
+                "category": cat,
+                "storage_type": st,
+
+                "baseline_days": h.get("baseline_days"),
+                "baseline_expiry_date": h.get("baseline_expiry_date"),
+
+                "personalization_enabled": bool(h.get("personalization_enabled")),
+                "personalized_days": h.get("personalized_days"),
+                "personalized_expiry_date": h.get("personalized_expiry_date"),
+
+                "final_expiry_date": h.get("final_expiry_date"),
+                "days_left": h.get("days_left"),
+                "scp": h.get("scp"),
+
+                "printed_expiry_date": h.get("printed_expiry_date"),
+                "printed_cap_applied": bool(h.get("printed_cap_applied")),
+            })
+
+    # sort newest first
+    rows.sort(key=lambda r: r["ts_dt"], reverse=True)
+    return rows
+
+
+def _bucket_days_left(d):
+    """
+    For urgency chart:
+      expired (<0), 0-3, 4-7, 8+
+    """
+    try:
+        d = int(d)
+    except Exception:
+        return "unknown"
+
+    if d < 0:
+        return "expired"
+    if d <= 3:
+        return "0-3"
+    if d <= 7:
+        return "4-7"
+    return "8+"
 
 
 # ----------------------------------------------------
@@ -593,6 +731,463 @@ def delete_food(id):
     try:
         foods_col.delete_one({"_id": ObjectId(id)})
         return jsonify({"message": "Food deleted"}), 200
+    except Exception as e:
+        traceback.print_exc()
+        return jsonify({"error": str(e)}), 500
+
+
+# ====================================================
+# USER + ITEM ANALYTICS (Option B)
+# ====================================================
+
+@food_bp.route("/analytics/summary", methods=["GET"])
+def analytics_summary():
+    """
+    Query:
+      user_id=U001
+      item=all | apple
+      storage=all | fridge/freezer/pantry
+      period=7d|30d OR start/end
+
+    Returns KPIs + distributions for dashboard cards.
+    """
+    try:
+        user_id = (request.args.get("user_id") or request.args.get("userId") or "").strip()
+        if not user_id:
+            return jsonify({"error": "Missing user_id"}), 400
+
+        item = (request.args.get("item") or "all").strip().lower()
+        storage = (request.args.get("storage") or "all").strip().lower()
+        start_dt, end_dt = _range_from_query(request.args)
+
+        rows = _history_rows_for_user(user_id, item=item, storage=storage, start_dt=start_dt, end_dt=end_dt)
+
+        user = users_col.find_one({"username": user_id}) or {}
+        total_feedback = int(user.get("totalFeedbackCount", 0) or 0)
+
+        total_predictions = len(rows)
+        personalized_count = sum(1 for r in rows if r.get("personalization_enabled"))
+        printed_caps = sum(1 for r in rows if r.get("printed_cap_applied"))
+
+        # AED strength proxy: average delta between baseline_days and personalized_days (where available)
+        deltas = []
+        for r in rows:
+            bd = r.get("baseline_days")
+            pd = r.get("personalized_days")
+            if bd is None or pd is None:
+                continue
+            try:
+                deltas.append(float(pd) - float(bd))
+            except Exception:
+                pass
+        avg_aed_delta = (sum(deltas) / len(deltas)) if deltas else 0.0
+
+        # urgency buckets
+        urgency = {"expired": 0, "0-3": 0, "4-7": 0, "8+": 0, "unknown": 0}
+        for r in rows:
+            b = _bucket_days_left(r.get("days_left"))
+            urgency[b] = urgency.get(b, 0) + 1
+
+        # personalization status for selected item
+        # if item == all -> show top item readiness by feedbackCountByItem
+        feedback_by_item = user.get("feedbackCountByItem", {}) or {}
+        if item != "all":
+            item_key = canonical_item_name(item)
+            item_fb = int(feedback_by_item.get(item_key, 0) or 0)
+            personalization_ready = item_fb >= MIN_FEEDBACK_FOR_PERSONALIZATION
+            needed = max(0, MIN_FEEDBACK_FOR_PERSONALIZATION - item_fb)
+        else:
+            item_fb = None
+            personalization_ready = None
+            needed = None
+
+        return jsonify({
+            "user_id": user_id,
+            "filters": {
+                "item": item,
+                "storage": storage,
+                "start": start_dt.isoformat() + "Z",
+                "end": end_dt.isoformat() + "Z",
+            },
+            "kpis": {
+                "total_predictions": total_predictions,
+                "personalized_predictions": personalized_count,
+                "printed_caps_applied": printed_caps,
+                "total_feedback_count": total_feedback,
+                "avg_aed_delta_days": round(avg_aed_delta, 3),
+            },
+            "personalization": {
+                "min_feedback_required": MIN_FEEDBACK_FOR_PERSONALIZATION,
+                "item_feedback_count": item_fb,
+                "personalization_ready": personalization_ready,
+                "feedback_needed": needed,
+            },
+            "urgency_distribution": urgency,
+        }), 200
+
+    except Exception as e:
+        traceback.print_exc()
+        return jsonify({"error": str(e)}), 500
+
+
+@food_bp.route("/analytics/timeseries", methods=["GET"])
+def analytics_timeseries():
+    """
+    Returns daily aggregated series for charts.
+    Query:
+      user_id, item=all|apple, storage=all|fridge, period=7d|30d OR start/end
+
+    Output:
+      series: [{date, predictions, avg_baseline_days, avg_personalized_days, avg_scp, expired_count, urgent_count}]
+    """
+    try:
+        user_id = (request.args.get("user_id") or request.args.get("userId") or "").strip()
+        if not user_id:
+            return jsonify({"error": "Missing user_id"}), 400
+
+        item = (request.args.get("item") or "all").strip().lower()
+        storage = (request.args.get("storage") or "all").strip().lower()
+        start_dt, end_dt = _range_from_query(request.args)
+
+        rows = _history_rows_for_user(user_id, item=item, storage=storage, start_dt=start_dt, end_dt=end_dt)
+
+        # group by date
+        by_date = {}
+        for r in rows:
+            d = r["ts_dt"].date().strftime("%Y-%m-%d")
+            by_date.setdefault(d, []).append(r)
+
+        # build sorted series
+        keys = sorted(by_date.keys())
+        series = []
+        for d in keys:
+            bucket = by_date[d]
+            preds = len(bucket)
+
+            def _avg(vals):
+                vals = [v for v in vals if v is not None]
+                if not vals:
+                    return None
+                try:
+                    vals = [float(x) for x in vals]
+                    return sum(vals) / len(vals)
+                except Exception:
+                    return None
+
+            avg_baseline = _avg([x.get("baseline_days") for x in bucket])
+            avg_personal = _avg([x.get("personalized_days") for x in bucket if x.get("personalization_enabled")])
+            avg_scp = _avg([x.get("scp") for x in bucket])
+
+            expired_count = sum(1 for x in bucket if (x.get("days_left") is not None and int(x.get("days_left")) < 0))
+            urgent_count = sum(1 for x in bucket if (x.get("days_left") is not None and 0 <= int(x.get("days_left")) <= 3))
+
+            series.append({
+                "date": d,
+                "predictions": preds,
+                "avg_baseline_days": None if avg_baseline is None else round(avg_baseline, 3),
+                "avg_personalized_days": None if avg_personal is None else round(avg_personal, 3),
+                "avg_scp": None if avg_scp is None else round(avg_scp, 3),
+                "expired_count": int(expired_count),
+                "urgent_count": int(urgent_count),
+            })
+
+        return jsonify({
+            "user_id": user_id,
+            "filters": {
+                "item": item,
+                "storage": storage,
+                "start": start_dt.isoformat() + "Z",
+                "end": end_dt.isoformat() + "Z",
+            },
+            "series": series
+        }), 200
+
+    except Exception as e:
+        traceback.print_exc()
+        return jsonify({"error": str(e)}), 500
+
+
+@food_bp.route("/analytics/history", methods=["GET"])
+def analytics_history():
+    """
+    Flat history rows for table.
+    Query:
+      user_id, item=all|apple, storage=all|fridge, period=7d|30d OR start/end
+      page=1, page_size=25
+    """
+    try:
+        user_id = (request.args.get("user_id") or request.args.get("userId") or "").strip()
+        if not user_id:
+            return jsonify({"error": "Missing user_id"}), 400
+
+        item = (request.args.get("item") or "all").strip().lower()
+        storage = (request.args.get("storage") or "all").strip().lower()
+        start_dt, end_dt = _range_from_query(request.args)
+
+        page = int(request.args.get("page", 1) or 1)
+        page_size = int(request.args.get("page_size", 25) or 25)
+        page = max(1, page)
+        page_size = min(max(5, page_size), 200)
+
+        rows = _history_rows_for_user(user_id, item=item, storage=storage, start_dt=start_dt, end_dt=end_dt)
+        total = len(rows)
+
+        start_i = (page - 1) * page_size
+        end_i = start_i + page_size
+        slice_rows = rows[start_i:end_i]
+
+        out = []
+        for r in slice_rows:
+            out.append({
+                "ts": r.get("ts"),
+                "foodId": r.get("foodId"),
+                "item_name": r.get("item_name"),
+                "category": r.get("category"),
+                "storage_type": r.get("storage_type"),
+
+                "baseline_days": r.get("baseline_days"),
+                "personalization_enabled": bool(r.get("personalization_enabled")),
+                "personalized_days": r.get("personalized_days"),
+
+                "final_expiry_date": r.get("final_expiry_date"),
+                "days_left": r.get("days_left"),
+                "scp": r.get("scp"),
+
+                "printed_expiry_date": r.get("printed_expiry_date"),
+                "printed_cap_applied": bool(r.get("printed_cap_applied")),
+            })
+
+        return jsonify({
+            "user_id": user_id,
+            "filters": {
+                "item": item,
+                "storage": storage,
+                "start": start_dt.isoformat() + "Z",
+                "end": end_dt.isoformat() + "Z",
+            },
+            "page": page,
+            "page_size": page_size,
+            "total": total,
+            "rows": out
+        }), 200
+
+    except Exception as e:
+        traceback.print_exc()
+        return jsonify({"error": str(e)}), 500
+
+
+@food_bp.route("/analytics/export/csv", methods=["GET"])
+def analytics_export_csv():
+    """
+    Download CSV for user or item history.
+    Query:
+      user_id, item=all|apple, storage=all|fridge, period=7d|30d OR start/end
+    """
+    try:
+        user_id = (request.args.get("user_id") or request.args.get("userId") or "").strip()
+        if not user_id:
+            return jsonify({"error": "Missing user_id"}), 400
+
+        item = (request.args.get("item") or "all").strip().lower()
+        storage = (request.args.get("storage") or "all").strip().lower()
+        start_dt, end_dt = _range_from_query(request.args)
+
+        rows = _history_rows_for_user(user_id, item=item, storage=storage, start_dt=start_dt, end_dt=end_dt)
+
+        output = io.StringIO()
+        writer = csv.writer(output)
+
+        writer.writerow([
+            "ts", "user_id", "foodId", "item_name", "category", "storage_type",
+            "baseline_days", "baseline_expiry_date",
+            "personalization_enabled", "personalized_days", "personalized_expiry_date",
+            "final_expiry_date", "days_left", "scp",
+            "printed_expiry_date", "printed_cap_applied"
+        ])
+
+        for r in rows:
+            writer.writerow([
+                r.get("ts"), user_id, r.get("foodId"),
+                r.get("item_name"), r.get("category"), r.get("storage_type"),
+                r.get("baseline_days"), r.get("baseline_expiry_date"),
+                r.get("personalization_enabled"), r.get("personalized_days"), r.get("personalized_expiry_date"),
+                r.get("final_expiry_date"), r.get("days_left"), r.get("scp"),
+                r.get("printed_expiry_date"), r.get("printed_cap_applied")
+            ])
+
+        csv_data = output.getvalue().encode("utf-8")
+        output.close()
+
+        filename = f"food_expiry_history_{user_id}_{item}_{storage}.csv"
+        return Response(
+            csv_data,
+            mimetype="text/csv",
+            headers={"Content-Disposition": f"attachment; filename={filename}"}
+        )
+
+    except Exception as e:
+        traceback.print_exc()
+        return jsonify({"error": str(e)}), 500
+
+
+@food_bp.route("/analytics/export/pdf", methods=["GET"])
+def analytics_export_pdf():
+    """
+    Download a simple research-ready PDF report (KPI + distributions + recent rows).
+    Query:
+      user_id, item=all|apple, storage=all|fridge, period=7d|30d OR start/end
+    """
+    try:
+        user_id = (request.args.get("user_id") or request.args.get("userId") or "").strip()
+        if not user_id:
+            return jsonify({"error": "Missing user_id"}), 400
+
+        item = (request.args.get("item") or "all").strip().lower()
+        storage = (request.args.get("storage") or "all").strip().lower()
+        start_dt, end_dt = _range_from_query(request.args)
+
+        # get data
+        rows = _history_rows_for_user(user_id, item=item, storage=storage, start_dt=start_dt, end_dt=end_dt)
+        user = users_col.find_one({"username": user_id}) or {}
+        total_feedback = int(user.get("totalFeedbackCount", 0) or 0)
+
+        total_predictions = len(rows)
+        personalized_count = sum(1 for r in rows if r.get("personalization_enabled"))
+        caps = sum(1 for r in rows if r.get("printed_cap_applied"))
+
+        urgency = {"expired": 0, "0-3": 0, "4-7": 0, "8+": 0, "unknown": 0}
+        for r in rows:
+            b = _bucket_days_left(r.get("days_left"))
+            urgency[b] = urgency.get(b, 0) + 1
+
+        # AED delta avg
+        deltas = []
+        for r in rows:
+            bd = r.get("baseline_days")
+            pd = r.get("personalized_days")
+            if bd is None or pd is None:
+                continue
+            try:
+                deltas.append(float(pd) - float(bd))
+            except Exception:
+                pass
+        avg_delta = (sum(deltas) / len(deltas)) if deltas else 0.0
+
+        # build PDF
+        buf = io.BytesIO()
+        c = canvas.Canvas(buf, pagesize=A4)
+        w, h = A4
+
+        y = h - 2.2 * cm
+        c.setFont("Helvetica-Bold", 16)
+        c.drawString(2 * cm, y, "Food Expiry Predictor — Analytics Report")
+        y -= 0.8 * cm
+
+        c.setFont("Helvetica", 10)
+        c.drawString(2 * cm, y, f"User: {user_id} | Item: {item} | Storage: {storage}")
+        y -= 0.5 * cm
+        c.drawString(2 * cm, y, f"Range: {start_dt.date()} to {end_dt.date()}")
+        y -= 0.9 * cm
+
+        # KPIs
+        c.setFont("Helvetica-Bold", 12)
+        c.drawString(2 * cm, y, "Key Metrics")
+        y -= 0.6 * cm
+
+        c.setFont("Helvetica", 10)
+        lines = [
+            f"Total predictions: {total_predictions}",
+            f"Personalized predictions (AED applied): {personalized_count}",
+            f"Printed-expiry safety caps applied: {caps}",
+            f"Total feedback count (user): {total_feedback}",
+            f"Average AED delta (days): {avg_delta:.2f}",
+        ]
+        for ln in lines:
+            c.drawString(2 * cm, y, f"• {ln}")
+            y -= 0.45 * cm
+
+        y -= 0.2 * cm
+        c.setFont("Helvetica-Bold", 12)
+        c.drawString(2 * cm, y, "Urgency Distribution (Days Left Buckets)")
+        y -= 0.6 * cm
+
+        # simple distribution bars
+        max_val = max(urgency.values()) if urgency else 1
+        bar_w = 12 * cm
+        for k in ["expired", "0-3", "4-7", "8+", "unknown"]:
+            val = int(urgency.get(k, 0))
+            frac = (val / max_val) if max_val else 0
+            c.setFont("Helvetica", 10)
+            c.drawString(2 * cm, y, f"{k}: {val}")
+            c.rect(6 * cm, y - 0.15 * cm, bar_w * frac, 0.35 * cm, stroke=0, fill=1)
+            y -= 0.55 * cm
+
+        y -= 0.2 * cm
+        c.setFont("Helvetica-Bold", 12)
+        c.drawString(2 * cm, y, "Recent Prediction History (Top 12)")
+        y -= 0.6 * cm
+
+        # table header
+        c.setFont("Helvetica-Bold", 9)
+        c.drawString(2 * cm, y, "Date")
+        c.drawString(4.8 * cm, y, "Item")
+        c.drawString(9.8 * cm, y, "Final Expiry")
+        c.drawString(13.2 * cm, y, "Days Left")
+        y -= 0.35 * cm
+        c.line(2 * cm, y, 19 * cm, y)
+        y -= 0.35 * cm
+
+        c.setFont("Helvetica", 9)
+        for r in rows[:12]:
+            dt = r["ts_dt"].strftime("%Y-%m-%d")
+            item_name = str(r.get("item_name") or "")[:20]
+            final_exp = str(r.get("final_expiry_date") or "-")
+            days_left = str(r.get("days_left") if r.get("days_left") is not None else "-")
+
+            c.drawString(2 * cm, y, dt)
+            c.drawString(4.8 * cm, y, item_name)
+            c.drawString(9.8 * cm, y, final_exp)
+            c.drawString(13.2 * cm, y, days_left)
+            y -= 0.45 * cm
+
+            if y < 2.2 * cm:
+                c.showPage()
+                y = h - 2.2 * cm
+                c.setFont("Helvetica", 10)
+
+        # explanation
+        if y < 4.0 * cm:
+            c.showPage()
+            y = h - 2.2 * cm
+
+        y -= 0.3 * cm
+        c.setFont("Helvetica-Bold", 12)
+        c.drawString(2 * cm, y, "How the system works (short explanation)")
+        y -= 0.6 * cm
+        c.setFont("Helvetica", 10)
+        expl = [
+            "1) AEIF baseline calculates expiry from base expiry knowledge + storage context.",
+            f"2) AED personalization activates after ≥ {MIN_FEEDBACK_FOR_PERSONALIZATION} feedbacks for the same item.",
+            "3) Printed expiry date acts as a safety cap (never recommend beyond printed date).",
+            "4) SCP ranks urgency using days left to generate a use-first list.",
+            "5) predictionHistory stores predictions over time to prove personalization improvements.",
+        ]
+        for ln in expl:
+            c.drawString(2 * cm, y, f"• {ln}")
+            y -= 0.45 * cm
+
+        c.showPage()
+        c.save()
+
+        buf.seek(0)
+        filename = f"food_expiry_report_{user_id}_{item}_{storage}.pdf"
+        return send_file(
+            buf,
+            mimetype="application/pdf",
+            as_attachment=True,
+            download_name=filename
+        )
+
     except Exception as e:
         traceback.print_exc()
         return jsonify({"error": str(e)}), 500

@@ -173,9 +173,8 @@ class ExpiryPredictor:
         X = self._prepare_input(data)
         raw_pred_days = float(self.model.predict(X)[0])
 
-        # AEIF biological safety rule (>= 60% of base)
-        safe_min = 0.60 * float(base_days)
-        final_days = max(raw_pred_days, safe_min)
+        # ✅ Do not allow prediction below the base expiry
+        final_days = max(raw_pred_days, float(base_days))
 
         return {
             "raw_pred_days": float(raw_pred_days),
