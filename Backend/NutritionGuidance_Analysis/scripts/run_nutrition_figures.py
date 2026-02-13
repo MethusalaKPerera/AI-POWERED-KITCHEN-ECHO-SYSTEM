@@ -9,24 +9,22 @@ import matplotlib.dates as mdates
 # =========================================================
 # PATHS
 # =========================================================
-# Point to Backend/data/ (shared with NutritionGuidance API)
+# Point to Backend/data/ for nutrients + Backend/store/ for intake data
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 DATA_DIR = os.path.join(BASE_DIR, "data")
+STORE_DIR = os.path.join(BASE_DIR, "store")
 ANALYSIS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 OUT_DIR = os.path.join(ANALYSIS_DIR, "output_figures")
 os.makedirs(OUT_DIR, exist_ok=True)
 
-INTAKE_JSON = os.path.join(DATA_DIR, "intake_demo.json")
+# Use the store version (single source of truth for user intake data)
+INTAKE_JSON = os.path.join(STORE_DIR, "intake_demo.json")
 FOOD_CSV = os.path.join(DATA_DIR, "SL_Food_Nutrition_Master.csv")
 REQ_CSV = os.path.join(DATA_DIR, "SL_Nutrient_Requirements_By_Age.csv")  # your file name
 
-
-# =========================================================
-# CONFIG (edit if needed)
-# =========================================================
 USER_ID = "demo"
 
-# Your requirement groups: male, female, pregnant, lactating
+# Your requirement groups: male or female
 GROUP = "male"  # change to "female" if needed
 
 # Quantity meaning: for analysis we treat 1 unit = 100g equivalent
