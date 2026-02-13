@@ -1,0 +1,22 @@
+condition,nutrient,rule_type,value,note
+diabetes,added_sugar_g,upper_limit,25,Limit added sugar; focus on whole foods
+diabetes,fiber_g,multiplier,1.2,Higher fiber supports glycemic control
+diabetes,carbohydrate_g,avoid_note,Refined carbs,Prefer complex carbs; spread carbs across meals
+hypertension,sodium_mg,upper_limit,1500,Lower sodium intake
+hypertension,potassium_mg,multiplier,1.1,More potassium-rich foods can help balance sodium
+anemia,iron_mg,multiplier,1.3,Increase iron target (dietary)
+anemia,folate_ug,multiplier,1.2,Support red blood cell formation
+anemia,vitamin_c_mg,multiplier,1.15,Vitamin C helps non-heme iron absorption
+osteoporosis_risk,calcium_mg,multiplier,1.2,Increase calcium target
+osteoporosis_risk,vitamin_d_ug,multiplier,1.2,Increase vitamin D target
+kidney_disease_risk,sodium_mg,upper_limit,1500,Lower sodium
+kidney_disease_risk,potassium_mg,upper_limit,2500,Potassium may need restriction; user should consult clinician
+kidney_disease_risk,protein_g,multiplier,0.9,Moderate protein unless advised otherwise
+pregnancy,iron_mg,multiplier,1.5,Higher iron needs in pregnancy
+pregnancy,folate_ug,multiplier,1.5,Higher folate needs in pregnancy
+underweight,energy_kcal,multiplier,1.15,Increase energy target
+underweight,protein_g,multiplier,1.1,Increase protein target
+overweight,energy_kcal,multiplier,0.9,Reduce energy target slightly
+overweight,fiber_g,multiplier,1.15,Higher fiber supports satiety
+high_cholesterol,fiber_g,multiplier,1.15,Fiber supports healthy cholesterol management
+salt_sensitive,sodium_mg,upper_limit,1500,Lower sodium intake

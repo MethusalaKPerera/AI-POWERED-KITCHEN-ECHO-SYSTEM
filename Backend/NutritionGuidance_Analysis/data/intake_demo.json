@@ -934,29 +934,5 @@
     "quantity": 1.0,
     "date": "2026-02-03",
     "ts": "2026-02-03T12:00:00.000Z"
-  },
-  {
-    "user_id": "demo",
-    "food_id": "SL0030",
-    "food_name": "Tea Biscuits",
-    "quantity": 1.0,
-    "date": "2026-02-13",
-    "ts": "2026-02-13T09:51:05.127397Z"
-  },
-  {
-    "user_id": "demo",
-    "food_id": "SL0014",
-    "food_name": "White Rice",
-    "quantity": 1.0,
-    "date": "2026-02-04",
-    "ts": "2026-02-04T12:00:00.000Z"
-  },
-  {
-    "user_id": "demo",
-    "food_id": "SL0074",
-    "food_name": "Kottu Roti",
-    "quantity": 1.0,
-    "date": "2026-02-12",
-    "ts": "2026-02-12T12:00:00.000Z"
   }
 ]
