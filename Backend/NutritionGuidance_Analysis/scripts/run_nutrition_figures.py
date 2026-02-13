@@ -9,9 +9,11 @@ import matplotlib.dates as mdates
 # =========================================================
 # PATHS
 # =========================================================
-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+# Point to Backend/data/ (shared with NutritionGuidance API)
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 DATA_DIR = os.path.join(BASE_DIR, "data")
-OUT_DIR = os.path.join(BASE_DIR, "output_figures")
+ANALYSIS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+OUT_DIR = os.path.join(ANALYSIS_DIR, "output_figures")
 os.makedirs(OUT_DIR, exist_ok=True)
 
 INTAKE_JSON = os.path.join(DATA_DIR, "intake_demo.json")
@@ -112,7 +114,7 @@ def save_fig(fig, filename: str):
     fig.tight_layout()
     fig.savefig(path, bbox_inches="tight")
     plt.close(fig)
-    print("✅ Saved:", path)
+    print("[OK] Saved:", path)
 
 
 # =========================================================
@@ -202,7 +204,7 @@ def compute_daily_intake(intake_df: pd.DataFrame, food_df: pd.DataFrame) -> pd.D
     # Warn missing mappings
     missing = merged[merged[list(NUTRIENTS.keys())[0]].isna()][["food_id", "food_name"]].drop_duplicates()
     if not missing.empty:
-        print("\n⚠️ WARNING: Missing nutrient mapping for some foods (first 10):")
+        print("\n[WARNING] Missing nutrient mapping for some foods (first 10):")
         print(missing.head(10).to_string(index=False))
 
     merged = merged.dropna(subset=list(NUTRIENTS.keys()))
@@ -367,7 +369,7 @@ def main():
     # Evidence file for report
     daily_csv = os.path.join(OUT_DIR, "daily_intake_generated.csv")
     daily.to_csv(daily_csv, index=False)
-    print("✅ Saved:", daily_csv)
+    print("[OK] Saved:", daily_csv)
 
     if daily.empty:
         raise ValueError("No daily nutrients computed. Check food_id mapping and nutrient columns.")
@@ -377,7 +379,7 @@ def main():
     fig3_ratio_trend_lines(daily, req_map)
     fig4_risk_distribution(daily, req_map)
 
-    print("\n✅ DONE. Check output_figures folder for clean PNG figures.")
+    print("\n[OK] DONE. Check output_figures folder for clean PNG figures.")
 
 
 if __name__ == "__main__":

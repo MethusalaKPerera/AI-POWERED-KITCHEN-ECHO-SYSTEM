@@ -4,6 +4,7 @@
   "group": "male",
   "conditions": [
     "diabetes",
-    "high_cholesterol"
+    "high_cholesterol",
+    "hypertension"
   ]
 }
