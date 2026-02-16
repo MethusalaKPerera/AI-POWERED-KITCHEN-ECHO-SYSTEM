@@ -1,9 +1,9 @@
 {
   "user_id": "demo",
-  "age": 26,
+  "age": 25,
   "group": "male",
   "conditions": [
     "diabetes",
-    "high_cholesterol"
+    "hypertension"
   ]
 }
