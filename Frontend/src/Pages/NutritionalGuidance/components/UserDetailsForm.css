@@ -1,6 +1,8 @@
 
 .ud-wrap {
-  max-width: 1000px;
+  padding: 18px;
+  max-width: 100%;
+  width: 100%;
 }
 
 /*  Hero / Header  */

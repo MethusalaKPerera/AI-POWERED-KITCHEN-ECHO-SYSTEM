@@ -1,6 +1,8 @@
 
 .ml-wrap {
-  max-width: 900px;
+  padding: 18px;
+  max-width: 100%;
+  width: 100%;
 }
 
 /* Hero / Header */
