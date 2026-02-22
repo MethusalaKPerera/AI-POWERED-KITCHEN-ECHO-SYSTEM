@@ -19,9 +19,6 @@ _req_df = None
 _cond_table = None
 
 
-# ------------------------------------------------------------
-# Internal loaders
-# ------------------------------------------------------------
 def _load_model():
     global _model
     if _model is None:
@@ -57,10 +54,10 @@ def _load_requirements():
 def _load_condition_table():
     """
     Optional: builds nutrient multipliers by condition if the file has usable columns.
-    If not usable/missing -> returns None and we run baseline.
     Supports either:
       - *_mult columns, or
-      - *_pct columns (percent increase/decrease)
+      - *_pct columns
+    If file is rule-based format (condition,nutrient,rule_type,value), this loader returns None (baseline mode).
     """
     global _cond_table
     if _cond_table is not None:
@@ -72,7 +69,6 @@ def _load_condition_table():
 
     df = pd.read_csv(COND_PATH)
 
-    # Find a condition/name column
     cond_col = None
     for c in ["condition", "health_condition", "name"]:
         if c in df.columns:
@@ -106,7 +102,6 @@ def _load_condition_table():
 
         e = pr = ca = ir = 1.0
 
-        # multipliers
         if any([m_energy, m_protein, m_calcium, m_iron]):
             if m_energy and pd.notna(r[m_energy]): e = float(r[m_energy])
             if m_protein and pd.notna(r[m_protein]): pr = float(r[m_protein])
@@ -115,7 +110,6 @@ def _load_condition_table():
             table[name] = {"energy": e, "protein": pr, "calcium": ca, "iron": ir}
             continue
 
-        # percents
         if any([p_energy, p_protein, p_calcium, p_iron]):
             if p_energy and pd.notna(r[p_energy]): e = 1.0 + float(r[p_energy]) / 100.0
             if p_protein and pd.notna(r[p_protein]): pr = 1.0 + float(r[p_protein]) / 100.0
@@ -128,18 +122,11 @@ def _load_condition_table():
     return _cond_table
 
 
-# ------------------------------------------------------------
-# Requirement lookup
-# ------------------------------------------------------------
 def _requirements_for_age(age: int):
-    """
-    Returns requirement dict for the given age by selecting matching age_min/age_max row.
-    """
     df = _load_requirements()
     match = df[(df["age_min"] <= age) & (age <= df["age_max"])]
 
     if match.empty:
-        # fallback: nearest by age_min
         match = df.iloc[[int((df["age_min"] - age).abs().idxmin())]]
 
     row = match.iloc[0]
@@ -151,26 +138,10 @@ def _requirements_for_age(age: int):
     }
 
 
-# ------------------------------------------------------------
-# Public API
-# ------------------------------------------------------------
 def predict_risk(age, avg, condition=None):
     """
-    Predict deficiency risk using ML model.
-
-    Parameters
-    ----------
-    age : int
-    avg : dict
-        daily average totals, expects keys like:
-          energy_kcal, protein_g, calcium_mg, iron_mg
-        (works with your daily_average_over_period output)
-    condition : str | None
-        optional health condition name, used only if condition adjustments exist
-
-    Returns
-    -------
-    str: "LOW" | "MEDIUM" | "HIGH"
+    Predict deficiency risk using the deployed ML model.
+    Returns: "LOW" | "MEDIUM" | "HIGH"
     """
     model = _load_model()
 
@@ -182,10 +153,9 @@ def predict_risk(age, avg, condition=None):
     total_calcium = float(avg.get("calcium_mg", 0) or 0)
     total_iron = float(avg.get("iron_mg", 0) or 0)
 
-    req = _requirements_for_age(age)
-
     # apply condition multiplier if available
     has_condition = 0
+    req = _requirements_for_age(age)
     cond_table = _load_condition_table()
     if condition and cond_table:
         key = str(condition).strip().lower()
@@ -197,14 +167,12 @@ def predict_risk(age, avg, condition=None):
             req["calcium"] *= mult["calcium"]
             req["iron"] *= mult["iron"]
 
-    ratio_energy = total_energy / max(req["energy"], 1e-6)
-    ratio_protein = total_protein / max(req["protein"], 1e-6)
-    ratio_calcium = total_calcium / max(req["calcium"], 1e-6)
-    ratio_iron = total_iron / max(req["iron"], 1e-6)
-
-    import pandas as pd  # ensure this is already imported at top
-
-    feature_names = list(model.feature_names_in_)
+    # IMPORTANT: model now expects ONLY these features (no ratio leakage)
+    feature_names = list(model.feature_names_in_) if hasattr(model, "feature_names_in_") else [
+        "age",
+        "total_energy_kcal", "total_protein_g", "total_calcium_mg", "total_iron_mg",
+        "has_condition"
+    ]
 
     row = {
         "age": age,
@@ -212,10 +180,6 @@ def predict_risk(age, avg, condition=None):
         "total_protein_g": total_protein,
         "total_calcium_mg": total_calcium,
         "total_iron_mg": total_iron,
-        "ratio_energy": ratio_energy,
-        "ratio_protein": ratio_protein,
-        "ratio_calcium": ratio_calcium,
-        "ratio_iron": ratio_iron,
         "has_condition": has_condition,
     }
 
