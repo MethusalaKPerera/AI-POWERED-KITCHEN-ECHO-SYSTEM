@@ -7,6 +7,8 @@ import { History } from './pages/History';
 import { Settings } from './pages/Settings';
 import { ProductDetails } from './pages/ProductDetails';
 
+import { Sustainability } from './pages/Sustainability';
+
 export function AppRouter() {
   return (
     <Routes>
@@ -15,6 +17,7 @@ export function AppRouter() {
       <Route path="recommendations" element={<Recommendations />} />
       <Route path="history" element={<History />} />
       <Route path="settings" element={<Settings />} />
+      <Route path="sustainability" element={<Sustainability />} />
       <Route path="product/:productId" element={<ProductDetails />} />
     </Routes>
   );

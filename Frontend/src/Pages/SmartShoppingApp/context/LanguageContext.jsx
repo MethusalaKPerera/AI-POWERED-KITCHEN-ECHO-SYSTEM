@@ -12,6 +12,7 @@ const translations = {
     settings: 'Settings',
     language: 'Language',
     currency: 'Currency',
+    sustainability: 'Sustainability',
 
     // Home page
     shopSmarter: 'Shop Smarter with Your AI Shopping Agent',
@@ -64,6 +65,7 @@ const translations = {
     settings: 'සැකසුම්',
     language: 'භාෂාව',
     currency: 'මුදල්',
+    sustainability: 'තිරසාරත්වය',
 
     // Home page
     shopSmarter: 'ඔබේ AI Shopping Agent සමඟ දක්ෂව සාප්පු යන්න',
@@ -116,6 +118,7 @@ const translations = {
     settings: 'அமைப்புகள்',
     language: 'மொழி',
     currency: 'நாணயம்',
+    sustainability: 'நிலைத்தன்மை',
 
     // Home page
     shopSmarter: 'உங்கள் AI Shopping Agent உடன் சிறப்பாக வாங்குங்கள்',

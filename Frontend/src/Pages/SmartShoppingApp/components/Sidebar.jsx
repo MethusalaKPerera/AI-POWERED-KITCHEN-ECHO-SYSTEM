@@ -7,7 +7,8 @@ import {
   ClockIcon,
   SettingsIcon,
   GlobeIcon,
-  DollarSignIcon
+  DollarSignIcon,
+  Leaf as LeafIcon
 } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { useCurrency } from '../context/CurrencyContext';
@@ -22,6 +23,7 @@ export function Sidebar() {
     { path: '/smart-shopping/search', icon: SearchIcon, label: translations.search },
     { path: '/smart-shopping/recommendations', icon: StarIcon, label: translations.recommendations },
     { path: '/smart-shopping/history', icon: ClockIcon, label: translations.history },
+    { path: '/smart-shopping/sustainability', icon: LeafIcon, label: translations.sustainability },
     { path: '/smart-shopping/settings', icon: SettingsIcon, label: translations.settings }
   ];
 
