@@ -5,7 +5,8 @@ import {
   BrainIcon,
   MessageCircleIcon,
   ClockIcon,
-  ArrowRightIcon
+  ArrowRightIcon,
+  Leaf as LeafIcon
 } from 'lucide-react';
 import { Sidebar } from '../components/Sidebar';
 import { ChatAssistant } from '../components/ChatAssistant';
@@ -33,6 +34,11 @@ export function Home() {
       icon: ClockIcon,
       title: 'Search History',
       description: 'Manage and revisit your previous searches easily'
+    },
+    {
+      icon: LeafIcon,
+      title: 'Sustainability Insights',
+      description: 'Track your eco-impact and waste reduction metrics'
     }
   ];
 
