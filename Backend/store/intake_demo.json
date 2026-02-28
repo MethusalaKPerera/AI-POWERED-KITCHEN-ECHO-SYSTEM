@@ -1134,5 +1134,53 @@
     "quantity": 1.0,
     "date": "2026-02-22",
     "ts": "2026-02-22T07:18:50.683801Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0014",
+    "food_name": "White Rice",
+    "quantity": 1.0,
+    "date": "2026-02-28",
+    "ts": "2026-02-28T05:39:45.092677Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0834",
+    "food_name": "Cream buns",
+    "quantity": 1.0,
+    "date": "2026-02-26",
+    "ts": "2026-02-26T12:00:00.000Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0074",
+    "food_name": "Kottu Roti",
+    "quantity": 1.0,
+    "date": "2026-02-27",
+    "ts": "2026-02-27T12:00:00.000Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0062",
+    "food_name": "Herbal Tea",
+    "quantity": 1.0,
+    "date": "2026-02-24",
+    "ts": "2026-02-24T12:00:00.000Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0016",
+    "food_name": "Fried Egg",
+    "quantity": 1.0,
+    "date": "2026-02-28",
+    "ts": "2026-02-28T05:40:21.484474Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0064",
+    "food_name": "Milk Tea",
+    "quantity": 1.0,
+    "date": "2026-02-28",
+    "ts": "2026-02-28T05:49:18.850837Z"
   }
 ]
