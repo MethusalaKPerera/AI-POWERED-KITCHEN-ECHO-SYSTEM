@@ -1,0 +1,2837 @@
+[
+  {
+    "id": "SL_0191",
+    "names": {
+      "english": "Ambulthiyal (Sour Fish Curry)"
+    },
+    "category": "curry",
+    "difficulty": "medium",
+    "prep_time_mins": 20,
+    "cook_time_mins": 40,
+    "servings": 4,
+    "region": "Southern Province",
+    "spice_level": 3,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "tuna steaks",
+        "amount": "500g"
+      },
+      {
+        "name": "goraka (garcinia cambogia)",
+        "amount": "30g"
+      },
+      {
+        "name": "black pepper",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "turmeric powder",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "salt",
+        "amount": "to taste"
+      },
+      {
+        "name": "pandan leaves",
+        "amount": "2"
+      },
+      {
+        "name": "garlic",
+        "amount": "4 cloves"
+      }
+    ],
+    "method": "1. Clean and cut tuna into large cubes\n2. Soak goraka in warm water for 10 minutes, then grind to paste\n3. Coat fish with goraka paste, turmeric, pepper and salt\n4. Place in a clay pot with curry leaves and pandan leaves\n5. Cook on low heat without water for 30-40 minutes, turning occasionally\n6. The fish will release its own moisture and become dark and dry",
+    "tips": "Use thick tuna steaks for best results. Do not add water - the fish cooks in its own juices.",
+    "cultural_note": "Ambulthiyal is the signature dish of Southern Sri Lanka, especially Galle and Matara. The goraka acts as a natural preservative, allowing the dish to last several days without refrigeration."
+  },
+  {
+    "id": "SL_0192",
+    "names": {
+      "english": "Jaffna Crab Curry"
+    },
+    "category": "curry",
+    "difficulty": "hard",
+    "prep_time_mins": 30,
+    "cook_time_mins": 45,
+    "servings": 4,
+    "region": "Northern Province",
+    "spice_level": 4,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "mud crabs",
+        "amount": "1 kg"
+      },
+      {
+        "name": "onion",
+        "amount": "2 large"
+      },
+      {
+        "name": "tomato",
+        "amount": "2"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "2 sprigs"
+      },
+      {
+        "name": "Jaffna curry powder",
+        "amount": "3 tbsp"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "fenugreek seeds",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "400ml"
+      },
+      {
+        "name": "tamarind paste",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "garlic",
+        "amount": "6 cloves"
+      },
+      {
+        "name": "ginger",
+        "amount": "1 inch"
+      }
+    ],
+    "method": "1. Clean crabs, remove top shell, cut in half and crack claws\n2. Heat oil, add fenugreek seeds until they pop\n3. Saute onions, garlic, ginger until golden\n4. Add tomatoes, curry powder, chili, turmeric, cook 5 mins\n5. Add crabs and tamarind paste, stir to coat\n6. Pour in coconut milk, add curry leaves, cover and simmer 25-30 minutes",
+    "tips": "Select heavy crabs with firm shells for the meatiest results. Crack claws before cooking so the curry penetrates.",
+    "cultural_note": "Jaffna crab curry is world-renowned and considered one of Sri Lanka's finest dishes. The Jaffna Peninsula's lagoons provide exceptional mud crabs that make this curry uniquely flavorful."
+  },
+  {
+    "id": "SL_0193",
+    "names": {
+      "english": "Mutton Curry (Aatu Kari)"
+    },
+    "category": "curry",
+    "difficulty": "medium",
+    "prep_time_mins": 20,
+    "cook_time_mins": 90,
+    "servings": 6,
+    "region": "Central Province",
+    "spice_level": 3,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "mutton",
+        "amount": "750g"
+      },
+      {
+        "name": "onion",
+        "amount": "3 large"
+      },
+      {
+        "name": "curry powder",
+        "amount": "3 tbsp"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "cardamom",
+        "amount": "4 pods"
+      },
+      {
+        "name": "cloves",
+        "amount": "4"
+      },
+      {
+        "name": "cinnamon stick",
+        "amount": "1 piece"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "2 sprigs"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "500ml"
+      },
+      {
+        "name": "potato",
+        "amount": "2 medium"
+      },
+      {
+        "name": "tomato",
+        "amount": "2"
+      },
+      {
+        "name": "garlic",
+        "amount": "6 cloves"
+      },
+      {
+        "name": "ginger",
+        "amount": "1.5 inch"
+      }
+    ],
+    "method": "1. Marinate mutton with curry powder, chili, turmeric, salt for 30 mins\n2. Heat oil, add whole spices (cardamom, cloves, cinnamon) until fragrant\n3. Saute onions, garlic, ginger until brown\n4. Add marinated mutton, cook on high heat for 10 minutes\n5. Add tomatoes and thin coconut milk, cover and simmer 60 mins\n6. Add potatoes and thick coconut milk, cook 20 more minutes until tender",
+    "tips": "Slow cooking on low heat is essential. The mutton should be falling off the bone when done.",
+    "cultural_note": "Mutton curry is a celebration dish in Sri Lanka, commonly served at weddings, religious festivals, and special occasions across all communities."
+  },
+  {
+    "id": "SL_0194",
+    "names": {
+      "english": "Polos Curry (Green Jackfruit Curry)"
+    },
+    "category": "curry",
+    "difficulty": "medium",
+    "prep_time_mins": 25,
+    "cook_time_mins": 50,
+    "servings": 4,
+    "region": "Western Province",
+    "spice_level": 2,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "green jackfruit",
+        "amount": "500g"
+      },
+      {
+        "name": "onion",
+        "amount": "1 large"
+      },
+      {
+        "name": "curry powder",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "300ml"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "pandan leaves",
+        "amount": "2"
+      },
+      {
+        "name": "Maldive fish",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "mustard seeds",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "garlic",
+        "amount": "3 cloves"
+      },
+      {
+        "name": "fenugreek seeds",
+        "amount": "1/4 tsp"
+      }
+    ],
+    "method": "1. Cut jackfruit into small pieces, remove seeds\n2. Boil jackfruit with turmeric and salt until half cooked\n3. Heat oil, add mustard and fenugreek seeds until they pop\n4. Saute onions and garlic until soft\n5. Add spices, Maldive fish, curry leaves, pandan leaves\n6. Add jackfruit and coconut milk, simmer 25-30 minutes until thick",
+    "tips": "Oil your hands before cutting raw jackfruit to prevent sticky latex from sticking to your skin.",
+    "cultural_note": "Polos curry is a beloved vegetarian curry that mimics the texture of meat. It is a staple during the Buddhist Lent period when many Sri Lankans avoid meat."
+  },
+  {
+    "id": "SL_0195",
+    "names": {
+      "english": "Ela Batu Curry (Pea Eggplant Curry)"
+    },
+    "category": "curry",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 30,
+    "servings": 4,
+    "region": "Sabaragamuwa",
+    "spice_level": 2,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "pea eggplants (ela batu)",
+        "amount": "250g"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "green chili",
+        "amount": "3"
+      },
+      {
+        "name": "curry powder",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "200ml"
+      },
+      {
+        "name": "Maldive fish",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "garlic",
+        "amount": "2 cloves"
+      },
+      {
+        "name": "goraka",
+        "amount": "1 piece"
+      }
+    ],
+    "method": "1. Wash pea eggplants and pierce each one with a knife\n2. Heat oil, saute onions, garlic, green chilies\n3. Add curry powder, turmeric, Maldive fish\n4. Add eggplants, goraka, and thin coconut milk\n5. Cook on medium heat 20 minutes until eggplants are soft\n6. Add thick coconut milk, simmer 5 minutes",
+    "tips": "Pierce the eggplants so curry flavor penetrates inside. Use goraka for authentic sour taste.",
+    "cultural_note": "Ela batu is a tiny variety of eggplant unique to Sri Lanka and South India. This curry is considered very healthy and is a common accompaniment to rice and curry meals."
+  },
+  {
+    "id": "SL_0196",
+    "names": {
+      "english": "Kukul Mas Curry (Village-Style Chicken)"
+    },
+    "category": "curry",
+    "difficulty": "medium",
+    "prep_time_mins": 20,
+    "cook_time_mins": 50,
+    "servings": 6,
+    "region": "Uva Province",
+    "spice_level": 3,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "free-range chicken",
+        "amount": "1 kg"
+      },
+      {
+        "name": "onion",
+        "amount": "2"
+      },
+      {
+        "name": "curry powder",
+        "amount": "3 tbsp"
+      },
+      {
+        "name": "roasted curry powder",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1.5 tsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "400ml"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "2 sprigs"
+      },
+      {
+        "name": "pandan leaves",
+        "amount": "2"
+      },
+      {
+        "name": "cinnamon stick",
+        "amount": "1"
+      },
+      {
+        "name": "cardamom",
+        "amount": "3 pods"
+      },
+      {
+        "name": "garlic",
+        "amount": "5 cloves"
+      },
+      {
+        "name": "ginger",
+        "amount": "1 inch"
+      },
+      {
+        "name": "tomato",
+        "amount": "1"
+      }
+    ],
+    "method": "1. Cut chicken into pieces, marinate with curry powder, turmeric, salt\n2. Heat oil, add cinnamon and cardamom\n3. Saute onions until deep golden brown\n4. Add garlic, ginger, tomato, chili powder\n5. Add chicken, cook 10 mins on high, then add coconut milk\n6. Cover and simmer 30-35 minutes, finish with roasted curry powder",
+    "tips": "Use village (free-range) chicken for authentic flavor. The meat is tougher but far more flavorful.",
+    "cultural_note": "This village-style chicken curry from Uva Province uses traditional wood-fire cooking methods. The slow cooking in a clay pot gives it an earthy, smoky flavor unique to rural Sri Lankan kitchens."
+  },
+  {
+    "id": "SL_0197",
+    "names": {
+      "english": "Dhall Curry with Spinach"
+    },
+    "category": "curry",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 25,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 1,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "red lentils",
+        "amount": "1 cup"
+      },
+      {
+        "name": "spinach",
+        "amount": "2 cups"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "tomato",
+        "amount": "1"
+      },
+      {
+        "name": "green chili",
+        "amount": "2"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "200ml"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "mustard seeds",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "garlic",
+        "amount": "2 cloves"
+      },
+      {
+        "name": "cumin seeds",
+        "amount": "1/4 tsp"
+      }
+    ],
+    "method": "1. Wash lentils, boil with turmeric until soft and mushy\n2. Heat oil, add mustard and cumin seeds until they pop\n3. Saute onions, garlic, green chilies until soft\n4. Add tomato, curry leaves, cook 3 minutes\n5. Add boiled lentils and washed spinach\n6. Pour in coconut milk, simmer 10 minutes, season with salt",
+    "tips": "Stir the lentils frequently to prevent sticking. The spinach wilts quickly so add it last.",
+    "cultural_note": "Dhall curry is eaten daily in almost every Sri Lankan household. Adding spinach is a modern nutritional enhancement that many health-conscious families now practice."
+  },
+  {
+    "id": "SL_0198",
+    "names": {
+      "english": "Cadju Maluwa (Cashew Curry)"
+    },
+    "category": "curry",
+    "difficulty": "medium",
+    "prep_time_mins": 15,
+    "cook_time_mins": 35,
+    "servings": 4,
+    "region": "North Western",
+    "spice_level": 2,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "raw cashew nuts",
+        "amount": "250g"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "curry powder",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "300ml"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "pandan leaves",
+        "amount": "1"
+      },
+      {
+        "name": "cinnamon stick",
+        "amount": "1 small piece"
+      },
+      {
+        "name": "garlic",
+        "amount": "3 cloves"
+      },
+      {
+        "name": "Maldive fish",
+        "amount": "1 tbsp"
+      }
+    ],
+    "method": "1. Soak cashews in water for 2 hours or boil for 15 minutes\n2. Heat oil, saute onions and garlic until soft\n3. Add curry powder, chili, turmeric, Maldive fish\n4. Add drained cashews, stir to coat with spices\n5. Pour in thin coconut milk, cook 15-20 minutes\n6. Add thick coconut milk, pandan leaf, simmer 5 minutes",
+    "tips": "Pre-soaking cashews ensures they cook evenly and become creamy.",
+    "cultural_note": "Cashew curry is a premium dish often served at weddings and special events. Sri Lanka's North Western Province (Puttalam) is the heart of the country's cashew production."
+  },
+  {
+    "id": "SL_0199",
+    "names": {
+      "english": "Beetroot Curry"
+    },
+    "category": "curry",
+    "difficulty": "easy",
+    "prep_time_mins": 15,
+    "cook_time_mins": 25,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 1,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "beetroot",
+        "amount": "3 medium"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "green chili",
+        "amount": "2"
+      },
+      {
+        "name": "curry powder",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "200ml"
+      },
+      {
+        "name": "mustard seeds",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "Maldive fish",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "desiccated coconut",
+        "amount": "2 tbsp"
+      }
+    ],
+    "method": "1. Peel and dice beetroot into small cubes\n2. Boil beetroot with turmeric until half cooked\n3. Heat oil, add mustard seeds until they pop\n4. Saute onions, green chilies, curry leaves\n5. Add beetroot, curry powder, Maldive fish, coconut\n6. Add coconut milk, simmer until beetroot is tender",
+    "tips": "Wear gloves when handling beetroot to avoid staining your hands.",
+    "cultural_note": "Beetroot curry is a colorful addition to the traditional rice and curry plate. Its natural sweetness complements the spicier curries on the table."
+  },
+  {
+    "id": "SL_0200",
+    "names": {
+      "english": "Brinjal Moju (Eggplant Pickle Curry)"
+    },
+    "category": "curry",
+    "difficulty": "easy",
+    "prep_time_mins": 15,
+    "cook_time_mins": 30,
+    "servings": 4,
+    "region": "Western Province",
+    "spice_level": 3,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "eggplant",
+        "amount": "500g"
+      },
+      {
+        "name": "onion",
+        "amount": "2"
+      },
+      {
+        "name": "green chili",
+        "amount": "4"
+      },
+      {
+        "name": "mustard seeds",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "vinegar",
+        "amount": "3 tbsp"
+      },
+      {
+        "name": "sugar",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "oil for frying",
+        "amount": "1 cup"
+      },
+      {
+        "name": "garlic",
+        "amount": "4 cloves"
+      },
+      {
+        "name": "ginger",
+        "amount": "1 inch"
+      }
+    ],
+    "method": "1. Cut eggplant into thick rounds, sprinkle with turmeric and salt\n2. Deep fry eggplant slices until golden, set aside\n3. In a pan, add mustard seeds until they pop\n4. Saute onions, garlic, ginger, green chilies until caramelized\n5. Add vinegar, sugar, chili powder, cook 3 minutes\n6. Gently fold in fried eggplant, coat with the sauce",
+    "tips": "The sweet-sour-spicy balance is key. Adjust vinegar and sugar to your taste.",
+    "cultural_note": "Brinjal moju is a beloved Sri Lankan pickle-style curry that reflects Dutch colonial influence. It is a must-have at Sinhala and Tamil New Year celebrations."
+  },
+  {
+    "id": "SL_0201",
+    "names": {
+      "english": "Squid Curry (Della Curry)"
+    },
+    "category": "curry",
+    "difficulty": "medium",
+    "prep_time_mins": 20,
+    "cook_time_mins": 30,
+    "servings": 4,
+    "region": "Southern Province",
+    "spice_level": 3,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "squid",
+        "amount": "500g"
+      },
+      {
+        "name": "onion",
+        "amount": "2"
+      },
+      {
+        "name": "tomato",
+        "amount": "1"
+      },
+      {
+        "name": "curry powder",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "300ml"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "goraka",
+        "amount": "2 pieces"
+      },
+      {
+        "name": "garlic",
+        "amount": "4 cloves"
+      },
+      {
+        "name": "ginger",
+        "amount": "1 inch"
+      },
+      {
+        "name": "fenugreek seeds",
+        "amount": "1/4 tsp"
+      }
+    ],
+    "method": "1. Clean squid, remove ink sac, cut into rings\n2. Heat oil, add fenugreek seeds until fragrant\n3. Saute onions, garlic, ginger until golden\n4. Add tomato, curry powder, chili, turmeric\n5. Add squid rings and goraka, cook 5 minutes on high\n6. Pour in coconut milk, simmer 15-20 minutes",
+    "tips": "Do not overcook squid or it becomes rubbery. 15-20 minutes is ideal.",
+    "cultural_note": "Squid curry is a coastal delicacy especially popular in fishing villages along the southern coast of Sri Lanka."
+  },
+  {
+    "id": "SL_0202",
+    "names": {
+      "english": "Snake Gourd Curry"
+    },
+    "category": "curry",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 25,
+    "servings": 4,
+    "region": "North Central",
+    "spice_level": 1,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "snake gourd",
+        "amount": "500g"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "green chili",
+        "amount": "2"
+      },
+      {
+        "name": "curry powder",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "200ml"
+      },
+      {
+        "name": "Maldive fish",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "mustard seeds",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      }
+    ],
+    "method": "1. Cut snake gourd into 1-inch pieces, remove seeds\n2. Heat oil, add mustard seeds until they pop\n3. Saute onions and green chilies\n4. Add snake gourd, curry powder, turmeric, Maldive fish\n5. Add thin coconut milk, cook 15-20 minutes until soft\n6. Add thick coconut milk, simmer 5 minutes",
+    "tips": "Choose young tender snake gourds for best results.",
+    "cultural_note": "Snake gourd is one of the most commonly grown vegetables in Sri Lankan home gardens, making this curry a true household staple."
+  },
+  {
+    "id": "SL_0203",
+    "names": {
+      "english": "Bitter Gourd Curry (Karawila)"
+    },
+    "category": "curry",
+    "difficulty": "medium",
+    "prep_time_mins": 20,
+    "cook_time_mins": 30,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 2,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "bitter gourd",
+        "amount": "400g"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "green chili",
+        "amount": "3"
+      },
+      {
+        "name": "curry powder",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "200ml"
+      },
+      {
+        "name": "Maldive fish",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "mustard seeds",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "tamarind paste",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "sugar",
+        "amount": "1 tsp"
+      }
+    ],
+    "method": "1. Slice bitter gourd thinly, rub with salt and turmeric\n2. Squeeze out bitter juice, rinse and drain\n3. Deep fry slices until crispy, set aside\n4. Saute onions, mustard seeds, curry leaves\n5. Add spices, tamarind, sugar, Maldive fish\n6. Add fried bitter gourd and coconut milk, simmer 10 minutes",
+    "tips": "Salting and squeezing removes most of the bitterness while retaining the health benefits.",
+    "cultural_note": "Karawila is highly valued in Sri Lankan traditional medicine (Ayurveda) for its blood sugar-regulating properties. Despite its bitter taste, it is enjoyed across the island."
+  },
+  {
+    "id": "SL_0204",
+    "names": {
+      "english": "Mushroom Curry"
+    },
+    "category": "curry",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 25,
+    "servings": 4,
+    "region": "Central Province",
+    "spice_level": 2,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "oyster mushrooms",
+        "amount": "400g"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "tomato",
+        "amount": "1"
+      },
+      {
+        "name": "curry powder",
+        "amount": "1.5 tbsp"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "200ml"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "garlic",
+        "amount": "3 cloves"
+      },
+      {
+        "name": "black pepper",
+        "amount": "1/2 tsp"
+      }
+    ],
+    "method": "1. Clean and tear mushrooms into bite-sized pieces\n2. Heat oil, saute onions and garlic\n3. Add tomato, curry powder, chili, turmeric, pepper\n4. Add mushrooms, stir-fry 3 minutes\n5. Pour in coconut milk, add curry leaves\n6. Simmer 15 minutes until sauce thickens",
+    "tips": "Do not wash mushrooms under running water; wipe with a damp cloth instead.",
+    "cultural_note": "Mushroom cultivation has become increasingly popular in Sri Lanka's hill country, making this curry a modern addition to the traditional rice and curry spread."
+  },
+  {
+    "id": "SL_0205",
+    "names": {
+      "english": "Ala Thel Dala (Spicy Potato Curry)"
+    },
+    "category": "curry",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 25,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 2,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "potato",
+        "amount": "500g"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "curry powder",
+        "amount": "1.5 tbsp"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "200ml"
+      },
+      {
+        "name": "mustard seeds",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "Maldive fish",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "garlic",
+        "amount": "3 cloves"
+      }
+    ],
+    "method": "1. Peel and cube potatoes\n2. Heat oil, add mustard seeds until they pop\n3. Saute onions and garlic until golden\n4. Add curry powder, chili, turmeric, Maldive fish\n5. Add potatoes and thin coconut milk\n6. Cover and cook 20 minutes until potatoes are tender",
+    "tips": "Cut potatoes into uniform sizes for even cooking.",
+    "cultural_note": "Potato curry is a universal favorite in Sri Lanka, served at every rice and curry meal. The style varies by region - Southern style is drier while Western Province prefers it with more gravy."
+  },
+  {
+    "id": "SL_0206",
+    "names": {
+      "english": "Malu Mirisata (Fish in Red Sauce)"
+    },
+    "category": "curry",
+    "difficulty": "medium",
+    "prep_time_mins": 15,
+    "cook_time_mins": 30,
+    "servings": 4,
+    "region": "Southern Province",
+    "spice_level": 4,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "seer fish",
+        "amount": "500g"
+      },
+      {
+        "name": "onion",
+        "amount": "2"
+      },
+      {
+        "name": "tomato",
+        "amount": "2"
+      },
+      {
+        "name": "chili powder",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "chili flakes",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "2 sprigs"
+      },
+      {
+        "name": "pandan leaves",
+        "amount": "2"
+      },
+      {
+        "name": "garlic",
+        "amount": "5 cloves"
+      },
+      {
+        "name": "ginger",
+        "amount": "1 inch"
+      },
+      {
+        "name": "vinegar",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "goraka",
+        "amount": "2 pieces"
+      }
+    ],
+    "method": "1. Rub fish with turmeric and salt, set aside 10 minutes\n2. Heat oil, saute onions until brown\n3. Add garlic, ginger, tomatoes\n4. Add chili powder, chili flakes, goraka\n5. Add fish pieces carefully, add vinegar\n6. Cook 15-20 minutes on medium heat without stirring",
+    "tips": "Use firm fish like seer or tuna that won't break apart during cooking.",
+    "cultural_note": "Malu mirisata is the fiery red fish curry of Sri Lanka's Southern coast. Fishermen's wives traditionally prepare this with the day's fresh catch."
+  },
+  {
+    "id": "SL_0207",
+    "names": {
+      "english": "Prawn Curry (Isso Curry)"
+    },
+    "category": "curry",
+    "difficulty": "medium",
+    "prep_time_mins": 20,
+    "cook_time_mins": 25,
+    "servings": 4,
+    "region": "Western Province",
+    "spice_level": 3,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "prawns",
+        "amount": "500g"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "tomato",
+        "amount": "1"
+      },
+      {
+        "name": "curry powder",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "300ml"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "fenugreek seeds",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "garlic",
+        "amount": "4 cloves"
+      },
+      {
+        "name": "tamarind paste",
+        "amount": "1 tsp"
+      }
+    ],
+    "method": "1. Clean and devein prawns, keep tails on\n2. Heat oil, add fenugreek seeds\n3. Saute onions and garlic until soft\n4. Add tomato, all spices, and tamarind paste\n5. Add prawns, cook 3-4 minutes until pink\n6. Pour in coconut milk, simmer 10 minutes",
+    "tips": "Do not overcook prawns - they cook very quickly and become tough if overcooked.",
+    "cultural_note": "Prawn curry is a luxurious dish typically prepared for special occasions. Sri Lanka's coastal areas, especially Negombo, are famous for their fresh prawns."
+  },
+  {
+    "id": "SL_0208",
+    "names": {
+      "english": "Ash Plantain Curry (Alu Kesel Curry)"
+    },
+    "category": "curry",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 30,
+    "servings": 4,
+    "region": "Sabaragamuwa",
+    "spice_level": 2,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "ash plantain",
+        "amount": "3"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "curry powder",
+        "amount": "1.5 tbsp"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "300ml"
+      },
+      {
+        "name": "mustard seeds",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "Maldive fish",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "pandan leaves",
+        "amount": "1"
+      }
+    ],
+    "method": "1. Peel plantains, cut into thick rounds\n2. Rub with turmeric and salt\n3. Heat oil, add mustard seeds until they pop\n4. Saute onions, curry leaves, pandan leaf\n5. Add plantain, spices, Maldive fish, thin coconut milk\n6. Cook 20 minutes, add thick coconut milk, simmer 5 more minutes",
+    "tips": "Use mature ash plantains (not sweet bananas) for this curry.",
+    "cultural_note": "Ash plantain curry is one of the most affordable and beloved vegetable curries in Sri Lanka. It is available year-round and pairs perfectly with rice."
+  },
+  {
+    "id": "SL_0209",
+    "names": {
+      "english": "Cuttlefish Curry (Dhallo Curry)"
+    },
+    "category": "curry",
+    "difficulty": "medium",
+    "prep_time_mins": 15,
+    "cook_time_mins": 30,
+    "servings": 4,
+    "region": "Eastern Province",
+    "spice_level": 3,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "cuttlefish",
+        "amount": "500g"
+      },
+      {
+        "name": "onion",
+        "amount": "2"
+      },
+      {
+        "name": "tomato",
+        "amount": "1"
+      },
+      {
+        "name": "curry powder",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "300ml"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "fenugreek seeds",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "garlic",
+        "amount": "4 cloves"
+      },
+      {
+        "name": "ginger",
+        "amount": "1 inch"
+      },
+      {
+        "name": "vinegar",
+        "amount": "1 tsp"
+      }
+    ],
+    "method": "1. Clean cuttlefish, remove bone and ink, cut into pieces\n2. Heat oil, add fenugreek, saute onions, garlic, ginger\n3. Add tomato, curry powder, chili and turmeric\n4. Add cuttlefish, vinegar, cook 5 minutes\n5. Pour in thin coconut milk, simmer 20 minutes\n6. Add thick coconut milk, curry leaves, cook 5 more minutes",
+    "tips": "Score the cuttlefish in a crosshatch pattern so it curls beautifully while cooking.",
+    "cultural_note": "Cuttlefish curry is popular in Trincomalee and Batticaloa on Sri Lanka's eastern coast, where fresh cuttlefish is abundant."
+  },
+  {
+    "id": "SL_0210",
+    "names": {
+      "english": "Bonchi Curry (Green Bean Curry)"
+    },
+    "category": "curry",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 20,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 1,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "green beans",
+        "amount": "400g"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "desiccated coconut",
+        "amount": "3 tbsp"
+      },
+      {
+        "name": "curry powder",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "150ml"
+      },
+      {
+        "name": "Maldive fish",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "mustard seeds",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      }
+    ],
+    "method": "1. Cut green beans into 1-inch pieces\n2. Heat oil, add mustard seeds until they pop\n3. Saute onions and curry leaves\n4. Add beans, spices, Maldive fish, desiccated coconut\n5. Add coconut milk, cover and cook 15-20 minutes\n6. Season with salt, stir gently",
+    "tips": "Use fresh tender beans for the best texture.",
+    "cultural_note": "Green bean curry is one of the simplest yet most satisfying Sri Lankan curries, commonly prepared for daily home meals."
+  },
+  {
+    "id": "SL_0211",
+    "names": {
+      "english": "Pumpkin Curry (Wattakka Curry)"
+    },
+    "category": "curry",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 25,
+    "servings": 4,
+    "region": "North Central",
+    "spice_level": 1,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "pumpkin",
+        "amount": "500g"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "curry powder",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "200ml"
+      },
+      {
+        "name": "mustard seeds",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "Maldive fish",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "sugar",
+        "amount": "1 tsp"
+      }
+    ],
+    "method": "1. Peel pumpkin, cut into bite-sized cubes\n2. Heat oil, add mustard seeds\n3. Saute onions and curry leaves\n4. Add pumpkin, spices, Maldive fish\n5. Add coconut milk, cover and cook 20 minutes\n6. Add sugar to balance the flavor",
+    "tips": "Choose orange-fleshed pumpkin for naturally sweet curry.",
+    "cultural_note": "Pumpkin curry with its natural sweetness provides a wonderful contrast to spicy curries on the Sri Lankan plate."
+  },
+  {
+    "id": "SL_0212",
+    "names": {
+      "english": "Dried Fish Curry (Karawala Curry)"
+    },
+    "category": "curry",
+    "difficulty": "easy",
+    "prep_time_mins": 15,
+    "cook_time_mins": 30,
+    "servings": 4,
+    "region": "Southern Province",
+    "spice_level": 4,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "dried fish (Maldive tuna)",
+        "amount": "200g"
+      },
+      {
+        "name": "onion",
+        "amount": "2"
+      },
+      {
+        "name": "tomato",
+        "amount": "1"
+      },
+      {
+        "name": "chili powder",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "curry powder",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "200ml"
+      },
+      {
+        "name": "tamarind",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "garlic",
+        "amount": "4 cloves"
+      },
+      {
+        "name": "goraka",
+        "amount": "2 pieces"
+      }
+    ],
+    "method": "1. Soak dried fish in water 30 minutes, drain and clean\n2. Cut into pieces, fry lightly in oil\n3. Saute onions, garlic until brown\n4. Add tomato, chili, curry powder, turmeric\n5. Add dried fish, goraka, tamarind, thin coconut milk\n6. Simmer 20 minutes until sauce thickens",
+    "tips": "Soak and wash dried fish well to remove excess salt.",
+    "cultural_note": "Dried fish curry is a pantry staple in Sri Lanka, providing protein in areas far from the coast. It continues to be one of the most economical sources of protein for rural families."
+  },
+  {
+    "id": "SL_0213",
+    "names": {
+      "english": "Drumstick Curry (Murunga Curry)"
+    },
+    "category": "curry",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 30,
+    "servings": 4,
+    "region": "Northern Province",
+    "spice_level": 2,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "drumsticks",
+        "amount": "6 sticks"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "curry powder",
+        "amount": "1.5 tbsp"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "200ml"
+      },
+      {
+        "name": "Maldive fish",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "mustard seeds",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "garlic",
+        "amount": "3 cloves"
+      }
+    ],
+    "method": "1. Cut drumsticks into 3-inch pieces\n2. Heat oil, add mustard seeds\n3. Saute onions, garlic, curry leaves\n4. Add spices and Maldive fish\n5. Add drumsticks and thin coconut milk\n6. Cook 25 minutes until drumstick flesh is soft",
+    "tips": "You eat drumsticks by scraping the soft flesh from the fibrous outer shell with your teeth.",
+    "cultural_note": "Moringa (murunga) is called a superfood and is grown in almost every Sri Lankan garden. The curry made from its pods is nutritious and medicinal."
+  },
+  {
+    "id": "SL_0214",
+    "names": {
+      "english": "Sardine Curry"
+    },
+    "category": "curry",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 25,
+    "servings": 4,
+    "region": "Western Province",
+    "spice_level": 3,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "fresh sardines",
+        "amount": "500g"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "tomato",
+        "amount": "1"
+      },
+      {
+        "name": "curry powder",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "200ml"
+      },
+      {
+        "name": "goraka",
+        "amount": "2 pieces"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "garlic",
+        "amount": "3 cloves"
+      },
+      {
+        "name": "ginger",
+        "amount": "1/2 inch"
+      }
+    ],
+    "method": "1. Clean sardines, rub with turmeric and salt\n2. Place in a clay pot with sliced onions, garlic, ginger\n3. Add tomato, curry powder, chili, goraka\n4. Pour thin coconut milk over fish\n5. Cook on medium heat 15-20 minutes\n6. Add thick coconut milk, simmer 5 minutes",
+    "tips": "Do not stir the curry - gently shake the pot to prevent fish from breaking.",
+    "cultural_note": "Sardine curry is the everyday fish curry of Sri Lanka, affordable and nutritious. It is best cooked in a traditional clay pot."
+  },
+  {
+    "id": "SL_0215",
+    "names": {
+      "english": "Leeks Curry"
+    },
+    "category": "curry",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 20,
+    "servings": 4,
+    "region": "Central Province",
+    "spice_level": 1,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "leeks",
+        "amount": "500g"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "curry powder",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "150ml"
+      },
+      {
+        "name": "Maldive fish",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "mustard seeds",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "black pepper",
+        "amount": "1/4 tsp"
+      }
+    ],
+    "method": "1. Wash leeks thoroughly, cut into 1-inch pieces\n2. Heat oil, add mustard seeds\n3. Saute onions and curry leaves\n4. Add leeks, spices, Maldive fish, pepper\n5. Add coconut milk, cook 15 minutes\n6. Season with salt",
+    "tips": "Clean leeks by slicing lengthwise and washing between layers to remove sand.",
+    "cultural_note": "Leeks grow prolifically in Sri Lanka's hill country around Nuwara Eliya, making this a beloved vegetable curry of the Central Province."
+  },
+  {
+    "id": "SL_0216",
+    "names": {
+      "english": "Mango Curry (Amba Maluwa)"
+    },
+    "category": "curry",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 25,
+    "servings": 4,
+    "region": "North Western",
+    "spice_level": 2,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "raw green mangoes",
+        "amount": "3"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "curry powder",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "200ml"
+      },
+      {
+        "name": "sugar",
+        "amount": "2 tsp"
+      },
+      {
+        "name": "mustard seeds",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "Maldive fish",
+        "amount": "1 tbsp"
+      }
+    ],
+    "method": "1. Peel green mangoes, cut into chunks\n2. Heat oil, add mustard seeds\n3. Saute onions and curry leaves\n4. Add mango pieces, spices, Maldive fish\n5. Add coconut milk and sugar\n6. Simmer 20 minutes until mango is soft",
+    "tips": "Use unripe, sour mangoes for authentic flavor. The sugar balances the tartness.",
+    "cultural_note": "Mango curry is a seasonal delicacy prepared during the mango season (May-July). Its sweet-sour flavor is a unique addition to the Sri Lankan spread."
+  },
+  {
+    "id": "SL_0217",
+    "names": {
+      "english": "Tinned Fish Curry"
+    },
+    "category": "curry",
+    "difficulty": "easy",
+    "prep_time_mins": 5,
+    "cook_time_mins": 20,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 2,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "canned mackerel",
+        "amount": "2 cans"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "tomato",
+        "amount": "1"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "curry powder",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "150ml"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "garlic",
+        "amount": "3 cloves"
+      },
+      {
+        "name": "green chili",
+        "amount": "2"
+      }
+    ],
+    "method": "1. Drain canned fish, break into large chunks\n2. Heat oil, saute onions, garlic, green chilies\n3. Add tomato, curry powder, chili, turmeric\n4. Gently add fish chunks\n5. Pour in coconut milk, add curry leaves\n6. Simmer 10-15 minutes on low heat",
+    "tips": "Handle the fish gently to keep chunks intact. Do not stir vigorously.",
+    "cultural_note": "Tinned fish curry is one of Sri Lanka's most popular quick meals, especially among students and working families. It is affectionately known as a comfort food."
+  },
+  {
+    "id": "SL_0218",
+    "names": {
+      "english": "Egg Curry (Bittara Curry)"
+    },
+    "category": "curry",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 25,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 2,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "eggs",
+        "amount": "6"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "tomato",
+        "amount": "1"
+      },
+      {
+        "name": "curry powder",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "200ml"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "garlic",
+        "amount": "3 cloves"
+      },
+      {
+        "name": "ginger",
+        "amount": "1/2 inch"
+      }
+    ],
+    "method": "1. Hard boil eggs, peel and make small cuts on surface\n2. Deep fry eggs until golden, set aside\n3. Saute onions, garlic, ginger until soft\n4. Add tomato, spices, cook 3 minutes\n5. Add thin coconut milk, bring to simmer\n6. Add fried eggs, cook in curry 10-15 minutes",
+    "tips": "Score the eggs so the curry sauce penetrates for better flavor.",
+    "cultural_note": "Egg curry is an economical protein-rich curry enjoyed across all social classes in Sri Lanka. It is a common alternative when meat is unavailable."
+  },
+  {
+    "id": "SL_0219",
+    "names": {
+      "english": "Devilled Chicken"
+    },
+    "category": "curry",
+    "difficulty": "medium",
+    "prep_time_mins": 15,
+    "cook_time_mins": 20,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 4,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "chicken",
+        "amount": "500g"
+      },
+      {
+        "name": "onion",
+        "amount": "2"
+      },
+      {
+        "name": "capsicum",
+        "amount": "1"
+      },
+      {
+        "name": "tomato",
+        "amount": "1"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "chili flakes",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "soy sauce",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "tomato sauce",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "garlic",
+        "amount": "5 cloves"
+      },
+      {
+        "name": "ginger",
+        "amount": "1 inch"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "green chili",
+        "amount": "4"
+      },
+      {
+        "name": "oil",
+        "amount": "3 tbsp"
+      }
+    ],
+    "method": "1. Cut chicken into bite-sized pieces, season with salt and turmeric\n2. Deep fry chicken pieces until golden, set aside\n3. Saute onions, garlic, ginger in hot oil\n4. Add capsicum, green chilies, tomato\n5. Add soy sauce, tomato sauce, chili powder, chili flakes\n6. Toss in fried chicken, mix well on high heat for 3-4 minutes",
+    "tips": "High heat stir-frying is essential for the smoky wok flavor Sri Lankans call 'thel piyawuna'.",
+    "cultural_note": "Devilled dishes are a unique Sri Lankan invention - a fiery fusion of local spices with Chinese stir-fry techniques, popularized by Sri Lanka's Chinese restaurants."
+  },
+  {
+    "id": "SL_0220",
+    "names": {
+      "english": "Devilled Prawns"
+    },
+    "category": "curry",
+    "difficulty": "medium",
+    "prep_time_mins": 20,
+    "cook_time_mins": 15,
+    "servings": 4,
+    "region": "Western Province",
+    "spice_level": 4,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "prawns",
+        "amount": "500g"
+      },
+      {
+        "name": "onion",
+        "amount": "2"
+      },
+      {
+        "name": "capsicum",
+        "amount": "1"
+      },
+      {
+        "name": "tomato",
+        "amount": "1"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "chili flakes",
+        "amount": "2 tsp"
+      },
+      {
+        "name": "soy sauce",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "tomato sauce",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "garlic",
+        "amount": "4 cloves"
+      },
+      {
+        "name": "ginger",
+        "amount": "1 inch"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "green chili",
+        "amount": "4"
+      },
+      {
+        "name": "vinegar",
+        "amount": "1 tsp"
+      }
+    ],
+    "method": "1. Clean and devein prawns\n2. Stir fry prawns in hot oil until just pink, remove\n3. In same wok, saute onions, garlic, ginger on high heat\n4. Add capsicum, green chilies, tomato\n5. Add all sauces, chili powder, chili flakes, vinegar\n6. Return prawns, toss vigorously for 2-3 minutes",
+    "tips": "Cook prawns briefly - they continue cooking in residual heat.",
+    "cultural_note": "Devilled prawns is a star dish at Sri Lankan Chinese restaurants and is a must-order item at celebrations and parties."
+  },
+  {
+    "id": "SL_0221",
+    "names": {
+      "english": "Tempered Potatoes (Ala Theldala)"
+    },
+    "category": "curry",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 20,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 2,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "potato",
+        "amount": "500g"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "mustard seeds",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "Maldive fish",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "green chili",
+        "amount": "2"
+      },
+      {
+        "name": "desiccated coconut",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "oil",
+        "amount": "2 tbsp"
+      }
+    ],
+    "method": "1. Boil potatoes until just cooked, peel and cube\n2. Heat oil, add mustard seeds until they pop\n3. Add onions, green chilies, curry leaves\n4. Add chili powder, turmeric, Maldive fish\n5. Add potato cubes, toss gently\n6. Sprinkle desiccated coconut, mix and serve",
+    "tips": "Use waxy potatoes that hold their shape after boiling.",
+    "cultural_note": "Tempered potato is a dry curry preparation that is one of the most common side dishes served with rice and curry at any Sri Lankan meal."
+  },
+  {
+    "id": "SL_0222",
+    "names": {
+      "english": "Kooni Isso Curry (Tiny Shrimp Curry)"
+    },
+    "category": "curry",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 20,
+    "servings": 4,
+    "region": "Southern Province",
+    "spice_level": 3,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "tiny dried shrimp",
+        "amount": "200g"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1.5 tsp"
+      },
+      {
+        "name": "curry powder",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "200ml"
+      },
+      {
+        "name": "tamarind",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "garlic",
+        "amount": "3 cloves"
+      },
+      {
+        "name": "goraka",
+        "amount": "1 piece"
+      }
+    ],
+    "method": "1. Wash dried shrimp and soak for 10 minutes\n2. Heat oil, saute onions, garlic, curry leaves\n3. Add chili powder, curry powder, turmeric\n4. Add shrimp, goraka, and tamarind\n5. Pour in coconut milk\n6. Simmer 15 minutes until sauce thickens",
+    "tips": "Soak the dried shrimp to remove excess salt before cooking.",
+    "cultural_note": "Kooni isso curry is a humble coastal curry that packs incredible umami flavor. It is a staple in fishing communities along Sri Lanka's coast."
+  },
+  {
+    "id": "SL_0223",
+    "names": {
+      "english": "Kiri Hodi (Coconut Milk Gravy)"
+    },
+    "category": "curry",
+    "difficulty": "easy",
+    "prep_time_mins": 5,
+    "cook_time_mins": 20,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 1,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "coconut milk",
+        "amount": "400ml"
+      },
+      {
+        "name": "onion",
+        "amount": "1 small"
+      },
+      {
+        "name": "green chili",
+        "amount": "2"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "fenugreek seeds",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "pandan leaves",
+        "amount": "1"
+      },
+      {
+        "name": "garlic",
+        "amount": "2 cloves"
+      },
+      {
+        "name": "lime juice",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "salt",
+        "amount": "to taste"
+      }
+    ],
+    "method": "1. Pour thin coconut milk into a pot\n2. Add sliced onion, garlic, green chilies, curry leaves, pandan\n3. Add turmeric, fenugreek seeds, salt\n4. Bring to a gentle simmer, cook 10 minutes\n5. Add thick coconut milk, simmer 5 more minutes\n6. Remove from heat, add lime juice",
+    "tips": "Never boil vigorously after adding thick coconut milk - it will split.",
+    "cultural_note": "Kiri hodi is the gentle coconut milk gravy that accompanies hoppers, string hoppers, and pittu. It is a mild, soothing curry that balances the spicier dishes."
+  },
+  {
+    "id": "SL_0224",
+    "names": {
+      "english": "Parippu (Red Lentil Curry)"
+    },
+    "category": "curry",
+    "difficulty": "easy",
+    "prep_time_mins": 5,
+    "cook_time_mins": 20,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 1,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "red lentils",
+        "amount": "1 cup"
+      },
+      {
+        "name": "onion",
+        "amount": "1 small"
+      },
+      {
+        "name": "garlic",
+        "amount": "2 cloves"
+      },
+      {
+        "name": "green chili",
+        "amount": "2"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "200ml"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "mustard seeds",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "cumin seeds",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "Maldive fish",
+        "amount": "1 tbsp"
+      }
+    ],
+    "method": "1. Wash lentils until water runs clear\n2. Boil with turmeric and salt until soft\n3. Heat oil, temper mustard and cumin seeds\n4. Saute onions, garlic, green chilies\n5. Add curry leaves, Maldive fish\n6. Combine with lentils, add coconut milk, simmer 5 minutes",
+    "tips": "Wash lentils thoroughly to remove starch for better texture.",
+    "cultural_note": "Parippu is arguably Sri Lanka's most essential curry. No rice and curry meal is complete without it. Every Sri Lankan learns to cook this first."
+  },
+  {
+    "id": "SL_0225",
+    "names": {
+      "english": "Lamb Curry"
+    },
+    "category": "curry",
+    "difficulty": "hard",
+    "prep_time_mins": 20,
+    "cook_time_mins": 90,
+    "servings": 6,
+    "region": "Eastern Province",
+    "spice_level": 3,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "lamb shoulder",
+        "amount": "1 kg"
+      },
+      {
+        "name": "onion",
+        "amount": "3"
+      },
+      {
+        "name": "curry powder",
+        "amount": "3 tbsp"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1.5 tsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "500ml"
+      },
+      {
+        "name": "cinnamon stick",
+        "amount": "1"
+      },
+      {
+        "name": "cardamom",
+        "amount": "4 pods"
+      },
+      {
+        "name": "cloves",
+        "amount": "4"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "2 sprigs"
+      },
+      {
+        "name": "tomato",
+        "amount": "2"
+      },
+      {
+        "name": "garlic",
+        "amount": "8 cloves"
+      },
+      {
+        "name": "ginger",
+        "amount": "2 inch"
+      },
+      {
+        "name": "fennel seeds",
+        "amount": "1 tsp"
+      }
+    ],
+    "method": "1. Marinate lamb with spices for 1 hour\n2. Heat oil, add whole spices until fragrant\n3. Brown onions, garlic, ginger\n4. Add marinated lamb, sear on all sides\n5. Add tomatoes, thin coconut milk, simmer 1 hour\n6. Add thick coconut milk, cook 20 more minutes until tender",
+    "tips": "Marinating overnight gives the deepest flavor penetration.",
+    "cultural_note": "Lamb curry is a celebratory dish in Sri Lanka's Muslim communities, especially in the Eastern Province, prepared for Eid and other festivals."
+  },
+  {
+    "id": "SL_0226",
+    "names": {
+      "english": "Gotukola Curry (Pennywort Curry)"
+    },
+    "category": "curry",
+    "difficulty": "easy",
+    "prep_time_mins": 15,
+    "cook_time_mins": 15,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 1,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "gotukola leaves",
+        "amount": "2 cups"
+      },
+      {
+        "name": "onion",
+        "amount": "1 small"
+      },
+      {
+        "name": "green chili",
+        "amount": "2"
+      },
+      {
+        "name": "desiccated coconut",
+        "amount": "3 tbsp"
+      },
+      {
+        "name": "Maldive fish",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "lime juice",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "salt",
+        "amount": "to taste"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/4 tsp"
+      }
+    ],
+    "method": "1. Wash gotukola leaves thoroughly\n2. Finely chop the leaves\n3. Finely chop onion and green chilies\n4. Mix all ingredients together\n5. Add desiccated coconut, Maldive fish, turmeric\n6. Season with lime juice and salt",
+    "tips": "This is a raw preparation - no cooking needed. The lime juice 'cooks' the leaves slightly.",
+    "cultural_note": "Gotukola (Centella asiatica) is revered in Ayurvedic medicine for improving brain function. This salad-like curry is eaten daily by health-conscious Sri Lankans."
+  },
+  {
+    "id": "SL_0227",
+    "names": {
+      "english": "Duck Curry"
+    },
+    "category": "curry",
+    "difficulty": "hard",
+    "prep_time_mins": 30,
+    "cook_time_mins": 75,
+    "servings": 6,
+    "region": "North Western",
+    "spice_level": 3,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "duck",
+        "amount": "1 kg"
+      },
+      {
+        "name": "onion",
+        "amount": "2"
+      },
+      {
+        "name": "curry powder",
+        "amount": "3 tbsp"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "400ml"
+      },
+      {
+        "name": "vinegar",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "cinnamon stick",
+        "amount": "1"
+      },
+      {
+        "name": "cardamom",
+        "amount": "3 pods"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "2 sprigs"
+      },
+      {
+        "name": "garlic",
+        "amount": "6 cloves"
+      },
+      {
+        "name": "ginger",
+        "amount": "1.5 inch"
+      },
+      {
+        "name": "mustard seeds",
+        "amount": "1/2 tsp"
+      }
+    ],
+    "method": "1. Clean duck, cut into pieces, marinate with vinegar and spices\n2. Heat oil, add cinnamon, cardamom, mustard seeds\n3. Brown onions, garlic, ginger\n4. Add duck pieces, sear until browned\n5. Add coconut milk, curry leaves, cover and cook 60 minutes\n6. Uncover, reduce sauce until thick",
+    "tips": "Duck releases a lot of fat during cooking - skim excess fat for a lighter curry.",
+    "cultural_note": "Duck curry is a special occasion dish in Sri Lanka, particularly popular in the North Western Province where duck farming is common."
+  },
+  {
+    "id": "SL_0228",
+    "names": {
+      "english": "Soya Meat Curry"
+    },
+    "category": "curry",
+    "difficulty": "easy",
+    "prep_time_mins": 15,
+    "cook_time_mins": 25,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 2,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "soya meat chunks",
+        "amount": "200g"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "tomato",
+        "amount": "1"
+      },
+      {
+        "name": "curry powder",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "200ml"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "garlic",
+        "amount": "3 cloves"
+      },
+      {
+        "name": "cinnamon stick",
+        "amount": "1 small piece"
+      }
+    ],
+    "method": "1. Soak soya chunks in hot water 15 minutes, squeeze dry\n2. Deep fry soya chunks until golden, set aside\n3. Saute onions, garlic, cinnamon\n4. Add tomato, curry powder, chili, turmeric\n5. Add fried soya chunks and coconut milk\n6. Simmer 15 minutes until sauce is absorbed",
+    "tips": "Squeeze out all water from soaked soya for better texture and flavor absorption.",
+    "cultural_note": "Soya meat curry is a popular vegetarian protein alternative in Sri Lanka, especially during Buddhist Poya days when many avoid meat."
+  },
+  {
+    "id": "SL_0229",
+    "names": {
+      "english": "Canned Fish Tempered Dry Curry"
+    },
+    "category": "curry",
+    "difficulty": "easy",
+    "prep_time_mins": 5,
+    "cook_time_mins": 15,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 3,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "canned fish (mackerel)",
+        "amount": "1 can"
+      },
+      {
+        "name": "onion",
+        "amount": "2"
+      },
+      {
+        "name": "green chili",
+        "amount": "4"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "chili flakes",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "lime juice",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "Maldive fish",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "desiccated coconut",
+        "amount": "2 tbsp"
+      }
+    ],
+    "method": "1. Drain canned fish, flake into chunks\n2. Heat oil, saute onions until crispy\n3. Add green chilies, curry leaves\n4. Add chili powder, flakes, turmeric, Maldive fish\n5. Add fish, gently toss with spices\n6. Add coconut, lime juice, mix and serve",
+    "tips": "This is meant to be a dry curry - do not add coconut milk.",
+    "cultural_note": "This quick dry curry is a favorite among Sri Lankan students and bachelors for its simplicity and bold flavors."
+  },
+  {
+    "id": "SL_0230",
+    "names": {
+      "english": "Breadfruit Curry (Del Curry)"
+    },
+    "category": "curry",
+    "difficulty": "easy",
+    "prep_time_mins": 15,
+    "cook_time_mins": 35,
+    "servings": 4,
+    "region": "Western Province",
+    "spice_level": 2,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "breadfruit",
+        "amount": "500g"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "curry powder",
+        "amount": "1.5 tbsp"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "300ml"
+      },
+      {
+        "name": "mustard seeds",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "fenugreek seeds",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "Maldive fish",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "pandan leaves",
+        "amount": "1"
+      }
+    ],
+    "method": "1. Peel breadfruit, remove core, cut into chunks\n2. Boil breadfruit with turmeric until half cooked\n3. Heat oil, add mustard and fenugreek seeds\n4. Saute onions, curry leaves\n5. Add breadfruit, spices, Maldive fish, coconut milk\n6. Simmer 20 minutes until tender and sauce thickens",
+    "tips": "Choose firm breadfruit that is not overripe for curry.",
+    "cultural_note": "Breadfruit trees are found in every Sri Lankan village. The curry made from this starchy fruit is filling and economical, often replacing rice during times of scarcity."
+  },
+  {
+    "id": "SL_0231",
+    "names": {
+      "english": "Venison Curry"
+    },
+    "category": "curry",
+    "difficulty": "hard",
+    "prep_time_mins": 30,
+    "cook_time_mins": 90,
+    "servings": 6,
+    "region": "Uva Province",
+    "spice_level": 4,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "venison",
+        "amount": "750g"
+      },
+      {
+        "name": "onion",
+        "amount": "2"
+      },
+      {
+        "name": "curry powder",
+        "amount": "3 tbsp"
+      },
+      {
+        "name": "chili powder",
+        "amount": "2 tsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "400ml"
+      },
+      {
+        "name": "vinegar",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "cinnamon stick",
+        "amount": "1"
+      },
+      {
+        "name": "cardamom",
+        "amount": "4 pods"
+      },
+      {
+        "name": "cloves",
+        "amount": "4"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "2 sprigs"
+      },
+      {
+        "name": "garlic",
+        "amount": "8 cloves"
+      },
+      {
+        "name": "ginger",
+        "amount": "2 inch"
+      },
+      {
+        "name": "black pepper",
+        "amount": "1 tsp"
+      }
+    ],
+    "method": "1. Marinate venison with vinegar, spices, garlic, ginger overnight\n2. Heat oil, add whole spices\n3. Brown onions deeply\n4. Add marinated meat, sear on high heat\n5. Add thin coconut milk, simmer 90 minutes\n6. Add thick coconut milk, pepper, cook 15 more minutes",
+    "tips": "Overnight marination is essential to tenderize the gamey meat.",
+    "cultural_note": "Venison curry is a traditional dish from Sri Lanka's Uva Province where deer farming exists. It has a rich, deep flavor distinct from other meat curries."
+  },
+  {
+    "id": "SL_0232",
+    "names": {
+      "english": "Jackfruit Seed Curry"
+    },
+    "category": "curry",
+    "difficulty": "easy",
+    "prep_time_mins": 15,
+    "cook_time_mins": 30,
+    "servings": 4,
+    "region": "Sabaragamuwa",
+    "spice_level": 1,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "jackfruit seeds",
+        "amount": "300g"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "curry powder",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "200ml"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "Maldive fish",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "mustard seeds",
+        "amount": "1/2 tsp"
+      }
+    ],
+    "method": "1. Boil jackfruit seeds until tender, peel off outer skin\n2. Cut seeds in half\n3. Heat oil, add mustard seeds\n4. Saute onions and curry leaves\n5. Add seeds, spices, Maldive fish, coconut milk\n6. Simmer 20 minutes",
+    "tips": "Boil seeds until you can easily peel the outer brown skin.",
+    "cultural_note": "In Sri Lanka, nothing from the jackfruit is wasted - the fruit, seeds, and even the young leaves are all used. This zero-waste approach reflects traditional sustainability."
+  },
+  {
+    "id": "SL_0233",
+    "names": {
+      "english": "Liver Curry"
+    },
+    "category": "curry",
+    "difficulty": "medium",
+    "prep_time_mins": 15,
+    "cook_time_mins": 30,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 3,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "chicken liver",
+        "amount": "400g"
+      },
+      {
+        "name": "onion",
+        "amount": "2"
+      },
+      {
+        "name": "tomato",
+        "amount": "1"
+      },
+      {
+        "name": "curry powder",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "150ml"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "garlic",
+        "amount": "4 cloves"
+      },
+      {
+        "name": "ginger",
+        "amount": "1 inch"
+      },
+      {
+        "name": "vinegar",
+        "amount": "1 tsp"
+      }
+    ],
+    "method": "1. Clean liver, cut into bite-sized pieces\n2. Heat oil, saute onions, garlic, ginger\n3. Add tomato, curry powder, chili, turmeric\n4. Add liver, stir-fry 5 minutes on high heat\n5. Add coconut milk, vinegar, curry leaves\n6. Simmer 15 minutes - do not overcook",
+    "tips": "A splash of vinegar removes the metallic taste from liver.",
+    "cultural_note": "Liver curry is a nutritious and affordable dish prized for its high iron content. It is commonly available as a side dish in Sri Lankan rice and curry restaurants."
+  },
+  {
+    "id": "SL_0234",
+    "names": {
+      "english": "Wild Boar Curry (Wal Ura Curry)"
+    },
+    "category": "curry",
+    "difficulty": "hard",
+    "prep_time_mins": 30,
+    "cook_time_mins": 120,
+    "servings": 6,
+    "region": "Sabaragamuwa",
+    "spice_level": 4,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "wild boar meat",
+        "amount": "1 kg"
+      },
+      {
+        "name": "onion",
+        "amount": "3"
+      },
+      {
+        "name": "curry powder",
+        "amount": "4 tbsp"
+      },
+      {
+        "name": "chili powder",
+        "amount": "2 tsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "500ml"
+      },
+      {
+        "name": "vinegar",
+        "amount": "3 tbsp"
+      },
+      {
+        "name": "garlic",
+        "amount": "10 cloves"
+      },
+      {
+        "name": "ginger",
+        "amount": "2 inch"
+      },
+      {
+        "name": "cinnamon stick",
+        "amount": "2"
+      },
+      {
+        "name": "cardamom",
+        "amount": "5 pods"
+      },
+      {
+        "name": "black pepper",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "3 sprigs"
+      },
+      {
+        "name": "goraka",
+        "amount": "4 pieces"
+      }
+    ],
+    "method": "1. Cut meat into cubes, marinate with vinegar, garlic, ginger, spices overnight\n2. Heat oil, add whole spices\n3. Brown onions until dark\n4. Add marinated meat, sear 10 minutes\n5. Add coconut milk, goraka, curry leaves, cover and cook 2 hours\n6. Reduce sauce until thick and rich",
+    "tips": "Long, slow cooking is essential for this tough meat.",
+    "cultural_note": "Wild boar curry is an ancient Lankan recipe still prepared in rural areas of Sabaragamuwa and Uva. Its intense, gamey flavor is highly prized by meat lovers."
+  },
+  {
+    "id": "SL_0235",
+    "names": {
+      "english": "Chickpea Curry (Kadala Curry)"
+    },
+    "category": "curry",
+    "difficulty": "easy",
+    "prep_time_mins": 15,
+    "cook_time_mins": 35,
+    "servings": 4,
+    "region": "Northern Province",
+    "spice_level": 2,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "chickpeas",
+        "amount": "2 cups"
+      },
+      {
+        "name": "onion",
+        "amount": "2"
+      },
+      {
+        "name": "tomato",
+        "amount": "1"
+      },
+      {
+        "name": "curry powder",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "300ml"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "garlic",
+        "amount": "4 cloves"
+      },
+      {
+        "name": "ginger",
+        "amount": "1 inch"
+      },
+      {
+        "name": "mustard seeds",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "cumin seeds",
+        "amount": "1/4 tsp"
+      }
+    ],
+    "method": "1. Soak chickpeas overnight, boil until tender\n2. Heat oil, add mustard and cumin seeds\n3. Saute onions, garlic, ginger until golden\n4. Add tomato, all spices, cook 5 minutes\n5. Add boiled chickpeas, thin coconut milk\n6. Simmer 20 minutes, add thick coconut milk last",
+    "tips": "Soaking overnight with a pinch of baking soda makes chickpeas cook faster.",
+    "cultural_note": "Kadala curry is a protein-rich vegetarian curry beloved in Northern Province. It is especially popular as an accompaniment to pittu and hoppers."
+  }
+]

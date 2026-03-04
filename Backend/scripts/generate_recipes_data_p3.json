@@ -1,0 +1,2535 @@
+[
+  {
+    "id": "SL_0286",
+    "names": {
+      "english": "Pol Sambol (Coconut Sambol)"
+    },
+    "category": "accompaniment",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 0,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 3,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "grated coconut",
+        "amount": "1 cup"
+      },
+      {
+        "name": "red onion",
+        "amount": "1"
+      },
+      {
+        "name": "dried chili flakes",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "Maldive fish",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "lime juice",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "salt",
+        "amount": "to taste"
+      }
+    ],
+    "method": "1. Grate fresh coconut\n2. Finely chop red onion\n3. Mix coconut, onion, chili flakes, Maldive fish\n4. Add lime juice and salt\n5. Mix well, crushing slightly with fingers\n6. Serve immediately",
+    "tips": "Use freshly grated coconut, never desiccated, for authentic sambol.",
+    "cultural_note": "Pol sambol is the king of Sri Lankan sambols, present at every single meal."
+  },
+  {
+    "id": "SL_0287",
+    "names": {
+      "english": "Seeni Sambol (Caramelized Onion Sambol)"
+    },
+    "category": "accompaniment",
+    "difficulty": "medium",
+    "prep_time_mins": 15,
+    "cook_time_mins": 30,
+    "servings": 6,
+    "region": "Western Province",
+    "spice_level": 2,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "red onion",
+        "amount": "500g"
+      },
+      {
+        "name": "chili flakes",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "Maldive fish",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "sugar",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "tamarind paste",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "2 sprigs"
+      },
+      {
+        "name": "cinnamon stick",
+        "amount": "1"
+      },
+      {
+        "name": "cardamom",
+        "amount": "3 pods"
+      },
+      {
+        "name": "oil",
+        "amount": "1/4 cup"
+      },
+      {
+        "name": "salt",
+        "amount": "to taste"
+      }
+    ],
+    "method": "1. Slice onions thinly\n2. Heat oil, add cinnamon, cardamom\n3. Add onions, cook on low heat 20 mins until deep brown\n4. Add chili flakes, Maldive fish\n5. Add tamarind, sugar, curry leaves\n6. Cook 10 more mins until sticky and caramelized",
+    "tips": "Patience is key - rush the caramelizing and it won't taste right.",
+    "cultural_note": "Seeni sambol means 'sugar sambol'. This sweet-spicy onion relish is the classic accompaniment to bread and hoppers."
+  },
+  {
+    "id": "SL_0288",
+    "names": {
+      "english": "Lunu Miris (Chili Paste)"
+    },
+    "category": "accompaniment",
+    "difficulty": "easy",
+    "prep_time_mins": 5,
+    "cook_time_mins": 0,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 4,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "dried red chili",
+        "amount": "8"
+      },
+      {
+        "name": "red onion",
+        "amount": "1"
+      },
+      {
+        "name": "Maldive fish",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "lime juice",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "salt",
+        "amount": "to taste"
+      }
+    ],
+    "method": "1. Remove stems from dried chilies\n2. Roughly chop onion\n3. Grind chilies, onion, Maldive fish and salt in mortar and pestle\n4. Pound until well combined but still chunky\n5. Add lime juice, mix well\n6. Serve with kiribath or hoppers",
+    "tips": "Use a stone mortar and pestle - the texture is better than a blender.",
+    "cultural_note": "Lunu miris is the fiery chili paste that accompanies kiribath on every auspicious day in Sri Lanka."
+  },
+  {
+    "id": "SL_0289",
+    "names": {
+      "english": "Katta Sambol (Raw Chili Sambol)"
+    },
+    "category": "accompaniment",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 0,
+    "servings": 4,
+    "region": "Southern Province",
+    "spice_level": 5,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "red onion",
+        "amount": "2"
+      },
+      {
+        "name": "dried red chili",
+        "amount": "10"
+      },
+      {
+        "name": "Maldive fish",
+        "amount": "3 tbsp"
+      },
+      {
+        "name": "lime juice",
+        "amount": "3 tbsp"
+      },
+      {
+        "name": "salt",
+        "amount": "to taste"
+      },
+      {
+        "name": "pepper",
+        "amount": "1/2 tsp"
+      }
+    ],
+    "method": "1. Pound dried chilies in mortar until flaky\n2. Add sliced onions and pound lightly\n3. Add Maldive fish, pound briefly\n4. Season with lime juice, salt, pepper\n5. Mix well\n6. Serve as fiery condiment",
+    "tips": "Pound gently - katta sambol should be chunky, not a paste.",
+    "cultural_note": "Katta sambol is the hottest of Sri Lankan sambols, a test of spice tolerance!"
+  },
+  {
+    "id": "SL_0290",
+    "names": {
+      "english": "Gotukola Sambol (Pennywort Salad)"
+    },
+    "category": "accompaniment",
+    "difficulty": "easy",
+    "prep_time_mins": 15,
+    "cook_time_mins": 0,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 1,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "gotukola leaves",
+        "amount": "2 cups"
+      },
+      {
+        "name": "red onion",
+        "amount": "1 small"
+      },
+      {
+        "name": "green chili",
+        "amount": "2"
+      },
+      {
+        "name": "grated coconut",
+        "amount": "3 tbsp"
+      },
+      {
+        "name": "Maldive fish",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "lime juice",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "salt",
+        "amount": "to taste"
+      }
+    ],
+    "method": "1. Wash gotukola leaves thoroughly\n2. Finely chop leaves, onion, green chili\n3. Mix with grated coconut and Maldive fish\n4. Add lime juice and salt\n5. Toss well\n6. Serve fresh as a raw salad",
+    "tips": "Chop the leaves as finely as possible for best texture.",
+    "cultural_note": "Gotukola salad is Sri Lanka's most nutritious accompaniment, rich in iron and antioxidants."
+  },
+  {
+    "id": "SL_0291",
+    "names": {
+      "english": "Coconut Chutney"
+    },
+    "category": "accompaniment",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 5,
+    "servings": 4,
+    "region": "Northern Province",
+    "spice_level": 1,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "grated coconut",
+        "amount": "1 cup"
+      },
+      {
+        "name": "green chili",
+        "amount": "3"
+      },
+      {
+        "name": "ginger",
+        "amount": "1/2 inch"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "mustard seeds",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "urad dhal",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "oil",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "salt",
+        "amount": "to taste"
+      }
+    ],
+    "method": "1. Blend coconut, green chili, ginger, salt with little water\n2. Heat oil, add mustard seeds and urad dhal\n3. Add curry leaves when seeds pop\n4. Pour tempering over coconut mixture\n5. Mix well\n6. Serve with dosa, idli, or string hoppers",
+    "tips": "Keep the chutney slightly coarse for texture.",
+    "cultural_note": "Coconut chutney is the quintessential Tamil accompaniment served with every South Indian breakfast."
+  },
+  {
+    "id": "SL_0292",
+    "names": {
+      "english": "Tomato Chutney"
+    },
+    "category": "accompaniment",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 15,
+    "servings": 4,
+    "region": "Northern Province",
+    "spice_level": 2,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "tomato",
+        "amount": "4 large"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "dried red chili",
+        "amount": "4"
+      },
+      {
+        "name": "garlic",
+        "amount": "3 cloves"
+      },
+      {
+        "name": "mustard seeds",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "urad dhal",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "oil",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "sugar",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "salt",
+        "amount": "to taste"
+      }
+    ],
+    "method": "1. Heat oil, add mustard seeds, urad dhal\n2. Saute onions, garlic until soft\n3. Add chopped tomatoes and dried chilies\n4. Cook 10 mins until tomatoes break down\n5. Add sugar, salt, mash lightly\n6. Cool and serve",
+    "tips": "Ripe, red tomatoes give the best color and flavor.",
+    "cultural_note": "Tomato chutney is a tangy accompaniment popular in Tamil households across Northern Sri Lanka."
+  },
+  {
+    "id": "SL_0293",
+    "names": {
+      "english": "Murunga Mallum (Moringa Leaf Stir-fry)"
+    },
+    "category": "accompaniment",
+    "difficulty": "easy",
+    "prep_time_mins": 15,
+    "cook_time_mins": 10,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 1,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "moringa leaves",
+        "amount": "3 cups"
+      },
+      {
+        "name": "onion",
+        "amount": "1 small"
+      },
+      {
+        "name": "desiccated coconut",
+        "amount": "3 tbsp"
+      },
+      {
+        "name": "green chili",
+        "amount": "2"
+      },
+      {
+        "name": "Maldive fish",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "salt",
+        "amount": "to taste"
+      },
+      {
+        "name": "lime juice",
+        "amount": "1 tbsp"
+      }
+    ],
+    "method": "1. Strip moringa leaves from stems, wash well\n2. Finely chop onion and green chili\n3. Mix all ingredients together\n4. Stir-fry in a dry pan for 5-7 minutes\n5. Add coconut and Maldive fish\n6. Season with lime juice and salt",
+    "tips": "Pick only fresh, bright green moringa leaves.",
+    "cultural_note": "Moringa mallum is a powerhouse of nutrition. Sri Lankan grandmothers call it 'nature's multivitamin'."
+  },
+  {
+    "id": "SL_0294",
+    "names": {
+      "english": "Kankun Mallum (Water Spinach Stir-fry)"
+    },
+    "category": "accompaniment",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 10,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 1,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "kangkung (water spinach)",
+        "amount": "2 bunches"
+      },
+      {
+        "name": "onion",
+        "amount": "1 small"
+      },
+      {
+        "name": "desiccated coconut",
+        "amount": "3 tbsp"
+      },
+      {
+        "name": "green chili",
+        "amount": "2"
+      },
+      {
+        "name": "Maldive fish",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "salt",
+        "amount": "to taste"
+      },
+      {
+        "name": "lime juice",
+        "amount": "1 tbsp"
+      }
+    ],
+    "method": "1. Wash kangkung, cut into 1-inch pieces\n2. Finely chop onion and green chili\n3. Heat a dry pan, add kangkung\n4. Add onion, chili, turmeric, Maldive fish\n5. Stir-fry until wilted, 5-7 minutes\n6. Add coconut, lime juice, salt",
+    "tips": "Do not overcook - kangkung should still be bright green.",
+    "cultural_note": "Kangkung grows wild near water bodies across Sri Lanka and is one of the most affordable green vegetables."
+  },
+  {
+    "id": "SL_0295",
+    "names": {
+      "english": "Wambatu Moju (Eggplant Pickle)"
+    },
+    "category": "accompaniment",
+    "difficulty": "easy",
+    "prep_time_mins": 15,
+    "cook_time_mins": 20,
+    "servings": 4,
+    "region": "Western Province",
+    "spice_level": 3,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "eggplant",
+        "amount": "500g"
+      },
+      {
+        "name": "onion",
+        "amount": "2"
+      },
+      {
+        "name": "green chili",
+        "amount": "4"
+      },
+      {
+        "name": "mustard seeds",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "vinegar",
+        "amount": "3 tbsp"
+      },
+      {
+        "name": "sugar",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "oil for frying",
+        "amount": "1 cup"
+      }
+    ],
+    "method": "1. Cut eggplant into thick strips\n2. Rub with turmeric and salt, deep fry until golden\n3. In same oil, fry onion slices and green chilies\n4. Add mustard seeds, chili powder\n5. Add vinegar and sugar, cook 2 mins\n6. Fold in fried eggplant, coat well",
+    "tips": "Fry eggplant until well browned for the best texture.",
+    "cultural_note": "Wambatu moju is an essential component of festive meals, especially at Sinhala New Year."
+  },
+  {
+    "id": "SL_0296",
+    "names": {
+      "english": "Lunudehi (Pickled Onions)"
+    },
+    "category": "accompaniment",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 0,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 3,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "red onion",
+        "amount": "6"
+      },
+      {
+        "name": "green chili",
+        "amount": "4"
+      },
+      {
+        "name": "vinegar",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "sugar",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "salt",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "mustard seeds",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/4 tsp"
+      }
+    ],
+    "method": "1. Slice onions into rings\n2. Slice green chilies\n3. Mix vinegar, sugar, salt, turmeric\n4. Add onion rings and chilies\n5. Add mustard seeds\n6. Marinate at least 1 hour before serving",
+    "tips": "Make ahead - the flavor improves with time.",
+    "cultural_note": "Lunudehi is the Sri Lankan version of pickled onions, always served alongside rice and curry at restaurants."
+  },
+  {
+    "id": "SL_0297",
+    "names": {
+      "english": "Achcharu (Fruit Pickle)"
+    },
+    "category": "accompaniment",
+    "difficulty": "easy",
+    "prep_time_mins": 15,
+    "cook_time_mins": 0,
+    "servings": 6,
+    "region": "Island-wide",
+    "spice_level": 3,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "green mango",
+        "amount": "1"
+      },
+      {
+        "name": "pineapple",
+        "amount": "1 cup"
+      },
+      {
+        "name": "onion",
+        "amount": "2"
+      },
+      {
+        "name": "green chili",
+        "amount": "4"
+      },
+      {
+        "name": "vinegar",
+        "amount": "1/4 cup"
+      },
+      {
+        "name": "sugar",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "mustard paste",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "salt",
+        "amount": "to taste"
+      }
+    ],
+    "method": "1. Cut fruits into bite-sized sticks\n2. Slice onions and green chilies\n3. Mix vinegar, sugar, chili powder, mustard paste\n4. Combine all fruits, onions, chilies\n5. Pour dressing over, toss well\n6. Marinate 30 mins before serving",
+    "tips": "Use firm, unripe fruits for the best crunch.",
+    "cultural_note": "Achcharu is the beloved Sri Lankan street-side pickle sold by vendors outside schools and temples."
+  },
+  {
+    "id": "SL_0298",
+    "names": {
+      "english": "Dried Chili Sambol"
+    },
+    "category": "accompaniment",
+    "difficulty": "easy",
+    "prep_time_mins": 5,
+    "cook_time_mins": 5,
+    "servings": 4,
+    "region": "Southern Province",
+    "spice_level": 5,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "dried red chili",
+        "amount": "15"
+      },
+      {
+        "name": "Maldive fish",
+        "amount": "3 tbsp"
+      },
+      {
+        "name": "red onion",
+        "amount": "2"
+      },
+      {
+        "name": "garlic",
+        "amount": "3 cloves"
+      },
+      {
+        "name": "salt",
+        "amount": "to taste"
+      },
+      {
+        "name": "oil",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "lime juice",
+        "amount": "1 tbsp"
+      }
+    ],
+    "method": "1. Dry roast dried chilies briefly\n2. Pound roasted chilies coarsely\n3. Add Maldive fish, pound together\n4. Mix in finely chopped onion and garlic\n5. Heat oil, pour over mixture\n6. Add lime juice and salt",
+    "tips": "Roasting dried chilies enhances their flavor and reduces raw spice heat.",
+    "cultural_note": "This intensely hot sambol is for true chili lovers and is popular in the Southern Province."
+  },
+  {
+    "id": "SL_0299",
+    "names": {
+      "english": "Papadam (Papadum)"
+    },
+    "category": "accompaniment",
+    "difficulty": "easy",
+    "prep_time_mins": 0,
+    "cook_time_mins": 5,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 1,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "papadam",
+        "amount": "8"
+      },
+      {
+        "name": "oil for frying",
+        "amount": "1 cup"
+      }
+    ],
+    "method": "1. Heat oil in a pan\n2. Test with small piece of papadam\n3. Slide papadam into hot oil\n4. Press down with slotted spoon for 3-5 seconds\n5. Flip and fry other side 2-3 seconds\n6. Drain on paper towels, serve crispy",
+    "tips": "Oil must be very hot for crispy papadam.",
+    "cultural_note": "Papadam is the ubiquitous crispy wafer served with every rice and curry meal in Sri Lanka."
+  },
+  {
+    "id": "SL_0300",
+    "names": {
+      "english": "Sambar"
+    },
+    "category": "accompaniment",
+    "difficulty": "easy",
+    "prep_time_mins": 15,
+    "cook_time_mins": 30,
+    "servings": 4,
+    "region": "Northern Province",
+    "spice_level": 2,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "toor dhal",
+        "amount": "1 cup"
+      },
+      {
+        "name": "mixed vegetables",
+        "amount": "2 cups"
+      },
+      {
+        "name": "sambar powder",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "tamarind paste",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "tomato",
+        "amount": "2"
+      },
+      {
+        "name": "mustard seeds",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "garlic",
+        "amount": "3 cloves"
+      },
+      {
+        "name": "oil",
+        "amount": "2 tbsp"
+      }
+    ],
+    "method": "1. Cook toor dhal until soft, mash lightly\n2. Cook vegetables (drumstick, eggplant, carrot) until tender\n3. Add tamarind, sambar powder, turmeric to vegetables\n4. Combine with mashed dhal\n5. Temper with mustard seeds, curry leaves, garlic\n6. Add tempered onions and tomatoes, simmer 10 mins",
+    "tips": "Use a mix of at least 3 vegetables for best sambar.",
+    "cultural_note": "Sambar is the essential Tamil side dish, served with rice, dosa, and idli across Northern Sri Lanka."
+  },
+  {
+    "id": "SL_0301",
+    "names": {
+      "english": "Raita (Cucumber Yogurt)"
+    },
+    "category": "accompaniment",
+    "difficulty": "easy",
+    "prep_time_mins": 5,
+    "cook_time_mins": 0,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "yogurt",
+        "amount": "1 cup"
+      },
+      {
+        "name": "cucumber",
+        "amount": "1"
+      },
+      {
+        "name": "onion",
+        "amount": "1 small"
+      },
+      {
+        "name": "green chili",
+        "amount": "1"
+      },
+      {
+        "name": "mint leaves",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "salt",
+        "amount": "to taste"
+      },
+      {
+        "name": "cumin powder",
+        "amount": "1/4 tsp"
+      }
+    ],
+    "method": "1. Grate or fine dice cucumber\n2. Squeeze out excess water\n3. Mix with yogurt\n4. Add finely chopped onion, chili, mint\n5. Season with salt and cumin\n6. Chill before serving",
+    "tips": "Squeeze excess water from cucumber to keep raita thick.",
+    "cultural_note": "Raita is a cooling accompaniment that balances spicy curries, common at biriyani meals."
+  },
+  {
+    "id": "SL_0302",
+    "names": {
+      "english": "Malay Pickle"
+    },
+    "category": "accompaniment",
+    "difficulty": "medium",
+    "prep_time_mins": 20,
+    "cook_time_mins": 15,
+    "servings": 6,
+    "region": "Western Province",
+    "spice_level": 2,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "dates",
+        "amount": "1 cup"
+      },
+      {
+        "name": "raisins",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "onion",
+        "amount": "2"
+      },
+      {
+        "name": "garlic",
+        "amount": "6 cloves"
+      },
+      {
+        "name": "ginger",
+        "amount": "2 inch"
+      },
+      {
+        "name": "vinegar",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "sugar",
+        "amount": "1/4 cup"
+      },
+      {
+        "name": "mustard powder",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "cinnamon",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "oil",
+        "amount": "3 tbsp"
+      }
+    ],
+    "method": "1. Chop dates and soak raisins\n2. Heat oil, saute onions, garlic, ginger\n3. Add spices, cook 2 mins\n4. Add dates, raisins, vinegar, sugar\n5. Cook 10 mins until thick and glossy\n6. Cool and store in jar",
+    "tips": "This pickle gets better with age - make it a day ahead.",
+    "cultural_note": "Malay pickle is a sweet-spicy condiment reflecting the Malay heritage of Sri Lanka's Colombo Malays."
+  },
+  {
+    "id": "SL_0303",
+    "names": {
+      "english": "Kohila Curry (Lasia Spinosa)"
+    },
+    "category": "accompaniment",
+    "difficulty": "easy",
+    "prep_time_mins": 15,
+    "cook_time_mins": 25,
+    "servings": 4,
+    "region": "Sabaragamuwa",
+    "spice_level": 1,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "kohila stems",
+        "amount": "300g"
+      },
+      {
+        "name": "grated coconut",
+        "amount": "3 tbsp"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "green chili",
+        "amount": "2"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "Maldive fish",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "150ml"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      }
+    ],
+    "method": "1. Peel and slice kohila stems thinly\n2. Boil until tender\n3. Add onion, chili, turmeric, Maldive fish\n4. Add grated coconut and coconut milk\n5. Simmer 10 minutes\n6. Season and serve as accompaniment",
+    "tips": "Peel the rough outer layer of kohila stems before cooking.",
+    "cultural_note": "Kohila is a unique Sri Lankan aquatic plant with medicinal properties, used in traditional Ayurvedic treatments."
+  },
+  {
+    "id": "SL_0304",
+    "names": {
+      "english": "Elawalu Hodda (Mixed Vegetable Gravy)"
+    },
+    "category": "accompaniment",
+    "difficulty": "easy",
+    "prep_time_mins": 15,
+    "cook_time_mins": 25,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 1,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "mixed vegetables",
+        "amount": "3 cups"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "curry powder",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "300ml"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "pandan leaves",
+        "amount": "1"
+      },
+      {
+        "name": "Maldive fish",
+        "amount": "1 tbsp"
+      }
+    ],
+    "method": "1. Cut vegetables (carrot, beans, pumpkin, snake gourd) into pieces\n2. Layer in pot with onion, spices, curry leaves\n3. Add thin coconut milk\n4. Cook 15-20 mins until tender\n5. Add thick coconut milk\n6. Simmer 5 mins, season",
+    "tips": "Use seasonal vegetables and vary combinations.",
+    "cultural_note": "Elawalu hodda is the everyday mixed vegetable gravy that forms the backbone of the Sri Lankan rice and curry plate."
+  },
+  {
+    "id": "SL_0305",
+    "names": {
+      "english": "Gotu Kola Kanda Sambol"
+    },
+    "category": "accompaniment",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 0,
+    "servings": 4,
+    "region": "Central Province",
+    "spice_level": 1,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "gotukola",
+        "amount": "2 cups"
+      },
+      {
+        "name": "scraped coconut",
+        "amount": "3 tbsp"
+      },
+      {
+        "name": "red onion",
+        "amount": "1"
+      },
+      {
+        "name": "green chili",
+        "amount": "2"
+      },
+      {
+        "name": "salt",
+        "amount": "to taste"
+      },
+      {
+        "name": "lime juice",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "pepper",
+        "amount": "1/4 tsp"
+      }
+    ],
+    "method": "1. Finely shred gotukola leaves\n2. Dice onion and chili very small\n3. Mix with scraped coconut\n4. Season with salt, pepper, lime\n5. Toss all ingredients together\n6. Serve fresh",
+    "tips": "Use only fresh leaves, avoid wilted ones.",
+    "cultural_note": "This raw pennywort sambol is a staple of Central Province meals."
+  },
+  {
+    "id": "SL_0306",
+    "names": {
+      "english": "Leeks and Dhal Sambol"
+    },
+    "category": "accompaniment",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 15,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 1,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "leeks",
+        "amount": "2"
+      },
+      {
+        "name": "red lentils",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "coconut",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "Maldive fish",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "chili flakes",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "oil",
+        "amount": "1 tbsp"
+      }
+    ],
+    "method": "1. Slice leeks thinly, wash\n2. Cook lentils until soft\n3. Heat oil, saute onion, leeks\n4. Add cooked dhal, Maldive fish, coconut\n5. Add chili flakes, turmeric\n6. Cook 5 mins, season",
+    "tips": "Wash leeks thoroughly to remove sand.",
+    "cultural_note": "Leeks and dhal combination is a nutritious everyday side dish."
+  },
+  {
+    "id": "SL_0307",
+    "names": {
+      "english": "Mint Sambol"
+    },
+    "category": "accompaniment",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 0,
+    "servings": 4,
+    "region": "Eastern Province",
+    "spice_level": 2,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "fresh mint",
+        "amount": "2 cups"
+      },
+      {
+        "name": "red onion",
+        "amount": "1"
+      },
+      {
+        "name": "green chili",
+        "amount": "3"
+      },
+      {
+        "name": "coconut",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "lime juice",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "salt",
+        "amount": "to taste"
+      }
+    ],
+    "method": "1. Wash mint leaves, pick from stems\n2. Roughly chop mint, onion, chilies\n3. Grind or chop together\n4. Add coconut\n5. Season with lime juice and salt\n6. Serve fresh",
+    "tips": "Use only fresh mint leaves for best flavor.",
+    "cultural_note": "Mint sambol is a refreshing accompaniment especially popular with biriyani meals."
+  },
+  {
+    "id": "SL_0308",
+    "names": {
+      "english": "Fried Bitter Gourd Chips"
+    },
+    "category": "accompaniment",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 10,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 2,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "bitter gourd",
+        "amount": "3"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "salt",
+        "amount": "to taste"
+      },
+      {
+        "name": "rice flour",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "oil for frying",
+        "amount": "1 cup"
+      }
+    ],
+    "method": "1. Slice bitter gourd into thin rounds\n2. Rub with salt, turmeric, leave 10 mins\n3. Squeeze out bitter juice\n4. Dust with rice flour and chili powder\n5. Deep fry until crispy\n6. Drain and serve",
+    "tips": "Salt and squeeze to remove max bitterness.",
+    "cultural_note": "Fried bitter gourd chips are a crunchy, addictive side dish."
+  },
+  {
+    "id": "SL_0309",
+    "names": {
+      "english": "Fried Papadums with Toppers"
+    },
+    "category": "accompaniment",
+    "difficulty": "easy",
+    "prep_time_mins": 5,
+    "cook_time_mins": 5,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 1,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "papadum",
+        "amount": "6"
+      },
+      {
+        "name": "tomato",
+        "amount": "1 diced"
+      },
+      {
+        "name": "onion",
+        "amount": "1 diced"
+      },
+      {
+        "name": "chili flakes",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "lime juice",
+        "amount": "1 tbsp"
+      }
+    ],
+    "method": "1. Fry papadums until crispy\n2. Dice tomato and onion small\n3. Mix veggies with chili flakes and lime\n4. Top each papadum with mixture\n5. Serve immediately\n6. Eat before they go soft",
+    "tips": "Top just before serving for crispy results.",
+    "cultural_note": "Topped papadums are a popular party appetizer and snack."
+  },
+  {
+    "id": "SL_0310",
+    "names": {
+      "english": "Kochchi Sambol (Bird's Eye Chili Sambol)"
+    },
+    "category": "accompaniment",
+    "difficulty": "easy",
+    "prep_time_mins": 5,
+    "cook_time_mins": 0,
+    "servings": 4,
+    "region": "Southern Province",
+    "spice_level": 5,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "bird's eye chili",
+        "amount": "20"
+      },
+      {
+        "name": "red onion",
+        "amount": "2"
+      },
+      {
+        "name": "Maldive fish",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "lime juice",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "salt",
+        "amount": "to taste"
+      }
+    ],
+    "method": "1. Roughly chop chilies and onion\n2. Pound in mortar with salt\n3. Add Maldive fish, pound lightly\n4. Squeeze lime juice over\n5. Mix well\n6. Serve in small portions",
+    "tips": "Use gloves when handling bird's eye chilies.",
+    "cultural_note": "Kochchi sambol is the most ferociously hot sambol in Sri Lanka, using tiny but potent bird's eye chilies."
+  },
+  {
+    "id": "SL_0311",
+    "names": {
+      "english": "Carrot Sambol"
+    },
+    "category": "accompaniment",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 0,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 1,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "carrot",
+        "amount": "3 large"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "green chili",
+        "amount": "2"
+      },
+      {
+        "name": "lime juice",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "desiccated coconut",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "salt",
+        "amount": "to taste"
+      }
+    ],
+    "method": "1. Grate carrots\n2. Finely chop onion and chili\n3. Mix all together\n4. Add coconut, lime juice, salt\n5. Toss well\n6. Serve fresh",
+    "tips": "Use firm, fresh carrots for best crunch.",
+    "cultural_note": "Carrot sambol adds color and crunch to the plate, and is rich in vitamin A."
+  },
+  {
+    "id": "SL_0312",
+    "names": {
+      "english": "Onion Sambol"
+    },
+    "category": "accompaniment",
+    "difficulty": "easy",
+    "prep_time_mins": 5,
+    "cook_time_mins": 0,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 3,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "red onion",
+        "amount": "3 large"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "Maldive fish",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "lime juice",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "salt",
+        "amount": "to taste"
+      },
+      {
+        "name": "pepper",
+        "amount": "1/4 tsp"
+      }
+    ],
+    "method": "1. Slice onions into thin rings\n2. Separate into individual rings\n3. Mix with chili powder and Maldive fish\n4. Add lime juice, salt, pepper\n5. Toss well\n6. Serve",
+    "tips": "Let it sit 10 mins for flavors to meld.",
+    "cultural_note": "A simple but essential sambol served at any quick meal."
+  },
+  {
+    "id": "SL_0313",
+    "names": {
+      "english": "Green Chili Paste (Amu Miris)"
+    },
+    "category": "accompaniment",
+    "difficulty": "easy",
+    "prep_time_mins": 5,
+    "cook_time_mins": 0,
+    "servings": 4,
+    "region": "Southern Province",
+    "spice_level": 4,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "green chili",
+        "amount": "10"
+      },
+      {
+        "name": "garlic",
+        "amount": "4 cloves"
+      },
+      {
+        "name": "ginger",
+        "amount": "1 inch"
+      },
+      {
+        "name": "vinegar",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "salt",
+        "amount": "to taste"
+      }
+    ],
+    "method": "1. Wash green chilies\n2. Grind chilies, garlic, ginger into paste\n3. Add vinegar and salt\n4. Mix well\n5. Store in clean jar\n6. Use as condiment with anything",
+    "tips": "Sterilize jar properly for longer shelf life.",
+    "cultural_note": "Green chili paste is a versatile condiment kept in every Sri Lankan kitchen."
+  },
+  {
+    "id": "SL_0314",
+    "names": {
+      "english": "Mango Chutney"
+    },
+    "category": "accompaniment",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 20,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 1,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "ripe mango",
+        "amount": "2"
+      },
+      {
+        "name": "sugar",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "vinegar",
+        "amount": "1/4 cup"
+      },
+      {
+        "name": "ginger",
+        "amount": "1 inch"
+      },
+      {
+        "name": "cinnamon",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "cloves",
+        "amount": "2"
+      },
+      {
+        "name": "chili flakes",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "salt",
+        "amount": "to taste"
+      }
+    ],
+    "method": "1. Peel and dice mango\n2. Cook with sugar and vinegar on low heat\n3. Add grated ginger, spices\n4. Stir regularly for 15-20 mins\n5. Cook until thick and glossy\n6. Cool, store in sterilized jar",
+    "tips": "Use ripe but still firm mangoes for best chutney.",
+    "cultural_note": "Mango chutney reflects colonial influence on Sri Lankan cuisine."
+  },
+  {
+    "id": "SL_0315",
+    "names": {
+      "english": "Gingelly Oil Sambol (Thala Thel Sambol)"
+    },
+    "category": "accompaniment",
+    "difficulty": "easy",
+    "prep_time_mins": 5,
+    "cook_time_mins": 0,
+    "servings": 4,
+    "region": "Northern Province",
+    "spice_level": 3,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "sesame oil",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "chili powder",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "Maldive fish",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "red onion",
+        "amount": "1"
+      },
+      {
+        "name": "lime juice",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "salt",
+        "amount": "to taste"
+      }
+    ],
+    "method": "1. Finely chop onion\n2. Mix chili powder with sesame oil\n3. Add Maldive fish and onion\n4. Add lime juice and salt\n5. Mix well\n6. Serve with string hoppers or pittu",
+    "tips": "Use dark roasted sesame oil for authentic flavor.",
+    "cultural_note": "Sesame oil sambol is unique to Tamil cuisine in Northern Sri Lanka."
+  },
+  {
+    "id": "SL_0316",
+    "names": {
+      "english": "Watalappan"
+    },
+    "category": "dessert",
+    "difficulty": "medium",
+    "prep_time_mins": 15,
+    "cook_time_mins": 60,
+    "servings": 6,
+    "region": "Island-wide",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "coconut milk",
+        "amount": "2 cups"
+      },
+      {
+        "name": "jaggery",
+        "amount": "200g"
+      },
+      {
+        "name": "eggs",
+        "amount": "5"
+      },
+      {
+        "name": "cardamom",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "nutmeg",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "cashew nuts",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "cloves",
+        "amount": "4"
+      }
+    ],
+    "method": "1. Melt jaggery in warm coconut milk, strain\n2. Beat eggs well\n3. Mix jaggery-coconut milk with eggs\n4. Add cardamom, nutmeg, cloves\n5. Pour into mold, top with cashews\n6. Steam for 45-60 minutes until set",
+    "tips": "Do not overbeat eggs - we don't want air bubbles.",
+    "cultural_note": "Watalappan is Sri Lanka's most beloved dessert, a Malay-origin coconut custard served at every celebration."
+  },
+  {
+    "id": "SL_0317",
+    "names": {
+      "english": "Kavum (Oil Cakes)"
+    },
+    "category": "dessert",
+    "difficulty": "hard",
+    "prep_time_mins": 30,
+    "cook_time_mins": 45,
+    "servings": 12,
+    "region": "Island-wide",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "rice flour",
+        "amount": "2 cups"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "treacle (kithul)",
+        "amount": "1 cup"
+      },
+      {
+        "name": "salt",
+        "amount": "pinch"
+      },
+      {
+        "name": "oil for frying",
+        "amount": "4 cups"
+      }
+    ],
+    "method": "1. Mix treacle with coconut milk\n2. Add rice flour gradually to make thick batter\n3. Rest batter 30 mins\n4. Heat oil to medium temperature\n5. Pour small amounts, fry on low heat\n6. Turn when bottom is golden, cook both sides until dark golden",
+    "tips": "Temperature control is critical - too hot and outside burns, too cool and they absorb oil.",
+    "cultural_note": "Kavum is the iconic Sinhala and Tamil New Year sweet, symbolizing prosperity and goodness."
+  },
+  {
+    "id": "SL_0318",
+    "names": {
+      "english": "Kokis (Crispy Rosette Cookies)"
+    },
+    "category": "dessert",
+    "difficulty": "hard",
+    "prep_time_mins": 20,
+    "cook_time_mins": 30,
+    "servings": 12,
+    "region": "Island-wide",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "rice flour",
+        "amount": "2 cups"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "1 cup"
+      },
+      {
+        "name": "eggs",
+        "amount": "2"
+      },
+      {
+        "name": "sugar",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "salt",
+        "amount": "pinch"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "oil for frying",
+        "amount": "4 cups"
+      }
+    ],
+    "method": "1. Mix rice flour, coconut milk, eggs, sugar, salt, turmeric\n2. Make smooth batter (like thick cream consistency)\n3. Heat oil, heat kokis mold in oil\n4. Dip hot mold into batter (3/4 only!)\n5. Immerse in hot oil, shake gently to release\n6. Fry until golden and crispy",
+    "tips": "Never dip the mold fully in batter or it won't release.",
+    "cultural_note": "Kokis are intricate rosette-shaped cookies of Dutch-Malay origin, an essential New Year treat."
+  },
+  {
+    "id": "SL_0319",
+    "names": {
+      "english": "Aluwa (Flour Halwa)"
+    },
+    "category": "dessert",
+    "difficulty": "medium",
+    "prep_time_mins": 10,
+    "cook_time_mins": 30,
+    "servings": 12,
+    "region": "Island-wide",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "rice flour",
+        "amount": "2 cups"
+      },
+      {
+        "name": "treacle",
+        "amount": "1 cup"
+      },
+      {
+        "name": "cashew nuts",
+        "amount": "1/4 cup"
+      },
+      {
+        "name": "cardamom",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "ghee",
+        "amount": "2 tbsp"
+      }
+    ],
+    "method": "1. Dry roast rice flour until fragrant\n2. Heat treacle until it forms a soft ball in water\n3. Add roasted flour to treacle, stir vigorously\n4. Add ghee, cardamom, chopped cashews\n5. Pour into greased tray\n6. Cut into diamond shapes before fully cool",
+    "tips": "The treacle temperature test is crucial - too cool won't set, too hot burns.",
+    "cultural_note": "Aluwa is a traditional sweet made for the Sinhala New Year, using kithul treacle."
+  },
+  {
+    "id": "SL_0320",
+    "names": {
+      "english": "Love Cake"
+    },
+    "category": "dessert",
+    "difficulty": "medium",
+    "prep_time_mins": 20,
+    "cook_time_mins": 45,
+    "servings": 12,
+    "region": "Western Province",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "semolina",
+        "amount": "500g"
+      },
+      {
+        "name": "butter",
+        "amount": "250g"
+      },
+      {
+        "name": "sugar",
+        "amount": "500g"
+      },
+      {
+        "name": "eggs",
+        "amount": "12"
+      },
+      {
+        "name": "cashew nuts",
+        "amount": "250g"
+      },
+      {
+        "name": "mixed peel",
+        "amount": "100g"
+      },
+      {
+        "name": "honey",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "rose water",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "cardamom",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "nutmeg",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "cinnamon",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "lime zest",
+        "amount": "1 tbsp"
+      }
+    ],
+    "method": "1. Cream butter and sugar until light\n2. Add egg yolks one at a time\n3. Fold in semolina, chopped cashews, mixed peel\n4. Add honey, rose water, spices, lime zest\n5. Fold in whipped egg whites gently\n6. Bake at 150C for 40-45 mins until golden",
+    "tips": "Do not overbake - it should be moist and dense.",
+    "cultural_note": "Love cake is Sri Lanka's most famous Dutch Burgher creation, traditionally made for Christmas and weddings."
+  },
+  {
+    "id": "SL_0321",
+    "names": {
+      "english": "Bibikkan (Coconut Cake)"
+    },
+    "category": "dessert",
+    "difficulty": "medium",
+    "prep_time_mins": 15,
+    "cook_time_mins": 45,
+    "servings": 8,
+    "region": "Western Province",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "semolina",
+        "amount": "2 cups"
+      },
+      {
+        "name": "grated coconut",
+        "amount": "2 cups"
+      },
+      {
+        "name": "jaggery",
+        "amount": "1 cup"
+      },
+      {
+        "name": "cashew nuts",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "dates",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "mixed spices",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "eggs",
+        "amount": "3"
+      },
+      {
+        "name": "butter",
+        "amount": "2 tbsp"
+      }
+    ],
+    "method": "1. Mix semolina and grated coconut\n2. Melt jaggery, add to mixture\n3. Add beaten eggs, butter\n4. Fold in chopped cashews, dates, spices\n5. Pour into greased baking tin\n6. Bake at 170C for 40 minutes",
+    "tips": "The jaggery gives a deep caramel color and unique flavor.",
+    "cultural_note": "Bibikkan is a Christmas specialty in Sri Lankan homes, combining local ingredients with European baking."
+  },
+  {
+    "id": "SL_0322",
+    "names": {
+      "english": "Kithul Treacle Curd"
+    },
+    "category": "dessert",
+    "difficulty": "easy",
+    "prep_time_mins": 5,
+    "cook_time_mins": 0,
+    "servings": 4,
+    "region": "Sabaragamuwa",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "buffalo curd",
+        "amount": "500g"
+      },
+      {
+        "name": "kithul treacle",
+        "amount": "1 cup"
+      }
+    ],
+    "method": "1. Set thick buffalo curd in clay pot\n2. Drizzle kithul treacle generously over curd\n3. Serve immediately\n4. Mix treacle and curd together when eating\n5. Enjoy the sweet-tangy combination\n6. May add chopped banana for extra sweetness",
+    "tips": "Use well-set, thick buffalo curd - not thin yogurt.",
+    "cultural_note": "Curd and treacle is Sri Lanka's simplest and most beloved dessert, sold at roadside stalls across the country."
+  },
+  {
+    "id": "SL_0323",
+    "names": {
+      "english": "Puhul Dosi (Ash Pumpkin Preserve)"
+    },
+    "category": "dessert",
+    "difficulty": "easy",
+    "prep_time_mins": 15,
+    "cook_time_mins": 60,
+    "servings": 8,
+    "region": "Island-wide",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "ash pumpkin",
+        "amount": "1 kg"
+      },
+      {
+        "name": "sugar",
+        "amount": "750g"
+      },
+      {
+        "name": "lime juice",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "cardamom",
+        "amount": "3 pods"
+      },
+      {
+        "name": "cloves",
+        "amount": "3"
+      },
+      {
+        "name": "rose water",
+        "amount": "1 tsp"
+      }
+    ],
+    "method": "1. Peel pumpkin, cut into cubes, remove seeds\n2. Soak in lime water overnight to firm up\n3. Drain, add to pot with sugar\n4. Cook on low heat until translucent\n5. Add cardamom, cloves, rose water\n6. Cool - the syrup will thicken",
+    "tips": "Soaking in lime water keeps the pumpkin firm during cooking.",
+    "cultural_note": "Puhul dosi is a translucent, jewel-like sweetmeat served at weddings and New Year."
+  },
+  {
+    "id": "SL_0324",
+    "names": {
+      "english": "Dodol"
+    },
+    "category": "dessert",
+    "difficulty": "hard",
+    "prep_time_mins": 15,
+    "cook_time_mins": 180,
+    "servings": 12,
+    "region": "Western Province",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "coconut milk",
+        "amount": "6 cups"
+      },
+      {
+        "name": "rice flour",
+        "amount": "2 cups"
+      },
+      {
+        "name": "jaggery",
+        "amount": "500g"
+      },
+      {
+        "name": "cashew nuts",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "cardamom",
+        "amount": "1 tsp"
+      }
+    ],
+    "method": "1. Extract thick and thin coconut milk\n2. Cook thin coconut milk with jaggery until dissolved\n3. Add rice flour, stir continuously\n4. Cook on low heat for 2-3 hours, stirring constantly\n5. Add thick coconut milk, cashews, cardamom\n6. Pour into greased tray when mixture pulls away from pot",
+    "tips": "Continuous stirring for hours is essential - this is a labor of love.",
+    "cultural_note": "Dodol is a traditional jelly-like sweet of Malay origin, requiring hours of stirring. Making dodol is often a communal family activity."
+  },
+  {
+    "id": "SL_0325",
+    "names": {
+      "english": "Aggala (Rice Ball Sweets)"
+    },
+    "category": "dessert",
+    "difficulty": "easy",
+    "prep_time_mins": 15,
+    "cook_time_mins": 15,
+    "servings": 12,
+    "region": "Island-wide",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "rice flour",
+        "amount": "2 cups"
+      },
+      {
+        "name": "grated coconut",
+        "amount": "1 cup"
+      },
+      {
+        "name": "treacle",
+        "amount": "3/4 cup"
+      },
+      {
+        "name": "cardamom",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "salt",
+        "amount": "pinch"
+      }
+    ],
+    "method": "1. Dry roast rice flour until fragrant\n2. Toast grated coconut separately\n3. Mix flour and coconut\n4. Warm treacle slightly\n5. Add treacle to flour mix, combine well\n6. Shape into small balls while still warm",
+    "tips": "Shape quickly while warm - the mixture hardens as it cools.",
+    "cultural_note": "Aggala are simple rice and treacle balls traditionally made by grandmothers for children as a healthy snack."
+  },
+  {
+    "id": "SL_0326",
+    "names": {
+      "english": "Kalu Dodol (Dark Dodol)"
+    },
+    "category": "dessert",
+    "difficulty": "hard",
+    "prep_time_mins": 15,
+    "cook_time_mins": 180,
+    "servings": 12,
+    "region": "Western Province",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "coconut milk",
+        "amount": "8 cups"
+      },
+      {
+        "name": "rice flour",
+        "amount": "1 cup"
+      },
+      {
+        "name": "jaggery",
+        "amount": "750g"
+      },
+      {
+        "name": "cashew nuts",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "cardamom",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "nutmeg",
+        "amount": "1/4 tsp"
+      }
+    ],
+    "method": "1. Extract coconut milk in stages\n2. Dissolve jaggery in thin coconut milk\n3. Add rice flour, stir continuously\n4. Cook 3+ hours on very low heat\n5. Add thick coconut milk gradually\n6. Pour into tray when very thick and dark",
+    "tips": "The darker it gets, the better the flavor.",
+    "cultural_note": "Kalu dodol is the prestigious dark version of dodol, a must-have at Sinhala New Year."
+  },
+  {
+    "id": "SL_0327",
+    "names": {
+      "english": "Coconut Ice"
+    },
+    "category": "dessert",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 15,
+    "servings": 12,
+    "region": "Island-wide",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "desiccated coconut",
+        "amount": "2 cups"
+      },
+      {
+        "name": "condensed milk",
+        "amount": "1 can"
+      },
+      {
+        "name": "sugar",
+        "amount": "1 cup"
+      },
+      {
+        "name": "food coloring",
+        "amount": "pink, few drops"
+      },
+      {
+        "name": "vanilla",
+        "amount": "1 tsp"
+      }
+    ],
+    "method": "1. Mix coconut, condensed milk, sugar, vanilla\n2. Cook on low heat stirring constantly until thick\n3. Divide into two portions\n4. Add pink coloring to one half\n5. Press white layer into tray, then pink on top\n6. Cool and cut into squares",
+    "tips": "Press layers firmly for clean-cut squares.",
+    "cultural_note": "Coconut ice is a beloved Sri Lankan sweet often sold at school fairs and charity events."
+  },
+  {
+    "id": "SL_0328",
+    "names": {
+      "english": "Milk Toffee"
+    },
+    "category": "dessert",
+    "difficulty": "medium",
+    "prep_time_mins": 5,
+    "cook_time_mins": 30,
+    "servings": 12,
+    "region": "Island-wide",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "sugar",
+        "amount": "2 cups"
+      },
+      {
+        "name": "milk",
+        "amount": "1 cup"
+      },
+      {
+        "name": "butter",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "vanilla",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "cashew nuts",
+        "amount": "1/4 cup"
+      }
+    ],
+    "method": "1. Combine sugar, milk, butter in heavy pot\n2. Cook on medium heat, stirring constantly\n3. When mixture reaches soft ball stage (115C)\n4. Remove from heat, add vanilla and cashews\n5. Beat vigorously until thick and creamy\n6. Pour into greased tray, cut while warm",
+    "tips": "Use a candy thermometer for perfect texture.",
+    "cultural_note": "Milk toffee is Sri Lanka's most popular homemade sweet, made by every household for celebrations."
+  },
+  {
+    "id": "SL_0329",
+    "names": {
+      "english": "Sago Pudding"
+    },
+    "category": "dessert",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 25,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "sago pearls",
+        "amount": "1 cup"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "2 cups"
+      },
+      {
+        "name": "sugar",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "cardamom",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "cashew nuts",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "raisins",
+        "amount": "2 tbsp"
+      }
+    ],
+    "method": "1. Soak sago in water 30 mins, drain\n2. Cook sago in thin coconut milk until translucent\n3. Add sugar, cardamom\n4. Add thick coconut milk\n5. Pour into molds, top with cashews and raisins\n6. Chill until set",
+    "tips": "Soak sago well to reduce cooking time.",
+    "cultural_note": "Sago pudding is a cooling dessert popular across Sri Lanka, especially during hot weather."
+  },
+  {
+    "id": "SL_0330",
+    "names": {
+      "english": "Tropical Fruit Salad"
+    },
+    "category": "dessert",
+    "difficulty": "easy",
+    "prep_time_mins": 15,
+    "cook_time_mins": 0,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "papaya",
+        "amount": "1 cup"
+      },
+      {
+        "name": "pineapple",
+        "amount": "1 cup"
+      },
+      {
+        "name": "mango",
+        "amount": "1 cup"
+      },
+      {
+        "name": "banana",
+        "amount": "2"
+      },
+      {
+        "name": "passion fruit",
+        "amount": "2"
+      },
+      {
+        "name": "lime juice",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "sugar",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "ice cream",
+        "amount": "optional"
+      }
+    ],
+    "method": "1. Cut all fruits into bite-sized pieces\n2. Scoop passion fruit pulp\n3. Combine all fruits in bowl\n4. Sprinkle sugar and lime juice\n5. Toss gently\n6. Serve chilled, optionally with ice cream",
+    "tips": "Use ripe, seasonal tropical fruits for best flavor.",
+    "cultural_note": "Sri Lanka's tropical fruit salad showcases the island's incredible diversity of fresh fruits."
+  },
+  {
+    "id": "SL_0331",
+    "names": {
+      "english": "Helapa"
+    },
+    "category": "dessert",
+    "difficulty": "medium",
+    "prep_time_mins": 20,
+    "cook_time_mins": 20,
+    "servings": 10,
+    "region": "Southern Province",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "kurakkan flour",
+        "amount": "1 cup"
+      },
+      {
+        "name": "grated coconut",
+        "amount": "1 cup"
+      },
+      {
+        "name": "jaggery",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "cardamom",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "kenda leaf",
+        "amount": "10"
+      }
+    ],
+    "method": "1. Mix flour, coconut, grated jaggery, cardamom\n2. Add water to make thick paste\n3. Place spoonfuls on kenda leaves\n4. Wrap into parcels\n5. Steam for 15-20 minutes\n6. Serve in the leaf wrapping",
+    "tips": "Use fresh kenda leaves for the aromatic wrapping.",
+    "cultural_note": "Helapa is an ancient sweet wrapped in wild ginger leaves, giving it a unique aroma."
+  },
+  {
+    "id": "SL_0332",
+    "names": {
+      "english": "Falooda Pudding"
+    },
+    "category": "dessert",
+    "difficulty": "easy",
+    "prep_time_mins": 15,
+    "cook_time_mins": 10,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "falooda seeds",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "milk",
+        "amount": "2 cups"
+      },
+      {
+        "name": "sugar",
+        "amount": "3 tbsp"
+      },
+      {
+        "name": "rose syrup",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "ice cream",
+        "amount": "2 scoops"
+      },
+      {
+        "name": "jelly",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "falooda noodles",
+        "amount": "1/2 cup"
+      }
+    ],
+    "method": "1. Soak falooda seeds in water until expanded\n2. Cook falooda noodles, cool\n3. Cut jelly into cubes\n4. Layer in glass: noodles, seeds, jelly\n5. Pour sweetened rose milk over\n6. Top with ice cream",
+    "tips": "Layer in a tall glass for visual appeal.",
+    "cultural_note": "Falooda is a beloved Sri Lankan dessert drink of Indian-Malay origin, sold at every sweet shop."
+  },
+  {
+    "id": "SL_0333",
+    "names": {
+      "english": "Mung Kavum (Green Gram Sweets)"
+    },
+    "category": "dessert",
+    "difficulty": "medium",
+    "prep_time_mins": 30,
+    "cook_time_mins": 30,
+    "servings": 12,
+    "region": "Island-wide",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "green gram flour",
+        "amount": "2 cups"
+      },
+      {
+        "name": "rice flour",
+        "amount": "1 cup"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "1 cup"
+      },
+      {
+        "name": "treacle",
+        "amount": "1 cup"
+      },
+      {
+        "name": "cardamom",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "oil for frying",
+        "amount": "3 cups"
+      }
+    ],
+    "method": "1. Mix both flours\n2. Add treacle and coconut milk to form thick batter\n3. Add cardamom\n4. Rest for 30 minutes\n5. Drop spoonfuls into medium-hot oil\n6. Fry slowly until dark golden brown",
+    "tips": "Low temperature frying is essential for cooked centers.",
+    "cultural_note": "Mung kavum are the green gram variety of the Traditional New Year kavum."
+  },
+  {
+    "id": "SL_0334",
+    "names": {
+      "english": "Bolo Fiado (Layer Cake)"
+    },
+    "category": "dessert",
+    "difficulty": "hard",
+    "prep_time_mins": 30,
+    "cook_time_mins": 60,
+    "servings": 12,
+    "region": "Western Province",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "butter",
+        "amount": "250g"
+      },
+      {
+        "name": "sugar",
+        "amount": "250g"
+      },
+      {
+        "name": "eggs",
+        "amount": "10"
+      },
+      {
+        "name": "flour",
+        "amount": "250g"
+      },
+      {
+        "name": "vanilla",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "nutmeg",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "cinnamon",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "brandy",
+        "amount": "2 tbsp"
+      }
+    ],
+    "method": "1. Cream butter and sugar until fluffy\n2. Add egg yolks one at a time\n3. Fold in flour and spices\n4. Add brandy and vanilla\n5. Whip egg whites, fold in gently\n6. Bake in layers under a grill, one layer at a time",
+    "tips": "Each layer must be individually grilled for the striped effect.",
+    "cultural_note": "Bolo fiado is a Portuguese-origin layer cake unique to Sri Lankan Burgher Christmas celebrations."
+  },
+  {
+    "id": "SL_0335",
+    "names": {
+      "english": "Breudher (Christmas Bread)"
+    },
+    "category": "dessert",
+    "difficulty": "hard",
+    "prep_time_mins": 120,
+    "cook_time_mins": 45,
+    "servings": 12,
+    "region": "Western Province",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "flour",
+        "amount": "4 cups"
+      },
+      {
+        "name": "butter",
+        "amount": "250g"
+      },
+      {
+        "name": "sugar",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "eggs",
+        "amount": "4"
+      },
+      {
+        "name": "yeast",
+        "amount": "2 tsp"
+      },
+      {
+        "name": "milk",
+        "amount": "1 cup"
+      },
+      {
+        "name": "mixed peel",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "semolina",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "nutmeg",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "cinnamon",
+        "amount": "1/2 tsp"
+      }
+    ],
+    "method": "1. Dissolve yeast in warm milk with sugar\n2. Mix flour, semolina, spices\n3. Add beaten eggs, melted butter\n4. Knead into soft dough, add mixed peel\n5. Prove 2 hours until doubled\n6. Shape, prove again, bake at 180C for 40 mins",
+    "tips": "Double proving is essential for light, fluffy bread.",
+    "cultural_note": "Breudher is the Dutch-Burgher Christmas bread, a beloved holiday tradition unique to Sri Lanka."
+  },
+  {
+    "id": "SL_0336",
+    "names": {
+      "english": "Coconut Roti with Jaggery"
+    },
+    "category": "dessert",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 15,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "rice flour",
+        "amount": "1 cup"
+      },
+      {
+        "name": "grated coconut",
+        "amount": "1 cup"
+      },
+      {
+        "name": "jaggery",
+        "amount": "1/2 cup scraped"
+      },
+      {
+        "name": "salt",
+        "amount": "pinch"
+      }
+    ],
+    "method": "1. Mix flour, coconut, scraped jaggery, salt\n2. Add water sparingly to form stiff dough\n3. Shape into thick rounds\n4. Cook on griddle both sides until done\n5. The jaggery melts creating sweet spots\n6. Serve warm",
+    "tips": "Do not add too much water - dough should be very stiff.",
+    "cultural_note": "A sweet variation of the classic pol roti, enjoyed as a snack or dessert."
+  },
+  {
+    "id": "SL_0337",
+    "names": {
+      "english": "Semolina Pudding"
+    },
+    "category": "dessert",
+    "difficulty": "easy",
+    "prep_time_mins": 5,
+    "cook_time_mins": 20,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "semolina",
+        "amount": "1 cup"
+      },
+      {
+        "name": "milk",
+        "amount": "3 cups"
+      },
+      {
+        "name": "sugar",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "cardamom",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "cashews",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "raisins",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "butter",
+        "amount": "2 tbsp"
+      }
+    ],
+    "method": "1. Dry roast semolina in butter until golden\n2. Heat milk, add sugar\n3. Add roasted semolina slowly, stirring constantly\n4. Add cardamom, cashews, raisins\n5. Cook until thick, pour into mold\n6. Chill and serve",
+    "tips": "Roasting semolina first gives a nutty flavor.",
+    "cultural_note": "Semolina pudding is a quick, easy dessert loved by children across Sri Lanka."
+  },
+  {
+    "id": "SL_0338",
+    "names": {
+      "english": "Date and Nut Cake"
+    },
+    "category": "dessert",
+    "difficulty": "medium",
+    "prep_time_mins": 20,
+    "cook_time_mins": 45,
+    "servings": 10,
+    "region": "Western Province",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "dates",
+        "amount": "250g"
+      },
+      {
+        "name": "butter",
+        "amount": "125g"
+      },
+      {
+        "name": "sugar",
+        "amount": "1 cup"
+      },
+      {
+        "name": "eggs",
+        "amount": "3"
+      },
+      {
+        "name": "flour",
+        "amount": "2 cups"
+      },
+      {
+        "name": "baking powder",
+        "amount": "1.5 tsp"
+      },
+      {
+        "name": "cashews",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "vanilla",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "cinnamon",
+        "amount": "1/2 tsp"
+      }
+    ],
+    "method": "1. Chop dates, soak in hot water 15 mins\n2. Cream butter and sugar\n3. Add eggs one at a time\n4. Fold in flour and baking powder\n5. Add dates, chopped cashews, vanilla, cinnamon\n6. Bake at 170C for 40-45 minutes",
+    "tips": "Use soft Medjool-style dates for moist cake.",
+    "cultural_note": "Date and nut cake is popular during the Christmas season in Sri Lankan homes."
+  },
+  {
+    "id": "SL_0339",
+    "names": {
+      "english": "Pani Walalu (Treacle Jaggery Sweets)"
+    },
+    "category": "dessert",
+    "difficulty": "hard",
+    "prep_time_mins": 15,
+    "cook_time_mins": 30,
+    "servings": 10,
+    "region": "Island-wide",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "urad dhal flour",
+        "amount": "1 cup"
+      },
+      {
+        "name": "rice flour",
+        "amount": "1 cup"
+      },
+      {
+        "name": "treacle",
+        "amount": "1 cup"
+      },
+      {
+        "name": "water",
+        "amount": "as needed"
+      },
+      {
+        "name": "oil for frying",
+        "amount": "3 cups"
+      }
+    ],
+    "method": "1. Soak urad dhal, grind to paste\n2. Mix with rice flour and water to make thick batter\n3. Fill batter into squeeze bottle or coconut shell with holes\n4. Pipe spirals into medium-hot oil\n5. Fry until golden\n6. Dip in warm treacle, drain",
+    "tips": "Pipe into oil in spiral shapes - practice makes perfect.",
+    "cultural_note": "Pani walalu are golden spiral-shaped sweets dipped in kithul treacle, a quintessential New Year treat."
+  },
+  {
+    "id": "SL_0340",
+    "names": {
+      "english": "Caramel Pudding"
+    },
+    "category": "dessert",
+    "difficulty": "medium",
+    "prep_time_mins": 15,
+    "cook_time_mins": 60,
+    "servings": 6,
+    "region": "Island-wide",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "sugar",
+        "amount": "1 cup"
+      },
+      {
+        "name": "milk",
+        "amount": "2 cups"
+      },
+      {
+        "name": "eggs",
+        "amount": "4"
+      },
+      {
+        "name": "vanilla",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "water",
+        "amount": "2 tbsp"
+      }
+    ],
+    "method": "1. Caramelize half the sugar with water until dark amber\n2. Pour into mold, swirl to coat bottom\n3. Beat eggs with remaining sugar\n4. Heat milk (don't boil), add vanilla\n5. Mix egg mixture into milk, strain into mold\n6. Steam or bake in water bath 50-60 mins until set",
+    "tips": "Strain the custard for ultra-smooth texture.",
+    "cultural_note": "Caramel pudding is the most popular dessert at Sri Lankan restaurants and parties."
+  }
+]

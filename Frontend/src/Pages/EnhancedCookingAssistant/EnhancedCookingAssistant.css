@@ -1,0 +1,696 @@
+/* Modern Enhanced Cooking Assistant - Beautiful UI */
+:root {
+  --primary: #7c3aed;
+  --primary-light: #a78bfa;
+  --primary-dark: #5b21b6;
+  --secondary: #2563eb;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --dark: #0f172a;
+  --dark-2: #1e293b;
+  --light: #f1f5f9;
+}
+
+.eca-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--dark) 0%, var(--dark-2) 50%, var(--dark) 100%);
+  color: var(--light);
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+/* Header */
+.eca-header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  padding: 2rem;
+  box-shadow: 0 10px 40px rgba(124, 58, 237, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+}
+
+.eca-header-content {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.eca-header h1 {
+  font-size: 2.5rem;
+  margin: 0 0 0.5rem;
+  font-weight: 800;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.eca-subtitle {
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 300;
+}
+
+.eca-header-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.eca-lang-switch {
+  display: flex;
+  gap: 0.5rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  padding: 6px;
+}
+
+.eca-lang-btn {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: all 0.3s;
+  font-weight: 500;
+}
+
+.eca-lang-btn.active {
+  background: rgba(255, 255, 255, 0.25);
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.eca-lang-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.eca-stats-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  padding: 10px 24px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.eca-stats-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+}
+
+/* Main Content */
+.eca-main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+/* Upload Section */
+.eca-upload-section {
+  margin-bottom: 3rem;
+}
+
+.eca-upload-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 3px dashed rgba(124, 58, 237, 0.4);
+  border-radius: 20px;
+  padding: 4rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.4s;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.eca-upload-card:hover {
+  border-color: var(--primary);
+  background: rgba(124, 58, 237, 0.1);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 50px rgba(124, 58, 237, 0.3);
+}
+
+.eca-upload-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.eca-upload-icon {
+  font-size: 5rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.eca-upload-placeholder p {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.eca-upload-placeholder small {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1rem;
+}
+
+.eca-preview-img {
+  max-height: 350px;
+  max-width: 100%;
+  border-radius: 15px;
+  object-fit: cover;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Manual Input */
+.eca-manual-input {
+  margin-bottom: 3rem;
+}
+
+.eca-input-group {
+  display: flex;
+  gap: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.eca-text-input {
+  flex: 1;
+  padding: 16px 24px;
+  font-size: 1.1rem;
+  border-radius: 12px;
+  border: 2px solid rgba(124, 58, 237, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--light);
+  transition: all 0.3s;
+}
+
+.eca-text-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.1);
+}
+
+.eca-add-btn {
+  padding: 16px 32px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, var(--success), #059669);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.eca-add-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+}
+
+/* Error & Loading */
+.eca-error {
+  background: rgba(239, 68, 68, 0.15);
+  border: 2px solid rgba(239, 68, 68, 0.4);
+  border-radius: 12px;
+  padding: 1.5rem;
+  color: #fca5a5;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.eca-loading {
+  text-align: center;
+  padding: 3rem;
+}
+
+.eca-spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid rgba(124, 58, 237, 0.2);
+  border-top: 4px solid var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.eca-loading p {
+  font-size: 1.2rem;
+  color: var(--primary-light);
+}
+
+/* Ingredients Section */
+.eca-ingredients-section h2,
+.eca-recipes-section h2,
+.eca-partial-section h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--primary-light);
+  text-align: center;
+}
+
+.eca-ingredients-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  justify-content: center;
+}
+
+.eca-ingredient-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 12px 20px;
+  border-radius: 25px;
+  font-size: 1.05rem;
+  transition: all 0.3s;
+  backdrop-filter: blur(10px);
+}
+
+.eca-ingredient-chip.high-conf {
+  background: rgba(16, 185, 129, 0.15);
+  border: 2px solid rgba(16, 185, 129, 0.5);
+}
+
+.eca-ingredient-chip.low-conf {
+  background: rgba(245, 158, 11, 0.15);
+  border: 2px solid rgba(245, 158, 11, 0.5);
+}
+
+.eca-ingredient-chip:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(124, 58, 237, 0.2);
+}
+
+.eca-confidence {
+  font-size: 0.85rem;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 4px 10px;
+  border-radius: 10px;
+  color: var(--primary-light);
+  font-weight: 600;
+}
+
+.eca-remove-btn {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0 6px;
+  transition: all 0.2s;
+}
+
+.eca-remove-btn:hover {
+  color: var(--danger);
+  transform: scale(1.2);
+}
+
+.eca-search-btn {
+  display: block;
+  margin: 0 auto;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  border: none;
+  color: #fff;
+  padding: 18px 48px;
+  border-radius: 15px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 8px 30px rgba(124, 58, 237, 0.4);
+}
+
+.eca-search-btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(124, 58, 237, 0.5);
+}
+
+.eca-search-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Recipe Cards */
+.eca-recipes-section,
+.eca-partial-section {
+  margin-bottom: 4rem;
+}
+
+.eca-recipes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 2rem;
+}
+
+.eca-recipe-card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 2rem;
+  cursor: pointer;
+  transition: all 0.4s;
+  backdrop-filter: blur(10px);
+}
+
+.eca-recipe-card:hover {
+  background: rgba(124, 58, 237, 0.15);
+  border-color: rgba(124, 58, 237, 0.5);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 50px rgba(124, 58, 237, 0.3);
+}
+
+.eca-recipe-card.partial {
+  border-color: rgba(245, 158, 11, 0.4);
+}
+
+.eca-recipe-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+
+.eca-recipe-header h3 {
+  font-size: 1.4rem;
+  margin: 0;
+  color: #e2e8f0;
+  flex: 1;
+  line-height: 1.3;
+}
+
+.eca-match-badge {
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.1rem;
+  padding: 8px 16px;
+  border-radius: 12px;
+  min-width: 60px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.eca-recipe-meta {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.eca-meta-tag {
+  font-size: 0.9rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 6px 14px;
+  border-radius: 8px;
+  color: #cbd5e1;
+  text-transform: capitalize;
+  font-weight: 500;
+}
+
+.eca-auth-badge {
+  font-size: 0.9rem;
+  background: rgba(16, 185, 129, 0.2);
+  padding: 6px 14px;
+  border-radius: 8px;
+  color: #34d399;
+  font-weight: 600;
+}
+
+.eca-recipe-ingredients small {
+  display: block;
+  color: #94a3b8;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-top: 0.5rem;
+}
+
+.eca-recipe-ingredients .eca-missing {
+  color: var(--warning);
+}
+
+.eca-region-tag {
+  font-size: 0.95rem;
+  color: var(--primary-light);
+  margin-top: 1rem;
+  font-weight: 500;
+}
+
+.eca-buy-more {
+  color: #fcd34d;
+  font-size: 1rem;
+  margin-top: 1rem;
+  line-height: 1.6;
+}
+
+/* Modal */
+.eca-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 2rem;
+  animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.eca-modal {
+  background: var(--dark-2);
+  border-radius: 24px;
+  padding: 3rem;
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  border: 2px solid rgba(124, 58, 237, 0.3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  animation: slideUp 0.3s;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.eca-modal-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.eca-modal-close:hover {
+  background: rgba(239, 68, 68, 0.3);
+  transform: rotate(90deg);
+}
+
+.eca-recipe-detail-header h2 {
+  font-size: 2.5rem;
+  margin: 0 0 1rem;
+  color: var(--light);
+}
+
+.eca-alt-name {
+  color: #94a3b8;
+  margin: 0.5rem 0 1.5rem;
+  font-size: 1.3rem;
+}
+
+.eca-recipe-detail-meta {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding: 1.5rem 0;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 2rem;
+}
+
+.eca-recipe-detail-meta span {
+  font-size: 1.1rem;
+  color: #cbd5e1;
+  font-weight: 500;
+}
+
+.eca-modal h3 {
+  font-size: 1.8rem;
+  color: var(--primary-light);
+  margin: 2.5rem 0 1.5rem;
+}
+
+.eca-detail-ingredients {
+  list-style: none;
+  padding: 0;
+}
+
+.eca-detail-ingredients li {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.eca-method {
+  white-space: pre-wrap;
+  color: #cbd5e1;
+  font-family: inherit;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 2rem;
+  border-radius: 15px;
+  border-left: 4px solid var(--primary);
+}
+
+.eca-tips {
+  color: #fcd34d;
+  font-size: 1.05rem;
+  background: rgba(252, 211, 77, 0.1);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border-left: 4px solid #fcd34d;
+  line-height: 1.7;
+}
+
+.eca-cultural {
+  color: var(--primary-light);
+  font-size: 1.05rem;
+  background: rgba(165, 180, 252, 0.1);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border-left: 4px solid var(--primary-light);
+  font-style: italic;
+  line-height: 1.7;
+}
+
+/* Stats Modal */
+.stats-modal {
+  max-width: 1000px;
+}
+
+.eca-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.eca-stat-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.eca-stat-card:hover {
+  background: rgba(124, 58, 237, 0.1);
+  border-color: rgba(124, 58, 237, 0.4);
+  transform: translateY(-5px);
+}
+
+.eca-stat-value {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--primary-light);
+  margin-bottom: 0.5rem;
+}
+
+.eca-stat-label {
+  font-size: 1rem;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .eca-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .eca-recipes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .eca-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .eca-header-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .eca-lang-switch {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .eca-modal {
+    padding: 2rem 1.5rem;
+  }
+}
