@@ -1,0 +1,2312 @@
+[
+  {
+    "id": "SL_0341",
+    "names": {
+      "english": "Chinese Rolls"
+    },
+    "category": "snack",
+    "difficulty": "medium",
+    "prep_time_mins": 30,
+    "cook_time_mins": 15,
+    "servings": 12,
+    "region": "Island-wide",
+    "spice_level": 2,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "spring roll wrappers",
+        "amount": "12"
+      },
+      {
+        "name": "chicken mince",
+        "amount": "300g"
+      },
+      {
+        "name": "cabbage",
+        "amount": "1 cup shredded"
+      },
+      {
+        "name": "carrot",
+        "amount": "1 grated"
+      },
+      {
+        "name": "leeks",
+        "amount": "1"
+      },
+      {
+        "name": "garlic",
+        "amount": "3 cloves"
+      },
+      {
+        "name": "soy sauce",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "egg",
+        "amount": "1 for sealing"
+      },
+      {
+        "name": "breadcrumbs",
+        "amount": "1 cup"
+      },
+      {
+        "name": "oil for frying",
+        "amount": "2 cups"
+      }
+    ],
+    "method": "1. Saute garlic, add mince, cook until done\n2. Add vegetables, soy sauce, cook 5 mins\n3. Cool the filling completely\n4. Place filling on wrapper, roll tightly\n5. Seal with egg wash, coat in breadcrumbs\n6. Deep fry until golden brown",
+    "tips": "Cool filling completely before wrapping to prevent soggy rolls.",
+    "cultural_note": "Chinese rolls are Sri Lanka's most popular short eat, found in every bakery across the island."
+  },
+  {
+    "id": "SL_0342",
+    "names": {
+      "english": "Fish Cutlets"
+    },
+    "category": "snack",
+    "difficulty": "medium",
+    "prep_time_mins": 30,
+    "cook_time_mins": 15,
+    "servings": 12,
+    "region": "Island-wide",
+    "spice_level": 2,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "canned fish",
+        "amount": "2 cans"
+      },
+      {
+        "name": "potato",
+        "amount": "3 boiled"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "green chili",
+        "amount": "3"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "lime juice",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "egg",
+        "amount": "2"
+      },
+      {
+        "name": "breadcrumbs",
+        "amount": "1 cup"
+      },
+      {
+        "name": "oil for frying",
+        "amount": "2 cups"
+      }
+    ],
+    "method": "1. Mash potatoes, flake fish\n2. Saute onions, chili, curry leaves\n3. Mix fish, potato, sauteed mixture, chili powder, lime\n4. Shape into patties\n5. Dip in beaten egg, coat with breadcrumbs\n6. Deep fry until golden",
+    "tips": "Shape cutlets uniformly for even cooking.",
+    "cultural_note": "Fish cutlets are the quintessential Sri Lankan party snack, served at every celebration."
+  },
+  {
+    "id": "SL_0343",
+    "names": {
+      "english": "Mutton Rolls"
+    },
+    "category": "snack",
+    "difficulty": "medium",
+    "prep_time_mins": 40,
+    "cook_time_mins": 15,
+    "servings": 12,
+    "region": "Island-wide",
+    "spice_level": 3,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "pancake wrappers",
+        "amount": "12"
+      },
+      {
+        "name": "mutton mince",
+        "amount": "400g"
+      },
+      {
+        "name": "onion",
+        "amount": "2"
+      },
+      {
+        "name": "curry powder",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "potato",
+        "amount": "2"
+      },
+      {
+        "name": "egg",
+        "amount": "2"
+      },
+      {
+        "name": "breadcrumbs",
+        "amount": "1 cup"
+      },
+      {
+        "name": "oil for frying",
+        "amount": "2 cups"
+      }
+    ],
+    "method": "1. Cook mutton mince with spices until dry\n2. Boil and mash potatoes, mix with mince\n3. Make thin pancakes from flour batter\n4. Place filling on pancake, roll into cylinder\n5. Coat in egg and breadcrumbs\n6. Deep fry until golden crispy",
+    "tips": "The filling must be completely dry to prevent bursting.",
+    "cultural_note": "Mutton rolls are the premium version of the Sri Lankan roll, a bakery highlight."
+  },
+  {
+    "id": "SL_0344",
+    "names": {
+      "english": "Isso Wade (Prawn Fritters)"
+    },
+    "category": "snack",
+    "difficulty": "medium",
+    "prep_time_mins": 20,
+    "cook_time_mins": 15,
+    "servings": 8,
+    "region": "Southern Province",
+    "spice_level": 2,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "urad dhal",
+        "amount": "1 cup"
+      },
+      {
+        "name": "prawns",
+        "amount": "200g"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "green chili",
+        "amount": "3"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "10"
+      },
+      {
+        "name": "salt",
+        "amount": "to taste"
+      },
+      {
+        "name": "oil for frying",
+        "amount": "2 cups"
+      }
+    ],
+    "method": "1. Soak urad dhal 4 hours, grind to thick paste\n2. Mix in chopped onion, chili, curry leaves\n3. Shape into flat rounds\n4. Place a whole prawn on top of each\n5. Deep fry until golden\n6. Drain and serve hot",
+    "tips": "Press the prawn firmly into the batter so it doesn't fall off.",
+    "cultural_note": "Isso wade are the iconic prawn-topped fritters from Galle Face Green, Colombo's famous seaside promenade."
+  },
+  {
+    "id": "SL_0345",
+    "names": {
+      "english": "Patties (Meat Puffs)"
+    },
+    "category": "snack",
+    "difficulty": "medium",
+    "prep_time_mins": 40,
+    "cook_time_mins": 25,
+    "servings": 12,
+    "region": "Island-wide",
+    "spice_level": 2,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "puff pastry",
+        "amount": "500g"
+      },
+      {
+        "name": "chicken mince",
+        "amount": "300g"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "potato",
+        "amount": "1"
+      },
+      {
+        "name": "curry powder",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "egg",
+        "amount": "1 for wash"
+      },
+      {
+        "name": "salt",
+        "amount": "to taste"
+      }
+    ],
+    "method": "1. Cook mince with spices, onion, diced potato\n2. Cool filling completely\n3. Roll out puff pastry, cut into circles\n4. Place filling, fold into half-moons\n5. Seal edges with fork, brush with egg wash\n6. Bake at 200C for 20-25 mins until puffed and golden",
+    "tips": "Chill pastry between steps for flakier results.",
+    "cultural_note": "Patties are a colonial-era introduction that became a beloved Sri Lankan bakery staple."
+  },
+  {
+    "id": "SL_0346",
+    "names": {
+      "english": "Ulundu Vadai"
+    },
+    "category": "snack",
+    "difficulty": "medium",
+    "prep_time_mins": 20,
+    "cook_time_mins": 15,
+    "servings": 8,
+    "region": "Northern Province",
+    "spice_level": 2,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "black gram (urad dhal)",
+        "amount": "1 cup"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "green chili",
+        "amount": "3"
+      },
+      {
+        "name": "ginger",
+        "amount": "1/2 inch"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "10"
+      },
+      {
+        "name": "pepper",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "salt",
+        "amount": "to taste"
+      },
+      {
+        "name": "oil for frying",
+        "amount": "2 cups"
+      }
+    ],
+    "method": "1. Soak dhal 4 hours, drain\n2. Grind to thick, fluffy paste without water\n3. Add chopped onion, chili, ginger, curry leaves, pepper\n4. Shape into donut shape with hole in center\n5. Deep fry in medium-hot oil\n6. Fry until deep golden brown on both sides",
+    "tips": "The paste must be thick - add no water while grinding.",
+    "cultural_note": "Ulundu vadai is a classic Jaffna Tamil snack, traditionally offered at Hindu temples."
+  },
+  {
+    "id": "SL_0347",
+    "names": {
+      "english": "Egg Rolls"
+    },
+    "category": "snack",
+    "difficulty": "medium",
+    "prep_time_mins": 25,
+    "cook_time_mins": 15,
+    "servings": 8,
+    "region": "Island-wide",
+    "spice_level": 2,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "eggs",
+        "amount": "6 hard-boiled"
+      },
+      {
+        "name": "chicken mince",
+        "amount": "200g"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "curry powder",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "pancake wrappers",
+        "amount": "6"
+      },
+      {
+        "name": "egg beaten",
+        "amount": "1"
+      },
+      {
+        "name": "breadcrumbs",
+        "amount": "1 cup"
+      },
+      {
+        "name": "oil for frying",
+        "amount": "2 cups"
+      }
+    ],
+    "method": "1. Cook mince filling with spices\n2. Peel hard-boiled eggs\n3. Wrap each egg with mince filling\n4. Wrap in pancake wrapper\n5. Coat in beaten egg and breadcrumbs\n6. Deep fry until golden",
+    "tips": "Let the coated eggs chill 15 mins before frying for better adhesion.",
+    "cultural_note": "Egg rolls are a popular party snack that combines the beloved Sri Lankan roll with a surprise egg center."
+  },
+  {
+    "id": "SL_0348",
+    "names": {
+      "english": "Vegetable Roti"
+    },
+    "category": "snack",
+    "difficulty": "easy",
+    "prep_time_mins": 15,
+    "cook_time_mins": 15,
+    "servings": 6,
+    "region": "Island-wide",
+    "spice_level": 1,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "wheat flour",
+        "amount": "2 cups"
+      },
+      {
+        "name": "grated coconut",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "carrot",
+        "amount": "1 grated"
+      },
+      {
+        "name": "leeks",
+        "amount": "1/2"
+      },
+      {
+        "name": "green chili",
+        "amount": "2"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "salt",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "water",
+        "amount": "as needed"
+      }
+    ],
+    "method": "1. Mix flour, coconut, salt\n2. Add finely chopped vegetables\n3. Add water to make stiff dough\n4. Shape into thick rounds\n5. Cook on hot griddle without oil\n6. Cook both sides till done",
+    "tips": "Chop vegetables very fine so they cook through.",
+    "cultural_note": "Vegetable roti is a nutritious quick snack perfect for tea time."
+  },
+  {
+    "id": "SL_0349",
+    "names": {
+      "english": "Samosa"
+    },
+    "category": "snack",
+    "difficulty": "medium",
+    "prep_time_mins": 30,
+    "cook_time_mins": 15,
+    "servings": 12,
+    "region": "Eastern Province",
+    "spice_level": 2,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "flour",
+        "amount": "2 cups"
+      },
+      {
+        "name": "potato",
+        "amount": "3"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "green peas",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "cumin seeds",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "garam masala",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "oil for frying",
+        "amount": "2 cups"
+      },
+      {
+        "name": "salt",
+        "amount": "to taste"
+      }
+    ],
+    "method": "1. Make pastry dough with flour, oil, water\n2. Boil and mash potatoes roughly\n3. Saute onions, cumin, add potato, peas, spices\n4. Roll dough into circles, cut in half\n5. Form cone shape, fill with potato mixture, seal\n6. Deep fry until golden and crispy",
+    "tips": "Seal edges with water paste to prevent opening during frying.",
+    "cultural_note": "Samosas in Sri Lanka are influenced by both Indian and Malay culinary traditions."
+  },
+  {
+    "id": "SL_0350",
+    "names": {
+      "english": "Achcharu Sticks (Pickle Sticks)"
+    },
+    "category": "snack",
+    "difficulty": "easy",
+    "prep_time_mins": 15,
+    "cook_time_mins": 0,
+    "servings": 6,
+    "region": "Island-wide",
+    "spice_level": 3,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "green mango",
+        "amount": "1"
+      },
+      {
+        "name": "guava",
+        "amount": "2"
+      },
+      {
+        "name": "pineapple",
+        "amount": "1 cup"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "salt",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "sugar",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "vinegar",
+        "amount": "2 tbsp"
+      }
+    ],
+    "method": "1. Cut all fruits into stick shapes\n2. Thread onto wooden skewers\n3. Mix chili powder, salt, sugar, vinegar into paste\n4. Brush or dip fruit sticks into spice paste\n5. Arrange on plate\n6. Serve immediately",
+    "tips": "Use firm, unripe fruits for best crunch.",
+    "cultural_note": "Achcharu sticks are the favorite after-school snack sold by vendors outside every school in Sri Lanka."
+  },
+  {
+    "id": "SL_0351",
+    "names": {
+      "english": "Kimbula Banis (Crocodile Bread)"
+    },
+    "category": "snack",
+    "difficulty": "medium",
+    "prep_time_mins": 60,
+    "cook_time_mins": 25,
+    "servings": 8,
+    "region": "Island-wide",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "flour",
+        "amount": "3 cups"
+      },
+      {
+        "name": "sugar",
+        "amount": "1/4 cup"
+      },
+      {
+        "name": "yeast",
+        "amount": "1.5 tsp"
+      },
+      {
+        "name": "warm milk",
+        "amount": "1 cup"
+      },
+      {
+        "name": "butter",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "egg",
+        "amount": "1"
+      },
+      {
+        "name": "salt",
+        "amount": "1/2 tsp"
+      }
+    ],
+    "method": "1. Dissolve yeast in warm milk with sugar\n2. Mix flour, salt, add yeast mixture and egg\n3. Knead in butter until smooth dough\n4. Prove 1 hour until doubled\n5. Shape into crocodile form (elongated with pointed ends)\n6. Prove again 20 mins, bake at 180C for 20-25 mins",
+    "tips": "The classic shape has a bulge in the middle tapering at both ends.",
+    "cultural_note": "Kimbula banis (crocodile buns) are a uniquely Sri Lankan bread shape, a beloved bakery item since colonial times."
+  },
+  {
+    "id": "SL_0352",
+    "names": {
+      "english": "Roast Paan (Bread)"
+    },
+    "category": "snack",
+    "difficulty": "medium",
+    "prep_time_mins": 90,
+    "cook_time_mins": 30,
+    "servings": 8,
+    "region": "Island-wide",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "flour",
+        "amount": "4 cups"
+      },
+      {
+        "name": "yeast",
+        "amount": "2 tsp"
+      },
+      {
+        "name": "sugar",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "salt",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "warm water",
+        "amount": "1.5 cups"
+      },
+      {
+        "name": "oil",
+        "amount": "2 tbsp"
+      }
+    ],
+    "method": "1. Dissolve yeast in warm water with sugar\n2. Mix flour and salt\n3. Add yeast mixture and oil, knead 10 mins\n4. Prove 1 hour until doubled\n5. Shape into loaf, place in greased tin\n6. Prove 30 mins, bake at 200C for 25-30 mins",
+    "tips": "Knead thoroughly for proper gluten development.",
+    "cultural_note": "Roast paan is Sri Lanka's signature bread, baked in wood-fired ovens in local bakeries every morning."
+  },
+  {
+    "id": "SL_0353",
+    "names": {
+      "english": "Manioc Chips"
+    },
+    "category": "snack",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 15,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 1,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "manioc (cassava)",
+        "amount": "500g"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "salt",
+        "amount": "to taste"
+      },
+      {
+        "name": "oil for frying",
+        "amount": "2 cups"
+      }
+    ],
+    "method": "1. Peel manioc, slice into thin chips\n2. Soak in salted turmeric water 10 mins\n3. Drain and pat dry thoroughly\n4. Deep fry in batches until golden and crispy\n5. Drain on paper\n6. Season with chili powder and salt while hot",
+    "tips": "Slice uniformly thin for even crisping. Dry well before frying.",
+    "cultural_note": "Manioc chips are a popular tea-time snack and a crunchy accompaniment to drinks."
+  },
+  {
+    "id": "SL_0354",
+    "names": {
+      "english": "Banana Chips"
+    },
+    "category": "snack",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 15,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "raw banana (ash plantain)",
+        "amount": "3"
+      },
+      {
+        "name": "salt",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "oil for frying",
+        "amount": "2 cups"
+      }
+    ],
+    "method": "1. Peel raw bananas\n2. Slice thinly using a mandoline\n3. Soak in salted turmeric water\n4. Drain and dry completely\n5. Deep fry until crispy and light golden\n6. Drain, cool, store in airtight container",
+    "tips": "Use a mandoline slicer for uniformly thin chips.",
+    "cultural_note": "Banana chips are Sri Lanka's favorite crispy snack, perfect with evening tea."
+  },
+  {
+    "id": "SL_0355",
+    "names": {
+      "english": "Chickpea Salad (Kadala)"
+    },
+    "category": "snack",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 20,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 2,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "dried chickpeas",
+        "amount": "2 cups"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "green chili",
+        "amount": "3"
+      },
+      {
+        "name": "grated coconut",
+        "amount": "3 tbsp"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "lime juice",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "salt",
+        "amount": "to taste"
+      }
+    ],
+    "method": "1. Soak chickpeas overnight, boil until tender\n2. Drain well\n3. Finely chop onion and green chili\n4. Mix chickpeas with onion, chili, coconut\n5. Season with chili powder, lime juice, salt\n6. Toss well and serve",
+    "tips": "Boil chickpeas with a pinch of baking soda for softer texture.",
+    "cultural_note": "Kadala salad is the popular street-food snack sold at cricket matches and bus stands across Sri Lanka."
+  },
+  {
+    "id": "SL_0356",
+    "names": {
+      "english": "Mas Paan (Meat Bun)"
+    },
+    "category": "snack",
+    "difficulty": "medium",
+    "prep_time_mins": 45,
+    "cook_time_mins": 20,
+    "servings": 8,
+    "region": "Island-wide",
+    "spice_level": 2,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "bread dough",
+        "amount": "500g"
+      },
+      {
+        "name": "fish or chicken filling",
+        "amount": "2 cups"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "hard-boiled egg",
+        "amount": "4 halved"
+      },
+      {
+        "name": "oil",
+        "amount": "1 tbsp"
+      }
+    ],
+    "method": "1. Prepare spiced meat or fish filling, cool\n2. Divide bread dough into 8 portions\n3. Flatten each, place filling in center with egg half\n4. Seal edges, shape into bun\n5. Prove 20 mins\n6. Bake at 190C for 18-20 mins until golden",
+    "tips": "Seal edges tightly to prevent filling from leaking.",
+    "cultural_note": "Mas paan is the beloved Sri Lankan stuffed bun, an afternoon snack institution."
+  },
+  {
+    "id": "SL_0357",
+    "names": {
+      "english": "Konda Kavum (Hair Kavum)"
+    },
+    "category": "snack",
+    "difficulty": "hard",
+    "prep_time_mins": 20,
+    "cook_time_mins": 30,
+    "servings": 10,
+    "region": "Island-wide",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "rice flour",
+        "amount": "2 cups"
+      },
+      {
+        "name": "treacle",
+        "amount": "1 cup"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "baking soda",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "oil for frying",
+        "amount": "3 cups"
+      }
+    ],
+    "method": "1. Mix treacle with coconut milk\n2. Add rice flour and baking soda to form thick batter\n3. Rest 20 minutes\n4. Heat oil to medium temperature\n5. Pour batter slowly, the hair-like strands form as it flows\n6. Fry until dark golden",
+    "tips": "The batter must flow in thin strands to create the signature 'hair' appearance.",
+    "cultural_note": "Konda kavum get their name from the hair-like strands that form during frying, a traditional New Year sweet."
+  },
+  {
+    "id": "SL_0358",
+    "names": {
+      "english": "Lavariya Petti"
+    },
+    "category": "snack",
+    "difficulty": "easy",
+    "prep_time_mins": 15,
+    "cook_time_mins": 20,
+    "servings": 6,
+    "region": "Southern Province",
+    "spice_level": 1,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "rice flour",
+        "amount": "2 cups"
+      },
+      {
+        "name": "grated coconut",
+        "amount": "1 cup"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "Maldive fish",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "chili flakes",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "salt",
+        "amount": "to taste"
+      },
+      {
+        "name": "banana leaf",
+        "amount": "for wrapping"
+      }
+    ],
+    "method": "1. Mix flour, coconut, onion, Maldive fish, chili, salt\n2. Add water to make thick dough\n3. Place portions on banana leaf squares\n4. Wrap into parcels\n5. Steam 15-20 minutes\n6. Serve in leaf wrapping",
+    "tips": "Soften banana leaves over flame before wrapping.",
+    "cultural_note": "Lavariya petti are traditional steamed rice parcels from Southern Sri Lanka."
+  },
+  {
+    "id": "SL_0359",
+    "names": {
+      "english": "Isso Vadai (Jaffna Style)"
+    },
+    "category": "snack",
+    "difficulty": "medium",
+    "prep_time_mins": 20,
+    "cook_time_mins": 15,
+    "servings": 8,
+    "region": "Northern Province",
+    "spice_level": 2,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "chana dhal",
+        "amount": "1 cup"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "green chili",
+        "amount": "3"
+      },
+      {
+        "name": "fennel seeds",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "10"
+      },
+      {
+        "name": "prawns",
+        "amount": "16 small"
+      },
+      {
+        "name": "salt",
+        "amount": "to taste"
+      },
+      {
+        "name": "oil for frying",
+        "amount": "2 cups"
+      }
+    ],
+    "method": "1. Soak chana dhal 3 hours, grind coarsely\n2. Mix in chopped onion, chili, fennel, curry leaves\n3. Shape into flat rounds\n4. Press a small prawn on top of each\n5. Deep fry until crispy golden\n6. Drain and serve hot with chutney",
+    "tips": "Grind dhal coarsely for crunchy texture.",
+    "cultural_note": "Jaffna-style isso vadai uses chana dhal instead of urad dhal, giving a crunchier texture."
+  },
+  {
+    "id": "SL_0360",
+    "names": {
+      "english": "Dhal Wade"
+    },
+    "category": "snack",
+    "difficulty": "easy",
+    "prep_time_mins": 15,
+    "cook_time_mins": 15,
+    "servings": 8,
+    "region": "Island-wide",
+    "spice_level": 2,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "chana dhal",
+        "amount": "1 cup"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "green chili",
+        "amount": "3"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "10"
+      },
+      {
+        "name": "pepper",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "oil for frying",
+        "amount": "2 cups"
+      },
+      {
+        "name": "salt",
+        "amount": "to taste"
+      }
+    ],
+    "method": "1. Soak chana dhal 3 hours\n2. Grind very coarsely (chunky)\n3. Mix with chopped onion, chili, curry leaves, pepper\n4. Shape into flat rounds\n5. Deep fry until crispy golden\n6. Drain and serve",
+    "tips": "Keep the grind very coarse for maximum crunch.",
+    "cultural_note": "Dhal wade is a crunchy lentil fritter enjoyed across Sri Lanka as a snack."
+  },
+  {
+    "id": "SL_0361",
+    "names": {
+      "english": "Spring Rolls"
+    },
+    "category": "snack",
+    "difficulty": "medium",
+    "prep_time_mins": 25,
+    "cook_time_mins": 15,
+    "servings": 10,
+    "region": "Island-wide",
+    "spice_level": 1,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "spring roll wrappers",
+        "amount": "10"
+      },
+      {
+        "name": "cabbage",
+        "amount": "2 cups shredded"
+      },
+      {
+        "name": "carrot",
+        "amount": "1"
+      },
+      {
+        "name": "bean sprouts",
+        "amount": "1 cup"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "garlic",
+        "amount": "3 cloves"
+      },
+      {
+        "name": "soy sauce",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "oil for frying",
+        "amount": "2 cups"
+      }
+    ],
+    "method": "1. Stir-fry vegetables with garlic and soy sauce\n2. Drain excess liquid, cool completely\n3. Place filling on wrapper corner\n4. Roll tightly, folding in sides\n5. Seal with flour paste\n6. Deep fry until crispy golden",
+    "tips": "Drain vegetables well - wet filling makes soggy rolls.",
+    "cultural_note": "Spring rolls are a beloved snack at Sri Lankan Chinese restaurants."
+  },
+  {
+    "id": "SL_0362",
+    "names": {
+      "english": "Vegetable Cutlets"
+    },
+    "category": "snack",
+    "difficulty": "easy",
+    "prep_time_mins": 25,
+    "cook_time_mins": 15,
+    "servings": 10,
+    "region": "Island-wide",
+    "spice_level": 1,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "potato",
+        "amount": "3"
+      },
+      {
+        "name": "carrot",
+        "amount": "1"
+      },
+      {
+        "name": "green peas",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "beans",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "green chili",
+        "amount": "2"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "egg",
+        "amount": "2"
+      },
+      {
+        "name": "breadcrumbs",
+        "amount": "1 cup"
+      },
+      {
+        "name": "oil for frying",
+        "amount": "2 cups"
+      }
+    ],
+    "method": "1. Boil and mash potatoes\n2. Finely dice and cook carrots, peas, beans\n3. Saute onion, chili, curry leaves\n4. Mix everything with mashed potato\n5. Shape, dip in egg, coat breadcrumbs\n6. Deep fry until golden",
+    "tips": "Ensure vegetables are cooked but firm, not mushy.",
+    "cultural_note": "Vegetable cutlets are the vegetarian option at every Sri Lankan bakery and party."
+  },
+  {
+    "id": "SL_0363",
+    "names": {
+      "english": "Prawn Crackers"
+    },
+    "category": "snack",
+    "difficulty": "easy",
+    "prep_time_mins": 5,
+    "cook_time_mins": 5,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "prawn crackers (uncooked)",
+        "amount": "200g"
+      },
+      {
+        "name": "oil for frying",
+        "amount": "2 cups"
+      }
+    ],
+    "method": "1. Heat oil to very hot (180C)\n2. Drop a few crackers at a time\n3. They will puff up instantly in 3-5 seconds\n4. Turn once if needed\n5. Remove immediately when puffed\n6. Drain on paper and serve",
+    "tips": "Oil must be very hot - crackers should puff instantly.",
+    "cultural_note": "Prawn crackers are a popular appetizer served at Sri Lankan Chinese restaurants."
+  },
+  {
+    "id": "SL_0364",
+    "names": {
+      "english": "Pol Petti (Coconut Pastry)"
+    },
+    "category": "snack",
+    "difficulty": "medium",
+    "prep_time_mins": 25,
+    "cook_time_mins": 15,
+    "servings": 10,
+    "region": "Western Province",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "flour",
+        "amount": "2 cups"
+      },
+      {
+        "name": "butter",
+        "amount": "100g"
+      },
+      {
+        "name": "coconut",
+        "amount": "1 cup"
+      },
+      {
+        "name": "jaggery",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "cardamom",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "salt",
+        "amount": "pinch"
+      },
+      {
+        "name": "water",
+        "amount": "as needed"
+      },
+      {
+        "name": "oil for frying",
+        "amount": "2 cups"
+      }
+    ],
+    "method": "1. Make pastry: rub butter into flour, add water for dough\n2. Mix coconut, jaggery, cardamom for filling\n3. Roll pastry thin, cut into circles\n4. Place filling, fold into half-moons\n5. Seal edges with fork\n6. Deep fry until golden",
+    "tips": "Seal edges well to keep filling inside.",
+    "cultural_note": "Pol petti are traditional coconut-filled pastries, a beloved sweet snack."
+  },
+  {
+    "id": "SL_0365",
+    "names": {
+      "english": "Tapioca Chips"
+    },
+    "category": "snack",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 15,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 1,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "tapioca",
+        "amount": "500g"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "salt",
+        "amount": "to taste"
+      },
+      {
+        "name": "oil for frying",
+        "amount": "2 cups"
+      }
+    ],
+    "method": "1. Peel tapioca, slice paper-thin\n2. Wash and soak in turmeric water\n3. Drain and dry completely\n4. Deep fry in batches until crispy\n5. Season with salt and chili powder\n6. Cool and store airtight",
+    "tips": "Slice extremely thin for maximum crispness.",
+    "cultural_note": "Tapioca chips are a crunchy snack common in Southern and Sabaragamuwa provinces."
+  },
+  {
+    "id": "SL_0366",
+    "names": {
+      "english": "Sinhala New Year Kavum"
+    },
+    "category": "festival",
+    "difficulty": "hard",
+    "prep_time_mins": 30,
+    "cook_time_mins": 45,
+    "servings": 15,
+    "region": "Island-wide",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "rice flour",
+        "amount": "3 cups"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "1 cup"
+      },
+      {
+        "name": "kithul treacle",
+        "amount": "1.5 cups"
+      },
+      {
+        "name": "salt",
+        "amount": "pinch"
+      },
+      {
+        "name": "oil for deep frying",
+        "amount": "6 cups"
+      }
+    ],
+    "method": "1. Warm treacle slightly, mix with coconut milk\n2. Add rice flour gradually to make thick batter\n3. Rest batter 1 hour\n4. Heat oil to medium (not too hot)\n5. Pour small amounts using coconut shell ladle\n6. Fry very slowly, turning, until deep golden brown",
+    "tips": "Low and slow frying is the secret - rush it and outside burns.",
+    "cultural_note": "Kavum is THE iconic Sinhala and Tamil New Year sweet, made on April 13th every year. The first kavum is ceremonially fried at the auspicious time."
+  },
+  {
+    "id": "SL_0367",
+    "names": {
+      "english": "Kokis (New Year Rosettes)"
+    },
+    "category": "festival",
+    "difficulty": "hard",
+    "prep_time_mins": 20,
+    "cook_time_mins": 30,
+    "servings": 15,
+    "region": "Island-wide",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "rice flour",
+        "amount": "2 cups"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "1 cup"
+      },
+      {
+        "name": "eggs",
+        "amount": "2"
+      },
+      {
+        "name": "sugar",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "salt",
+        "amount": "pinch"
+      },
+      {
+        "name": "oil for frying",
+        "amount": "4 cups"
+      }
+    ],
+    "method": "1. Mix all ingredients to smooth batter like thick cream\n2. Heat oil, heat kokis mold in oil\n3. Dip hot mold in batter to 3/4 depth only\n4. Immerse in oil, hold until kokis releases\n5. Fry until golden and crispy\n6. Drain and cool completely",
+    "tips": "If mold goes fully in batter, the kokis won't release from the mold.",
+    "cultural_note": "Kokis are the crispy, flower-shaped cookies essential to the New Year table. Different families have different ancestral mold designs."
+  },
+  {
+    "id": "SL_0368",
+    "names": {
+      "english": "Kiribath for New Year"
+    },
+    "category": "festival",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 25,
+    "servings": 8,
+    "region": "Island-wide",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "short grain rice",
+        "amount": "3 cups"
+      },
+      {
+        "name": "thick coconut milk",
+        "amount": "4 cups"
+      },
+      {
+        "name": "salt",
+        "amount": "1.5 tsp"
+      }
+    ],
+    "method": "1. Wash rice and cook with water until half done\n2. Add thick coconut milk generously\n3. Cook on low heat, stirring gently\n4. Press into tray, smooth with wet spoon\n5. Cut into diamond shapes\n6. Serve at the auspicious New Year time with lunu miris",
+    "tips": "Make extra milk rice - it is the first food of the New Year.",
+    "cultural_note": "Kiribath is ceremonially cooked at the exact auspicious time on Sinhala New Year morning, symbolizing prosperity for the coming year."
+  },
+  {
+    "id": "SL_0369",
+    "names": {
+      "english": "Athirasa (Sweet Rice Cakes)"
+    },
+    "category": "festival",
+    "difficulty": "hard",
+    "prep_time_mins": 30,
+    "cook_time_mins": 30,
+    "servings": 12,
+    "region": "Island-wide",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "roasted rice flour",
+        "amount": "2 cups"
+      },
+      {
+        "name": "jaggery",
+        "amount": "1 cup"
+      },
+      {
+        "name": "sesame seeds",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "water",
+        "amount": "as needed"
+      },
+      {
+        "name": "oil for frying",
+        "amount": "3 cups"
+      }
+    ],
+    "method": "1. Grate jaggery, dissolve in minimal water\n2. Strain and cook until thick syrup\n3. Mix with rice flour to form stiff dough\n4. Rest overnight for better flavor\n5. Shape into flat rounds, press sesame seeds on top\n6. Deep fry on low heat until dark golden",
+    "tips": "Overnight resting makes the perfect texture.",
+    "cultural_note": "Athirasa is an ancient festival sweet, predating even kavum in Sri Lankan culinary history."
+  },
+  {
+    "id": "SL_0370",
+    "names": {
+      "english": "Vesak Lantern Treats (Vesak Batti Mala)"
+    },
+    "category": "festival",
+    "difficulty": "easy",
+    "prep_time_mins": 15,
+    "cook_time_mins": 15,
+    "servings": 10,
+    "region": "Island-wide",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "flour",
+        "amount": "2 cups"
+      },
+      {
+        "name": "sugar",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "cardamom",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "cashews",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "food coloring",
+        "amount": "assorted"
+      },
+      {
+        "name": "oil for frying",
+        "amount": "2 cups"
+      }
+    ],
+    "method": "1. Mix flour, sugar, coconut milk, cardamom\n2. Divide dough into portions, color each differently\n3. Shape into small balls and crescents\n4. Deep fry until golden\n5. Drain well\n6. Arrange colorfully on plate like lantern shapes",
+    "tips": "Use natural food coloring for healthy treats.",
+    "cultural_note": "These colorful sweets are made during Vesak festival to share with communities celebrating at temples."
+  },
+  {
+    "id": "SL_0371",
+    "names": {
+      "english": "Eid Biriyani"
+    },
+    "category": "festival",
+    "difficulty": "hard",
+    "prep_time_mins": 45,
+    "cook_time_mins": 60,
+    "servings": 8,
+    "region": "Eastern Province",
+    "spice_level": 3,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "basmati rice",
+        "amount": "3 cups"
+      },
+      {
+        "name": "lamb",
+        "amount": "750g"
+      },
+      {
+        "name": "onion",
+        "amount": "4"
+      },
+      {
+        "name": "yogurt",
+        "amount": "1 cup"
+      },
+      {
+        "name": "biriyani masala",
+        "amount": "3 tbsp"
+      },
+      {
+        "name": "saffron",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "ghee",
+        "amount": "4 tbsp"
+      },
+      {
+        "name": "mint",
+        "amount": "1 cup"
+      },
+      {
+        "name": "coriander",
+        "amount": "1 cup"
+      },
+      {
+        "name": "rose water",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "garlic",
+        "amount": "10 cloves"
+      },
+      {
+        "name": "ginger",
+        "amount": "2 inch"
+      },
+      {
+        "name": "whole spices",
+        "amount": "2 tbsp"
+      }
+    ],
+    "method": "1. Marinate lamb overnight in yogurt and spices\n2. Cook lamb until tender in its marinade\n3. Parboil rice with whole spices\n4. Deep fry onions until dark brown\n5. Layer: lamb, rice, fried onions, herbs, saffron milk\n6. Seal pot, dum cook 30 minutes on lowest heat",
+    "tips": "Overnight marination is non-negotiable for Eid biriyani.",
+    "cultural_note": "Eid biriyani is the centerpiece of Sri Lankan Muslim celebrations, prepared in massive quantities to feed families and neighbors."
+  },
+  {
+    "id": "SL_0372",
+    "names": {
+      "english": "Pongal (Tamil Harvest Festival Rice)"
+    },
+    "category": "festival",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 30,
+    "servings": 6,
+    "region": "Northern Province",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "raw rice",
+        "amount": "1 cup"
+      },
+      {
+        "name": "moong dhal",
+        "amount": "1/4 cup"
+      },
+      {
+        "name": "jaggery",
+        "amount": "1 cup"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "1 cup"
+      },
+      {
+        "name": "cardamom",
+        "amount": "3 pods"
+      },
+      {
+        "name": "cashews",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "raisins",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "ghee",
+        "amount": "2 tbsp"
+      }
+    ],
+    "method": "1. Dry roast moong dhal until golden\n2. Cook rice and dhal together until soft\n3. Melt jaggery in water, strain\n4. Add jaggery syrup to cooked rice\n5. Add coconut milk, cardamom, cook 10 mins\n6. Temper cashews and raisins in ghee, garnish",
+    "tips": "Use freshly harvested rice for authentic Thai Pongal.",
+    "cultural_note": "Thai Pongal celebrates the Tamil harvest festival in January. The rice is ceremonially boiled and allowed to overflow the pot, symbolizing abundance."
+  },
+  {
+    "id": "SL_0373",
+    "names": {
+      "english": "Christmas Cake"
+    },
+    "category": "festival",
+    "difficulty": "hard",
+    "prep_time_mins": 60,
+    "cook_time_mins": 180,
+    "servings": 20,
+    "region": "Western Province",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "dried fruits",
+        "amount": "1 kg soaked in brandy"
+      },
+      {
+        "name": "butter",
+        "amount": "500g"
+      },
+      {
+        "name": "sugar",
+        "amount": "500g"
+      },
+      {
+        "name": "eggs",
+        "amount": "12"
+      },
+      {
+        "name": "flour",
+        "amount": "500g"
+      },
+      {
+        "name": "treacle",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "almond essence",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "vanilla",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "mixed spice",
+        "amount": "2 tsp"
+      },
+      {
+        "name": "semolina",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "honey",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "cashews",
+        "amount": "200g"
+      },
+      {
+        "name": "chow chow preserve",
+        "amount": "100g"
+      }
+    ],
+    "method": "1. Soak dried fruits in brandy for 2 weeks\n2. Cream butter and sugar until very light\n3. Add eggs one at a time, then treacle\n4. Fold in flour, semolina, spices\n5. Add soaked fruits, nuts, preserves\n6. Bake at 150C for 2.5-3 hours, test with skewer",
+    "tips": "Soak fruits at least 2 weeks ahead. Longer is better.",
+    "cultural_note": "Sri Lankan Christmas cake is the richest, densest fruit cake in the Asian tradition, a pride of Burgher families."
+  },
+  {
+    "id": "SL_0374",
+    "names": {
+      "english": "Ramzan Special Falooda"
+    },
+    "category": "festival",
+    "difficulty": "easy",
+    "prep_time_mins": 15,
+    "cook_time_mins": 10,
+    "servings": 4,
+    "region": "Eastern Province",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "falooda seeds",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "falooda noodles",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "milk",
+        "amount": "2 cups"
+      },
+      {
+        "name": "rose syrup",
+        "amount": "3 tbsp"
+      },
+      {
+        "name": "sugar",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "ice cream",
+        "amount": "2 scoops"
+      },
+      {
+        "name": "jelly",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "pistachio",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "almonds",
+        "amount": "1 tbsp"
+      }
+    ],
+    "method": "1. Soak falooda seeds until swollen\n2. Cook falooda noodles, cool\n3. Prepare rose milk with sugar\n4. Layer in tall glass: noodles, seeds, jelly cubes\n5. Pour cold rose milk\n6. Top with ice cream, crushed nuts",
+    "tips": "Assemble just before serving for best presentation.",
+    "cultural_note": "Special falooda is prepared to break the Ramadan fast, a celebratory drink-dessert."
+  },
+  {
+    "id": "SL_0375",
+    "names": {
+      "english": "Deepavali Sweets Platter"
+    },
+    "category": "festival",
+    "difficulty": "medium",
+    "prep_time_mins": 30,
+    "cook_time_mins": 20,
+    "servings": 12,
+    "region": "Northern Province",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "chickpea flour",
+        "amount": "1 cup"
+      },
+      {
+        "name": "rice flour",
+        "amount": "1 cup"
+      },
+      {
+        "name": "sugar",
+        "amount": "1 cup"
+      },
+      {
+        "name": "milk",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "ghee",
+        "amount": "for frying"
+      },
+      {
+        "name": "cardamom",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "cashews",
+        "amount": "1/4 cup"
+      },
+      {
+        "name": "sesame seeds",
+        "amount": "2 tbsp"
+      }
+    ],
+    "method": "1. Make ladoo: roast chickpea flour in ghee, add sugar syrup, shape\n2. Make murukku: mix rice flour with water, press through murukku maker into hot oil\n3. Make sweet seedai: mix rice flour with jaggery, shape into balls, fry\n4. Arrange all sweets on large platter\n5. Garnish with cashews and sesame\n6. Distribute to neighbors and friends",
+    "tips": "Each sweet type should be prepared separately.",
+    "cultural_note": "Deepavali celebrates the victory of light over darkness. Tamil families in Sri Lanka prepare elaborate sweet platters."
+  },
+  {
+    "id": "SL_0376",
+    "names": {
+      "english": "Unduwap Poya Sweet Rice"
+    },
+    "category": "festival",
+    "difficulty": "easy",
+    "prep_time_mins": 15,
+    "cook_time_mins": 30,
+    "servings": 6,
+    "region": "Island-wide",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "rice",
+        "amount": "2 cups"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "2 cups"
+      },
+      {
+        "name": "jaggery",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "cardamom",
+        "amount": "3 pods"
+      },
+      {
+        "name": "pandan leaves",
+        "amount": "2"
+      },
+      {
+        "name": "cashews",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "raisins",
+        "amount": "2 tbsp"
+      }
+    ],
+    "method": "1. Cook rice in coconut milk with pandan leaves\n2. Melt jaggery in a little water, strain\n3. Mix jaggery into cooked rice\n4. Add cardamom\n5. Garnish with fried cashews and raisins\n6. Offer at temple and distribute",
+    "tips": "Use kithul jaggery for authentic temple offering flavor.",
+    "cultural_note": "Sweet rice offerings are made at Buddhist temples during every Poya (full moon) day."
+  },
+  {
+    "id": "SL_0377",
+    "names": {
+      "english": "Thai Pongal with Sugarcane"
+    },
+    "category": "festival",
+    "difficulty": "easy",
+    "prep_time_mins": 15,
+    "cook_time_mins": 30,
+    "servings": 6,
+    "region": "Northern Province",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "raw rice",
+        "amount": "2 cups"
+      },
+      {
+        "name": "moong dhal",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "milk",
+        "amount": "2 cups"
+      },
+      {
+        "name": "jaggery",
+        "amount": "1 cup"
+      },
+      {
+        "name": "cardamom",
+        "amount": "4 pods"
+      },
+      {
+        "name": "ghee",
+        "amount": "3 tbsp"
+      },
+      {
+        "name": "cashews",
+        "amount": "3 tbsp"
+      },
+      {
+        "name": "sugarcane pieces",
+        "amount": "for decoration"
+      }
+    ],
+    "method": "1. Wash rice and dhal, cook together in pot\n2. When almost done, add milk\n3. Let it boil over (auspicious!)\n4. Add melted jaggery, cardamom\n5. Fry cashews in ghee, add to pongal\n6. Decorate serving pot with sugarcane",
+    "tips": "Traditionally cooked outdoors in a new clay pot.",
+    "cultural_note": "Thai Pongal is the Tamil harvest thanksgiving. The milk must boil over for good fortune."
+  },
+  {
+    "id": "SL_0378",
+    "names": {
+      "english": "Sinhalese New Year Aasmi"
+    },
+    "category": "festival",
+    "difficulty": "hard",
+    "prep_time_mins": 30,
+    "cook_time_mins": 20,
+    "servings": 10,
+    "region": "Western Province",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "rice flour",
+        "amount": "1 cup"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "treacle",
+        "amount": "3/4 cup"
+      },
+      {
+        "name": "oil for frying",
+        "amount": "3 cups"
+      }
+    ],
+    "method": "1. Make thin batter with rice flour and coconut milk\n2. Heat oil, pour batter through perforated coconut shell\n3. Form a lacy net pattern in oil\n4. Fry until lightly golden\n5. Remove, drizzle warm treacle\n6. Fold into quarters while still warm",
+    "tips": "The batter must be very thin to create the lacy pattern.",
+    "cultural_note": "Aasmi is a delicate, lace-like sweet made for the Sinhala New Year table. Its intricate pattern represents the skill of the cook."
+  },
+  {
+    "id": "SL_0379",
+    "names": {
+      "english": "Easter Hot Cross Buns"
+    },
+    "category": "festival",
+    "difficulty": "medium",
+    "prep_time_mins": 60,
+    "cook_time_mins": 20,
+    "servings": 12,
+    "region": "Western Province",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "flour",
+        "amount": "3 cups"
+      },
+      {
+        "name": "yeast",
+        "amount": "2 tsp"
+      },
+      {
+        "name": "sugar",
+        "amount": "1/4 cup"
+      },
+      {
+        "name": "butter",
+        "amount": "50g"
+      },
+      {
+        "name": "milk",
+        "amount": "1 cup"
+      },
+      {
+        "name": "egg",
+        "amount": "1"
+      },
+      {
+        "name": "mixed spice",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "cinnamon",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "raisins",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "mixed peel",
+        "amount": "2 tbsp"
+      }
+    ],
+    "method": "1. Dissolve yeast in warm milk with sugar\n2. Mix flour, spices, add yeast mixture, egg, butter\n3. Knead 10 mins, add raisins and peel\n4. Prove 1 hour until doubled\n5. Shape into 12 buns, prove again 20 mins\n6. Pipe crosses with flour paste, bake 200C for 15-20 mins",
+    "tips": "Prove in a warm spot for best rise.",
+    "cultural_note": "Hot cross buns are a Christian Easter tradition in Sri Lanka, especially in Burgher and Catholic communities."
+  },
+  {
+    "id": "SL_0380",
+    "names": {
+      "english": "Ganesh Chaturthi Modaks"
+    },
+    "category": "festival",
+    "difficulty": "medium",
+    "prep_time_mins": 30,
+    "cook_time_mins": 20,
+    "servings": 8,
+    "region": "Northern Province",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "rice flour",
+        "amount": "2 cups"
+      },
+      {
+        "name": "grated coconut",
+        "amount": "1 cup"
+      },
+      {
+        "name": "jaggery",
+        "amount": "3/4 cup"
+      },
+      {
+        "name": "cardamom",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "nutmeg",
+        "amount": "pinch"
+      },
+      {
+        "name": "water",
+        "amount": "1.5 cups"
+      },
+      {
+        "name": "ghee",
+        "amount": "1 tbsp"
+      }
+    ],
+    "method": "1. Make filling: cook coconut and jaggery until combined, add spices\n2. Boil water, add rice flour off heat, knead smooth dough\n3. Make small cups from dough\n4. Fill with coconut-jaggery mixture\n5. Pinch top together to seal in teardrop shape\n6. Steam for 10-15 minutes",
+    "tips": "Keep dough covered with damp cloth to prevent drying.",
+    "cultural_note": "Modaks are sweet dumplings offered to Lord Ganesh during the Hindu festival of Ganesh Chaturthi."
+  },
+  {
+    "id": "SL_0381",
+    "names": {
+      "english": "Faluda"
+    },
+    "category": "beverage",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 5,
+    "servings": 2,
+    "region": "Island-wide",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "falooda seeds",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "falooda noodles",
+        "amount": "1/4 cup"
+      },
+      {
+        "name": "milk",
+        "amount": "400ml"
+      },
+      {
+        "name": "rose syrup",
+        "amount": "3 tbsp"
+      },
+      {
+        "name": "sugar",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "ice cream",
+        "amount": "1 scoop"
+      },
+      {
+        "name": "crushed ice",
+        "amount": "1 cup"
+      }
+    ],
+    "method": "1. Soak falooda seeds in water until swollen\n2. Cook falooda noodles, rinse in cold water\n3. Mix milk with rose syrup and sugar\n4. Layer in glass: noodles, seeds, crushed ice\n5. Pour rose milk over\n6. Top with ice cream and drizzle of rose syrup",
+    "tips": "Use high-quality rose syrup for authentic pink color and fragrance.",
+    "cultural_note": "Faluda is Sri Lanka's favorite sweet drink-dessert, sold at every corner shop especially during hot weather."
+  },
+  {
+    "id": "SL_0382",
+    "names": {
+      "english": "King Coconut Water (Thambili)"
+    },
+    "category": "beverage",
+    "difficulty": "easy",
+    "prep_time_mins": 2,
+    "cook_time_mins": 0,
+    "servings": 1,
+    "region": "Island-wide",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "king coconut",
+        "amount": "1"
+      }
+    ],
+    "method": "1. Select a fresh, bright orange king coconut\n2. Cut the top with a sharp machete\n3. Insert a straw\n4. Drink the refreshing water directly\n5. After drinking, scoop out soft flesh to eat\n6. Best served chilled",
+    "tips": "Choose heavy king coconuts - they have more water inside.",
+    "cultural_note": "King coconut (thambili) is Sri Lanka's iconic natural energy drink. Roadside thambili sellers are a ubiquitous sight across the island."
+  },
+  {
+    "id": "SL_0383",
+    "names": {
+      "english": "Wood Apple Juice"
+    },
+    "category": "beverage",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 0,
+    "servings": 2,
+    "region": "Island-wide",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "wood apple",
+        "amount": "1 large"
+      },
+      {
+        "name": "sugar",
+        "amount": "3 tbsp"
+      },
+      {
+        "name": "water",
+        "amount": "2 cups"
+      },
+      {
+        "name": "ice",
+        "amount": "as needed"
+      }
+    ],
+    "method": "1. Crack open the hard wood apple shell\n2. Scoop out the brown pulp\n3. Add to water, mix and squeeze through strainer\n4. Add sugar, stir until dissolved\n5. Add ice\n6. Serve chilled",
+    "tips": "Strain well to remove seeds and fibrous bits.",
+    "cultural_note": "Wood apple juice is a beloved Sri Lankan drink with a distinctive tangy-sweet flavor found nowhere else in the world."
+  },
+  {
+    "id": "SL_0384",
+    "names": {
+      "english": "Ceylon Tea (Plain Tea)"
+    },
+    "category": "beverage",
+    "difficulty": "easy",
+    "prep_time_mins": 5,
+    "cook_time_mins": 5,
+    "servings": 2,
+    "region": "Central Province",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "Ceylon black tea leaves",
+        "amount": "2 tsp"
+      },
+      {
+        "name": "water",
+        "amount": "2 cups"
+      },
+      {
+        "name": "sugar",
+        "amount": "to taste"
+      }
+    ],
+    "method": "1. Boil fresh water\n2. Add tea leaves to pot\n3. Pour boiling water over leaves\n4. Steep 3-4 minutes\n5. Strain into cups\n6. Add sugar if desired",
+    "tips": "Use freshly boiled water and never re-boil for best flavor.",
+    "cultural_note": "Ceylon tea is Sri Lanka's most famous export. The tea of the Central Highlands is considered among the finest in the world."
+  },
+  {
+    "id": "SL_0385",
+    "names": {
+      "english": "Milk Tea (Kiri Te)"
+    },
+    "category": "beverage",
+    "difficulty": "easy",
+    "prep_time_mins": 5,
+    "cook_time_mins": 5,
+    "servings": 2,
+    "region": "Island-wide",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "Ceylon black tea",
+        "amount": "2 tsp"
+      },
+      {
+        "name": "water",
+        "amount": "1 cup"
+      },
+      {
+        "name": "milk",
+        "amount": "1 cup"
+      },
+      {
+        "name": "sugar",
+        "amount": "2 tsp"
+      }
+    ],
+    "method": "1. Boil water, add tea leaves\n2. Brew strong tea for 3-4 minutes\n3. Strain into cup\n4. Add hot milk\n5. Add sugar, stir well\n6. Serve hot",
+    "tips": "Brew the tea stronger than usual since milk dilutes it.",
+    "cultural_note": "Kiri te (milk tea) is the lifeblood of Sri Lanka. It is offered to every visitor and consumed multiple times daily."
+  },
+  {
+    "id": "SL_0386",
+    "names": {
+      "english": "Ginger Beer"
+    },
+    "category": "beverage",
+    "difficulty": "easy",
+    "prep_time_mins": 15,
+    "cook_time_mins": 20,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 1,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "fresh ginger",
+        "amount": "100g"
+      },
+      {
+        "name": "sugar",
+        "amount": "1 cup"
+      },
+      {
+        "name": "lime juice",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "water",
+        "amount": "4 cups"
+      },
+      {
+        "name": "cloves",
+        "amount": "3"
+      },
+      {
+        "name": "cinnamon stick",
+        "amount": "1"
+      }
+    ],
+    "method": "1. Peel and grate ginger\n2. Boil water with ginger, cloves, cinnamon 15 mins\n3. Strain, add sugar while hot\n4. Add lime juice\n5. Cool completely\n6. Serve over ice",
+    "tips": "Use old ginger for stronger flavor.",
+    "cultural_note": "Ginger beer is Sri Lanka's original soft drink, made at home long before commercial beverages arrived."
+  },
+  {
+    "id": "SL_0387",
+    "names": {
+      "english": "Belimal (Bael Fruit Drink)"
+    },
+    "category": "beverage",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 0,
+    "servings": 2,
+    "region": "Island-wide",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "bael fruit",
+        "amount": "1"
+      },
+      {
+        "name": "sugar",
+        "amount": "3 tbsp"
+      },
+      {
+        "name": "water",
+        "amount": "2 cups"
+      },
+      {
+        "name": "ice",
+        "amount": "as needed"
+      }
+    ],
+    "method": "1. Scoop out bael fruit pulp\n2. Add water and mash well\n3. Strain through sieve\n4. Add sugar and stir\n5. Add ice\n6. Serve chilled",
+    "tips": "Choose ripe bael fruit with cracks on the shell.",
+    "cultural_note": "Belimal is a traditional cooling drink believed to aid digestion and soothe the stomach in Ayurvedic medicine."
+  },
+  {
+    "id": "SL_0388",
+    "names": {
+      "english": "Kurumba (Young Coconut) Smoothie"
+    },
+    "category": "beverage",
+    "difficulty": "easy",
+    "prep_time_mins": 5,
+    "cook_time_mins": 0,
+    "servings": 2,
+    "region": "Southern Province",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "young coconut water",
+        "amount": "1 cup"
+      },
+      {
+        "name": "young coconut flesh",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "condensed milk",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "ice",
+        "amount": "1 cup"
+      }
+    ],
+    "method": "1. Extract water and scoop flesh from young coconut\n2. Add coconut water, flesh, condensed milk to blender\n3. Add ice\n4. Blend until smooth\n5. Pour into glass\n6. Serve immediately",
+    "tips": "Use green tender coconuts for the softest flesh.",
+    "cultural_note": "Young coconut smoothies are a beach-side treat especially popular in Southern coastal tourist areas."
+  },
+  {
+    "id": "SL_0389",
+    "names": {
+      "english": "Nelli Juice (Indian Gooseberry)"
+    },
+    "category": "beverage",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 5,
+    "servings": 2,
+    "region": "Island-wide",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "nelli (amla)",
+        "amount": "10"
+      },
+      {
+        "name": "sugar",
+        "amount": "3 tbsp"
+      },
+      {
+        "name": "water",
+        "amount": "2 cups"
+      },
+      {
+        "name": "salt",
+        "amount": "pinch"
+      },
+      {
+        "name": "ice",
+        "amount": "as needed"
+      }
+    ],
+    "method": "1. Wash and chop nelli, remove seeds\n2. Blend with water until smooth\n3. Strain through fine sieve\n4. Add sugar, pinch of salt\n5. Stir well, add ice\n6. Serve immediately before oxidation",
+    "tips": "Drink immediately - nelli juice oxidizes and turns brown quickly.",
+    "cultural_note": "Nelli juice is one of the richest sources of vitamin C. Sri Lankan grandmothers swear by it for immunity and glowing skin."
+  },
+  {
+    "id": "SL_0390",
+    "names": {
+      "english": "Coriander and Mint Cooler"
+    },
+    "category": "beverage",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 0,
+    "servings": 2,
+    "region": "Eastern Province",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "fresh coriander",
+        "amount": "1 cup"
+      },
+      {
+        "name": "fresh mint",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "green chili",
+        "amount": "1"
+      },
+      {
+        "name": "lime juice",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "sugar",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "water",
+        "amount": "2 cups"
+      },
+      {
+        "name": "salt",
+        "amount": "pinch"
+      },
+      {
+        "name": "ice",
+        "amount": "as needed"
+      }
+    ],
+    "method": "1. Wash herbs thoroughly\n2. Blend coriander, mint, green chili with water\n3. Strain through fine sieve\n4. Add lime juice, sugar, salt\n5. Mix well, add ice\n6. Serve as a refreshing cooler",
+    "tips": "Use fresh, vibrant green herbs for best flavor and color.",
+    "cultural_note": "This herbal cooler is a refreshing drink popular in the Eastern Province, especially during Ramadan as an iftar drink."
+  }
+]

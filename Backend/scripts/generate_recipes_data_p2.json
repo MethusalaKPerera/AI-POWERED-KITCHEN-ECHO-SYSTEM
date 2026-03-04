@@ -1,0 +1,2536 @@
+[
+  {
+    "id": "SL_0236",
+    "names": {
+      "english": "Yellow Rice (Kaha Bath)"
+    },
+    "category": "rice",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 25,
+    "servings": 6,
+    "region": "Island-wide",
+    "spice_level": 1,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "basmati rice",
+        "amount": "2 cups"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "2 cups"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "pandan leaves",
+        "amount": "2"
+      },
+      {
+        "name": "cardamom",
+        "amount": "3 pods"
+      },
+      {
+        "name": "cloves",
+        "amount": "3"
+      },
+      {
+        "name": "cinnamon stick",
+        "amount": "1"
+      },
+      {
+        "name": "cashew nuts",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "raisins",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "salt",
+        "amount": "1 tsp"
+      }
+    ],
+    "method": "1. Wash rice, drain\n2. Heat oil, fry cashews and raisins, set aside\n3. Add whole spices, saute 1 min\n4. Add rice, turmeric, salt, stir\n5. Add coconut milk and pandan, bring to boil\n6. Cover, cook on low 20 mins, fluff with fork, garnish with cashews and raisins",
+    "tips": "Use good quality basmati for fluffy separate grains.",
+    "cultural_note": "Yellow rice is the centerpiece of Sri Lankan celebrations - weddings, New Year, and religious ceremonies."
+  },
+  {
+    "id": "SL_0237",
+    "names": {
+      "english": "Ghee Rice"
+    },
+    "category": "rice",
+    "difficulty": "medium",
+    "prep_time_mins": 15,
+    "cook_time_mins": 30,
+    "servings": 6,
+    "region": "Eastern Province",
+    "spice_level": 1,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "basmati rice",
+        "amount": "2 cups"
+      },
+      {
+        "name": "ghee",
+        "amount": "3 tbsp"
+      },
+      {
+        "name": "onion",
+        "amount": "2"
+      },
+      {
+        "name": "cardamom",
+        "amount": "4 pods"
+      },
+      {
+        "name": "cloves",
+        "amount": "4"
+      },
+      {
+        "name": "cinnamon stick",
+        "amount": "1"
+      },
+      {
+        "name": "bay leaves",
+        "amount": "2"
+      },
+      {
+        "name": "cashew nuts",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "raisins",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "chicken stock",
+        "amount": "3 cups"
+      },
+      {
+        "name": "salt",
+        "amount": "1 tsp"
+      }
+    ],
+    "method": "1. Wash and soak rice 30 mins\n2. Heat ghee, fry cashews and raisins, remove\n3. Saute onions with whole spices until golden\n4. Add drained rice, stir 2 mins\n5. Add stock, salt, bring to boil\n6. Cover tight, cook low 20 mins, garnish",
+    "tips": "Use real ghee, not butter, for authentic aroma.",
+    "cultural_note": "Ghee rice is a festive Muslim dish served at weddings and Eid celebrations in Eastern Sri Lanka."
+  },
+  {
+    "id": "SL_0238",
+    "names": {
+      "english": "Chicken Biriyani"
+    },
+    "category": "rice",
+    "difficulty": "hard",
+    "prep_time_mins": 30,
+    "cook_time_mins": 60,
+    "servings": 6,
+    "region": "Eastern Province",
+    "spice_level": 3,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "basmati rice",
+        "amount": "3 cups"
+      },
+      {
+        "name": "chicken",
+        "amount": "1 kg"
+      },
+      {
+        "name": "onion",
+        "amount": "3 large"
+      },
+      {
+        "name": "yogurt",
+        "amount": "1 cup"
+      },
+      {
+        "name": "biriyani masala",
+        "amount": "3 tbsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "saffron",
+        "amount": "pinch"
+      },
+      {
+        "name": "mint leaves",
+        "amount": "1 cup"
+      },
+      {
+        "name": "coriander leaves",
+        "amount": "1 cup"
+      },
+      {
+        "name": "ghee",
+        "amount": "4 tbsp"
+      },
+      {
+        "name": "garlic",
+        "amount": "8 cloves"
+      },
+      {
+        "name": "ginger",
+        "amount": "2 inch"
+      },
+      {
+        "name": "green chili",
+        "amount": "6"
+      },
+      {
+        "name": "cashews",
+        "amount": "3 tbsp"
+      },
+      {
+        "name": "raisins",
+        "amount": "3 tbsp"
+      }
+    ],
+    "method": "1. Marinate chicken in yogurt, masala, garlic, ginger for 2 hours\n2. Parboil rice with whole spices until 70% cooked\n3. Deep fry onions until crispy\n4. In pot layer: chicken, rice, fried onions, mint, coriander\n5. Add saffron milk, ghee, seal with foil\n6. Cook on dum (very low heat) 30 mins",
+    "tips": "Don't open the lid during dum cooking - the steam does the magic.",
+    "cultural_note": "Sri Lankan biriyani, especially from Akkaraipattu and Kalmunai, has its own unique style distinct from Indian versions."
+  },
+  {
+    "id": "SL_0239",
+    "names": {
+      "english": "Lamprais"
+    },
+    "category": "rice",
+    "difficulty": "hard",
+    "prep_time_mins": 60,
+    "cook_time_mins": 120,
+    "servings": 8,
+    "region": "Western Province",
+    "spice_level": 2,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "basmati rice",
+        "amount": "3 cups"
+      },
+      {
+        "name": "beef curry",
+        "amount": "500g"
+      },
+      {
+        "name": "chicken curry",
+        "amount": "500g"
+      },
+      {
+        "name": "frikkadels (meatballs)",
+        "amount": "12"
+      },
+      {
+        "name": "eggplant moju",
+        "amount": "1 cup"
+      },
+      {
+        "name": "blachan (prawn paste sambol)",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "hard-boiled eggs",
+        "amount": "4"
+      },
+      {
+        "name": "banana leaves",
+        "amount": "8 pieces"
+      },
+      {
+        "name": "mixed meat stock",
+        "amount": "4 cups"
+      },
+      {
+        "name": "ghee",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "cardamom",
+        "amount": "4"
+      },
+      {
+        "name": "cloves",
+        "amount": "4"
+      }
+    ],
+    "method": "1. Cook rice in mixed meat stock with spices\n2. Prepare all components: beef curry, chicken curry, frikkadels, moju, blachan\n3. Soften banana leaves over flame\n4. Place rice on banana leaf, add portions of each component\n5. Add half a boiled egg\n6. Wrap tightly, bake in oven at 180C for 20 mins",
+    "tips": "Each component must be prepared separately for authentic lamprais.",
+    "cultural_note": "Lamprais is Sri Lanka's most famous Dutch Burgher dish, derived from the Dutch 'lomprijst'. It is a complete meal wrapped in banana leaf."
+  },
+  {
+    "id": "SL_0240",
+    "names": {
+      "english": "Milk Rice (Kiribath)"
+    },
+    "category": "rice",
+    "difficulty": "easy",
+    "prep_time_mins": 5,
+    "cook_time_mins": 25,
+    "servings": 6,
+    "region": "Island-wide",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "short grain rice",
+        "amount": "2 cups"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "3 cups"
+      },
+      {
+        "name": "salt",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "water",
+        "amount": "1 cup"
+      }
+    ],
+    "method": "1. Wash rice thoroughly\n2. Cook rice with water until half done\n3. Add thick coconut milk and salt\n4. Stir gently and cook until milk is absorbed\n5. Press into flat tray, smooth the surface\n6. Cut into diamond shapes when slightly cool",
+    "tips": "Use full-fat thick coconut milk for creamy results.",
+    "cultural_note": "Kiribath is the first food cooked in a new year and for every auspicious occasion. It symbolizes prosperity and new beginnings in Sri Lankan culture."
+  },
+  {
+    "id": "SL_0241",
+    "names": {
+      "english": "Coconut Rice"
+    },
+    "category": "rice",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 25,
+    "servings": 4,
+    "region": "Southern Province",
+    "spice_level": 1,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "rice",
+        "amount": "2 cups"
+      },
+      {
+        "name": "desiccated coconut",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "1 cup"
+      },
+      {
+        "name": "water",
+        "amount": "1 cup"
+      },
+      {
+        "name": "pandan leaves",
+        "amount": "2"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "salt",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "cashews",
+        "amount": "2 tbsp"
+      }
+    ],
+    "method": "1. Toast desiccated coconut in dry pan until golden\n2. Wash rice, add to pot with coconut milk and water\n3. Add pandan, curry leaves, salt\n4. Cook until done\n5. Fold in toasted coconut\n6. Garnish with fried cashews",
+    "tips": "Toast coconut on low heat, stirring constantly to avoid burning.",
+    "cultural_note": "Coconut rice is a fragrant Southern Sri Lankan specialty that highlights the island's abundance of coconut."
+  },
+  {
+    "id": "SL_0242",
+    "names": {
+      "english": "Vegetable Fried Rice"
+    },
+    "category": "rice",
+    "difficulty": "easy",
+    "prep_time_mins": 15,
+    "cook_time_mins": 15,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 2,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "cooked rice",
+        "amount": "3 cups"
+      },
+      {
+        "name": "carrot",
+        "amount": "1"
+      },
+      {
+        "name": "leeks",
+        "amount": "1"
+      },
+      {
+        "name": "capsicum",
+        "amount": "1"
+      },
+      {
+        "name": "cabbage",
+        "amount": "1 cup"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "egg",
+        "amount": "2"
+      },
+      {
+        "name": "soy sauce",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "garlic",
+        "amount": "4 cloves"
+      },
+      {
+        "name": "green chili",
+        "amount": "3"
+      },
+      {
+        "name": "salt",
+        "amount": "to taste"
+      },
+      {
+        "name": "oil",
+        "amount": "3 tbsp"
+      }
+    ],
+    "method": "1. Use day-old cold rice for best results\n2. Heat oil on high, scramble eggs, remove\n3. Stir-fry garlic, onions, green chilies\n4. Add all vegetables, cook 3 mins on high\n5. Add rice, soy sauce, toss vigorously\n6. Add eggs back, mix well",
+    "tips": "Day-old refrigerated rice makes the best fried rice - less sticky.",
+    "cultural_note": "Chinese-style fried rice has been adopted as a Sri Lankan staple, served at every restaurant and party."
+  },
+  {
+    "id": "SL_0243",
+    "names": {
+      "english": "Chicken Fried Rice"
+    },
+    "category": "rice",
+    "difficulty": "easy",
+    "prep_time_mins": 15,
+    "cook_time_mins": 20,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 2,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "cooked rice",
+        "amount": "3 cups"
+      },
+      {
+        "name": "chicken breast",
+        "amount": "300g"
+      },
+      {
+        "name": "carrot",
+        "amount": "1"
+      },
+      {
+        "name": "leeks",
+        "amount": "1"
+      },
+      {
+        "name": "capsicum",
+        "amount": "1"
+      },
+      {
+        "name": "egg",
+        "amount": "2"
+      },
+      {
+        "name": "soy sauce",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "oyster sauce",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "garlic",
+        "amount": "4 cloves"
+      },
+      {
+        "name": "ginger",
+        "amount": "1 inch"
+      },
+      {
+        "name": "oil",
+        "amount": "3 tbsp"
+      }
+    ],
+    "method": "1. Dice chicken, season with salt and pepper\n2. Stir-fry chicken on high heat, set aside\n3. Scramble eggs, set aside\n4. Stir-fry all vegetables with garlic and ginger\n5. Add cold rice, soy sauce, oyster sauce\n6. Return chicken and egg, toss on high heat",
+    "tips": "Cut chicken into small uniform pieces for even cooking.",
+    "cultural_note": "Chicken fried rice is the most popular single dish ordered at Sri Lankan Chinese restaurants."
+  },
+  {
+    "id": "SL_0244",
+    "names": {
+      "english": "Egg Fried Rice"
+    },
+    "category": "rice",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 10,
+    "servings": 2,
+    "region": "Island-wide",
+    "spice_level": 1,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "cooked rice",
+        "amount": "2 cups"
+      },
+      {
+        "name": "eggs",
+        "amount": "3"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "garlic",
+        "amount": "3 cloves"
+      },
+      {
+        "name": "soy sauce",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "green onions",
+        "amount": "2 stalks"
+      },
+      {
+        "name": "salt",
+        "amount": "to taste"
+      },
+      {
+        "name": "oil",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "white pepper",
+        "amount": "1/4 tsp"
+      }
+    ],
+    "method": "1. Beat eggs lightly with salt\n2. Heat oil on high, pour in eggs, scramble quickly\n3. Add garlic and onions, stir-fry 1 min\n4. Add cold rice, break up lumps\n5. Add soy sauce, white pepper\n6. Garnish with green onions",
+    "tips": "High heat and quick movements are key to good fried rice.",
+    "cultural_note": "Egg fried rice is Sri Lanka's most affordable fried rice option, popular with students."
+  },
+  {
+    "id": "SL_0245",
+    "names": {
+      "english": "Seafood Fried Rice"
+    },
+    "category": "rice",
+    "difficulty": "medium",
+    "prep_time_mins": 20,
+    "cook_time_mins": 15,
+    "servings": 4,
+    "region": "Western Province",
+    "spice_level": 2,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "cooked rice",
+        "amount": "3 cups"
+      },
+      {
+        "name": "prawns",
+        "amount": "200g"
+      },
+      {
+        "name": "squid",
+        "amount": "150g"
+      },
+      {
+        "name": "crab sticks",
+        "amount": "100g"
+      },
+      {
+        "name": "carrot",
+        "amount": "1"
+      },
+      {
+        "name": "leeks",
+        "amount": "1"
+      },
+      {
+        "name": "capsicum",
+        "amount": "1"
+      },
+      {
+        "name": "egg",
+        "amount": "2"
+      },
+      {
+        "name": "soy sauce",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "fish sauce",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "garlic",
+        "amount": "5 cloves"
+      },
+      {
+        "name": "oil",
+        "amount": "3 tbsp"
+      }
+    ],
+    "method": "1. Clean prawns and squid, slice squid into rings\n2. Stir-fry seafood on high heat 2 mins, remove\n3. Scramble eggs, remove\n4. Stir-fry vegetables with garlic\n5. Add rice, soy sauce, fish sauce\n6. Return seafood and eggs, toss well",
+    "tips": "Cook seafood briefly on very high heat.",
+    "cultural_note": "Seafood fried rice is a premium dish at Sri Lankan restaurants, often served at parties."
+  },
+  {
+    "id": "SL_0246",
+    "names": {
+      "english": "Nasi Goreng"
+    },
+    "category": "rice",
+    "difficulty": "medium",
+    "prep_time_mins": 15,
+    "cook_time_mins": 15,
+    "servings": 4,
+    "region": "Western Province",
+    "spice_level": 3,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "cooked rice",
+        "amount": "3 cups"
+      },
+      {
+        "name": "chicken",
+        "amount": "200g"
+      },
+      {
+        "name": "prawns",
+        "amount": "150g"
+      },
+      {
+        "name": "onion",
+        "amount": "2"
+      },
+      {
+        "name": "garlic",
+        "amount": "4 cloves"
+      },
+      {
+        "name": "chili paste",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "soy sauce",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "sweet soy sauce",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "egg",
+        "amount": "2"
+      },
+      {
+        "name": "cucumber",
+        "amount": "1"
+      },
+      {
+        "name": "fried shallots",
+        "amount": "2 tbsp"
+      }
+    ],
+    "method": "1. Dice chicken, stir-fry with prawns, set aside\n2. Scramble eggs, set aside\n3. Saute onions, garlic, chili paste\n4. Add rice, soy sauces, toss on high heat\n5. Return chicken, prawns, eggs\n6. Serve topped with fried egg, cucumber, shallots",
+    "tips": "Use kecap manis (sweet soy) for authentic flavor.",
+    "cultural_note": "Nasi Goreng reflects the Malay cultural influence on Sri Lankan cuisine, particularly in Colombo."
+  },
+  {
+    "id": "SL_0247",
+    "names": {
+      "english": "Tomato Rice"
+    },
+    "category": "rice",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 25,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 2,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "rice",
+        "amount": "2 cups"
+      },
+      {
+        "name": "tomato",
+        "amount": "4 large"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "garlic",
+        "amount": "3 cloves"
+      },
+      {
+        "name": "chili powder",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "cinnamon stick",
+        "amount": "1"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "oil",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "salt",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "water",
+        "amount": "2.5 cups"
+      }
+    ],
+    "method": "1. Blend 2 tomatoes, dice remaining 2\n2. Heat oil, saute onions, garlic, cinnamon\n3. Add diced tomatoes, cook 3 mins\n4. Add rice, blended tomato, water, spices\n5. Bring to boil, cover, cook on low 20 mins\n6. Fluff with fork",
+    "tips": "Use ripe red tomatoes for best color and flavor.",
+    "cultural_note": "Tomato rice is a quick one-pot meal popular for lunch boxes and picnics."
+  },
+  {
+    "id": "SL_0248",
+    "names": {
+      "english": "String Hopper Pilau"
+    },
+    "category": "rice",
+    "difficulty": "medium",
+    "prep_time_mins": 20,
+    "cook_time_mins": 30,
+    "servings": 4,
+    "region": "Northern Province",
+    "spice_level": 2,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "string hoppers",
+        "amount": "20"
+      },
+      {
+        "name": "onion",
+        "amount": "2"
+      },
+      {
+        "name": "curry powder",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "cardamom",
+        "amount": "3 pods"
+      },
+      {
+        "name": "cloves",
+        "amount": "3"
+      },
+      {
+        "name": "cashew nuts",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "green peas",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "eggs",
+        "amount": "2"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "oil",
+        "amount": "3 tbsp"
+      }
+    ],
+    "method": "1. Break string hoppers into small pieces\n2. Heat oil, fry cashews, set aside\n3. Saute onions with whole spices\n4. Add curry powder, turmeric, peas\n5. Add string hopper pieces, toss gently\n6. Scramble eggs into mixture, garnish with cashews",
+    "tips": "Use slightly dry string hoppers for better texture.",
+    "cultural_note": "String hopper pilau is a creative Jaffna innovation that repurposes leftover string hoppers into a flavorful one-dish meal."
+  },
+  {
+    "id": "SL_0249",
+    "names": {
+      "english": "Malay Rice (Buriyani)"
+    },
+    "category": "rice",
+    "difficulty": "hard",
+    "prep_time_mins": 30,
+    "cook_time_mins": 50,
+    "servings": 6,
+    "region": "Western Province",
+    "spice_level": 3,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "basmati rice",
+        "amount": "3 cups"
+      },
+      {
+        "name": "mutton",
+        "amount": "500g"
+      },
+      {
+        "name": "onion",
+        "amount": "3"
+      },
+      {
+        "name": "yogurt",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "curry powder",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "saffron",
+        "amount": "pinch"
+      },
+      {
+        "name": "ghee",
+        "amount": "3 tbsp"
+      },
+      {
+        "name": "mint",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "rose water",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "garlic",
+        "amount": "6 cloves"
+      },
+      {
+        "name": "ginger",
+        "amount": "2 inch"
+      },
+      {
+        "name": "cardamom",
+        "amount": "4"
+      },
+      {
+        "name": "cashews",
+        "amount": "3 tbsp"
+      }
+    ],
+    "method": "1. Marinate mutton in yogurt and spices\n2. Cook marinated mutton until tender\n3. Parboil rice with whole spices\n4. Deep fry onions until crispy\n5. Layer meat, rice, onions, mint in pot, drizzle saffron milk and rose water\n6. Seal and cook on very low heat 25 mins",
+    "tips": "The rose water and saffron are what distinguish Malay buriyani.",
+    "cultural_note": "Sri Lankan Malay buriyani is a heritage recipe brought by Malay soldiers during Dutch colonial times."
+  },
+  {
+    "id": "SL_0250",
+    "names": {
+      "english": "Tamarind Rice"
+    },
+    "category": "rice",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 25,
+    "servings": 4,
+    "region": "Northern Province",
+    "spice_level": 2,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "rice",
+        "amount": "2 cups"
+      },
+      {
+        "name": "tamarind paste",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "peanuts",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "mustard seeds",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "dried red chili",
+        "amount": "3"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "sesame oil",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "salt",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "water",
+        "amount": "2.5 cups"
+      }
+    ],
+    "method": "1. Cook rice and cool\n2. Heat sesame oil, add mustard seeds, dried chilies\n3. Add peanuts, curry leaves, saute\n4. Add tamarind paste, turmeric, salt, cook 2 mins\n5. Add cooled rice, mix thoroughly\n6. Serve at room temperature",
+    "tips": "Spreading cooked rice on a tray to cool prevents it from becoming mushy.",
+    "cultural_note": "Tamarind rice is a Tamil dish popular in Northern Sri Lanka, often prepared for temple offerings."
+  },
+  {
+    "id": "SL_0251",
+    "names": {
+      "english": "Prawn Biriyani"
+    },
+    "category": "rice",
+    "difficulty": "hard",
+    "prep_time_mins": 30,
+    "cook_time_mins": 50,
+    "servings": 6,
+    "region": "Eastern Province",
+    "spice_level": 3,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "basmati rice",
+        "amount": "3 cups"
+      },
+      {
+        "name": "prawns",
+        "amount": "500g"
+      },
+      {
+        "name": "onion",
+        "amount": "3"
+      },
+      {
+        "name": "yogurt",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "biriyani masala",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "saffron",
+        "amount": "pinch"
+      },
+      {
+        "name": "ghee",
+        "amount": "3 tbsp"
+      },
+      {
+        "name": "mint",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "garlic",
+        "amount": "6 cloves"
+      },
+      {
+        "name": "ginger",
+        "amount": "1.5 inch"
+      },
+      {
+        "name": "green chili",
+        "amount": "4"
+      },
+      {
+        "name": "cashews",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "lime juice",
+        "amount": "1 tbsp"
+      }
+    ],
+    "method": "1. Marinate prawns in yogurt, masala, lime juice\n2. Parboil rice with whole spices\n3. Deep fry onions, set aside\n4. Cook marinated prawns 5 mins\n5. Layer rice, prawns, onions, mint in pot\n6. Seal, cook on dum 20 mins",
+    "tips": "Do not overcook prawns before layering.",
+    "cultural_note": "Prawn biriyani from Batticaloa is considered one of the finest rice dishes in Sri Lanka."
+  },
+  {
+    "id": "SL_0252",
+    "names": {
+      "english": "Coconut Milk Rice (Kiri Bath Variation)"
+    },
+    "category": "rice",
+    "difficulty": "easy",
+    "prep_time_mins": 5,
+    "cook_time_mins": 30,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "samba rice",
+        "amount": "2 cups"
+      },
+      {
+        "name": "thick coconut milk",
+        "amount": "2 cups"
+      },
+      {
+        "name": "water",
+        "amount": "1 cup"
+      },
+      {
+        "name": "salt",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "pandan leaves",
+        "amount": "2"
+      }
+    ],
+    "method": "1. Wash rice thoroughly\n2. Add water and pandan leaves, cook until water is absorbed\n3. Pour in thick coconut milk\n4. Stir gently on low heat\n5. Cook until all milk is absorbed and rice is creamy\n6. Press flat, cut into pieces",
+    "tips": "Samba rice gives a stickier, more traditional texture than basmati.",
+    "cultural_note": "This variation uses samba rice for a more rustic, village-style milk rice."
+  },
+  {
+    "id": "SL_0253",
+    "names": {
+      "english": "Mushroom Rice"
+    },
+    "category": "rice",
+    "difficulty": "easy",
+    "prep_time_mins": 15,
+    "cook_time_mins": 25,
+    "servings": 4,
+    "region": "Central Province",
+    "spice_level": 1,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "basmati rice",
+        "amount": "2 cups"
+      },
+      {
+        "name": "mushrooms",
+        "amount": "200g"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "garlic",
+        "amount": "3 cloves"
+      },
+      {
+        "name": "butter",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "soy sauce",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "black pepper",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "thyme",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "chicken stock",
+        "amount": "2.5 cups"
+      },
+      {
+        "name": "salt",
+        "amount": "to taste"
+      }
+    ],
+    "method": "1. Slice mushrooms, saute in butter until brown\n2. Saute onions and garlic\n3. Add rice, stir 2 minutes\n4. Add stock, soy sauce, pepper, thyme\n5. Bring to boil, cover, cook low 20 mins\n6. Fluff and fold in mushrooms",
+    "tips": "Cook mushrooms separately for best caramelization.",
+    "cultural_note": "Mushroom rice is a modern Sri Lankan dish popular in hill country restaurants."
+  },
+  {
+    "id": "SL_0254",
+    "names": {
+      "english": "Fish Biriyani"
+    },
+    "category": "rice",
+    "difficulty": "hard",
+    "prep_time_mins": 30,
+    "cook_time_mins": 50,
+    "servings": 6,
+    "region": "Eastern Province",
+    "spice_level": 3,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "basmati rice",
+        "amount": "3 cups"
+      },
+      {
+        "name": "seer fish",
+        "amount": "500g"
+      },
+      {
+        "name": "onion",
+        "amount": "3"
+      },
+      {
+        "name": "yogurt",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "biriyani masala",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "saffron",
+        "amount": "pinch"
+      },
+      {
+        "name": "ghee",
+        "amount": "3 tbsp"
+      },
+      {
+        "name": "mint",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "coriander",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "garlic",
+        "amount": "6 cloves"
+      },
+      {
+        "name": "ginger",
+        "amount": "1.5 inch"
+      },
+      {
+        "name": "tomato",
+        "amount": "2"
+      },
+      {
+        "name": "lime",
+        "amount": "1"
+      }
+    ],
+    "method": "1. Marinate fish in yogurt, masala, lime juice 30 mins\n2. Parboil rice, drain\n3. Fry onions crispy, set aside half\n4. Cook marinated fish with tomatoes 10 mins\n5. Layer rice, fish curry, onions, herbs\n6. Seal with foil, dum cook 20 mins",
+    "tips": "Use firm fish fillets that won't break during cooking.",
+    "cultural_note": "Fish biriyani is a specialty of coastal Eastern Province towns."
+  },
+  {
+    "id": "SL_0255",
+    "names": {
+      "english": "Lunu Miris Rice"
+    },
+    "category": "rice",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 25,
+    "servings": 4,
+    "region": "Southern Province",
+    "spice_level": 3,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "cooked rice",
+        "amount": "3 cups"
+      },
+      {
+        "name": "lunu miris",
+        "amount": "4 tbsp"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "Maldive fish",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "oil",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "salt",
+        "amount": "to taste"
+      }
+    ],
+    "method": "1. Prepare lunu miris (chili, onion, lime, Maldive fish, salt)\n2. Heat oil, saute onions and curry leaves\n3. Add Maldive fish\n4. Add cooked rice, toss on high heat\n5. Mix in lunu miris thoroughly\n6. Serve hot",
+    "tips": "Use freshly ground lunu miris for best flavor.",
+    "cultural_note": "A quick, fiery rice dish inspired by the flavors of Southern Sri Lanka."
+  },
+  {
+    "id": "SL_0256",
+    "names": {
+      "english": "Cinnamon Rice"
+    },
+    "category": "rice",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 25,
+    "servings": 4,
+    "region": "Central Province",
+    "spice_level": 1,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "basmati rice",
+        "amount": "2 cups"
+      },
+      {
+        "name": "cinnamon sticks",
+        "amount": "3"
+      },
+      {
+        "name": "cloves",
+        "amount": "3"
+      },
+      {
+        "name": "cardamom",
+        "amount": "3"
+      },
+      {
+        "name": "bay leaf",
+        "amount": "1"
+      },
+      {
+        "name": "ghee",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "cashews",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "raisins",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "salt",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "water",
+        "amount": "2.5 cups"
+      }
+    ],
+    "method": "1. Wash rice, soak 15 mins\n2. Heat ghee, fry cashews and raisins\n3. Add whole spices, saute 1 min\n4. Add rice, stir gently\n5. Add water, salt, bring to boil\n6. Cover, cook low 20 mins",
+    "tips": "Use Ceylon cinnamon for the most authentic sweet aroma.",
+    "cultural_note": "Sri Lanka is the world's largest producer of true cinnamon. This rice celebrates that heritage."
+  },
+  {
+    "id": "SL_0257",
+    "names": {
+      "english": "Red Rice and Curry (Rathu Kekulu Bath)"
+    },
+    "category": "rice",
+    "difficulty": "easy",
+    "prep_time_mins": 5,
+    "cook_time_mins": 35,
+    "servings": 4,
+    "region": "Sabaragamuwa",
+    "spice_level": 1,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "red rice (kekulu)",
+        "amount": "2 cups"
+      },
+      {
+        "name": "water",
+        "amount": "3 cups"
+      },
+      {
+        "name": "salt",
+        "amount": "1 tsp"
+      }
+    ],
+    "method": "1. Wash red rice well\n2. Add water and salt\n3. Bring to a boil\n4. Reduce to low heat, cover tightly\n5. Cook 30-35 minutes until tender\n6. Fluff with fork and serve with curries",
+    "tips": "Red rice takes longer to cook than white rice - be patient.",
+    "cultural_note": "Red rice is the traditional staple grain of Sri Lanka, considered more nutritious than polished white rice. It has a nutty flavor and chewy texture."
+  },
+  {
+    "id": "SL_0258",
+    "names": {
+      "english": "Kottu Roti"
+    },
+    "category": "rice",
+    "difficulty": "medium",
+    "prep_time_mins": 15,
+    "cook_time_mins": 15,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 3,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "godamba roti",
+        "amount": "4"
+      },
+      {
+        "name": "chicken",
+        "amount": "200g"
+      },
+      {
+        "name": "cabbage",
+        "amount": "1 cup"
+      },
+      {
+        "name": "carrot",
+        "amount": "1"
+      },
+      {
+        "name": "leeks",
+        "amount": "1"
+      },
+      {
+        "name": "egg",
+        "amount": "2"
+      },
+      {
+        "name": "curry sauce",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "soy sauce",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "chili flakes",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "garlic",
+        "amount": "3 cloves"
+      },
+      {
+        "name": "oil",
+        "amount": "3 tbsp"
+      }
+    ],
+    "method": "1. Tear or chop roti into small pieces\n2. Stir-fry chicken until cooked, set aside\n3. Scramble eggs, set aside\n4. Stir-fry vegetables on high heat\n5. Add roti pieces, curry sauce, soy sauce, chili\n6. Toss vigorously with spatulas on hot griddle, add chicken and egg",
+    "tips": "The rhythmic chopping sound on the hot griddle is signature of authentic kottu.",
+    "cultural_note": "Kottu roti is Sri Lanka's most iconic street food. The rhythmic clanging of metal spatulas on the griddle can be heard from hotels across the island every evening."
+  },
+  {
+    "id": "SL_0259",
+    "names": {
+      "english": "Pittu Rice"
+    },
+    "category": "rice",
+    "difficulty": "easy",
+    "prep_time_mins": 15,
+    "cook_time_mins": 20,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 1,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "rice flour",
+        "amount": "2 cups"
+      },
+      {
+        "name": "grated coconut",
+        "amount": "1 cup"
+      },
+      {
+        "name": "salt",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "water",
+        "amount": "as needed"
+      }
+    ],
+    "method": "1. Mix rice flour with salt\n2. Sprinkle water gradually, mix until flour forms crumbles\n3. Layer flour and coconut alternately in pittu mold\n4. Steam for 10-15 minutes\n5. Push out of mold\n6. Serve with coconut milk curry or fish curry",
+    "tips": "The flour should feel like damp sand - not wet, not dry.",
+    "cultural_note": "Pittu is unique to Sri Lanka and parts of South India. This cylindrical steamed rice dish is traditionally made using a bamboo mold."
+  },
+  {
+    "id": "SL_0260",
+    "names": {
+      "english": "Elawalu Lunu Bath (Vegetable Mixed Rice)"
+    },
+    "category": "rice",
+    "difficulty": "easy",
+    "prep_time_mins": 15,
+    "cook_time_mins": 25,
+    "servings": 4,
+    "region": "Central Province",
+    "spice_level": 1,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "cooked rice",
+        "amount": "3 cups"
+      },
+      {
+        "name": "carrot",
+        "amount": "1"
+      },
+      {
+        "name": "green beans",
+        "amount": "1 cup"
+      },
+      {
+        "name": "pumpkin",
+        "amount": "1 cup"
+      },
+      {
+        "name": "leeks",
+        "amount": "1"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "curry powder",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "mustard seeds",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "Maldive fish",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "oil",
+        "amount": "2 tbsp"
+      }
+    ],
+    "method": "1. Dice all vegetables small\n2. Heat oil, add mustard seeds and curry leaves\n3. Saute vegetables with spices and Maldive fish\n4. Add coconut milk, cook until vegetables are tender\n5. Mix in cooked rice, toss gently\n6. Season and serve",
+    "tips": "Cut vegetables into very small dice so they blend with the rice.",
+    "cultural_note": "This mixed rice is a one-pot meal common in Central Province households."
+  },
+  {
+    "id": "SL_0261",
+    "names": {
+      "english": "Plain Hoppers (Appa)"
+    },
+    "category": "breakfast",
+    "difficulty": "medium",
+    "prep_time_mins": 120,
+    "cook_time_mins": 20,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "rice flour",
+        "amount": "2 cups"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "1 cup"
+      },
+      {
+        "name": "water",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "yeast",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "sugar",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "salt",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "coconut cream",
+        "amount": "2 tbsp"
+      }
+    ],
+    "method": "1. Dissolve yeast and sugar in warm water, let froth\n2. Mix rice flour, salt, coconut milk, yeast mixture\n3. Add coconut cream, mix to thin batter\n4. Ferment 6-8 hours or overnight\n5. Heat hopper pan, add ladle of batter, swirl to coat\n6. Cover and cook 2-3 mins until edges are crispy and center is soft",
+    "tips": "Overnight fermentation gives the best flavor and texture.",
+    "cultural_note": "Hoppers are Sri Lanka's most distinctive breakfast dish. The bowl-shaped rice pancake with crispy edges and soft center is found nowhere else in the world."
+  },
+  {
+    "id": "SL_0262",
+    "names": {
+      "english": "Egg Hoppers"
+    },
+    "category": "breakfast",
+    "difficulty": "medium",
+    "prep_time_mins": 5,
+    "cook_time_mins": 5,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "hopper batter",
+        "amount": "as per recipe"
+      },
+      {
+        "name": "eggs",
+        "amount": "4"
+      },
+      {
+        "name": "salt",
+        "amount": "pinch"
+      },
+      {
+        "name": "pepper",
+        "amount": "pinch"
+      }
+    ],
+    "method": "1. Prepare hopper batter as for plain hoppers\n2. Heat hopper pan, add batter, swirl\n3. Crack an egg into center of hopper\n4. Sprinkle salt and pepper\n5. Cover and cook until egg white is set but yolk is runny\n6. Serve immediately with sambol",
+    "tips": "Keep the yolk runny for authentic egg hoppers.",
+    "cultural_note": "Egg hoppers are the most popular Sri Lankan breakfast. The runny yolk mixed with spicy sambol is heavenly."
+  },
+  {
+    "id": "SL_0263",
+    "names": {
+      "english": "String Hoppers (Idiyappam)"
+    },
+    "category": "breakfast",
+    "difficulty": "medium",
+    "prep_time_mins": 30,
+    "cook_time_mins": 15,
+    "servings": 6,
+    "region": "Island-wide",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "red rice flour",
+        "amount": "2 cups"
+      },
+      {
+        "name": "hot water",
+        "amount": "2 cups"
+      },
+      {
+        "name": "salt",
+        "amount": "1 tsp"
+      }
+    ],
+    "method": "1. Boil water with salt\n2. Add flour gradually, mix into dough\n3. Knead until smooth\n4. Fill string hopper press\n5. Press in circular motions onto bamboo mats\n6. Steam for 5-7 minutes",
+    "tips": "Knead the dough well - it should be soft and pliable, not crumbly.",
+    "cultural_note": "String hoppers are a breakfast staple across Sri Lanka, traditionally served with kiri hodi and sambol."
+  },
+  {
+    "id": "SL_0264",
+    "names": {
+      "english": "Pittu"
+    },
+    "category": "breakfast",
+    "difficulty": "easy",
+    "prep_time_mins": 15,
+    "cook_time_mins": 15,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "red rice flour",
+        "amount": "2 cups"
+      },
+      {
+        "name": "grated coconut",
+        "amount": "1 cup"
+      },
+      {
+        "name": "salt",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "water",
+        "amount": "as needed"
+      }
+    ],
+    "method": "1. Combine flour and salt\n2. Add water slowly, rubbing between palms until texture is like wet sand\n3. Alternate layers of flour and coconut in pittu mold\n4. Attach mold to kettle of boiling water\n5. Steam 10-15 mins until steam comes through top\n6. Push out of mold, serve with curry",
+    "tips": "The flour mixture should crumble apart, never form a dough.",
+    "cultural_note": "Pittu is a staple breakfast made in a cylindrical bamboo mold. Every household has their own pittu bamboo."
+  },
+  {
+    "id": "SL_0265",
+    "names": {
+      "english": "Roti (Godamba Roti)"
+    },
+    "category": "breakfast",
+    "difficulty": "medium",
+    "prep_time_mins": 30,
+    "cook_time_mins": 15,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 1,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "all-purpose flour",
+        "amount": "2 cups"
+      },
+      {
+        "name": "salt",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "sugar",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "egg",
+        "amount": "1"
+      },
+      {
+        "name": "water",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "oil",
+        "amount": "for cooking"
+      }
+    ],
+    "method": "1. Mix flour, salt, sugar\n2. Add egg and water, knead into soft stretchy dough\n3. Oil the dough, rest 30 mins\n4. Pull small portions into thin sheets\n5. Fold into layers, place on hot griddle with oil\n6. Cook both sides until golden and flaky",
+    "tips": "The dough must be very thin and translucent when stretched.",
+    "cultural_note": "Godamba roti is Sri Lanka's answer to the Indian paratha, brought by Malay Muslims."
+  },
+  {
+    "id": "SL_0266",
+    "names": {
+      "english": "Coconut Roti (Pol Roti)"
+    },
+    "category": "breakfast",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 15,
+    "servings": 6,
+    "region": "Island-wide",
+    "spice_level": 1,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "rice flour",
+        "amount": "1 cup"
+      },
+      {
+        "name": "wheat flour",
+        "amount": "1 cup"
+      },
+      {
+        "name": "grated coconut",
+        "amount": "1 cup"
+      },
+      {
+        "name": "onion",
+        "amount": "1 small chopped"
+      },
+      {
+        "name": "green chili",
+        "amount": "2 chopped"
+      },
+      {
+        "name": "salt",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "water",
+        "amount": "as needed"
+      }
+    ],
+    "method": "1. Mix both flours, coconut, salt\n2. Add chopped onion and green chili\n3. Add water slowly to form stiff dough\n4. Divide into balls, flatten by hand into thick disks\n5. Cook on hot griddle without oil on both sides\n6. Press gently to check firmness, serve hot",
+    "tips": "Do not make the dough too wet - it should be firm and hold its shape.",
+    "cultural_note": "Pol roti is the simplest, most common breakfast in rural Sri Lanka. It pairs perfectly with seeni sambol and a hot cup of Ceylon tea."
+  },
+  {
+    "id": "SL_0267",
+    "names": {
+      "english": "Milk Hopper"
+    },
+    "category": "breakfast",
+    "difficulty": "medium",
+    "prep_time_mins": 5,
+    "cook_time_mins": 5,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "hopper batter",
+        "amount": "as per recipe"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "1 cup"
+      },
+      {
+        "name": "sugar",
+        "amount": "2 tbsp"
+      }
+    ],
+    "method": "1. Prepare hopper batter\n2. Make plain hoppers\n3. While still on pan, add sweetened coconut milk to center\n4. Cover briefly so milk sets slightly\n5. Remove carefully\n6. Serve as dessert hopper",
+    "tips": "The coconut milk should be thick and sweet.",
+    "cultural_note": "Milk hoppers are the sweet version of Sri Lanka's iconic hopper, often served as dessert."
+  },
+  {
+    "id": "SL_0268",
+    "names": {
+      "english": "Ulundu Wade (Urad Dhal Fritter)"
+    },
+    "category": "breakfast",
+    "difficulty": "medium",
+    "prep_time_mins": 20,
+    "cook_time_mins": 15,
+    "servings": 6,
+    "region": "Northern Province",
+    "spice_level": 2,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "urad dhal",
+        "amount": "1 cup"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "green chili",
+        "amount": "3"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "10"
+      },
+      {
+        "name": "salt",
+        "amount": "to taste"
+      },
+      {
+        "name": "oil for frying",
+        "amount": "2 cups"
+      }
+    ],
+    "method": "1. Soak urad dhal 4 hours\n2. Grind into thick paste (do not add water)\n3. Mix in chopped onion, chili, curry leaves\n4. Shape into donuts with hole in center\n5. Deep fry in hot oil until golden brown\n6. Drain on paper and serve hot",
+    "tips": "The batter should be thick enough to hold shape. Test by dropping a bit in water - it should float.",
+    "cultural_note": "Ulundu wade is a beloved Tamil breakfast snack, originating from Jaffna and now popular across the whole island."
+  },
+  {
+    "id": "SL_0269",
+    "names": {
+      "english": "Masala Dosa"
+    },
+    "category": "breakfast",
+    "difficulty": "medium",
+    "prep_time_mins": 30,
+    "cook_time_mins": 15,
+    "servings": 4,
+    "region": "Northern Province",
+    "spice_level": 2,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "dosa batter",
+        "amount": "2 cups"
+      },
+      {
+        "name": "potato",
+        "amount": "3"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "green chili",
+        "amount": "2"
+      },
+      {
+        "name": "mustard seeds",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "turmeric",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "oil",
+        "amount": "for cooking"
+      }
+    ],
+    "method": "1. Prepare dosa batter (fermented rice and urad dhal)\n2. Boil and mash potatoes\n3. Temper mustard seeds, saute onions, chilies, curry leaves\n4. Mix with mashed potato and turmeric\n5. Spread thin layer of batter on hot griddle, cook until crispy\n6. Place potato filling, fold in half",
+    "tips": "The batter must be fermented overnight for authentic taste.",
+    "cultural_note": "Masala dosa is a popular Tamil breakfast in Northern Sri Lanka, with each household having its own family recipe."
+  },
+  {
+    "id": "SL_0270",
+    "names": {
+      "english": "Thosai (Dosa)"
+    },
+    "category": "breakfast",
+    "difficulty": "medium",
+    "prep_time_mins": 20,
+    "cook_time_mins": 10,
+    "servings": 4,
+    "region": "Northern Province",
+    "spice_level": 1,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "rice",
+        "amount": "2 cups"
+      },
+      {
+        "name": "urad dhal",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "fenugreek seeds",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "salt",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "oil",
+        "amount": "for cooking"
+      }
+    ],
+    "method": "1. Soak rice and dhal separately for 6 hours\n2. Grind into smooth batter, mix together\n3. Add fenugreek and salt, ferment overnight\n4. Heat flat griddle, pour ladle of batter\n5. Spread in circular motion to thin crepe\n6. Cook until bottom is golden, serve with chutney",
+    "tips": "Fermentation in a warm place for 8-10 hours is essential.",
+    "cultural_note": "Thosai is a staple Tamil breakfast that is crispy on the outside and soft inside."
+  },
+  {
+    "id": "SL_0271",
+    "names": {
+      "english": "Kola Kanda (Herbal Porridge)"
+    },
+    "category": "breakfast",
+    "difficulty": "easy",
+    "prep_time_mins": 15,
+    "cook_time_mins": 30,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "rice",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "gotukola leaves",
+        "amount": "1 cup"
+      },
+      {
+        "name": "hathawariya",
+        "amount": "1/4 cup"
+      },
+      {
+        "name": "garlic",
+        "amount": "2 cloves"
+      },
+      {
+        "name": "ginger",
+        "amount": "1/2 inch"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "1 cup"
+      },
+      {
+        "name": "salt",
+        "amount": "to taste"
+      },
+      {
+        "name": "jaggery",
+        "amount": "optional"
+      }
+    ],
+    "method": "1. Cook rice in excess water until very soft\n2. Wash and finely chop green leaves\n3. Blend leaves with a little water\n4. Add leaf puree to cooked rice porridge\n5. Add coconut milk, salt\n6. Simmer 10 minutes, serve with jaggery",
+    "tips": "Use a variety of greens for maximum health benefits.",
+    "cultural_note": "Kola kanda is an ancient Ayurvedic breakfast that has seen a modern revival in Sri Lanka. It is believed to boost immunity and brain power."
+  },
+  {
+    "id": "SL_0272",
+    "names": {
+      "english": "Atta Roti (Whole Wheat Roti)"
+    },
+    "category": "breakfast",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 15,
+    "servings": 6,
+    "region": "Island-wide",
+    "spice_level": 1,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "whole wheat flour",
+        "amount": "2 cups"
+      },
+      {
+        "name": "grated coconut",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "onion",
+        "amount": "1 small"
+      },
+      {
+        "name": "green chili",
+        "amount": "2"
+      },
+      {
+        "name": "salt",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "water",
+        "amount": "as needed"
+      }
+    ],
+    "method": "1. Mix flour, coconut, chopped onion, chili, salt\n2. Add water to form stiff dough\n3. Divide into balls\n4. Flatten into rounds on a floured surface\n5. Cook on hot dry griddle on both sides\n6. Serve hot with curry",
+    "tips": "Use whole wheat atta flour for nutritional value.",
+    "cultural_note": "Atta roti is the healthier alternative to white flour roti, popular with health-conscious Sri Lankans."
+  },
+  {
+    "id": "SL_0273",
+    "names": {
+      "english": "Kurakkan Roti (Finger Millet Roti)"
+    },
+    "category": "breakfast",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 15,
+    "servings": 6,
+    "region": "Uva Province",
+    "spice_level": 1,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "finger millet flour",
+        "amount": "1.5 cups"
+      },
+      {
+        "name": "grated coconut",
+        "amount": "1 cup"
+      },
+      {
+        "name": "onion",
+        "amount": "1 small"
+      },
+      {
+        "name": "salt",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "water",
+        "amount": "as needed"
+      }
+    ],
+    "method": "1. Mix millet flour, coconut, chopped onion, salt\n2. Add water slowly to make firm dough\n3. Shape into flat rounds by hand\n4. Cook on hot griddle without oil\n5. Cook both sides until firm and slightly charred\n6. Serve with fish curry or sambol",
+    "tips": "Kurakkan dough is crumbly - use wet hands to shape.",
+    "cultural_note": "Kurakkan (finger millet) roti is a traditional Uva Province breakfast, highly nutritious and gluten-free."
+  },
+  {
+    "id": "SL_0274",
+    "names": {
+      "english": "Idli (Steamed Rice Cakes)"
+    },
+    "category": "breakfast",
+    "difficulty": "easy",
+    "prep_time_mins": 15,
+    "cook_time_mins": 15,
+    "servings": 6,
+    "region": "Northern Province",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "idli batter",
+        "amount": "3 cups"
+      },
+      {
+        "name": "salt",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "oil",
+        "amount": "for greasing"
+      }
+    ],
+    "method": "1. Prepare fermented idli batter (rice and urad dhal)\n2. Grease idli molds with oil\n3. Pour batter into each mold\n4. Steam for 10-12 minutes\n5. Check with toothpick - it should come out clean\n6. Remove with wet spoon, serve with sambar and chutney",
+    "tips": "Proper fermentation makes idlis fluffy. Over-fermented batter makes sour idlis.",
+    "cultural_note": "Idli is a quintessential Tamil breakfast, served with sambar and coconut chutney in homes across Jaffna."
+  },
+  {
+    "id": "SL_0275",
+    "names": {
+      "english": "Upma"
+    },
+    "category": "breakfast",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 15,
+    "servings": 4,
+    "region": "Northern Province",
+    "spice_level": 1,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "semolina",
+        "amount": "1 cup"
+      },
+      {
+        "name": "onion",
+        "amount": "1"
+      },
+      {
+        "name": "green chili",
+        "amount": "2"
+      },
+      {
+        "name": "ginger",
+        "amount": "1/2 inch"
+      },
+      {
+        "name": "mustard seeds",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "curry leaves",
+        "amount": "1 sprig"
+      },
+      {
+        "name": "cashews",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "water",
+        "amount": "2.5 cups"
+      },
+      {
+        "name": "ghee",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "salt",
+        "amount": "to taste"
+      }
+    ],
+    "method": "1. Dry roast semolina until fragrant, set aside\n2. Heat ghee, add mustard seeds, cashews\n3. Saute onions, ginger, green chili, curry leaves\n4. Add water and salt, bring to boil\n5. Slowly add roasted semolina while stirring\n6. Cover, cook on low 5 mins, fluff with fork",
+    "tips": "Stir continuously while adding semolina to prevent lumps.",
+    "cultural_note": "Upma is a popular South Indian-Tamil breakfast, commonly prepared in Northern Sri Lankan households."
+  },
+  {
+    "id": "SL_0276",
+    "names": {
+      "english": "Puttu (Steamed Coconut-Rice Cylinders)"
+    },
+    "category": "breakfast",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 15,
+    "servings": 4,
+    "region": "Northern Province",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "rice flour",
+        "amount": "2 cups"
+      },
+      {
+        "name": "grated coconut",
+        "amount": "1 cup"
+      },
+      {
+        "name": "salt",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "water",
+        "amount": "as needed"
+      }
+    ],
+    "method": "1. Mix rice flour and salt\n2. Sprinkle water, rub between palms to form crumbles\n3. Fill puttu mold alternating flour and coconut layers\n4. Steam 10-12 minutes\n5. Push out of mold using wooden press\n6. Serve with banana and sugar or fish curry",
+    "tips": "The flour should be loose and crumbly, never packed tight.",
+    "cultural_note": "Puttu is the Jaffna variation of pittu, typically served with sweetened coconut or spicy curries."
+  },
+  {
+    "id": "SL_0277",
+    "names": {
+      "english": "Kiribath with Lunu Miris"
+    },
+    "category": "breakfast",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 25,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 3,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "rice",
+        "amount": "2 cups"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "3 cups"
+      },
+      {
+        "name": "salt",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "red onion",
+        "amount": "2"
+      },
+      {
+        "name": "dried chili",
+        "amount": "6"
+      },
+      {
+        "name": "Maldive fish",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "lime juice",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "salt",
+        "amount": "to taste"
+      }
+    ],
+    "method": "1. Cook rice with coconut milk and salt into milk rice\n2. Press flat on a tray, cut into diamonds\n3. Grind chilies, onion, Maldive fish, salt in mortar\n4. Add lime juice to the chili paste\n5. Serve milk rice diamonds with lunu miris on the side\n6. Eat by scooping lunu miris onto each piece",
+    "tips": "The lunu miris should be freshly ground, not blended.",
+    "cultural_note": "This is the iconic Sri Lankan breakfast for the first day of every month, and every New Year morning."
+  },
+  {
+    "id": "SL_0278",
+    "names": {
+      "english": "Pani Pol Roti (Sweet Coconut Stuffed Roti)"
+    },
+    "category": "breakfast",
+    "difficulty": "medium",
+    "prep_time_mins": 20,
+    "cook_time_mins": 15,
+    "servings": 6,
+    "region": "Western Province",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "wheat flour",
+        "amount": "2 cups"
+      },
+      {
+        "name": "grated coconut",
+        "amount": "1 cup"
+      },
+      {
+        "name": "jaggery",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "cardamom powder",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "salt",
+        "amount": "1/2 tsp"
+      },
+      {
+        "name": "water",
+        "amount": "for dough"
+      },
+      {
+        "name": "oil",
+        "amount": "for cooking"
+      }
+    ],
+    "method": "1. Mix flour, salt, water into soft dough, rest 15 mins\n2. Mix grated coconut, grated jaggery, cardamom for filling\n3. Roll dough into thin circles\n4. Place coconut filling in center, fold edges\n5. Flatten gently and cook on hot griddle with oil\n6. Cook both sides until golden",
+    "tips": "Grate the jaggery finely so it melts into the coconut.",
+    "cultural_note": "Pani pol roti is a sweet breakfast treat that children especially love, filled with treacle-sweetened coconut."
+  },
+  {
+    "id": "SL_0279",
+    "names": {
+      "english": "Appam (Sweet Hopper Variation)"
+    },
+    "category": "breakfast",
+    "difficulty": "medium",
+    "prep_time_mins": 120,
+    "cook_time_mins": 5,
+    "servings": 4,
+    "region": "Northern Province",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "rice flour",
+        "amount": "2 cups"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "1 cup"
+      },
+      {
+        "name": "sugar",
+        "amount": "3 tbsp"
+      },
+      {
+        "name": "yeast",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "water",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "salt",
+        "amount": "pinch"
+      }
+    ],
+    "method": "1. Dissolve yeast and sugar in warm water\n2. Mix rice flour, coconut milk and yeast mixture\n3. Ferment 6-8 hours\n4. Heat hopper pan, pour batter and swirl\n5. Sprinkle sugar on center while cooking\n6. Cover and cook until edges are crispy",
+    "tips": "Ferment in a warm place for fluffiest results.",
+    "cultural_note": "Appam is the Tamil version of hoppers, slightly sweeter and often paired with coconut milk."
+  },
+  {
+    "id": "SL_0280",
+    "names": {
+      "english": "Lavariya (Leaf Wrap Rice)"
+    },
+    "category": "breakfast",
+    "difficulty": "easy",
+    "prep_time_mins": 10,
+    "cook_time_mins": 30,
+    "servings": 4,
+    "region": "Southern Province",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "rice",
+        "amount": "2 cups"
+      },
+      {
+        "name": "grated coconut",
+        "amount": "1 cup"
+      },
+      {
+        "name": "salt",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "kenda leaves (wild ginger)",
+        "amount": "8"
+      },
+      {
+        "name": "water",
+        "amount": "2.5 cups"
+      }
+    ],
+    "method": "1. Wash rice, cook until almost done\n2. Mix in grated coconut and salt\n3. Place mixture on kenda leaves\n4. Wrap tightly into cylindrical parcels\n5. Steam wrapped parcels 15 minutes\n6. Unwrap and serve with curries",
+    "tips": "Use young tender leaves for wrapping.",
+    "cultural_note": "Lavariya is a Southern Province specialty where rice is steamed in aromatic wild ginger leaves."
+  },
+  {
+    "id": "SL_0281",
+    "names": {
+      "english": "Thala Guli (Sesame Balls) with Appam"
+    },
+    "category": "breakfast",
+    "difficulty": "easy",
+    "prep_time_mins": 15,
+    "cook_time_mins": 15,
+    "servings": 4,
+    "region": "Northern Province",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "sesame seeds",
+        "amount": "1 cup"
+      },
+      {
+        "name": "jaggery",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "grated coconut",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "cardamom",
+        "amount": "1/4 tsp"
+      },
+      {
+        "name": "rice flour",
+        "amount": "2 tbsp"
+      }
+    ],
+    "method": "1. Dry roast sesame seeds until golden\n2. Grind roasted sesame coarsely\n3. Melt jaggery with a splash of water\n4. Mix everything together\n5. Shape into small balls while warm\n6. Serve alongside appam or hoppers for breakfast",
+    "tips": "Roll quickly while mixture is warm - it hardens as it cools.",
+    "cultural_note": "Thala guli is a nutritious Tamil sweet snack often served as a breakfast accompaniment."
+  },
+  {
+    "id": "SL_0282",
+    "names": {
+      "english": "Mung Kavum (Mung Bean Cake Breakfast)"
+    },
+    "category": "breakfast",
+    "difficulty": "medium",
+    "prep_time_mins": 30,
+    "cook_time_mins": 20,
+    "servings": 6,
+    "region": "Western Province",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "mung bean flour",
+        "amount": "1 cup"
+      },
+      {
+        "name": "rice flour",
+        "amount": "1 cup"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "1 cup"
+      },
+      {
+        "name": "sugar",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "salt",
+        "amount": "pinch"
+      },
+      {
+        "name": "oil for frying",
+        "amount": "2 cups"
+      }
+    ],
+    "method": "1. Mix both flours\n2. Add coconut milk, sugar, salt to make thick batter\n3. Rest batter 15 minutes\n4. Heat oil to medium temperature\n5. Pour small ladlefuls into oil\n6. Fry on low heat until golden and cooked through",
+    "tips": "Low temperature frying ensures kavum cook through without burning.",
+    "cultural_note": "Mung kavum are traditional fried cakes originally made for the Sinhala and Tamil New Year."
+  },
+  {
+    "id": "SL_0283",
+    "names": {
+      "english": "Banana Fritters (Kesel Muso)"
+    },
+    "category": "breakfast",
+    "difficulty": "easy",
+    "prep_time_mins": 5,
+    "cook_time_mins": 10,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "ripe bananas",
+        "amount": "4"
+      },
+      {
+        "name": "rice flour",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "sugar",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "salt",
+        "amount": "pinch"
+      },
+      {
+        "name": "turmeric",
+        "amount": "pinch"
+      },
+      {
+        "name": "oil for frying",
+        "amount": "1 cup"
+      }
+    ],
+    "method": "1. Mash bananas thoroughly\n2. Mix in rice flour, sugar, salt, turmeric\n3. Form into small flat patties\n4. Heat oil to medium\n5. Fry patties until golden on both sides\n6. Drain and serve warm",
+    "tips": "Use overripe bananas for natural sweetness.",
+    "cultural_note": "Banana fritters are the simplest Sri Lankan snack, an easy way to use up ripe bananas that might otherwise be wasted."
+  },
+  {
+    "id": "SL_0284",
+    "names": {
+      "english": "Congee (Rice Porridge)"
+    },
+    "category": "breakfast",
+    "difficulty": "easy",
+    "prep_time_mins": 5,
+    "cook_time_mins": 30,
+    "servings": 4,
+    "region": "Island-wide",
+    "spice_level": 0,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "rice",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "water",
+        "amount": "6 cups"
+      },
+      {
+        "name": "coconut milk",
+        "amount": "1/2 cup"
+      },
+      {
+        "name": "salt",
+        "amount": "to taste"
+      },
+      {
+        "name": "ginger",
+        "amount": "1/2 inch"
+      },
+      {
+        "name": "garlic",
+        "amount": "2 cloves"
+      }
+    ],
+    "method": "1. Wash rice and add to pot with water\n2. Add bruised ginger and garlic\n3. Bring to boil, then simmer 25-30 minutes\n4. Stir occasionally until thick and porridge-like\n5. Add coconut milk, salt\n6. Serve with dried fish or sambol",
+    "tips": "The longer you cook, the creamier it gets.",
+    "cultural_note": "Rice congee is a comfort food breakfast especially during rainy days or when someone is feeling unwell."
+  },
+  {
+    "id": "SL_0285",
+    "names": {
+      "english": "Bread Rolls (Paan Rolls)"
+    },
+    "category": "breakfast",
+    "difficulty": "medium",
+    "prep_time_mins": 20,
+    "cook_time_mins": 15,
+    "servings": 6,
+    "region": "Island-wide",
+    "spice_level": 2,
+    "is_authentic": true,
+    "ingredients": [
+      {
+        "name": "bread slices",
+        "amount": "8"
+      },
+      {
+        "name": "chicken or fish filling",
+        "amount": "2 cups"
+      },
+      {
+        "name": "egg",
+        "amount": "2"
+      },
+      {
+        "name": "breadcrumbs",
+        "amount": "1 cup"
+      },
+      {
+        "name": "salt",
+        "amount": "to taste"
+      },
+      {
+        "name": "oil for frying",
+        "amount": "2 cups"
+      }
+    ],
+    "method": "1. Remove bread crusts, flatten slices with rolling pin\n2. Place spoonful of curry filling on each slice\n3. Roll tightly, seal edges with egg wash\n4. Dip in beaten egg, then coat with breadcrumbs\n5. Deep fry until golden brown\n6. Drain and serve hot with tomato sauce",
+    "tips": "Squeeze the bread rolls firmly to seal so they don't open while frying.",
+    "cultural_note": "Bread rolls are a classic Sri Lankan short eat, found in every bakery and commonly eaten for breakfast or as a snack."
+  }
+]

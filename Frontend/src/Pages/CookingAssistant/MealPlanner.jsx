@@ -1,247 +1,445 @@
-import React, { useState } from 'react';
-import './MealPlanner.css'; // Import the new CSS file
+import React, { useState, useRef } from 'react';
+import './MealPlanner.css';
 
-function MealPlanner() {
-  const [numPeople, setNumPeople] = useState(1);
-  const [mealPlan, setMealPlan] = useState({
-    monday: { breakfast: '', lunch: '', dinner: '' },
-    tuesday: { breakfast: '', lunch: '', dinner: '' },
-    wednesday: { breakfast: '', lunch: '', dinner: '' },
-    thursday: { breakfast: '', lunch: '', dinner: '' },
-    friday: { breakfast: '', lunch: '', dinner: '' },
-    saturday: { breakfast: '', lunch: '', dinner: '' },
-    sunday: { breakfast: '', lunch: '', dinner: '' }
-  });
+const SL_RECIPES = [
+  'Rice & Curry', 'Chicken Curry', 'Dhal Curry (Parippu)', 'Fish Curry',
+  'Kottu Roti', 'Hoppers (Appa)', 'String Hoppers (Idiyappam)', 'Egg Roti',
+  'Coconut Sambol', 'Pol Roti', 'Vegetable Curry', 'Ambulthiyal (Sour Fish)',
+  'Kiribath (Milk Rice)', 'Pittu', 'Lamprais', 'Kukul Mas Curry',
+  'Brinjal Moju', 'Devilled Chicken', 'Prawn Curry', 'Egg Curry',
+  'Beetroot Curry', 'Mushroom Curry', 'Pumpkin Curry', 'Leeks Curry',
+  'Chickpea Curry (Kadala)', 'Polos Curry (Jackfruit)', 'Sardine Curry',
+  'Ash Plantain Curry', 'Kiri Hodi', 'Mutton Curry', 'Rasam',
+];
+
+const DAYS = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+const MEALS = ['breakfast', 'lunch', 'dinner'];
+const MEAL_ICONS = { breakfast: '🌅', lunch: '☀️', dinner: '🌙' };
+
+const INGREDIENT_CATEGORIES = {
+  '🥬 Vegetables & Herbs': ['onion', 'tomato', 'garlic', 'ginger', 'chili', 'curry leaves', 'pandan', 'leeks', 'spinach', 'eggplant', 'brinjal', 'potato', 'carrot', 'beans', 'pumpkin', 'jackfruit', 'beetroot', 'mushroom', 'gourd', 'drumstick', 'green', 'pepper', 'capsicum', 'lemon', 'lime', 'mango', 'plantain', 'breadfruit'],
+  '🍗 Protein': ['chicken', 'fish', 'prawn', 'crab', 'squid', 'egg', 'mutton', 'lamb', 'beef', 'pork', 'tuna', 'sardine', 'shrimp', 'liver', 'duck', 'venison', 'lentil', 'chickpea', 'cashew', 'soya', 'dal', 'parippu'],
+  '🌾 Grains & Carbs': ['rice', 'flour', 'semolina', 'bread', 'roti', 'noodle', 'pasta', 'wheat', 'oat'],
+  '🌶️ Spices & Condiments': ['curry powder', 'turmeric', 'cumin', 'coriander', 'cardamom', 'cinnamon', 'clove', 'fenugreek', 'mustard', 'pepper', 'chili powder', 'goraka', 'tamarind', 'vinegar', 'soy sauce', 'sugar', 'salt', 'Maldive fish'],
+  '🥛 Dairy & Coconut': ['coconut milk', 'coconut', 'yogurt', 'milk', 'butter', 'ghee', 'cream'],
+  '🫙 Pantry': ['oil', 'water', 'stock', 'sauce', 'paste', 'can', 'dried'],
+};
+
+function categoriseIngredient(name) {
+  const lower = name.toLowerCase();
+  for (const [cat, keywords] of Object.entries(INGREDIENT_CATEGORIES)) {
+    if (keywords.some(k => lower.includes(k))) return cat;
+  }
+  return '🫙 Pantry';
+}
+
+function parseAmount(amountStr, people) {
+  if (!amountStr) return { value: people, unit: 'portion(s)' };
+  const match = amountStr.match(/^([\d./]+)\s*(.*)$/);
+  if (!match) return { value: people, unit: amountStr };
+  let num = eval(match[1]);
+  const unit = match[2].trim() || '';
+  return { value: +(num * people).toFixed(1), unit };
+}
+
+export default function MealPlanner() {
+  const [activeNav, setActiveNav] = useState('planner');
+  const [activeTab, setActiveTab] = useState('dropdown');
+  const [numPeople, setNumPeople] = useState(2);
+  const [mealPlan, setMealPlan] = useState(
+    Object.fromEntries(DAYS.map(d => [d, { breakfast: '', lunch: '', dinner: '' }]))
+  );
+  const [freeText, setFreeText] = useState('');
+  const [planImage, setPlanImage] = useState(null);
+  const [planImagePreview, setPlanImagePreview] = useState(null);
   const [groceryList, setGroceryList] = useState(null);
-  const [activeSection, setActiveSection] = useState('planner');
-  const popularRecipes = [
-    'Rice & Curry', 'Chicken Curry', 'Dhal Curry', 'Fish Curry',
-    'Kottu Roti', 'Hoppers', 'String Hoppers', 'Egg Roti',
-    'Coconut Sambol', 'Parippu', 'Vegetable Curry'
-  ];
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [parsedPlan, setParsedPlan] = useState(null);
+  const fileRef = useRef();
 
-  const generateGroceryList = async () => {
+  // ── Dropdown helpers ───────────────────────────────────────────────────────
+  const setMeal = (day, meal, val) =>
+    setMealPlan(p => ({ ...p, [day]: { ...p[day], [meal]: val } }));
+
+  const dropdownMealCount = Object.values(mealPlan).flatMap(Object.values).filter(Boolean).length;
+
+  // ── Parse text via Groq backend ────────────────────────────────────────────
+  const parseTextPlan = async () => {
+    if (!freeText.trim()) { setError('Please type your meal plan first!'); return; }
+    setLoading(true); setError('');
     try {
-      // Mock data for now - will connect to backend later
-      const mockGrocery = {
-        vegetables: [
-          { item: 'Onions', quantity: 500 * numPeople, unit: 'g' },
-          { item: 'Tomatoes', quantity: 750 * numPeople, unit: 'g' },
-          { item: 'Garlic', quantity: 100 * numPeople, unit: 'g' },
-          { item: 'Green Chilies', quantity: 50 * numPeople, unit: 'g' }
-        ],
-        protein: [
-          { item: 'Chicken', quantity: 1.5 * numPeople, unit: 'kg' },
-          { item: 'Fish', quantity: 1 * numPeople, unit: 'kg' },
-          { item: 'Eggs', quantity: 12 * numPeople, unit: 'pcs' }
-        ],
-        grains: [
-          { item: 'Rice', quantity: 2 * numPeople, unit: 'kg' },
-          { item: 'Wheat Flour', quantity: 500 * numPeople, unit: 'g' }
-        ],
-        spices: [
-          { item: 'Curry Powder', quantity: 100 * numPeople, unit: 'g' },
-          { item: 'Turmeric', quantity: 50 * numPeople, unit: 'g' },
-          { item: 'Curry Leaves', quantity: 50 * numPeople, unit: 'g' }
-        ],
-        dairy: [
-          { item: 'Coconut Milk', quantity: 800 * numPeople, unit: 'ml' },
-          { item: 'Milk', quantity: 2 * numPeople, unit: 'L' }
-        ]
-      };
-      setGroceryList(mockGrocery);
-      setActiveSection('grocery');
-    } catch (error) {
-      console.error('Error generating grocery list:', error);
-    }
+      const res = await fetch('http://localhost:5000/api/parse-meal-plan', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text: freeText }),
+      });
+      const data = await res.json();
+      if (data.success && data.meal_plan) {
+        setParsedPlan(data.meal_plan);
+        await buildGroceryFromPlan(data.meal_plan);
+      } else setError(data.error || 'Could not parse meal plan. Try being more specific.');
+    } catch { setError('Cannot connect to backend.'); }
+    finally { setLoading(false); }
   };
 
-  const handleDaySelectChange = (day, mealType, value) => {
-    setMealPlan(prev => ({
-      ...prev,
-      [day]: {
-        ...prev[day],
-        [mealType]: value
-      }
-    }));
+  // ── Parse image via Groq Vision backend ───────────────────────────────────
+  const parseImagePlan = async () => {
+    if (!planImage) { setError('Please upload an image first!'); return; }
+    setLoading(true); setError('');
+    try {
+      const fd = new FormData();
+      fd.append('image', planImage);
+      const res = await fetch('http://localhost:5000/api/parse-meal-plan-image', {
+        method: 'POST', body: fd,
+      });
+      const data = await res.json();
+      if (data.success && data.meal_plan) {
+        setParsedPlan(data.meal_plan);
+        await buildGroceryFromPlan(data.meal_plan);
+      } else setError(data.error || 'Could not read meal plan from image.');
+    } catch { setError('Cannot connect to backend.'); }
+    finally { setLoading(false); }
+  };
+
+  // ── Build grocery from dropdown plan ──────────────────────────────────────
+  const buildGroceryFromDropdown = async () => {
+    const selected = Object.values(mealPlan).flatMap(Object.values).filter(Boolean);
+    if (selected.length === 0) { setError('Please add at least one meal!'); return; }
+    setLoading(true); setError('');
+    try {
+      const res = await fetch('http://localhost:5000/api/grocery-from-meals', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ meals: selected, num_people: numPeople }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setGroceryList(data.grocery);
+        setActiveNav('grocery');
+      } else setError(data.error || 'Failed to generate grocery list.');
+    } catch { setError('Cannot connect to backend.'); }
+    finally { setLoading(false); }
+  };
+
+  // ── Build grocery from parsed text/image plan ─────────────────────────────
+  const buildGroceryFromPlan = async (plan) => {
+    const meals = Object.values(plan).flatMap(day =>
+      typeof day === 'object' ? Object.values(day) : [day]
+    ).filter(Boolean);
+    try {
+      const res = await fetch('http://localhost:5000/api/grocery-from-meals', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ meals, num_people: numPeople }),
+      });
+      const data = await res.json();
+      if (data.success) { setGroceryList(data.grocery); setActiveNav('grocery'); }
+      else setError(data.error || 'Failed to build grocery list.');
+    } catch { setError('Cannot connect to backend.'); }
+  };
+
+  // ── Print ─────────────────────────────────────────────────────────────────
+  const handlePrint = () => window.print();
+
+  // ── Image select ──────────────────────────────────────────────────────────
+  const onImageSelect = (file) => {
+    if (!file) return;
+    setPlanImage(file);
+    setPlanImagePreview(URL.createObjectURL(file));
   };
 
   return (
-    <div className="meal-planner-container">
-      {/* Sidebar */}
-      <aside className="sidebar">
-        <div className="sidebar-header">
-          <div className="logo-icon">📅</div>
-          <h2>Meal Planner</h2>
-          <p className="tagline">Weekly Planning</p>
+    <div className="mp-root">
+      {/* ── Sidebar ── */}
+      <aside className="mp-sidebar">
+        <div className="mp-logo">
+          <span className="mp-logo-icon">📅</span>
+          <div>
+            <h2 className="mp-logo-title">Meal Planner</h2>
+            <span className="mp-logo-sub">Weekly Planning</span>
+          </div>
         </div>
-
-        <nav className="sidebar-nav">
-          <div
-            className={`nav-item ${activeSection === 'planner' ? 'active' : ''}`}
-            onClick={() => setActiveSection('planner')}
-          >
-            <span className="nav-icon">📋</span>
-            <span>Meal Plan</span>
-          </div>
-          <div
-            className={`nav-item ${activeSection === 'grocery' ? 'active' : ''} ${groceryList ? '' : 'disabled'}`}
-            onClick={() => groceryList && setActiveSection('grocery')}
-          >
-            <span className="nav-icon">🛒</span>
-            <span>Grocery List</span>
-          </div>
-          <div
-            className="nav-item"
-            onClick={() => window.location.href = '/cooking-assistant'}
-          >
-            <span className="nav-icon">🍳</span>
-            <span>Cooking Assistant</span>
-          </div>
+        <nav className="mp-nav">
+          {[
+            { id: 'planner', icon: '📋', label: 'Meal Plan' },
+            { id: 'grocery', icon: '🛒', label: 'Grocery List', disabled: !groceryList },
+            { id: 'cooking', icon: '🍳', label: 'Cooking Assistant', link: '/cooking-assistant' },
+          ].map(item => (
+            <button
+              key={item.id}
+              className={`mp-nav-item ${activeNav === item.id ? 'active' : ''} ${item.disabled ? 'disabled' : ''}`}
+              onClick={() => {
+                if (item.disabled) return;
+                if (item.link) { window.location.href = item.link; return; }
+                setActiveNav(item.id);
+              }}
+            >
+              <span className="mp-nav-icon">{item.icon}</span>
+              <span>{item.label}</span>
+              {item.id === 'grocery' && !groceryList && <span className="mp-lock">🔒</span>}
+            </button>
+          ))}
         </nav>
-
-        <div className="sidebar-footer">
-          <div className="sri-lankan-badge">
-            <span className="flag">🇱🇰</span>
+        <div className="mp-sidebar-footer">
+          <div className="mp-badge">
+            <span>🇱🇰</span>
             <div>
-              <div className="badge-title">Authentic Sri Lankan</div>
-              <div className="badge-subtitle">Traditional Recipes</div>
+              <div className="mp-badge-title">Authentic Sri Lankan</div>
+              <div className="mp-badge-sub">Traditional Recipes</div>
             </div>
           </div>
         </div>
       </aside>
 
-      {/* Main Content */}
-      <main className="meal-planner-page">
-        {activeSection === 'planner' && (
-          <section className="planner-section">
-            <div className="planner-header-card">
-              <h1 className="main-title">Weekly Meal Planner</h1>
-              <p className="subtitle">Plan your week, generate shopping list automatically 🥘</p>
-            </div>
+      {/* ── Main ── */}
+      <main className="mp-main">
 
-            <div className="people-selector-card">
-              <label className="label">👥 Number of People:</label>
-              <div className="selector-controls">
-                <button
-                  onClick={() => setNumPeople(Math.max(1, numPeople - 1))}
-                  className="control-btn"
-                >
-                  -
-                </button>
-                <div className="people-count">
-                  {numPeople}
-                </div>
-                <button
-                  onClick={() => setNumPeople(numPeople + 1)}
-                  className="control-btn"
-                >
-                  +
-                </button>
+        {/* ═══ PLANNER SECTION ═══ */}
+        {activeNav === 'planner' && (
+          <>
+            {/* Hero */}
+            <div className="mp-hero">
+              <div className="mp-hero-text">
+                <p className="mp-hero-tag">SmartKitchen • Meal Planner</p>
+                <h1 className="mp-hero-title">Plan your week,<br /><span className="mp-hero-accent">shop smarter</span></h1>
+                <p className="mp-hero-desc">Add meals by dropdown, free text, or upload a photo of your handwritten plan — we'll generate your grocery list automatically.</p>
               </div>
-              <p className="serving-text">Serving Size Calculator</p>
+              <div className="mp-hero-visual">🗓️</div>
             </div>
 
-            <div className="weekly-plan-card">
-              <h3 className="card-title"><span>📋</span> Weekly Meal Plan</h3>
-              <div className="weekly-grid">
-                {Object.keys(mealPlan).map((day) => (
-                  <div key={day} className="day-card">
-                    <h4 className="day-title">{day}</h4>
-                    <div className="meal-selectors">
-                      <select
-                        onChange={(e) => handleDaySelectChange(day, 'breakfast', e.target.value)}
-                        value={mealPlan[day].breakfast}
-                        className="meal-select"
-                      >
-                        <option value="">🌅 Breakfast</option>
-                        {popularRecipes.map((recipe, idx) => (
-                          <option key={idx} value={recipe}>{recipe}</option>
-                        ))}
-                      </select>
-                      <select
-                        onChange={(e) => handleDaySelectChange(day, 'lunch', e.target.value)}
-                        value={mealPlan[day].lunch}
-                        className="meal-select"
-                      >
-                        <option value="">☀️ Lunch</option>
-                        {popularRecipes.map((recipe, idx) => (
-                          <option key={idx} value={recipe}>{recipe}</option>
-                        ))}
-                      </select>
-                      <select
-                        onChange={(e) => handleDaySelectChange(day, 'dinner', e.target.value)}
-                        value={mealPlan[day].dinner}
-                        className="meal-select"
-                      >
-                        <option value="">🌙 Dinner</option>
-                        {popularRecipes.map((recipe, idx) => (
-                          <option key={idx} value={recipe}>{recipe}</option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
+            {/* People selector */}
+            <div className="mp-people-card">
+              <span className="mp-people-label">👥 Number of People</span>
+              <div className="mp-people-controls">
+                <button className="mp-people-btn" onClick={() => setNumPeople(p => Math.max(1, p - 1))}>−</button>
+                <span className="mp-people-count">{numPeople}</span>
+                <button className="mp-people-btn" onClick={() => setNumPeople(p => p + 1)}>+</button>
+              </div>
+              <span className="mp-people-hint">Ingredients will be scaled for {numPeople} {numPeople === 1 ? 'person' : 'people'}</span>
+            </div>
+
+            {/* Input method tabs */}
+            <div className="mp-section">
+              <div className="mp-tabs">
+                {[
+                  { id: 'dropdown', icon: '📋', label: 'Select Meals' },
+                  { id: 'text', icon: '✏️', label: 'Type Freely' },
+                  { id: 'image', icon: '📷', label: 'Upload Photo' },
+                ].map(tab => (
+                  <button key={tab.id} className={`mp-tab ${activeTab === tab.id ? 'active' : ''}`}
+                    onClick={() => { setActiveTab(tab.id); setError(''); }}>
+                    {tab.icon} {tab.label}
+                  </button>
                 ))}
               </div>
-            </div>
 
-            <button
-              onClick={generateGroceryList}
-              className="generate-btn primary"
-            >
-              🛒 Generate Grocery List
-            </button>
-          </section>
+              {/* ── TAB: DROPDOWN ── */}
+              {activeTab === 'dropdown' && (
+                <div className="mp-tab-content">
+                  <p className="mp-tab-hint">Select a recipe for each meal slot. Leave empty to skip.</p>
+                  <div className="mp-weekly-grid">
+                    {DAYS.map(day => (
+                      <div key={day} className="mp-day-card">
+                        <div className="mp-day-header">
+                          <span className="mp-day-name">{day}</span>
+                          <span className="mp-day-filled">
+                            {Object.values(mealPlan[day]).filter(Boolean).length}/3
+                          </span>
+                        </div>
+                        <div className="mp-meal-selects">
+                          {MEALS.map(meal => (
+                            <div key={meal} className="mp-select-wrap">
+                              <span className="mp-meal-icon">{MEAL_ICONS[meal]}</span>
+                              <select
+                                className="mp-select"
+                                value={mealPlan[day][meal]}
+                                onChange={e => setMeal(day, meal, e.target.value)}
+                              >
+                                <option value="">{meal.charAt(0).toUpperCase() + meal.slice(1)}</option>
+                                {SL_RECIPES.map((r, i) => <option key={i} value={r}>{r}</option>)}
+                              </select>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  {error && <div className="mp-error">⚠️ {error}</div>}
+                  <button className="mp-generate-btn" onClick={buildGroceryFromDropdown} disabled={loading || dropdownMealCount === 0}>
+                    {loading ? <><span className="mp-spinner" /> Generating...</> : <>🛒 Generate Grocery List ({dropdownMealCount} meals)</>}
+                  </button>
+                </div>
+              )}
+
+              {/* ── TAB: FREE TEXT ── */}
+              {activeTab === 'text' && (
+                <div className="mp-tab-content">
+                  <p className="mp-tab-hint">Type your meal plan naturally. Our AI will understand and extract the meals.</p>
+                  <div className="mp-text-examples">
+                    <span className="mp-example-label">💡 Examples:</span>
+                    <span className="mp-example">"Monday breakfast: hoppers, lunch: rice and curry, dinner: kottu"</span>
+                    <span className="mp-example">"This week I want chicken curry on Tuesday, fish curry Wednesday, dhal every day"</span>
+                  </div>
+                  <textarea
+                    className="mp-textarea"
+                    placeholder="Type your weekly meal plan here...&#10;&#10;e.g. Monday: Rice &amp; Curry for lunch, Hoppers for dinner&#10;Tuesday: Kottu Roti for dinner&#10;Wednesday breakfast: Kiribath..."
+                    value={freeText}
+                    onChange={e => setFreeText(e.target.value)}
+                    rows={8}
+                  />
+                  {parsedPlan && (
+                    <div className="mp-parsed-preview">
+                      <div className="mp-parsed-title">✅ AI Parsed Your Plan:</div>
+                      {Object.entries(parsedPlan).map(([day, meals]) => (
+                        <div key={day} className="mp-parsed-row">
+                          <span className="mp-parsed-day">{day}</span>
+                          <span className="mp-parsed-meals">
+                            {typeof meals === 'object'
+                              ? Object.values(meals).filter(Boolean).join(' • ')
+                              : meals}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  {error && <div className="mp-error">⚠️ {error}</div>}
+                  <button className="mp-generate-btn" onClick={parseTextPlan} disabled={loading || !freeText.trim()}>
+                    {loading ? <><span className="mp-spinner" /> Parsing with AI...</> : <>🤖 Parse & Generate Grocery List</>}
+                  </button>
+                </div>
+              )}
+
+              {/* ── TAB: IMAGE UPLOAD ── */}
+              {activeTab === 'image' && (
+                <div className="mp-tab-content">
+                  <p className="mp-tab-hint">Upload a photo of your handwritten or printed meal plan. AI will read it and generate your grocery list.</p>
+                  <div
+                    className={`mp-image-drop ${planImagePreview ? 'has-image' : ''}`}
+                    onDragOver={e => e.preventDefault()}
+                    onDrop={e => { e.preventDefault(); onImageSelect(e.dataTransfer.files[0]); }}
+                    onClick={() => fileRef.current?.click()}
+                  >
+                    <input ref={fileRef} type="file" accept="image/*" style={{ display: 'none' }}
+                      onChange={e => onImageSelect(e.target.files[0])} />
+                    {planImagePreview
+                      ? <img src={planImagePreview} alt="Plan" className="mp-plan-preview" />
+                      : (
+                        <div className="mp-drop-placeholder">
+                          <div className="mp-drop-icon">📷</div>
+                          <p className="mp-drop-text">Drop photo of your meal plan here</p>
+                          <p className="mp-drop-hint">or click to browse • JPG PNG GIF</p>
+                          <p className="mp-drop-hint">Works with handwritten notes, whiteboard photos, printed schedules</p>
+                        </div>
+                      )
+                    }
+                  </div>
+                  {planImagePreview && (
+                    <button className="mp-clear-btn" onClick={() => { setPlanImage(null); setPlanImagePreview(null); setParsedPlan(null); }}>
+                      🗑️ Clear Image
+                    </button>
+                  )}
+                  {parsedPlan && (
+                    <div className="mp-parsed-preview">
+                      <div className="mp-parsed-title">✅ AI Read Your Plan:</div>
+                      {Object.entries(parsedPlan).map(([day, meals]) => (
+                        <div key={day} className="mp-parsed-row">
+                          <span className="mp-parsed-day">{day}</span>
+                          <span className="mp-parsed-meals">
+                            {typeof meals === 'object'
+                              ? Object.values(meals).filter(Boolean).join(' • ')
+                              : meals}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  {error && <div className="mp-error">⚠️ {error}</div>}
+                  <button className="mp-generate-btn" onClick={parseImagePlan} disabled={loading || !planImage}>
+                    {loading ? <><span className="mp-spinner" /> Reading image with AI...</> : <>📷 Read Plan & Generate Grocery List</>}
+                  </button>
+                </div>
+              )}
+            </div>
+          </>
         )}
 
-        {activeSection === 'grocery' && groceryList && (
-          <section className="grocery-section">
-            <div className="grocery-header-card">
-              <h2 className="main-title">🛒 Your Grocery List</h2>
-              <p className="subtitle">For {numPeople} {numPeople === 1 ? 'person' : 'people'} • 7 days</p>
+        {/* ═══ GROCERY SECTION ═══ */}
+        {activeNav === 'grocery' && groceryList && (
+          <>
+            <div className="mp-hero mp-grocery-hero">
+              <div className="mp-hero-text">
+                <p className="mp-hero-tag">SmartKitchen • Grocery List</p>
+                <h1 className="mp-hero-title">Your <span className="mp-hero-accent">Shopping List</span></h1>
+                <p className="mp-hero-desc">
+                  {groceryList.total_items} items • scaled for {numPeople} {numPeople === 1 ? 'person' : 'people'} • {groceryList.total_meals || '?'} meals
+                </p>
+              </div>
+              <div className="mp-hero-visual">🛒</div>
             </div>
 
-            <div className="grocery-grid">
-              {Object.entries(groceryList).map(([category, items]) => (
-                <div key={category} className="grocery-category-card">
-                  <h3 className="category-title">
-                    {category === 'vegetables' && '🥬'}
-                    {category === 'protein' && '🍗'}
-                    {category === 'grains' && '🌾'}
-                    {category === 'spices' && '🌶️'}
-                    {category === 'dairy' && '🥛'}
-                    {' '}{category}
-                  </h3>
-                  <ul className="grocery-items-list">
-                    {items.map((item, idx) => (
-                      <li key={idx} className="grocery-item">
-                        <span className="item-name">{item.item}</span>
-                        <span className="item-quantity">
-                          {item.quantity} {item.unit}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
+            {/* Stats */}
+            <div className="mp-grocery-stats">
+              {[
+                { icon: '🧺', label: 'Total Items', value: groceryList.total_items },
+                { icon: '👥', label: 'People', value: numPeople },
+                { icon: '🍽️', label: 'Meals Planned', value: groceryList.total_meals || '—' },
+                { icon: '📦', label: 'Categories', value: Object.keys(groceryList.categories || {}).length },
+              ].map((s, i) => (
+                <div key={i} className="mp-stat-card">
+                  <span className="mp-stat-icon">{s.icon}</span>
+                  <div>
+                    <div className="mp-stat-value">{s.value}</div>
+                    <div className="mp-stat-label">{s.label}</div>
+                  </div>
                 </div>
               ))}
             </div>
 
-            <div className="action-buttons">
-              <button className="btn secondary">
-                📧 Email List
+            {/* Category cards */}
+            <div className="mp-grocery-grid" id="grocery-print-area">
+              {Object.entries(groceryList.categories || {}).map(([cat, items]) => (
+                items.length > 0 && (
+                  <div key={cat} className="mp-grocery-card">
+                    <h3 className="mp-grocery-cat-title">{cat}</h3>
+                    <ul className="mp-grocery-list">
+                      {items.map((item, i) => (
+                        <li key={i} className="mp-grocery-item">
+                          <div className="mp-grocery-check">
+                            <input type="checkbox" id={`item-${cat}-${i}`} />
+                            <label htmlFor={`item-${cat}-${i}`}>{item.name}</label>
+                          </div>
+                          <span className="mp-grocery-amount">{item.scaled_amount}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )
+              ))}
+            </div>
+
+            {/* Actions */}
+            <div className="mp-actions">
+              <button className="mp-action-btn secondary" onClick={() => setActiveNav('planner')}>
+                ← Edit Meal Plan
               </button>
-              <button className="btn primary">
-                📱 Send to Phone
+              <button className="mp-action-btn primary" onClick={handlePrint}>
+                🖨️ Print List
               </button>
-              <button className="btn success">
-                🖨️ Print
+              <button className="mp-action-btn success" onClick={() => {
+                const text = Object.entries(groceryList.categories || {})
+                  .flatMap(([cat, items]) => [`\n${cat}`, ...items.map(i => `  • ${i.name} — ${i.scaled_amount}`)])
+                  .join('\n');
+                const blob = new Blob([`GROCERY LIST (${numPeople} people)\n${text}`], { type: 'text/plain' });
+                const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+                a.download = 'grocery_list.txt'; a.click();
+              }}>
+                ⬇️ Download
               </button>
             </div>
-          </section>
+          </>
         )}
       </main>
     </div>
   );
 }
-
-export default MealPlanner;

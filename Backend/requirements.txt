@@ -26,3 +26,5 @@ seaborn>=0.13.0
 tqdm==4.66.1
 flask-bcrypt
 flask-jwt-extended
+statsmodels>=0.14.0
+python-docx>=1.1.0

@@ -85,12 +85,18 @@ jwt.init_app(app)
 # Import blueprints (teammates modules)
 # --------------------------------------------------------
 from cooking_assistant.routes import cooking_bp
+from cooking_assistant.enhanced_routes import enhanced_bp
+from cooking_assistant.waste_tracker import waste_bp
+from cooking_assistant.translation_engine import translation_bp
 from shopping.routes import shopping_bp
 from auth.routes import auth_bp
 from NutritionGuidance.routes import nutrition_bp
 
 # Register blueprints (keep your previous routing)
 app.register_blueprint(cooking_bp, url_prefix="/api/cooking")
+app.register_blueprint(enhanced_bp, url_prefix="/api/cooking-enhanced")
+app.register_blueprint(waste_bp, url_prefix="/api/waste")
+app.register_blueprint(translation_bp, url_prefix="/api/translation")
 app.register_blueprint(shopping_bp, url_prefix="")  # if routes already include /api/shopping
 app.register_blueprint(auth_bp, url_prefix="/api/auth")
 app.register_blueprint(nutrition_bp, url_prefix="/api/nutrition")

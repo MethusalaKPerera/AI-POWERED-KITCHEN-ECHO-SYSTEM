@@ -1,277 +1,185 @@
+"""
+image_processor.py - Drop-in replacement using Groq Vision API
+Replaces broken Google Vision with Groq's llama-4-scout vision model
+"""
+
 import os
-import io
-from google.cloud import vision
+import base64
+import json
+import re
+from groq import Groq
 
-def detect_ingredients(image_path):
+# ── Groq client ──────────────────────────────────────────────────────────────
+GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
+
+
+client = Groq(api_key=GROQ_API_KEY)
+VISION_MODEL = "meta-llama/llama-4-scout-17b-16e-instruct"
+
+
+# ── helpers ───────────────────────────────────────────────────────────────────
+def _encode_image(image_path: str) -> tuple[str, str]:
+    """Return (base64_data, media_type)."""
+    ext = os.path.splitext(image_path)[1].lower()
+    mime = {
+        ".jpg": "image/jpeg",
+        ".jpeg": "image/jpeg",
+        ".png": "image/png",
+        ".gif": "image/gif",
+        ".webp": "image/webp",
+    }.get(ext, "image/jpeg")
+
+    with open(image_path, "rb") as f:
+        return base64.b64encode(f.read()).decode("utf-8"), mime
+
+
+def _parse_json_list(text: str) -> list[str]:
+    """Extract a JSON array from model output, return [] on failure."""
+    # Try direct parse
+    text = text.strip()
+    try:
+        data = json.loads(text)
+        if isinstance(data, list):
+            return [str(i).strip().lower() for i in data if str(i).strip()]
+    except json.JSONDecodeError:
+        pass
+
+    # Try extracting [...] block
+    match = re.search(r"\[.*?\]", text, re.DOTALL)
+    if match:
+        try:
+            data = json.loads(match.group())
+            if isinstance(data, list):
+                return [str(i).strip().lower() for i in data if str(i).strip()]
+        except json.JSONDecodeError:
+            pass
+
+    # Fall back: split lines/commas
+    items = re.split(r"[\n,]+", text)
+    cleaned = []
+    for item in items:
+        item = re.sub(r"^[\d\.\-\*\[\]\"\'\s]+", "", item).strip().strip('"\'')
+        if 2 < len(item) < 50:
+            cleaned.append(item.lower())
+    return cleaned
+
+
+# ── Public API ────────────────────────────────────────────────────────────────
+def analyze_image(image_path: str) -> dict:
     """
-    Detect ingredients from image using Google Cloud Vision API
-    with smart mapping to specific ingredients
+    Analyse an image and return detected ingredients.
+
+    Returns:
+        {
+            "success": bool,
+            "ingredients": [...],
+            "raw_text": str,
+            "error": str | None
+        }
     """
     try:
-        api_key = os.getenv('GOOGLE_CLOUD_API_KEY')
-        
-        print(f"🔍 DEBUG: API Key exists: {bool(api_key)}")
-        print(f"🔍 DEBUG: API Key first 10 chars: {api_key[:10] if api_key else 'None'}...")
-        
-        if not api_key:
-            print("❌ WARNING: No API key found. Using mock data.")
-            return get_mock_ingredients()
-        
-        print(f"✅ API key found! Analyzing image: {image_path}")
-        
-        # Initialize Vision API client
-        client = vision.ImageAnnotatorClient(
-            client_options={"api_key": api_key}
+        b64, mime = _encode_image(image_path)
+
+        response = client.chat.completions.create(
+            model=VISION_MODEL,
+            messages=[
+                {
+                    "role": "user",
+                    "content": [
+                        {
+                            "type": "image_url",
+                            "image_url": {
+                                "url": f"data:{mime};base64,{b64}"
+                            },
+                        },
+                        {
+                            "type": "text",
+                            "text": (
+                                "You are a food ingredient detection AI. "
+                                "Look at this image carefully and list EVERY food ingredient "
+                                "or raw food item you can see.\n\n"
+                                "Rules:\n"
+                                "- Look very carefully at the actual image\n"
+                                "- List only what you genuinely see in this specific image\n"
+                                "- Include vegetables, meats, spices, fruits, grains, etc.\n"
+                                "- Use simple common names (e.g. 'onion', 'chicken', 'garlic')\n"
+                                "- Return ONLY a JSON array of strings, nothing else\n\n"
+                                "Example output: [\"chicken\", \"onion\", \"garlic\", \"tomato\", \"ginger\"]\n\n"
+                                "Return ONLY the JSON array:"
+                            ),
+                        },
+                    ],
+                }
+            ],
+            max_tokens=500,
+            temperature=0.1,
         )
-        
-        # Read the image file
-        with io.open(image_path, 'rb') as image_file:
-            content = image_file.read()
-        
-        image = vision.Image(content=content)
-        
-        # 1. Label Detection (general objects)
-        label_response = client.label_detection(image=image)
-        labels = label_response.label_annotations
-        
-        # 2. Object Localization (specific objects)
-        object_response = client.object_localization(image=image)
-        objects = object_response.localized_object_annotations
-        
-        # 3. Text Detection (for packaged foods)
-        text_response = client.text_detection(image=image)
-        texts = text_response.text_annotations
-        
-        # Check for errors
-        if label_response.error.message:
-            raise Exception(f"API Error: {label_response.error.message}")
-        
-        # Extract and map ingredients
-        detected_items = extract_and_map_ingredients(labels, objects, texts)
-        
-        # If nothing detected, return fallback
-        if not detected_items:
-            print("No ingredients detected. Using sample data.")
-            return get_mock_ingredients()
-        
-        return detected_items
-        
-    except Exception as e:
-        print(f"Error in detect_ingredients: {str(e)}")
-        return get_mock_ingredients()
+
+        raw = response.choices[0].message.content or ""
+        ingredients = _parse_json_list(raw)
+
+        if not ingredients:
+            return {
+                "success": False,
+                "ingredients": [],
+                "raw_text": raw,
+                "error": "Could not detect any ingredients in the image.",
+            }
+
+        return {
+            "success": True,
+            "ingredients": ingredients,
+            "raw_text": raw,
+            "error": None,
+        }
+
+    except Exception as exc:
+        return {
+            "success": False,
+            "ingredients": [],
+            "raw_text": "",
+            "error": f"Groq API error: {str(exc)}",
+        }
 
 
-def extract_and_map_ingredients(labels, objects, texts):
+def detect_ingredients(image_path: str) -> list[str]:
+    """Simple wrapper — returns ingredient list (empty on failure)."""
+    result = analyze_image(image_path)
+    return result.get("ingredients", [])
+
+
+def process_image_for_recipes(image_path: str) -> dict:
     """
-    Extract ingredients and map generic terms to specific ingredients
+    Legacy-compatible wrapper used by some route handlers.
+
+    Returns:
+        {
+            "success": bool,
+            "ingredients": [...],
+            "description": str,
+            "error": str | None
+        }
     """
-    
-    # Ingredient mapping dictionary (generic → specific)
-    ingredient_mapping = {
-        # Vegetables
-        'vegetable': ['mixed vegetables'],
-        'produce': ['fresh produce'],
-        'root vegetable': ['carrot', 'potato', 'radish'],
-        'leafy vegetable': ['spinach', 'cabbage', 'lettuce'],
-        'allium': ['onion', 'garlic', 'leek'],
-        'gourd': ['pumpkin', 'cucumber', 'zucchini'],
-        
-        # Specific vegetables
-        'tomato': ['tomato'],
-        'onion': ['onion'],
-        'garlic': ['garlic'],
-        'ginger': ['ginger'],
-        'potato': ['potato'],
-        'carrot': ['carrot'],
-        'pepper': ['bell pepper', 'chili'],
-        'chili': ['green chili', 'red chili'],
-        'cucumber': ['cucumber'],
-        'cabbage': ['cabbage'],
-        'eggplant': ['eggplant', 'brinjal'],
-        'pumpkin': ['pumpkin'],
-        'beans': ['green beans'],
-        'peas': ['peas'],
-        'corn': ['corn', 'sweet corn'],
-        'mushroom': ['mushroom'],
-        'broccoli': ['broccoli'],
-        'cauliflower': ['cauliflower'],
-        
-        # Proteins
-        'meat': ['meat'],
-        'chicken': ['chicken'],
-        'beef': ['beef'],
-        'pork': ['pork'],
-        'fish': ['fish'],
-        'seafood': ['seafood'],
-        'shrimp': ['shrimp', 'prawns'],
-        'egg': ['egg'],
-        'tofu': ['tofu'],
-        
-        # Grains & Staples
-        'rice': ['rice'],
-        'wheat': ['wheat flour'],
-        'flour': ['flour'],
-        'bread': ['bread'],
-        'pasta': ['pasta'],
-        'noodles': ['noodles'],
-        
-        # Dairy
-        'dairy': ['milk', 'yogurt'],
-        'milk': ['milk'],
-        'cheese': ['cheese'],
-        'butter': ['butter'],
-        'cream': ['cream'],
-        'yogurt': ['yogurt', 'curd'],
-        
-        # Spices & Herbs
-        'spice': ['spices'],
-        'herb': ['herbs'],
-        'curry': ['curry powder', 'curry leaves'],
-        'turmeric': ['turmeric'],
-        'cumin': ['cumin'],
-        'coriander': ['coriander'],
-        'cinnamon': ['cinnamon'],
-        'cardamom': ['cardamom'],
-        'chili powder': ['chili powder'],
-        'garam masala': ['garam masala'],
-        'bay leaf': ['bay leaf'],
-        'mint': ['mint'],
-        'cilantro': ['cilantro', 'coriander leaves'],
-        'basil': ['basil'],
-        'parsley': ['parsley'],
-        'thyme': ['thyme'],
-        'rosemary': ['rosemary'],
-        
-        # Oils & Condiments
-        'oil': ['cooking oil'],
-        'coconut': ['coconut', 'coconut milk'],
-        'coconut milk': ['coconut milk'],
-        'soy sauce': ['soy sauce'],
-        'vinegar': ['vinegar'],
-        'salt': ['salt'],
-        'sugar': ['sugar'],
-        'honey': ['honey'],
-        
-        # Nuts & Seeds
-        'nut': ['nuts'],
-        'cashew': ['cashew'],
-        'peanut': ['peanut'],
-        'almond': ['almond'],
-        'walnut': ['walnut'],
-        'sesame': ['sesame seeds'],
-        
-        # Fruits
-        'fruit': ['fruit'],
-        'lemon': ['lemon'],
-        'lime': ['lime'],
-        'apple': ['apple'],
-        'banana': ['banana'],
-        'mango': ['mango'],
-        'orange': ['orange'],
-        'tomato': ['tomato'],  # Technically a fruit
-        
-        # Lentils & Legumes
-        'lentil': ['lentils', 'dhal'],
-        'bean': ['beans'],
-        'chickpea': ['chickpeas'],
-        'red lentil': ['red lentils'],
-        'green lentil': ['green lentils'],
+    result = analyze_image(image_path)
+    return {
+        "success": result["success"],
+        "ingredients": result["ingredients"],
+        "description": f"Detected {len(result['ingredients'])} ingredients using Groq Vision AI.",
+        "error": result.get("error"),
     }
-    
-    # Common ingredients to always include if mentioned
-    common_ingredients = {
-        'tomato', 'onion', 'garlic', 'ginger', 'potato', 'carrot',
-        'chicken', 'rice', 'egg', 'oil', 'salt', 'pepper',
-        'chili', 'curry', 'coconut', 'fish', 'beef', 'pork',
-        'cucumber', 'cabbage', 'beans', 'peas', 'corn',
-        'milk', 'cheese', 'butter', 'flour', 'sugar'
-    }
-    
-    detected_ingredients = set()
-    raw_detections = set()
-    
-    # Process labels
-    for label in labels:
-        description = label.description.lower().strip()
-        raw_detections.add(description)
-        
-        # Check if it's a common ingredient
-        for common in common_ingredients:
-            if common in description or description in common:
-                detected_ingredients.add(common)
-        
-        # Map to specific ingredients
-        for generic, specifics in ingredient_mapping.items():
-            if generic in description:
-                detected_ingredients.update(specifics)
-    
-    # Process objects (usually more specific)
-    for obj in objects:
-        name = obj.name.lower().strip()
-        raw_detections.add(name)
-        
-        # Check common ingredients
-        for common in common_ingredients:
-            if common in name or name in common:
-                detected_ingredients.add(common)
-        
-        # Direct mapping
-        for generic, specifics in ingredient_mapping.items():
-            if generic in name:
-                detected_ingredients.update(specifics)
-    
-    # Process text (for packaged foods)
-    if texts and len(texts) > 0:
-        detected_text = texts[0].description.lower() if texts else ""
-        
-        # Look for ingredient keywords in text
-        for common in common_ingredients:
-            if common in detected_text:
-                detected_ingredients.add(common)
-    
-    # Remove generic terms if we have specific ones
-    generic_terms = {'food', 'ingredient', 'produce', 'vegetable', 'fruit', 'meat', 'spice'}
-    detected_ingredients = detected_ingredients - generic_terms
-    
-    # Convert to sorted list
-    result = sorted(list(detected_ingredients))
-    
-    print(f"Raw detections: {raw_detections}")
-    print(f"Mapped ingredients: {result}")
-    
-    return result
 
 
-def get_mock_ingredients():
-    """
-    Fallback mock data when API fails or no API key
-    """
-    return [
-        'tomato',
-        'onion',
-        'garlic',
-        'chicken',
-        'rice',
-        'curry leaves',
-        'ginger'
-    ]
-
-
-def test_api_connection():
-    """
-    Test if Google Cloud Vision API is working
-    """
-    try:
-        api_key = os.getenv('GOOGLE_CLOUD_API_KEY')
-        
-        if not api_key:
-            return False, "No API key found in .env file"
-        
-        client = vision.ImageAnnotatorClient(
-            client_options={"api_key": api_key}
+# ── Quick test ────────────────────────────────────────────────────────────────
+if __name__ == "__main__":
+    import sys
+    path = sys.argv[1] if len(sys.argv) > 1 else None
+    if path:
+        print(json.dumps(analyze_image(path), indent=2))
+    else:
+        # Connectivity test
+        r = client.chat.completions.create(
+            model=VISION_MODEL,
+            messages=[{"role": "user", "content": "Say OK"}],
+            max_tokens=5,
         )
-        
-        return True, "API connection successful!"
-        
-    except Exception as e:
-        return False, f"API connection failed: {str(e)}"
+        print("Groq connection OK:", r.choices[0].message.content)
