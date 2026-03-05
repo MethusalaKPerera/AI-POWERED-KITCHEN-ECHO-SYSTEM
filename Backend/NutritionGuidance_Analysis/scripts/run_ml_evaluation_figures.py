@@ -3,30 +3,35 @@ import joblib
 import numpy as np
 import pandas as pd
 
-from sklearn.model_selection import train_test_split, StratifiedKFold, cross_val_score
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import classification_report, accuracy_score
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+import matplotlib.pyplot as plt
 
 
 # ------------------------------------------------------------
-# PATHS
+# PATHS (this script is inside backend/NutritionGuidance_Analysis/scripts)
 # ------------------------------------------------------------
-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))  # backend/
-DATA_DIR = os.path.join(BASE_DIR, "data")
+BACKEND_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))  # backend/
+DATA_DIR = os.path.join(BACKEND_DIR, "data")
 
 FOOD_PATH = os.path.join(DATA_DIR, "SL_Food_Nutrition_Master.csv")
 REQ_PATH = os.path.join(DATA_DIR, "SL_Nutrient_Requirements_By_Age.csv")
 COND_PATH = os.path.join(DATA_DIR, "Health_Condition_Nutrient_Adjustments.csv")
 
-MODEL_DIR = os.path.dirname(__file__)
-MODEL_PATH = os.path.join(MODEL_DIR, "deficiency_risk_model.pkl")
+MODEL_PATH = os.path.join(BACKEND_DIR, "NutritionGuidance", "ml", "deficiency_risk_model.pkl")
+
+OUT_DIR = os.path.join(BACKEND_DIR, "NutritionGuidance_Analysis", "output_figures")
+os.makedirs(OUT_DIR, exist_ok=True)
+
+FIG_CM = os.path.join(OUT_DIR, "figure_5_confusion_matrix.png")
+FIG_FI = os.path.join(OUT_DIR, "figure_6_feature_importance.png")
 
 RANDOM_SEED = 42
 np.random.seed(RANDOM_SEED)
 
 
 # ------------------------------------------------------------
-# HELPERS
+# HELPERS (same logic as training, kept here so Analysis scripts are self-contained)
 # ------------------------------------------------------------
 def pick_col(df, aliases):
     cols = {c.strip().lower(): c for c in df.columns}
@@ -44,19 +49,9 @@ def normalize_food_columns(food_df):
     col_calcium = pick_col(food_df, ["calcium_mg", "calcium"])
     col_iron = pick_col(food_df, ["iron_mg", "iron"])
 
-    missing = [
-        ("food", col_food),
-        ("energy", col_energy),
-        ("protein", col_protein),
-        ("calcium", col_calcium),
-        ("iron", col_iron),
-    ]
-    missing = [n for n, c in missing if c is None]
-    if missing:
-        raise ValueError(
-            f"Food master is missing required columns: {missing}\n"
-            f"Available columns: {list(food_df.columns)}"
-        )
+    required = [col_food, col_energy, col_protein, col_calcium, col_iron]
+    if any(c is None for c in required):
+        raise ValueError(f"Food CSV missing expected nutrient columns. Found: {list(food_df.columns)}")
 
     out = food_df[[col_food, col_energy, col_protein, col_calcium, col_iron]].copy()
     out.columns = ["food", "energy_kcal", "protein_g", "calcium_mg", "iron_mg"]
@@ -76,48 +71,21 @@ def normalize_req_columns(req_df):
     col_calcium = pick_col(req_df, ["calcium_mg", "calcium"])
     col_iron = pick_col(req_df, ["iron_mg", "iron"])
 
-    missing = [
-        ("age_min", col_age_min),
-        ("age_max", col_age_max),
-        ("energy", col_energy),
-        ("protein", col_protein),
-        ("calcium", col_calcium),
-        ("iron", col_iron),
-    ]
-    missing = [n for n, c in missing if c is None]
-    if missing:
-        raise ValueError(
-            f"Requirements CSV is missing required columns: {missing}\n"
-            f"Available columns: {list(req_df.columns)}"
-        )
+    required = [col_age_min, col_age_max, col_energy, col_protein, col_calcium, col_iron]
+    if any(c is None for c in required):
+        raise ValueError(f"Requirement CSV missing expected columns. Found: {list(req_df.columns)}")
 
     out = req_df[[col_age_min, col_age_max, col_energy, col_protein, col_calcium, col_iron]].copy()
-    out.columns = [
-        "age_min",
-        "age_max",
-        "req_energy_kcal",
-        "req_protein_g",
-        "req_calcium_mg",
-        "req_iron_mg",
-    ]
+    out.columns = ["age_min", "age_max", "req_energy_kcal", "req_protein_g", "req_calcium_mg", "req_iron_mg"]
 
-    out["age_min"] = pd.to_numeric(out["age_min"], errors="coerce")
-    out["age_max"] = pd.to_numeric(out["age_max"], errors="coerce")
-
-    for c in ["req_energy_kcal", "req_protein_g", "req_calcium_mg", "req_iron_mg"]:
+    for c in out.columns:
         out[c] = pd.to_numeric(out[c], errors="coerce")
-
     out = out.dropna()
     out = out[out["age_max"] >= out["age_min"]]
     return out
 
 
 def normalize_cond_rules(cond_df):
-    """
-    Expects rule-style columns:
-      condition, nutrient, rule_type, value, note(optional)
-    Returns cleaned dataframe or None.
-    """
     if cond_df is None or cond_df.empty:
         return None
 
@@ -128,26 +96,15 @@ def normalize_cond_rules(cond_df):
 
     df = cond_df.copy()
     df.columns = [c.strip().lower() for c in df.columns]
-
     df["condition"] = df["condition"].astype(str).str.strip().str.lower()
     df["nutrient"] = df["nutrient"].astype(str).str.strip()
     df["rule_type"] = df["rule_type"].astype(str).str.strip().str.lower()
     df["value"] = pd.to_numeric(df["value"], errors="coerce")
-
     df = df.dropna(subset=["condition", "nutrient", "rule_type", "value"])
     return df
 
 
 def build_condition_multiplier_table_from_rules(cond_df_rules, base_req_dict):
-    """
-    Converts rule-style adjustments into per-condition multipliers for the 4 nutrients.
-
-    Supported rule_type:
-      - multiplier: base * value
-      - add: base + value  -> multiplier approx ( (base+value)/base )
-      - upper_limit: min(base, value) -> multiplier approx (min(base, value)/base)
-      - lower_limit: max(base, value) -> multiplier approx (max(base, value)/base)
-    """
     if cond_df_rules is None or cond_df_rules.empty:
         return None
 
@@ -158,9 +115,8 @@ def build_condition_multiplier_table_from_rules(cond_df_rules, base_req_dict):
         "iron_mg": "iron",
     }
 
-    table = {}
-    for cond in sorted(set(cond_df_rules["condition"].tolist())):
-        table[cond] = {"energy": 1.0, "protein": 1.0, "calcium": 1.0, "iron": 1.0}
+    table = {cond: {"energy": 1.0, "protein": 1.0, "calcium": 1.0, "iron": 1.0}
+             for cond in sorted(set(cond_df_rules["condition"].tolist()))}
 
     for _, r in cond_df_rules.iterrows():
         cond = r["condition"]
@@ -188,16 +144,12 @@ def build_condition_multiplier_table_from_rules(cond_df_rules, base_req_dict):
             continue
 
         mult = max(0.2, min(mult, 3.0))
-        table[cond][key] *= mult
-        table[cond][key] = max(0.2, min(table[cond][key], 3.0))
+        table[cond][key] = max(0.2, min(table[cond][key] * mult, 3.0))
 
     return table if table else None
 
 
 def label_from_ratios(r_energy, r_protein, r_calcium, r_iron):
-    """
-    Risk labels derived from adequacy ratio threshold rule.
-    """
     below = 0
     for ratio in [r_energy, r_protein, r_calcium, r_iron]:
         if ratio < 0.80:
@@ -210,11 +162,7 @@ def label_from_ratios(r_energy, r_protein, r_calcium, r_iron):
     return "HIGH"
 
 
-def generate_training_data():
-    """
-    Creates a synthetic dataset using real food nutrients + requirement ranges.
-    IMPORTANT: ratios are used ONLY for labeling, not for model inputs (avoid leakage).
-    """
+def generate_eval_data():
     food_df_raw = pd.read_csv(FOOD_PATH)
     req_df_raw = pd.read_csv(REQ_PATH)
 
@@ -228,12 +176,12 @@ def generate_training_data():
 
     foods = food_df.to_dict("records")
 
+    SAMPLES_PER_GROUP = 200
+    INTAKE_NOISE_STD = 0.06
+    P_NONE_CONDITION = 0.70
+
     samples = []
     labels = []
-
-    SAMPLES_PER_GROUP = 200
-    INTAKE_NOISE_STD = 0.06  # 6% noise
-    P_NONE_CONDITION = 0.70  # ✅ ensures has_condition is not constant
 
     for _, rr in req_df.iterrows():
         age_min = int(rr["age_min"])
@@ -251,7 +199,6 @@ def generate_training_data():
         for _ in range(SAMPLES_PER_GROUP):
             age = int(np.random.randint(age_min, age_max + 1))
 
-            # choose condition (None + conditions)
             if cond_table:
                 cond_names = [None] + list(cond_table.keys())
                 p_cond_each = (1.0 - P_NONE_CONDITION) / (len(cond_names) - 1)
@@ -274,7 +221,6 @@ def generate_training_data():
                 req_calcium *= float(mult["calcium"])
                 req_iron *= float(mult["iron"])
 
-            # simulate daily intake totals
             n_items = np.random.randint(3, 9)
             total_energy = total_protein = total_calcium = total_iron = 0.0
 
@@ -288,13 +234,11 @@ def generate_training_data():
                 total_calcium += float(f["calcium_mg"]) * factor
                 total_iron += float(f["iron_mg"]) * factor
 
-            # add noise
             total_energy *= float(np.random.normal(1.0, INTAKE_NOISE_STD))
             total_protein *= float(np.random.normal(1.0, INTAKE_NOISE_STD))
             total_calcium *= float(np.random.normal(1.0, INTAKE_NOISE_STD))
             total_iron *= float(np.random.normal(1.0, INTAKE_NOISE_STD))
 
-            # ratios for labeling only
             r_energy = total_energy / max(req_energy, 1e-6)
             r_protein = total_protein / max(req_protein, 1e-6)
             r_calcium = total_calcium / max(req_calcium, 1e-6)
@@ -302,7 +246,6 @@ def generate_training_data():
 
             risk = label_from_ratios(r_energy, r_protein, r_calcium, r_iron)
 
-            # model inputs (no ratios)
             samples.append([
                 age,
                 total_energy, total_protein, total_calcium, total_iron,
@@ -324,38 +267,58 @@ def generate_training_data():
 # MAIN
 # ------------------------------------------------------------
 def main():
-    print("📄 Training deficiency risk model...")
-    print("✅ RUNNING FILE:", __file__)
+    print("=== ML Evaluation Figure Generator ===")
+    print("MODEL_PATH:", MODEL_PATH)
+    print("OUT_DIR   :", OUT_DIR)
 
-    X, y = generate_training_data()
-    print("🧪 Training rows:", len(X))
+    if not os.path.exists(MODEL_PATH):
+        raise FileNotFoundError(
+            f"Model not found at: {MODEL_PATH}\n"
+            f"Run: python backend/NutritionGuidance/ml/train_deficiency_model.py"
+        )
 
+    model = joblib.load(MODEL_PATH)
+
+    # rebuild eval dataset (same seed + same generator logic)
+    X, y = generate_eval_data()
+
+    # standard split for evaluation figures
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.2, random_state=RANDOM_SEED, stratify=y
     )
 
-    model = RandomForestClassifier(
-        n_estimators=250,
-        max_depth=10,
-        random_state=RANDOM_SEED,
-        class_weight="balanced"
-    )
-    model.fit(X_train, y_train)
-
     pred = model.predict(X_test)
-    acc = round(accuracy_score(y_test, pred), 4)
 
-    print("\n📊 Accuracy:", acc)
-    print(classification_report(y_test, pred))
+    # ---- Figure 5: Confusion Matrix
+    cm = confusion_matrix(y_test, pred, labels=["LOW", "MEDIUM", "HIGH"])
+    disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=["LOW", "MEDIUM", "HIGH"])
 
-    # cross-validation (report-ready)
-    cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=RANDOM_SEED)
-    cv_scores = cross_val_score(model, X, y, cv=cv, scoring="accuracy")
-    print("📌 5-Fold CV Accuracy (mean ± std):", round(cv_scores.mean(), 4), "±", round(cv_scores.std(), 4))
+    fig = plt.figure(figsize=(7.2, 5.4), dpi=150)
+    ax = fig.add_subplot(111)
+    disp.plot(ax=ax, values_format="d")
+    ax.set_title("Figure 5: Confusion Matrix of Random Forest Classifier (Test Set)")
+    fig.tight_layout()
+    fig.savefig(FIG_CM, bbox_inches="tight")
+    plt.close(fig)
+    print("✅ Saved:", FIG_CM)
 
-    # save model
-    joblib.dump(model, MODEL_PATH)
-    print("✅ ML model trained and saved at:", MODEL_PATH)
+    # ---- Figure 6: Feature Importance
+    feature_names = list(getattr(model, "feature_names_in_", X.columns))
+    importances = pd.Series(model.feature_importances_, index=feature_names).sort_values(ascending=False)
+
+    fig = plt.figure(figsize=(8.6, 5.0), dpi=150)
+    ax = fig.add_subplot(111)
+    ax.bar(importances.index, importances.values)
+    ax.set_title("Figure 6: Random Forest Feature Importance")
+    ax.set_xlabel("Feature")
+    ax.set_ylabel("Importance")
+    plt.setp(ax.get_xticklabels(), rotation=25, ha="right")
+    fig.tight_layout()
+    fig.savefig(FIG_FI, bbox_inches="tight")
+    plt.close(fig)
+    print("✅ Saved:", FIG_FI)
+
+    print("✅ Done. Now output_figures contains Figure 5 & 6.")
 
 
 if __name__ == "__main__":

@@ -17,6 +17,20 @@ const CANONICAL_KEY = {
   folate_mcg: "folate_ug",
 };
 
+// Keys we don't want shown in the UI
+const EXCLUDE_KEYS = new Set([
+  "vitamin_a_ug",
+  "vitamin_d_ug",
+  "vitamin_b12_ug",
+  "folate_ug",
+  "vitamin_a_mcg",
+  "vitamin_d_mcg",
+  "vitamin_b12_mcg",
+  "folate_mcg",
+  "added_sugar_g_upper",
+  "sodium_mg_upper",
+]);
+
 function canonicalKey(k) {
   return CANONICAL_KEY[k] || k;
 }
@@ -56,11 +70,6 @@ function labelize(key) {
     potassium_mg: "Potassium (mg)",
     sodium_mg: "Sodium (mg)",
     vitamin_c_mg: "Vitamin C (mg)",
-
-    vitamin_a_ug: "Vitamin A (µg)",
-    vitamin_d_ug: "Vitamin D (µg)",
-    vitamin_b12_ug: "Vitamin B12 (µg)",
-    folate_ug: "Folate (µg)",
   };
 
   return map[key] || key;
@@ -164,8 +173,10 @@ function TwoWeekReportModal({ open, onClose, data }) {
           <div className="tw-sectionTitle">Trained Nutrients (14-day forecast)</div>
 
           <div className="tw-nutrients">
-            {nutrients.map((n) => (
-              <div className="tw-nutrient" key={n.key}>
+            {nutrients
+              .filter((n) => !EXCLUDE_KEYS.has(n.key))
+              .map((n) => (
+                <div className="tw-nutrient" key={n.key}>
                 <div className="tw-nutrientTop">
                   <div className="tw-nutrientName">{n.label}</div>
                   <LevelChip level={n.deficiency_level_next_14d} />
@@ -241,7 +252,9 @@ const IMPORTANT_NUTRIENTS = Array.from(
       "vitamin_d_mcg",
       "vitamin_b12_mcg",
       "folate_mcg",
-    ].map(canonicalKey)
+    ]
+      .map(canonicalKey)
+      .filter((k) => !EXCLUDE_KEYS.has(k))
   )
 );
 
@@ -250,11 +263,11 @@ function getFoodNutrientPills(food) {
 
   const entries = IMPORTANT_NUTRIENTS
     .map((k) => [k, getValueByAnyKey(food, k)])
-    .filter(([_, v]) => v !== undefined);
+    .filter(([k, v]) => v !== undefined && !EXCLUDE_KEYS.has(k));
 
   const cleaned = entries
     .map(([k, v]) => [canonicalKey(k), Number(v)])
-    .filter(([_, v]) => Number.isFinite(v) && v > 0);
+    .filter(([k, v]) => !EXCLUDE_KEYS.has(k) && Number.isFinite(v) && v > 0);
 
   cleaned.sort((a, b) => b[1] - a[1]);
 
@@ -330,7 +343,8 @@ export default function PredictiveAnalytics({ userId = DEFAULT_USER_ID }) {
     const map = new Map();
 
     for (const k of Object.keys(gaps)) {
-      const ck = canonicalKey(k);
+        const ck = canonicalKey(k);
+        if (EXCLUDE_KEYS.has(ck)) continue;
 
       const existing = map.get(ck) || {
         key: ck,
@@ -352,6 +366,30 @@ export default function PredictiveAnalytics({ userId = DEFAULT_USER_ID }) {
 
       map.set(ck, {
         ...existing,
+        required: requiredVal,
+        intake: intakeVal,
+        gap: gapVal,
+        severity: sevVal,
+      });
+    }
+
+    // Ensure priority keys (e.g., sugar_g) appear even if backend didn't include them
+    const PRIORITY_GAP_KEYS = ["sugar_g"];
+    for (const k of PRIORITY_GAP_KEYS) {
+      const ck = canonicalKey(k);
+      if (EXCLUDE_KEYS.has(ck) || map.has(ck)) continue;
+      let requiredVal = getValueByAnyKey(req, ck) ?? getValueByAnyKey(req, k);
+      const intakeVal = getValueByAnyKey(periodAvg, ck) ?? getValueByAnyKey(periodAvg, k);
+      // if requirement missing but we know intake, fall back to intake so the column isn't blank
+      if (requiredVal === undefined && intakeVal !== undefined) {
+        requiredVal = intakeVal;
+      }
+      if (requiredVal === undefined && intakeVal === undefined) continue;
+      const gapVal = requiredVal !== undefined && intakeVal !== undefined ? (Number(requiredVal) - Number(intakeVal)) : undefined;
+      const sevVal = gapVal === undefined ? "ok" : (Number(gapVal) > 0 ? "high" : "ok");
+      map.set(ck, {
+        key: ck,
+        label: labelize(ck),
         required: requiredVal,
         intake: intakeVal,
         gap: gapVal,

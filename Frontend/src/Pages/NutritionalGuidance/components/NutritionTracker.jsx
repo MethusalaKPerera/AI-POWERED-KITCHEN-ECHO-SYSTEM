@@ -24,10 +24,6 @@ function labelize(key) {
     potassium_mg: "Potassium (mg)",
     sodium_mg: "Sodium (mg)",
     vitamin_c_mg: "Vitamin C (mg)",
-    vitamin_a_ug: "Vitamin A (µg)",
-    vitamin_d_ug: "Vitamin D (µg)",
-    vitamin_b12_ug: "Vitamin B12 (µg)",
-    folate_ug: "Folate (µg)",
   };
   return map[key] || key;
 }
@@ -93,6 +89,13 @@ export default function NutritionTracker({ userId = DEFAULT_USER_ID }) {
     const avg = summary.daily_average_over_period || summary.daily_average || {};
     const keys = Object.keys(totals);
 
+    const exclude = [
+      "vitamin_a_ug",
+      "vitamin_d_ug",
+      "vitamin_b12_ug",
+      "folate_ug",
+    ];
+
     const priority = [
       "energy_kcal",
       "protein_g",
@@ -107,15 +110,11 @@ export default function NutritionTracker({ userId = DEFAULT_USER_ID }) {
       "potassium_mg",
       "sodium_mg",
       "vitamin_c_mg",
-      "vitamin_a_ug",
-      "vitamin_d_ug",
-      "vitamin_b12_ug",
-      "folate_ug",
     ];
 
     const ordered = [
-      ...priority.filter((k) => k in totals),
-      ...keys.filter((k) => !priority.includes(k)),
+      ...priority.filter((k) => k in totals && !exclude.includes(k)),
+      ...keys.filter((k) => !priority.includes(k) && !exclude.includes(k)),
     ];
 
     return ordered.map((k) => ({
