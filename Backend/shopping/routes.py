@@ -109,54 +109,9 @@ def append_history(user_id, action_type, query, details=None):
 
 # =================================== PRODUCT SEARCH ===================================
 
-# --- TRILINGUAL SUPPORT (EN/SI/TA) ---
-INGREDIENT_TRANSLATIONS = {
-    # Proteins
-    'chicken': {'si': 'කුකුල් මස්', 'ta': 'கோழி'},
-    'fish': {'si': 'මාළු', 'ta': 'மீன்'},
-    'mutton': {'si': 'එළු මස්', 'ta': 'ஆட்டுக்கறி'},
-    'egg': {'si': 'බිත්තර', 'ta': 'முட்டை'},
-    'beef': {'si': 'හරක් මස්', 'ta': 'மாட்டுக்கறி'},
-    # Vegetables
-    'carrot': {'si': 'කැරට්', 'ta': 'கேரட்'},
-    'leeks': {'si': 'ලීක්ස්', 'ta': 'லீக்ஸ்'},
-    'potato': {'si': 'අල', 'ta': 'உருளைக்கிழங்கு'},
-    'onion': {'si': 'ළූණු', 'ta': 'வெங்காயம்'},
-    'garlic': {'si': 'සුදු ළූණු', 'ta': 'பூண்டு'},
-    'ginger': {'si': 'ඉඟුරු', 'ta': 'இஞ்சி'},
-    'tomato': {'si': 'තක්කාලි', 'ta': 'தக்காளி'},
-    'brinjal': {'si': 'වම්බටු', 'ta': 'கத்தரிக்காய்'},
-    'okra': {'si': 'බණ්ඩක්කා', 'ta': 'வெண்டைக்காய்'},
-    'pumpkin': {'si': 'වට්ටක්කා', 'ta': 'பூசணிக்காய்'},
-    # Grains/Pantry
-    'rice': {'si': 'සහල්', 'ta': 'அரிசி'},
-    'flour': {'si': 'පිටි', 'ta': 'மாவு'},
-    'sugar': {'si': 'සීනි', 'ta': 'சர்க்கரை'},
-    'salt': {'si': 'ලුණු', 'ta': 'உப்பு'},
-    'milk': {'si': 'කිරි', 'ta': 'பால்'},
-    'coconut': {'si': 'පොල්', 'ta': 'தேங்காய்'},
-    'dal': {'si': 'පරිප්පු', 'ta': 'பருப்பு'},
-    # Spices
-    'chili': {'si': 'මිරිස්', 'ta': 'மிளகாய்'},
-    'turmeric': {'si': 'කහ', 'ta': 'மஞ்சள்'},
-    'pepper': {'si': 'ගම්මිරිස්', 'ta': 'மிளகு'},
-}
-
-def translate_query(query):
-    """Detect if query is in SL languages and translate to English for better search results"""
-    q_lower = query.lower()
-    for eng, trans in INGREDIENT_TRANSLATIONS.items():
-        if trans['si'] in q_lower or trans['ta'] in q_lower:
-            print(f"Detected {eng} in query")
-            return eng
-    return query
-
 def search_google_shopping(query, max_results=20, country='us'):
     if not query:
         return []
-
-    # Apply Trilingual Translation Layer (Authenticity Feature)
-    query = translate_query(query)
 
     # Map full country names or codes to gl codes
     country_map = {
