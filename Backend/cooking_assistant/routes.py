@@ -288,6 +288,14 @@ import os
 from groq import Groq
 
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
+if not GROQ_API_KEY:
+    # Provide a clear explanation if the key is missing rather than letting the
+    # underlying library raise a generic error later when attempting to create
+    # a client.  This helps users configure the environment correctly.
+    raise RuntimeError(
+        "GROQ_API_KEY environment variable is not set. "
+        "Please export it or add it to your .env file before running the app."
+    )
 groq_client = Groq(api_key=GROQ_API_KEY)
 
 MEAL_PARSE_PROMPT = """
