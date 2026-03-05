@@ -178,7 +178,10 @@ Goal: **Reduce waste using personalized expiry estimates.**
 2. Create environment: `python -m venv .venv`
 3. Activate: `.venv\Scripts\activate` (Windows)
 4. Install dependencies: `pip install -r requirements.txt`
-5. Run server: `python app.py`
+5. **Set required environment variables** (e.g. `GROQ_API_KEY` for the Groq client).
+   - On Windows (PowerShell): `setx GROQ_API_KEY "your-key"`
+   - Or create a `.env` file and load it using `python-dotenv` if preferred.
+6. Run server: `python app.py`
 
 ### Frontend
 1. Navigate to the `Frontend` directory.
