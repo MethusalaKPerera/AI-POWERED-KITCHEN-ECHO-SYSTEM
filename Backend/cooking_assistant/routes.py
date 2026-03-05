@@ -1,294 +1,31 @@
+from dotenv import load_dotenv
+load_dotenv()
+
 from flask import Blueprint, request, jsonify
 import os
+import re
 import json
+import base64
 from werkzeug.utils import secure_filename
+from groq import Groq
 
 cooking_bp = Blueprint('cooking', __name__)
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
-def allowed_file(filename):
-    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
-def _load_recipes():
-    """Load recipes from merged database"""
-    data_dir = os.path.join(os.path.dirname(__file__), 'rag', 'data')
-    for fname in ['recipes_all_merged.json', 'new_200_recipes.json', 'recipe_database.json']:
-        fp = os.path.join(data_dir, fname)
-        if os.path.exists(fp):
-            with open(fp, 'r', encoding='utf-8') as f:
-                data = json.load(f)
-            if isinstance(data, dict):
-                return data.get('recipes', [])
-            return data
-
-    # Also try loading the generate_recipes_data JSON files directly
-    recipes = []
-    script_dir = os.path.dirname(__file__)
-    for i in range(1, 10):
-        fp = os.path.join(script_dir, f'generate_recipes_data_p{i}.json')
-        if os.path.exists(fp):
-            try:
-                with open(fp, 'r', encoding='utf-8') as f:
-                    data = json.load(f)
-                if isinstance(data, list):
-                    recipes.extend(data)
-                    print(f"[routes] Loaded {len(data)} recipes from generate_recipes_data_p{i}.json")
-            except Exception as e:
-                print(f"[routes] Error loading p{i}: {e}")
-
-    if recipes:
-        return recipes
-
-    print("[routes] WARNING: No recipe database found!")
-    return []
-
-
-@cooking_bp.route('/analyze-image', methods=['POST'])
-def analyze_image():
-    """Upload and analyze ingredient image using Groq Vision API"""
-    if 'image' not in request.files:
-        return jsonify({'error': 'No image file provided'}), 400
-
-    file = request.files['image']
-
-    if file.filename == '':
-        return jsonify({'error': 'No file selected'}), 400
-
-    if not allowed_file(file.filename):
-        return jsonify({'error': 'Invalid file type. Only PNG, JPG, JPEG, GIF allowed'}), 400
-
-    try:
-        filename = secure_filename(file.filename)
-        upload_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'uploads')
-        os.makedirs(upload_dir, exist_ok=True)
-        filepath = os.path.join(upload_dir, filename)
-        file.save(filepath)
-
-        from image_processor import detect_ingredients
-        detected_ingredients = detect_ingredients(filepath)
-
-        return jsonify({
-            'success': True,
-            'ingredients': detected_ingredients,
-            'message': f'Detected {len(detected_ingredients)} ingredients using Groq Vision AI',
-            'image_path': filepath,
-            'total_detected': len(detected_ingredients)
-        }), 200
-
-    except Exception as e:
-        print(f"Error in analyze_image: {str(e)}")
-        return jsonify({'error': f'Error processing image: {str(e)}'}), 500
-
-
-@cooking_bp.route('/search-recipes', methods=['POST'])
-def search_recipes():
-    """Search recipes by ingredients using real recipe database"""
-    data = request.get_json()
-
-    if not data or 'ingredients' not in data:
-        return jsonify({'error': 'No ingredients provided'}), 400
-
-    user_ingredients = [i.lower().strip() for i in data['ingredients']]
-    recipes = _load_recipes()
-
-    if not recipes:
-        return jsonify({
-            'success': False,
-            'error': 'Recipe database not found. Check your data files.',
-            'recipes': []
-        }), 200
-
-    scored_recipes = []
-
-    for recipe in recipes:
-        # ── Get ingredient names from recipe ──────────────────────────────
-        recipe_ings = []
-        for ing in recipe.get('ingredients', []):
-            name = ing.get('name', '') if isinstance(ing, dict) else str(ing)
-            if isinstance(name, dict):
-                name = name.get('english', '')
-            recipe_ings.append(name.lower().strip())
-
-        if not recipe_ings:
-            continue
-
-        # ── Calculate match score ─────────────────────────────────────────
-        matched = []
-        for ui in user_ingredients:
-            for ri in recipe_ings:
-                if ri and (ui in ri or ri.split()[0] in ui):
-                    matched.append(ui)
-                    break
-
-        missing = [ri for ri in recipe_ings if not any(
-            ui in ri or ri.split()[0] in ui for ui in user_ingredients
-        ) and ri]
-
-        match_pct = round((len(matched) / len(recipe_ings)) * 100) if recipe_ings else 0
-
-        if match_pct == 0:
-            continue
-
-        # ── Get recipe name ───────────────────────────────────────────────
-        names = recipe.get('names', {})
-        if isinstance(names, dict):
-            en_name = names.get('english', '') or names.get('en', '')
-        else:
-            en_name = str(names)
-
-        # Fallback to 'name' field (used by batch_3 style recipes)
-        if not en_name:
-            en_name = recipe.get('name', 'Unknown Recipe')
-
-        # ── Cook time ─────────────────────────────────────────────────────
-        cook_mins  = recipe.get('cook_time_mins',  recipe.get('cook_time_minutes',  30))
-        prep_mins  = recipe.get('prep_time_mins',  recipe.get('prep_time_minutes',  10))
-        total_mins = cook_mins + prep_mins
-
-        # ── Instructions: prefer 'method' field, then 'instructions' ─────
-        method = recipe.get('method', '') or recipe.get('instructions', '')
-        # If instructions is a list (batch_3 style), keep as list for frontend
-        instructions_raw = recipe.get('instructions', method)
-
-        # ── Build full recipe result ──────────────────────────────────────
-        scored_recipes.append({
-            # Identity
-            'id':           recipe.get('id', ''),
-            'name':         en_name,
-
-            # Match info
-            'match_score':           match_pct,
-            'matched_ingredients':   matched,
-            'missing_ingredients':   missing[:8],     # show up to 8
-            'ingredients_used':      matched,
-
-            # Full ingredients list WITH amounts
-            'ingredients':  recipe.get('ingredients', []),
-
-            # Cooking info
-            'cuisine':        'Sri Lankan',
-            'category':       recipe.get('category', ''),
-            'region':         recipe.get('region', ''),
-            'difficulty':     recipe.get('difficulty', 'medium'),
-            'cooking_time':   f"{total_mins} mins",
-            'cook_time_mins': cook_mins,
-            'prep_time_mins': prep_mins,
-            'servings':       recipe.get('servings', 4),
-            'spice_level':    recipe.get('spice_level', 2),
-            'is_authentic':   recipe.get('is_authentic', True),
-
-            # Full recipe content  ← THIS IS WHAT WAS MISSING
-            'instructions':   instructions_raw,
-            'method':         method,
-            'tips':           recipe.get('tips', ''),
-            'cultural_note':  recipe.get('cultural_note', ''),
-            'description':    recipe.get('description', ''),
-
-            # Source
-            'source': 'RAG Database',
-        })
-
-    # Sort by match score descending
-    scored_recipes.sort(key=lambda x: x['match_score'], reverse=True)
-
-    return jsonify({
-        'success':      True,
-        'recipes':      scored_recipes[:12],   # return top 12
-        'total_found':  len(scored_recipes),
-        'search_query': user_ingredients,
-        'database_size': len(recipes)
-    }), 200
-
-
-@cooking_bp.route('/recipe/<recipe_id>', methods=['GET'])
-def get_recipe(recipe_id):
-    """Get full recipe details by ID"""
-    recipes = _load_recipes()
-    for r in recipes:
-        if r.get('id') == recipe_id:
-            return jsonify({'success': True, 'recipe': r}), 200
-    return jsonify({'error': 'Recipe not found'}), 404
-
-
-@cooking_bp.route('/generate-grocery-list', methods=['POST'])
-def generate_grocery_list():
-    """Generate grocery list from meal plan"""
-    data = request.get_json()
-
-    if not data or 'meal_plan' not in data:
-        return jsonify({'error': 'No meal plan provided'}), 400
-
-    meal_plan    = data['meal_plan']
-    num_people   = data.get('num_people', 1)
-    recipes      = _load_recipes()
-    grocery      = {}
-    recipe_lookup = {r.get('id', ''): r for r in recipes}
-
-    for day_meals in meal_plan:
-        if isinstance(day_meals, dict):
-            for meal_type, recipe_id in day_meals.items():
-                recipe = recipe_lookup.get(recipe_id)
-                if recipe:
-                    for ing in recipe.get('ingredients', []):
-                        name   = ing.get('name', '')   if isinstance(ing, dict) else str(ing)
-                        amount = ing.get('amount', '') if isinstance(ing, dict) else ''
-                        if isinstance(name, dict):
-                            name = name.get('english', '')
-                        if name:
-                            if name not in grocery:
-                                grocery[name] = {'item': name, 'amount': amount, 'count': 0}
-                            grocery[name]['count'] += num_people
-
-    grocery_list = {
-        'all_items': list(grocery.values()),
-        'message': 'Add recipe IDs to your meal plan to generate a grocery list' if not grocery else ''
-    }
-
-    return jsonify({
-        'success':     True,
-        'grocery_list': grocery_list,
-        'total_items':  len(grocery),
-        'num_people':   num_people
-    }), 200
-
-
-@cooking_bp.route('/test-api', methods=['GET'])
-def test_api():
-    """Test if Groq Vision API is working"""
-    try:
-        from image_processor import test_api_connection
-        success, message = test_api_connection()
-    except Exception as e:
-        success, message = False, str(e)
-
-    return jsonify({
-        'api_working': success,
-        'message':     message
-    }), 200 if success else 500
-
-    """
-ADD THESE 2 NEW ROUTES to your routes.py (Backend/cooking_assistant/routes.py)
-Paste them at the END of the file, before the last closing line.
-
-Also add this import at the very top of routes.py (with the other imports):
-    import base64
-    from groq import Groq
-
-And add this near the top (after imports):
+# ── Groq client ───────────────────────────────────────────────────────────────
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
-    groq_client = Groq(api_key=GROQ_API_KEY)
-"""
+groq_client  = Groq(api_key=GROQ_API_KEY)
 
-# ── paste these routes into routes.py ────────────────────────────────────────
-
-import json
-import base64
-import os
-from groq import Groq
-
-GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
-groq_client = Groq(api_key=GROQ_API_KEY)
+# ── Ingredient categories ─────────────────────────────────────────────────────
+INGREDIENT_CATEGORIES = {
+    '🥬 Vegetables & Herbs':  ['onion','tomato','garlic','ginger','chili','curry leaves','pandan','leeks','spinach','eggplant','brinjal','potato','carrot','beans','pumpkin','jackfruit','beetroot','mushroom','gourd','drumstick','green chili','capsicum','lemon','lime','mango','plantain','breadfruit','cucumber','coriander','mint','spring onion','shallot'],
+    '🍗 Protein':              ['chicken','fish','prawn','crab','squid','egg','mutton','lamb','beef','pork','tuna','sardine','shrimp','liver','duck','venison','lentil','chickpea','cashew','soya','dal','parippu','anchovy','maldive'],
+    '🌾 Grains & Carbs':       ['rice','flour','semolina','bread','roti','noodle','pasta','wheat','oat','string hopper','hopper','pittu','idiyappam'],
+    '🌶️ Spices & Condiments': ['curry powder','turmeric','cumin','coriander powder','cardamom','cinnamon','clove','fenugreek','mustard','black pepper','chili powder','goraka','tamarind','vinegar','soy sauce','sugar','salt','maldive fish','roasted curry','lemongrass','bay leaf'],
+    '🥛 Dairy & Coconut':      ['coconut milk','coconut cream','coconut','yogurt','milk','butter','ghee','cream','desiccated coconut'],
+    '🫙 Pantry':               ['oil','water','stock','sauce','paste','baking powder','baking soda','cornflour','food colour'],
+}
 
 MEAL_PARSE_PROMPT = """
 You are a meal plan parser. Extract the meal plan from the user's text.
@@ -306,42 +43,258 @@ Leave fields empty string "" if not mentioned.
 Fill in the days/meals mentioned by the user. Be flexible with day names and meal names.
 """
 
-INGREDIENT_CATEGORIES = {
-    "🥬 Vegetables & Herbs":  ["onion","tomato","garlic","ginger","chili","curry leaves","pandan","leeks","spinach","eggplant","brinjal","potato","carrot","beans","pumpkin","jackfruit","beetroot","mushroom","gourd","drumstick","green","pepper","capsicum","lemon","lime","mango","plantain","breadfruit","cucumber","coriander","mint"],
-    "🍗 Protein":              ["chicken","fish","prawn","crab","squid","egg","mutton","lamb","beef","pork","tuna","sardine","shrimp","liver","duck","venison","lentil","chickpea","cashew","soya","dal","parippu","anchovy","maldive"],
-    "🌾 Grains & Carbs":       ["rice","flour","semolina","bread","roti","noodle","pasta","wheat","oat","hoppers","idiyappam","pittu","string hoppers"],
-    "🌶️ Spices & Condiments": ["curry powder","turmeric","cumin","coriander powder","cardamom","cinnamon","clove","fenugreek","mustard","pepper","chili powder","goraka","tamarind","vinegar","soy sauce","sugar","salt","maldive fish","roasted curry"],
-    "🥛 Dairy & Coconut":      ["coconut milk","coconut","yogurt","milk","butter","ghee","cream","desiccated"],
-    "🫙 Pantry":               ["oil","water","stock","sauce","paste","can","dried","baking"],
-}
 
-def categorise(name):
-    low = name.lower()
+# ═════════════════════════════════════════════════════════════════════════════
+# HELPERS
+# ═════════════════════════════════════════════════════════════════════════════
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+def _load_recipes():
+    """Load recipes from merged database files."""
+    data_dir = os.path.join(os.path.dirname(__file__), 'rag', 'data')
+    for fname in ['recipes_all_merged.json', 'new_200_recipes.json', 'recipe_database.json']:
+        fp = os.path.join(data_dir, fname)
+        if os.path.exists(fp):
+            with open(fp, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            return data.get('recipes', []) if isinstance(data, dict) else data
+
+    # Fallback: load generate_recipes_data_p1..p9.json from scripts folder
+    recipes = []
+    scripts_dir = os.path.join(os.path.dirname(__file__), '..', 'scripts')
+    for i in range(1, 10):
+        fp = os.path.join(scripts_dir, f'generate_recipes_data_p{i}.json')
+        if os.path.exists(fp):
+            try:
+                with open(fp, 'r', encoding='utf-8') as f:
+                    data = json.load(f)
+                if isinstance(data, list):
+                    recipes.extend(data)
+                    print(f"[routes] Loaded {len(data)} recipes from p{i}")
+            except Exception as e:
+                print(f"[routes] Error loading p{i}: {e}")
+
+    if recipes:
+        return recipes
+
+    print("[routes] WARNING: No recipe database found!")
+    return []
+
+
+def _categorise(ingredient_name):
+    """Return the display category for an ingredient name."""
+    low = ingredient_name.lower()
     for cat, keywords in INGREDIENT_CATEGORIES.items():
         if any(k in low for k in keywords):
             return cat
-    return "🫙 Pantry"
+    return '🫙 Pantry'
 
-def parse_amount(amount_str, scale):
-    """Scale an amount string by `scale` (num_people)."""
-    if not amount_str or amount_str in ("to taste", "as needed", "as required"):
-        return amount_str
-    import re
-    m = re.match(r'^([\d./]+)\s*(.*)', amount_str.strip())
-    if not m:
-        return amount_str
+
+def _scale_amount(amount_str, num_people, recipe_servings):
+    """
+    Parse an amount string and scale it by (num_people / recipe_servings).
+    Returns {'value': float|int, 'unit': str}
+
+    Examples:
+        '2 cups',  4 people, 4 servings -> value=2,   unit='cups'
+        '2 cups',  2 people, 4 servings -> value=1,   unit='cups'
+        '2 cups',  6 people, 4 servings -> value=3,   unit='cups'
+        '1/2 cup', 4 people, 4 servings -> value=0.5, unit='cup'
+        'to taste'                       -> value=0,   unit='to taste'
+    """
+    NON_SCALABLE = {'to taste', 'as needed', 'as required', 'a pinch', 'few', 'some', ''}
+    if not amount_str or amount_str.lower().strip() in NON_SCALABLE:
+        return {'value': 0, 'unit': amount_str or ''}
+
+    scale = num_people / max(1, recipe_servings)
+    match = re.match(r'^([\d]+(?:[./][\d]+)?(?:\.\d+)?)\s*(.*)', amount_str.strip())
+    if not match:
+        return {'value': 0, 'unit': amount_str}
+
+    num_str = match.group(1)
+    unit    = match.group(2).strip()
+
     try:
-        num = eval(m.group(1))
-        unit = m.group(2).strip()
-        scaled = round(num * scale, 2)
-        return f"{scaled} {unit}".strip()
-    except Exception:
-        return amount_str
+        if '/' in num_str:
+            parts = num_str.split('/')
+            num = float(parts[0]) / float(parts[1])
+        else:
+            num = float(num_str)
 
+        scaled = round(num * scale, 2)
+        return {'value': int(scaled) if scaled == int(scaled) else scaled, 'unit': unit}
+    except (ValueError, ZeroDivisionError):
+        return {'value': 0, 'unit': amount_str}
+
+
+def _build_recipe_lookup(recipes):
+    """Build a name->recipe dict for fast fuzzy lookup."""
+    lookup = {}
+    for r in recipes:
+        names = r.get('names', {})
+        en = (names.get('english', '') if isinstance(names, dict) else str(names)).lower().strip()
+        if en:
+            lookup[en] = r
+        alt = r.get('name', '').lower().strip()
+        if alt:
+            lookup[alt] = r
+    return lookup
+
+
+# ═════════════════════════════════════════════════════════════════════════════
+# ROUTES — COOKING ASSISTANT
+# ═════════════════════════════════════════════════════════════════════════════
+
+@cooking_bp.route('/analyze-image', methods=['POST'])
+def analyze_image():
+    """Upload and analyze ingredient image using Groq Vision API."""
+    if 'image' not in request.files:
+        return jsonify({'error': 'No image file provided'}), 400
+
+    file = request.files['image']
+    if file.filename == '':
+        return jsonify({'error': 'No file selected'}), 400
+    if not allowed_file(file.filename):
+        return jsonify({'error': 'Invalid file type. Only PNG, JPG, JPEG, GIF allowed'}), 400
+
+    try:
+        filename   = secure_filename(file.filename)
+        upload_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'uploads')
+        os.makedirs(upload_dir, exist_ok=True)
+        filepath   = os.path.join(upload_dir, filename)
+        file.save(filepath)
+
+        from image_processor import detect_ingredients
+        detected = detect_ingredients(filepath)
+
+        return jsonify({
+            'success':        True,
+            'ingredients':    detected,
+            'message':        f'Detected {len(detected)} ingredients using Groq Vision AI',
+            'image_path':     filepath,
+            'total_detected': len(detected),
+        }), 200
+
+    except Exception as e:
+        print(f"Error in analyze_image: {e}")
+        return jsonify({'error': f'Error processing image: {str(e)}'}), 500
+
+
+@cooking_bp.route('/search-recipes', methods=['POST'])
+def search_recipes():
+    """Search recipes by ingredients using real recipe database."""
+    data = request.get_json()
+    if not data or 'ingredients' not in data:
+        return jsonify({'error': 'No ingredients provided'}), 400
+
+    user_ingredients = [i.lower().strip() for i in data['ingredients']]
+    recipes          = _load_recipes()
+
+    if not recipes:
+        return jsonify({'success': False, 'error': 'Recipe database not found.', 'recipes': []}), 200
+
+    scored = []
+    for recipe in recipes:
+        recipe_ings = []
+        for ing in recipe.get('ingredients', []):
+            name = ing.get('name', '') if isinstance(ing, dict) else str(ing)
+            if isinstance(name, dict):
+                name = name.get('english', '')
+            recipe_ings.append(name.lower().strip())
+
+        if not recipe_ings:
+            continue
+
+        matched = []
+        for ui in user_ingredients:
+            for ri in recipe_ings:
+                if ri and (ui in ri or ri.split()[0] in ui):
+                    matched.append(ui)
+                    break
+
+        missing = [ri for ri in recipe_ings if ri and not any(
+            ui in ri or ri.split()[0] in ui for ui in user_ingredients
+        )]
+
+        match_pct = round((len(matched) / len(recipe_ings)) * 100) if recipe_ings else 0
+        if match_pct == 0:
+            continue
+
+        names   = recipe.get('names', {})
+        en_name = (names.get('english', '') or names.get('en', '') if isinstance(names, dict) else str(names)) \
+                  or recipe.get('name', 'Unknown Recipe')
+
+        cook_mins = recipe.get('cook_time_mins',  recipe.get('cook_time_minutes',  30))
+        prep_mins = recipe.get('prep_time_mins',  recipe.get('prep_time_minutes',  10))
+        method    = recipe.get('method', '') or recipe.get('instructions', '')
+
+        scored.append({
+            'id':                  recipe.get('id', ''),
+            'name':                en_name,
+            'match_score':         match_pct,
+            'matched_ingredients': matched,
+            'missing_ingredients': missing[:8],
+            'ingredients_used':    matched,
+            'ingredients':         recipe.get('ingredients', []),
+            'cuisine':             'Sri Lankan',
+            'category':            recipe.get('category', ''),
+            'region':              recipe.get('region', ''),
+            'difficulty':          recipe.get('difficulty', 'medium'),
+            'cooking_time':        f"{cook_mins + prep_mins} mins",
+            'cook_time_mins':      cook_mins,
+            'prep_time_mins':      prep_mins,
+            'servings':            recipe.get('servings', 4),
+            'spice_level':         recipe.get('spice_level', 2),
+            'is_authentic':        recipe.get('is_authentic', True),
+            'instructions':        recipe.get('instructions', method),
+            'method':              method,
+            'tips':                recipe.get('tips', ''),
+            'cultural_note':       recipe.get('cultural_note', ''),
+            'description':         recipe.get('description', ''),
+            'source':              'RAG Database',
+        })
+
+    scored.sort(key=lambda x: x['match_score'], reverse=True)
+
+    return jsonify({
+        'success':       True,
+        'recipes':       scored[:12],
+        'total_found':   len(scored),
+        'search_query':  user_ingredients,
+        'database_size': len(recipes),
+    }), 200
+
+
+@cooking_bp.route('/recipe/<recipe_id>', methods=['GET'])
+def get_recipe(recipe_id):
+    """Get full recipe details by ID."""
+    for r in _load_recipes():
+        if r.get('id') == recipe_id:
+            return jsonify({'success': True, 'recipe': r}), 200
+    return jsonify({'error': 'Recipe not found'}), 404
+
+
+@cooking_bp.route('/test-api', methods=['GET'])
+def test_api():
+    """Test if Groq Vision API is working."""
+    try:
+        from image_processor import test_api_connection
+        success, message = test_api_connection()
+    except Exception as e:
+        success, message = False, str(e)
+    return jsonify({'api_working': success, 'message': message}), 200 if success else 500
+
+
+# ═════════════════════════════════════════════════════════════════════════════
+# ROUTES — MEAL PLANNER
+# ═════════════════════════════════════════════════════════════════════════════
 
 @cooking_bp.route('/parse-meal-plan', methods=['POST'])
 def parse_meal_plan():
-    """Parse free-text meal plan using Groq AI"""
+    """Parse free-text meal plan using Groq AI."""
     data = request.get_json()
     if not data or 'text' not in data:
         return jsonify({'error': 'No text provided'}), 400
@@ -351,21 +304,17 @@ def parse_meal_plan():
             model="meta-llama/llama-4-scout-17b-16e-instruct",
             messages=[
                 {"role": "system", "content": MEAL_PARSE_PROMPT},
-                {"role": "user", "content": data['text']}
+                {"role": "user",   "content": data['text']},
             ],
             max_tokens=800,
             temperature=0.1,
         )
-        raw = response.choices[0].message.content.strip()
-
-        # Extract JSON
-        import re
+        raw   = response.choices[0].message.content.strip()
         match = re.search(r'\{.*\}', raw, re.DOTALL)
         if not match:
             return jsonify({'success': False, 'error': 'Could not parse meal plan from text'}), 200
 
-        meal_plan = json.loads(match.group())
-        return jsonify({'success': True, 'meal_plan': meal_plan}), 200
+        return jsonify({'success': True, 'meal_plan': json.loads(match.group())}), 200
 
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)}), 500
@@ -373,16 +322,16 @@ def parse_meal_plan():
 
 @cooking_bp.route('/parse-meal-plan-image', methods=['POST'])
 def parse_meal_plan_image():
-    """Parse meal plan from an uploaded image using Groq Vision"""
+    """Parse meal plan from an uploaded image using Groq Vision."""
     if 'image' not in request.files:
         return jsonify({'error': 'No image provided'}), 400
 
     file = request.files['image']
     try:
-        image_data = file.read()
-        b64 = base64.b64encode(image_data).decode('utf-8')
-        ext = file.filename.rsplit('.', 1)[-1].lower()
-        mime = {'jpg': 'image/jpeg', 'jpeg': 'image/jpeg', 'png': 'image/png', 'gif': 'image/gif'}.get(ext, 'image/jpeg')
+        b64  = base64.b64encode(file.read()).decode('utf-8')
+        ext  = file.filename.rsplit('.', 1)[-1].lower()
+        mime = {'jpg': 'image/jpeg', 'jpeg': 'image/jpeg',
+                'png': 'image/png',  'gif':  'image/gif'}.get(ext, 'image/jpeg')
 
         response = groq_client.chat.completions.create(
             model="meta-llama/llama-4-scout-17b-16e-instruct",
@@ -390,21 +339,18 @@ def parse_meal_plan_image():
                 "role": "user",
                 "content": [
                     {"type": "image_url", "image_url": {"url": f"data:{mime};base64,{b64}"}},
-                    {"type": "text", "text": f"Read this meal plan image carefully.\n\n{MEAL_PARSE_PROMPT}"}
-                ]
+                    {"type": "text",      "text": f"Read this meal plan image carefully.\n\n{MEAL_PARSE_PROMPT}"},
+                ],
             }],
             max_tokens=800,
             temperature=0.1,
         )
-        raw = response.choices[0].message.content.strip()
-
-        import re
+        raw   = response.choices[0].message.content.strip()
         match = re.search(r'\{.*\}', raw, re.DOTALL)
         if not match:
             return jsonify({'success': False, 'error': 'Could not read meal plan from image'}), 200
 
-        meal_plan = json.loads(match.group())
-        return jsonify({'success': True, 'meal_plan': meal_plan}), 200
+        return jsonify({'success': True, 'meal_plan': json.loads(match.group())}), 200
 
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)}), 500
@@ -413,110 +359,112 @@ def parse_meal_plan_image():
 @cooking_bp.route('/grocery-from-meals', methods=['POST'])
 def grocery_from_meals():
     """
-    Build a categorised, scaled grocery list from a list of meal/recipe names.
-    Matches against the recipe database, aggregates ingredients, scales by num_people.
+    Build a categorised, properly-scaled grocery list from meal names.
+    Scales every ingredient amount by (num_people / recipe_servings).
     """
     data = request.get_json()
     if not data or 'meals' not in data:
         return jsonify({'error': 'No meals provided'}), 400
 
-    meal_names  = [m.lower().strip() for m in data['meals'] if m]
-    num_people  = max(1, int(data.get('num_people', 1)))
-    recipes     = _load_recipes()
+    meal_names = [m.lower().strip() for m in data['meals'] if m]
+    num_people = max(1, int(data.get('num_people', 1)))
+    recipes    = _load_recipes()
+    lookup     = _build_recipe_lookup(recipes)
 
-    # Build lookup: recipe name → recipe dict
-    recipe_lookup = {}
-    for r in recipes:
-        names = r.get('names', {})
-        en = (names.get('english', '') if isinstance(names, dict) else str(names)).lower()
-        if en:
-            recipe_lookup[en] = r
-        alt = r.get('name', '').lower()
-        if alt:
-            recipe_lookup[alt] = r
+    print(f"[grocery] {num_people} people · {len(meal_names)} meals")
 
-    # Aggregate ingredients
-    agg = {}  # name → {amount_str, recipe_servings}
+    # ── Aggregate scaled ingredients ──────────────────────────────────────────
+    agg             = {}   # name → {total, unit, raw, count}
+    matched_recipes = []
+    unmatched       = []
 
-    matched_recipes = set()
     for meal in meal_names:
-        # Fuzzy match
-        recipe = recipe_lookup.get(meal)
+        recipe = lookup.get(meal)
         if not recipe:
-            for key, val in recipe_lookup.items():
+            for key, val in lookup.items():
                 if meal in key or key in meal:
                     recipe = val
                     break
+
         if not recipe:
+            unmatched.append(meal)
             continue
 
-        matched_recipes.add((recipe.get('names', {}) or {}).get('english', '') or recipe.get('name', meal))
-        recipe_servings = recipe.get('servings', 4)
-        scale = num_people / recipe_servings
+        recipe_name     = (recipe.get('names', {}) or {}).get('english', '') or recipe.get('name', meal)
+        recipe_servings = max(1, int(recipe.get('servings', 4)))
+        matched_recipes.append(recipe_name)
 
         for ing in recipe.get('ingredients', []):
-            if isinstance(ing, dict):
-                name   = ing.get('name', '')
-                amount = ing.get('amount', '')
-            else:
-                name   = str(ing)
-                amount = ''
+            raw_name   = ing.get('name', '')   if isinstance(ing, dict) else str(ing)
+            raw_amount = ing.get('amount', '') if isinstance(ing, dict) else ''
+            if isinstance(raw_name, dict):
+                raw_name = raw_name.get('english', '')
 
-            if isinstance(name, dict):
-                name = name.get('english', '')
-
-            name = name.strip().lower()
+            name = raw_name.strip().lower()
             if not name:
                 continue
 
+            scaled = _scale_amount(raw_amount, num_people, recipe_servings)
+
             if name in agg:
-                # Already added — just note it appears again (simple approach)
-                agg[name]['count'] += 1
+                existing = agg[name]
+                if scaled['unit'] and scaled['unit'] == existing['unit'] and scaled['value']:
+                    existing['total'] = round(existing['total'] + scaled['value'], 2)
+                else:
+                    existing['count'] += 1
             else:
                 agg[name] = {
-                    'name':            name,
-                    'amount':          amount,
-                    'recipe_servings': recipe_servings,
-                    'scale':           scale,
-                    'count':           1,
+                    'total': scaled['value'],
+                    'unit':  scaled['unit'],
+                    'raw':   raw_amount,
+                    'count': 1,
                 }
 
-    # Build categorised output
+    # ── Build categorised output ──────────────────────────────────────────────
     categories = {cat: [] for cat in INGREDIENT_CATEGORIES}
-    categories["🫙 Pantry"] = categories.get("🫙 Pantry", [])
 
     for name, info in agg.items():
-        cat = categorise(name)
+        cat = _categorise(name)
         if cat not in categories:
             categories[cat] = []
 
-        scaled = parse_amount(info['amount'], info['scale'] * info['count'])
+        if info['unit'] and info['total']:
+            display = f"{info['total']} {info['unit']}"
+        elif info['raw'] in ('to taste', 'as needed', 'as required'):
+            display = info['raw']
+        elif info['total']:
+            display = str(info['total'])
+        elif info['raw']:
+            display = info['raw']
+        else:
+            display = f"×{info['count']}"
+
+        if info['count'] > 1 and info['unit']:
+            display += f" (×{info['count']} recipes)"
 
         categories[cat].append({
             'name':          name.title(),
-            'raw_amount':    info['amount'],
-            'scaled_amount': scaled if scaled else f"×{info['count']}",
+            'scaled_amount': display,
+            'for_people':    num_people,
         })
 
-    # Sort each category alphabetically
-    for cat in categories:
-        categories[cat].sort(key=lambda x: x['name'])
-
-    # Remove empty categories
-    categories = {k: v for k, v in categories.items() if v}
+    # Sort & remove empty categories
+    categories = {
+        cat: sorted(items, key=lambda x: x['name'])
+        for cat, items in categories.items() if items
+    }
 
     total_items = sum(len(v) for v in categories.values())
+    print(f"[grocery] {total_items} items · {len(matched_recipes)} matched · {len(unmatched)} unmatched")
 
     return jsonify({
-        'success':      True,
+        'success': True,
         'grocery': {
             'categories':    categories,
             'total_items':   total_items,
             'total_meals':   len(matched_recipes),
-            'matched_meals': list(matched_recipes),
+            'matched_meals': matched_recipes,
             'num_people':    num_people,
         },
-        'unmatched_meals': [m for m in meal_names if not any(
-            m in k or k in m for k in recipe_lookup
-        )],
+        'unmatched_meals': unmatched,
     }), 200

@@ -1,3 +1,53 @@
+/* ═══════════════════════════════════════════════════════════
+   PASTE AT THE BOTTOM OF:
+   Frontend/src/Pages/CookingAssistant/CookingAssistant.css
+   ═══════════════════════════════════════════════════════════ */
+
+/* Fix 1 — Hide Google Translate top banner */
+.goog-te-banner-frame,
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+  height: 0 !important;
+}
+
+/* Fix 2 — Stop page shifting down when translate activates */
+body {
+  top: 0 !important;
+}
+
+/* Fix 3 — Hide Google Translate widget chrome */
+.goog-te-gadget {
+  font-size: 0 !important;
+  color: transparent !important;
+}
+
+.goog-te-gadget>span {
+  display: none !important;
+}
+
+.goog-te-gadget .goog-te-combo {
+  display: none !important;
+}
+
+#goog-gt-tt,
+.goog-te-balloon-frame {
+  display: none !important;
+}
+
+/* Fix 4 — Image upload blocked by Google Translate iframe overlay */
+input[type="file"] {
+  position: relative;
+  z-index: 9999;
+}
+
+.ca-dropzone,
+.ca-dropzone label,
+.ca-dropzone input[type="file"] {
+  position: relative;
+  z-index: 10;
+  pointer-events: auto !important;
+}
+
 *,
 *::before,
 *::after {
@@ -1201,4 +1251,154 @@
   color: #78350f;
   line-height: 1.6;
   margin: 0;
+}
+
+/* ── Add this to the BOTTOM of CookingAssistant.css ── */
+
+/* Hide the default Google Translate bar that appears at top of page */
+.goog-te-banner-frame,
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+}
+
+.goog-te-gadget {
+  font-size: 0 !important;
+}
+
+.goog-te-gadget .goog-te-combo {
+  display: none !important;
+}
+
+/* ── Custom language selector ── */
+.ca-lang-block {
+  padding: 0 14px 16px;
+}
+
+.ca-lang-selector {
+  position: relative;
+  width: 100%;
+}
+
+.ca-lang-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 14px;
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  color: white;
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.ca-lang-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.30);
+}
+
+.ca-lang-btn-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.ca-lang-btn-text {
+  flex: 1;
+}
+
+.ca-lang-btn-arrow {
+  font-size: 10px;
+  opacity: 0.7;
+  transition: transform 0.2s;
+}
+
+.ca-lang-btn-arrow.open {
+  transform: rotate(180deg);
+}
+
+/* Dropdown panel */
+.ca-lang-dropdown {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: #1a1a2e;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.35);
+  z-index: 100;
+  animation: langDropIn 0.18s ease;
+}
+
+@keyframes langDropIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ca-lang-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 16px;
+  cursor: pointer;
+  transition: background 0.15s;
+  border: none;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+  color: rgba(255, 255, 255, 0.85);
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.ca-lang-option:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.ca-lang-option.active {
+  background: rgba(16, 185, 129, 0.20);
+  color: #34d399;
+  font-weight: 600;
+}
+
+.ca-lang-option-flag {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.ca-lang-option-name {
+  flex: 1;
+}
+
+.ca-lang-option-native {
+  font-size: 11px;
+  opacity: 0.55;
+}
+
+.ca-lang-option-check {
+  color: #10b981;
+  font-size: 14px;
+}
+
+/* Divider between options */
+.ca-lang-option+.ca-lang-option {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
