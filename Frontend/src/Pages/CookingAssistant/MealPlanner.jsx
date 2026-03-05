@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import './MealPlanner.css';
+import LanguageSelector from '../../Components/LanguageSelector';
 
 const SL_RECIPES = [
   'Rice & Curry', 'Chicken Curry', 'Dhal Curry (Parippu)', 'Fish Curry',
@@ -15,32 +16,6 @@ const SL_RECIPES = [
 const DAYS = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
 const MEALS = ['breakfast', 'lunch', 'dinner'];
 const MEAL_ICONS = { breakfast: '🌅', lunch: '☀️', dinner: '🌙' };
-
-const INGREDIENT_CATEGORIES = {
-  '🥬 Vegetables & Herbs': ['onion', 'tomato', 'garlic', 'ginger', 'chili', 'curry leaves', 'pandan', 'leeks', 'spinach', 'eggplant', 'brinjal', 'potato', 'carrot', 'beans', 'pumpkin', 'jackfruit', 'beetroot', 'mushroom', 'gourd', 'drumstick', 'green', 'pepper', 'capsicum', 'lemon', 'lime', 'mango', 'plantain', 'breadfruit'],
-  '🍗 Protein': ['chicken', 'fish', 'prawn', 'crab', 'squid', 'egg', 'mutton', 'lamb', 'beef', 'pork', 'tuna', 'sardine', 'shrimp', 'liver', 'duck', 'venison', 'lentil', 'chickpea', 'cashew', 'soya', 'dal', 'parippu'],
-  '🌾 Grains & Carbs': ['rice', 'flour', 'semolina', 'bread', 'roti', 'noodle', 'pasta', 'wheat', 'oat'],
-  '🌶️ Spices & Condiments': ['curry powder', 'turmeric', 'cumin', 'coriander', 'cardamom', 'cinnamon', 'clove', 'fenugreek', 'mustard', 'pepper', 'chili powder', 'goraka', 'tamarind', 'vinegar', 'soy sauce', 'sugar', 'salt', 'Maldive fish'],
-  '🥛 Dairy & Coconut': ['coconut milk', 'coconut', 'yogurt', 'milk', 'butter', 'ghee', 'cream'],
-  '🫙 Pantry': ['oil', 'water', 'stock', 'sauce', 'paste', 'can', 'dried'],
-};
-
-function categoriseIngredient(name) {
-  const lower = name.toLowerCase();
-  for (const [cat, keywords] of Object.entries(INGREDIENT_CATEGORIES)) {
-    if (keywords.some(k => lower.includes(k))) return cat;
-  }
-  return '🫙 Pantry';
-}
-
-function parseAmount(amountStr, people) {
-  if (!amountStr) return { value: people, unit: 'portion(s)' };
-  const match = amountStr.match(/^([\d./]+)\s*(.*)$/);
-  if (!match) return { value: people, unit: amountStr };
-  let num = eval(match[1]);
-  const unit = match[2].trim() || '';
-  return { value: +(num * people).toFixed(1), unit };
-}
 
 export default function MealPlanner() {
   const [activeNav, setActiveNav] = useState('planner');
@@ -58,13 +33,13 @@ export default function MealPlanner() {
   const [parsedPlan, setParsedPlan] = useState(null);
   const fileRef = useRef();
 
-  // ── Dropdown helpers ───────────────────────────────────────────────────────
+  // ── Helpers ───────────────────────────────────────────────────────────────
   const setMeal = (day, meal, val) =>
     setMealPlan(p => ({ ...p, [day]: { ...p[day], [meal]: val } }));
 
   const dropdownMealCount = Object.values(mealPlan).flatMap(Object.values).filter(Boolean).length;
 
-  // ── Parse text via Groq backend ────────────────────────────────────────────
+  // ── Parse text ────────────────────────────────────────────────────────────
   const parseTextPlan = async () => {
     if (!freeText.trim()) { setError('Please type your meal plan first!'); return; }
     setLoading(true); setError('');
@@ -83,7 +58,7 @@ export default function MealPlanner() {
     finally { setLoading(false); }
   };
 
-  // ── Parse image via Groq Vision backend ───────────────────────────────────
+  // ── Parse image ───────────────────────────────────────────────────────────
   const parseImagePlan = async () => {
     if (!planImage) { setError('Please upload an image first!'); return; }
     setLoading(true); setError('');
@@ -102,7 +77,7 @@ export default function MealPlanner() {
     finally { setLoading(false); }
   };
 
-  // ── Build grocery from dropdown plan ──────────────────────────────────────
+  // ── Build grocery from dropdown ───────────────────────────────────────────
   const buildGroceryFromDropdown = async () => {
     const selected = Object.values(mealPlan).flatMap(Object.values).filter(Boolean);
     if (selected.length === 0) { setError('Please add at least one meal!'); return; }
@@ -114,19 +89,17 @@ export default function MealPlanner() {
         body: JSON.stringify({ meals: selected, num_people: numPeople }),
       });
       const data = await res.json();
-      if (data.success) {
-        setGroceryList(data.grocery);
-        setActiveNav('grocery');
-      } else setError(data.error || 'Failed to generate grocery list.');
+      if (data.success) { setGroceryList(data.grocery); setActiveNav('grocery'); }
+      else setError(data.error || 'Failed to generate grocery list.');
     } catch { setError('Cannot connect to backend.'); }
     finally { setLoading(false); }
   };
 
-  // ── Build grocery from parsed text/image plan ─────────────────────────────
+  // ── Build grocery from parsed plan ────────────────────────────────────────
   const buildGroceryFromPlan = async (plan) => {
-    const meals = Object.values(plan).flatMap(day =>
-      typeof day === 'object' ? Object.values(day) : [day]
-    ).filter(Boolean);
+    const meals = Object.values(plan)
+      .flatMap(day => typeof day === 'object' ? Object.values(day) : [day])
+      .filter(Boolean);
     try {
       const res = await fetch('http://localhost:5000/api/grocery-from-meals', {
         method: 'POST',
@@ -139,10 +112,8 @@ export default function MealPlanner() {
     } catch { setError('Cannot connect to backend.'); }
   };
 
-  // ── Print ─────────────────────────────────────────────────────────────────
   const handlePrint = () => window.print();
 
-  // ── Image select ──────────────────────────────────────────────────────────
   const onImageSelect = (file) => {
     if (!file) return;
     setPlanImage(file);
@@ -151,6 +122,7 @@ export default function MealPlanner() {
 
   return (
     <div className="mp-root">
+
       {/* ── Sidebar ── */}
       <aside className="mp-sidebar">
         <div className="mp-logo">
@@ -160,6 +132,7 @@ export default function MealPlanner() {
             <span className="mp-logo-sub">Weekly Planning</span>
           </div>
         </div>
+
         <nav className="mp-nav">
           {[
             { id: 'planner', icon: '📋', label: 'Meal Plan' },
@@ -181,6 +154,10 @@ export default function MealPlanner() {
             </button>
           ))}
         </nav>
+
+        {/* ── Language Selector ── */}
+        <LanguageSelector />
+
         <div className="mp-sidebar-footer">
           <div className="mp-badge">
             <span>🇱🇰</span>
@@ -195,15 +172,16 @@ export default function MealPlanner() {
       {/* ── Main ── */}
       <main className="mp-main">
 
-        {/* ═══ PLANNER SECTION ═══ */}
+        {/* ══ PLANNER ══ */}
         {activeNav === 'planner' && (
           <>
-            {/* Hero */}
             <div className="mp-hero">
               <div className="mp-hero-text">
                 <p className="mp-hero-tag">SmartKitchen • Meal Planner</p>
                 <h1 className="mp-hero-title">Plan your week,<br /><span className="mp-hero-accent">shop smarter</span></h1>
-                <p className="mp-hero-desc">Add meals by dropdown, free text, or upload a photo of your handwritten plan — we'll generate your grocery list automatically.</p>
+                <p className="mp-hero-desc">
+                  Add meals by dropdown, free text, or upload a photo of your handwritten plan — we'll generate your grocery list automatically.
+                </p>
               </div>
               <div className="mp-hero-visual">🗓️</div>
             </div>
@@ -216,10 +194,12 @@ export default function MealPlanner() {
                 <span className="mp-people-count">{numPeople}</span>
                 <button className="mp-people-btn" onClick={() => setNumPeople(p => p + 1)}>+</button>
               </div>
-              <span className="mp-people-hint">Ingredients will be scaled for {numPeople} {numPeople === 1 ? 'person' : 'people'}</span>
+              <span className="mp-people-hint">
+                Ingredients will be scaled for {numPeople} {numPeople === 1 ? 'person' : 'people'}
+              </span>
             </div>
 
-            {/* Input method tabs */}
+            {/* Tabs */}
             <div className="mp-section">
               <div className="mp-tabs">
                 {[
@@ -234,7 +214,7 @@ export default function MealPlanner() {
                 ))}
               </div>
 
-              {/* ── TAB: DROPDOWN ── */}
+              {/* TAB: DROPDOWN */}
               {activeTab === 'dropdown' && (
                 <div className="mp-tab-content">
                   <p className="mp-tab-hint">Select a recipe for each meal slot. Leave empty to skip.</p>
@@ -266,13 +246,16 @@ export default function MealPlanner() {
                     ))}
                   </div>
                   {error && <div className="mp-error">⚠️ {error}</div>}
-                  <button className="mp-generate-btn" onClick={buildGroceryFromDropdown} disabled={loading || dropdownMealCount === 0}>
-                    {loading ? <><span className="mp-spinner" /> Generating...</> : <>🛒 Generate Grocery List ({dropdownMealCount} meals)</>}
+                  <button className="mp-generate-btn" onClick={buildGroceryFromDropdown}
+                    disabled={loading || dropdownMealCount === 0}>
+                    {loading
+                      ? <><span className="mp-spinner" /> Generating...</>
+                      : <>🛒 Generate Grocery List ({dropdownMealCount} meals)</>}
                   </button>
                 </div>
               )}
 
-              {/* ── TAB: FREE TEXT ── */}
+              {/* TAB: FREE TEXT */}
               {activeTab === 'text' && (
                 <div className="mp-tab-content">
                   <p className="mp-tab-hint">Type your meal plan naturally. Our AI will understand and extract the meals.</p>
@@ -304,16 +287,19 @@ export default function MealPlanner() {
                     </div>
                   )}
                   {error && <div className="mp-error">⚠️ {error}</div>}
-                  <button className="mp-generate-btn" onClick={parseTextPlan} disabled={loading || !freeText.trim()}>
-                    {loading ? <><span className="mp-spinner" /> Parsing with AI...</> : <>🤖 Parse & Generate Grocery List</>}
+                  <button className="mp-generate-btn" onClick={parseTextPlan}
+                    disabled={loading || !freeText.trim()}>
+                    {loading
+                      ? <><span className="mp-spinner" /> Parsing with AI...</>
+                      : <>🤖 Parse & Generate Grocery List</>}
                   </button>
                 </div>
               )}
 
-              {/* ── TAB: IMAGE UPLOAD ── */}
+              {/* TAB: IMAGE UPLOAD */}
               {activeTab === 'image' && (
                 <div className="mp-tab-content">
-                  <p className="mp-tab-hint">Upload a photo of your handwritten or printed meal plan. AI will read it and generate your grocery list.</p>
+                  <p className="mp-tab-hint">Upload a photo of your handwritten or printed meal plan.</p>
                   <div
                     className={`mp-image-drop ${planImagePreview ? 'has-image' : ''}`}
                     onDragOver={e => e.preventDefault()}
@@ -335,7 +321,8 @@ export default function MealPlanner() {
                     }
                   </div>
                   {planImagePreview && (
-                    <button className="mp-clear-btn" onClick={() => { setPlanImage(null); setPlanImagePreview(null); setParsedPlan(null); }}>
+                    <button className="mp-clear-btn"
+                      onClick={() => { setPlanImage(null); setPlanImagePreview(null); setParsedPlan(null); }}>
                       🗑️ Clear Image
                     </button>
                   )}
@@ -355,8 +342,11 @@ export default function MealPlanner() {
                     </div>
                   )}
                   {error && <div className="mp-error">⚠️ {error}</div>}
-                  <button className="mp-generate-btn" onClick={parseImagePlan} disabled={loading || !planImage}>
-                    {loading ? <><span className="mp-spinner" /> Reading image with AI...</> : <>📷 Read Plan & Generate Grocery List</>}
+                  <button className="mp-generate-btn" onClick={parseImagePlan}
+                    disabled={loading || !planImage}>
+                    {loading
+                      ? <><span className="mp-spinner" /> Reading image with AI...</>
+                      : <>📷 Read Plan & Generate Grocery List</>}
                   </button>
                 </div>
               )}
@@ -364,7 +354,7 @@ export default function MealPlanner() {
           </>
         )}
 
-        {/* ═══ GROCERY SECTION ═══ */}
+        {/* ══ GROCERY ══ */}
         {activeNav === 'grocery' && groceryList && (
           <>
             <div className="mp-hero mp-grocery-hero">
@@ -378,7 +368,6 @@ export default function MealPlanner() {
               <div className="mp-hero-visual">🛒</div>
             </div>
 
-            {/* Stats */}
             <div className="mp-grocery-stats">
               {[
                 { icon: '🧺', label: 'Total Items', value: groceryList.total_items },
@@ -396,7 +385,6 @@ export default function MealPlanner() {
               ))}
             </div>
 
-            {/* Category cards */}
             <div className="mp-grocery-grid" id="grocery-print-area">
               {Object.entries(groceryList.categories || {}).map(([cat, items]) => (
                 items.length > 0 && (
@@ -418,7 +406,6 @@ export default function MealPlanner() {
               ))}
             </div>
 
-            {/* Actions */}
             <div className="mp-actions">
               <button className="mp-action-btn secondary" onClick={() => setActiveNav('planner')}>
                 ← Edit Meal Plan
@@ -431,8 +418,10 @@ export default function MealPlanner() {
                   .flatMap(([cat, items]) => [`\n${cat}`, ...items.map(i => `  • ${i.name} — ${i.scaled_amount}`)])
                   .join('\n');
                 const blob = new Blob([`GROCERY LIST (${numPeople} people)\n${text}`], { type: 'text/plain' });
-                const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
-                a.download = 'grocery_list.txt'; a.click();
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(blob);
+                a.download = 'grocery_list.txt';
+                a.click();
               }}>
                 ⬇️ Download
               </button>
