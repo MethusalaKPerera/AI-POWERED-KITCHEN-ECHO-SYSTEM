@@ -36,7 +36,7 @@ function CookingAssistant() {
     try {
       const fd = new FormData();
       fd.append('image', selectedImage);
-      const res = await fetch('http://localhost:5000/api/analyze-image', { method: 'POST', body: fd });
+      const res = await fetch('http://localhost:5000/api/cooking/analyze-image', { method: 'POST', body: fd });
       const data = await res.json();
       if (data.success) {
         const merged = mergeIngredients(ingredients, data.ingredients);
@@ -74,7 +74,7 @@ function CookingAssistant() {
     if (!list || list.length === 0) return;
     setSearchingRecipes(true);
     try {
-      const res = await fetch('http://localhost:5000/api/search-recipes', {
+      const res = await fetch('http://localhost:5000/api/cooking/search-recipes', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ingredients: list }),
@@ -320,7 +320,7 @@ function CookingAssistant() {
                     <span className="ca-match-pill" style={{ background: mc(recipe.match_score) }}>
                       {recipe.match_score}% Match
                     </span>
-                    <span className="ca-cuisine-tag">{recipe.cuisine || recipe.category || 'Sri Lankan'}</span>
+                    <span className="ca-cuisine-tag">{recipe.predicted_category || recipe.cuisine || recipe.category || 'Sri Lankan'}</span>
                   </div>
                   <h3 className="ca-recipe-name">{recipe.name}</h3>
                   <div className="ca-recipe-meta">
@@ -363,6 +363,9 @@ function CookingAssistant() {
                   <span className="ca-mbadge gray">📊 {selectedRecipe.difficulty}</span>
                   {selectedRecipe.spice_level && (
                     <span className="ca-mbadge orange">🌶️ Spice {selectedRecipe.spice_level}/5</span>
+                  )}
+                  {selectedRecipe.search_method === 'sentence-bert' && (
+                    <span className="ca-mbadge blue">🤖 SBERT Matched</span>
                   )}
                 </div>
               </div>

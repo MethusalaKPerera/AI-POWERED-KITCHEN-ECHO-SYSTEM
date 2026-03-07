@@ -27,6 +27,36 @@ predictor = ExpiryPredictor()
 # ----------------------------------------------------
 MIN_FEEDBACK_FOR_PERSONALIZATION = 5
 
+# ----------------------------------------------------
+# ENVIRONMENT (PP2) — Storage-based bounds + Sri Lanka region humidity presets
+# ----------------------------------------------------
+# ✅ UPDATED (necessary): Support BOTH your older "climate zones" and your UI provinces
+REGION_HUMIDITY_PRESETS = {
+    # climate-zone style (kept)
+    "wet_zone": 80.0,
+    "intermediate_zone": 70.0,
+    "dry_zone": 60.0,
+    "hill_country": 75.0,
+
+    # province style (matches Inventory.jsx dropdown)
+    "western": 78.0,
+    "central": 72.0,
+    "southern": 80.0,
+    "northern": 70.0,
+    "eastern": 75.0,
+    "north western": 76.0,
+    "north central": 68.0,
+    "uva": 74.0,
+    "sabaragamuwa": 79.0,
+}
+
+# These match the augmentation ranges (safer to keep within trained distribution)
+STORAGE_ENV_BOUNDS = {
+    "freezer": {"temp_min": -20.0, "temp_max": -16.0, "hum_min": 85.0, "hum_max": 95.0},
+    "fridge": {"temp_min": 3.0, "temp_max": 5.0, "hum_min": 60.0, "hum_max": 70.0},
+    "pantry": {"temp_min": 26.0, "temp_max": 30.0, "hum_min": 70.0, "hum_max": 85.0},
+}
+
 
 # ----------------------------------------------------
 # HELPERS
@@ -77,10 +107,18 @@ def canonical_storage(name: str) -> str:
     return "pantry"
 
 
+def clamp_float(v, lo, hi, fallback=None):
+    try:
+        x = float(v)
+        return max(lo, min(x, hi))
+    except Exception:
+        return fallback
+
+
 def compute_expiry_date(purchase_date_str: str, days: float):
     """
     Convert predicted days -> YYYY-MM-DD expiry date.
-    Using FLOOR makes early spoilage show an earlier calendar date clearly.
+    Using CEIL makes early spoilage show an earlier calendar date clearly.
     """
     try:
         dt = datetime.strptime(purchase_date_str, "%Y-%m-%d")
@@ -269,7 +307,11 @@ def get_options():
 # ----------------------------------------------------
 @food_bp.route("/", methods=["GET"])
 def get_foods():
-    foods = list(foods_col.find())
+    # ✅ NEW (backward compatible): allow optional filter by userId
+    user_id = (request.args.get("userId") or request.args.get("user_id") or "").strip()
+    q = {"userId": user_id} if user_id else {}
+
+    foods = list(foods_col.find(q))
     for f in foods:
         f["_id"] = str(f["_id"])
 
@@ -318,6 +360,11 @@ def predict_only():
         printed_expiry = data.get("printed_expiry_date")  # optional
         storage_type = canonical_storage(data.get("storage_type"))
 
+        # NEW (PP2): Environment inputs (optional)
+        region = (data.get("region") or data.get("climate_zone") or "").strip().lower() or None
+        req_temp = data.get("storage_temperature_c", None)
+        req_hum = data.get("storage_humidity_pct", None)
+
         # ✅ SOURCE OF TRUTH: if foodId exists, use DB values (prevents mismatch)
         if food_id:
             try:
@@ -333,6 +380,10 @@ def predict_only():
                     # printed expiry: if not supplied by UI, use stored
                     if printed_expiry is None:
                         printed_expiry = f.get("printedExpiryDate")
+
+                    # if region/env not supplied by UI, you may optionally reuse last saved env
+                    if region is None:
+                        region = (f.get("region") or "").strip().lower() or None
             except Exception:
                 traceback.print_exc()
 
@@ -350,6 +401,33 @@ def predict_only():
         data["item_category"] = category
         data["purchase_date"] = purchase_date
         data["storage_type"] = storage_type  # ✅ CRITICAL FIX
+
+        # ------------------------------------------------
+        # (PP2) Resolve humidity from region preset if humidity not provided
+        # ------------------------------------------------
+        if req_hum is None and region in REGION_HUMIDITY_PRESETS:
+            req_hum = REGION_HUMIDITY_PRESETS[region]
+
+        # ------------------------------------------------
+        # (PP2) Clamp env values to trained bounds per storage type (if provided)
+        # ------------------------------------------------
+        bounds = STORAGE_ENV_BOUNDS.get(storage_type, STORAGE_ENV_BOUNDS["pantry"])
+
+        # If temperature/humidity are provided, clamp them.
+        # If not provided, predictor will fallback to its defaults.
+        if req_temp is not None:
+            clamped_temp = clamp_float(req_temp, bounds["temp_min"], bounds["temp_max"], fallback=None)
+            if clamped_temp is not None:
+                data["storage_temperature_c"] = clamped_temp
+
+        if req_hum is not None:
+            clamped_hum = clamp_float(req_hum, bounds["hum_min"], bounds["hum_max"], fallback=None)
+            if clamped_hum is not None:
+                data["storage_humidity_pct"] = clamped_hum
+
+        # keep region in data (optional)
+        if region:
+            data["region"] = region
 
         # ------------------------------------------------
         # 1) BASELINE AEIF (Always active)
@@ -415,7 +493,12 @@ def predict_only():
             "days_left": int(days_left),
             "scp": scp,
             "printed_expiry_date": printed_expiry,
-            "printed_cap_applied": bool(cap_applied)
+            "printed_cap_applied": bool(cap_applied),
+
+            # (PP2) store environment used for this prediction (helps panel questions + reproducibility)
+            "region": region,
+            "storage_temperature_c": data.get("storage_temperature_c", None),
+            "storage_humidity_pct": data.get("storage_humidity_pct", None),
         }
 
         # ------------------------------------------------
@@ -446,6 +529,11 @@ def predict_only():
                             # UI clarity
                             "item_feedback_count": int(item_feedback_count),
                             "min_feedback_required": int(MIN_FEEDBACK_FOR_PERSONALIZATION),
+
+                            # (PP2) store last used env at item-level too
+                            "region": region,
+                            "storage_temperature_c": data.get("storage_temperature_c", None),
+                            "storage_humidity_pct": data.get("storage_humidity_pct", None),
                         },
                         "$push": {
                             "predictionHistory": {
@@ -486,6 +574,11 @@ def predict_only():
             # scp
             "days_left": int(days_left),
             "scpPriorityScore": scp,
+
+            # (PP2) echo back environment used (these are clamped if needed)
+            "region": region,
+            "storage_temperature_c": data.get("storage_temperature_c", None),
+            "storage_humidity_pct": data.get("storage_humidity_pct", None),
 
             "message": (
                 "Personalized prediction applied"
@@ -532,6 +625,11 @@ def add_food():
             "printedExpiryDate": printed_expiry,
             "quantity": data.get("quantity"),
             "used_before_exp": data.get("used_before_expiry", data.get("used_before_exp")),
+
+            # (PP2 optional) persist region env chosen at add-time (can be empty)
+            "region": (data.get("region") or "").strip().lower() or None,
+            "storage_temperature_c": data.get("storage_temperature_c", None),
+            "storage_humidity_pct": data.get("storage_humidity_pct", None),
 
             # prediction-related fields (filled on predict)
             "baselineExpiryDate": None,
@@ -789,7 +887,6 @@ def analytics_summary():
             urgency[b] = urgency.get(b, 0) + 1
 
         # personalization status for selected item
-        # if item == all -> show top item readiness by feedbackCountByItem
         feedback_by_item = user.get("feedbackCountByItem", {}) or {}
         if item != "all":
             item_key = canonical_item_name(item)
