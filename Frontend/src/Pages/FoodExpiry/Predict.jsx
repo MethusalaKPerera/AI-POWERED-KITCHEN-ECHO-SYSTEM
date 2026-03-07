@@ -4,6 +4,14 @@ import Topbar from "../../Components/Dashboard/Topbar.jsx";
 import { getAllFoods } from "../../api/foodApi.js";
 import "./foodexpiry.css";
 
+/**
+ * This page is a READ-ONLY dashboard for PP1/PP2:
+ * - Shows prediction history saved in MongoDB (predictionHistory)
+ * - Shows baseline vs personalized vs final expiry
+ * - Shows SCP priority list
+ * - (PP2 ready) shows environment values used (region / temp / humidity) if backend stores them
+ */
+
 function normalizeFood(f) {
   return {
     _id: f._id,
@@ -21,6 +29,11 @@ function normalizeFood(f) {
 
     scpPriorityScore: f.scpPriorityScore ?? null,
     daysLeftAtSave: f.daysLeftAtSave ?? null,
+
+    // ✅ PP2: store last-used environment at food level (if backend saved)
+    region: f.region || "",
+    storage_temperature_c: f.storage_temperature_c ?? null,
+    storage_humidity_pct: f.storage_humidity_pct ?? null,
 
     predictionHistory: Array.isArray(f.predictionHistory) ? f.predictionHistory : [],
   };
@@ -47,13 +60,17 @@ function scpLabel(score) {
   return "Low";
 }
 
+function safeText(v) {
+  return v === null || v === undefined || String(v).trim() === "" ? "—" : String(v);
+}
+
 export default function Predict() {
   const [foods, setFoods] = useState([]);
   const [loading, setLoading] = useState(true);
   const [apiError, setApiError] = useState("");
 
-  // For PP1 demo, keep one user at a time
-  const [userId, setUserId] = useState("demo-user");
+  // For PP1/PP2 demo, view one user at a time
+  const [userId, setUserId] = useState("demo"); // ✅ set to your real default userId in DB (e.g., U001 / demo)
   const [selectedFoodId, setSelectedFoodId] = useState("");
 
   async function load() {
@@ -63,8 +80,14 @@ export default function Predict() {
       const data = await getAllFoods();
       const rows = (Array.isArray(data) ? data : []).map(normalizeFood);
       setFoods(rows);
+
+      // Helpful for debugging: see available userIds in console
+      // (You can remove this later)
+      const ids = Array.from(new Set(rows.map((r) => r.userId).filter(Boolean)));
+      // eslint-disable-next-line no-console
+      console.log("Available userIds in foods:", ids);
     } catch (err) {
-      setApiError(err.message);
+      setApiError(err?.message || "Failed to load foods");
     } finally {
       setLoading(false);
     }
@@ -74,7 +97,7 @@ export default function Predict() {
     load();
   }, []);
 
-  // filter by user
+  // filter by user (exact match)
   const userFoods = useMemo(() => {
     return foods.filter((f) => (f.userId || "") === (userId || ""));
   }, [foods, userId]);
@@ -116,6 +139,19 @@ export default function Predict() {
     return rows.slice(0, 10);
   }, [userFoods]);
 
+  // Show hint if user typed a userId that doesn't exist
+  const availableUserIds = useMemo(() => {
+    return Array.from(new Set(foods.map((f) => f.userId).filter(Boolean))).sort();
+  }, [foods]);
+
+  const showUserHint = useMemo(() => {
+    if (!userId) return false;
+    if (loading) return false;
+    if (foods.length === 0) return false;
+    // If there are foods but none match the typed userId, show hint
+    return userFoods.length === 0 && availableUserIds.length > 0;
+  }, [userId, loading, foods.length, userFoods.length, availableUserIds.length]);
+
   return (
     <div className="fe-layout">
       <Sidebar />
@@ -145,8 +181,16 @@ export default function Predict() {
                   placeholder="E.g. U001"
                 />
                 <div className="fe-muted fe-small">
-                  Use user IDs (e.g., <b>U001</b> and <b>U002</b>) to show different personalization.
+                  Type the exact <b>userId</b> stored in MongoDB (e.g., <b>U001</b>, <b>U002</b>, <b>demo</b>).
                 </div>
+
+                {showUserHint && (
+                  <div className="fe-alert fe-alert--warn mt-2">
+                    No items found for <b>{userId}</b>. Available userIds:{" "}
+                    <b>{availableUserIds.slice(0, 8).join(", ") || "—"}</b>
+                    {availableUserIds.length > 8 && <span> ...</span>}
+                  </div>
+                )}
               </div>
 
               <div className="fe-form__group">
@@ -226,6 +270,13 @@ export default function Predict() {
                   {fmtDate(selectedFood.printedExpiryDate)}
                 </div>
 
+                {/* ✅ PP2 optional: show environment (if saved) */}
+                <div className="fe-muted fe-small mt-1">
+                  Environment: Region {safeText(selectedFood.region)} • Temp{" "}
+                  {selectedFood.storage_temperature_c ?? "—"}°C • Hum{" "}
+                  {selectedFood.storage_humidity_pct ?? "—"}%
+                </div>
+
                 <hr />
 
                 <p>
@@ -268,6 +319,8 @@ export default function Predict() {
                     <th>Days Left</th>
                     <th>SCP</th>
                     <th>Printed Cap</th>
+                    {/* ✅ PP2: show region/temp/humidity per prediction */}
+                    <th>Environment</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -308,6 +361,13 @@ export default function Predict() {
                       </td>
 
                       <td>{h.printed_cap_applied ? "Yes" : "No"}</td>
+
+                      <td className="fe-small">
+                        <div>Region: {safeText(h.region)}</div>
+                        <div className="fe-muted fe-small">
+                          Temp: {h.storage_temperature_c ?? "—"}°C • Hum: {h.storage_humidity_pct ?? "—"}%
+                        </div>
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -320,10 +380,13 @@ export default function Predict() {
             <h3 className="fe-section__title mb-2">How to use the Expiry Predictor?</h3>
             <div className="fe-muted fe-small">
               1) Add item → stored in inventory. <br />
-              2) Predict from Inventory → system calculates <b>baseline</b> (AEIF), then if user has ≥ 5 feedbacks it applies <b>AED personalization</b>. <br />
+              2) Predict from Inventory → system calculates <b>baseline</b> (AEIF), then if user has ≥ 5 feedbacks it applies{" "}
+              <b>AED personalization</b>. <br />
               3) If printed expiry exists → final date is <b>capped</b> for safety. <br />
               4) Then SCP ranks urgency using <b>days left</b>. <br />
               5) Every prediction is stored in <b>predictionHistory</b> so we can prove personalization over time.
+              <br />
+              6) (PP2) Predictions also store <b>environment</b> (region, temperature, humidity) to justify real-world usage.
             </div>
           </div>
         </div>

@@ -1,3 +1,5 @@
+# FoodExpiry/models/expiry_predictor.py
+
 import os
 import pandas as pd
 from catboost import CatBoostRegressor
@@ -85,6 +87,17 @@ class ExpiryPredictor:
         return 28.0, 78.0
 
     # ---------------------------------------------------------
+    # CLAMP (Safety for UI / Out-of-range inputs)
+    # ---------------------------------------------------------
+    @staticmethod
+    def _clamp(v, lo, hi):
+        try:
+            x = float(v)
+            return max(lo, min(x, hi))
+        except Exception:
+            return None
+
+    # ---------------------------------------------------------
     # BUILD MODEL INPUT ROW
     # ---------------------------------------------------------
     def _prepare_input(self, data: dict) -> pd.DataFrame:
@@ -131,10 +144,13 @@ class ExpiryPredictor:
         if food_col in row:
             row[food_col] = 1
 
+        # -------------------------------------------------
         # environment features
+        # -------------------------------------------------
         temp = data.get("storage_temperature_c", None)
         hum = data.get("storage_humidity_pct", None)
 
+        # fallback to storage defaults if not provided
         if temp is None or hum is None:
             dtemp, dhum = self._default_environment(storage)
             if temp is None:
@@ -142,17 +158,21 @@ class ExpiryPredictor:
             if hum is None:
                 hum = dhum
 
+        # clamp (prevents unrealistic / out-of-distribution values)
+        # NOTE: wide clamp here; you can also do tighter clamp in food_routes per storage type.
+        temp_c = self._clamp(temp, -30.0, 40.0)
+        hum_p = self._clamp(hum, 40.0, 95.0)
+
+        if temp_c is None:
+            temp_c = float(self._default_environment(storage)[0])
+        if hum_p is None:
+            hum_p = float(self._default_environment(storage)[1])
+
         if "storage_temperature_c" in row:
-            try:
-                row["storage_temperature_c"] = float(temp)
-            except Exception:
-                row["storage_temperature_c"] = float(self._default_environment(storage)[0])
+            row["storage_temperature_c"] = float(temp_c)
 
         if "storage_humidity_pct" in row:
-            try:
-                row["storage_humidity_pct"] = float(hum)
-            except Exception:
-                row["storage_humidity_pct"] = float(self._default_environment(storage)[1])
+            row["storage_humidity_pct"] = float(hum_p)
 
         # base expiry numeric feature
         base_days = self.get_base_expiry_days(item_name, storage)
@@ -162,22 +182,32 @@ class ExpiryPredictor:
         return pd.DataFrame([row])
 
     # ---------------------------------------------------------
-    # FINAL PREDICTION (AEIF SAFE)
+    # FINAL PREDICTION (AEIF SAFE BASELINE)
     # ---------------------------------------------------------
     def predict(self, data: dict) -> dict:
         item_name = (data.get("item_name") or "").lower().strip()
         storage = (data.get("storage_type") or "pantry").lower().strip()
 
-        base_days = self.get_base_expiry_days(item_name, storage)
+        base_days = float(self.get_base_expiry_days(item_name, storage))
 
         X = self._prepare_input(data)
         raw_pred_days = float(self.model.predict(X)[0])
 
-        # ✅ Do not allow prediction below the base expiry
-        final_days = max(raw_pred_days, float(base_days))
+        # -------------------------------------------------
+        # AEIF safety lower bound (60% of base)
+        # -------------------------------------------------
+        min_safe = 0.60 * base_days
+        final_days = max(raw_pred_days, min_safe)
+
+        # usability safety: never show 0-day expiry immediately
+        final_days = max(final_days, 1.0)
+
+        # optional upper cap if model goes crazy
+        final_days = min(final_days, MAX_EXPIRY_DAYS)
 
         return {
             "raw_pred_days": float(raw_pred_days),
             "base_expiry_days": float(base_days),
+            "min_safe_days": float(min_safe),
             "final_days_until_expiry": float(final_days),
         }
