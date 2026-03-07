@@ -15,8 +15,8 @@ app = Flask(__name__)
 # BASE DIR + data/store directories
 # --------------------------------------------------------
 app.config["BASE_DIR"] = os.path.dirname(os.path.abspath(__file__))
-app.config["DATA_DIR"] = os.path.join(app.config["BASE_DIR"], "data")     # backend/data/
-app.config["STORE_DIR"] = os.path.join(app.config["BASE_DIR"], "store")   # backend/store/
+app.config["DATA_DIR"] = os.path.join(app.config["BASE_DIR"], "data")
+app.config["STORE_DIR"] = os.path.join(app.config["BASE_DIR"], "store")
 app.config["UPLOAD_FOLDER"] = os.path.join(app.config["BASE_DIR"], "uploads")
 
 # --------------------------------------------------------
@@ -32,7 +32,7 @@ os.makedirs(app.config["DATA_DIR"], exist_ok=True)
 os.makedirs(app.config["STORE_DIR"], exist_ok=True)
 
 # --------------------------------------------------------
-# ✅ CORS (keep origins list like your original)
+# CORS
 # --------------------------------------------------------
 ALLOWED_ORIGINS = [
     "http://localhost:3000",
@@ -51,23 +51,20 @@ CORS(
     methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
 )
 
-# ✅ Force CORS headers on every response (even errors)
 @app.after_request
 def add_cors_headers(resp):
     origin = request.headers.get("Origin")
     if origin in ALLOWED_ORIGINS:
         resp.headers["Access-Control-Allow-Origin"] = origin
     else:
-        # Keep as '*' ONLY if you want, but safer to reflect allowed origins
         resp.headers["Access-Control-Allow-Origin"] = origin or "*"
-
     resp.headers["Access-Control-Allow-Credentials"] = "true"
     resp.headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization"
     resp.headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE, OPTIONS"
     return resp
 
 # --------------------------------------------------------
-# ✅ Error handler (helps you see real error instead of CORS hiding it)
+# Error handler
 # --------------------------------------------------------
 @app.errorhandler(Exception)
 def handle_exception(e):
@@ -82,23 +79,20 @@ bcrypt.init_app(app)
 jwt.init_app(app)
 
 # --------------------------------------------------------
-# Import blueprints (teammates modules)
+# Import & register blueprints
 # --------------------------------------------------------
 from cooking_assistant.routes import cooking_bp
-
 from shopping.routes import shopping_bp
 from auth.routes import auth_bp
 from NutritionGuidance.routes import nutrition_bp
 
-# Register blueprints (keep your previous routing)
 app.register_blueprint(cooking_bp, url_prefix="/api/cooking")
-
-app.register_blueprint(shopping_bp, url_prefix="")  # if routes already include /api/shopping
+app.register_blueprint(shopping_bp, url_prefix="")
 app.register_blueprint(auth_bp, url_prefix="/api/auth")
 app.register_blueprint(nutrition_bp, url_prefix="/api/nutrition")
 
 # --------------------------------------------------------
-# ✅ FoodExpiry (ONLY enable if Mongo configured)
+# FoodExpiry (only if Mongo configured)
 # --------------------------------------------------------
 food_bp_available = False
 try:
@@ -106,7 +100,6 @@ try:
     if MONGO_URI:
         app.config["MONGO_URI"] = MONGO_URI
         mongo.init_app(app)
-
         from FoodExpiry.routes.food_routes import food_bp
         app.register_blueprint(food_bp, url_prefix="/api/food")
         food_bp_available = True
@@ -118,14 +111,14 @@ except Exception as e:
     food_bp_available = False
 
 # --------------------------------------------------------
-# Health check endpoint
+# Health check
 # --------------------------------------------------------
 @app.route("/health", methods=["GET"])
 def health_check():
     return jsonify({"status": "healthy", "message": "Smart Kitchen Backend is running!"}), 200
 
 # --------------------------------------------------------
-# Root route (overview)
+# Root route
 # --------------------------------------------------------
 @app.route("/", methods=["GET"])
 def root():
@@ -134,7 +127,9 @@ def root():
             "endpoints": [
                 "POST /api/cooking/analyze-image",
                 "POST /api/cooking/search-recipes",
-                "POST /api/cooking/generate-grocery-list",
+                "GET  /api/cooking/sbert-status",
+                "POST /api/cooking/grocery-from-meals",
+                "POST /api/cooking/parse-meal-plan",
             ]
         },
         "shopping": {
@@ -149,13 +144,9 @@ def root():
             "endpoints": [
                 "GET /api/nutrition/health",
                 "GET /api/nutrition/foods/search?q=<q>",
-                "GET /api/nutrition/conditions",
-                "GET /api/nutrition/profile?user_id=<id>",
                 "POST /api/nutrition/profile",
                 "POST /api/nutrition/intake/add",
-                "GET /api/nutrition/intake/summary?period=weekly|monthly",
                 "GET /api/nutrition/report?period=weekly|monthly",
-                "GET /api/nutrition/ml-risk?period=weekly|monthly",
             ]
         },
     }
@@ -170,10 +161,14 @@ def root():
             ]
         }
 
-    return jsonify({"message": "Welcome to Smart Kitchen API", "version": "1.0.0", "modules": modules}), 200
+    return jsonify({
+        "message": "Welcome to Smart Kitchen API",
+        "version": "1.0.0",
+        "modules": modules
+    }), 200
 
 # --------------------------------------------------------
-# Run the Flask app
+# Run
 # --------------------------------------------------------
 if __name__ == "__main__":
     print("🚀 Starting Smart Kitchen Backend...")
