@@ -71,7 +71,7 @@ def add_cors_headers(resp):
 # --------------------------------------------------------
 @app.errorhandler(Exception)
 def handle_exception(e):
-    print("❌ ERROR:", str(e))
+    print("ERROR:", str(e))
     traceback.print_exc()
     return jsonify({"error": "Internal Server Error", "message": str(e)}), 500
 
@@ -88,6 +88,13 @@ from cooking_assistant.routes import cooking_bp
 from shopping.routes import shopping_bp
 from auth.routes import auth_bp
 from NutritionGuidance.routes import nutrition_bp
+
+# Optional: enhanced_routes (only if the module exists - not in repo by default)
+try:
+    from cooking_assistant.enhanced_routes import enhanced_bp
+    app.register_blueprint(enhanced_bp, url_prefix="/api")
+except ImportError:
+    pass
 
 # Register blueprints (keep your previous routing)
 app.register_blueprint(cooking_bp, url_prefix="/api/cooking")
@@ -108,11 +115,11 @@ try:
         from FoodExpiry.routes.food_routes import food_bp
         app.register_blueprint(food_bp, url_prefix="/api/food")
         food_bp_available = True
-        print("✅ FoodExpiry enabled (Mongo connected).")
+        print("[OK] FoodExpiry enabled (Mongo connected).")
     else:
-        print("⚠️ FoodExpiry disabled (MONGO_URI not set).")
+        print("[WARN] FoodExpiry disabled (MONGO_URI not set).")
 except Exception as e:
-    print("⚠️ FoodExpiry disabled due to Mongo error:", str(e))
+    print("[WARN] FoodExpiry disabled due to Mongo error:", str(e))
     food_bp_available = False
 
 # --------------------------------------------------------
@@ -174,7 +181,7 @@ def root():
 # Run the Flask app
 # --------------------------------------------------------
 if __name__ == "__main__":
-    print("🚀 Starting Smart Kitchen Backend...")
-    print("📍 Backend running on: http://127.0.0.1:5000")
-    print("📍 Frontend should run on: http://localhost:5173")
+    print("Starting Smart Kitchen Backend...")
+    print("Backend: http://127.0.0.1:5000")
+    print("Frontend: http://localhost:5173")
     app.run(debug=True, port=5000)
