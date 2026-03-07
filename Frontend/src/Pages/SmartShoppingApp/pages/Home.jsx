@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
-  SearchIcon,
   BrainIcon,
   MessageCircleIcon,
   ClockIcon,
-  ArrowRightIcon
+  ArrowRightIcon,
+  Loader2
 } from 'lucide-react';
 import { Sidebar } from '../components/Sidebar';
 import { ChatAssistant } from '../components/ChatAssistant';
@@ -13,12 +13,8 @@ import { MealForecast } from '../components/MealForecast';
 
 export function Home() {
   const navigate = useNavigate();
+  const [showAnalyzing, setShowAnalyzing] = useState(true);
   const features = [
-    {
-      icon: SearchIcon,
-      title: 'Voice & Text Search',
-      description: 'Search products naturally using your voice or keyboard'
-    },
     {
       icon: BrainIcon,
       title: 'Smart Recommendations',
@@ -36,32 +32,41 @@ export function Home() {
     }
   ];
 
+  useEffect(() => {
+    const t = setTimeout(() => setShowAnalyzing(false), 4000);
+    return () => clearTimeout(t);
+  }, []);
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#D4F1E8] via-[#E8F8F3] to-[#C8E6E0]">
+    <div className="min-h-screen bg-[#E8F8F3]">
       <Sidebar />
-      <div className="ml-64 min-h-screen">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="text-center mb-16">
-            <h1 className="text-5xl md:text-6xl font-bold text-[#1E5245] mb-6">
-              Shop Smarter with Your
-              <span className="text-[#2D9B81]"> AI Shopping Agent</span>
+      <div className="ml-[17rem] min-h-screen pl-8 pr-6 pt-6 overflow-x-hidden">
+        <div className="max-w-5xl mx-auto min-w-0">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl md:text-5xl font-bold text-[#1E5245] mb-4 leading-tight">
+              Shop Smarter with Your <span className="text-[#2D9B81]">AI Shopping Agent</span>
             </h1>
-            <p className="text-xl text-[#2D5F4F] mb-8 max-w-3xl mx-auto">
-              Search products by voice or text and get intelligent
-              recommendations powered by advanced AI technology
+            <p className="text-lg text-[#2D5F4F] mb-6 max-w-2xl mx-auto">
+              Search products by voice or text and get intelligent recommendations powered by advanced AI technology.
             </p>
             <button
               onClick={() => navigate('/smart-shopping/search')}
-              className="inline-flex items-center space-x-2 bg-[#2D9B81] text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-[#267A68] transition-all hover:scale-105 shadow-lg"
+              className="inline-flex items-center space-x-2 bg-[#2D9B81] text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-[#267A68] transition-all shadow-lg"
             >
               <span>Start Now</span>
               <ArrowRightIcon size={20} />
             </button>
+            {showAnalyzing && (
+              <div className="mt-4 flex items-center justify-center gap-2 text-[#2D5F4F]">
+                <Loader2 className="h-5 w-5 animate-spin" />
+                <span className="text-sm font-medium">AI is analyzing your taste...</span>
+              </div>
+            )}
           </div>
 
           <MealForecast />
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
             {features.map((feature, index) => {
               const Icon = feature.icon;
               return (

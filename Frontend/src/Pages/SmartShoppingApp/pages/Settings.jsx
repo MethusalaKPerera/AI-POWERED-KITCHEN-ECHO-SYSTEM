@@ -16,12 +16,12 @@ export function Settings() {
   return (
     <div className="min-h-screen bg-[#E8F8F3]">
       <Sidebar />
-      <div className="ml-64 min-h-screen">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="ml-[17rem] min-h-screen pl-8 pr-6 pt-6 overflow-x-hidden">
+        <div className="max-w-4xl mx-auto">
           <div className="mb-8">
-            <h1 className="text-4xl font-bold text-[#1E5245] mb-2">{translations.settingsTitle}</h1>
-            <p className="text-[#2D5F4F]">
-              {translations.managePreferences}
+            <h1 className="text-4xl font-bold text-[#1E5245] mb-2">Settings</h1>
+            <p className="text-[#2D5F4F] text-lg">
+              Manage your preferences and account settings
             </p>
           </div>
           <div className="space-y-6">

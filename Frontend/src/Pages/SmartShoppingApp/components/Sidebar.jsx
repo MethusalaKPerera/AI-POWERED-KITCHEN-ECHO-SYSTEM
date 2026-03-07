@@ -26,7 +26,7 @@ export function Sidebar() {
   ];
 
   return (
-    <div className="fixed left-0 top-0 h-screen w-64 bg-[#2D9B81] text-white flex flex-col shadow-lg z-50">
+    <div className="fixed left-0 top-[65px] h-[calc(100vh-65px)] w-64 bg-[#2D9B81] text-white flex flex-col shadow-lg z-40">
       <div className="p-6 border-b border-teal-600">
         <Link to="/smart-shopping" className="text-2xl font-bold">
           AI Shop

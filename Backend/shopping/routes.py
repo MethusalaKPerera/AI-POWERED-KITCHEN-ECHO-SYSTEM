@@ -17,6 +17,7 @@ shopping_bp = Blueprint('shopping', __name__)
 
 SERPAPI_KEY = os.getenv('SERPAPI_KEY', '')
 GEMINI_API_KEY = os.getenv('GEMINI_API_KEY', '')
+GROQ_API_KEY = os.getenv('GROQ_API_KEY', '')
 SERPAPI_ENDPOINT = 'https://serpapi.com/search.json'
 
 # --- HISTORY FILE SETUP ---
@@ -272,7 +273,7 @@ def chat():
                         history_context = "User's recent activity:\n" + "\n".join([f"- {h['type']}: {h['query']}" for h in recent]) + "\n\n"
 
                 model = genai.GenerativeModel(
-                    'models/gemini-flash-latest',
+                    'gemini-2.0-flash',
                     system_instruction=f"{history_context}You are a helpful Kitchen Shopping Assistant. "
                                        f"When users ask how to make a dish or for a recipe, your primary job is to generate a comprehensive SHOPPING LIST of ingredients. "
                                        f"Format the shopping list as a Markdown table with columns: Ingredient, Quantity, and Shopping Tip. "
@@ -437,7 +438,7 @@ def get_recommendations():
                         sorted_history = sorted(user_history, key=lambda x: x.get('timestamp', ''), reverse=True)[:10]
                         history_text = "\n".join([f"- {h['type'].upper()}: {h['query']}" for h in sorted_history])
                         
-                        model = genai.GenerativeModel('models/gemini-flash-latest')
+                        model = genai.GenerativeModel('gemini-2.0-flash')
                         
                         prompt = (
                             f"Act as a Professional Personal Shopper. \n"
@@ -556,7 +557,7 @@ def analyze_product_wastage():
             try:
                 import google.generativeai as genai
                 genai.configure(api_key=GEMINI_API_KEY)
-                model = genai.GenerativeModel('models/gemini-flash-latest')
+                model = genai.GenerativeModel('gemini-2.0-flash')
                 
                 prompt = (
                     f"Analyze the food item '{product_name}' for kitchen wastage management.\n"
@@ -686,89 +687,130 @@ def predict_needs():
         current_date = datetime.datetime.now().strftime("%Y-%m-%d (%A)")
 
         # STEP 3: Inference (Gemini uses both Learned Profile + Recent Context)
+        # Build the shared prediction prompt once
+        prompt = (
+            f"Act as an Advanced AI Dietitian & Data Scientist.\n\n"
+
+            f"--- LONG-TERM MEMORY (LEARNED MODEL) ---\n"
+            f"Based on historical training, we know this about the user:\n"
+            f"Top Interests: {', '.join(learned_profile.get('top_keywords', []))}\n"
+            f"Shopping Pattern: {learned_profile.get('shopping_pattern', 'Unknown')}\n\n"
+
+            f"--- SHORT-TERM CONTEXT (RECENT ACTIVITY) ---\n"
+            f"Recent Logs:\n{history_text}\n\n"
+
+            f"--- CURRENT CONTEXT ---\n"
+            f"Date: {current_date}\n\n"
+
+            f"--- INFERENCE TASK ---\n"
+            f"1. Refine the dietary preferences based on the model.\n"
+            f"2. Predict the specific Meal Plan for tomorrow (Breakfast, Lunch, Dinner).\n"
+            f"3. Explain your reasoning: How does the long-term model + short-term context lead to this prediction?\n\n"
+
+            f"CRITICAL: Return ONLY raw JSON in this format:\n"
+            f"{{ \"preferences\": [\"...\"], \"weekend_habit\": \"...\", \"meal_plan\": {{ \"breakfast\": \"...\", \"lunch\": \"...\", \"dinner\": \"...\" }}, \"reasoning\": \"...\" }}"
+        )
+
+        # --- TIER 1: Gemini 2.0 Flash ---
         if GEMINI_API_KEY:
             try:
                 import google.generativeai as genai
                 genai.configure(api_key=GEMINI_API_KEY)
-                model = genai.GenerativeModel('models/gemini-1.5-flash-latest') # Updated model
-                
-                # Construct a sophisticated prompt that uses the "Model" we just trained
-                prompt = (
-                    f"Act as an Advanced AI Dietitian & Data Scientist.\n\n"
-                    
-                    f"--- LONG-TERM MEMORY (LEARNED MODEL) ---\n"
-                    f"Based on historical training, we know this about the user:\n"
-                    f"Top Interests: {', '.join(learned_profile.get('top_keywords', []))}\n"
-                    f"Shopping Pattern: {learned_profile.get('shopping_pattern', 'Unknown')}\n\n"
-                    
-                    f"--- SHORT-TERM CONTEXT (RECENT ACTIVITY) ---\n"
-                    f"Recent Logs:\n{history_text}\n\n"
-                    
-                    f"--- CURRENT CONTEXT ---\n"
-                    f"Date: {current_date}\n\n"
-                    
-                    f"--- INFERENCE TASK ---\n"
-                    f"1. Refine the dietary preferences based on the model.\n"
-                    f"2. Predict the specific Meal Plan for tomorrow (Breakfast, Lunch, Dinner).\n"
-                    f"3. Explain your reasoning: How does the long-term model + short-term context lead to this prediction?\n\n"
-                    
-                    f"CRITICAL: Return ONLY raw JSON in this format:\n"
-                    f"{{ \"preferences\": [\"...\"], \"weekend_habit\": \"...\", \"meal_plan\": {{ \"breakfast\": \"...\", \"lunch\": \"...\", \"dinner\": \"...\" }}, \"reasoning\": \"...\" }}"
-                )
-                
-                # Try specific models if the default alias fails (Error handling wrapper)
-                try:
-                     response = model.generate_content(prompt)
-                except Exception as model_err:
-                     print(f"Primary model failed, trying fallback: {model_err}")
-                     model = genai.GenerativeModel('models/gemini-pro')
-                     response = model.generate_content(prompt)
-
+                model = genai.GenerativeModel('gemini-2.0-flash')
+                response = model.generate_content(prompt)
                 text_response = response.text.replace('```json', '').replace('```', '').strip()
                 prediction_data = json.loads(text_response)
-                
                 return jsonify({
                     'success': True,
                     'prediction': prediction_data,
-                    'model_version': 'hybrid-v1', # Proof of hybrid model use
-                    'metadata': {
-                        'learned_profile': learned_profile
-                    }
+                    'model_version': 'hybrid-gemini-flash',
+                    'metadata': {'learned_profile': learned_profile}
                 })
+            except Exception as e1:
+                print(f"Gemini Flash failed: {e1}")
 
-            except Exception as ai_e:
-                print(f"Prediction AI failed: {ai_e}")
-                if "429" in str(ai_e):
-                    # Quota exceeded error - specific robust fallback
+        # --- TIER 2: Gemini 2.0 Flash Lite ---
+        if GEMINI_API_KEY:
+            try:
+                import google.generativeai as genai
+                genai.configure(api_key=GEMINI_API_KEY)
+                model = genai.GenerativeModel('gemini-2.0-flash-lite')
+                response = model.generate_content(prompt)
+                text_response = response.text.replace('```json', '').replace('```', '').strip()
+                prediction_data = json.loads(text_response)
+                return jsonify({
+                    'success': True,
+                    'prediction': prediction_data,
+                    'model_version': 'hybrid-gemini-flash-lite',
+                    'metadata': {'learned_profile': learned_profile}
+                })
+            except Exception as e2:
+                print(f"Gemini Flash Lite failed: {e2}")
+
+        # --- TIER 3: Groq (llama-3.3-70b-versatile) ---
+        if GROQ_API_KEY:
+            try:
+                groq_response = requests.post(
+                    'https://api.groq.com/openai/v1/chat/completions',
+                    headers={
+                        'Authorization': f'Bearer {GROQ_API_KEY}',
+                        'Content-Type': 'application/json'
+                    },
+                    json={
+                        'model': 'llama-3.3-70b-versatile',
+                        'messages': [{'role': 'user', 'content': prompt}],
+                        'temperature': 0.7,
+                        'max_tokens': 512
+                    },
+                    timeout=20
+                )
+                if groq_response.status_code == 200:
+                    text_response = groq_response.json()['choices'][0]['message']['content']
+                    text_response = text_response.replace('```json', '').replace('```', '').strip()
+                    prediction_data = json.loads(text_response)
                     return jsonify({
                         'success': True,
-                        'prediction': {
-                            'preferences': learned_profile.get('top_keywords', ["General Cooking"])[:3],
-                            'weekend_habit': learned_profile.get('shopping_pattern', "Regular Shopper"),
-                            'seasonal_prediction': "Home Cooked Meal",
-                            'reasoning': "AI Quota Exceeded (429). Using Locally Trained Model to generate suggestions.",
-                            'meal_plan': { 
-                                'breakfast': "Oatmeal with Fruits", 
-                                'lunch': "Grilled Chicken Salad", 
-                                'dinner': "Vegetable Stir-fry" 
-                            }
-                        }
+                        'prediction': prediction_data,
+                        'model_version': 'hybrid-groq-llama',
+                        'metadata': {'learned_profile': learned_profile}
                     })
-        
-        # Fallback (Static rules)
+                else:
+                    print(f"Groq API error: {groq_response.status_code} {groq_response.text}")
+            except Exception as e3:
+                print(f"Groq fallback failed: {e3}")
+
+        # --- TIER 4: Local Model (no AI, rule-based) ---
+        print("All AI tiers exhausted. Using local rule-based prediction.")
+        keywords = learned_profile.get('top_keywords', ["General Cooking"])[:3]
+        pattern = learned_profile.get('shopping_pattern', "Regular Shopper")
+        # Build a simple meal plan from top keywords
+        meal_map = {
+            'chicken': ('Eggs & Toast', 'Chicken Salad', 'Grilled Chicken & Rice'),
+            'pasta': ('Yogurt & Granola', 'Pasta with Marinara', 'Garlic Bread & Soup'),
+            'rice': ('Congee', 'Fried Rice', 'Rice & Curry'),
+            'vegetable': ('Smoothie Bowl', 'Veggie Wrap', 'Vegetable Stir-fry'),
+            'beef': ('Scrambled Eggs', 'Beef Sandwich', 'Beef Stew'),
+            'fish': ('Avocado Toast', 'Fish Tacos', 'Baked Salmon'),
+        }
+        breakfast, lunch, dinner = 'Oatmeal with Fruits', 'Grilled Chicken Salad', 'Vegetable Stir-fry'
+        for kw in keywords:
+            if kw in meal_map:
+                breakfast, lunch, dinner = meal_map[kw]
+                break
+        if "429" in str(locals().get('e1', '')) or "429" in str(locals().get('e2', '')):
+            ai_note = "Gemini API free-tier quota exceeded. Using locally trained model."
+        else:
+            ai_note = "AI services temporarily unavailable. Using locally trained model."
         return jsonify({
             'success': True,
             'prediction': {
-                'preferences': ["General Cooking"],
-                'weekend_habit': "Likely shopping for groceries.",
-                'seasonal_prediction': "Seasonal Salad",
-                'reasoning': "AI service unavailable. Showing default suggestion.",
-                 'meal_plan': { 
-                    'breakfast': "Oatmeal with Fruits", 
-                    'lunch': "Grilled Chicken Salad", 
-                    'dinner': "Vegetable Stir-fry" 
-                }
-            }
+                'preferences': keywords,
+                'weekend_habit': pattern,
+                'seasonal_prediction': 'Home Cooked Meal',
+                'reasoning': ai_note,
+                'meal_plan': {'breakfast': breakfast, 'lunch': lunch, 'dinner': dinner}
+            },
+            'model_version': 'local-rule-based'
         })
 
     except Exception as e:

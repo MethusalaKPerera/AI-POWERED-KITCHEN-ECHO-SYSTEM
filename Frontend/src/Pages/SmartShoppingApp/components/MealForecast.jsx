@@ -59,11 +59,11 @@ export function MealForecast() {
   const plan = prediction.meal_plan || { breakfast: "N/A", lunch: "N/A", dinner: "N/A" };
 
   return (
-    <div className="w-full max-w-5xl mx-auto mt-12 mb-12">
+    <div className="w-full max-w-full min-w-0 mt-12 mb-12">
       <div className="bg-gradient-to-r from-[#1E5245] to-[#2D9B81] rounded-2xl p-1 shadow-xl overflow-hidden">
-        <div className="bg-white rounded-xl p-8">
+        <div className="bg-white rounded-xl p-6 sm:p-8">
             
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
             <div>
               <div className="flex items-center space-x-2 text-[#2D9B81] font-semibold mb-1">
                  <Utensils size={20} />
@@ -79,7 +79,7 @@ export function MealForecast() {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 min-w-0">
             <MealCard 
                 icon={Coffee} 
                 title="Breakfast" 
@@ -111,7 +111,7 @@ export function MealForecast() {
 
 function MealCard({ icon: Icon, title, meal, highlight }) {
   return (
-    <div className={`relative p-6 rounded-xl border transition-all duration-300 ${highlight ? 'bg-[#F0FDFA] border-[#2D9B81] shadow-md scale-105 ring-2 ring-[#2D9B81]/20' : 'bg-gray-50 border-gray-100 hover:border-[#2D9B81]/50'}`}>
+    <div className={`relative p-6 rounded-xl border transition-all duration-300 min-w-0 ${highlight ? 'bg-[#F0FDFA] border-[#2D9B81] shadow-md ring-2 ring-[#2D9B81]/20' : 'bg-gray-50 border-gray-100 hover:border-[#2D9B81]/50'}`}>
        {highlight && (
            <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#2D9B81] text-white text-[10px] uppercase font-bold px-3 py-1 rounded-full">
                Next Up

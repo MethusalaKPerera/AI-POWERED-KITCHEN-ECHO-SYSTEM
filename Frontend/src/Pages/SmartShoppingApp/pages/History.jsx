@@ -23,7 +23,8 @@ export function History() {
       setLoading(true);
       try {
         const data = await shoppingApi.getHistory();
-        if (setHistory) setHistory(data);
+        const list = Array.isArray(data) ? data : (data?.data || []);
+        if (setHistory) setHistory(list);
       } catch (error) {
         console.error("Failed to fetch history", error);
       } finally {
@@ -34,8 +35,9 @@ export function History() {
   }, [setHistory]);
 
   const filteredHistory = history.filter(item => {
-    const matchesSearch = item.query.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesTab = activeTab === 'all' || item.type === activeTab;
+    const q = (item.query || item.text || '').toString();
+    const matchesSearch = q.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesTab = activeTab === 'all' || (item.type || 'search') === activeTab;
     return matchesSearch && matchesTab;
   });
 
@@ -60,36 +62,40 @@ export function History() {
   return (
     <div className="min-h-screen bg-[#E8F8F3]">
       <Sidebar />
-      <div className="ml-64 min-h-screen">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="ml-[17rem] min-h-screen pl-8 pr-6 pt-6 overflow-x-hidden">
+        <div className="max-w-4xl mx-auto">
           <div className="mb-8">
             <h1 className="text-4xl font-bold text-[#1E5245] mb-2">
               Search History
             </h1>
-            <p className="text-[#2D5F4F]">
-              View, edit, or re-run your previous activities
+            <p className="text-[#2D5F4F] text-lg">
+              View, edit, or re-run your previous activities.
             </p>
           </div>
 
-          <div className="flex space-x-4 mb-6">
-            {['all', 'search', 'chat'].map((tab) => (
+          <div className="flex gap-2 mb-6">
+            {[
+              { id: 'all', label: 'All' },
+              { id: 'search', label: 'Search' },
+              { id: 'chat', label: 'Chat' }
+            ].map(({ id, label }) => (
               <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`px-6 py-2 rounded-full font-medium transition-all ${activeTab === tab
+                key={id}
+                onClick={() => setActiveTab(id)}
+                className={`px-6 py-2.5 rounded-lg font-medium transition-all ${activeTab === id
                   ? 'bg-[#2D9B81] text-white shadow-md'
-                  : 'bg-white text-[#2D5F4F] hover:bg-[#D4F1E8]'
+                  : 'bg-white text-[#2D5F4F] border border-gray-200 hover:border-[#2D9B81]/50'
                   }`}
               >
-                {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                {label}
               </button>
             ))}
           </div>
-          <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-            <div className="flex items-center space-x-4 mb-4">
+          <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
+            <div className="flex items-center gap-4 mb-6">
               <div className="flex-1 relative">
                 <SearchIcon
-                  className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
                   size={20}
                 />
                 <input
@@ -97,12 +103,12 @@ export function History() {
                   value={searchTerm}
                   onChange={e => setSearchTerm(e.target.value)}
                   placeholder="Search history..."
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#2D9B81]"
+                  className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2D9B81] focus:border-[#2D9B81]"
                 />
               </div>
               <button
                 onClick={clearHistory}
-                className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors"
+                className="px-5 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-medium whitespace-nowrap"
               >
                 Clear All
               </button>
@@ -112,47 +118,52 @@ export function History() {
                 <p className="text-gray-500 text-lg">No search history found</p>
               </div>
             ) : (
-              <div className="space-y-3">
-                {filteredHistory.map(item => (
+              <div className="space-y-2">
+                {filteredHistory.map(item => {
+                const itemId = item.id ?? item._id;
+                const queryText = (item.query ?? item.text ?? '').toString();
+                const itemType = (item.type ?? 'search').toLowerCase();
+                const ts = item.timestamp ? new Date(item.timestamp) : null;
+                return (
                   <div
-                    key={item.id}
-                    className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors border border-transparent hover:border-[#D4F1E8]"
+                    key={itemId}
+                    className="flex items-center justify-between p-4 bg-gray-50 rounded-xl border border-gray-100 hover:bg-gray-50/90 transition-colors"
                   >
-                    <div className="flex-1 flex items-start space-x-4">
-                      <div className={`p-2 rounded-lg ${item.type === 'chat' ? 'bg-blue-100 text-blue-600' : 'bg-green-100 text-green-600'}`}>
-                        {item.type === 'chat' ? <MessageCircleIcon size={20} /> : <SearchIcon size={20} />}
+                    <div className="flex-1 flex items-center gap-4 min-w-0 overflow-hidden">
+                      <div className={`flex-shrink-0 p-2 rounded-lg ${itemType === 'chat' ? 'bg-blue-100 text-blue-600' : 'bg-[#D4F1E8] text-[#2D9B81]'}`}>
+                        {itemType === 'chat' ? <MessageCircleIcon size={20} /> : <SearchIcon size={20} />}
                       </div>
-                      <div className="flex-1">
-                        {editingId === item.id ? (
+                      <div className="flex-1 min-w-0 overflow-hidden">
+                        {editingId === itemId ? (
                           <input
                             type="text"
                             value={editValue}
                             onChange={e => setEditValue(e.target.value)}
-                            className="w-full px-3 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#2D9B81]"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2D9B81]"
                           />
                         ) : (
                           <>
-                            <div className="flex items-center space-x-2">
-                              <p className="text-lg font-medium text-[#1E5245]">
-                                {item.query}
+                            <div className="flex flex-wrap items-center gap-2">
+                              <p className="text-[#1E5245] font-medium break-words overflow-visible">
+                                {queryText || '—'}
                               </p>
-                              <span className={`text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full font-bold ${item.type === 'chat' ? 'bg-blue-50 text-blue-500' : 'bg-green-50 text-green-500'
-                                }`}>
-                                {item.type}
+                              <span className={`text-xs uppercase tracking-wider px-2 py-0.5 rounded font-semibold flex-shrink-0 ${itemType === 'chat' ? 'bg-blue-50 text-blue-600' : 'text-[#2D9B81] bg-[#D4F1E8]'}`}>
+                                {itemType}
                               </span>
                             </div>
-                            <p className="text-sm text-[#2D5F4F]">
-                              {new Date(item.timestamp).toLocaleDateString()} at{' '}
-                              {new Date(item.timestamp).toLocaleTimeString()}
-                            </p>
+                            {ts && (
+                              <p className="text-sm text-gray-500 mt-0.5">
+                                {ts.toLocaleDateString()} at {ts.toLocaleTimeString()}
+                              </p>
+                            )}
                           </>
                         )}
                       </div>
                     </div>
-                    <div className="flex items-center space-x-2 ml-4">
-                      {editingId === item.id ? (
+                    <div className="flex items-center gap-1 ml-4 flex-shrink-0">
+                      {editingId === itemId ? (
                         <button
-                          onClick={() => handleSaveEdit(item.id)}
+                          onClick={() => handleSaveEdit(itemId)}
                           className="px-3 py-1 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors text-sm"
                         >
                           Save
@@ -160,21 +171,21 @@ export function History() {
                       ) : (
                         <>
                           <button
-                            onClick={() => handleReRun(item)}
+                            onClick={() => handleReRun({ ...item, id: itemId, query: queryText, type: itemType })}
                             className="p-2 text-[#2D9B81] hover:bg-[#D4F1E8] rounded-md transition-colors"
                             title="Re-run activity"
                           >
                             <PlayIcon size={18} />
                           </button>
                           <button
-                            onClick={() => handleEdit(item.id, item.query)}
+                            onClick={() => handleEdit(itemId, queryText)}
                             className="p-2 text-gray-600 hover:bg-gray-200 rounded-md transition-colors"
                             title="Edit"
                           >
                             <EditIcon size={18} />
                           </button>
                           <button
-                            onClick={() => deleteFromHistory(item.id)}
+                            onClick={() => deleteFromHistory(itemId)}
                             className="p-2 text-red-600 hover:bg-red-50 rounded-md transition-colors"
                             title="Delete"
                           >
@@ -184,7 +195,8 @@ export function History() {
                       )}
                     </div>
                   </div>
-                ))}
+                );
+              })}
               </div>
             )}
           </div>
