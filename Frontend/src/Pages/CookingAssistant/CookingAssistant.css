@@ -48,9 +48,10 @@ input[type="file"] {
   pointer-events: auto !important;
 }
 
-*,
-*::before,
-*::after {
+/* NOTE: Scoped reset — prevents conflicts with Smart Shopping Tailwind */
+.ca-root *,
+.ca-root *::before,
+.ca-root *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;

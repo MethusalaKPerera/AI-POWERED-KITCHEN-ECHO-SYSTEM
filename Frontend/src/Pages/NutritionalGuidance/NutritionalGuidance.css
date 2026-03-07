@@ -1,3 +1,7 @@
+/* =====================================================
+   NUTRITIONAL GUIDANCE — All styles scoped to prevent
+   leaking into Smart Shopping or other pages
+   ===================================================== */
 
 .nutritional-guidance-container {
   display: flex;
@@ -6,7 +10,8 @@
   font-family: "Segoe UI", Arial, sans-serif;
 }
 
-.sidebar {
+/* ---- Sidebar (scoped) ---- */
+.nutritional-guidance-container .ng-sidebar {
   width: 280px;
   background: #066b55;
   color: #fff;
@@ -14,27 +19,26 @@
   flex-direction: column;
   padding: 18px;
   box-sizing: border-box;
-
-  /* fixed sidebar */
   position: fixed;
-  top: 0;
+  top: 65px;
+  /* below global header */
   left: 0;
-  height: 100vh;
-  overflow-y: auto; /* sidebar can scroll if content is too long */
+  height: calc(100vh - 65px);
+  overflow-y: auto;
+  z-index: 30;
 }
 
-
-.sidebar-header {
+.nutritional-guidance-container .ng-sidebar-header {
   display: flex;
   flex-direction: column;
-  align-items: center;      
+  align-items: center;
   justify-content: center;
   text-align: center;
   padding-bottom: 18px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-.logo-icon {
+.nutritional-guidance-container .ng-logo-icon {
   width: 44px;
   height: 44px;
   border-radius: 12px;
@@ -45,27 +49,27 @@
   margin-bottom: 10px;
 }
 
-.sidebar-header h2 {
+.nutritional-guidance-container .ng-sidebar-header h2 {
   margin: 0;
   font-size: 20px;
   font-weight: 700;
 }
 
-.tagline {
+.nutritional-guidance-container .ng-tagline {
   margin: 6px 0 0 0;
   font-size: 12px;
   opacity: 0.8;
 }
 
 /* Nav */
-.sidebar-nav {
+.nutritional-guidance-container .ng-sidebar-nav {
   margin-top: 14px;
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
-.nav-item {
+.nutritional-guidance-container .ng-nav-item {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -77,23 +81,23 @@
   opacity: 0.95;
 }
 
-.nav-item:hover {
+.nutritional-guidance-container .ng-nav-item:hover {
   background: rgba(255, 255, 255, 0.08);
   transform: translateX(1px);
 }
 
-.nav-item.active {
+.nutritional-guidance-container .ng-nav-item.active {
   background: rgba(56, 189, 248, 0.18);
   border: 1px solid rgba(56, 189, 248, 0.28);
 }
 
-.nav-icon {
+.nutritional-guidance-container .ng-nav-icon {
   font-size: 18px;
   width: 22px;
 }
 
 /* Footer */
-.sidebar-footer {
+.nutritional-guidance-container .ng-sidebar-footer {
   margin-top: auto;
   padding-top: 14px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -101,7 +105,7 @@
   gap: 10px;
 }
 
-.health-badge {
+.nutritional-guidance-container .ng-health-badge {
   display: flex;
   gap: 10px;
   align-items: center;
@@ -110,65 +114,56 @@
   background: rgba(255, 255, 255, 0.08);
 }
 
-.badge-icon {
+.nutritional-guidance-container .ng-badge-icon {
   font-size: 18px;
 }
 
-.badge-title {
+.nutritional-guidance-container .ng-badge-title {
   font-weight: 700;
   font-size: 13px;
 }
 
-.badge-subtitle {
+.nutritional-guidance-container .ng-badge-subtitle {
   font-size: 12px;
   opacity: 0.8;
 }
 
-/* Optional dev line */
-.dev-userid {
+.nutritional-guidance-container .ng-dev-userid {
   font-size: 12px;
   opacity: 0.85;
   padding: 0 4px;
 }
 
-.dev-label {
+.nutritional-guidance-container .ng-dev-label {
   opacity: 0.75;
   margin-right: 6px;
 }
 
-/* ----------------------------
-   MAIN CONTENT (shifted right)
------------------------------ */
-.main-content {
+/* ---- Main Content (scoped) ---- */
+.nutritional-guidance-container .ng-main-content {
   flex: 1;
   padding: 22px;
   box-sizing: border-box;
-
-  /* push content to the right of fixed sidebar */
   margin-left: 280px;
-
-  /* ensure visible */
   background: #f5f7fb;
   color: #033a18;
-
-  /* only main content scrolls naturally */
   min-height: 100vh;
 }
 
 /* Responsive */
 @media (max-width: 900px) {
-  .sidebar {
+  .nutritional-guidance-container .ng-sidebar {
     width: 220px;
   }
-  .main-content {
+
+  .nutritional-guidance-container .ng-main-content {
     margin-left: 220px;
     padding: 14px;
   }
 }
 
-/* On small screens, remove fixed sidebar (mobile friendly) */
 @media (max-width: 720px) {
-  .sidebar {
+  .nutritional-guidance-container .ng-sidebar {
     position: static;
     width: 100%;
     height: auto;
@@ -179,17 +174,17 @@
     flex-direction: column;
   }
 
-  .sidebar-nav {
+  .nutritional-guidance-container .ng-sidebar-nav {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 8px;
   }
 
-  .sidebar-footer {
+  .nutritional-guidance-container .ng-sidebar-footer {
     display: none;
   }
 
-  .main-content {
+  .nutritional-guidance-container .ng-main-content {
     margin-left: 0;
   }
 }

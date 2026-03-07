@@ -19,8 +19,11 @@ export function Recommendations() {
         const response = await shoppingApi.getRecommendations();
         if (response.success) {
           setRecommendations(response.recommendations || []);
-          setReason(response.reason || 'Popular today');
-          setShoppingList(response.source_queries || []);
+          const sources = response.source_queries || [];
+          setShoppingList(sources);
+          setReason(sources.length
+            ? `Based on recent searches: ${sources.join(', ')}`
+            : (response.reason || 'Popular today'));
         }
       } catch (error) {
         console.error('Failed to fetch recommendations:', error);
@@ -42,17 +45,17 @@ export function Recommendations() {
   return (
     <div className="min-h-screen bg-[#E8F8F3]">
       <Sidebar />
-      <div className="md:ml-64 min-h-screen">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="ml-[17rem] min-h-screen pl-8 pr-6 pt-6 overflow-x-hidden">
+        <div className="max-w-7xl mx-auto">
           <div className="mb-8">
-            <div className="flex items-center space-x-2 text-[#2D9B81] mb-2 font-semibold tracking-wide uppercase text-sm">
-              <Sparkles size={18} />
-              <span>AI Powered Intelligence</span>
+            <div className="inline-flex items-center space-x-2 bg-[#D4F1E8] text-[#2D9B81] mb-3 px-3 py-1.5 rounded-md font-semibold tracking-wide uppercase text-xs">
+              <Sparkles size={16} />
+              <span>AI POWERED INTELLIGENCE</span>
             </div>
             <h1 className="text-4xl font-bold text-[#1E5245] mb-2">
               Your Personalized Recommendations
             </h1>
-            <p className="text-[#2D5F4F]">
+            <p className="text-[#2D5F4F] text-lg">
               {reason}
             </p>
           </div>
@@ -66,13 +69,14 @@ export function Recommendations() {
               </h2>
               <div className="flex flex-wrap gap-3">
                 {shoppingList.map((item, index) => (
-                  <div
+                  <button
                     key={index}
-                    className="flex items-center space-x-2 bg-[#E8F8F3] px-4 py-2 rounded-full border border-[#2D9B81]/30 transition-transform hover:scale-105"
+                    type="button"
+                    className="flex items-center space-x-2 bg-[#E8F8F3] px-4 py-2 rounded-full border border-[#2D9B81]/30 hover:bg-[#D4F1E8] transition-colors"
                   >
-                    <div className="w-2 h-2 rounded-full bg-[#2D9B81]"></div>
+                    <div className="w-2 h-2 rounded-full bg-[#2D9B81]" />
                     <span className="text-[#1E5245] font-medium capitalize">{item}</span>
-                  </div>
+                  </button>
                 ))}
               </div>
             </div>

@@ -11,7 +11,7 @@ export function App() {
       <CurrencyProvider>
         <HistoryProvider>
           <ChatProvider>
-            <div className="w-full min-h-screen bg-gray-50">
+            <div className="w-full min-h-screen bg-transparent">
               <AppRouter />
             </div>
           </ChatProvider>

@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { SearchIcon, MicIcon } from 'lucide-react';
 
-export function SearchBar({ onSearch, placeholder = 'Search for products...' }) {
-  const [query, setQuery] = useState('');
+export function SearchBar({ onSearch, placeholder = 'Search for products...', initialValue = '' }) {
+  const [query, setQuery] = useState(initialValue);
   const [isListening, setIsListening] = useState(false);
+
+  useEffect(() => {
+    setQuery(initialValue);
+  }, [initialValue]);
 
   const handleSearch = () => {
     if (query.trim()) {

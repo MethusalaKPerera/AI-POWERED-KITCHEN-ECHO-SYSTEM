@@ -111,8 +111,8 @@ export function Search() {
   return (
     <div className="min-h-screen bg-[#E8F8F3]">
       <Sidebar />
-      <div className="md:ml-64 min-h-screen">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="ml-[17rem] min-h-screen pl-8 pr-6 pt-6 overflow-x-hidden">
+        <div className="max-w-7xl mx-auto">
           <div className="mb-8">
             <SearchBar onSearch={handleSearch} initialValue={searchQuery} />
           </div>

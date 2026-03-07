@@ -1,18 +1,14 @@
 {
   "1": {
-<<<<<<< Updated upstream
-    "last_trained": "2026-03-05T22:13:05.912555",
-=======
-    "last_trained": "2026-03-06T10:04:56.829419",
->>>>>>> Stashed changes
+    "last_trained": "2026-03-07T14:49:55.280923",
     "top_keywords": [
       "rice",
       "chicken",
       "can",
       "fried",
-      "banana"
+      "apple"
     ],
     "shopping_pattern": "Weekday Planner",
-    "data_points": 17
+    "data_points": 21
   }
 }

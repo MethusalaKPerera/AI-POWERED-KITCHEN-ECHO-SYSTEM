@@ -89,13 +89,6 @@ from shopping.routes import shopping_bp
 from auth.routes import auth_bp
 from NutritionGuidance.routes import nutrition_bp
 
-# Optional: enhanced_routes (only if the module exists - not in repo by default)
-try:
-    from cooking_assistant.enhanced_routes import enhanced_bp
-    app.register_blueprint(enhanced_bp, url_prefix="/api")
-except ImportError:
-    pass
-
 # Register blueprints (keep your previous routing)
 app.register_blueprint(cooking_bp, url_prefix="/api/cooking")
 app.register_blueprint(shopping_bp, url_prefix="")  # if routes already include /api/shopping

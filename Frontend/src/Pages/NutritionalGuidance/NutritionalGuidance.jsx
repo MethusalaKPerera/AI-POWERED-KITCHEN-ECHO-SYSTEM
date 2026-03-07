@@ -36,88 +36,84 @@ const NutritionalGuidance = () => {
 
   return (
     <div className="nutritional-guidance-container">
-      {/* Sidebar */}
-      <aside className="sidebar">
-        <div className="sidebar-header">
-          <div className="logo-icon">🥗</div>
+      {/* Sidebar — uses ng- prefixed classes to avoid bleed-in */}
+      <aside className="ng-sidebar">
+        <div className="ng-sidebar-header">
+          <div className="ng-logo-icon">🥗</div>
           <h2>Nutrition AI</h2>
-          <p className="tagline">Health Guide</p>
+          <p className="ng-tagline">Health Guide</p>
         </div>
 
-        <nav className="sidebar-nav">
+        <nav className="ng-sidebar-nav">
           <div
-            className={`nav-item ${activeTab === "dashboard" ? "active" : ""}`}
+            className={`ng-nav-item ${activeTab === "dashboard" ? "active" : ""}`}
             onClick={() => setActiveTab("dashboard")}
           >
-            <span className="nav-icon">📊</span>
+            <span className="ng-nav-icon">📊</span>
             <span>Dashboard</span>
           </div>
 
           <div
-            className={`nav-item ${activeTab === "profile" ? "active" : ""}`}
+            className={`ng-nav-item ${activeTab === "profile" ? "active" : ""}`}
             onClick={() => setActiveTab("profile")}
           >
-            <span className="nav-icon">👤</span>
+            <span className="ng-nav-icon">👤</span>
             <span>User Profile</span>
           </div>
 
           <div
-            className={`nav-item ${activeTab === "meal-logger" ? "active" : ""}`}
+            className={`ng-nav-item ${activeTab === "meal-logger" ? "active" : ""}`}
             onClick={() => setActiveTab("meal-logger")}
           >
-            <span className="nav-icon">🍽️</span>
+            <span className="ng-nav-icon">🍽️</span>
             <span>Meal Logger</span>
           </div>
 
           <div
-            className={`nav-item ${
-              activeTab === "nutrition-tracker" ? "active" : ""
-            }`}
+            className={`ng-nav-item ${activeTab === "nutrition-tracker" ? "active" : ""
+              }`}
             onClick={() => setActiveTab("nutrition-tracker")}
           >
-            <span className="nav-icon">📈</span>
+            <span className="ng-nav-icon">📈</span>
             <span>Nutrition Tracker</span>
           </div>
 
           <div
-            className={`nav-item ${
-              activeTab === "medication-alerts" ? "active" : ""
-            }`}
+            className={`ng-nav-item ${activeTab === "medication-alerts" ? "active" : ""
+              }`}
             onClick={() => setActiveTab("medication-alerts")}
           >
-            <span className="nav-icon">⚠️</span>
+            <span className="ng-nav-icon">⚠️</span>
             <span>Medication Alerts</span>
           </div>
 
           <div
-            className={`nav-item ${
-              activeTab === "predictive-analytics" ? "active" : ""
-            }`}
+            className={`ng-nav-item ${activeTab === "predictive-analytics" ? "active" : ""
+              }`}
             onClick={() => setActiveTab("predictive-analytics")}
           >
-            <span className="nav-icon">🧠</span>
+            <span className="ng-nav-icon">🧠</span>
             <span>Predictive Analytics</span>
           </div>
         </nav>
 
-        <div className="sidebar-footer">
-          <div className="health-badge">
-            <span className="badge-icon">💪</span>
+        <div className="ng-sidebar-footer">
+          <div className="ng-health-badge">
+            <span className="ng-badge-icon">💪</span>
             <div>
-              <div className="badge-title">AI Health</div>
-              <div className="badge-subtitle">Personal Coach</div>
+              <div className="ng-badge-title">AI Health</div>
+              <div className="ng-badge-subtitle">Personal Coach</div>
             </div>
           </div>
 
-          {/* Optional info (helps while testing) */}
-          <div className="dev-userid">
-            <span className="dev-label">User:</span> {userId}
+          <div className="ng-dev-userid">
+            <span className="ng-dev-label">User:</span> {userId}
           </div>
         </div>
       </aside>
 
       {/* Main Content */}
-      <div className="main-content">{renderComponent()}</div>
+      <div className="ng-main-content">{renderComponent()}</div>
     </div>
   );
 };
