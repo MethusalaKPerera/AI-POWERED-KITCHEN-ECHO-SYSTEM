@@ -7,6 +7,49 @@ import { getAllFoods, deleteFood, updateFood, predictExpiry } from "../../api/fo
 import "./foodexpiry.css";
 
 /* -----------------------------
+   Sri Lanka region → typical humidity mapping (simple demo-friendly)
+   (You can tune these later; panel-friendly: we show "region based humidity")
+----------------------------- */
+const SL_REGIONS = [
+  { key: "Western", humidity: 78 },
+  { key: "Central", humidity: 72 },
+  { key: "Southern", humidity: 80 },
+  { key: "Northern", humidity: 70 },
+  { key: "Eastern", humidity: 75 },
+  { key: "North Western", humidity: 76 },
+  { key: "North Central", humidity: 68 },
+  { key: "Uva", humidity: 74 },
+  { key: "Sabaragamuwa", humidity: 79 },
+];
+
+function regionToHumidity(regionKey) {
+  const r = SL_REGIONS.find((x) => x.key === regionKey);
+  return r ? r.humidity : 78;
+}
+
+// ✅ NEW (necessary): DB/backend stores region in lowercase sometimes (e.g., "western")
+// This maps it back to the exact dropdown key.
+function normalizeRegionKey(regionVal) {
+  const raw = String(regionVal || "").trim();
+  if (!raw) return "Western";
+  const found = SL_REGIONS.find((r) => r.key.toLowerCase() === raw.toLowerCase());
+  return found ? found.key : "Western";
+}
+
+function defaultTempByStorage(storage) {
+  const s = String(storage || "pantry").toLowerCase();
+  if (s === "freezer") return -18;
+  if (s === "fridge") return 4;
+  return 28;
+}
+
+function clamp(num, min, max) {
+  const n = Number(num);
+  if (Number.isNaN(n)) return min;
+  return Math.min(max, Math.max(min, n));
+}
+
+/* -----------------------------
    Helpers
 ----------------------------- */
 function normalizeFood(f) {
@@ -28,6 +71,11 @@ function normalizeFood(f) {
       f.scpPriorityScore_live ?? f.scpPriorityScore ?? f.scp_priority_score ?? null,
 
     printedExpiryDate: f.printedExpiryDate || "",
+
+    // optional if backend stores
+    region: f.region || "",
+    storage_temperature_c: f.storage_temperature_c ?? null,
+    storage_humidity_pct: f.storage_humidity_pct ?? null,
   };
 }
 
@@ -100,6 +148,11 @@ export default function Inventory() {
   const [predictError, setPredictError] = useState("");
   const [predictResult, setPredictResult] = useState(null);
 
+  // ✅ Environment fields (user enters during prediction)
+  const [predictRegion, setPredictRegion] = useState("Western");
+  const [predictHumidity, setPredictHumidity] = useState(regionToHumidity("Western"));
+  const [predictTemp, setPredictTemp] = useState(28);
+
   const navigate = useNavigate();
 
   async function load() {
@@ -121,7 +174,7 @@ export default function Inventory() {
     load();
   }, []);
 
-  // ✅ IMPORTANT: lock background scroll when modal is open
+  // ✅ lock background scroll when modal is open
   useEffect(() => {
     const open = Boolean(predictItem || editItem);
     if (open) document.body.classList.add("fe-modal-open");
@@ -212,6 +265,32 @@ export default function Inventory() {
     const existingPrinted = item.printedExpiryDate || "";
     setPredictPrinted(existingPrinted);
     setNoPrinted(!existingPrinted);
+
+    // ✅ set smart defaults for env (based on storage + region)
+    const storage = item.storage_type || "pantry";
+
+    // ✅ use normalized region key (handles backend-stored lowercase)
+    const prevRegion = normalizeRegionKey(item.region || "Western");
+
+    const prevHum =
+      item.storage_humidity_pct !== null && item.storage_humidity_pct !== undefined
+        ? Number(item.storage_humidity_pct)
+        : regionToHumidity(prevRegion);
+
+    const prevTemp =
+      item.storage_temperature_c !== null && item.storage_temperature_c !== undefined
+        ? Number(item.storage_temperature_c)
+        : defaultTempByStorage(storage);
+
+    setPredictRegion(prevRegion);
+    setPredictHumidity(clamp(prevHum, 30, 98));
+    setPredictTemp(
+      clamp(
+        prevTemp,
+        storage === "freezer" ? -30 : 0,
+        storage === "freezer" ? 0 : 40
+      )
+    );
   }
 
   function closePredict() {
@@ -221,6 +300,12 @@ export default function Inventory() {
     setPredictLoading(false);
     setPredictPrinted("");
     setNoPrinted(false);
+  }
+
+  // when region changes -> auto update humidity to match region (user can still manually adjust)
+  function handleRegionChange(val) {
+    setPredictRegion(val);
+    setPredictHumidity(regionToHumidity(val));
   }
 
   async function runPredict() {
@@ -234,6 +319,25 @@ export default function Inventory() {
       setPredictError("Missing item_name / category / purchase_date. Please edit the item first.");
       return;
     }
+
+    // ✅ Validate environment (UI-level)
+    const storage = String(predictItem.storage_type || "pantry").toLowerCase();
+    const hum = clamp(predictHumidity, 30, 98);
+
+    // storage-specific reasonable temp ranges (panel-friendly)
+    let tempMin = 0;
+    let tempMax = 40;
+    if (storage === "fridge") {
+      tempMin = 0;
+      tempMax = 10;
+    } else if (storage === "freezer") {
+      tempMin = -30;
+      tempMax = 0;
+    } else {
+      tempMin = 10;
+      tempMax = 40;
+    }
+    const temp = clamp(predictTemp, tempMin, tempMax);
 
     try {
       setPredictLoading(true);
@@ -249,7 +353,13 @@ export default function Inventory() {
         quantity: Number(predictItem.quantity || 1),
         storage_type: predictItem.storage_type,
         used_before_expiry: Boolean(predictItem.used_before_expiry),
+
         printed_expiry_date: noPrinted ? null : predictPrinted || null,
+
+        // ✅ environment passed from UI at prediction time
+        region: predictRegion,
+        storage_temperature_c: temp,
+        storage_humidity_pct: hum,
       };
 
       const data = await predictExpiry(payload);
@@ -258,7 +368,21 @@ export default function Inventory() {
       // refresh inventory so finalExpiry/SCP persists
       const rows = await load();
       const updated = rows.find((r) => r._id === predictItem._id);
-      if (updated) setPredictItem(updated);
+      if (updated) {
+        setPredictItem(updated);
+
+        // ✅ NEW (necessary): refresh env fields from DB after predict save (better UX)
+        const dbRegion = normalizeRegionKey(updated.region || predictRegion);
+        setPredictRegion(dbRegion);
+
+        if (updated.storage_humidity_pct !== null && updated.storage_humidity_pct !== undefined) {
+          setPredictHumidity(Number(updated.storage_humidity_pct));
+        }
+
+        if (updated.storage_temperature_c !== null && updated.storage_temperature_c !== undefined) {
+          setPredictTemp(Number(updated.storage_temperature_c));
+        }
+      }
     } catch (err) {
       setPredictError(err.message);
     } finally {
@@ -406,6 +530,57 @@ export default function Inventory() {
                   </div>
                 </div>
 
+                {/* ✅ ENVIRONMENT INPUTS */}
+                <div className="fe-card mt-3">
+                  <h4 className="fe-section__title mb-2" style={{ fontSize: 16 }}>
+                    Storage Environment (for prediction)
+                  </h4>
+                  <div className="fe-muted fe-small" style={{ marginBottom: 10 }}>
+                    Select your region to apply a typical humidity value for Sri Lanka, and enter the storage temperature.
+                    <br />
+                    <span className="fe-muted fe-small">
+                      Note: The backend may clamp values to storage-safe bounds for consistency with the trained model.
+                    </span>
+                  </div>
+
+                  <div className="fe-form__grid">
+                    <div className="fe-form__group">
+                      <label>Region (Sri Lanka)</label>
+                      <select value={predictRegion} onChange={(e) => handleRegionChange(e.target.value)}>
+                        {SL_REGIONS.map((r) => (
+                          <option key={r.key} value={r.key}>
+                            {r.key} (≈ {r.humidity}% humidity)
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+
+                    <div className="fe-form__group">
+                      <label>Humidity (%)</label>
+                      <input
+                        type="number"
+                        min="30"
+                        max="98"
+                        value={predictHumidity}
+                        onChange={(e) => setPredictHumidity(e.target.value)}
+                      />
+                      <div className="fe-muted fe-small">Auto-filled from region, but you can adjust.</div>
+                    </div>
+                  </div>
+
+                  <div className="fe-form__group mt-2">
+                    <label>Temperature (°C)</label>
+                    <input
+                      type="number"
+                      value={predictTemp}
+                      onChange={(e) => setPredictTemp(e.target.value)}
+                    />
+                    <div className="fe-muted fe-small">
+                      Defaults: Pantry ≈ 28°C • Fridge ≈ 4°C • Freezer ≈ -18°C
+                    </div>
+                  </div>
+                </div>
+
                 <div className="fe-form__group mt-3">
                   <label>Printed Expiry Date (optional)</label>
                   <input
@@ -471,8 +646,33 @@ export default function Inventory() {
                         ? daysBetween(todayISO(), personalizedExpiryBeforeSafety)
                         : null;
 
+                      // ✅ NEW (necessary): show actual env values used by backend (clamped), not just local input
+                      const usedRegion = predictResult.region || predictRegion;
+                      const usedTemp =
+                        predictResult.storage_temperature_c !== null &&
+                        predictResult.storage_temperature_c !== undefined
+                          ? predictResult.storage_temperature_c
+                          : predictTemp;
+
+                      const usedHum =
+                        predictResult.storage_humidity_pct !== null &&
+                        predictResult.storage_humidity_pct !== undefined
+                          ? predictResult.storage_humidity_pct
+                          : predictHumidity;
+
                       return (
                         <div className="fe-result-box">
+                          <p className="fe-muted fe-small" style={{ marginBottom: 6 }}>
+                            Environment used:
+                          </p>
+                          <p className="fe-muted fe-small" style={{ marginTop: 0 }}>
+                            Region: <strong>{String(usedRegion || "—")}</strong> • Temp:{" "}
+                            <strong>{clamp(usedTemp, -30, 60)}°C</strong> • Humidity:{" "}
+                            <strong>{clamp(usedHum, 0, 100)}%</strong>
+                          </p>
+
+                          <div style={{ height: 10 }} />
+
                           <p className="fe-muted fe-small" style={{ marginBottom: 6 }}>
                             Baseline (Original) Expiry Date:
                           </p>
@@ -565,7 +765,11 @@ export default function Inventory() {
                   </div>
                   <div className="fe-form__group">
                     <label>Category</label>
-                    <input name="item_category" value={editItem.item_category || ""} onChange={handleEditChange} />
+                    <input
+                      name="item_category"
+                      value={editItem.item_category || ""}
+                      onChange={handleEditChange}
+                    />
                   </div>
                 </div>
 

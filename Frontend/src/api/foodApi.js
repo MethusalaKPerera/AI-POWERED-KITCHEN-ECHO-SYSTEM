@@ -23,9 +23,14 @@ function toMessage(err) {
 // -----------------------------
 // FoodExpiry endpoints (/api/food/*)
 // -----------------------------
-export async function getAllFoods() {
+
+// ✅ UPDATED (minimal): allow optional userId filter, but keep old usage working
+export async function getAllFoods(userId = "") {
   try {
-    const res = await api.get("/api/food/");
+    const params = {};
+    if (userId && String(userId).trim()) params.userId = String(userId).trim();
+
+    const res = await api.get("/api/food/", { params });
     return res.data;
   } catch (err) {
     throw toMessage(err);
