@@ -1283,3 +1283,153 @@ body.fe-modal-open{
   .feuse2-title{ font-size: 1.55rem; }
   .feuse2-cards{ grid-template-columns: 1fr; }
 }
+
+/* ======================================================
+   Predict Result Popup (Fixed Floating Card)
+   ====================================================== */
+
+.fe-modal__content{
+  position: relative;
+}
+
+/* Floating prediction result card */
+.fe-predict-inline-popup{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(420px, 92vw);
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 20px 18px 16px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.28);
+  border: 1px solid #e5e7eb;
+  z-index: 10050;
+  animation: fePredictCardIn 0.22s ease;
+}
+
+/* Close button */
+.fe-predict-inline-popup__close{
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 50%;
+  background: #f1f5f9;
+  color: #0f172a;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* Header */
+.fe-predict-inline-popup__header{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-right: 28px;
+}
+
+.fe-predict-inline-popup__icon{
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  background: linear-gradient(135deg,#16a34a,#22c55e);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.fe-predict-inline-popup__header h3{
+  margin: 0;
+  font-size: 1.15rem;
+  color: #0f172a;
+}
+
+.fe-predict-inline-popup__header p{
+  margin: 4px 0 0;
+  color: #64748b;
+  font-size: 0.92rem;
+}
+
+/* Body container */
+.fe-predict-inline-popup__body{
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 10px 14px;
+}
+
+/* Environment row */
+.fe-predict-inline-popup__env{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px 0 12px;
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 2px;
+}
+
+.fe-predict-inline-popup__env span{
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.fe-predict-inline-popup__env strong{
+  color: #0f172a;
+  font-size: 0.96rem;
+  line-height: 1.4;
+}
+
+/* Rows */
+.fe-predict-inline-popup__row{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 11px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.fe-predict-inline-popup__row:last-child{
+  border-bottom: none;
+}
+
+.fe-predict-inline-popup__row span{
+  color: #475569;
+  font-size: 0.95rem;
+}
+
+.fe-predict-inline-popup__row strong{
+  color: #0f172a;
+  font-size: 0.96rem;
+  font-weight: 800;
+  text-align: right;
+}
+
+/* Highlight final expiry */
+.fe-predict-inline-popup__highlight{
+  background: rgba(34,197,94,0.14);
+  color: #166534 !important;
+  padding: 7px 10px;
+  border-radius: 10px;
+}
+
+/* Animation */
+@keyframes fePredictCardIn{
+  from{
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.98);
+  }
+  to{
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
