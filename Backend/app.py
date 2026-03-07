@@ -68,7 +68,7 @@ def add_cors_headers(resp):
 # --------------------------------------------------------
 @app.errorhandler(Exception)
 def handle_exception(e):
-    print("❌ ERROR:", str(e))
+    print("ERROR:", str(e))
     traceback.print_exc()
     return jsonify({"error": "Internal Server Error", "message": str(e)}), 500
 
@@ -103,11 +103,11 @@ try:
         from FoodExpiry.routes.food_routes import food_bp
         app.register_blueprint(food_bp, url_prefix="/api/food")
         food_bp_available = True
-        print("✅ FoodExpiry enabled (Mongo connected).")
+        print("[OK] FoodExpiry enabled (Mongo connected).")
     else:
-        print("⚠️ FoodExpiry disabled (MONGO_URI not set).")
+        print("[WARN] FoodExpiry disabled (MONGO_URI not set).")
 except Exception as e:
-    print("⚠️ FoodExpiry disabled due to Mongo error:", str(e))
+    print("[WARN] FoodExpiry disabled due to Mongo error:", str(e))
     food_bp_available = False
 
 # --------------------------------------------------------

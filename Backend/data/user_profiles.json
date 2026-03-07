@@ -1,9 +1,9 @@
 {
   "1": {
 <<<<<<< Updated upstream
-    "last_trained": "2026-03-05T13:51:01.463605",
+    "last_trained": "2026-03-05T22:13:05.912555",
 =======
-    "last_trained": "2026-03-05T13:41:29.437250",
+    "last_trained": "2026-03-06T10:04:56.829419",
 >>>>>>> Stashed changes
     "top_keywords": [
       "rice",
@@ -13,22 +13,6 @@
       "banana"
     ],
     "shopping_pattern": "Weekday Planner",
-<<<<<<< Updated upstream
     "data_points": 17
-=======
-    "data_points": 16
->>>>>>> Stashed changes
-  },
-  "2": {
-    "last_trained": "2026-01-08T09:16:10.740331",
-    "top_keywords": [
-      "chicken",
-      "chocolate",
-      "plase",
-      "tell",
-      "about"
-    ],
-    "shopping_pattern": "Weekday Planner",
-    "data_points": 5
   }
 }
