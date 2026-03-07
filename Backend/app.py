@@ -93,7 +93,7 @@ from auth.routes import auth_bp
 from NutritionGuidance.routes import nutrition_bp
 
 # Register blueprints (keep your previous routing)
-app.register_blueprint(cooking_bp, url_prefix="/api/cooking")
+app.register_blueprint(cooking_bp, url_prefix="/api")
 app.register_blueprint(enhanced_bp, url_prefix="/api/cooking-enhanced")
 app.register_blueprint(waste_bp, url_prefix="/api/waste")
 app.register_blueprint(translation_bp, url_prefix="/api/translation")

@@ -1,8 +1,14 @@
 from dotenv import load_dotenv
-load_dotenv()
+import os as _os
+import sys as _sys
+
+# ── Ensure cooking_assistant/ is always on path (works from Backend/ or cooking_assistant/) ──
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+
+# ── Load .env from cooking_assistant/.env ────────────────────────────────────
+load_dotenv(dotenv_path=_os.path.join(_os.path.dirname(__file__), '.env'))
 
 from flask import Blueprint, request, jsonify
-import os
 import re
 import json
 import base64
@@ -14,7 +20,7 @@ cooking_bp = Blueprint('cooking', __name__)
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
 # ── Groq client ───────────────────────────────────────────────────────────────
-GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
+GROQ_API_KEY = _os.environ.get("GROQ_API_KEY")
 groq_client  = Groq(api_key=GROQ_API_KEY)
 
 # ── Ingredient categories ─────────────────────────────────────────────────────
@@ -65,6 +71,11 @@ Return ONLY a JSON object like this (no extra text):
 Leave fields empty string "" if not mentioned.
 """
 
+MAIN_PROTEINS = [
+    'chicken', 'fish', 'prawn', 'crab', 'mutton', 'lamb', 'beef', 'pork',
+    'egg', 'tuna', 'sardine', 'shrimp', 'lentil', 'dhal', 'parippu',
+]
+
 
 # ═════════════════════════════════════════════════════════════════════════════
 # HELPERS
@@ -75,20 +86,19 @@ def allowed_file(filename):
 
 
 def _load_recipes():
-    data_dir = os.path.join(os.path.dirname(__file__), 'rag', 'data')
+    data_dir = _os.path.join(_os.path.dirname(__file__), 'rag', 'data')
     for fname in ['recipes_all_merged.json', 'new_200_recipes.json', 'recipe_database.json']:
-        fp = os.path.join(data_dir, fname)
-        if os.path.exists(fp):
+        fp = _os.path.join(data_dir, fname)
+        if _os.path.exists(fp):
             with open(fp, 'r', encoding='utf-8') as f:
                 data = json.load(f)
             return data.get('recipes', []) if isinstance(data, dict) else data
 
-    # Fallback: scripts folder
     recipes = []
-    scripts_dir = os.path.join(os.path.dirname(__file__), '..', 'scripts')
+    scripts_dir = _os.path.join(_os.path.dirname(__file__), '..', 'scripts')
     for i in range(1, 10):
-        fp = os.path.join(scripts_dir, f'generate_recipes_data_p{i}.json')
-        if os.path.exists(fp):
+        fp = _os.path.join(scripts_dir, f'generate_recipes_data_p{i}.json')
+        if _os.path.exists(fp):
             try:
                 with open(fp, 'r', encoding='utf-8') as f:
                     data = json.load(f)
@@ -105,7 +115,6 @@ def _load_recipes():
 
 
 def _get_recipe_name(recipe):
-    """Safely extract English recipe name from either 'name' or 'names.english'."""
     names = recipe.get('names', {})
     if isinstance(names, dict):
         en = names.get('english', '') or names.get('en', '')
@@ -141,7 +150,6 @@ def _scale_amount(amount_str, num_people, recipe_servings):
             num   = float(parts[0]) / float(parts[1])
         else:
             num = float(num_str)
-
         scaled = round(num * scale, 2)
         return {'value': int(scaled) if scaled == int(scaled) else scaled, 'unit': unit}
     except (ValueError, ZeroDivisionError):
@@ -157,54 +165,7 @@ def _build_recipe_lookup(recipes):
     return lookup
 
 
-# ═════════════════════════════════════════════════════════════════════════════
-# ROUTES — COOKING ASSISTANT
-# ═════════════════════════════════════════════════════════════════════════════
-
-@cooking_bp.route('/analyze-image', methods=['POST'])
-def analyze_image():
-    if 'image' not in request.files:
-        return jsonify({'error': 'No image file provided'}), 400
-
-    file = request.files['image']
-    if file.filename == '':
-        return jsonify({'error': 'No file selected'}), 400
-    if not allowed_file(file.filename):
-        return jsonify({'error': 'Invalid file type'}), 400
-
-    try:
-        filename   = secure_filename(file.filename)
-        upload_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'uploads')
-        os.makedirs(upload_dir, exist_ok=True)
-        filepath   = os.path.join(upload_dir, filename)
-        file.save(filepath)
-
-        from image_processor import detect_ingredients
-        detected = detect_ingredients(filepath)
-
-        return jsonify({
-            'success':        True,
-            'ingredients':    detected,
-            'total_detected': len(detected),
-        })
-
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
-
-
-# ── Main proteins — used by keyword fallback for ranking boost ────────────────
-MAIN_PROTEINS = [
-    'chicken', 'fish', 'prawn', 'crab', 'mutton', 'lamb', 'beef', 'pork',
-    'egg', 'tuna', 'sardine', 'shrimp', 'lentil', 'dhal', 'parippu',
-]
-
-
 def _ingredient_matches(user_word, recipe_ing_name):
-    """
-    Flexible bidirectional matching.
-    'chicken' matches 'boneless chicken thighs', '500g chicken pieces'
-    'fish'    matches 'fish fillets', 'white fish', 'dried fish'
-    """
     u = user_word.lower().strip()
     r = recipe_ing_name.lower().strip()
     if not u or not r:
@@ -220,13 +181,9 @@ def _ingredient_matches(user_word, recipe_ing_name):
     return False
 
 
-def _keyword_search(user_ingredients, recipes):
-    """
-    Fallback keyword-based recipe search.
-    Used automatically if SBERT model fails to load.
-    """
+def _keyword_search(user_ingredients, recipes, top_k=12):
+    """Fallback keyword-based recipe search used when SBERT is unavailable."""
     results = []
-
     for recipe in recipes:
         en_name    = _get_recipe_name(recipe)
         name_lower = en_name.lower()
@@ -275,28 +232,29 @@ def _keyword_search(user_ingredients, recipes):
         method    = recipe.get('method', '') or recipe.get('instructions', '')
 
         results.append({
-            'id':                   recipe.get('id', ''),
-            'name':                 en_name,
-            'match_score':          base_score,
-            'matched_ingredients':  matched_display,
-            'missing_ingredients':  missing_ings[:8],
-            'ingredients_used':     matched_display,
-            'ingredients':          recipe.get('ingredients', []),
-            'cuisine':              'Sri Lankan',
-            'category':             recipe.get('category', ''),
-            'region':               recipe.get('region', ''),
-            'difficulty':           recipe.get('difficulty', 'medium'),
-            'cooking_time':         f"{cook_mins + prep_mins} mins",
-            'cook_time_mins':       cook_mins,
-            'prep_time_mins':       prep_mins,
-            'servings':             recipe.get('servings', 4),
-            'spice_level':          recipe.get('spice_level', 2),
-            'is_authentic':         recipe.get('is_authentic', True),
-            'instructions':         recipe.get('instructions', method),
-            'method':               method,
-            'tips':                 recipe.get('tips', ''),
-            'cultural_note':        recipe.get('cultural_note', ''),
-            'description':          recipe.get('description', ''),
+            'id':                  recipe.get('id', ''),
+            'name':                en_name,
+            'match_score':         base_score,
+            'matched_ingredients': matched_display,
+            'missing_ingredients': missing_ings[:8],
+            'ingredients_used':    matched_display,
+            'ingredients':         recipe.get('ingredients', []),
+            'cuisine':             'Sri Lankan',
+            'category':            recipe.get('category', ''),
+            'region':              recipe.get('region', ''),
+            'difficulty':          recipe.get('difficulty', 'medium'),
+            'cooking_time':        f"{cook_mins + prep_mins} mins",
+            'cook_time_mins':      cook_mins,
+            'prep_time_mins':      prep_mins,
+            'servings':            recipe.get('servings', 4),
+            'spice_level':         recipe.get('spice_level', 2),
+            'is_authentic':        recipe.get('is_authentic', True),
+            'instructions':        recipe.get('instructions', method),
+            'method':              method,
+            'tips':                recipe.get('tips', ''),
+            'cultural_note':       recipe.get('cultural_note', ''),
+            'description':         recipe.get('description', ''),
+            'search_method':       'keyword-fallback',
         })
 
     results.sort(key=lambda x: (
@@ -305,53 +263,64 @@ def _keyword_search(user_ingredients, recipes):
         x['match_score']
     ), reverse=True)
 
-    return results[:12]
+    return results[:top_k]
 
 
-# ── SBERT lazy-load flag ──────────────────────────────────────────────────────
-_sbert_available = None
+# ═════════════════════════════════════════════════════════════════════════════
+# ROUTES — COOKING ASSISTANT
+# ═════════════════════════════════════════════════════════════════════════════
 
+@cooking_bp.route('/analyze-image', methods=['POST'])
+def analyze_image():
+    if 'image' not in request.files:
+        return jsonify({'error': 'No image file provided'}), 400
 
-def _try_sbert(user_ingredients, recipes):
-    """
-    Attempt SBERT semantic search.
-    Returns (results, method_name) — falls back to keyword if SBERT unavailable.
-    """
-    global _sbert_available
-
-    # Once we know SBERT failed, skip trying again for this server session
-    if _sbert_available is False:
-        return _keyword_search(user_ingredients, recipes), 'keyword-fallback'
+    file = request.files['image']
+    if file.filename == '':
+        return jsonify({'error': 'No file selected'}), 400
+    if not allowed_file(file.filename):
+        return jsonify({'error': 'Invalid file type'}), 400
 
     try:
-        from sbert_matcher import sbert_search_recipes
-        results          = sbert_search_recipes(user_ingredients, recipes, top_k=12)
-        _sbert_available = True
-        print(f"[SBERT] Semantic search returned {len(results)} recipes")
-        return results, 'sentence-bert'
+        filename   = secure_filename(file.filename)
+        upload_dir = _os.path.join(_os.path.dirname(_os.path.dirname(__file__)), 'uploads')
+        _os.makedirs(upload_dir, exist_ok=True)
+        filepath   = _os.path.join(upload_dir, filename)
+        file.save(filepath)
+
+        from image_processor import detect_ingredients
+        detected = detect_ingredients(filepath)
+
+        return jsonify({
+            'success':        True,
+            'ingredients':    detected,
+            'total_detected': len(detected),
+        })
 
     except Exception as e:
-        _sbert_available = False
-        print(f"[SBERT] Unavailable — using keyword fallback. Reason: {e}")
-        return _keyword_search(user_ingredients, recipes), 'keyword-fallback'
+        return jsonify({'error': str(e)}), 500
 
 
 @cooking_bp.route('/search-recipes', methods=['POST'])
 def search_recipes():
-    """
-    Recipe search endpoint.
-    - Uses Sentence-BERT semantic search (88.4% accuracy, Macro F1=0.86)
-    - Falls back to keyword matching if SBERT model is not available
-    Response includes 'search_method': 'sentence-bert' or 'keyword-fallback'
-    """
     data = request.get_json()
     if not data or 'ingredients' not in data:
         return jsonify({'error': 'No ingredients provided'}), 400
 
     user_ingredients = [i.lower().strip() for i in data['ingredients']]
     recipes          = _load_recipes()
+    method_used      = 'keyword-fallback'
+    results          = []
 
-    results, method_used = _try_sbert(user_ingredients, recipes)
+    # ── SBERT semantic search (with automatic keyword fallback) ───────────────
+    try:
+        from sbert_matcher import sbert_search_recipes
+        results     = sbert_search_recipes(user_ingredients, recipes, top_k=12)
+        method_used = 'sentence-bert'
+        print(f"[SBERT] ✓ {len(results)} recipes found semantically")
+    except Exception as e:
+        print(f"[SBERT] ✗ Falling back to keyword: {e}")
+        results = _keyword_search(user_ingredients, recipes)
 
     return jsonify({
         'success':       True,
@@ -380,6 +349,29 @@ def test_api():
     return jsonify({'api_working': success, 'message': message}), 200 if success else 500
 
 
+@cooking_bp.route('/sbert-status', methods=['GET'])
+def sbert_status():
+    """Open in browser to confirm SBERT model is loaded and working."""
+    try:
+        from sbert_matcher import sbert_predict_category
+        cat, conf = sbert_predict_category(
+            "Chicken Curry. Ingredients: chicken, onion, coconut milk, curry powder"
+        )
+        return jsonify({
+            'sbert_loaded': True,
+            'test_input':   'Chicken Curry with chicken, onion, coconut milk',
+            'predicted':    cat,
+            'confidence':   conf,
+            'status':       '✅ SBERT is working correctly'
+        })
+    except Exception as e:
+        return jsonify({
+            'sbert_loaded': False,
+            'error':        str(e),
+            'status':       '❌ SBERT not available — using keyword fallback'
+        })
+
+
 # ═════════════════════════════════════════════════════════════════════════════
 # ROUTES — MEAL PLANNER
 # ═════════════════════════════════════════════════════════════════════════════
@@ -404,7 +396,6 @@ def parse_meal_plan():
         match = re.search(r'\{.*\}', raw, re.DOTALL)
         if not match:
             return jsonify({'success': False, 'error': 'Could not parse meal plan'}), 200
-
         return jsonify({'success': True, 'meal_plan': json.loads(match.group())}), 200
 
     except Exception as e:
@@ -438,7 +429,6 @@ def parse_meal_plan_image():
         match = re.search(r'\{.*\}', raw, re.DOTALL)
         if not match:
             return jsonify({'success': False, 'error': 'Could not read meal plan from image'}), 200
-
         return jsonify({'success': True, 'meal_plan': json.loads(match.group())}), 200
 
     except Exception as e:
@@ -463,7 +453,6 @@ def grocery_from_meals():
     unmatched       = []
 
     for meal in meal_names:
-        # Exact match first, then fuzzy
         recipe = lookup.get(meal)
         if not recipe:
             for key, val in lookup.items():
@@ -505,7 +494,6 @@ def grocery_from_meals():
                     'count': 1,
                 }
 
-    # Build categorised output
     categories = {cat: [] for cat in INGREDIENT_CATEGORIES}
 
     for name, info in agg.items():
@@ -533,7 +521,6 @@ def grocery_from_meals():
             'for_people':    num_people,
         })
 
-    # Sort and remove empty
     categories = {
         cat: sorted(items, key=lambda x: x['name'])
         for cat, items in categories.items() if items
