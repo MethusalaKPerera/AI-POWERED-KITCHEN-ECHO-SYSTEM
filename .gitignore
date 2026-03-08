@@ -55,7 +55,7 @@ dist-ssr/
 
 # Project specific
 Backend/uploads/
-Backend/*.db
-Backend/data/shopping_history.json
+#Backend/*.db
+#Backend/data/shopping_history.json
 # Keep history if you want it tracked, but usually .json data files are ignored if they change often.
 # Let's keep it tracked for now as the user relies on it for history.
