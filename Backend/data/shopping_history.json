@@ -1,0 +1,455 @@
+[
+  {
+    "id": "11",
+    "user_id": "2",
+    "type": "search",
+    "query": "chicken",
+    "details": {
+      "page": 1,
+      "min_price": 0.0
+    },
+    "timestamp": "2025-12-23T06:47:39.493779+00:00"
+  },
+  {
+    "id": "12",
+    "user_id": "2",
+    "type": "search",
+    "query": "chocolate",
+    "details": {
+      "page": 1,
+      "min_price": 0.0
+    },
+    "timestamp": "2025-12-23T06:48:10.070417+00:00"
+  },
+  {
+    "id": "13",
+    "user_id": "2",
+    "type": "chat",
+    "query": "plase tell me about non stick pan",
+    "details": {},
+    "timestamp": "2025-12-23T06:48:47.037133+00:00"
+  },
+  {
+    "id": "14",
+    "user_id": "2",
+    "type": "search",
+    "query": "tomato ",
+    "details": {
+      "page": 1,
+      "min_price": 0.0,
+      "country": "us"
+    },
+    "timestamp": "2026-01-07T10:54:20.086552"
+  },
+  {
+    "id": "5",
+    "user_id": "1",
+    "type": "search",
+    "query": "banana",
+    "details": {
+      "page": 1,
+      "min_price": 0.0,
+      "country": "us"
+    },
+    "timestamp": "2026-01-05T07:08:24.942859+00:00"
+  },
+  {
+    "id": "6",
+    "user_id": "1",
+    "type": "chat",
+    "query": "how to make lasanga",
+    "details": {},
+    "timestamp": "2026-01-05T07:08:47.792044+00:00"
+  },
+  {
+    "id": "7",
+    "user_id": "1",
+    "type": "search",
+    "query": "chicken",
+    "details": {
+      "page": 1,
+      "min_price": 0.0,
+      "country": "us"
+    },
+    "timestamp": "2026-01-05T07:10:55.532746+00:00"
+  },
+  {
+    "id": "8",
+    "user_id": "1",
+    "type": "chat",
+    "query": "what can we use to make fried rice",
+    "details": {},
+    "timestamp": "2026-01-05T07:11:29.936383+00:00"
+  },
+  {
+    "id": "9",
+    "user_id": "1",
+    "type": "search",
+    "query": "tomato",
+    "details": {
+      "page": 1,
+      "min_price": 0.0,
+      "country": "us"
+    },
+    "timestamp": "2026-01-05T07:15:26.339134+00:00"
+  },
+  {
+    "id": "10",
+    "user_id": "1",
+    "type": "search",
+    "query": "coffee maker",
+    "details": {
+      "page": 1,
+      "min_price": 0.0,
+      "country": "us"
+    },
+    "timestamp": "2026-01-05T07:31:24.793580+00:00"
+  },
+  {
+    "id": "11",
+    "user_id": "1",
+    "type": "search",
+    "query": "Apple Juice",
+    "details": {
+      "page": 1,
+      "min_price": 0.0,
+      "country": "us"
+    },
+    "timestamp": "2026-01-05T07:35:48.058232+00:00"
+  },
+  {
+    "id": "12",
+    "user_id": "1",
+    "type": "search",
+    "query": "banana",
+    "details": {
+      "page": 1,
+      "min_price": 0.0,
+      "country": "us"
+    },
+    "timestamp": "2026-01-05T07:37:12.077670+00:00"
+  },
+  {
+    "id": "13",
+    "user_id": "1",
+    "type": "search",
+    "query": "coffee maker",
+    "details": {
+      "page": 1,
+      "min_price": 0.0,
+      "country": "us"
+    },
+    "timestamp": "2026-01-05T07:53:05.026571+00:00"
+  },
+  {
+    "id": "14",
+    "user_id": "1",
+    "type": "search",
+    "query": "chicken",
+    "details": {
+      "page": 1,
+      "min_price": 0.0,
+      "country": "us"
+    },
+    "timestamp": "2026-01-05T07:53:26.121372+00:00"
+  },
+  {
+    "id": "15",
+    "user_id": "1",
+    "type": "search",
+    "query": "chicken",
+    "details": {
+      "page": 1,
+      "min_price": 0.0,
+      "country": "us"
+    },
+    "timestamp": "2026-01-05T08:18:41.579051+00:00"
+  },
+  {
+    "id": "test_1",
+    "user_id": "ai_verification_user",
+    "type": "search",
+    "query": "marinated chicken for bbq",
+    "timestamp": "2026-01-03T14:56:45.274028"
+  },
+  {
+    "id": "test_2",
+    "user_id": "ai_verification_user",
+    "type": "search",
+    "query": "charcoal briquettes",
+    "timestamp": "2026-01-03T14:56:45.274028"
+  },
+  {
+    "id": "test_3",
+    "user_id": "ai_verification_user",
+    "type": "chat",
+    "query": "how to make a good salad",
+    "timestamp": "2026-01-04T14:56:45.274028"
+  },
+  {
+    "id": "19",
+    "user_id": "4",
+    "type": "search",
+    "query": "protein powder",
+    "details": {
+      "query": "protein powder",
+      "type": "search"
+    },
+    "timestamp": "2026-01-05T09:30:31.427026+00:00"
+  },
+  {
+    "id": "20",
+    "user_id": "4",
+    "type": "search",
+    "query": "chicken breast",
+    "details": {
+      "query": "chicken breast",
+      "type": "search"
+    },
+    "timestamp": "2026-01-05T09:30:33.485018+00:00"
+  },
+  {
+    "id": "21",
+    "user_id": "4",
+    "type": "search",
+    "query": "kale",
+    "details": {
+      "query": "kale",
+      "type": "search"
+    },
+    "timestamp": "2026-01-05T09:30:35.551538+00:00"
+  },
+  {
+    "id": "22",
+    "user_id": "4",
+    "type": "search",
+    "query": "creatine",
+    "details": {
+      "query": "creatine",
+      "type": "search"
+    },
+    "timestamp": "2026-01-05T09:30:37.603306+00:00"
+  },
+  {
+    "id": "23",
+    "user_id": "4",
+    "type": "search",
+    "query": "dumbbells",
+    "details": {
+      "query": "dumbbells",
+      "type": "search"
+    },
+    "timestamp": "2026-01-05T09:30:39.659721+00:00"
+  },
+  {
+    "id": "24",
+    "user_id": "5",
+    "type": "search",
+    "query": "frozen pizza",
+    "details": {
+      "query": "frozen pizza",
+      "type": "search"
+    },
+    "timestamp": "2026-01-05T09:30:55.009390+00:00"
+  },
+  {
+    "id": "25",
+    "user_id": "5",
+    "type": "search",
+    "query": "chocolate cake",
+    "details": {
+      "query": "chocolate cake",
+      "type": "search"
+    },
+    "timestamp": "2026-01-05T09:30:57.065586+00:00"
+  },
+  {
+    "id": "26",
+    "user_id": "5",
+    "type": "search",
+    "query": "mac and cheese",
+    "details": {
+      "query": "mac and cheese",
+      "type": "search"
+    },
+    "timestamp": "2026-01-05T09:30:59.116556+00:00"
+  },
+  {
+    "id": "27",
+    "user_id": "5",
+    "type": "search",
+    "query": "ice cream",
+    "details": {
+      "query": "ice cream",
+      "type": "search"
+    },
+    "timestamp": "2026-01-05T09:31:01.168510+00:00"
+  },
+  {
+    "id": "28",
+    "user_id": "6",
+    "type": "search",
+    "query": "00 flour",
+    "details": {
+      "query": "00 flour",
+      "type": "search"
+    },
+    "timestamp": "2026-01-05T09:31:16.088769+00:00"
+  },
+  {
+    "id": "29",
+    "user_id": "6",
+    "type": "search",
+    "query": "san marzano tomatoes",
+    "details": {
+      "query": "san marzano tomatoes",
+      "type": "search"
+    },
+    "timestamp": "2026-01-05T09:31:18.144377+00:00"
+  },
+  {
+    "id": "30",
+    "user_id": "6",
+    "type": "search",
+    "query": "fresh basil",
+    "details": {
+      "query": "fresh basil",
+      "type": "search"
+    },
+    "timestamp": "2026-01-05T09:31:20.208839+00:00"
+  },
+  {
+    "id": "31",
+    "user_id": "6",
+    "type": "search",
+    "query": "parmesan wheel",
+    "details": {
+      "query": "parmesan wheel",
+      "type": "search"
+    },
+    "timestamp": "2026-01-05T09:31:22.269393+00:00"
+  },
+  {
+    "id": "32",
+    "user_id": "6",
+    "type": "search",
+    "query": "olive oil",
+    "details": {
+      "query": "olive oil",
+      "type": "search"
+    },
+    "timestamp": "2026-01-05T09:31:24.325467+00:00"
+  },
+  {
+    "id": "33",
+    "user_id": "1",
+    "type": "chat",
+    "query": "what can we use to make fried rice",
+    "details": {},
+    "timestamp": "2026-01-06T04:46:52.737006+00:00"
+  },
+  {
+    "id": "34",
+    "user_id": "1",
+    "type": "chat",
+    "query": "need shopping list to make fried rice",
+    "details": {},
+    "timestamp": "2026-01-07T10:46:26.425098+00:00"
+  },
+  {
+    "id": "35",
+    "user_id": "2",
+    "type": "chat",
+    "query": "need shopping list to make fried rice",
+    "details": {},
+    "timestamp": "2026-01-07T10:54:42.177201+00:00"
+  },
+  {
+    "id": "36",
+    "user_id": "1",
+    "type": "search",
+    "query": "Mingle.",
+    "details": {
+      "page": 1,
+      "min_price": 0.0,
+      "country": "us"
+    },
+    "timestamp": "2026-01-07T14:39:26.758198+00:00"
+  },
+  {
+    "id": "37",
+    "user_id": "2",
+    "type": "chat",
+    "query": "need to make pasta",
+    "details": {},
+    "timestamp": "2026-01-08T03:46:44.199738+00:00"
+  },
+  {
+    "id": "38",
+    "user_id": "1",
+    "type": "search",
+    "query": "milk rice",
+    "details": {
+      "page": 1,
+      "min_price": 0.0,
+      "country": "us"
+    },
+    "timestamp": "2026-01-08T04:38:02.380889+00:00"
+  },
+  {
+    "id": "39",
+    "user_id": "1",
+    "type": "search",
+    "query": "potato",
+    "details": {
+      "page": 1,
+      "min_price": 0.0,
+      "country": "us"
+    },
+    "timestamp": "2026-02-23T07:47:03.044845+00:00"
+  },
+  {
+    "id": "40",
+    "user_id": "1",
+    "type": "chat",
+    "query": "can you tell me how to make noodles",
+    "details": {},
+    "timestamp": "2026-03-05T08:20:23.717957+00:00"
+  },
+  {
+    "id": "41",
+    "user_id": "1",
+    "type": "search",
+    "query": "apple juise",
+    "details": {
+      "page": 1,
+      "min_price": 0.0,
+      "country": "us"
+    },
+    "timestamp": "2026-03-07T07:42:08.608046+00:00"
+  },
+  {
+    "id": "42",
+    "user_id": "1",
+    "type": "search",
+    "query": "apple",
+    "details": {
+      "page": 1,
+      "min_price": 0.0,
+      "country": "us"
+    },
+    "timestamp": "2026-03-07T07:40:54.600287+00:00"
+  },
+  {
+    "id": "43",
+    "user_id": "1",
+    "type": "search",
+    "query": "carrot",
+    "details": {
+      "page": 1,
+      "min_price": 0.0,
+      "country": "us"
+    },
+    "timestamp": "2026-03-07T07:44:00.347780+00:00"
+  }
+]
