@@ -29,6 +29,17 @@ np.random.seed(RANDOM_SEED)
 # HELPERS
 # ------------------------------------------------------------
 def pick_col(df, aliases):
+    """
+    Finds the first matching column name in a DataFrame based on a list of aliases.
+    This allows for flexible column names in user-provided CSVs.
+    
+    Args:
+        df (pd.DataFrame): The DataFrame to search.
+        aliases (list): A list of possible column name strings.
+        
+    Returns:
+        str or None: The exact matching column name, or None if not found.
+    """
     cols = {c.strip().lower(): c for c in df.columns}
     for a in aliases:
         key = a.strip().lower()
@@ -38,6 +49,20 @@ def pick_col(df, aliases):
 
 
 def normalize_food_columns(food_df):
+    """
+    Standardizes the column names of the food dataset to a consistent internal format.
+    Ensures that essential columns (food, energy, protein, calcium, iron) exist
+    and drops rows with missing nutritional data.
+    
+    Args:
+        food_df (pd.DataFrame): Raw food data loaded from the CSV.
+        
+    Returns:
+        pd.DataFrame: Cleaned and normalized food dataset.
+    
+    Raises:
+        ValueError: If required columns cannot be found.
+    """
     col_food = pick_col(food_df, ["food", "food_name", "item_name", "name"])
     col_energy = pick_col(food_df, ["energy_kcal", "energy", "kcal", "calories"])
     col_protein = pick_col(food_df, ["protein_g", "protein"])
@@ -69,6 +94,19 @@ def normalize_food_columns(food_df):
 
 
 def normalize_req_columns(req_df):
+    """
+    Standardizes column names for the demographic nutrient requirements dataset.
+    Identifies age brackets (min/max) and required baseline nutrient levels.
+    
+    Args:
+        req_df (pd.DataFrame): Raw requirements dataset.
+        
+    Returns:
+        pd.DataFrame: Cleaned DataFrame with valid numeric bounds and requirements.
+        
+    Raises:
+        ValueError: If essential age or nutrient columns are missing.
+    """
     col_age_min = pick_col(req_df, ["age_min", "agemin", "min_age"])
     col_age_max = pick_col(req_df, ["age_max", "agemax", "max_age"])
     col_energy = pick_col(req_df, ["energy_kcal", "energy", "kcal", "calories"])
@@ -212,9 +250,18 @@ def label_from_ratios(r_energy, r_protein, r_calcium, r_iron):
 
 def generate_training_data():
     """
-    Creates a synthetic dataset using real food nutrients + requirement ranges.
-    IMPORTANT: ratios are used ONLY for labeling, not for model inputs (avoid leakage).
+    Generates an expansive synthetic dataset representing user profiles and their
+    simulated daily food intake. It uses the real food nutritional values and the 
+    baseline demographic requirements to create realistic data points.
+    
+    IMPORTANT: Nutrient adequacy ratios are used ONLY to assign the ground-truth
+    status labels (HIGH, MEDIUM, LOW risk), and are excluded from the model features
+    to prevent data leakage.
+    
+    Returns:
+        tuple: (X, y) where X is the feature DataFrame and y is the target Series.
     """
+    # Load raw CSV datasets
     food_df_raw = pd.read_csv(FOOD_PATH)
     req_df_raw = pd.read_csv(REQ_PATH)
 
@@ -324,12 +371,23 @@ def generate_training_data():
 # MAIN
 # ------------------------------------------------------------
 def main():
+    """
+    Main orchestrator for the script.
+    1. Generates synthetically simulated user intake data.
+    2. Splits the data into stratified training and testing sets (80/20).
+    3. Initializes and trains a balanced RandomForestClassifier.
+    4. Evaluates predictions on the test set (Accuracy, Precision, Recall).
+    5. Performs a 5-fold cross-validation check for reliable metrics.
+    6. Serializes the trained model to a `.pkl` artifact for backend route use.
+    """
     print("📄 Training deficiency risk model...")
     print("✅ RUNNING FILE:", __file__)
 
+    # Generate simulated features (X) and risk labels (y)
     X, y = generate_training_data()
     print("🧪 Training rows:", len(X))
 
+    # Split data to prevent overfitting; use stratify to maintain class distributions
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.2, random_state=RANDOM_SEED, stratify=y
     )

@@ -130,3 +130,10 @@ export async function getMLRisk(userId = DEFAULT_USER_ID, period = "monthly") {
     method: "GET",
   });
 }
+
+export async function simulateMLRisk(payload) {
+  return request(`/api/nutrition/ml-risk/simulate`, {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+}
