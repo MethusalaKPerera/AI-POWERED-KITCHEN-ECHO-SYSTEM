@@ -545,3 +545,82 @@
 .tw-toast-err{
   background: rgba(220, 38, 38, 0.92);
 }
+
+/* -----------------------------
+   New Forecast UI Grid
+----------------------------- */
+.tw-explanation {
+  font-size: 13px;
+  color: rgba(15, 23, 42, 0.7);
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+.tw-nutrient-card {
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 16px;
+  padding: 16px;
+  background: linear-gradient(180deg, #ffffff, #f8fafc);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+.forecast-comparison {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 12px;
+  background: rgba(241, 245, 249, 0.6);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.forecast-comparison > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+  background: white;
+  border-radius: 10px;
+  border: 1px solid rgba(226, 232, 240, 1);
+  text-align: center;
+}
+
+.forecast-label {
+  font-size: 11px;
+  font-weight: 800;
+  color: rgba(100, 116, 139, 1);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.forecast-value {
+  font-size: 18px;
+  font-weight: 900;
+  color: rgba(15, 23, 42, 0.9);
+}
+
+/* Highlight specifically the gap */
+.forecast-gap.gap-alert {
+  background: rgba(254, 242, 242, 1);
+  border-color: rgba(252, 165, 165, 1);
+}
+
+.forecast-gap.gap-alert .forecast-value {
+  color: rgba(220, 38, 38, 1); 
+}
+
+.forecast-gap.gap-ok {
+  background: rgba(240, 253, 244, 1);
+  border-color: rgba(134, 239, 172, 1);
+}
+
+.forecast-gap.gap-ok .forecast-value {
+  color: rgba(22, 163, 74, 1);
+}
+
+@media (max-width: 768px) {
+  .forecast-comparison {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

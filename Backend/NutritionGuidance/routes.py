@@ -175,3 +175,33 @@ def ml_risk():
             "iron_mg": float(avg.get("iron_mg", 0) or 0),
         },
     }
+
+# --------------------------------------------------
+# ML DEFICIENCY RISK SIMULATION (Custom inputs)
+# --------------------------------------------------
+@nutrition_bp.route("/ml-risk/simulate", methods=["POST"])
+def ml_risk_simulate():
+    data = request.get_json(force=True) or {}
+    
+    try:
+        age = int(data.get("age", 30))
+    except Exception:
+        age = 30
+        
+    condition = data.get("condition")
+
+    avg = {
+        "energy_kcal": float(data.get("energy_kcal", 0)),
+        "protein_g": float(data.get("protein_g", 0)),
+        "calcium_mg": float(data.get("calcium_mg", 0)),
+        "iron_mg": float(data.get("iron_mg", 0)),
+    }
+
+    risk = predict_risk(age, avg, condition=condition)
+
+    return {
+        "ml_deficiency_risk": risk,
+        "age": age,
+        "condition": condition,
+        "inputs_used": avg
+    }
