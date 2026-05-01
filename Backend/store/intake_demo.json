@@ -1382,5 +1382,61 @@
     "quantity": 2.0,
     "date": "2026-05-02",
     "ts": "2026-05-01T21:41:36.649808Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0050",
+    "food_name": "Basmati Rice",
+    "quantity": 1.0,
+    "date": "2026-04-28",
+    "ts": "2026-04-28T12:00:00.000Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0074",
+    "food_name": "Kottu Roti",
+    "quantity": 1.0,
+    "date": "2026-03-24",
+    "ts": "2026-03-24T12:00:00.000Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0060",
+    "food_name": "Dhal Soup",
+    "quantity": 1.0,
+    "date": "2026-03-19",
+    "ts": "2026-03-19T12:00:00.000Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0298",
+    "food_name": "Paneer in butter sauce",
+    "quantity": 1.0,
+    "date": "2026-03-05",
+    "ts": "2026-03-05T12:00:00.000Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0088",
+    "food_name": "Strawberry Ice Cream",
+    "quantity": 1.0,
+    "date": "2026-04-16",
+    "ts": "2026-04-16T12:00:00.000Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0003",
+    "food_name": "String Hoppers",
+    "quantity": 1.0,
+    "date": "2026-04-22",
+    "ts": "2026-04-22T12:00:00.000Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0019",
+    "food_name": "Egg Paratha",
+    "quantity": 3.0,
+    "date": "2026-05-02",
+    "ts": "2026-05-01T21:56:55.822317Z"
   }
 ]
