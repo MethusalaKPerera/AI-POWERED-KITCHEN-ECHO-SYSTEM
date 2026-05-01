@@ -81,19 +81,19 @@ function SeverityBadge({ level }) {
     level === "ok"
       ? "sev sev-ok"
       : level === "low"
-      ? "sev sev-low"
-      : level === "moderate"
-      ? "sev sev-mod"
-      : "sev sev-high";
+        ? "sev sev-low"
+        : level === "moderate"
+          ? "sev sev-mod"
+          : "sev sev-high";
 
   const text =
     level === "ok"
       ? "OK"
       : level === "low"
-      ? "Low gap"
-      : level === "moderate"
-      ? "Moderate"
-      : "High";
+        ? "Low gap"
+        : level === "moderate"
+          ? "Moderate"
+          : "High";
 
   return <span className={cls}>{text}</span>;
 }
@@ -104,10 +104,10 @@ function LevelChip({ level }) {
     v === "OK"
       ? "tw-chip tw-ok"
       : v === "LOW"
-      ? "tw-chip tw-low"
-      : v === "MODERATE"
-      ? "tw-chip tw-mod"
-      : "tw-chip tw-high";
+        ? "tw-chip tw-low"
+        : v === "MODERATE"
+          ? "tw-chip tw-mod"
+          : "tw-chip tw-high";
   return <span className={cls}>{v || "N/A"}</span>;
 }
 
@@ -181,31 +181,31 @@ function TwoWeekReportModal({ open, onClose, data }) {
               .filter((n) => !EXCLUDE_KEYS.has(n.key))
               .map((n) => (
                 <div className="tw-nutrient-card" key={n.key}>
-                <div className="tw-nutrientTop">
-                  <div className="tw-nutrientName">{n.label}</div>
-                  <LevelChip level={n.deficiency_level_next_14d} />
-                </div>
+                  <div className="tw-nutrientTop">
+                    <div className="tw-nutrientName">{n.label}</div>
+                    <LevelChip level={n.deficiency_level_next_14d} />
+                  </div>
 
-                <div className="forecast-comparison">
-                  <div className="forecast-past">
-                    <div className="forecast-label">Past Daily Avg</div>
-                    <div className="forecast-value">{fmt(n.expected_intake_per_day)}</div>
-                  </div>
-                  <div className="forecast-future">
-                    <div className="forecast-label">14-Day Projection</div>
-                    <div className="forecast-value">{fmt(n.expected_total_14d)}</div>
-                  </div>
-                  <div className="forecast-target">
-                    <div className="forecast-label">14-Day Goal</div>
-                    <div className="forecast-value">{fmt(n.required_total_14d)}</div>
-                  </div>
-                  <div className={`forecast-gap ${Number(n.deficit_total_14d) > 0 ? 'gap-alert' : 'gap-ok'}`}>
-                    <div className="forecast-label">Expected Deficit</div>
-                    <div className="forecast-value">{fmt(n.deficit_total_14d)}</div>
+                  <div className="forecast-comparison">
+                    <div className="forecast-past">
+                      <div className="forecast-label">Past Daily Avg</div>
+                      <div className="forecast-value">{fmt(n.expected_intake_per_day)}</div>
+                    </div>
+                    <div className="forecast-future">
+                      <div className="forecast-label">14-Day Projection</div>
+                      <div className="forecast-value">{fmt(n.expected_total_14d)}</div>
+                    </div>
+                    <div className="forecast-target">
+                      <div className="forecast-label">14-Day Goal</div>
+                      <div className="forecast-value">{fmt(n.required_total_14d)}</div>
+                    </div>
+                    <div className={`forecast-gap ${Number(n.deficit_total_14d) > 0 ? 'gap-alert' : 'gap-ok'}`}>
+                      <div className="forecast-label">Expected Deficit</div>
+                      <div className="forecast-value">{fmt(n.deficit_total_14d)}</div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
 
           <div className="tw-note">
@@ -222,6 +222,21 @@ function TwoWeekReportModal({ open, onClose, data }) {
       </div>
     </div>
   );
+}
+
+function getRiskLevel(risk) {
+  if (!risk) return "";
+  if (typeof risk === "string") return risk;
+  return risk.risk_level || "";
+}
+
+function getRiskConfidence(risk) {
+  if (!risk || typeof risk === "string" || !risk.confidence_scores) return null;
+
+  const values = Object.values(risk.confidence_scores).map(Number);
+  const max = Math.max(...values);
+
+  return Number.isFinite(max) ? max : null;
 }
 
 /**
@@ -295,12 +310,12 @@ export default function PredictiveAnalytics({ userId = DEFAULT_USER_ID }) {
   // Simulation Mode State
   const [simulationMode, setSimulationMode] = useState(false);
   const [simForm, setSimForm] = useState({
-      age: 30,
-      condition: "",
-      energy_kcal: 2000,
-      protein_g: 50,
-      calcium_mg: 1000,
-      iron_mg: 18
+    age: 30,
+    condition: "",
+    energy_kcal: 2000,
+    protein_g: 50,
+    calcium_mg: 1000,
+    iron_mg: 18
   });
   const [simRisk, setSimRisk] = useState(null);
   const [simLoading, setSimLoading] = useState(false);
@@ -342,22 +357,22 @@ export default function PredictiveAnalytics({ userId = DEFAULT_USER_ID }) {
   };
 
   const handleSimulate = async () => {
-      setSimLoading(true);
-      try {
-          const res = await simulateMLRisk({
-              age: simForm.age,
-              condition: simForm.condition || null,
-              energy_kcal: simForm.energy_kcal,
-              protein_g: simForm.protein_g,
-              calcium_mg: simForm.calcium_mg,
-              iron_mg: simForm.iron_mg
-          });
-          setSimRisk(res.ml_deficiency_risk);
-      } catch (e) {
-          alert('Failed to simulate risk: ' + e.message);
-      } finally {
-          setSimLoading(false);
-      }
+    setSimLoading(true);
+    try {
+      const res = await simulateMLRisk({
+        age: simForm.age,
+        condition: simForm.condition || null,
+        energy_kcal: simForm.energy_kcal,
+        protein_g: simForm.protein_g,
+        calcium_mg: simForm.calcium_mg,
+        iron_mg: simForm.iron_mg
+      });
+      setSimRisk(res.ml_deficiency_risk);
+    } catch (e) {
+      alert('Failed to simulate risk: ' + e.message);
+    } finally {
+      setSimLoading(false);
+    }
   };
 
   const periodAvg = useMemo(() => {
@@ -375,8 +390,8 @@ export default function PredictiveAnalytics({ userId = DEFAULT_USER_ID }) {
     const map = new Map();
 
     for (const k of Object.keys(gaps)) {
-        const ck = canonicalKey(k);
-        if (EXCLUDE_KEYS.has(ck)) continue;
+      const ck = canonicalKey(k);
+      if (EXCLUDE_KEYS.has(ck)) continue;
 
       const existing = map.get(ck) || {
         key: ck,
@@ -434,13 +449,19 @@ export default function PredictiveAnalytics({ userId = DEFAULT_USER_ID }) {
     return rows;
   }, [report, periodAvg]);
 
+  const activeRisk = simulationMode ? simRisk : mlRisk;
+  const activeRiskLevel = getRiskLevel(activeRisk);
+  const activeConfidence = getRiskConfidence(activeRisk);
+
   const riskTone = useMemo(() => {
-    const v = String(simulationMode ? (simRisk || "") : (mlRisk || "")).toUpperCase();
+    const v = String(activeRiskLevel || "").toUpperCase();
+
     if (v === "HIGH") return "risk-high";
     if (v === "MEDIUM") return "risk-med";
     if (v === "LOW") return "risk-low";
+
     return "";
-  }, [mlRisk, simRisk, simulationMode]);
+  }, [activeRiskLevel]);
 
   return (
     <div className="pa-wrap">
@@ -456,12 +477,12 @@ export default function PredictiveAnalytics({ userId = DEFAULT_USER_ID }) {
           <div className="pa-pill">
             User: <b>{userId || DEFAULT_USER_ID}</b>
           </div>
-          <button 
-             className={`tw-openBtn ${simulationMode ? 'active' : ''}`} 
-             style={{ backgroundColor: simulationMode ? '#9333ea' : undefined }}
-             onClick={() => setSimulationMode(!simulationMode)}
+          <button
+            className={`tw-openBtn ${simulationMode ? 'active' : ''}`}
+            style={{ backgroundColor: simulationMode ? '#9333ea' : undefined }}
+            onClick={() => setSimulationMode(!simulationMode)}
           >
-             {simulationMode ? "Exit Simulation" : "Simulate ML Risk"}
+            {simulationMode ? "Exit Simulation" : "Simulate ML Risk"}
           </button>
         </div>
       </div>
@@ -508,75 +529,75 @@ export default function PredictiveAnalytics({ userId = DEFAULT_USER_ID }) {
 
       {/* SIMULATION FORM */}
       {simulationMode && (
-          <div className="pa-card sim-card" style={{ border: '2px solid #9333ea', backgroundColor: '#faf5ff' }}>
-              <div className="pa-card-title" style={{ color: '#7e22ce' }}>Simulation Mode Settings</div>
-              <p className="pa-subtitle2" style={{ marginBottom: '15px' }}>Enter custom daily values to see how the model categorizes your risk.</p>
-              
-              <div className="sim-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px', marginBottom: '15px' }}>
-                  <div>
-                      <label style={{ display: 'block', fontSize: '13px', fontWeight: 'bold', marginBottom: '5px' }}>Age</label>
-                      <input type="number" 
-                             value={simForm.age} 
-                             onChange={e => setSimForm({...simForm, age: e.target.value})} 
-                             style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} 
-                      />
-                  </div>
-                  <div>
-                      <label style={{ display: 'block', fontSize: '13px', fontWeight: 'bold', marginBottom: '5px' }}>Condition (optional)</label>
-                      <select value={simForm.condition} 
-                              onChange={e => setSimForm({...simForm, condition: e.target.value})} 
-                              style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }}>
-                          <option value="">None</option>
-                          <option value="Pregnancy">Pregnancy</option>
-                          <option value="Lactation">Lactation</option>
-                          <option value="Diabetes">Diabetes</option>
-                          <option value="Hypertension">Hypertension</option>
-                          <option value="Anemia">Anemia</option>
-                          <option value="Osteoporosis">Osteoporosis</option>
-                          <option value="Athletic">Athletic</option>
-                          <option value="Vegan">Vegan</option>
-                      </select>
-                  </div>
-                  <div>
-                      <label style={{ display: 'block', fontSize: '13px', fontWeight: 'bold', marginBottom: '5px' }}>Energy (kcal / day)</label>
-                      <input type="number" 
-                             value={simForm.energy_kcal} 
-                             onChange={e => setSimForm({...simForm, energy_kcal: e.target.value})} 
-                             style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} 
-                      />
-                  </div>
-                  <div>
-                      <label style={{ display: 'block', fontSize: '13px', fontWeight: 'bold', marginBottom: '5px' }}>Protein (g / day)</label>
-                      <input type="number" 
-                             value={simForm.protein_g} 
-                             onChange={e => setSimForm({...simForm, protein_g: e.target.value})} 
-                             style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} 
-                      />
-                  </div>
-                  <div>
-                      <label style={{ display: 'block', fontSize: '13px', fontWeight: 'bold', marginBottom: '5px' }}>Calcium (mg / day)</label>
-                      <input type="number" 
-                             value={simForm.calcium_mg} 
-                             onChange={e => setSimForm({...simForm, calcium_mg: e.target.value})} 
-                             style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} 
-                      />
-                  </div>
-                  <div>
-                      <label style={{ display: 'block', fontSize: '13px', fontWeight: 'bold', marginBottom: '5px' }}>Iron (mg / day)</label>
-                      <input type="number" 
-                             value={simForm.iron_mg} 
-                             onChange={e => setSimForm({...simForm, iron_mg: e.target.value})} 
-                             style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} 
-                      />
-                  </div>
-              </div>
-              <button 
-                 onClick={handleSimulate} 
-                 disabled={simLoading}
-                 style={{ padding: '10px 20px', backgroundColor: '#9333ea', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}>
-                  {simLoading ? "Calculating Risk..." : "Predict Model Risk"}
-              </button>
+        <div className="pa-card sim-card" style={{ border: '2px solid #9333ea', backgroundColor: '#faf5ff' }}>
+          <div className="pa-card-title" style={{ color: '#7e22ce' }}>Simulation Mode Settings</div>
+          <p className="pa-subtitle2" style={{ marginBottom: '15px' }}>Enter custom daily values to see how the model categorizes your risk.</p>
+
+          <div className="sim-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px', marginBottom: '15px' }}>
+            <div>
+              <label style={{ display: 'block', fontSize: '13px', fontWeight: 'bold', marginBottom: '5px' }}>Age</label>
+              <input type="number"
+                value={simForm.age}
+                onChange={e => setSimForm({ ...simForm, age: e.target.value })}
+                style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }}
+              />
+            </div>
+            <div>
+              <label style={{ display: 'block', fontSize: '13px', fontWeight: 'bold', marginBottom: '5px' }}>Condition (optional)</label>
+              <select value={simForm.condition}
+                onChange={e => setSimForm({ ...simForm, condition: e.target.value })}
+                style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }}>
+                <option value="">None</option>
+                <option value="Pregnancy">Pregnancy</option>
+                <option value="Lactation">Lactation</option>
+                <option value="Diabetes">Diabetes</option>
+                <option value="Hypertension">Hypertension</option>
+                <option value="Anemia">Anemia</option>
+                <option value="Osteoporosis">Osteoporosis</option>
+                <option value="Athletic">Athletic</option>
+                <option value="Vegan">Vegan</option>
+              </select>
+            </div>
+            <div>
+              <label style={{ display: 'block', fontSize: '13px', fontWeight: 'bold', marginBottom: '5px' }}>Energy (kcal / day)</label>
+              <input type="number"
+                value={simForm.energy_kcal}
+                onChange={e => setSimForm({ ...simForm, energy_kcal: e.target.value })}
+                style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }}
+              />
+            </div>
+            <div>
+              <label style={{ display: 'block', fontSize: '13px', fontWeight: 'bold', marginBottom: '5px' }}>Protein (g / day)</label>
+              <input type="number"
+                value={simForm.protein_g}
+                onChange={e => setSimForm({ ...simForm, protein_g: e.target.value })}
+                style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }}
+              />
+            </div>
+            <div>
+              <label style={{ display: 'block', fontSize: '13px', fontWeight: 'bold', marginBottom: '5px' }}>Calcium (mg / day)</label>
+              <input type="number"
+                value={simForm.calcium_mg}
+                onChange={e => setSimForm({ ...simForm, calcium_mg: e.target.value })}
+                style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }}
+              />
+            </div>
+            <div>
+              <label style={{ display: 'block', fontSize: '13px', fontWeight: 'bold', marginBottom: '5px' }}>Iron (mg / day)</label>
+              <input type="number"
+                value={simForm.iron_mg}
+                onChange={e => setSimForm({ ...simForm, iron_mg: e.target.value })}
+                style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }}
+              />
+            </div>
           </div>
+          <button
+            onClick={handleSimulate}
+            disabled={simLoading}
+            style={{ padding: '10px 20px', backgroundColor: '#9333ea', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}>
+            {simLoading ? "Calculating Risk..." : "Predict Model Risk"}
+          </button>
+        </div>
       )}
 
       {/* ML CARD and Condition Notes side by side */}
@@ -584,12 +605,18 @@ export default function PredictiveAnalytics({ userId = DEFAULT_USER_ID }) {
         <div className={simulationMode ? "" : "pa-grid"}>
           <div className={`pa-card pa-ml ${riskTone}`}>
             <div className="pa-card-title">
-                ML Predicted Deficiency Risk 
-                {simulationMode && <span style={{fontSize: '12px', marginLeft: '10px', backgroundColor: 'rgba(255,255,255,0.4)', padding: '2px 6px', borderRadius: '4px'}}>(Simulated)</span>}
+              ML Predicted Deficiency Risk
+              {simulationMode && <span style={{ fontSize: '12px', marginLeft: '10px', backgroundColor: 'rgba(255,255,255,0.4)', padding: '2px 6px', borderRadius: '4px' }}>(Simulated)</span>}
             </div>
-            <div className="pa-riskValue">{simulationMode ? (simRisk || "-") : (mlRisk || "N/A")}</div>
+            <div className="pa-riskValue">{activeRiskLevel || "N/A"}</div>
+
+            {activeConfidence !== null && (
+              <div className="pa-subtitle2">
+                Confidence: {(activeConfidence * 100).toFixed(1)}%
+              </div>
+            )}
             <p className="pa-subtitle2">
-              Predicted using a supervised Random Forest classifier trained on nutrient intake patterns and user profile data.
+              Predicted using a trained Gradient Boosting model based on nutrient adequacy ratios and user profile data.
             </p>
           </div>
 
