@@ -54,6 +54,11 @@ function fmt(num) {
   return Math.abs(n - Math.round(n)) < 1e-9 ? String(Math.round(n)) : n.toFixed(2);
 }
 
+function getRecommendations(risk) {
+  if (!risk || typeof risk === "string") return [];
+  return risk.recommendations || [];
+}
+
 function labelize(key) {
   key = canonicalKey(key);
 
@@ -294,6 +299,16 @@ function getFoodNutrientPills(food) {
   }));
 }
 
+function getNutrientBreakdown(risk) {
+  if (!risk || typeof risk === "string") return {};
+  return risk.nutrient_breakdown || {};
+}
+
+function getRiskExplanation(risk) {
+  if (!risk || typeof risk === "string") return "";
+  return risk.explanation || "";
+}
+
 export default function PredictiveAnalytics({ userId = DEFAULT_USER_ID }) {
   const [period, setPeriod] = useState("monthly");
   const [loading, setLoading] = useState(false);
@@ -452,6 +467,9 @@ export default function PredictiveAnalytics({ userId = DEFAULT_USER_ID }) {
   const activeRisk = simulationMode ? simRisk : mlRisk;
   const activeRiskLevel = getRiskLevel(activeRisk);
   const activeConfidence = getRiskConfidence(activeRisk);
+  const activeBreakdown = getNutrientBreakdown(activeRisk);
+  const activeExplanation = getRiskExplanation(activeRisk);
+  const activeRecommendations = getRecommendations(activeRisk);
 
   const riskTone = useMemo(() => {
     const v = String(activeRiskLevel || "").toUpperCase();
@@ -606,8 +624,19 @@ export default function PredictiveAnalytics({ userId = DEFAULT_USER_ID }) {
           <div className={`pa-card pa-ml ${riskTone}`}>
             <div className="pa-card-title">
               ML Predicted Deficiency Risk
-              {simulationMode && <span style={{ fontSize: '12px', marginLeft: '10px', backgroundColor: 'rgba(255,255,255,0.4)', padding: '2px 6px', borderRadius: '4px' }}>(Simulated)</span>}
+              {simulationMode && (
+                <span style={{
+                  fontSize: '12px',
+                  marginLeft: '10px',
+                  backgroundColor: 'rgba(255,255,255,0.4)',
+                  padding: '2px 6px',
+                  borderRadius: '4px'
+                }}>
+                  (Simulated)
+                </span>
+              )}
             </div>
+
             <div className="pa-riskValue">{activeRiskLevel || "N/A"}</div>
 
             {activeConfidence !== null && (
@@ -615,11 +644,54 @@ export default function PredictiveAnalytics({ userId = DEFAULT_USER_ID }) {
                 Confidence: {(activeConfidence * 100).toFixed(1)}%
               </div>
             )}
-            <p className="pa-subtitle2">
-              Predicted using a trained Gradient Boosting model based on nutrient adequacy ratios and user profile data.
-            </p>
-          </div>
 
+            {/* 🔥 NEW: Explanation */}
+            {activeExplanation && (
+              <div className="pa-note">
+                {activeExplanation}
+              </div>
+            )}
+
+            {/* 🔥 NEW: Nutrient ML Breakdown */}
+            <div style={{ marginTop: "12px", display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "10px" }}>
+              {Object.entries(activeBreakdown).map(([nutrient, data]) => (
+                <div key={nutrient} style={{
+                  padding: "10px",
+                  borderRadius: "12px",
+                  background: "rgba(255,255,255,0.7)",
+                  border: "1px solid rgba(148,163,184,0.3)"
+                }}>
+                  <div style={{ fontWeight: "900", fontSize: "13px" }}>
+                    {nutrient.toUpperCase()}
+                  </div>
+
+                  <div style={{
+                    fontSize: "14px",
+                    fontWeight: "1000",
+                    color:
+                      data.risk_level === "HIGH"
+                        ? "#dc2626"
+                        : data.risk_level === "MEDIUM"
+                          ? "#f59e0b"
+                          : "#16a34a"
+                  }}>
+                    {data.risk_level}
+                  </div>
+
+                  <div style={{ fontSize: "11px", color: "#475569" }}>
+                    Ratio: {data.ratio_used}
+                  </div>
+
+                  {data.confidence && (
+                    <div style={{ fontSize: "11px", color: "#475569" }}>
+                      {(data.confidence * 100).toFixed(1)}%
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+
+          </div>
           {!simulationMode && (
             <div className="pa-card">
               <div className="pa-card-title">Condition Notes</div>
@@ -638,133 +710,132 @@ export default function PredictiveAnalytics({ userId = DEFAULT_USER_ID }) {
             </div>
           )}
         </div>
-      ) : null}
+      ) : null
+      }
 
-      {!loading && report && !simulationMode && (
-        <>
-          <div className="pa-grid">
-            <div className="pa-card">
-              <div className="pa-card-title">User Profile</div>
-              <div className="pa-kv">
-                <div>
-                  <div className="k">User</div>
-                  <div className="v">{report.profile?.user_id || userId}</div>
-                </div>
-                <div>
-                  <div className="k">Age</div>
-                  <div className="v">{report.profile?.age}</div>
-                </div>
-                <div>
-                  <div className="k">Gender</div>
-                  <div className="v">{report.profile?.group}</div>
-                </div>
-                <div>
-                  <div className="k">Conditions</div>
-                  <div className="v">
-                    {(report.profile?.conditions || []).length
-                      ? report.profile.conditions.join(", ")
-                      : "None"}
+      {
+        !loading && report && !simulationMode && (
+          <>
+            <div className="pa-grid">
+              <div className="pa-card">
+                <div className="pa-card-title">User Profile</div>
+                <div className="pa-kv">
+                  <div>
+                    <div className="k">User</div>
+                    <div className="v">{report.profile?.user_id || userId}</div>
+                  </div>
+                  <div>
+                    <div className="k">Age</div>
+                    <div className="v">{report.profile?.age}</div>
+                  </div>
+                  <div>
+                    <div className="k">Gender</div>
+                    <div className="v">{report.profile?.group}</div>
+                  </div>
+                  <div>
+                    <div className="k">Conditions</div>
+                    <div className="v">
+                      {(report.profile?.conditions || []).length
+                        ? report.profile.conditions.join(", ")
+                        : "None"}
+                    </div>
                   </div>
                 </div>
               </div>
+
+              {activeRecommendations.length > 0 && (
+                <div style={{ marginTop: "16px" }}>
+                  <div style={{ fontWeight: "900", marginBottom: "8px" }}>
+                    Recommended Actions
+                  </div>
+
+                  {activeRecommendations.map((rec, i) => (
+                    <div key={i} style={{
+                      padding: "10px",
+                      marginBottom: "8px",
+                      borderRadius: "10px",
+                      background:
+                        rec.priority === "HIGH"
+                          ? "#fee2e2"
+                          : "#fef3c7",
+                      color:
+                        rec.priority === "HIGH"
+                          ? "#991b1b"
+                          : "#92400e"
+                    }}>
+                      <b>{rec.nutrient.toUpperCase()}</b>: {rec.advice}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <div className="pa-card pa-table-card">
+              <div className="pa-card-title">Nutrient Gaps (Daily)</div>
+              <div className="pa-table-wrap">
+                <table className="pa-table">
+                  <thead>
+                    <tr>
+                      <th>Nutrient</th>
+                      <th>Required</th>
+                      <th>Intake Avg (period)</th>
+                      <th>Gap</th>
+                      <th>Severity</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {gapRows.map((r) => (
+                      <tr key={r.key}>
+                        <td className="nut">{r.label}</td>
+                        <td>{fmt(r.required)}</td>
+                        <td>{fmt(r.intake)}</td>
+                        <td className={Number(r.gap) > 0 ? "gap-pos" : "gap-ok"}>{fmt(r.gap)}</td>
+                        <td>
+                          <SeverityBadge level={r.severity} />
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
 
             <div className="pa-card">
-              <div className="pa-card-title">Log Coverage</div>
-              <div className="pa-kv">
-                <div>
-                  <div className="k">Period</div>
-                  <div className="v">{report.period}</div>
+              <div className="pa-card-title">Recommended Foods</div>
+
+              {report.recommendations?.length ? (
+                <div className="rec-grid">
+                  {report.recommendations.map((f) => {
+                    const pills = getFoodNutrientPills(f);
+
+                    return (
+                      <div className="rec-item" key={f.food_id || f.food_name}>
+                        <div className="rec-name">{f.food_name}</div>
+
+                        {pills.length ? (
+                          <div className="rec-nutrients">
+                            {pills.map((p) => (
+                              <div className="pill" key={p.key}>
+                                {p.label}: {p.value}
+                              </div>
+                            ))}
+                          </div>
+                        ) : (
+                          <div className="muted">
+                            Nutrient values not available in this recommendation row.
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
-                <div>
-                  <div className="k">Start</div>
-                  <div className="v">{report.intake_summary?.date_start}</div>
-                </div>
-                <div>
-                  <div className="k">End</div>
-                  <div className="v">{report.intake_summary?.date_end}</div>
-                </div>
-                <div>
-                  <div className="k">Days logged</div>
-                  <div className="v">{report.intake_summary?.days_logged}</div>
-                </div>
-                <div>
-                  <div className="k">Logs used</div>
-                  <div className="v">{report.intake_summary?.logs_used}</div>
-                </div>
-                <div>
-                  <div className="k">Period days</div>
-                  <div className="v">{report.intake_summary?.period_days ?? "-"}</div>
-                </div>
-              </div>
+              ) : (
+                <div className="muted">No recommendations available yet.</div>
+              )}
             </div>
-          </div>
-
-          <div className="pa-card pa-table-card">
-            <div className="pa-card-title">Nutrient Gaps (Daily)</div>
-            <div className="pa-table-wrap">
-              <table className="pa-table">
-                <thead>
-                  <tr>
-                    <th>Nutrient</th>
-                    <th>Required</th>
-                    <th>Intake Avg (period)</th>
-                    <th>Gap</th>
-                    <th>Severity</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {gapRows.map((r) => (
-                    <tr key={r.key}>
-                      <td className="nut">{r.label}</td>
-                      <td>{fmt(r.required)}</td>
-                      <td>{fmt(r.intake)}</td>
-                      <td className={Number(r.gap) > 0 ? "gap-pos" : "gap-ok"}>{fmt(r.gap)}</td>
-                      <td>
-                        <SeverityBadge level={r.severity} />
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <div className="pa-card">
-            <div className="pa-card-title">Recommended Foods</div>
-
-            {report.recommendations?.length ? (
-              <div className="rec-grid">
-                {report.recommendations.map((f) => {
-                  const pills = getFoodNutrientPills(f);
-
-                  return (
-                    <div className="rec-item" key={f.food_id || f.food_name}>
-                      <div className="rec-name">{f.food_name}</div>
-
-                      {pills.length ? (
-                        <div className="rec-nutrients">
-                          {pills.map((p) => (
-                            <div className="pill" key={p.key}>
-                              {p.label}: {p.value}
-                            </div>
-                          ))}
-                        </div>
-                      ) : (
-                        <div className="muted">
-                          Nutrient values not available in this recommendation row.
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-            ) : (
-              <div className="muted">No recommendations available yet.</div>
-            )}
-          </div>
-        </>
-      )}
-    </div>
+          </>
+        )
+      }
+    </div >
   );
 }
