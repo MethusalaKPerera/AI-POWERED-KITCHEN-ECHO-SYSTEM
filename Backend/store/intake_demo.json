@@ -1342,5 +1342,45 @@
     "quantity": 1.0,
     "date": "2026-05-02",
     "ts": "2026-05-01T20:10:50.250316Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0006",
+    "food_name": "Red Rice",
+    "quantity": 5.0,
+    "date": "2026-05-02",
+    "ts": "2026-05-01T20:43:32.611157Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0005",
+    "food_name": "Boiled Egg",
+    "quantity": 2.0,
+    "date": "2026-05-02",
+    "ts": "2026-05-01T21:01:40.122003Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0224",
+    "food_name": "Idli",
+    "quantity": 10.0,
+    "date": "2026-04-29",
+    "ts": "2026-04-29T12:00:00.000Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0074",
+    "food_name": "Kottu Roti",
+    "quantity": 1.0,
+    "date": "2026-05-02",
+    "ts": "2026-05-01T21:39:59.298538Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0016",
+    "food_name": "Fried Egg",
+    "quantity": 2.0,
+    "date": "2026-05-02",
+    "ts": "2026-05-01T21:41:36.649808Z"
   }
 ]
