@@ -130,7 +130,10 @@ if not food_bp_available:
 
     @disabled_bp.route("/", methods=["GET"])
     def food_index():
-        return jsonify([]), 200
+        return jsonify({
+            "error": "FoodExpiry unavailable",
+            "message": unavailable_msg
+        }), 503
 
     @disabled_bp.route("/options", methods=["GET"])
     def food_options():
