@@ -314,8 +314,12 @@ def get_foods():
 
         try:
             foods = list(foods_col.find(q))
-        except Exception:
-            return jsonify([]), 200
+        except Exception as e:
+            traceback.print_exc()
+            return jsonify({
+                "error": "FoodExpiry DB connection failed",
+                "message": str(e),
+            }), 500
 
         for f in foods:
             f["_id"] = str(f["_id"])
@@ -329,9 +333,12 @@ def get_foods():
                 f["scpPriorityScore_live"] = scp_score(days_left)
 
         return jsonify(foods), 200
-    except Exception:
+    except Exception as e:
         traceback.print_exc()
-        return jsonify([]), 200
+        return jsonify({
+            "error": "FoodExpiry failed to load foods",
+            "message": str(e),
+        }), 500
 
 
 # ----------------------------------------------------
