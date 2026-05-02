@@ -14,10 +14,13 @@ from FoodExpiry.models.expiry_predictor import ExpiryPredictor
 from FoodExpiry.ml.aed_adjuster import apply_aed, update_aed_single
 from FoodExpiry.ml.scp_ranker import scp_score
 
-# PDF (Report)
-from reportlab.lib.pagesizes import A4
-from reportlab.pdfgen import canvas
-from reportlab.lib.units import cm
+try:
+    from reportlab.lib.pagesizes import A4
+    from reportlab.pdfgen import canvas
+    from reportlab.lib.units import cm
+    REPORTLAB_AVAILABLE = True
+except ImportError:
+    REPORTLAB_AVAILABLE = False
 
 food_bp = Blueprint("food_bp", __name__)
 predictor = ExpiryPredictor()
@@ -1144,6 +1147,12 @@ def analytics_export_csv():
 
 @food_bp.route("/analytics/export/pdf", methods=["GET"])
 def analytics_export_pdf():
+    if not REPORTLAB_AVAILABLE:
+        return jsonify({
+            "error": "PDF generation unavailable",
+            "message": "The 'reportlab' library is not installed on the server."
+        }), 503
+
     """
     Download a simple research-ready PDF report (KPI + distributions + recent rows).
     Query:

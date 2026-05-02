@@ -1438,5 +1438,13 @@
     "quantity": 3.0,
     "date": "2026-05-02",
     "ts": "2026-05-01T21:56:55.822317Z"
+  },
+  {
+    "user_id": "demo",
+    "food_id": "SL0697",
+    "food_name": "Mayonnaise without eggs",
+    "quantity": 1.0,
+    "date": "2026-05-02",
+    "ts": "2026-05-02T09:31:53.556754Z"
   }
 ]
