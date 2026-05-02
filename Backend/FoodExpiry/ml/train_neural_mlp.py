@@ -10,27 +10,98 @@ import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
 
-
 # -----------------------------
 # PATHS
 # -----------------------------
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DATA_PATH = os.path.join(BASE_DIR, "..", "data", "food_expiry_tracker_items.csv")
 
-# ✅ must match your CSV target column
+DATA_MAIN = os.path.join(BASE_DIR, "..", "data", "food_expiry_predictor_items.csv")
+DATA_BASE = os.path.join(BASE_DIR, "..", "data", "item_base_expiry_days.csv")
+
 TARGET_COL = "days_until_expiry"
 
 # -----------------------------
-# TRAINING CONFIG
+# LOAD DATA (SAME AS CATBOOST)
 # -----------------------------
-BATCH_SIZE = 64
-EPOCHS = 150
-LR = 1e-3
-PATIENCE = 12
-DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
+df = pd.read_csv(DATA_MAIN)
+base_df = pd.read_csv(DATA_BASE)
 
+df["item_name"] = df["item_name"].astype(str).str.lower().str.strip()
 
-class TabularDataset(Dataset):
+# --- Build base expiry map ---
+base_df["item_name"] = base_df["item_name"].astype(str).str.lower().str.strip()
+
+base_map = {}
+for _, r in base_df.iterrows():
+    base_map[r["item_name"]] = {
+        "fridge": float(r.get("base_fridge_days", 7) or 7),
+        "freezer": float(r.get("base_freezer_days", 30) or 30),
+        "pantry": float(r.get("base_pantry_days", 7) or 7),
+    }
+
+def infer_storage(row):
+    if row.get("storage_fridge", 0) == 1:
+        return "fridge"
+    if row.get("storage_freezer", 0) == 1:
+        return "freezer"
+    return "pantry"
+
+def get_base_days(row):
+    item = row["item_name"]
+    storage = infer_storage(row)
+    if item in base_map:
+        return base_map[item].get(storage, 7.0)
+    return 7.0
+
+df["item_base_expiry_days"] = df.apply(get_base_days, axis=1)
+
+# --- Boolean fix ---
+df = df.replace({True: 1, False: 0})
+
+# --- One-hot item_name ---
+item_dummies = pd.get_dummies(df["item_name"], prefix="food")
+df = pd.concat([df.drop(columns=["item_name"]), item_dummies], axis=1)
+
+# --- Rename category ---
+category_cols = [c for c in df.columns if c.startswith("item_")]
+df = df.rename(columns={c: c.replace("item_", "cat_", 1) for c in category_cols})
+
+# --- Feature selection ---
+drop_cols = [
+    TARGET_COL,
+    "transaction_id",
+    "user_id",
+    "product_name",
+    "purchase_date",
+    "predicted_expiry_date",
+    "storage_location",
+    "notes",
+]
+drop_cols = [c for c in drop_cols if c in df.columns]
+
+X = df.drop(columns=drop_cols)
+y = df[TARGET_COL].astype(float)
+
+X = X.fillna(0)
+y = y.fillna(y.median())
+
+print("🧩 Feature count:", X.shape[1])
+
+# -----------------------------
+# SPLIT + SCALE (ONLY FOR MLP)
+# -----------------------------
+X_train, X_test, y_train, y_test = train_test_split(
+    X.values, y.values, test_size=0.2, random_state=42
+)
+
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
+# -----------------------------
+# TORCH DATASET
+# -----------------------------
+class TabDataset(Dataset):
     def __init__(self, X, y):
         self.X = torch.tensor(X, dtype=torch.float32)
         self.y = torch.tensor(y, dtype=torch.float32).view(-1, 1)
@@ -38,137 +109,69 @@ class TabularDataset(Dataset):
     def __len__(self):
         return len(self.X)
 
-    def __getitem__(self, idx):
-        return self.X[idx], self.y[idx]
+    def __getitem__(self, i):
+        return self.X[i], self.y[i]
 
+train_loader = DataLoader(TabDataset(X_train, y_train), batch_size=64, shuffle=True)
+test_loader = DataLoader(TabDataset(X_test, y_test), batch_size=64)
 
-class MLPRegressor(nn.Module):
-    def __init__(self, in_dim: int):
+# -----------------------------
+# MODEL
+# -----------------------------
+class MLP(nn.Module):
+    def __init__(self, in_dim):
         super().__init__()
         self.net = nn.Sequential(
             nn.Linear(in_dim, 256),
-            nn.BatchNorm1d(256),
             nn.ReLU(),
-            nn.Dropout(0.25),
-
+            nn.Dropout(0.2),
             nn.Linear(256, 128),
-            nn.BatchNorm1d(128),
             nn.ReLU(),
-            nn.Dropout(0.20),
-
-            nn.Linear(128, 64),
-            nn.ReLU(),
-            nn.Dropout(0.15),
-
-            nn.Linear(64, 1),
+            nn.Dropout(0.2),
+            nn.Linear(128, 1)
         )
 
     def forward(self, x):
         return self.net(x)
 
+device = "cuda" if torch.cuda.is_available() else "cpu"
+model = MLP(X_train.shape[1]).to(device)
 
-def main():
-    print("📄 Loading dataset:", DATA_PATH)
-    df = pd.read_csv(DATA_PATH)
+optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
+loss_fn = nn.MSELoss()
 
-    if TARGET_COL not in df.columns:
-        raise ValueError(f"Target column '{TARGET_COL}' not found. Columns: {list(df.columns)}")
+# -----------------------------
+# TRAINING
+# -----------------------------
+best_r2 = -999
 
-    # Booleans -> 0/1
-    df = df.replace({True: 1, False: 0})
+for epoch in range(1, 101):
+    model.train()
+    for xb, yb in train_loader:
+        xb, yb = xb.to(device), yb.to(device)
 
-    # Drop missing target
-    df = df.dropna(subset=[TARGET_COL]).copy()
+        pred = model(xb)
+        loss = loss_fn(pred, yb)
 
-    y = df[TARGET_COL].astype(float).values
+        optimizer.zero_grad()
+        loss.backward()
+        optimizer.step()
 
-    # Use only numeric columns as input
-    X_df = df.drop(columns=[TARGET_COL], errors="ignore")
-    X_df = X_df.select_dtypes(include=[np.number]).fillna(0)
+    # Evaluate
+    model.eval()
+    preds, targets = [], []
+    with torch.no_grad():
+        for xb, yb in test_loader:
+            xb = xb.to(device)
+            p = model(xb).cpu().numpy().flatten()
+            preds.extend(p)
+            targets.extend(yb.numpy().flatten())
 
-    print("🧩 Feature count:", X_df.shape[1])
-    print("📦 Dataset size :", len(X_df))
+    mae = mean_absolute_error(targets, preds)
+    r2 = r2_score(targets, preds)
 
-    X = X_df.values.astype(np.float32)
+    print(f"Epoch {epoch} | MAE={mae:.4f} | R²={r2:.4f}")
 
-    # Split
-    X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=0.2, random_state=42
-    )
+    best_r2 = max(best_r2, r2)
 
-    # Scale (neural needs scaling)
-    scaler = StandardScaler()
-    X_train = scaler.fit_transform(X_train).astype(np.float32)
-    X_test = scaler.transform(X_test).astype(np.float32)
-
-    train_ds = TabularDataset(X_train, y_train)
-    test_ds = TabularDataset(X_test, y_test)
-
-    train_loader = DataLoader(train_ds, batch_size=BATCH_SIZE, shuffle=True)
-    test_loader = DataLoader(test_ds, batch_size=BATCH_SIZE, shuffle=False)
-
-    model = MLPRegressor(in_dim=X_train.shape[1]).to(DEVICE)
-    optimizer = torch.optim.AdamW(model.parameters(), lr=LR, weight_decay=1e-4)
-    loss_fn = nn.MSELoss()
-
-    best_mae = float("inf")
-    patience_left = PATIENCE
-
-    print("🚀 Training Neural MLP on:", DEVICE)
-
-    for epoch in range(1, EPOCHS + 1):
-        model.train()
-        losses = []
-
-        for xb, yb in train_loader:
-            xb, yb = xb.to(DEVICE), yb.to(DEVICE)
-            pred = model(xb)
-            loss = loss_fn(pred, yb)
-
-            optimizer.zero_grad()
-            loss.backward()
-            optimizer.step()
-
-            losses.append(loss.item())
-
-        # Evaluate
-        model.eval()
-        preds = []
-        targets = []
-        with torch.no_grad():
-            for xb, yb in test_loader:
-                xb = xb.to(DEVICE)
-                p = model(xb).cpu().numpy().reshape(-1)
-                preds.append(p)
-                targets.append(yb.numpy().reshape(-1))
-
-        preds = np.concatenate(preds)
-        targets = np.concatenate(targets)
-
-        mae = mean_absolute_error(targets, preds)
-        r2 = r2_score(targets, preds)
-
-        print(
-            f"Epoch {epoch:03d} | "
-            f"train_loss={np.mean(losses):.6f} | "
-            f"MAE={mae:.4f} | R²={r2:.4f}"
-        )
-
-        # Early stopping on MAE
-        if mae < best_mae - 1e-5:
-            best_mae = mae
-            patience_left = PATIENCE
-            # Save best weights (optional)
-            torch.save(model.state_dict(), os.path.join(BASE_DIR, "..", "models", "expiry_mlp.pth"))
-        else:
-            patience_left -= 1
-            if patience_left <= 0:
-                print("⏹ Early stopping triggered.")
-                break
-
-    print("\n✅ BEST TEST MAE:", round(best_mae, 4))
-    print("💾 Saved best model weights to: FoodExpiry/models/expiry_mlp.pth")
-
-
-if __name__ == "__main__":
-    main()
+print("\n✅ BEST R²:", round(best_r2, 4))
