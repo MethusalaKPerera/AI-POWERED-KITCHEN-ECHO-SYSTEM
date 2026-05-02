@@ -1,0 +1,17 @@
+[
+    "age",
+    "gender_code",
+    "condition_flag",
+    "energy_intake",
+    "protein_intake",
+    "calcium_intake",
+    "iron_intake",
+    "required_energy",
+    "required_protein",
+    "required_calcium",
+    "required_iron",
+    "energy_ratio",
+    "protein_ratio",
+    "calcium_ratio",
+    "iron_ratio"
+]

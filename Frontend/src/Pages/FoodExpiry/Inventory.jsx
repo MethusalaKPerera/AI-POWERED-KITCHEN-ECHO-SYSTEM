@@ -3,12 +3,16 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../../Components/Dashboard/Sidebar.jsx";
 import Topbar from "../../Components/Dashboard/Topbar.jsx";
-import { getAllFoods, deleteFood, updateFood, predictExpiry } from "../../api/foodApi.js";
+import {
+  getAllFoods,
+  deleteFood,
+  updateFood,
+  predictExpiry,
+} from "../../api/foodApi.js";
 import "./foodexpiry.css";
 
 /* -----------------------------
-   Sri Lanka region → typical humidity mapping (simple demo-friendly)
-   (You can tune these later; panel-friendly: we show "region based humidity")
+   Sri Lanka region → typical humidity mapping
 ----------------------------- */
 const SL_REGIONS = [
   { key: "Western", humidity: 78 },
@@ -27,12 +31,12 @@ function regionToHumidity(regionKey) {
   return r ? r.humidity : 78;
 }
 
-// ✅ NEW (necessary): DB/backend stores region in lowercase sometimes (e.g., "western")
-// This maps it back to the exact dropdown key.
 function normalizeRegionKey(regionVal) {
   const raw = String(regionVal || "").trim();
   if (!raw) return "Western";
-  const found = SL_REGIONS.find((r) => r.key.toLowerCase() === raw.toLowerCase());
+  const found = SL_REGIONS.find(
+    (r) => r.key.toLowerCase() === raw.toLowerCase()
+  );
   return found ? found.key : "Western";
 }
 
@@ -62,17 +66,24 @@ function normalizeFood(f) {
     storage_type: f.storageType || f.storage_type || "pantry",
     purchase_date: f.purchaseDate || f.purchase_date || "",
     quantity: f.quantity ?? 1,
-    used_before_expiry: Boolean(f.used_before_expiry ?? f.used_before_exp ?? false),
+    used_before_expiry: Boolean(
+      f.used_before_expiry ?? f.used_before_exp ?? false
+    ),
 
     predictedExpiryDate:
-      f.finalExpiryDate || f.predictedExpiryDate || f.predicted_expiry_date || "",
+      f.finalExpiryDate ||
+      f.predictedExpiryDate ||
+      f.predicted_expiry_date ||
+      "",
 
     scpPriorityScore:
-      f.scpPriorityScore_live ?? f.scpPriorityScore ?? f.scp_priority_score ?? null,
+      f.scpPriorityScore_live ??
+      f.scpPriorityScore ??
+      f.scp_priority_score ??
+      null,
 
     printedExpiryDate: f.printedExpiryDate || "",
 
-    // optional if backend stores
     region: f.region || "",
     storage_temperature_c: f.storage_temperature_c ?? null,
     storage_humidity_pct: f.storage_humidity_pct ?? null,
@@ -90,7 +101,7 @@ function scpLabel(score) {
 
 function isFuturePurchase(purchase_date) {
   if (!purchase_date) return false;
-  const p = new Date(purchase_date + "T00:00:00");
+  const p = new Date(`${purchase_date}T00:00:00`);
   const today = new Date();
   today.setHours(0, 0, 0, 0);
   return p.getTime() > today.getTime();
@@ -98,7 +109,7 @@ function isFuturePurchase(purchase_date) {
 
 function daysUntilPurchase(purchase_date) {
   if (!purchase_date) return null;
-  const p = new Date(purchase_date + "T00:00:00");
+  const p = new Date(`${purchase_date}T00:00:00`);
   const today = new Date();
   today.setHours(0, 0, 0, 0);
   return Math.round((p.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
@@ -106,7 +117,7 @@ function daysUntilPurchase(purchase_date) {
 
 function addDaysToDate(dateStr, days) {
   if (!dateStr || days === null || days === undefined) return null;
-  const d = new Date(dateStr + "T00:00:00");
+  const d = new Date(`${dateStr}T00:00:00`);
   if (Number.isNaN(d.getTime())) return null;
   d.setDate(d.getDate() + Math.round(Number(days)));
   const yyyy = d.getFullYear();
@@ -117,8 +128,8 @@ function addDaysToDate(dateStr, days) {
 
 function daysBetween(fromDateStr, toDateStr) {
   if (!fromDateStr || !toDateStr) return null;
-  const a = new Date(fromDateStr + "T00:00:00");
-  const b = new Date(toDateStr + "T00:00:00");
+  const a = new Date(`${fromDateStr}T00:00:00`);
+  const b = new Date(`${toDateStr}T00:00:00`);
   if (Number.isNaN(a.getTime()) || Number.isNaN(b.getTime())) return null;
   return Math.round((b.getTime() - a.getTime()) / (1000 * 60 * 60 * 24));
 }
@@ -147,10 +158,13 @@ export default function Inventory() {
   const [predictLoading, setPredictLoading] = useState(false);
   const [predictError, setPredictError] = useState("");
   const [predictResult, setPredictResult] = useState(null);
+  const [showPredictPopup, setShowPredictPopup] = useState(false);
 
-  // ✅ Environment fields (user enters during prediction)
+  // Environment
   const [predictRegion, setPredictRegion] = useState("Western");
-  const [predictHumidity, setPredictHumidity] = useState(regionToHumidity("Western"));
+  const [predictHumidity, setPredictHumidity] = useState(
+    regionToHumidity("Western")
+  );
   const [predictTemp, setPredictTemp] = useState(28);
 
   const navigate = useNavigate();
@@ -158,12 +172,13 @@ export default function Inventory() {
   async function load() {
     try {
       setLoading(true);
+      setApiError("");
       const data = await getAllFoods();
       const rows = (Array.isArray(data) ? data : []).map(normalizeFood);
       setFoods(rows);
       return rows;
     } catch (err) {
-      setApiError(err.message);
+      setApiError(err.message || "Failed to load inventory.");
       return [];
     } finally {
       setLoading(false);
@@ -174,7 +189,6 @@ export default function Inventory() {
     load();
   }, []);
 
-  // ✅ lock background scroll when modal is open
   useEffect(() => {
     const open = Boolean(predictItem || editItem);
     if (open) document.body.classList.add("fe-modal-open");
@@ -182,6 +196,14 @@ export default function Inventory() {
 
     return () => document.body.classList.remove("fe-modal-open");
   }, [predictItem, editItem]);
+
+  useEffect(() => {
+    if (!showPredictPopup) return;
+    const timer = setTimeout(() => {
+      setShowPredictPopup(false);
+    }, 5000);
+    return () => clearTimeout(timer);
+  }, [showPredictPopup]);
 
   const sortedFoods = useMemo(() => {
     return [...foods].sort((a, b) => {
@@ -197,7 +219,7 @@ export default function Inventory() {
       await deleteFood(id);
       setFoods((prev) => prev.filter((f) => f._id !== id));
     } catch (err) {
-      alert(err.message);
+      alert(err.message || "Delete failed.");
     }
   }
 
@@ -231,6 +253,7 @@ export default function Inventory() {
 
     try {
       setSaving(true);
+      setEditError("");
 
       const payload = {
         foodName: editItem.foodName,
@@ -240,7 +263,6 @@ export default function Inventory() {
         purchase_date: editItem.purchase_date,
         quantity: Number(editItem.quantity || 1),
         used_before_expiry: Boolean(editItem.used_before_expiry),
-        // ✅ backend update route accepts printedExpiryDate
         printedExpiryDate: editItem.printedExpiryDate || "",
       };
 
@@ -248,7 +270,7 @@ export default function Inventory() {
       setEditItem(null);
       await load();
     } catch (err) {
-      setEditError(err.message);
+      setEditError(err.message || "Update failed.");
     } finally {
       setSaving(false);
     }
@@ -261,24 +283,24 @@ export default function Inventory() {
     setPredictItem({ ...item });
     setPredictResult(null);
     setPredictError("");
+    setShowPredictPopup(false);
 
     const existingPrinted = item.printedExpiryDate || "";
     setPredictPrinted(existingPrinted);
     setNoPrinted(!existingPrinted);
 
-    // ✅ set smart defaults for env (based on storage + region)
     const storage = item.storage_type || "pantry";
-
-    // ✅ use normalized region key (handles backend-stored lowercase)
     const prevRegion = normalizeRegionKey(item.region || "Western");
 
     const prevHum =
-      item.storage_humidity_pct !== null && item.storage_humidity_pct !== undefined
+      item.storage_humidity_pct !== null &&
+      item.storage_humidity_pct !== undefined
         ? Number(item.storage_humidity_pct)
         : regionToHumidity(prevRegion);
 
     const prevTemp =
-      item.storage_temperature_c !== null && item.storage_temperature_c !== undefined
+      item.storage_temperature_c !== null &&
+      item.storage_temperature_c !== undefined
         ? Number(item.storage_temperature_c)
         : defaultTempByStorage(storage);
 
@@ -300,9 +322,9 @@ export default function Inventory() {
     setPredictLoading(false);
     setPredictPrinted("");
     setNoPrinted(false);
+    setShowPredictPopup(false);
   }
 
-  // when region changes -> auto update humidity to match region (user can still manually adjust)
   function handleRegionChange(val) {
     setPredictRegion(val);
     setPredictHumidity(regionToHumidity(val));
@@ -315,16 +337,20 @@ export default function Inventory() {
       setPredictError("User ID missing for this item.");
       return;
     }
-    if (!predictItem.item_name || !predictItem.item_category || !predictItem.purchase_date) {
-      setPredictError("Missing item_name / category / purchase_date. Please edit the item first.");
+    if (
+      !predictItem.item_name ||
+      !predictItem.item_category ||
+      !predictItem.purchase_date
+    ) {
+      setPredictError(
+        "Missing item_name / category / purchase_date. Please edit the item first."
+      );
       return;
     }
 
-    // ✅ Validate environment (UI-level)
     const storage = String(predictItem.storage_type || "pantry").toLowerCase();
     const hum = clamp(predictHumidity, 30, 98);
 
-    // storage-specific reasonable temp ranges (panel-friendly)
     let tempMin = 0;
     let tempMax = 40;
     if (storage === "fridge") {
@@ -337,12 +363,14 @@ export default function Inventory() {
       tempMin = 10;
       tempMax = 40;
     }
+
     const temp = clamp(predictTemp, tempMin, tempMax);
 
     try {
       setPredictLoading(true);
       setPredictError("");
       setPredictResult(null);
+      setShowPredictPopup(false);
 
       const payload = {
         foodId: predictItem._id,
@@ -353,10 +381,7 @@ export default function Inventory() {
         quantity: Number(predictItem.quantity || 1),
         storage_type: predictItem.storage_type,
         used_before_expiry: Boolean(predictItem.used_before_expiry),
-
         printed_expiry_date: noPrinted ? null : predictPrinted || null,
-
-        // ✅ environment passed from UI at prediction time
         region: predictRegion,
         storage_temperature_c: temp,
         storage_humidity_pct: hum,
@@ -364,39 +389,107 @@ export default function Inventory() {
 
       const data = await predictExpiry(payload);
       setPredictResult(data);
+      setShowPredictPopup(true);
 
-      // refresh inventory so finalExpiry/SCP persists
       const rows = await load();
       const updated = rows.find((r) => r._id === predictItem._id);
+
       if (updated) {
         setPredictItem(updated);
 
-        // ✅ NEW (necessary): refresh env fields from DB after predict save (better UX)
         const dbRegion = normalizeRegionKey(updated.region || predictRegion);
         setPredictRegion(dbRegion);
 
-        if (updated.storage_humidity_pct !== null && updated.storage_humidity_pct !== undefined) {
+        if (
+          updated.storage_humidity_pct !== null &&
+          updated.storage_humidity_pct !== undefined
+        ) {
           setPredictHumidity(Number(updated.storage_humidity_pct));
         }
 
-        if (updated.storage_temperature_c !== null && updated.storage_temperature_c !== undefined) {
+        if (
+          updated.storage_temperature_c !== null &&
+          updated.storage_temperature_c !== undefined
+        ) {
           setPredictTemp(Number(updated.storage_temperature_c));
         }
       }
     } catch (err) {
-      setPredictError(err.message);
+      setPredictError(err.message || "Prediction failed.");
     } finally {
       setPredictLoading(false);
     }
   }
+
+  const predictionSummary = useMemo(() => {
+    if (!predictResult || !predictItem) return null;
+
+    const purchaseDate = predictItem?.purchase_date || null;
+    const baselineDays = predictResult.baseline_days ?? null;
+    const personalizedDays = predictResult.personalized_days ?? null;
+
+    const baselineExpiry =
+      predictResult.baseline_expiry_date ||
+      (purchaseDate ? addDaysToDate(purchaseDate, baselineDays) : null);
+
+    const personalizedExpiryBeforeSafety =
+      predictResult.personalized_expiry_date ||
+      (purchaseDate && predictResult.personalization_enabled
+        ? addDaysToDate(purchaseDate, personalizedDays)
+        : null);
+
+    const finalExpiry = predictResult.final_expiry_date || null;
+
+    const daysLeftFromBaseline = baselineExpiry
+      ? daysBetween(todayISO(), baselineExpiry)
+      : null;
+
+    const daysLeftFromPersonal = personalizedExpiryBeforeSafety
+      ? daysBetween(todayISO(), personalizedExpiryBeforeSafety)
+      : null;
+
+    const usedRegion = predictResult.region || predictRegion;
+    const usedTemp =
+      predictResult.storage_temperature_c !== null &&
+      predictResult.storage_temperature_c !== undefined
+        ? predictResult.storage_temperature_c
+        : predictTemp;
+
+    const usedHum =
+      predictResult.storage_humidity_pct !== null &&
+      predictResult.storage_humidity_pct !== undefined
+        ? predictResult.storage_humidity_pct
+        : predictHumidity;
+
+    const scpScore =
+      predictResult.scpPriorityScore ??
+      predictResult.scp_priority_score ??
+      null;
+
+    return {
+      usedRegion,
+      usedTemp,
+      usedHum,
+      baselineExpiry,
+      personalizedExpiryBeforeSafety,
+      finalExpiry,
+      daysLeftFromBaseline,
+      daysLeftFromPersonal,
+      scpScore,
+      personalizationEnabled: Boolean(predictResult.personalization_enabled),
+    };
+  }, [predictResult, predictItem, predictRegion, predictTemp, predictHumidity]);
 
   return (
     <div className="fe-layout">
       <Sidebar />
       <div className="fe-main">
         <Topbar title="Inventory" />
+
         <div className="fe-main__content">
-          {apiError && <div className="fe-alert fe-alert--error">{apiError}</div>}
+          {apiError && (
+            <div className="fe-alert fe-alert--error">{apiError}</div>
+          )}
 
           <div className="fe-table-wrapper fe-card">
             <div className="fe-table-header">
@@ -430,7 +523,9 @@ export default function Inventory() {
                   sortedFoods.map((f) => (
                     <tr key={f._id}>
                       <td>
-                        <div className="fe-strong">{f.foodName || f.item_name}</div>
+                        <div className="fe-strong">
+                          {f.foodName || f.item_name}
+                        </div>
                         <div className="fe-muted fe-small">{f.item_name}</div>
                       </td>
 
@@ -449,16 +544,22 @@ export default function Inventory() {
                           <span className="fe-muted">
                             — (Not started
                             {daysUntilPurchase(f.purchase_date) !== null
-                              ? `, in ${daysUntilPurchase(f.purchase_date)} day(s)`
+                              ? `, in ${daysUntilPurchase(
+                                  f.purchase_date
+                                )} day(s)`
                               : ""}
                             )
                           </span>
                         ) : (
                           <>
                             {f.scpPriorityScore ?? "—"}
-                            {f.scpPriorityScore !== null && f.scpPriorityScore !== undefined && (
-                              <span className="fe-muted fe-small"> ({scpLabel(f.scpPriorityScore)})</span>
-                            )}
+                            {f.scpPriorityScore !== null &&
+                              f.scpPriorityScore !== undefined && (
+                                <span className="fe-muted fe-small">
+                                  {" "}
+                                  ({scpLabel(f.scpPriorityScore)})
+                                </span>
+                              )}
                           </>
                         )}
                       </td>
@@ -477,17 +578,25 @@ export default function Inventory() {
                           Predict
                         </button>
 
-                        <button className="fe-btn fe-btn--ghost" onClick={() => startEdit(f)}>
+                        <button
+                          className="fe-btn fe-btn--ghost"
+                          onClick={() => startEdit(f)}
+                        >
                           Edit
                         </button>
 
-                        <button className="fe-btn fe-btn--danger" onClick={() => handleDelete(f._id)}>
+                        <button
+                          className="fe-btn fe-btn--danger"
+                          onClick={() => handleDelete(f._id)}
+                        >
                           Delete
                         </button>
 
                         <button
                           className="fe-btn fe-btn--ghost"
-                          onClick={() => navigate(`/food-expiry/predict?foodId=${f._id}`)}
+                          onClick={() =>
+                            navigate(`/food-expiry/predict?foodId=${f._id}`)
+                          }
                         >
                           History
                         </button>
@@ -504,49 +613,66 @@ export default function Inventory() {
             </table>
           </div>
 
-          {/* ----------------------------- */}
           {/* PREDICT MODAL */}
-          {/* ----------------------------- */}
           {predictItem && (
             <div className="fe-modal" role="dialog" aria-modal="true">
-              <div className="fe-modal__content">
+              <div className="fe-modal__content fe-modal__content--predict">
                 <div className="fe-modal__header">
                   <h3 style={{ margin: 0 }}>Predict Expiry</h3>
-                  <button className="fe-btn fe-btn--ghost" onClick={closePredict}>
+                  <button
+                    className="fe-btn fe-btn--ghost"
+                    onClick={closePredict}
+                  >
                     ✕
                   </button>
                 </div>
 
                 <div className="fe-result-box">
-                  <div className="fe-small fe-muted">Stored item details (read-only)</div>
-                  <div className="fe-strong">{predictItem.foodName || predictItem.item_name}</div>
-                  <div className="fe-muted fe-small">User ID: {predictItem.userId || "—"}</div>
-                  <div className="fe-muted fe-small">
-                    Item: {predictItem.item_name} • Category: {predictItem.item_category}
+                  <div className="fe-small fe-muted">
+                    Stored item details (read-only)
+                  </div>
+                  <div className="fe-strong">
+                    {predictItem.foodName || predictItem.item_name}
                   </div>
                   <div className="fe-muted fe-small">
-                    Purchase: {predictItem.purchase_date} • Storage: {predictItem.storage_type} • Qty:{" "}
+                    User ID: {predictItem.userId || "—"}
+                  </div>
+                  <div className="fe-muted fe-small">
+                    Item: {predictItem.item_name} • Category:{" "}
+                    {predictItem.item_category}
+                  </div>
+                  <div className="fe-muted fe-small">
+                    Purchase: {predictItem.purchase_date} • Storage:{" "}
+                    {predictItem.storage_type} • Qty:{" "}
                     {predictItem.quantity ?? 1}
                   </div>
                 </div>
 
-                {/* ✅ ENVIRONMENT INPUTS */}
                 <div className="fe-card mt-3">
-                  <h4 className="fe-section__title mb-2" style={{ fontSize: 16 }}>
+                  <h4
+                    className="fe-section__title mb-2"
+                    style={{ fontSize: 16 }}
+                  >
                     Storage Environment (for prediction)
                   </h4>
+
                   <div className="fe-muted fe-small" style={{ marginBottom: 10 }}>
-                    Select your region to apply a typical humidity value for Sri Lanka, and enter the storage temperature.
+                    Select your region to apply a typical humidity value for Sri
+                    Lanka, and enter the storage temperature.
                     <br />
                     <span className="fe-muted fe-small">
-                      Note: The backend may clamp values to storage-safe bounds for consistency with the trained model.
+                      Note: The backend may clamp values to storage-safe bounds
+                      for consistency with the trained model.
                     </span>
                   </div>
 
                   <div className="fe-form__grid">
                     <div className="fe-form__group">
                       <label>Region (Sri Lanka)</label>
-                      <select value={predictRegion} onChange={(e) => handleRegionChange(e.target.value)}>
+                      <select
+                        value={predictRegion}
+                        onChange={(e) => handleRegionChange(e.target.value)}
+                      >
                         {SL_REGIONS.map((r) => (
                           <option key={r.key} value={r.key}>
                             {r.key} (≈ {r.humidity}% humidity)
@@ -564,7 +690,9 @@ export default function Inventory() {
                         value={predictHumidity}
                         onChange={(e) => setPredictHumidity(e.target.value)}
                       />
-                      <div className="fe-muted fe-small">Auto-filled from region, but you can adjust.</div>
+                      <div className="fe-muted fe-small">
+                        Auto-filled from region, but you can adjust.
+                      </div>
                     </div>
                   </div>
 
@@ -606,162 +734,139 @@ export default function Inventory() {
                   </label>
                 </div>
 
-                {predictError && <div className="fe-alert fe-alert--error mt-3">{predictError}</div>}
+                {predictError && (
+                  <div className="fe-alert fe-alert--error mt-3">
+                    {predictError}
+                  </div>
+                )}
 
                 <div className="fe-modal__actions">
-                  <button className="fe-btn fe-btn--ghost" onClick={closePredict} disabled={predictLoading}>
+                  <button
+                    className="fe-btn fe-btn--ghost"
+                    onClick={closePredict}
+                    disabled={predictLoading}
+                  >
                     Close
                   </button>
-                  <button className="fe-btn fe-btn--primary" onClick={runPredict} disabled={predictLoading}>
+                  <button
+                    className="fe-btn fe-btn--primary"
+                    onClick={runPredict}
+                    disabled={predictLoading}
+                  >
                     {predictLoading ? "Predicting..." : "Run Prediction"}
                   </button>
                 </div>
 
-                {predictResult && (
-                  <div className="fe-card mt-4">
-                    <h4 className="fe-section__title mb-3">Prediction Result</h4>
+                {showPredictPopup && predictionSummary && (
+                  <div className="fe-predict-inline-popup">
+                    <button
+                      className="fe-predict-inline-popup__close"
+                      onClick={() => setShowPredictPopup(false)}
+                      type="button"
+                    >
+                      ×
+                    </button>
 
-                    {(() => {
-                      const purchaseDate = predictItem?.purchase_date || null;
-                      const baselineDays = predictResult.baseline_days ?? null;
-                      const personalizedDays = predictResult.personalized_days ?? null;
+                    <div className="fe-predict-inline-popup__header">
+                      <div className="fe-predict-inline-popup__icon">✓</div>
+                      <div>
+                        <h3>Prediction Completed</h3>
+                        <p>Your expiry result is ready</p>
+                      </div>
+                    </div>
 
-                      const baselineExpiry =
-                        predictResult.baseline_expiry_date ||
-                        (purchaseDate ? addDaysToDate(purchaseDate, baselineDays) : null);
+                    <div className="fe-predict-inline-popup__body">
+                      <div className="fe-predict-inline-popup__env">
+                        <span>Environment used</span>
+                        <strong>
+                          {String(predictionSummary.usedRegion || "—")} •{" "}
+                          {clamp(predictionSummary.usedTemp, -30, 60)}°C •{" "}
+                          {clamp(predictionSummary.usedHum, 0, 100)}%
+                        </strong>
+                      </div>
 
-                      const personalizedExpiryBeforeSafety =
-                        predictResult.personalized_expiry_date ||
-                        (purchaseDate && predictResult.personalization_enabled
-                          ? addDaysToDate(purchaseDate, personalizedDays)
-                          : null);
+                      <div className="fe-predict-inline-popup__row">
+                        <span>Final Expiry</span>
+                        <strong className="fe-predict-inline-popup__highlight">
+                          {predictionSummary.finalExpiry || "—"}
+                        </strong>
+                      </div>
 
-                      const finalExpiry = predictResult.final_expiry_date || null;
+                      <div className="fe-predict-inline-popup__row">
+                        <span>Baseline Expiry</span>
+                        <strong>{predictionSummary.baselineExpiry || "—"}</strong>
+                      </div>
 
-                      const daysLeftFromBaseline = baselineExpiry
-                        ? daysBetween(todayISO(), baselineExpiry)
-                        : null;
-
-                      const daysLeftFromPersonal = personalizedExpiryBeforeSafety
-                        ? daysBetween(todayISO(), personalizedExpiryBeforeSafety)
-                        : null;
-
-                      // ✅ NEW (necessary): show actual env values used by backend (clamped), not just local input
-                      const usedRegion = predictResult.region || predictRegion;
-                      const usedTemp =
-                        predictResult.storage_temperature_c !== null &&
-                        predictResult.storage_temperature_c !== undefined
-                          ? predictResult.storage_temperature_c
-                          : predictTemp;
-
-                      const usedHum =
-                        predictResult.storage_humidity_pct !== null &&
-                        predictResult.storage_humidity_pct !== undefined
-                          ? predictResult.storage_humidity_pct
-                          : predictHumidity;
-
-                      return (
-                        <div className="fe-result-box">
-                          <p className="fe-muted fe-small" style={{ marginBottom: 6 }}>
-                            Environment used:
-                          </p>
-                          <p className="fe-muted fe-small" style={{ marginTop: 0 }}>
-                            Region: <strong>{String(usedRegion || "—")}</strong> • Temp:{" "}
-                            <strong>{clamp(usedTemp, -30, 60)}°C</strong> • Humidity:{" "}
-                            <strong>{clamp(usedHum, 0, 100)}%</strong>
-                          </p>
-
-                          <div style={{ height: 10 }} />
-
-                          <p className="fe-muted fe-small" style={{ marginBottom: 6 }}>
-                            Baseline (Original) Expiry Date:
-                          </p>
-                          <p style={{ fontWeight: 700, marginTop: 0 }}>{baselineExpiry || "—"}</p>
-
-                          {predictResult.personalization_enabled && (
-                            <>
-                              <div style={{ height: 10 }} />
-                              <p className="fe-muted fe-small" style={{ marginBottom: 6 }}>
-                                Personalized Expiry (Before Safety):
-                              </p>
-                              <p style={{ fontWeight: 700, marginTop: 0 }}>
-                                {personalizedExpiryBeforeSafety || "—"}{" "}
-                                <span className="fe-muted fe-small">← derived from your habits</span>
-                              </p>
-                            </>
-                          )}
-
-                          <div style={{ height: 10 }} />
-                          <p className="fe-muted fe-small" style={{ marginBottom: 6 }}>
-                            Final Expiry Date (Used by System):
-                          </p>
-                          <p
-                            style={{
-                              fontWeight: 900,
-                              marginTop: 0,
-                              padding: "10px 12px",
-                              borderRadius: 10,
-                              background: "rgba(34,197,94,0.10)",
-                              display: "inline-block",
-                            }}
-                          >
-                            {finalExpiry || "—"}
-                          </p>
-
-                          <div style={{ height: 10 }} />
-                          <p className="fe-muted fe-small">
-                            Days left from original expiry:{" "}
-                            <strong>{daysLeftFromBaseline !== null ? daysLeftFromBaseline : "—"}</strong>
-                          </p>
-
-                          {predictResult.personalization_enabled && (
-                            <p className="fe-muted fe-small">
-                              Days left from personalized expiry:{" "}
-                              <strong>{daysLeftFromPersonal !== null ? daysLeftFromPersonal : "—"}</strong>
-                            </p>
-                          )}
-
-                          <p className="mt-2">
-                            <strong>SCP Priority Score:</strong>{" "}
-                            {predictResult.scpPriorityScore ?? "—"}{" "}
-                            {predictResult.scpPriorityScore !== null &&
-                              predictResult.scpPriorityScore !== undefined && (
-                                <span className="fe-muted fe-small">
-                                  ({scpLabel(predictResult.scpPriorityScore)})
-                                </span>
-                              )}
-                          </p>
+                      {predictionSummary.personalizationEnabled && (
+                        <div className="fe-predict-inline-popup__row">
+                          <span>Personalized Expiry</span>
+                          <strong>
+                            {predictionSummary.personalizedExpiryBeforeSafety ||
+                              "—"}
+                          </strong>
                         </div>
-                      );
-                    })()}
+                      )}
+
+                      <div className="fe-predict-inline-popup__row">
+                        <span>Days Left</span>
+                        <strong>
+                          {predictionSummary.personalizationEnabled
+                            ? predictionSummary.daysLeftFromPersonal ?? "—"
+                            : predictionSummary.daysLeftFromBaseline ?? "—"}
+                        </strong>
+                      </div>
+
+                      <div className="fe-predict-inline-popup__row">
+                        <span>SCP Score</span>
+                        <strong>
+                          {predictionSummary.scpScore ?? "—"}
+                          {predictionSummary.scpScore !== null &&
+                            predictionSummary.scpScore !== undefined && (
+                              <span className="fe-muted fe-small">
+                                {" "}
+                                ({scpLabel(predictionSummary.scpScore)})
+                              </span>
+                            )}
+                        </strong>
+                      </div>
+                    </div>
                   </div>
                 )}
               </div>
             </div>
           )}
 
-          {/* ----------------------------- */}
           {/* EDIT MODAL */}
-          {/* ----------------------------- */}
           {editItem && (
             <div className="fe-modal" role="dialog" aria-modal="true">
               <div className="fe-modal__content">
                 <div className="fe-modal__header">
                   <h3 style={{ margin: 0 }}>Edit Item</h3>
-                  <button className="fe-btn fe-btn--ghost" onClick={() => setEditItem(null)}>
+                  <button
+                    className="fe-btn fe-btn--ghost"
+                    onClick={() => setEditItem(null)}
+                  >
                     ✕
                   </button>
                 </div>
 
                 <div className="fe-form__group">
                   <label>Food Name</label>
-                  <input name="foodName" value={editItem.foodName || ""} onChange={handleEditChange} />
+                  <input
+                    name="foodName"
+                    value={editItem.foodName || ""}
+                    onChange={handleEditChange}
+                  />
                 </div>
 
                 <div className="fe-form__grid">
                   <div className="fe-form__group">
                     <label>Item Name</label>
-                    <input name="item_name" value={editItem.item_name || ""} onChange={handleEditChange} />
+                    <input
+                      name="item_name"
+                      value={editItem.item_name || ""}
+                      onChange={handleEditChange}
+                    />
                   </div>
                   <div className="fe-form__group">
                     <label>Category</label>
@@ -776,12 +881,17 @@ export default function Inventory() {
                 <div className="fe-form__grid">
                   <div className="fe-form__group">
                     <label>Storage</label>
-                    <select name="storage_type" value={editItem.storage_type} onChange={handleEditChange}>
+                    <select
+                      name="storage_type"
+                      value={editItem.storage_type}
+                      onChange={handleEditChange}
+                    >
                       <option value="fridge">Fridge</option>
                       <option value="freezer">Freezer</option>
                       <option value="pantry">Pantry</option>
                     </select>
                   </div>
+
                   <div className="fe-form__group">
                     <label>Purchase Date</label>
                     <input
@@ -828,13 +938,22 @@ export default function Inventory() {
                   />
                 </div>
 
-                {editError && <div className="fe-alert fe-alert--error">{editError}</div>}
+                {editError && (
+                  <div className="fe-alert fe-alert--error">{editError}</div>
+                )}
 
                 <div className="fe-modal__actions">
-                  <button className="fe-btn fe-btn--ghost" onClick={() => setEditItem(null)}>
+                  <button
+                    className="fe-btn fe-btn--ghost"
+                    onClick={() => setEditItem(null)}
+                  >
                     Cancel
                   </button>
-                  <button className="fe-btn fe-btn--primary" onClick={saveEdit} disabled={saving}>
+                  <button
+                    className="fe-btn fe-btn--primary"
+                    onClick={saveEdit}
+                    disabled={saving}
+                  >
                     {saving ? "Saving..." : "Save Changes"}
                   </button>
                 </div>

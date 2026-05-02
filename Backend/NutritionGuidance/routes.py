@@ -7,7 +7,8 @@ from NutritionGuidance.services.food_search import search_foods
 from NutritionGuidance.services.intake_store import add_intake, get_summary
 from NutritionGuidance.services.report_service import build_report
 from NutritionGuidance.services.dataset_loader import get_datasets
-from NutritionGuidance.services.ml_risk_service import predict_risk
+from NutritionGuidance.services.ml_deficiency_predictor import predict_deficiency_risk
+from NutritionGuidance.services.requirement_service import pick_requirements
 
 # trained 2-week report (4 nutrients only)
 from NutritionGuidance.services.trained_report_service import build_trained_two_week_report
@@ -145,33 +146,98 @@ def ml_risk():
 
     profile = get_profile(current_app, user_id) or {}
 
-    # Safe age parsing
     try:
         age = int(profile.get("age") or 22)
     except Exception:
         age = 22
 
-    # Summary + avg fallback
-    summary = get_summary(current_app, user_id, period) or {}
-    # Keep both keys compatibility
-    avg = summary.get("daily_average_over_period") or summary.get("daily_average") or summary.get("daily_average_logged_days") or {}
-
-    # Condition: pick first (you can enhance later to support multiple)
+    group = profile.get("group") or "general"
     conditions = profile.get("conditions") or []
     condition = conditions[0] if isinstance(conditions, list) and len(conditions) > 0 else None
 
-    risk = predict_risk(age, avg, condition=condition)
+    summary = get_summary(current_app, user_id, period) or {}
+    avg = (
+        summary.get("daily_average_over_period")
+        or summary.get("daily_average")
+        or summary.get("daily_average_logged_days")
+        or {}
+    )
+
+    _, req_df, _ = get_datasets(current_app)
+    requirement = pick_requirements(req_df, age, group) or {}
+
+    condition_flag = 1 if condition else 0
+
+    gender_code = 2
+    if str(group).lower().startswith("m"):
+        gender_code = 1
+    elif str(group).lower().startswith("f"):
+        gender_code = 0
+
+    user_features = {
+        "age": age,
+        "gender_code": gender_code,
+        "condition_flag": condition_flag,
+
+        "energy_intake": float(avg.get("energy_kcal", 0) or 0),
+        "protein_intake": float(avg.get("protein_g", 0) or 0),
+        "calcium_intake": float(avg.get("calcium_mg", 0) or 0),
+        "iron_intake": float(avg.get("iron_mg", 0) or 0),
+
+        "required_energy": float(requirement.get("energy_kcal", 0) or requirement.get("energy", 0) or 0),
+        "required_protein": float(requirement.get("protein_g", 0) or requirement.get("protein", 0) or 0),
+        "required_calcium": float(requirement.get("calcium_mg", 0) or requirement.get("calcium", 0) or 0),
+        "required_iron": float(requirement.get("iron_mg", 0) or requirement.get("iron", 0) or 0),
+    }
+
+    risk = predict_deficiency_risk(user_features)
 
     return {
         "user_id": user_id,
         "period": period,
         "ml_deficiency_risk": risk,
         "age": age,
+        "group": group,
         "condition": condition,
-        "inputs_used": {
-            "energy_kcal": float(avg.get("energy_kcal", 0) or 0),
-            "protein_g": float(avg.get("protein_g", 0) or 0),
-            "calcium_mg": float(avg.get("calcium_mg", 0) or 0),
-            "iron_mg": float(avg.get("iron_mg", 0) or 0),
-        },
+        "inputs_used": user_features,
+    }
+
+# --------------------------------------------------
+# ML DEFICIENCY RISK SIMULATION (Custom inputs)
+# --------------------------------------------------
+@nutrition_bp.route("/ml-risk/simulate", methods=["POST"])
+def ml_risk_simulate():
+    data = request.get_json(force=True) or {}
+
+    try:
+        age = int(data.get("age", 30))
+    except Exception:
+        age = 30
+
+    condition = data.get("condition")
+    condition_flag = 1 if condition else 0
+
+    user_features = {
+        "age": age,
+        "gender_code": int(data.get("gender_code", 2)),
+        "condition_flag": condition_flag,
+
+        "energy_intake": float(data.get("energy_kcal", 0) or 0),
+        "protein_intake": float(data.get("protein_g", 0) or 0),
+        "calcium_intake": float(data.get("calcium_mg", 0) or 0),
+        "iron_intake": float(data.get("iron_mg", 0) or 0),
+
+        "required_energy": float(data.get("required_energy", 2200) or 2200),
+        "required_protein": float(data.get("required_protein", 55) or 55),
+        "required_calcium": float(data.get("required_calcium", 1000) or 1000),
+        "required_iron": float(data.get("required_iron", 18) or 18),
+    }
+
+    risk = predict_deficiency_risk(user_features)
+
+    return {
+        "ml_deficiency_risk": risk,
+        "age": age,
+        "condition": condition,
+        "inputs_used": user_features,
     }
