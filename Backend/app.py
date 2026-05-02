@@ -1,7 +1,8 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, Blueprint
 from flask_cors import CORS
 from extensions import mongo, bcrypt, jwt
 from dotenv import load_dotenv
+from werkzeug.exceptions import HTTPException
 import os
 import traceback
 
@@ -68,6 +69,8 @@ def add_cors_headers(resp):
 # --------------------------------------------------------
 @app.errorhandler(Exception)
 def handle_exception(e):
+    if isinstance(e, HTTPException):
+        return jsonify({"error": e.name, "message": e.description}), e.code
     print("ERROR:", str(e))
     traceback.print_exc()
     return jsonify({"error": "Internal Server Error", "message": str(e)}), 500
@@ -95,6 +98,7 @@ app.register_blueprint(nutrition_bp, url_prefix="/api/nutrition")
 # FoodExpiry (only if Mongo configured)
 # --------------------------------------------------------
 food_bp_available = False
+food_disabled_reason = None
 try:
     MONGO_URI = os.getenv("MONGO_URI", "").strip()
     if MONGO_URI:
@@ -105,14 +109,31 @@ try:
         food_bp_available = True
         print("[OK] FoodExpiry enabled (Mongo connected).")
     else:
+        food_disabled_reason = "MONGO_URI is not set"
         print("[WARN] FoodExpiry disabled (MONGO_URI not set).")
 except Exception as e:
     if isinstance(e, ModuleNotFoundError) and "catboost" in str(e):
+        food_disabled_reason = "missing dependency: catboost"
         print("[WARN] FoodExpiry disabled due to missing dependency: catboost is required.")
         print("       Install it with: python -m pip install -r Backend/requirements.txt")
     else:
+        food_disabled_reason = f"Mongo error: {str(e)}"
         print("[WARN] FoodExpiry disabled due to Mongo error:", str(e))
     food_bp_available = False
+
+if not food_bp_available:
+    disabled_bp = Blueprint("food_disabled_bp", __name__)
+
+    @disabled_bp.route("/", methods=["GET"])
+    @disabled_bp.route("/<path:path>", methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"])
+    def food_disabled(path=None):
+        msg = (
+            f"FoodExpiry module is disabled: {food_disabled_reason}. "
+            "Please check MONGO_URI, install missing dependencies, and restart the backend."
+        )
+        return jsonify({"error": "FoodExpiry unavailable", "message": msg}), 503
+
+    app.register_blueprint(disabled_bp, url_prefix="/api/food")
 
 # --------------------------------------------------------
 # Health check
