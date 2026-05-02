@@ -107,7 +107,11 @@ try:
     else:
         print("[WARN] FoodExpiry disabled (MONGO_URI not set).")
 except Exception as e:
-    print("[WARN] FoodExpiry disabled due to Mongo error:", str(e))
+    if isinstance(e, ModuleNotFoundError) and "catboost" in str(e):
+        print("[WARN] FoodExpiry disabled due to missing dependency: catboost is required.")
+        print("       Install it with: python -m pip install -r Backend/requirements.txt")
+    else:
+        print("[WARN] FoodExpiry disabled due to Mongo error:", str(e))
     food_bp_available = False
 
 # --------------------------------------------------------
