@@ -6,7 +6,7 @@ from NutritionGuidance.services.profile_store import get_profile
 from NutritionGuidance.services.intake_store import get_summary
 from NutritionGuidance.services.requirement_service import pick_requirements
 from NutritionGuidance.services.condition_rules import apply_condition_rules
-from NutritionGuidance.services.ml_risk_service import predict_risk
+from NutritionGuidance.services.ml_deficiency_predictor import predict_deficiency_risk
 
 TRAINED_KEYS = ["energy_kcal", "protein_g", "calcium_mg", "iron_mg"]
 
@@ -82,6 +82,33 @@ def build_trained_two_week_report(app, user_id: str, period: str = "monthly", da
     start = date.today()
     end = start + timedelta(days=days - 1)
 
+    # ML overall deficiency risk using newer explicit feature mapping 
+    condition_flag = 1 if len(conditions) > 0 else 0
+    gender_code = 2
+    if str(group).lower().startswith("m"):
+        gender_code = 1
+    elif str(group).lower().startswith("f"):
+        gender_code = 0
+
+    user_features = {
+        "age": age,
+        "gender_code": gender_code,
+        "condition_flag": condition_flag,
+
+        "energy_intake": _safe_float(avg.get("energy_kcal", 0)),
+        "protein_intake": _safe_float(avg.get("protein_g", 0)),
+        "calcium_intake": _safe_float(avg.get("calcium_mg", 0)),
+        "iron_intake": _safe_float(avg.get("iron_mg", 0)),
+
+        "required_energy": _safe_float(base_req_row.get("energy_kcal", 0) or base_req_row.get("energy", 0)),
+        "required_protein": _safe_float(base_req_row.get("protein_g", 0) or base_req_row.get("protein", 0)),
+        "required_calcium": _safe_float(base_req_row.get("calcium_mg", 0) or base_req_row.get("calcium", 0)),
+        "required_iron": _safe_float(base_req_row.get("iron_mg", 0) or base_req_row.get("iron", 0)),
+    }
+
+    ml_risk_dict = predict_deficiency_risk(user_features)
+    ml_risk = ml_risk_dict.get("risk_level", "N/A")
+
     nutrients = []
     for k in TRAINED_KEYS:
         required_day = _safe_float(adj_req.get(k, 0))
@@ -93,6 +120,9 @@ def build_trained_two_week_report(app, user_id: str, period: str = "monthly", da
         deficit = max(0.0, required_total - intake_total)
         ratio = (deficit / required_total) if required_total > 0 else (1.0 if deficit > 0 else 0.0)
 
+        nutrient_name = k.split("_")[0]
+        ml_n_risk = ml_risk_dict.get("nutrient_breakdown", {}).get(nutrient_name, {}).get("risk_level", _level_from_ratio(ratio))
+
         nutrients.append(
             {
                 "key": k,
@@ -102,13 +132,9 @@ def build_trained_two_week_report(app, user_id: str, period: str = "monthly", da
                 "required_total_14d": round(required_total, 2),
                 "expected_total_14d": round(intake_total, 2),
                 "deficit_total_14d": round(deficit, 2),
-                "deficiency_level_next_14d": _level_from_ratio(ratio),
+                "deficiency_level_next_14d": ml_n_risk,
             }
         )
-
-    # ML overall deficiency risk (uses first condition if exists)
-    condition_for_ml = conditions[0] if len(conditions) > 0 else None
-    ml_risk = predict_risk(age, avg, condition=condition_for_ml)
 
     # build clean narrative lines for UI
     lines = []

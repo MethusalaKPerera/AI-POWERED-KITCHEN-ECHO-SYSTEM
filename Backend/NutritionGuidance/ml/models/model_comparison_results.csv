@@ -1,0 +1,5 @@
+model,accuracy,precision_weighted,recall_weighted,f1_weighted,cv_f1_mean,cv_f1_std
+Gradient Boosting,0.9922,0.9924,0.9922,0.9922,0.9782,0.0097
+Random Forest,0.9609,0.9627,0.9609,0.9612,0.9588,0.0148
+Logistic Regression,0.9102,0.9134,0.9102,0.911,0.9199,0.0198
+Decision Tree,0.9023,0.9104,0.9023,0.9038,0.9384,0.0136

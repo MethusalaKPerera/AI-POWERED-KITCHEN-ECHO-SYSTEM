@@ -1,419 +1,510 @@
 import os
+import json
 import joblib
 import numpy as np
 import pandas as pd
 
 from sklearn.model_selection import train_test_split, StratifiedKFold, cross_val_score
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import classification_report, accuracy_score
+from sklearn.preprocessing import LabelEncoder, StandardScaler
+from sklearn.pipeline import Pipeline
+from sklearn.impute import SimpleImputer
+from sklearn.metrics import (
+    accuracy_score,
+    classification_report,
+    confusion_matrix,
+    f1_score,
+    precision_score,
+    recall_score,
+)
+from sklearn.linear_model import LogisticRegression
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 
 
 # ------------------------------------------------------------
 # PATHS
 # ------------------------------------------------------------
-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))  # backend/
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 DATA_DIR = os.path.join(BASE_DIR, "data")
 
-FOOD_PATH = os.path.join(DATA_DIR, "SL_Food_Nutrition_Master.csv")
-REQ_PATH = os.path.join(DATA_DIR, "SL_Nutrient_Requirements_By_Age.csv")
-COND_PATH = os.path.join(DATA_DIR, "Health_Condition_Nutrient_Adjustments.csv")
+MODEL_DIR = os.path.join(BASE_DIR, "NutritionGuidance", "ml", "models")
+os.makedirs(MODEL_DIR, exist_ok=True)
 
-MODEL_DIR = os.path.dirname(__file__)
-MODEL_PATH = os.path.join(MODEL_DIR, "deficiency_risk_model.pkl")
+REQUIREMENTS_PATH = os.path.join(DATA_DIR, "SL_Nutrient_Requirements_By_Age.csv")
 
-RANDOM_SEED = 42
-np.random.seed(RANDOM_SEED)
+OUTPUT_MODEL_PATH = os.path.join(MODEL_DIR, "deficiency_risk_model.pkl")
+OUTPUT_ENCODER_PATH = os.path.join(MODEL_DIR, "risk_label_encoder.pkl")
+OUTPUT_FEATURES_PATH = os.path.join(MODEL_DIR, "deficiency_model_features.json")
+OUTPUT_COMPARISON_PATH = os.path.join(MODEL_DIR, "model_comparison_results.csv")
+OUTPUT_IMPORTANCE_PATH = os.path.join(MODEL_DIR, "feature_importance.csv")
 
 
 # ------------------------------------------------------------
 # HELPERS
 # ------------------------------------------------------------
-def pick_col(df, aliases):
-    """
-    Finds the first matching column name in a DataFrame based on a list of aliases.
-    This allows for flexible column names in user-provided CSVs.
-    
-    Args:
-        df (pd.DataFrame): The DataFrame to search.
-        aliases (list): A list of possible column name strings.
-        
-    Returns:
-        str or None: The exact matching column name, or None if not found.
-    """
-    cols = {c.strip().lower(): c for c in df.columns}
-    for a in aliases:
-        key = a.strip().lower()
-        if key in cols:
-            return cols[key]
+def find_column(df, possible_names):
+    normalized = {
+        col.lower().strip().replace(" ", "_"): col
+        for col in df.columns
+    }
+
+    for name in possible_names:
+        key = name.lower().strip().replace(" ", "_")
+        if key in normalized:
+            return normalized[key]
+
     return None
 
 
-def normalize_food_columns(food_df):
-    """
-    Standardizes the column names of the food dataset to a consistent internal format.
-    Ensures that essential columns (food, energy, protein, calcium, iron) exist
-    and drops rows with missing nutritional data.
-    
-    Args:
-        food_df (pd.DataFrame): Raw food data loaded from the CSV.
-        
-    Returns:
-        pd.DataFrame: Cleaned and normalized food dataset.
-    
-    Raises:
-        ValueError: If required columns cannot be found.
-    """
-    col_food = pick_col(food_df, ["food", "food_name", "item_name", "name"])
-    col_energy = pick_col(food_df, ["energy_kcal", "energy", "kcal", "calories"])
-    col_protein = pick_col(food_df, ["protein_g", "protein"])
-    col_calcium = pick_col(food_df, ["calcium_mg", "calcium"])
-    col_iron = pick_col(food_df, ["iron_mg", "iron"])
+def safe_divide(actual, required):
+    try:
+        actual = float(actual or 0)
+        required = float(required or 0)
+        if required <= 0:
+            return 0
+        return actual / required
+    except Exception:
+        return 0
+
+
+def classify_risk(row):
+    ratios = [
+        row["energy_ratio"],
+        row["protein_ratio"],
+        row["calcium_ratio"],
+        row["iron_ratio"],
+    ]
+
+    deficient_count = sum(r < 0.75 for r in ratios)
+    very_low_count = sum(r < 0.50 for r in ratios)
+    avg_score = np.mean(ratios)
+
+    if very_low_count >= 1 or deficient_count >= 3 or avg_score < 0.65:
+        return "HIGH"
+    elif deficient_count >= 1 or avg_score < 0.90:
+        return "MEDIUM"
+    else:
+        return "LOW"
+
+
+def classify_single_nutrient(ratio):
+    ratio = float(ratio or 0)
+
+    if ratio >= 0.90:
+        return "LOW"
+    elif ratio >= 0.70:
+        return "MEDIUM"
+    else:
+        return "HIGH"
+
+
+# ------------------------------------------------------------
+# DATA GENERATION
+# ------------------------------------------------------------
+def generate_training_dataset(requirements_df, samples_per_group=80, random_state=42):
+    rng = np.random.default_rng(random_state)
+
+    col_age_min = find_column(requirements_df, ["age_min", "min_age", "age from"])
+    col_age_max = find_column(requirements_df, ["age_max", "max_age", "age to"])
+    col_gender = find_column(requirements_df, ["gender", "sex", "group"])
+    col_energy = find_column(requirements_df, ["energy", "energy_kcal", "calories", "kcal"])
+    col_protein = find_column(requirements_df, ["protein", "protein_g"])
+    col_calcium = find_column(requirements_df, ["calcium", "calcium_mg"])
+    col_iron = find_column(requirements_df, ["iron", "iron_mg"])
 
     missing = [
-        ("food", col_food),
-        ("energy", col_energy),
-        ("protein", col_protein),
-        ("calcium", col_calcium),
-        ("iron", col_iron),
+        name for name, col in [
+            ("age_min", col_age_min),
+            ("age_max", col_age_max),
+            ("energy", col_energy),
+            ("protein", col_protein),
+            ("calcium", col_calcium),
+            ("iron", col_iron),
+        ]
+        if col is None
     ]
-    missing = [n for n, c in missing if c is None]
+
     if missing:
-        raise ValueError(
-            f"Food master is missing required columns: {missing}\n"
-            f"Available columns: {list(food_df.columns)}"
+        raise ValueError(f"Missing required columns in requirement dataset: {missing}")
+
+    rows = []
+
+    health_conditions = [
+        "none",
+        "diabetes",
+        "hypertension",
+        "anemia",
+        "pregnancy",
+    ]
+
+    for _, req in requirements_df.iterrows():
+        age_min = float(req[col_age_min])
+        age_max = float(req[col_age_max])
+
+        gender_value = (
+            str(req[col_gender]).strip().lower()
+            if col_gender
+            else "general"
         )
 
-    out = food_df[[col_food, col_energy, col_protein, col_calcium, col_iron]].copy()
-    out.columns = ["food", "energy_kcal", "protein_g", "calcium_mg", "iron_mg"]
+        if gender_value.startswith("m"):
+            gender_code = 1
+        elif gender_value.startswith("f"):
+            gender_code = 0
+        else:
+            gender_code = 2
 
-    for c in ["energy_kcal", "protein_g", "calcium_mg", "iron_mg"]:
-        out[c] = pd.to_numeric(out[c], errors="coerce")
+        required_energy = float(req[col_energy])
+        required_protein = float(req[col_protein])
+        required_calcium = float(req[col_calcium])
+        required_iron = float(req[col_iron])
 
-    out = out.dropna(subset=["energy_kcal", "protein_g", "calcium_mg", "iron_mg"])
-    return out
+        if age_max < age_min:
+            continue
+
+        for _ in range(samples_per_group):
+            age = rng.integers(int(age_min), int(age_max) + 1)
+
+            health_condition = rng.choice(
+                health_conditions,
+                p=[0.55, 0.12, 0.10, 0.13, 0.10],
+            )
+
+            risk_pattern = rng.choice(
+                ["adequate", "mild", "severe"],
+                p=[0.40, 0.38, 0.22],
+            )
+
+            if risk_pattern == "adequate":
+                ratio_range = (0.90, 1.25)
+            elif risk_pattern == "mild":
+                ratio_range = (0.65, 0.95)
+            else:
+                ratio_range = (0.35, 0.75)
+
+            energy_ratio = rng.uniform(*ratio_range)
+            protein_ratio = rng.uniform(*ratio_range)
+            calcium_ratio = rng.uniform(*ratio_range)
+            iron_ratio = rng.uniform(*ratio_range)
+
+            energy_ratio = max(0.10, energy_ratio + rng.normal(0, 0.06))
+            protein_ratio = max(0.10, protein_ratio + rng.normal(0, 0.07))
+            calcium_ratio = max(0.10, calcium_ratio + rng.normal(0, 0.08))
+            iron_ratio = max(0.10, iron_ratio + rng.normal(0, 0.08))
+
+            condition_flag = 0
+
+            if health_condition == "anemia":
+                iron_ratio *= rng.uniform(0.65, 0.95)
+                condition_flag = 1
+            elif health_condition == "pregnancy":
+                calcium_ratio *= rng.uniform(0.70, 0.95)
+                iron_ratio *= rng.uniform(0.70, 0.95)
+                condition_flag = 1
+            elif health_condition in ["diabetes", "hypertension"]:
+                energy_ratio *= rng.uniform(0.80, 1.05)
+                condition_flag = 1
+
+            actual_energy = required_energy * energy_ratio
+            actual_protein = required_protein * protein_ratio
+            actual_calcium = required_calcium * calcium_ratio
+            actual_iron = required_iron * iron_ratio
+
+            row = {
+                "age": age,
+                "gender_code": gender_code,
+                "condition_flag": condition_flag,
+
+                "energy_intake": actual_energy,
+                "protein_intake": actual_protein,
+                "calcium_intake": actual_calcium,
+                "iron_intake": actual_iron,
+
+                "required_energy": required_energy,
+                "required_protein": required_protein,
+                "required_calcium": required_calcium,
+                "required_iron": required_iron,
+
+                "energy_ratio": safe_divide(actual_energy, required_energy),
+                "protein_ratio": safe_divide(actual_protein, required_protein),
+                "calcium_ratio": safe_divide(actual_calcium, required_calcium),
+                "iron_ratio": safe_divide(actual_iron, required_iron),
+            }
+
+            row["risk_level"] = classify_risk(row)
+
+            row["energy_risk"] = classify_single_nutrient(row["energy_ratio"])
+            row["protein_risk"] = classify_single_nutrient(row["protein_ratio"])
+            row["calcium_risk"] = classify_single_nutrient(row["calcium_ratio"])
+            row["iron_risk"] = classify_single_nutrient(row["iron_ratio"])
+
+            rows.append(row)
+
+    return pd.DataFrame(rows)
 
 
-def normalize_req_columns(req_df):
-    """
-    Standardizes column names for the demographic nutrient requirements dataset.
-    Identifies age brackets (min/max) and required baseline nutrient levels.
-    
-    Args:
-        req_df (pd.DataFrame): Raw requirements dataset.
-        
-    Returns:
-        pd.DataFrame: Cleaned DataFrame with valid numeric bounds and requirements.
-        
-    Raises:
-        ValueError: If essential age or nutrient columns are missing.
-    """
-    col_age_min = pick_col(req_df, ["age_min", "agemin", "min_age"])
-    col_age_max = pick_col(req_df, ["age_max", "agemax", "max_age"])
-    col_energy = pick_col(req_df, ["energy_kcal", "energy", "kcal", "calories"])
-    col_protein = pick_col(req_df, ["protein_g", "protein"])
-    col_calcium = pick_col(req_df, ["calcium_mg", "calcium"])
-    col_iron = pick_col(req_df, ["iron_mg", "iron"])
+# ------------------------------------------------------------
+# MODEL DEFINITIONS
+# ------------------------------------------------------------
+def build_models():
+    return {
+        "Logistic Regression": Pipeline([
+            ("imputer", SimpleImputer(strategy="median")),
+            ("scaler", StandardScaler()),
+            ("model", LogisticRegression(
+                max_iter=3000,
+                class_weight="balanced",
+            )),
+        ]),
 
-    missing = [
-        ("age_min", col_age_min),
-        ("age_max", col_age_max),
-        ("energy", col_energy),
-        ("protein", col_protein),
-        ("calcium", col_calcium),
-        ("iron", col_iron),
-    ]
-    missing = [n for n, c in missing if c is None]
-    if missing:
-        raise ValueError(
-            f"Requirements CSV is missing required columns: {missing}\n"
-            f"Available columns: {list(req_df.columns)}"
-        )
+        "Decision Tree": Pipeline([
+            ("imputer", SimpleImputer(strategy="median")),
+            ("model", DecisionTreeClassifier(
+                random_state=42,
+                max_depth=8,
+                class_weight="balanced",
+            )),
+        ]),
 
-    out = req_df[[col_age_min, col_age_max, col_energy, col_protein, col_calcium, col_iron]].copy()
-    out.columns = [
-        "age_min",
-        "age_max",
-        "req_energy_kcal",
-        "req_protein_g",
-        "req_calcium_mg",
-        "req_iron_mg",
-    ]
+        "Random Forest": Pipeline([
+            ("imputer", SimpleImputer(strategy="median")),
+            ("model", RandomForestClassifier(
+                n_estimators=300,
+                random_state=42,
+                min_samples_split=4,
+                class_weight="balanced",
+            )),
+        ]),
 
-    out["age_min"] = pd.to_numeric(out["age_min"], errors="coerce")
-    out["age_max"] = pd.to_numeric(out["age_max"], errors="coerce")
-
-    for c in ["req_energy_kcal", "req_protein_g", "req_calcium_mg", "req_iron_mg"]:
-        out[c] = pd.to_numeric(out[c], errors="coerce")
-
-    out = out.dropna()
-    out = out[out["age_max"] >= out["age_min"]]
-    return out
-
-
-def normalize_cond_rules(cond_df):
-    """
-    Expects rule-style columns:
-      condition, nutrient, rule_type, value, note(optional)
-    Returns cleaned dataframe or None.
-    """
-    if cond_df is None or cond_df.empty:
-        return None
-
-    required = {"condition", "nutrient", "rule_type", "value"}
-    cols = set([c.strip().lower() for c in cond_df.columns])
-    if not required.issubset(cols):
-        return None
-
-    df = cond_df.copy()
-    df.columns = [c.strip().lower() for c in df.columns]
-
-    df["condition"] = df["condition"].astype(str).str.strip().str.lower()
-    df["nutrient"] = df["nutrient"].astype(str).str.strip()
-    df["rule_type"] = df["rule_type"].astype(str).str.strip().str.lower()
-    df["value"] = pd.to_numeric(df["value"], errors="coerce")
-
-    df = df.dropna(subset=["condition", "nutrient", "rule_type", "value"])
-    return df
-
-
-def build_condition_multiplier_table_from_rules(cond_df_rules, base_req_dict):
-    """
-    Converts rule-style adjustments into per-condition multipliers for the 4 nutrients.
-
-    Supported rule_type:
-      - multiplier: base * value
-      - add: base + value  -> multiplier approx ( (base+value)/base )
-      - upper_limit: min(base, value) -> multiplier approx (min(base, value)/base)
-      - lower_limit: max(base, value) -> multiplier approx (max(base, value)/base)
-    """
-    if cond_df_rules is None or cond_df_rules.empty:
-        return None
-
-    nutrient_map = {
-        "energy_kcal": "energy",
-        "protein_g": "protein",
-        "calcium_mg": "calcium",
-        "iron_mg": "iron",
+        "Gradient Boosting": Pipeline([
+            ("imputer", SimpleImputer(strategy="median")),
+            ("model", GradientBoostingClassifier(
+                n_estimators=180,
+                learning_rate=0.05,
+                max_depth=3,
+                random_state=42,
+            )),
+        ]),
     }
 
-    table = {}
-    for cond in sorted(set(cond_df_rules["condition"].tolist())):
-        table[cond] = {"energy": 1.0, "protein": 1.0, "calcium": 1.0, "iron": 1.0}
 
-    for _, r in cond_df_rules.iterrows():
-        cond = r["condition"]
-        nutrient = r["nutrient"]
-        rule_type = r["rule_type"]
-        value = float(r["value"])
+# ------------------------------------------------------------
+# NUTRIENT-SPECIFIC MODELS
+# ------------------------------------------------------------
+def train_nutrient_specific_models(training_df, features):
+    nutrient_targets = {
+        "energy": "energy_risk",
+        "protein": "protein_risk",
+        "calcium": "calcium_risk",
+        "iron": "iron_risk",
+    }
 
-        if nutrient not in nutrient_map:
-            continue
+    X = training_df[features]
 
-        key = nutrient_map[nutrient]
-        base = float(base_req_dict.get(nutrient, 0.0) or 0.0)
-        if base <= 0:
-            continue
+    for nutrient_name, target_col in nutrient_targets.items():
+        print("\n" + "=" * 70)
+        print(f"🔬 Training {nutrient_name.upper()} nutrient-specific ML model")
 
-        if rule_type == "multiplier":
-            mult = value
-        elif rule_type == "add":
-            mult = (base + value) / base
-        elif rule_type == "upper_limit":
-            mult = min(base, value) / base
-        elif rule_type == "lower_limit":
-            mult = max(base, value) / base
-        else:
-            continue
+        y_text = training_df[target_col]
 
-        mult = max(0.2, min(mult, 3.0))
-        table[cond][key] *= mult
-        table[cond][key] = max(0.2, min(table[cond][key], 3.0))
+        label_encoder = LabelEncoder()
+        y = label_encoder.fit_transform(y_text)
 
-    return table if table else None
+        X_train, X_test, y_train, y_test = train_test_split(
+            X,
+            y,
+            test_size=0.20,
+            random_state=42,
+            stratify=y,
+        )
 
+        model = Pipeline([
+            ("imputer", SimpleImputer(strategy="median")),
+            ("model", GradientBoostingClassifier(
+                n_estimators=180,
+                learning_rate=0.05,
+                max_depth=3,
+                random_state=42,
+            )),
+        ])
 
-def label_from_ratios(r_energy, r_protein, r_calcium, r_iron):
-    """
-    Risk labels derived from adequacy ratio threshold rule.
-    """
-    below = 0
-    for ratio in [r_energy, r_protein, r_calcium, r_iron]:
-        if ratio < 0.80:
-            below += 1
+        model.fit(X_train, y_train)
+        y_pred = model.predict(X_test)
 
-    if below == 0:
-        return "LOW"
-    if below <= 2:
-        return "MEDIUM"
-    return "HIGH"
+        accuracy = accuracy_score(y_test, y_pred)
+        f1 = f1_score(y_test, y_pred, average="weighted", zero_division=0)
 
+        print(f"✅ {nutrient_name.upper()} Accuracy: {accuracy:.4f}")
+        print(f"✅ {nutrient_name.upper()} Weighted F1-score: {f1:.4f}")
 
-def generate_training_data():
-    """
-    Generates an expansive synthetic dataset representing user profiles and their
-    simulated daily food intake. It uses the real food nutritional values and the 
-    baseline demographic requirements to create realistic data points.
-    
-    IMPORTANT: Nutrient adequacy ratios are used ONLY to assign the ground-truth
-    status labels (HIGH, MEDIUM, LOW risk), and are excluded from the model features
-    to prevent data leakage.
-    
-    Returns:
-        tuple: (X, y) where X is the feature DataFrame and y is the target Series.
-    """
-    # Load raw CSV datasets
-    food_df_raw = pd.read_csv(FOOD_PATH)
-    req_df_raw = pd.read_csv(REQ_PATH)
+        print("\nClassification Report:")
+        print(classification_report(
+            y_test,
+            y_pred,
+            target_names=label_encoder.classes_,
+            zero_division=0,
+        ))
 
-    cond_df_raw = None
-    if os.path.exists(COND_PATH):
-        cond_df_raw = pd.read_csv(COND_PATH)
+        model_path = os.path.join(MODEL_DIR, f"{nutrient_name}_risk_model.pkl")
+        encoder_path = os.path.join(MODEL_DIR, f"{nutrient_name}_risk_encoder.pkl")
 
-    food_df = normalize_food_columns(food_df_raw)
-    req_df = normalize_req_columns(req_df_raw)
-    cond_rules_df = normalize_cond_rules(cond_df_raw)
+        joblib.dump(model, model_path)
+        joblib.dump(label_encoder, encoder_path)
 
-    foods = food_df.to_dict("records")
-
-    samples = []
-    labels = []
-
-    SAMPLES_PER_GROUP = 200
-    INTAKE_NOISE_STD = 0.06  # 6% noise
-    P_NONE_CONDITION = 0.70  # ✅ ensures has_condition is not constant
-
-    for _, rr in req_df.iterrows():
-        age_min = int(rr["age_min"])
-        age_max = int(rr["age_max"])
-
-        base_req = {
-            "energy_kcal": float(rr["req_energy_kcal"]),
-            "protein_g": float(rr["req_protein_g"]),
-            "calcium_mg": float(rr["req_calcium_mg"]),
-            "iron_mg": float(rr["req_iron_mg"]),
-        }
-
-        cond_table = build_condition_multiplier_table_from_rules(cond_rules_df, base_req)
-
-        for _ in range(SAMPLES_PER_GROUP):
-            age = int(np.random.randint(age_min, age_max + 1))
-
-            # choose condition (None + conditions)
-            if cond_table:
-                cond_names = [None] + list(cond_table.keys())
-                p_cond_each = (1.0 - P_NONE_CONDITION) / (len(cond_names) - 1)
-                cond_probs = [P_NONE_CONDITION] + [p_cond_each] * (len(cond_names) - 1)
-                condition = np.random.choice(cond_names, p=cond_probs)
-            else:
-                condition = None
-
-            req_energy = base_req["energy_kcal"]
-            req_protein = base_req["protein_g"]
-            req_calcium = base_req["calcium_mg"]
-            req_iron = base_req["iron_mg"]
-
-            has_condition = 0
-            if condition and cond_table:
-                has_condition = 1
-                mult = cond_table[str(condition).strip().lower()]
-                req_energy *= float(mult["energy"])
-                req_protein *= float(mult["protein"])
-                req_calcium *= float(mult["calcium"])
-                req_iron *= float(mult["iron"])
-
-            # simulate daily intake totals
-            n_items = np.random.randint(3, 9)
-            total_energy = total_protein = total_calcium = total_iron = 0.0
-
-            for _k in range(n_items):
-                f = foods[np.random.randint(0, len(foods))]
-                grams = float(np.random.choice([50, 75, 100, 150, 200, 250, 300]))
-                factor = grams / 100.0
-
-                total_energy += float(f["energy_kcal"]) * factor
-                total_protein += float(f["protein_g"]) * factor
-                total_calcium += float(f["calcium_mg"]) * factor
-                total_iron += float(f["iron_mg"]) * factor
-
-            # add noise
-            total_energy *= float(np.random.normal(1.0, INTAKE_NOISE_STD))
-            total_protein *= float(np.random.normal(1.0, INTAKE_NOISE_STD))
-            total_calcium *= float(np.random.normal(1.0, INTAKE_NOISE_STD))
-            total_iron *= float(np.random.normal(1.0, INTAKE_NOISE_STD))
-
-            # ratios for labeling only
-            r_energy = total_energy / max(req_energy, 1e-6)
-            r_protein = total_protein / max(req_protein, 1e-6)
-            r_calcium = total_calcium / max(req_calcium, 1e-6)
-            r_iron = total_iron / max(req_iron, 1e-6)
-
-            risk = label_from_ratios(r_energy, r_protein, r_calcium, r_iron)
-
-            # model inputs (no ratios)
-            samples.append([
-                age,
-                total_energy, total_protein, total_calcium, total_iron,
-                has_condition
-            ])
-            labels.append(risk)
-
-    X = pd.DataFrame(samples, columns=[
-        "age",
-        "total_energy_kcal", "total_protein_g", "total_calcium_mg", "total_iron_mg",
-        "has_condition"
-    ])
-    y = pd.Series(labels, name="risk")
-
-    return X, y
+        print(f"✅ Saved {nutrient_name} model at: {model_path}")
+        print(f"✅ Saved {nutrient_name} encoder at: {encoder_path}")
 
 
 # ------------------------------------------------------------
-# MAIN
+# MAIN TRAINING PIPELINE
 # ------------------------------------------------------------
 def main():
-    """
-    Main orchestrator for the script.
-    1. Generates synthetically simulated user intake data.
-    2. Splits the data into stratified training and testing sets (80/20).
-    3. Initializes and trains a balanced RandomForestClassifier.
-    4. Evaluates predictions on the test set (Accuracy, Precision, Recall).
-    5. Performs a 5-fold cross-validation check for reliable metrics.
-    6. Serializes the trained model to a `.pkl` artifact for backend route use.
-    """
-    print("📄 Training deficiency risk model...")
-    print("✅ RUNNING FILE:", __file__)
+    print("📄 Training Nutritional Guidance deficiency risk model...")
 
-    # Generate simulated features (X) and risk labels (y)
-    X, y = generate_training_data()
-    print("🧪 Training rows:", len(X))
+    if not os.path.exists(REQUIREMENTS_PATH):
+        raise FileNotFoundError(
+            f"Requirement dataset not found at: {REQUIREMENTS_PATH}"
+        )
 
-    # Split data to prevent overfitting; use stratify to maintain class distributions
+    requirements_df = pd.read_csv(REQUIREMENTS_PATH)
+    training_df = generate_training_dataset(requirements_df)
+
+    print(f"🧪 Training rows generated: {len(training_df)}")
+    print("📊 Target distribution:")
+    print(training_df["risk_level"].value_counts())
+
+    features = [
+        "age",
+        "gender_code",
+        "condition_flag",
+
+        "energy_intake",
+        "protein_intake",
+        "calcium_intake",
+        "iron_intake",
+
+        "required_energy",
+        "required_protein",
+        "required_calcium",
+        "required_iron",
+
+        "energy_ratio",
+        "protein_ratio",
+        "calcium_ratio",
+        "iron_ratio",
+    ]
+
+    X = training_df[features]
+    y_text = training_df["risk_level"]
+
+    label_encoder = LabelEncoder()
+    y = label_encoder.fit_transform(y_text)
+
     X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=0.2, random_state=RANDOM_SEED, stratify=y
+        X,
+        y,
+        test_size=0.20,
+        random_state=42,
+        stratify=y,
     )
 
-    model = RandomForestClassifier(
-        n_estimators=250,
-        max_depth=10,
-        random_state=RANDOM_SEED,
-        class_weight="balanced"
+    models = build_models()
+    results = []
+
+    cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
+
+    best_model_name = None
+    best_model = None
+    best_f1 = -1
+
+    for model_name, model in models.items():
+        print("\n" + "=" * 70)
+        print(f"🔍 Training model: {model_name}")
+
+        model.fit(X_train, y_train)
+        y_pred = model.predict(X_test)
+
+        accuracy = accuracy_score(y_test, y_pred)
+        precision = precision_score(y_test, y_pred, average="weighted", zero_division=0)
+        recall = recall_score(y_test, y_pred, average="weighted", zero_division=0)
+        f1 = f1_score(y_test, y_pred, average="weighted", zero_division=0)
+
+        cv_scores = cross_val_score(
+            model,
+            X,
+            y,
+            cv=cv,
+            scoring="f1_weighted",
+        )
+
+        results.append({
+            "model": model_name,
+            "accuracy": round(accuracy, 4),
+            "precision_weighted": round(precision, 4),
+            "recall_weighted": round(recall, 4),
+            "f1_weighted": round(f1, 4),
+            "cv_f1_mean": round(cv_scores.mean(), 4),
+            "cv_f1_std": round(cv_scores.std(), 4),
+        })
+
+        print(f"✅ Accuracy: {accuracy:.4f}")
+        print(f"✅ Weighted F1-score: {f1:.4f}")
+        print(f"📌 5-Fold CV F1: {cv_scores.mean():.4f} ± {cv_scores.std():.4f}")
+
+        print("\nClassification Report:")
+        print(classification_report(
+            y_test,
+            y_pred,
+            target_names=label_encoder.classes_,
+            zero_division=0,
+        ))
+
+        print("Confusion Matrix:")
+        print(confusion_matrix(y_test, y_pred))
+
+        if f1 > best_f1:
+            best_f1 = f1
+            best_model_name = model_name
+            best_model = model
+
+    results_df = pd.DataFrame(results).sort_values(
+        by=["f1_weighted", "cv_f1_mean"],
+        ascending=False,
     )
-    model.fit(X_train, y_train)
 
-    pred = model.predict(X_test)
-    acc = round(accuracy_score(y_test, pred), 4)
+    print("\n" + "=" * 70)
+    print("📊 Model Comparison Summary:")
+    print(results_df.to_string(index=False))
 
-    print("\n📊 Accuracy:", acc)
-    print(classification_report(y_test, pred))
+    print("\n🏆 Best Overall Model:", best_model_name)
 
-    # cross-validation (report-ready)
-    cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=RANDOM_SEED)
-    cv_scores = cross_val_score(model, X, y, cv=cv, scoring="accuracy")
-    print("📌 5-Fold CV Accuracy (mean ± std):", round(cv_scores.mean(), 4), "±", round(cv_scores.std(), 4))
+    joblib.dump(best_model, OUTPUT_MODEL_PATH)
+    joblib.dump(label_encoder, OUTPUT_ENCODER_PATH)
 
-    # save model
-    joblib.dump(model, MODEL_PATH)
-    print("✅ ML model trained and saved at:", MODEL_PATH)
+    with open(OUTPUT_FEATURES_PATH, "w", encoding="utf-8") as f:
+        json.dump(features, f, indent=4)
+
+    results_df.to_csv(OUTPUT_COMPARISON_PATH, index=False)
+
+    final_estimator = best_model.named_steps["model"]
+
+    if hasattr(final_estimator, "feature_importances_"):
+        importance_df = pd.DataFrame({
+            "feature": features,
+            "importance": final_estimator.feature_importances_,
+        }).sort_values(by="importance", ascending=False)
+
+        importance_df.to_csv(OUTPUT_IMPORTANCE_PATH, index=False)
+
+        print("\n📌 Feature Importance:")
+        print(importance_df.to_string(index=False))
+
+    train_nutrient_specific_models(training_df, features)
+
+    print("\n✅ Overall ML model saved at:", OUTPUT_MODEL_PATH)
+    print("✅ Overall label encoder saved at:", OUTPUT_ENCODER_PATH)
+    print("✅ Feature list saved at:", OUTPUT_FEATURES_PATH)
+    print("✅ Model comparison saved at:", OUTPUT_COMPARISON_PATH)
 
 
 if __name__ == "__main__":

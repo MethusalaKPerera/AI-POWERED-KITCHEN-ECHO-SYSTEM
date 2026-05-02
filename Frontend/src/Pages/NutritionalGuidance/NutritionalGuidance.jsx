@@ -4,7 +4,6 @@ import DashboardHome from "./components/DashboardHome";
 import UserDetailsForm from "./components/UserDetailsForm";
 import MealLogger from "./components/MealLogger";
 import NutritionTracker from "./components/NutritionTracker";
-import MedicationAlerts from "./components/MedicationAlerts";
 import PredictiveAnalytics from "./components/PredictiveAnalytics";
 
 import "./NutritionalGuidance.css";
@@ -12,7 +11,6 @@ import "./NutritionalGuidance.css";
 const NutritionalGuidance = () => {
   const [activeTab, setActiveTab] = useState("dashboard");
 
-  // ✅ For now use a fixed id. Later replace with logged-in user's id from auth/JWT.
   const userId = "demo";
 
   const renderComponent = () => {
@@ -25,8 +23,6 @@ const NutritionalGuidance = () => {
         return <MealLogger userId={userId} />;
       case "nutrition-tracker":
         return <NutritionTracker userId={userId} />;
-      case "medication-alerts":
-        return <MedicationAlerts userId={userId} />;
       case "predictive-analytics":
         return <PredictiveAnalytics userId={userId} />;
       default:
@@ -76,15 +72,6 @@ const NutritionalGuidance = () => {
           >
             <span className="ng-nav-icon">📈</span>
             <span>Nutrition Tracker</span>
-          </div>
-
-          <div
-            className={`ng-nav-item ${activeTab === "medication-alerts" ? "active" : ""
-              }`}
-            onClick={() => setActiveTab("medication-alerts")}
-          >
-            <span className="ng-nav-icon">⚠️</span>
-            <span>Medication Alerts</span>
           </div>
 
           <div
