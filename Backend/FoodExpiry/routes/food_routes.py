@@ -307,23 +307,31 @@ def get_options():
 # ----------------------------------------------------
 @food_bp.route("/", methods=["GET"])
 def get_foods():
-    # ✅ NEW (backward compatible): allow optional filter by userId
-    user_id = (request.args.get("userId") or request.args.get("user_id") or "").strip()
-    q = {"userId": user_id} if user_id else {}
+    try:
+        # ✅ NEW (backward compatible): allow optional filter by userId
+        user_id = (request.args.get("userId") or request.args.get("user_id") or "").strip()
+        q = {"userId": user_id} if user_id else {}
 
-    foods = list(foods_col.find(q))
-    for f in foods:
-        f["_id"] = str(f["_id"])
+        try:
+            foods = list(foods_col.find(q))
+        except Exception:
+            return jsonify([]), 200
 
-        final_exp = f.get("finalExpiryDate") or f.get("predictedExpiryDate")
-        purchase_date = f.get("purchaseDate") or f.get("purchase_date")
+        for f in foods:
+            f["_id"] = str(f["_id"])
 
-        if final_exp:
-            days_left = days_left_from_today(final_exp, purchase_date)
-            f["daysLeft"] = days_left
-            f["scpPriorityScore_live"] = scp_score(days_left)
+            final_exp = f.get("finalExpiryDate") or f.get("predictedExpiryDate")
+            purchase_date = f.get("purchaseDate") or f.get("purchase_date")
 
-    return jsonify(foods), 200
+            if final_exp:
+                days_left = days_left_from_today(final_exp, purchase_date)
+                f["daysLeft"] = days_left
+                f["scpPriorityScore_live"] = scp_score(days_left)
+
+        return jsonify(foods), 200
+    except Exception:
+        traceback.print_exc()
+        return jsonify([]), 200
 
 
 # ----------------------------------------------------
