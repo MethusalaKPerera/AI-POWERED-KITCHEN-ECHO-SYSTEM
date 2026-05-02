@@ -123,15 +123,51 @@ except Exception as e:
 
 if not food_bp_available:
     disabled_bp = Blueprint("food_disabled_bp", __name__)
+    unavailable_msg = (
+        f"FoodExpiry module is disabled: {food_disabled_reason}. "
+        "Please check MONGO_URI, install missing dependencies, and restart the backend."
+    )
 
     @disabled_bp.route("/", methods=["GET"])
-    @disabled_bp.route("/<path:path>", methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"])
-    def food_disabled(path=None):
-        msg = (
-            f"FoodExpiry module is disabled: {food_disabled_reason}. "
-            "Please check MONGO_URI, install missing dependencies, and restart the backend."
-        )
-        return jsonify({"error": "FoodExpiry unavailable", "message": msg}), 503
+    def food_index():
+        return jsonify([]), 200
+
+    @disabled_bp.route("/options", methods=["GET"])
+    def food_options():
+        categories = [
+            "dairy", "meat", "fish", "fruit", "vegetable",
+            "grain", "snack", "beverage", "other"
+        ]
+        return jsonify({"items": [], "categories": categories}), 200
+
+    @disabled_bp.route("/analytics/summary", methods=["GET"])
+    def analytics_summary():
+        return jsonify({"summary": {}, "message": unavailable_msg}), 200
+
+    @disabled_bp.route("/analytics/timeseries", methods=["GET"])
+    def analytics_timeseries():
+        return jsonify({"series": [], "message": unavailable_msg}), 200
+
+    @disabled_bp.route("/analytics/history", methods=["GET"])
+    def analytics_history():
+        return jsonify({"rows": [], "total": 0, "message": unavailable_msg}), 200
+
+    @disabled_bp.route("/analytics/export/csv", methods=["GET"])
+    @disabled_bp.route("/analytics/export/pdf", methods=["GET"])
+    def analytics_export():
+        return jsonify({"error": "FoodExpiry unavailable", "message": unavailable_msg}), 200
+
+    @disabled_bp.route("/one/<id>", methods=["GET"])
+    def food_one(id):
+        return jsonify({"error": "FoodExpiry unavailable", "message": unavailable_msg}), 200
+
+    @disabled_bp.route("/predict", methods=["POST"])
+    @disabled_bp.route("/add", methods=["POST"])
+    @disabled_bp.route("/feedback", methods=["POST"])
+    @disabled_bp.route("/update/<id>", methods=["PUT"])
+    @disabled_bp.route("/delete/<id>", methods=["DELETE"])
+    def food_unavailable(**kwargs):
+        return jsonify({"error": "FoodExpiry unavailable", "message": unavailable_msg}), 200
 
     app.register_blueprint(disabled_bp, url_prefix="/api/food")
 
@@ -140,7 +176,24 @@ if not food_bp_available:
 # --------------------------------------------------------
 @app.route("/health", methods=["GET"])
 def health_check():
-    return jsonify({"status": "healthy", "message": "Smart Kitchen Backend is running!"}), 200
+    modules_status = {
+        "cooking_assistant": {"enabled": True, "reason": "always available"},
+        "shopping": {"enabled": True, "reason": "always available"},
+        "auth": {"enabled": True, "reason": "always available"},
+        "nutrition_guidance": {"enabled": True, "reason": "always available"},
+        "food_expiry": {
+            "enabled": food_bp_available,
+            "reason": food_disabled_reason if not food_bp_available else "MongoDB connected and dependencies available"
+        }
+    }
+    
+    overall_status = "healthy" if all(m["enabled"] for m in modules_status.values()) else "degraded"
+    
+    return jsonify({
+        "status": overall_status,
+        "message": "Smart Kitchen Backend is running!",
+        "modules": modules_status
+    }), 200
 
 # --------------------------------------------------------
 # Root route
