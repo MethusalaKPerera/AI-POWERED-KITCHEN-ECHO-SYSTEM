@@ -312,7 +312,11 @@ def get_foods():
         user_id = (request.args.get("userId") or request.args.get("user_id") or "").strip()
         q = {"userId": user_id} if user_id else {}
 
-        foods = list(foods_col.find(q))
+        try:
+            foods = list(foods_col.find(q))
+        except Exception:
+            return jsonify([]), 200
+
         for f in foods:
             f["_id"] = str(f["_id"])
 
