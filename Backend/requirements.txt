@@ -8,7 +8,7 @@ duckduckgo_search
 beautifulsoup4
 requests==2.32.3
 pandas
-numpy
+numpy==2.3.5
 scikit-learn
 python-dateutil==2.9.0
 sentence-transformers==2.2.2
