@@ -414,7 +414,7 @@
     "type": "chat",
     "query": "can you tell me how to make noodles",
     "details": {},
-    "timestamp": "2026-03-05T08:20:23.717957+00:00"
+    "timestamp": "2026-03-09T07:03:11.489211"
   },
   {
     "id": "41",
@@ -451,5 +451,37 @@
       "country": "us"
     },
     "timestamp": "2026-03-07T07:44:00.347780+00:00"
+  },
+  {
+    "id": "44",
+    "user_id": "1",
+    "type": "search",
+    "query": "Dragon Fruit.",
+    "details": {
+      "page": 1,
+      "min_price": 0.0,
+      "country": "us"
+    },
+    "timestamp": "2026-03-09T07:01:11.810599+00:00"
+  },
+  {
+    "id": "45",
+    "user_id": "1",
+    "type": "search",
+    "query": "rice",
+    "details": {
+      "page": 1,
+      "min_price": 0.0,
+      "country": "us"
+    },
+    "timestamp": "2026-03-09T10:31:54.221565+00:00"
+  },
+  {
+    "id": "46",
+    "user_id": "1",
+    "type": "chat",
+    "query": "can you tell me how to make noodles",
+    "details": {},
+    "timestamp": "2026-03-09T10:33:12.208162+00:00"
   }
 ]
