@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './CookingAssistant.css';
 import LanguageSelector from '../../Components/LanguageSelector';
+import { API_URL } from '../../config';
 
 function CookingAssistant() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -36,7 +37,7 @@ function CookingAssistant() {
     try {
       const fd = new FormData();
       fd.append('image', selectedImage);
-      const res = await fetch('http://localhost:5000/api/cooking/analyze-image', { method: 'POST', body: fd });
+      const res = await fetch(`${API_URL}/cooking/analyze-image`, { method: 'POST', body: fd });
       const data = await res.json();
       if (data.success) {
         const merged = mergeIngredients(ingredients, data.ingredients);
@@ -74,7 +75,7 @@ function CookingAssistant() {
     if (!list || list.length === 0) return;
     setSearchingRecipes(true);
     try {
-      const res = await fetch('http://localhost:5000/api/cooking/search-recipes', {
+      const res = await fetch(`${API_URL}/cooking/search-recipes`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ingredients: list }),
