@@ -221,7 +221,7 @@ function TwoWeekReportModal({ open, onClose, data }) {
 
         <div className="tw-footer">
           <button className="tw-btn" onClick={onClose} type="button">
-            Close Forecast
+            Close
           </button>
         </div>
       </div>

@@ -318,24 +318,27 @@ def train_nutrient_specific_models(training_df, features):
             stratify=y,
         )
 
-        model = Pipeline([
-            ("imputer", SimpleImputer(strategy="median")),
-            ("model", GradientBoostingClassifier(
-                n_estimators=180,
-                learning_rate=0.05,
-                max_depth=3,
-                random_state=42,
-            )),
-        ])
+        best_model_name = None
+        best_model = None
+        best_f1 = -1
 
-        model.fit(X_train, y_train)
-        y_pred = model.predict(X_test)
+        for model_name, model in build_models().items():
+            model.fit(X_train, y_train)
+            y_pred = model.predict(X_test)
+            f1 = f1_score(y_test, y_pred, average="weighted", zero_division=0)
+            
+            if f1 > best_f1:
+                best_f1 = f1
+                best_model_name = model_name
+                best_model = model
 
+        # Evaluate best model
+        y_pred = best_model.predict(X_test)
         accuracy = accuracy_score(y_test, y_pred)
-        f1 = f1_score(y_test, y_pred, average="weighted", zero_division=0)
 
+        print(f"🏆 Best Algorithm: {best_model_name}")
         print(f"✅ {nutrient_name.upper()} Accuracy: {accuracy:.4f}")
-        print(f"✅ {nutrient_name.upper()} Weighted F1-score: {f1:.4f}")
+        print(f"✅ {nutrient_name.upper()} Weighted F1-score: {best_f1:.4f}")
 
         print("\nClassification Report:")
         print(classification_report(
@@ -348,7 +351,7 @@ def train_nutrient_specific_models(training_df, features):
         model_path = os.path.join(MODEL_DIR, f"{nutrient_name}_risk_model.pkl")
         encoder_path = os.path.join(MODEL_DIR, f"{nutrient_name}_risk_encoder.pkl")
 
-        joblib.dump(model, model_path)
+        joblib.dump(best_model, model_path)
         joblib.dump(label_encoder, encoder_path)
 
         print(f"✅ Saved {nutrient_name} model at: {model_path}")

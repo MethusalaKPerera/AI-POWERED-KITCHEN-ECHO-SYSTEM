@@ -183,6 +183,8 @@ def ml_risk():
         "protein_intake": float(avg.get("protein_g", 0) or 0),
         "calcium_intake": float(avg.get("calcium_mg", 0) or 0),
         "iron_intake": float(avg.get("iron_mg", 0) or 0),
+        
+        "meal_diversity_score_14d": float(summary.get("meal_diversity_score", 0.65)),
 
         "required_energy": float(requirement.get("energy_kcal", 0) or requirement.get("energy", 0) or 0),
         "required_protein": float(requirement.get("protein_g", 0) or requirement.get("protein", 0) or 0),
