@@ -249,7 +249,7 @@ def root():
 # Run
 # --------------------------------------------------------
 if __name__ == "__main__":
-    print("🚀 Starting Smart Kitchen Backend...")
-    print("📍 Backend running on: http://127.0.0.1:5000")
-    print("📍 Frontend should run on: http://localhost:5173")
+    print("Starting Smart Kitchen Backend...")
+    print("Backend running on: http://127.0.0.1:5000")
+    print("Frontend should run on: http://localhost:5173")
     app.run(debug=True, port=5000)
