@@ -94,6 +94,8 @@ def build_feature_row(user_features):
         "required_protein": user_features.get("required_protein", 0),
         "required_calcium": user_features.get("required_calcium", 0),
         "required_iron": user_features.get("required_iron", 0),
+        
+        "meal_diversity_score_14d": user_features.get("meal_diversity_score_14d", 0.65),
     }
 
     row["energy_ratio"] = safe_ratio(row["energy_intake"], row["required_energy"])

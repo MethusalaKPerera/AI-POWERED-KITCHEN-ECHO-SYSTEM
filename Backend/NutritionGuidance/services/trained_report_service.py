@@ -100,6 +100,8 @@ def build_trained_two_week_report(app, user_id: str, period: str = "monthly", da
         "calcium_intake": _safe_float(avg.get("calcium_mg", 0)),
         "iron_intake": _safe_float(avg.get("iron_mg", 0)),
 
+        "meal_diversity_score_14d": _safe_float(summary.get("meal_diversity_score", 0.65)),
+
         "required_energy": _safe_float(base_req_row.get("energy_kcal", 0) or base_req_row.get("energy", 0)),
         "required_protein": _safe_float(base_req_row.get("protein_g", 0) or base_req_row.get("protein", 0)),
         "required_calcium": _safe_float(base_req_row.get("calcium_mg", 0) or base_req_row.get("calcium", 0)),
