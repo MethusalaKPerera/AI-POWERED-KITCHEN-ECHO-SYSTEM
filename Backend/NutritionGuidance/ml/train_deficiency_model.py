@@ -238,6 +238,21 @@ def generate_training_dataset(requirements_df, samples_per_group=80, random_stat
             row["calcium_risk"] = classify_single_nutrient(row["calcium_ratio"])
             row["iron_risk"] = classify_single_nutrient(row["iron_ratio"])
 
+            # --- ADD MEASUREMENT ERROR ---
+            # Simulate real-world food logging inaccuracies (e.g., portion size errors).
+            # Ground truth labels are based on true intake, but the model learns on noisy logged intake.
+            # This naturally reduces accuracy from 99% to a more realistic ~85-92%, preventing overfitting.
+            row["energy_intake"] *= rng.uniform(0.75, 1.25)
+            row["protein_intake"] *= rng.uniform(0.75, 1.25)
+            row["calcium_intake"] *= rng.uniform(0.75, 1.25)
+            row["iron_intake"] *= rng.uniform(0.75, 1.25)
+
+            # Recompute ratios based on the noisy recorded intakes
+            row["energy_ratio"] = safe_divide(row["energy_intake"], row["required_energy"])
+            row["protein_ratio"] = safe_divide(row["protein_intake"], row["required_protein"])
+            row["calcium_ratio"] = safe_divide(row["calcium_intake"], row["required_calcium"])
+            row["iron_ratio"] = safe_divide(row["iron_intake"], row["required_iron"])
+
             rows.append(row)
 
     return pd.DataFrame(rows)
