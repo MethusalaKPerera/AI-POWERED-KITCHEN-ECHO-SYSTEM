@@ -1,8 +1,6 @@
-// src/services/nutritionApi.js
 
 const BASE = "http://127.0.0.1:5000";
 
-// ✅ Add this export so components can import it
 export const DEFAULT_USER_ID = "demo";
 
 async function request(path, options = {}) {
