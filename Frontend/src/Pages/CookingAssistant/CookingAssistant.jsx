@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './CookingAssistant.css';
 import LanguageSelector from '../../Components/LanguageSelector';
-import { API_URL } from '../../config';
 
 function CookingAssistant() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -15,7 +14,7 @@ function CookingAssistant() {
   const [dragOver, setDragOver] = useState(false);
   const [manualInput, setManualInput] = useState('');
   const [searchingRecipes, setSearchingRecipes] = useState(false);
-  const manualRef = useRef(null); // ✅ Single declaration — duplicate removed
+  const manualRef = useRef(null);
 
   useEffect(() => {
     const link = document.createElement('link');
@@ -37,7 +36,7 @@ function CookingAssistant() {
     try {
       const fd = new FormData();
       fd.append('image', selectedImage);
-      const res = await fetch(`${API_URL}/cooking/analyze-image`, { method: 'POST', body: fd });
+      const res = await fetch('http://localhost:5000/api/cooking/analyze-image', { method: 'POST', body: fd });
       const data = await res.json();
       if (data.success) {
         const merged = mergeIngredients(ingredients, data.ingredients);
@@ -75,7 +74,7 @@ function CookingAssistant() {
     if (!list || list.length === 0) return;
     setSearchingRecipes(true);
     try {
-      const res = await fetch(`${API_URL}/cooking/search-recipes`, {
+      const res = await fetch('http://localhost:5000/api/cooking/search-recipes', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ingredients: list }),
@@ -105,7 +104,6 @@ function CookingAssistant() {
     return steps.length > 0 ? steps : [instructions];
   };
 
-  // ── JSX ───────────────────────────────────────────────────────────────────
   return (
     <div className="ca-root">
 
@@ -139,6 +137,7 @@ function CookingAssistant() {
           ))}
         </nav>
 
+        {/* ── Language Selector ── */}
         <LanguageSelector />
 
         <div className="ca-sidebar-footer">
@@ -338,7 +337,6 @@ function CookingAssistant() {
                       </span>
                     </div>
                   )}
-                  {/* ✅ Fixed: was a stray expression outside JSX — now a proper button */}
                   <button className="ca-view-btn" onClick={() => setSelectedRecipe(recipe)}>
                     View Full Recipe →
                   </button>
@@ -445,29 +443,6 @@ function CookingAssistant() {
               {!selectedRecipe.instructions && !selectedRecipe.method && !selectedRecipe.ingredients?.length && (
                 <div className="ca-modal-empty">
                   <p>🍳 Search online for <strong>"{selectedRecipe.name}"</strong> to find the complete recipe.</p>
-                </div>
-              )}
-
-              {/* ── Pre-computed Adaptive Ingredients — shows instantly, no button needed ── */}
-              {selectedRecipe.adaptive_ingredients?.length > 0 && (
-                <div className="ca-modal-sec ca-rag-section">
-                  <h3 className="ca-msec-title">🔄 Adaptive Ingredients</h3>
-                  <div className="ca-rag-badge">
-                    <span className="ca-rag-method">Smart Substitutions</span>
-                  </div>
-                  <div className="ca-subs-block">
-                    <h4>Missing Hard-to-Find Ingredients?</h4>
-                    <div className="ca-subs-grid">
-                      {selectedRecipe.adaptive_ingredients.map((sub, i) => (
-                        <div key={i} className="ca-sub-card">
-                          <div className="ca-sub-original">❌ {sub.original}</div>
-                          <div className="ca-sub-arrow">→</div>
-                          <div className="ca-sub-replacement">✅ {sub.substitute}</div>
-                          {sub.notes && <div className="ca-sub-notes">{sub.notes}</div>}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
                 </div>
               )}
             </div>

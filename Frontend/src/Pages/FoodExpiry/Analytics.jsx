@@ -263,7 +263,7 @@ export default function Analytics() {
     <div className="fe-page">
       <Sidebar />
       <div className="fe-main">
-        <Topbar />
+       
 
         {/* ========= HERO HEADER (make it bold + breathable) ========= */}
         <div className="fe-hero">

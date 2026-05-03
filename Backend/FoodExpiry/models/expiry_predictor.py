@@ -2,12 +2,7 @@
 
 import os
 import pandas as pd
-try:
-    from catboost import CatBoostRegressor
-    CATBOOST_AVAILABLE = True
-except Exception as e:
-    print(f"[WARN] CatBoost could not be imported: {e}")
-    CATBOOST_AVAILABLE = False
+from catboost import CatBoostRegressor
 
 # ---------------------------------------------------------
 # CONFIG
@@ -25,30 +20,14 @@ class ExpiryPredictor:
         # -------------------------------------------------
         # Load trained CatBoost model
         # -------------------------------------------------
-        self.model = None
-        if CATBOOST_AVAILABLE:
-            try:
-                self.model = CatBoostRegressor()
-                self.model.load_model(MODEL_PATH)
-                print("[OK] ExpiryPredictor: CatBoost model loaded.")
-            except Exception as e:
-                print(f"[WARN] ExpiryPredictor: Failed to load model from {MODEL_PATH}: {e}")
-                self.model = None
-        else:
-            print("[WARN] ExpiryPredictor: Running in fallback mode (CatBoost unavailable).")
+        self.model = CatBoostRegressor()
+        self.model.load_model(MODEL_PATH)
 
         # -------------------------------------------------
         # Load feature column order (CRITICAL)
         # -------------------------------------------------
-        self.feature_columns = []
-        try:
-            if os.path.exists(FEATURE_PATH):
-                with open(FEATURE_PATH, "r", encoding="utf-8") as f:
-                    self.feature_columns = [line.strip() for line in f.readlines() if line.strip()]
-            else:
-                print(f"[WARN] Feature path not found: {FEATURE_PATH}")
-        except Exception as e:
-            print(f"[WARN] Error loading features: {e}")
+        with open(FEATURE_PATH, "r", encoding="utf-8") as f:
+            self.feature_columns = [line.strip() for line in f.readlines() if line.strip()]
 
         # -------------------------------------------------
         # Load base expiry lookup table
@@ -211,15 +190,8 @@ class ExpiryPredictor:
 
         base_days = float(self.get_base_expiry_days(item_name, storage))
 
-        if self.model:
-            try:
-                X = self._prepare_input(data)
-                raw_pred_days = float(self.model.predict(X)[0])
-            except Exception as e:
-                print(f"[WARN] Prediction failed: {e}. Falling back to base_days.")
-                raw_pred_days = base_days
-        else:
-            raw_pred_days = base_days
+        X = self._prepare_input(data)
+        raw_pred_days = float(self.model.predict(X)[0])
 
         # -------------------------------------------------
         # AEIF safety lower bound (60% of base)

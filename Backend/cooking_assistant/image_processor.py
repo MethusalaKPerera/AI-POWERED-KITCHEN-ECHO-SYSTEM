@@ -10,7 +10,7 @@ import re
 from groq import Groq
 
 # ── Groq client ──────────────────────────────────────────────────────────────
-GROQ_API_KEY = os.environ.get("GROQ_API_KEY") or "dummy_key"
+GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
 
 
 client = Groq(api_key=GROQ_API_KEY)

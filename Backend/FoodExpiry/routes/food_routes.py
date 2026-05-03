@@ -14,13 +14,10 @@ from FoodExpiry.models.expiry_predictor import ExpiryPredictor
 from FoodExpiry.ml.aed_adjuster import apply_aed, update_aed_single
 from FoodExpiry.ml.scp_ranker import scp_score
 
-try:
-    from reportlab.lib.pagesizes import A4
-    from reportlab.pdfgen import canvas
-    from reportlab.lib.units import cm
-    REPORTLAB_AVAILABLE = True
-except ImportError:
-    REPORTLAB_AVAILABLE = False
+# PDF (Report)
+from reportlab.lib.pagesizes import A4
+from reportlab.pdfgen import canvas
+from reportlab.lib.units import cm
 
 food_bp = Blueprint("food_bp", __name__)
 predictor = ExpiryPredictor()
@@ -310,38 +307,23 @@ def get_options():
 # ----------------------------------------------------
 @food_bp.route("/", methods=["GET"])
 def get_foods():
-    try:
-        # ✅ NEW (backward compatible): allow optional filter by userId
-        user_id = (request.args.get("userId") or request.args.get("user_id") or "").strip()
-        q = {"userId": user_id} if user_id else {}
+    # ✅ NEW (backward compatible): allow optional filter by userId
+    user_id = (request.args.get("userId") or request.args.get("user_id") or "").strip()
+    q = {"userId": user_id} if user_id else {}
 
-        try:
-            foods = list(foods_col.find(q))
-        except Exception as e:
-            traceback.print_exc()
-            return jsonify({
-                "error": "FoodExpiry DB connection failed",
-                "message": str(e),
-            }), 500
+    foods = list(foods_col.find(q))
+    for f in foods:
+        f["_id"] = str(f["_id"])
 
-        for f in foods:
-            f["_id"] = str(f["_id"])
+        final_exp = f.get("finalExpiryDate") or f.get("predictedExpiryDate")
+        purchase_date = f.get("purchaseDate") or f.get("purchase_date")
 
-            final_exp = f.get("finalExpiryDate") or f.get("predictedExpiryDate")
-            purchase_date = f.get("purchaseDate") or f.get("purchase_date")
+        if final_exp:
+            days_left = days_left_from_today(final_exp, purchase_date)
+            f["daysLeft"] = days_left
+            f["scpPriorityScore_live"] = scp_score(days_left)
 
-            if final_exp:
-                days_left = days_left_from_today(final_exp, purchase_date)
-                f["daysLeft"] = days_left
-                f["scpPriorityScore_live"] = scp_score(days_left)
-
-        return jsonify(foods), 200
-    except Exception as e:
-        traceback.print_exc()
-        return jsonify({
-            "error": "FoodExpiry failed to load foods",
-            "message": str(e),
-        }), 500
+    return jsonify(foods), 200
 
 
 # ----------------------------------------------------
@@ -1147,12 +1129,6 @@ def analytics_export_csv():
 
 @food_bp.route("/analytics/export/pdf", methods=["GET"])
 def analytics_export_pdf():
-    if not REPORTLAB_AVAILABLE:
-        return jsonify({
-            "error": "PDF generation unavailable",
-            "message": "The 'reportlab' library is not installed on the server."
-        }), 503
-
     """
     Download a simple research-ready PDF report (KPI + distributions + recent rows).
     Query:

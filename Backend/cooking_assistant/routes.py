@@ -20,7 +20,7 @@ cooking_bp = Blueprint('cooking', __name__)
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
 # ── Groq client ───────────────────────────────────────────────────────────────
-GROQ_API_KEY = _os.environ.get("GROQ_API_KEY") or "dummy_key"
+GROQ_API_KEY = _os.environ.get("GROQ_API_KEY")
 groq_client  = Groq(api_key=GROQ_API_KEY)
 
 # ── Ingredient categories ─────────────────────────────────────────────────────
@@ -189,25 +189,15 @@ def _keyword_search(user_ingredients, recipes, top_k=12):
         name_lower = en_name.lower()
 
         recipe_ings = []
-        has_placeholder = False
         for ing in recipe.get('ingredients', []):
             name = ing.get('name', '') if isinstance(ing, dict) else str(ing)
             if isinstance(name, dict):
                 name = name.get('english', '')
-            
-            if "ingredients to be added" in name.lower():
-                has_placeholder = True
-                break
-
             clean = re.sub(r'^[\d./\s]+(g|kg|ml|l|cup|tsp|tbsp|oz|lb)?\s*', '', name.lower().strip())
             if clean:
                 recipe_ings.append(clean)
 
-        method = recipe.get('method', '') or recipe.get('instructions', '')
-        if not method or "instructions to be added" in method.lower() or "detailed cooking instructions" in method.lower():
-            has_placeholder = True
-
-        if has_placeholder or not recipe_ings:
+        if not recipe_ings:
             continue
 
         covered_ings = []
@@ -298,13 +288,9 @@ def analyze_image():
         filepath   = _os.path.join(upload_dir, filename)
         file.save(filepath)
 
-        from image_processor import analyze_image
-        result = analyze_image(filepath)
+        from image_processor import detect_ingredients
+        detected = detect_ingredients(filepath)
 
-        if not result.get('success'):
-            return jsonify({'success': False, 'error': result.get('error', 'Failed to detect ingredients')})
-
-        detected = result.get('ingredients', [])
         return jsonify({
             'success':        True,
             'ingredients':    detected,

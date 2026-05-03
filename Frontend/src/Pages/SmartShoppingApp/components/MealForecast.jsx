@@ -1,6 +1,6 @@
+
 import React, { useEffect, useState } from 'react';
 import { Sun, Coffee, Moon, Utensils, Loader2 } from 'lucide-react';
-import { API_URL } from '../../../config';
 
 export function MealForecast() {
   const [prediction, setPrediction] = useState(null);
@@ -17,7 +17,7 @@ export function MealForecast() {
       }
 
       try {
-        const res = await fetch(`${API_URL}/shopping/predict-needs`, {
+        const res = await fetch('http://localhost:5000/api/shopping/predict-needs', {
           headers: {
             'Authorization': `Bearer ${token}`
           }

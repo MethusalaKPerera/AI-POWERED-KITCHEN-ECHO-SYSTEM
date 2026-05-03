@@ -260,7 +260,6 @@ class SBERTRecipeMatcher:
 
             # Get clean ingredient list for display
             recipe_ings = []
-            has_placeholder = False
             for ing in recipe.get('ingredients', []):
                 if isinstance(ing, dict):
                     ing_name = ing.get('name', '')
@@ -268,11 +267,6 @@ class SBERTRecipeMatcher:
                         ing_name = ing_name.get('english', '')
                 else:
                     ing_name = str(ing)
-                    
-                if "ingredients to be added" in ing_name.lower():
-                    has_placeholder = True
-                    break
-                    
                 ing_clean = re.sub(
                     r'^\d+[\d./]*\s*(g|kg|ml|l|cup|tsp|tbsp|oz|lb|piece|pieces)?\s*',
                     '', ing_name.strip(), flags=re.IGNORECASE
@@ -280,30 +274,9 @@ class SBERTRecipeMatcher:
                 if ing_clean:
                     recipe_ings.append(ing_clean)
 
-            # Check instructions for placeholders
-            method = recipe.get('method', '') or recipe.get('instructions', '')
-            if not method or "instructions to be added" in method.lower() or "detailed cooking instructions" in method.lower():
-                has_placeholder = True
-
-            # Skip incomplete recipes
-            if has_placeholder or not recipe_ings:
-                continue
-
             matched_display, missing_ings = self._keyword_fallback(
                 user_ingredients, recipe_ings
             )
-
-            # Calculate actual ingredient overlap score
-            covered_count = len(matched_display)
-            total_count = len(recipe_ings)
-            ing_score = round((covered_count / total_count) * 100) if total_count > 0 else 0
-
-            # Blend semantic similarity with ingredient overlap to prevent 100% scores for mismatched ingredients
-            # If ingredient overlap is 0, we cap the score to avoid misleading 100% matches
-            if covered_count == 0:
-                match_score = min(match_score, 40)
-            else:
-                match_score = int(0.4 * match_score + 0.6 * ing_score)
 
             # Main protein boost
             # If user has "chicken" and recipe is "Chicken Curry" → boost

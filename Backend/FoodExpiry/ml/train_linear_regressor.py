@@ -1,10 +1,10 @@
 import os
 import pandas as pd
+import joblib
 
-from sklearn.ensemble import RandomForestRegressor
+from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_absolute_error, r2_score
-import joblib
 
 # --------------------------------------------------------
 # PATHS
@@ -14,8 +14,8 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_MAIN = os.path.join(BASE_DIR, "..", "data", "food_expiry_predictor_items.csv")
 DATA_BASE_EXPIRY = os.path.join(BASE_DIR, "..", "data", "item_base_expiry_days.csv")
 
-MODEL_PATH = os.path.join(BASE_DIR, "..", "models", "expiry_random_forest.pkl")
-FEATURES_PATH = os.path.join(BASE_DIR, "..", "models", "feature_columns_random_forest.txt")
+MODEL_PATH = os.path.join(BASE_DIR, "..", "models", "expiry_linear_regression.pkl")
+FEATURES_PATH = os.path.join(BASE_DIR, "..", "models", "feature_columns_linear_regression.txt")
 
 TARGET_COL = "days_until_expiry"
 
@@ -134,19 +134,11 @@ X_train, X_test, y_train, y_test = train_test_split(
 )
 
 # --------------------------------------------------------
-# TRAIN RANDOM FOREST
+# TRAIN LINEAR REGRESSION
 # --------------------------------------------------------
-print("\nTraining Random Forest model...")
+print("\nTraining Linear Regression model...")
 
-model = RandomForestRegressor(
-    n_estimators=300,
-    max_depth=12,
-    min_samples_split=5,
-    min_samples_leaf=2,
-    random_state=42,
-    n_jobs=-1
-)
-
+model = LinearRegression()
 model.fit(X_train, y_train)
 
 # --------------------------------------------------------
@@ -156,7 +148,7 @@ pred = model.predict(X_test)
 mae = mean_absolute_error(y_test, pred)
 r2 = r2_score(y_test, pred)
 
-print("\nRANDOM FOREST MODEL PERFORMANCE")
+print("\nLINEAR REGRESSION MODEL PERFORMANCE")
 print(f"MAE (days): {mae:.4f}")
 print(f"R² score   : {r2:.4f}")
 
@@ -169,4 +161,4 @@ print("Saved model to:", MODEL_PATH)
 with open(FEATURES_PATH, "w", encoding="utf-8") as f:
     f.write("\n".join(list(X.columns)))
 
-print("Saved feature_columns_random_forest.txt")
+print("Saved feature_columns_linear_regression.txt")

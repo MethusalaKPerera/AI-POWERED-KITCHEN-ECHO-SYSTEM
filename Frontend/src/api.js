@@ -1,11 +1,10 @@
-// Dynamic API Configuration
-const BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
-const API_BASE = `${BASE_URL}/api`;
+// FIXED API Configuration - Correct paths for your backend
+const API_BASE = 'http://localhost:5000/api';
 
 export const api = {
     // Health check
     checkHealth: async () => {
-        const response = await fetch(`${BASE_URL}/health`);
+        const response = await fetch('http://localhost:5000/health');
         return response.json();
     },
 

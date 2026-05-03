@@ -1,0 +1,632 @@
+purchase_month
+purchase_day_of_week
+quantity
+used_before_expiry
+cat_beverage
+cat_dairy
+cat_fruit
+cat_grain
+cat_meat
+cat_snack
+cat_vegetable
+storage_freezer
+storage_fridge
+storage_pantry
+storage_temperature_c
+storage_humidity_pct
+item_base_expiry_days
+food_achcharu
+food_almond_milk
+food_aluwa
+food_aluwa (homemade)
+food_appam_flour
+food_apple
+food_ash_plantain
+food_avocado
+food_avocado (homemade)
+food_avocado (leftovers)
+food_avocado_juice
+food_bacon
+food_baguette
+food_banana
+food_banana (homemade)
+food_banana (store-bought)
+food_banana chips
+food_banana chips (homemade)
+food_banana chips (leftovers)
+food_banana chips (store-bought)
+food_banana_ambul
+food_banana_anamalu
+food_banana_chips
+food_banana_seeni
+food_banana_smoothie
+food_barley
+food_barley_drink
+food_basmati_rice
+food_beans
+food_beans (homemade)
+food_beef
+food_beef (leftovers)
+food_beef curry (homemade)
+food_beef curry (leftovers)
+food_beef_curry
+food_beef_raw
+food_beef_roast
+food_beef_steak
+food_beef_strips
+food_beet_leaves
+food_beetroot
+food_beetroot (leftovers)
+food_beetroot (store-bought)
+food_belimal_tea
+food_bell pepper
+food_bell pepper (homemade)
+food_bell pepper (store-bought)
+food_bell_pepper
+food_bibikkan
+food_bibikkan (leftovers)
+food_bibikkan (store-bought)
+food_biscuits
+food_biscuits (store-bought)
+food_bitter gourd (store-bought)
+food_bitter_gourd
+food_blueberry
+food_boiled vegetables
+food_bottled_water
+food_bread
+food_bread (leftovers)
+food_bread_bun
+food_bread_loaf
+food_breadcrumbs
+food_breadfruit
+food_breadfruit curry
+food_brinjal
+food_brinjal (homemade)
+food_brinjal (store-bought)
+food_broccoli
+food_brownie
+food_buffalo curd (homemade)
+food_buffalo curd (store-bought)
+food_buffalo_curd
+food_bun
+food_bun (homemade)
+food_bun (leftovers)
+food_bun_rotti
+food_butter
+food_butter (homemade)
+food_butter (leftovers)
+food_butter_block
+food_buttermilk
+food_cabbage
+food_cabbage (homemade)
+food_cake
+food_cake_piece
+food_cake_rusk
+food_candy
+food_capsicum
+food_carrot
+food_cassava
+food_cassava chips (homemade)
+food_cassava chips (leftovers)
+food_cauliflower
+food_cereal
+food_ceylon_tea
+food_chapati
+food_cheddar
+food_cheese
+food_cheese (homemade)
+food_cheese (store-bought)
+food_cheese_balls
+food_cheese_slice
+food_cherry
+food_chicken
+food_chicken (homemade)
+food_chicken (leftovers)
+food_chicken (store-bought)
+food_chicken curry
+food_chicken curry (store-bought)
+food_chicken_breast
+food_chicken_curry
+food_chicken_gizzard
+food_chicken_liver
+food_chicken_raw
+food_chicken_roast
+food_chicken_sausage
+food_chicken_thigh
+food_chicken_wings
+food_chickpeas_cooked
+food_chili_paste
+food_chips
+food_chips_cassava
+food_chips_potato
+food_chocolate
+food_chocolate (homemade)
+food_chocolate (leftovers)
+food_chocolate (store-bought)
+food_chocolate_bar
+food_chocolate_drink
+food_chocolate_milk
+food_chocolate_yogurt
+food_chutney
+food_cinnamon_tea
+food_cocoa_drink
+food_coconut
+food_coconut_milk_drink
+food_coconut_water
+food_coffee
+food_coffee (leftovers)
+food_coffee (store-bought)
+food_coffee_drink
+food_condensed_milk
+food_cooked rice
+food_cookie
+food_corn
+food_corn_flour
+food_cottage_cheese
+food_couscous
+food_cow_curd
+food_crab
+food_crackers
+food_crackers_plain
+food_cream
+food_cream (homemade)
+food_cream_cheese
+food_crisps
+food_cucumber
+food_cucumber (homemade)
+food_cupcake
+food_curd
+food_curd and treacle (homemade)
+food_curd and treacle (leftovers)
+food_curd and treacle (store-bought)
+food_curd_and_treacle
+food_curd_drink
+food_curd_lassi
+food_curd_pot
+food_custard (leftovers)
+food_custard (store-bought)
+food_custard_apple
+food_cutlet (homemade)
+food_cutlet_fish
+food_cutlet_potato
+food_cuttlefish
+food_dal curry
+food_dates
+food_deli_meat
+food_devilled chicken (homemade)
+food_devilled_chicken
+food_devilled_prawns
+food_dhal curry
+food_dhal curry (homemade)
+food_dhal curry (leftovers)
+food_dhal_cooked
+food_dodol
+food_doughnut
+food_dragon_fruit
+food_dried fish (homemade)
+food_dried fish (leftovers)
+food_dried fish (store-bought)
+food_drumstick
+food_dry_fish
+food_durian
+food_durian (leftovers)
+food_egg
+food_egg buns
+food_egg buns (homemade)
+food_egg buns (leftovers)
+food_egg hoppers
+food_egg_boiled
+food_egg_bun
+food_egg_omelette
+food_egg_raw
+food_energy_bar
+food_energy_drink
+food_faluda
+food_feta
+food_figs
+food_fish ambul thiyal (homemade)
+food_fish ambul thiyal (store-bought)
+food_fish buns
+food_fish buns (homemade)
+food_fish buns (leftovers)
+food_fish curry
+food_fish curry (store-bought)
+food_fish_ambul_thiyal
+food_fish_bun
+food_fish_cutlet_mix
+food_fish_mackerel
+food_fish_sprats
+food_fish_tuna
+food_flour
+food_fresh fish (homemade)
+food_fresh fish (store-bought)
+food_fresh milk (leftovers)
+food_fresh_cream
+food_fresh_milk
+food_fresh_milk_pack
+food_fried fish
+food_fried rice
+food_fried rice (homemade)
+food_fried rice (leftovers)
+food_fried rice (store-bought)
+food_fried_fish
+food_fruit juice
+food_fruit salad (leftovers)
+food_fruit salad (store-bought)
+food_fruit_punch
+food_garlic
+food_garlic (homemade)
+food_garlic (leftovers)
+food_garlic (store-bought)
+food_ghee
+food_ginger
+food_ginger beer
+food_ginger beer (leftovers)
+food_ginger_beer
+food_ginger_tea
+food_gotukola
+food_gotukola (homemade)
+food_grapes
+food_green chili (homemade)
+food_green chili (leftovers)
+food_green chili (store-bought)
+food_green_bean
+food_green_chili
+food_grilled chicken
+food_ground_pork
+food_guava
+food_guava (store-bought)
+food_halapa
+food_halapa (homemade)
+food_herbal tea
+food_herbal tea (homemade)
+food_herbal_infusion
+food_herbal_tea
+food_hoppers
+food_hoppers (homemade)
+food_hoppers (leftovers)
+food_hoppers_batter
+food_hotdog
+food_ice cream (leftovers)
+food_ice cream (store-bought)
+food_ice_cream
+food_ice_cream_tub
+food_iced_coffee
+food_iced_tea
+food_idiyappam
+food_isso vadai
+food_isso vadai (homemade)
+food_isso vadai (leftovers)
+food_isso vadai (store-bought)
+food_isso_vadai
+food_isso_wade
+food_jackfruit
+food_jackfruit (leftovers)
+food_jackfruit curry
+food_jackfruit_seed
+food_jaggery_sweet
+food_jak_juice
+food_jak_tender
+food_jeera_water
+food_jelly (homemade)
+food_jelly (leftovers)
+food_jelly (store-bought)
+food_jelly_cup
+food_juice
+food_kangkung (homemade)
+food_kangkung (leftovers)
+food_kankun
+food_kavum
+food_kavum (homemade)
+food_kavum (leftovers)
+food_kavum (store-bought)
+food_kefir
+food_kekiri
+food_king coconut water (homemade)
+food_king coconut water (leftovers)
+food_king coconut water (store-bought)
+food_king_coconut
+food_king_coconut_water
+food_kiri bath
+food_kiri bath (homemade)
+food_kiri_pani
+food_kiri_toffee
+food_kiwi
+food_kohila
+food_kokis
+food_kokis (homemade)
+food_kokis (leftovers)
+food_kokis (store-bought)
+food_kombucha
+food_kothamalli_drink
+food_kottu
+food_kottu flour
+food_kottu flour (leftovers)
+food_kottu flour (store-bought)
+food_kottu roti
+food_kottu roti (homemade)
+food_kottu roti (leftovers)
+food_kottu roti (store-bought)
+food_kottu_roti
+food_kurakkan_flour
+food_lamb
+food_lamprais (homemade)
+food_lamprais (leftovers)
+food_lassi_bottle
+food_leeks
+food_leeks (leftovers)
+food_leeks (store-bought)
+food_lemon
+food_lemonade
+food_lemongrass_tea
+food_lentil soup
+food_lentils
+food_lettuce
+food_lime
+food_lime juice
+food_lime_juice
+food_lime_soda
+food_long_beans
+food_longan
+food_lotus_root
+food_lunu miris
+food_lunu miris (store-bought)
+food_lychee
+food_mango
+food_mango (store-bought)
+food_mango_lassi
+food_mangosteen
+food_mangosteen (homemade)
+food_manioc
+food_manioc curry
+food_manioc curry (store-bought)
+food_marshmallow
+food_meat curry
+food_meatballs
+food_melon
+food_milk
+food_milk powder
+food_milk powder (homemade)
+food_milk powder (leftovers)
+food_milk powder (store-bought)
+food_milk rice
+food_milk tea
+food_milk tea (homemade)
+food_milk_drink
+food_milk_powder
+food_milk_pudding
+food_milk_tea
+food_milk_toffee
+food_milkshake
+food_milkshake_bottle
+food_millet
+food_minced_beef
+food_mint_lemonade
+food_mixture
+food_mixture (homemade)
+food_mixture (store-bought)
+food_mozzarella
+food_muffin
+food_mukunuwenna
+food_mukunuwenna (homemade)
+food_mukunuwenna (leftovers)
+food_mukunuwenna (store-bought)
+food_murukku
+food_mushroom
+food_mutton
+food_mutton (leftovers)
+food_mutton (store-bought)
+food_mutton_curry
+food_mutton_raw
+food_naan
+food_nachos
+food_nawala_leaves
+food_nelli
+food_nelli_juice
+food_noodles
+food_noodles (homemade)
+food_noodles (store-bought)
+food_oats
+food_okra
+food_okra (store-bought)
+food_okra_curry
+food_olive
+food_omelette
+food_onion
+food_orange
+food_palmyrah_fruit
+food_paneer
+food_pani_dodang_juice
+food_pani_walalu
+food_papadam
+food_papadam (store-bought)
+food_papaya
+food_papaya (homemade)
+food_papaya (store-bought)
+food_papaya_smoothie
+food_paratha
+food_parippu curry (leftovers)
+food_parippu curry (store-bought)
+food_passion_fruit
+food_passion_fruit_juice
+food_pasta
+food_pasta (leftovers)
+food_pasta (store-bought)
+food_pastry
+food_pastry (leftovers)
+food_pastry (store-bought)
+food_patties
+food_peach
+food_peanut_brittle
+food_pear
+food_peas
+food_pickle_mix
+food_pineapple
+food_pineapple (leftovers)
+food_pineapple (store-bought)
+food_pittu (store-bought)
+food_pittu_flour
+food_pizza slice
+food_plain tea (leftovers)
+food_plain tea (store-bought)
+food_plum
+food_pol sambol
+food_pol sambol (leftovers)
+food_pol sambol (store-bought)
+food_pol_sambol
+food_pomegranate
+food_pomelo
+food_popcorn
+food_pork (leftovers)
+food_pork (store-bought)
+food_pork_chop
+food_pork_curry
+food_pork_raw
+food_porridge_mix
+food_potato
+food_potato (homemade)
+food_prawn
+food_prawn curry
+food_prawn curry (homemade)
+food_prawn curry (store-bought)
+food_prawns
+food_prawns (leftovers)
+food_processed_cheese
+food_pudding
+food_pumpkin
+food_pumpkin (homemade)
+food_quinoa
+food_radish
+food_rambutan
+food_rambutan (store-bought)
+food_ranawara_tea
+food_raw rice
+food_red_rice
+food_rice
+food_rice flour
+food_rice flour (homemade)
+food_rice flour (leftovers)
+food_rice_cakes
+food_rice_flour
+food_rice_noodles
+food_rice_red
+food_rice_white
+food_ridge_gourd
+food_rolls
+food_rolls_fish
+food_rolls_veg
+food_rose apple
+food_rose_apple
+food_rose_syrup_drink
+food_roti
+food_roti_godamba
+food_roti_pol
+food_rusk
+food_salad_mix
+food_salak (homemade)
+food_salami
+food_samba_rice
+food_sambol
+food_samosa
+food_samosa (homemade)
+food_samosa (leftovers)
+food_sandwich
+food_sapodilla
+food_sarana
+food_saraswathi_drink
+food_sausage
+food_sausages
+food_seeni sambol (homemade)
+food_seeni sambol (store-bought)
+food_seeni_sambol
+food_semolina
+food_sesame_balls
+food_sesame_snaps
+food_sherbet
+food_short_eats
+food_short_eats_mix
+food_smoothie
+food_snake_gourd
+food_soda
+food_soda_water
+food_sour_cream
+food_soursop
+food_soursop (homemade)
+food_soursop (leftovers)
+food_soursop (store-bought)
+food_soursop juice
+food_soursop juice (homemade)
+food_soursop_juice
+food_soy_milk
+food_spinach
+food_sports_drink
+food_spring_onion
+food_star_fruit
+food_strawberry
+food_strawberry_yogurt
+food_string hopper flour (homemade)
+food_string hopper flour (store-bought)
+food_string hoppers
+food_string hoppers (leftovers)
+food_string hoppers (store-bought)
+food_string_hoppers
+food_stringhopper_bites
+food_sugarcane
+food_sweet_potato
+food_syrup
+food_tamarind_drink
+food_tamarind_pod
+food_tea
+food_thala guli (leftovers)
+food_thambili_smoothie
+food_thibbatu
+food_thosai_batter
+food_toffee
+food_tomato
+food_tomato (homemade)
+food_tomato (store-bought)
+food_trail_mix
+food_turkey
+food_turnip
+food_uht milk
+food_uht milk (homemade)
+food_uht milk (store-bought)
+food_ulundu vadai
+food_ulundu vadai (leftovers)
+food_ulundu vadai (store-bought)
+food_vadai (homemade)
+food_vadai (leftovers)
+food_vadai (store-bought)
+food_vanilla_yogurt
+food_vegetable soup
+food_vermicelli
+food_vitamin_water
+food_wade
+food_wafers
+food_watalappan
+food_watermelon
+food_watermelon (leftovers)
+food_watermelon_juice
+food_wattalappam
+food_wattalappam (homemade)
+food_wheat flour
+food_wheat flour (leftovers)
+food_wheat flour (store-bought)
+food_wheat_bread
+food_wheat_flour
+food_whey_drink
+food_whipped_cream
+food_winged beans (leftovers)
+food_winged_beans
+food_wood_apple
+food_wood_apple_juice
+food_woodapple
+food_woodapple (store-bought)
+food_yam
+food_yoghurt
+food_yoghurt (homemade)
+food_yoghurt (store-bought)
+food_yoghurt_plain
+food_yogurt
+food_yogurt_cup
+food_yogurt_drink

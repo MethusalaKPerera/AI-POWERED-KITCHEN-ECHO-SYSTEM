@@ -36,59 +36,6 @@ Current solutions operate in isolated silos, rely on static or reactive logic, a
 This research addresses this gap by developing an integrated AI-powered smart kitchen ecosystem that connects cooking, nutrition guidance, shopping assistance, and food expiry management into a unified, adaptive platform.
 
 
-## Setup Instructions
-
-### Prerequisites
-- Python 3.8+
-- Node.js 16+
-- Docker (for MongoDB)
-
-### 1. Clone the Repository
-```bash
-git clone https://github.com/MethusalaKPerera/AI-POWERED-KITCHEN-ECHO-SYSTEM.git
-cd AI-POWERED-KITCHEN-ECHO-SYSTEM
-```
-
-### 2. Set up MongoDB
-The Food Expiry module requires MongoDB. Use Docker for easy setup:
-
-```bash
-# Start MongoDB
-docker-compose up -d mongodb
-
-# Verify MongoDB is running
-docker ps
-```
-
-### 3. Environment Variables
-Copy the example environment file and update as needed:
-
-```bash
-cp .env.example .env
-```
-
-Edit `.env` with your settings:
-- `MONGO_URI=mongodb://localhost:27017/smartkitchen`
-- `JWT_SECRET_KEY=your-secret-key-here`
-
-### 4. Backend Setup
-```bash
-cd Backend
-pip install -r requirements.txt
-python app.py
-```
-
-### 5. Frontend Setup
-```bash
-cd ../Frontend
-npm install
-npm run dev
-```
-
-The application will be available at:
-- Frontend: http://localhost:5173
-- Backend: http://127.0.0.1:5000
-
 ## Research Objectives
 
 ### Main Objective
