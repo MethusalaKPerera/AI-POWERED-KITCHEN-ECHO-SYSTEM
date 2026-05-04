@@ -309,32 +309,71 @@ def chat():
                 print(f"Gemini failed: {e}")
                 # Fallback handled below
 
+        # --- FALLBACK TO GROQ (If Gemini is missing or fails) ---
+        if not gemini_response and GROQ_API_KEY:
+            try:
+                print("Gemini unavailable, attempting Groq fallback...")
+                
+                system_instr = (
+                    "You are a helpful AI Kitchen & Shopping Assistant for the 'Smart Kitchen Echo System'. "
+                    "When users ask for a recipe or how to make a dish, you should: "
+                    "1. Provide a clear SHOPPING LIST of ingredients first. "
+                    "2. Follow it with concise, easy-to-follow cooking instructions. "
+                    "3. Mention any tips for reducing food waste or finding the best prices. "
+                    "Keep the tone friendly and professional."
+                )
+                
+                groq_payload = {
+                    'model': 'llama-3.3-70b-versatile',
+                    'messages': [
+                        {'role': 'system', 'content': system_instr},
+                        {'role': 'user', 'content': msg}
+                    ],
+                    'temperature': 0.7,
+                    'max_tokens': 1024
+                }
+                
+                groq_res = requests.post(
+                    'https://api.groq.com/openai/v1/chat/completions',
+                    headers={
+                        'Authorization': f'Bearer {GROQ_API_KEY}',
+                        'Content-Type': 'application/json'
+                    },
+                    json=groq_payload,
+                    timeout=15
+                )
+                
+                if groq_res.status_code == 200:
+                    groq_data = groq_res.json()
+                    gemini_response = groq_data['choices'][0]['message']['content']
+                    print(f"Groq Response received: {gemini_response[:50]}...")
+                else:
+                    print(f"Groq API Error: {groq_res.status_code}")
+            except Exception as e:
+                print(f"Groq fallback failed: {e}")
+
         if gemini_response:
              return jsonify({'success': True, 'response': gemini_response})
 
-        # KEYWORD FALLBACK (when Gemini is down or blocked)
-        if any(w in msg_lower for w in ['pasta', 'macaroni', 'spaghetti']):
+        # KEYWORD FALLBACK (Enhanced for misspellings)
+        msg_clean = re.sub(r'[^a-z0-9\s]', '', msg_lower)
+        
+        # Check for cooking/recipe intent (includes misspellings like 'recipy', 'recepi', etc)
+        recipe_keywords = ['recipe', 'recipy', 'recepi', 'cook', 'make', 'how to', 'prepare', 'ingredients', 'food']
+        if any(w in msg_clean for w in recipe_keywords):
+            response = f"I'd love to help you with '{msg}'! Since my AI engine is currently in basic mode, I recommend checking out our 'Cooking Assistant' tab for full recipes. However, for a quick start, I can help you find prices for the main ingredients! Would you like me to search for those?"
+        elif any(w in msg_clean for w in ['pasta', 'macaroni', 'spaghetti']):
             response = "For a great pasta, I recommend buying Durum Wheat Semolina pasta, extra virgin olive oil, fresh garlic, and some Parmesan cheese. Should I search for the best prices on these for you?"
-        elif any(w in msg_lower for w in ['recipe', 'cook', 'make', 'eat', 'food', 'ingredients']):
-            response = f"I'd love to help you shop for '{msg}'! Generally, you'll need the fresh produce and key spices. Would you like me to find the best local prices for the main ingredients?"
-        elif any(w in msg_lower for w in ['laptop', 'macbook', 'computer', 'notebook']):
+        elif any(w in msg_clean for w in ['laptop', 'macbook', 'computer', 'notebook']):
             response = "Looking for a laptop? Top picks: MacBook Air M3, Dell XPS 13, Lenovo ThinkPad. What's your budget? Under $800, $1000–$1500, or premium?"
-        elif any(w in msg_lower for w in ['phone', 'iphone', 'samsung', 'pixel']):
+        elif any(w in msg_clean for w in ['phone', 'iphone', 'samsung', 'pixel']):
             response = "Best phones right now: iPhone 15 Pro, Samsung Galaxy S24, Google Pixel 9. Do you prefer iOS or Android?"
-        elif any(w in msg_lower for w in ['headphone', 'earbuds', 'airpods', 'sony']):
-            response = "Top headphones: Sony WH-1000XM5 (best noise-canceling), AirPods Pro 2, Bose QuietComfort. Want wireless or wired?"
-        elif any(w in msg_lower for w in ['price', 'cheap', 'budget', 'deal', 'discount']):
-            response = "Tell me your budget and what you're looking for — I’ll find the best deals under your price!"
-        elif any(w in msg_lower for w in ['recommend', 'suggest', 'best']):
-            response = "Happy to recommend! What are you shopping for? Laptops, phones, headphones, smartwatch, TV...?"
-        elif 'compare' in msg_lower:
-            response = "Sure! Tell me the two products (e.g., “iPhone vs Pixel” or “XPS vs MacBook”) and I’ll compare them for you."
-        elif any(w in msg_lower for w in ['hi', 'hello', 'hey']):
-            response = "Hey there! I'm your AI shopping assistant. Ready to find you the best deals! What are you looking for today?"
-        elif 'thank' in msg_lower:
-            response = "You're very welcome! Happy shopping — come back anytime!"
+        elif any(w in msg_clean for w in ['hi', 'hello', 'hey']):
+            response = "Hey there! I'm your Smart Kitchen Assistant. Ready to help you shop and cook! What's on your mind today?"
+        elif 'thank' in msg_clean:
+            response = "You're very welcome! Happy cooking and shopping — come back anytime!"
         else:
-            response = "I'm here to help you shop smarter! Try asking about laptops, phones, prices, or recommendations. What would you like to explore?"
+            response = "I'm here to help you shop and cook smarter! You can ask me for recipes, ingredient prices, or product recommendations. What would you like to explore?"
 
         return jsonify({'success': True, 'response': response})
 

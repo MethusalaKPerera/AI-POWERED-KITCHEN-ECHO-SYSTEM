@@ -94,6 +94,8 @@ def _period_range(period: str):
 
     if period == "weekly":
         start = today - timedelta(days=6)   # last 7 days incl today
+    elif period in ["two_week", "two_weeks", "14days", "14_days", "fortnight"]:
+        start = today - timedelta(days=13)  # last 14 days incl today
     elif period == "monthly":
         start = today - timedelta(days=29)  # last 30 days incl today
     else:
@@ -224,7 +226,14 @@ def get_summary(app, user_id: str, period: str = "weekly") -> dict:
             except Exception:
                 pass
 
-    period_days = 7 if period == "weekly" else 30
+    if period == "weekly":
+        period_days = 7
+    elif period in ["two_week", "two_weeks", "14days", "14_days", "fortnight"]:
+        period_days = 14
+    elif period == "monthly":
+        period_days = 30
+    else:
+        period_days = 7
     days_logged_count = max(1, len(days_logged))
 
     daily_average_logged_days = {k: round(totals[k] / days_logged_count, 6) for k in nutrient_cols}

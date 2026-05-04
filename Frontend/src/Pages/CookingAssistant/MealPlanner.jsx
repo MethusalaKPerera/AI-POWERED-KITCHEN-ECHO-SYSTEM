@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import './MealPlanner.css';
 import LanguageSelector from '../../Components/LanguageSelector';
+import { API_URL } from '../../config';
 
 const SL_RECIPES = [
   'Rice & Curry', 'Chicken Curry', 'Dhal Curry (Parippu)', 'Fish Curry',
@@ -44,7 +45,7 @@ export default function MealPlanner() {
     if (!freeText.trim()) { setError('Please type your meal plan first!'); return; }
     setLoading(true); setError('');
     try {
-      const res = await fetch('http://localhost:5000/api/parse-meal-plan', {
+      const res = await fetch(`${API_URL}/parse-meal-plan`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text: freeText }),
@@ -65,7 +66,7 @@ export default function MealPlanner() {
     try {
       const fd = new FormData();
       fd.append('image', planImage);
-      const res = await fetch('http://localhost:5000/api/parse-meal-plan-image', {
+      const res = await fetch(`${API_URL}/parse-meal-plan-image`, {
         method: 'POST', body: fd,
       });
       const data = await res.json();
@@ -83,7 +84,7 @@ export default function MealPlanner() {
     if (selected.length === 0) { setError('Please add at least one meal!'); return; }
     setLoading(true); setError('');
     try {
-      const res = await fetch('http://localhost:5000/api/grocery-from-meals', {
+      const res = await fetch(`${API_URL}/grocery-from-meals`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ meals: selected, num_people: numPeople }),
@@ -101,7 +102,7 @@ export default function MealPlanner() {
       .flatMap(day => typeof day === 'object' ? Object.values(day) : [day])
       .filter(Boolean);
     try {
-      const res = await fetch('http://localhost:5000/api/grocery-from-meals', {
+      const res = await fetch(`${API_URL}/grocery-from-meals`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ meals, num_people: numPeople }),
