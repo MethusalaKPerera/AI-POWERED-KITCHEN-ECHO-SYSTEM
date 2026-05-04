@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './CookingAssistant.css';
 import LanguageSelector from '../../Components/LanguageSelector';
+import { API_URL } from '../../config';
 
 function CookingAssistant() {
   const [selectedImage, setSelectedImage]       = useState(null);

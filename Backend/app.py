@@ -130,7 +130,10 @@ if not food_bp_available:
 
     @disabled_bp.route("/", methods=["GET"])
     def food_index():
-        return jsonify([]), 200
+        return jsonify({
+            "error": "FoodExpiry unavailable",
+            "message": unavailable_msg
+        }), 503
 
     @disabled_bp.route("/options", methods=["GET"])
     def food_options():
@@ -249,7 +252,7 @@ def root():
 # Run
 # --------------------------------------------------------
 if __name__ == "__main__":
-    print("🚀 Starting Smart Kitchen Backend...")
-    print("📍 Backend running on: http://127.0.0.1:5000")
-    print("📍 Frontend should run on: http://localhost:5173")
+    print("Starting Smart Kitchen Backend...")
+    print("Backend running on: http://127.0.0.1:5000")
+    print("Frontend should run on: http://localhost:5173")
     app.run(debug=True, port=5000)

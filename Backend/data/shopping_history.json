@@ -519,5 +519,53 @@
       "country": "us"
     },
     "timestamp": "2026-05-02T07:11:03.566434+00:00"
+  },
+  {
+    "id": "50",
+    "user_id": "1",
+    "type": "search",
+    "query": "Avocado.",
+    "details": {
+      "page": 1,
+      "min_price": 0.0,
+      "country": "us"
+    },
+    "timestamp": "2026-05-03T04:10:40.141099+00:00"
+  },
+  {
+    "id": "51",
+    "user_id": "1",
+    "type": "search",
+    "query": "Give me Kiwi.",
+    "details": {
+      "page": 1,
+      "min_price": 0.0,
+      "country": "us"
+    },
+    "timestamp": "2026-05-03T04:53:02.490106+00:00"
+  },
+  {
+    "id": "52",
+    "user_id": "1",
+    "type": "chat",
+    "query": "how to make avacado juise",
+    "details": {},
+    "timestamp": "2026-05-03T04:53:52.430053+00:00"
+  },
+  {
+    "id": "53",
+    "user_id": "1",
+    "type": "chat",
+    "query": "no just give me the recipy",
+    "details": {},
+    "timestamp": "2026-05-03T04:54:12.972946+00:00"
+  },
+  {
+    "id": "54",
+    "user_id": "1",
+    "type": "chat",
+    "query": "hi give me recipe  to the avacado juise",
+    "details": {},
+    "timestamp": "2026-05-03T05:01:02.766616+00:00"
   }
 ]
