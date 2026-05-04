@@ -2,10 +2,8 @@ from dotenv import load_dotenv
 import os as _os
 import sys as _sys
 
-# ── Ensure cooking_assistant/ is always on path (works from Backend/ or cooking_assistant/) ──
 _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
 
-# ── Load .env from cooking_assistant/.env ────────────────────────────────────
 load_dotenv(dotenv_path=_os.path.join(_os.path.dirname(__file__), '.env'))
 
 from flask import Blueprint, request, jsonify
@@ -22,6 +20,22 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 # ── Groq client ───────────────────────────────────────────────────────────────
 GROQ_API_KEY = _os.environ.get("GROQ_API_KEY") or "dummy_key"
 groq_client  = Groq(api_key=GROQ_API_KEY)
+
+# ── RAG System (singleton) ────────────────────────────────────────────────────
+_rag_system = None
+
+def _get_rag():
+    global _rag_system
+    if _rag_system is None:
+        try:
+            from rag.rag_system import RAGSystem
+            data_dir    = _os.path.join(_os.path.dirname(__file__), 'rag', 'data')
+            _rag_system = RAGSystem(data_dir)
+            print("[RAG] ✓ RAG System loaded successfully")
+        except Exception as e:
+            print(f"[RAG] ✗ Failed to load RAG system: {e}")
+            _rag_system = None
+    return _rag_system
 
 # ── Ingredient categories ─────────────────────────────────────────────────────
 INGREDIENT_CATEGORIES = {
@@ -87,28 +101,24 @@ def allowed_file(filename):
 
 def _load_recipes():
     data_dir = _os.path.join(_os.path.dirname(__file__), 'rag', 'data')
-    for fname in ['recipes_all_merged.json', 'new_200_recipes.json', 'recipe_database.json']:
-        fp = _os.path.join(data_dir, fname)
-        if _os.path.exists(fp):
-            with open(fp, 'r', encoding='utf-8') as f:
-                data = json.load(f)
-            return data.get('recipes', []) if isinstance(data, dict) else data
 
-    recipes = []
-    scripts_dir = _os.path.join(_os.path.dirname(__file__), '..', 'scripts')
-    for i in range(1, 10):
-        fp = _os.path.join(scripts_dir, f'generate_recipes_data_p{i}.json')
+    candidates = [
+        _os.path.join(data_dir, 'recipes_all_merged.json'),
+        _os.path.join(data_dir, 'new_200_recipes.json'),
+        _os.path.join(data_dir, 'recipes', 'recipe_database.json'),
+        _os.path.join(data_dir, 'recipe_database.json'),
+    ]
+
+    for fp in candidates:
         if _os.path.exists(fp):
             try:
                 with open(fp, 'r', encoding='utf-8') as f:
                     data = json.load(f)
-                if isinstance(data, list):
-                    recipes.extend(data)
+                recipes = data.get('recipes', []) if isinstance(data, dict) else data
+                print(f"[routes] ✓ Loaded {len(recipes)} recipes from {_os.path.basename(fp)}")
+                return recipes
             except Exception as e:
-                print(f"[routes] Error loading p{i}: {e}")
-
-    if recipes:
-        return recipes
+                print(f"[routes] Error loading {fp}: {e}")
 
     print("[routes] WARNING: No recipe database found!")
     return []
@@ -181,30 +191,61 @@ def _ingredient_matches(user_word, recipe_ing_name):
     return False
 
 
+def _clean_ing_name(raw_name) -> str:
+    """
+    Clean ingredient name the same way semantic_search does.
+    Handles: '1 kg chicken, cut into pieces' → 'chicken'
+    """
+    s = str(raw_name).strip()
+    s = re.sub(
+        r'^\d+[\d./]*\s*(g|kg|mg|ml|l|cup|cups|tsp|tbsp|oz|lb|piece|pieces|'
+        r'can|tin|medium|large|small|bunch|handful|cloves?|clove|inch|cm|'
+        r'slice|slices|stalk|stalks|sprig|sprigs|pinch|drop|drops)?\s*',
+        '', s, flags=re.IGNORECASE
+    )
+    if ',' in s:
+        s = s.split(',')[0].strip()
+    s = re.sub(
+        r'\s+(sliced|diced|chopped|minced|grated|crushed|cubed|cut|peeled|'
+        r'washed|cooked|raw|fresh|dried|ground|whole|boneless|skinless|'
+        r'boiled|fried|finely|roughly|thinly|thickly|cleaned|rinsed)\b.*$',
+        '', s, flags=re.IGNORECASE
+    )
+    return s.strip().lower()
+
+
 def _keyword_search(user_ingredients, recipes, top_k=12):
-    """Fallback keyword-based recipe search used when SBERT is unavailable."""
+    """Fallback keyword-based recipe search."""
     results = []
+
     for recipe in recipes:
         en_name    = _get_recipe_name(recipe)
         name_lower = en_name.lower()
 
-        recipe_ings = []
+        # Skip bad placeholder recipes
+        bad = ['page 1', 'page 2', '---', 'placeholder']
+        if any(b in name_lower for b in bad):
+            continue
+
+        recipe_ings     = []
         has_placeholder = False
+
         for ing in recipe.get('ingredients', []):
-            name = ing.get('name', '') if isinstance(ing, dict) else str(ing)
-            if isinstance(name, dict):
-                name = name.get('english', '')
-            
-            if "ingredients to be added" in name.lower():
+            raw_name = ing.get('name', '') if isinstance(ing, dict) else str(ing)
+            if isinstance(raw_name, dict):
+                raw_name = raw_name.get('english', '')
+
+            if "ingredients to be added" in str(raw_name).lower():
                 has_placeholder = True
                 break
 
-            clean = re.sub(r'^[\d./\s]+(g|kg|ml|l|cup|tsp|tbsp|oz|lb)?\s*', '', name.lower().strip())
+            clean = _clean_ing_name(raw_name)
             if clean:
                 recipe_ings.append(clean)
 
         method = recipe.get('method', '') or recipe.get('instructions', '')
-        if not method or "instructions to be added" in method.lower() or "detailed cooking instructions" in method.lower():
+        if not method or "instructions to be added" in method.lower() \
+                or "detailed cooking instructions" in method.lower():
             has_placeholder = True
 
         if has_placeholder or not recipe_ings:
@@ -265,11 +306,16 @@ def _keyword_search(user_ingredients, recipes, top_k=12):
             'cultural_note':       recipe.get('cultural_note', ''),
             'description':         recipe.get('description', ''),
             'search_method':       'keyword-fallback',
+            'recommendation':      '',
         })
 
     results.sort(key=lambda x: (
-        any(p in x['name'].lower() and any(_ingredient_matches(p, ui)
-            for ui in user_ingredients) for p in MAIN_PROTEINS),
+        any(
+            p in x['name'].lower() and any(
+                _ingredient_matches(p, ui) for ui in user_ingredients
+            )
+            for p in MAIN_PROTEINS
+        ),
         x['match_score']
     ), reverse=True)
 
@@ -302,7 +348,10 @@ def analyze_image():
         result = analyze_image(filepath)
 
         if not result.get('success'):
-            return jsonify({'success': False, 'error': result.get('error', 'Failed to detect ingredients')})
+            return jsonify({
+                'success': False,
+                'error':   result.get('error', 'Failed to detect ingredients')
+            })
 
         detected = result.get('ingredients', [])
         return jsonify({
@@ -322,27 +371,77 @@ def search_recipes():
         return jsonify({'error': 'No ingredients provided'}), 400
 
     user_ingredients = [i.lower().strip() for i in data['ingredients']]
-    recipes          = _load_recipes()
     method_used      = 'keyword-fallback'
+    recommendation   = ''
     results          = []
+    recipes          = _load_recipes()
 
-    # ── SBERT semantic search (with automatic keyword fallback) ───────────────
+    print(f"[search] {len(user_ingredients)} ingredients, {len(recipes)} recipes in DB")
+
+    # ── Step 1: Use sbert_matcher for recipe search ───────────────────────────
     try:
         from sbert_matcher import sbert_search_recipes
         results     = sbert_search_recipes(user_ingredients, recipes, top_k=12)
         method_used = 'sentence-bert'
-        print(f"[SBERT] ✓ {len(results)} recipes found semantically")
+        print(f"[SBERT] ✓ {len(results)} recipes found")
+        if results:
+            print(f"[SBERT] Top: {results[0].get('name')} ({results[0].get('match_score')}%)")
     except Exception as e:
-        print(f"[SBERT] ✗ Falling back to keyword: {e}")
-        results = _keyword_search(user_ingredients, recipes)
+        print(f"[SBERT] ✗ {e} — falling back to keyword")
+        results     = _keyword_search(user_ingredients, recipes)
+        method_used = 'keyword-fallback'
+
+    # ── Step 2: Use RAG for generating recommendation text only ──────────────
+    if results:
+        rag = _get_rag()
+        if rag:
+            try:
+                recommendation = rag.generator.generate_recommendation(
+                    user_ingredients     = user_ingredients,
+                    retrieved_recipes    = results[:5],
+                    user_preferences     = None,
+                    conversation_history = None,
+                )
+                method_used = 'rag-sbert'
+                print(f"[RAG] ✓ Recommendation generated")
+            except Exception as e:
+                print(f"[RAG] recommendation failed: {e}")
 
     return jsonify({
-        'success':       True,
-        'recipes':       results,
-        'total_found':   len(results),
-        'database_size': len(recipes),
-        'search_method': method_used,
+        'success':        True,
+        'recipes':        results,
+        'total_found':    len(results),
+        'database_size':  len(recipes),
+        'search_method':  method_used,
+        'recommendation': recommendation,
     })
+
+
+@cooking_bp.route('/chat', methods=['POST'])
+def chat():
+    data = request.get_json()
+    if not data:
+        return jsonify({'error': 'No data provided'}), 400
+
+    user_message     = data.get('message', '')
+    user_ingredients = [i.lower().strip() for i in data.get('ingredients', [])]
+
+    rag = _get_rag()
+    if not rag:
+        return jsonify({
+            'success':        False,
+            'error':          'RAG system not available',
+            'recommendation': 'Please try again later.',
+        }), 500
+
+    try:
+        result = rag.chat(
+            user_message     = user_message,
+            user_ingredients = user_ingredients if user_ingredients else None,
+        )
+        return jsonify(result)
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
 
 
 @cooking_bp.route('/recipe/<recipe_id>', methods=['GET'])
@@ -351,6 +450,97 @@ def get_recipe(recipe_id):
         if r.get('id') == recipe_id:
             return jsonify({'success': True, 'recipe': r}), 200
     return jsonify({'error': 'Recipe not found'}), 404
+
+
+@cooking_bp.route('/like-recipe', methods=['POST'])
+def like_recipe():
+    data = request.get_json()
+    rag  = _get_rag()
+    if rag and data:
+        rag.like_recipe(data.get('id', ''), data.get('name', ''))
+    return jsonify({'success': True})
+
+
+@cooking_bp.route('/reject-recipe', methods=['POST'])
+def reject_recipe():
+    data = request.get_json()
+    rag  = _get_rag()
+    if rag and data:
+        rag.reject_recipe(
+            data.get('id', ''),
+            data.get('name', ''),
+            data.get('reason', ''),
+        )
+    return jsonify({'success': True})
+
+
+@cooking_bp.route('/set-preference', methods=['POST'])
+def set_preference():
+    data = request.get_json()
+    rag  = _get_rag()
+    if rag and data:
+        rag.set_preference(data.get('key', ''), data.get('value', ''))
+    return jsonify({'success': True})
+
+
+@cooking_bp.route('/ingest-cookbooks', methods=['POST'])
+def ingest_cookbooks():
+    data          = request.get_json() or {}
+    cookbooks_dir = data.get(
+        'cookbooks_dir',
+        _os.path.join(_os.path.dirname(__file__), 'cookbooks')
+    )
+    rag = _get_rag()
+    if not rag:
+        return jsonify({'success': False, 'error': 'RAG system not available'}), 500
+    try:
+        result = rag.ingest_cookbooks(cookbooks_dir)
+        return jsonify(result)
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@cooking_bp.route('/rag-status', methods=['GET'])
+def rag_status():
+    rag = _get_rag()
+
+    if not rag:
+        return jsonify({
+            'rag_loaded':   False,
+            'status':       '❌ RAG system not available',
+            'sbert_loaded': False,
+            'generation':   False,
+            'memory':       False,
+        })
+
+    sbert_ok = False
+    try:
+        rag.semantic_search.search(
+            ['chicken', 'onion'],
+            rag.retriever.get_all_recipes()[:5],
+            top_k=1
+        )
+        sbert_ok = True
+    except Exception:
+        pass
+
+    gen_ok = False
+    try:
+        from rag.generation.response_generator import ResponseGenerator
+        gen_ok = True
+    except Exception:
+        pass
+
+    db_stats = rag.get_database_stats()
+
+    return jsonify({
+        'rag_loaded':   True,
+        'status':       '✅ Full RAG pipeline is active',
+        'sbert_loaded': sbert_ok,
+        'generation':   gen_ok,
+        'memory':       True,
+        'database':     db_stats,
+    })
 
 
 @cooking_bp.route('/test-api', methods=['GET'])
@@ -365,7 +555,6 @@ def test_api():
 
 @cooking_bp.route('/sbert-status', methods=['GET'])
 def sbert_status():
-    """Open in browser to confirm SBERT model is loaded and working."""
     try:
         from sbert_matcher import sbert_predict_category
         cat, conf = sbert_predict_category(
@@ -425,8 +614,10 @@ def parse_meal_plan_image():
     try:
         b64  = base64.b64encode(file.read()).decode('utf-8')
         ext  = file.filename.rsplit('.', 1)[-1].lower()
-        mime = {'jpg': 'image/jpeg', 'jpeg': 'image/jpeg',
-                'png': 'image/png',  'gif':  'image/gif'}.get(ext, 'image/jpeg')
+        mime = {
+            'jpg': 'image/jpeg', 'jpeg': 'image/jpeg',
+            'png': 'image/png',  'gif':  'image/gif'
+        }.get(ext, 'image/jpeg')
 
         response = groq_client.chat.completions.create(
             model="meta-llama/llama-4-scout-17b-16e-instruct",
@@ -434,7 +625,7 @@ def parse_meal_plan_image():
                 "role": "user",
                 "content": [
                     {"type": "image_url", "image_url": {"url": f"data:{mime};base64,{b64}"}},
-                    {"type": "text",      "text": f"Read this meal plan image carefully.\n\n{MEAL_PARSE_PROMPT}"},
+                    {"type": "text", "text": f"Read this meal plan image carefully.\n\n{MEAL_PARSE_PROMPT}"},
                 ],
             }],
             max_tokens=800,
@@ -488,7 +679,7 @@ def grocery_from_meals():
             if isinstance(raw_name, dict):
                 raw_name = raw_name.get('english', '')
 
-            name = raw_name.strip().lower()
+            name = _clean_ing_name(raw_name)
             if not name:
                 continue
 
