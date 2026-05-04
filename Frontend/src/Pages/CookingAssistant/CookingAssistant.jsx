@@ -3,27 +3,32 @@ import './CookingAssistant.css';
 import LanguageSelector from '../../Components/LanguageSelector';
 
 function CookingAssistant() {
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [previewUrl, setPreviewUrl] = useState(null);
-  const [ingredients, setIngredients] = useState([]);
-  const [recipes, setRecipes] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [selectedRecipe, setSelectedRecipe] = useState(null);
-  const [activeNav, setActiveNav] = useState('detect');
-  const [dragOver, setDragOver] = useState(false);
-  const [manualInput, setManualInput] = useState('');
+  const [selectedImage, setSelectedImage]       = useState(null);
+  const [previewUrl, setPreviewUrl]             = useState(null);
+  const [ingredients, setIngredients]           = useState([]);
+  const [recipes, setRecipes]                   = useState([]);
+  const [allRecipes, setAllRecipes]             = useState([]);
+  const [loading, setLoading]                   = useState(false);
+  const [error, setError]                       = useState(null);
+  const [selectedRecipe, setSelectedRecipe]     = useState(null);
+  const [activeNav, setActiveNav]               = useState('detect');
+  const [dragOver, setDragOver]                 = useState(false);
+  const [manualInput, setManualInput]           = useState('');
   const [searchingRecipes, setSearchingRecipes] = useState(false);
-  const manualRef = useRef(null); // ✅ Single declaration — duplicate removed
+  const [recommendation, setRecommendation]     = useState('');
+  const [searchMethod, setSearchMethod]         = useState('');
+  const [chatMessage, setChatMessage]           = useState('');
+  const [chatLoading, setChatLoading]           = useState(false);
+  const manualRef = useRef(null);
 
   useEffect(() => {
     const link = document.createElement('link');
     link.href = 'https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap';
-    link.rel = 'stylesheet';
+    link.rel  = 'stylesheet';
     document.head.appendChild(link);
   }, []);
 
-  // ── Image ─────────────────────────────────────────────────────────────────
+  // ── Image ──────────────────────────────────────────────────────────────────
   const processFile = (file) => {
     setSelectedImage(file);
     setPreviewUrl(URL.createObjectURL(file));
@@ -36,7 +41,7 @@ function CookingAssistant() {
     try {
       const fd = new FormData();
       fd.append('image', selectedImage);
-      const res = await fetch('http://localhost:5000/api/cooking/analyze-image', { method: 'POST', body: fd });
+      const res  = await fetch('http://localhost:5000/api/cooking/analyze-image', { method: 'POST', body: fd });
       const data = await res.json();
       if (data.success) {
         const merged = mergeIngredients(ingredients, data.ingredients);
@@ -44,11 +49,11 @@ function CookingAssistant() {
         await triggerRecipeSearch(merged);
       } else setError(data.error || 'Failed to analyze image');
     } catch {
-      setError('Error connecting to backend. Make sure Flask server is running on port 5000!');
+      setError('Error connecting to backend. Make sure Flask is running on port 5000!');
     } finally { setLoading(false); }
   };
 
-  // ── Ingredients ───────────────────────────────────────────────────────────
+  // ── Ingredients ────────────────────────────────────────────────────────────
   const mergeIngredients = (existing, newOnes) => {
     const combined = [...existing];
     newOnes.forEach(item => {
@@ -60,7 +65,7 @@ function CookingAssistant() {
   const addManualIngredient = () => {
     const raw = manualInput.trim().toLowerCase();
     if (!raw) return;
-    const items = raw.split(',').map(s => s.trim()).filter(s => s.length > 0);
+    const items   = raw.split(',').map(s => s.trim()).filter(s => s.length > 0);
     const updated = mergeIngredients(ingredients, items);
     setIngredients(updated);
     setManualInput('');
@@ -69,18 +74,26 @@ function CookingAssistant() {
 
   const removeIngredient = (ing) => setIngredients(ingredients.filter(i => i !== ing));
 
-  // ── Recipes ───────────────────────────────────────────────────────────────
+  // ── Recipe Search ──────────────────────────────────────────────────────────
   const triggerRecipeSearch = async (list) => {
     if (!list || list.length === 0) return;
     setSearchingRecipes(true);
+    setRecommendation('');
     try {
-      const res = await fetch('http://localhost:5000/api/cooking/search-recipes', {
-        method: 'POST',
+      const res  = await fetch('http://localhost:5000/api/cooking/search-recipes', {
+        method:  'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ingredients: list }),
+        body:    JSON.stringify({ ingredients: list }),
       });
       const data = await res.json();
-      if (data.success) setRecipes(data.recipes || []);
+      if (data.success) {
+        const found = data.recipes || [];
+        setRecipes(found);
+        setAllRecipes(found);
+        setRecommendation(data.recommendation || '');
+        setSearchMethod(data.search_method || '');
+        console.log('Search method:', data.search_method);
+      }
     } catch (e) { console.error(e); }
     finally { setSearchingRecipes(false); }
   };
@@ -90,21 +103,134 @@ function CookingAssistant() {
     await triggerRecipeSearch(ingredients);
   };
 
-  // ── Helpers ───────────────────────────────────────────────────────────────
+  // ── Like / Reject ──────────────────────────────────────────────────────────
+  const likeRecipe = async (recipe) => {
+    try {
+      await fetch('http://localhost:5000/api/cooking/like-recipe', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify({ id: recipe.id, name: recipe.name }),
+      });
+    } catch (e) { console.error(e); }
+  };
+
+  const rejectRecipe = async (recipe) => {
+    try {
+      await fetch('http://localhost:5000/api/cooking/reject-recipe', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify({ id: recipe.id, name: recipe.name }),
+      });
+    } catch (e) { console.error(e); }
+    setRecipes(prev => prev.filter(r => r.id !== recipe.id));
+    setAllRecipes(prev => prev.filter(r => r.id !== recipe.id));
+    if (selectedRecipe?.id === recipe.id) setSelectedRecipe(null);
+  };
+
+  // ── Chat / AI Preferences ──────────────────────────────────────────────────
+  const sendChat = async () => {
+    if (!chatMessage.trim()) return;
+    setChatLoading(true);
+
+    const msg  = chatMessage.toLowerCase().trim();
+    let base   = [...allRecipes];
+    let note   = '';
+
+    const MEAT = ['chicken','fish','prawn','beef','pork','mutton','lamb',
+                  'tuna','sardine','shrimp','malu','crab','squid','duck'];
+
+    if (msg.includes('vegetarian') || msg.includes('no meat') || msg.includes('veg')) {
+      base = base.filter(r => !MEAT.some(m => r.name.toLowerCase().includes(m)));
+      note = `Showing ${base.length} vegetarian recipes — meat dishes removed.`;
+    }
+    else if (msg.includes('easy') || msg.includes('simple')) {
+      base = base.filter(r => r.difficulty?.toLowerCase() === 'easy');
+      note = `Showing ${base.length} easy recipes.`;
+    }
+    else if (
+      (msg.includes("don't") || msg.includes('no') || msg.includes('not') || msg.includes('less')) &&
+      msg.includes('spicy')
+    ) {
+      base = base.filter(r => (r.spice_level || 3) <= 2);
+      note = `Showing ${base.length} mild / low-spice recipes.`;
+    }
+    else if (msg.includes('quick') || msg.includes('fast') || msg.includes('30 min')) {
+      base = base.filter(r => {
+        const mins = parseInt(r.cooking_time || '60');
+        return !isNaN(mins) && mins <= 30;
+      });
+      note = `Showing ${base.length} recipes under 30 minutes.`;
+    }
+    else if (msg.includes('hard') || msg.includes('difficult') || msg.includes('challenge')) {
+      base = base.filter(r => r.difficulty?.toLowerCase() === 'hard');
+      note = `Showing ${base.length} challenging recipes.`;
+    }
+    else if (msg.includes('dessert') || msg.includes('sweet')) {
+      base = base.filter(r => r.category?.toLowerCase().includes('dessert'));
+      note = `Showing ${base.length} dessert recipes.`;
+    }
+    else if (msg.includes('breakfast')) {
+      base = base.filter(r => r.category?.toLowerCase().includes('breakfast'));
+      note = `Showing ${base.length} breakfast recipes.`;
+    }
+    else if (msg.includes('reset') || msg.includes('show all') || msg.includes('clear filter')) {
+      base = [...allRecipes];
+      note = `Reset — showing all ${base.length} recipes.`;
+    }
+    else {
+      // Try backend
+      try {
+        const res  = await fetch('http://localhost:5000/api/cooking/chat', {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body:    JSON.stringify({ message: chatMessage, ingredients }),
+        });
+        const data = await res.json();
+        if (data.success) {
+          note = data.recommendation || '';
+          if (data.results?.length > 0) {
+            base = data.results;
+            setAllRecipes(data.results);
+          }
+        }
+      } catch {
+        note = 'Try: "vegetarian", "easy", "no spicy", "quick", "dessert", or "reset"';
+      }
+    }
+
+    setRecipes(base);
+    setRecommendation(note);
+    setChatMessage('');
+    setChatLoading(false);
+  };
+
+  // ── Helpers ────────────────────────────────────────────────────────────────
   const mc = (s) => s >= 80 ? '#10b981' : s >= 50 ? '#f59e0b' : '#6b7280';
+
   const di = (d) => {
     if (!d) return '';
     const l = d.toLowerCase();
-    return l === 'easy' ? 'Easy' : l === 'medium' ? 'Medium' : 'Hard';
+    return l === 'easy' ? 'Easy' : l === 'hard' ? 'Hard' : 'Medium';
   };
+
   const parseInstructions = (instructions) => {
     if (!instructions) return [];
     if (Array.isArray(instructions)) return instructions;
-    const steps = instructions.split(/\n+/).map(s => s.replace(/^\d+\.\s*/, '').trim()).filter(s => s.length > 0);
+    const steps = instructions
+      .split(/\n+/)
+      .map(s => s.replace(/^\d+\.\s*/, '').trim())
+      .filter(s => s.length > 0);
     return steps.length > 0 ? steps : [instructions];
   };
 
-  // ── JSX ───────────────────────────────────────────────────────────────────
+  const methodBadge = () => {
+    if (searchMethod === 'rag-sbert')        return { label: '🧠 Full RAG',  color: '#6366f1' };
+    if (searchMethod === 'sentence-bert')    return { label: '🤖 SBERT',     color: '#0ea5e9' };
+    if (searchMethod === 'keyword-fallback') return { label: '🔑 Keyword',   color: '#6b7280' };
+    return null;
+  };
+
+  // ── JSX ────────────────────────────────────────────────────────────────────
   return (
     <div className="ca-root">
 
@@ -120,8 +246,8 @@ function CookingAssistant() {
 
         <nav className="ca-nav">
           {[
-            { id: 'detect', icon: '📸', label: 'Detect Ingredients' },
-            { id: 'meal', icon: '📅', label: 'Meal Planner' },
+            { id: 'detect',  icon: '📸', label: 'Detect Ingredients' },
+            { id: 'meal',    icon: '📅', label: 'Meal Planner' },
             { id: 'grocery', icon: '🛒', label: 'Grocery List' },
           ].map(item => (
             <button
@@ -171,10 +297,10 @@ function CookingAssistant() {
         {/* Stats */}
         <div className="ca-stats">
           {[
-            { icon: '🥬', label: 'Ingredients', value: ingredients.length || '—' },
+            { icon: '🥬', label: 'Ingredients',  value: ingredients.length || '—' },
             { icon: '📖', label: 'Recipes Found', value: recipes.length || '—' },
-            { icon: '🎯', label: 'Best Match', value: recipes.length ? `${Math.max(...recipes.map(r => r.match_score || 0))}%` : '—' },
-            { icon: '🍽️', label: 'Cuisine', value: 'Sri Lankan' },
+            { icon: '🎯', label: 'Best Match',    value: recipes.length ? `${Math.max(...recipes.map(r => r.match_score || 0))}%` : '—' },
+            { icon: '🍽️', label: 'Cuisine',       value: 'Sri Lankan' },
           ].map((s, i) => (
             <div className="ca-stat-card" key={i}>
               <span className="ca-stat-icon">{s.icon}</span>
@@ -205,7 +331,10 @@ function CookingAssistant() {
                 if (f && f.type.startsWith('image/')) processFile(f);
               }}
             >
-              <input type="file" id="img-upload" accept="image/*"
+              <input
+                type="file"
+                id="img-upload"
+                accept="image/*"
                 onChange={(e) => { const f = e.target.files[0]; if (f) processFile(f); }}
                 style={{ display: 'none' }}
               />
@@ -234,11 +363,21 @@ function CookingAssistant() {
                 <h3>Recipe Matching</h3>
                 <p>Matched to authentic Sri Lankan recipes from our database</p>
               </div>
-              <button className="ca-analyze-btn" onClick={analyzeImage} disabled={!selectedImage || loading}>
-                {loading ? <><span className="ca-spinner"></span> Analyzing...</> : <>📸 Detect from Image</>}
+              <button
+                className="ca-analyze-btn"
+                onClick={analyzeImage}
+                disabled={!selectedImage || loading}
+              >
+                {loading
+                  ? <><span className="ca-spinner"></span> Analyzing...</>
+                  : <>📸 Detect from Image</>
+                }
               </button>
               {previewUrl && (
-                <button className="ca-clear-btn" onClick={() => { setSelectedImage(null); setPreviewUrl(null); }}>
+                <button
+                  className="ca-clear-btn"
+                  onClick={() => { setSelectedImage(null); setPreviewUrl(null); }}
+                >
                   🗑️ Clear Image
                 </button>
               )}
@@ -252,7 +391,7 @@ function CookingAssistant() {
           <div className="ca-section-header">
             <div>
               <h2 className="ca-section-title">✏️ Add Ingredients Manually</h2>
-              <p className="ca-section-sub">Type an ingredient and press Enter, or separate multiple with commas</p>
+              <p className="ca-section-sub">Type an ingredient and press Enter, or separate with commas</p>
             </div>
           </div>
 
@@ -263,16 +402,20 @@ function CookingAssistant() {
                 ref={manualRef}
                 className="ca-manual-input"
                 type="text"
-                placeholder="e.g. onion, garlic, coconut milk, curry leaves..."
+                placeholder="e.g. onion, garlic, coconut milk, curry leaves"
                 value={manualInput}
                 onChange={(e) => setManualInput(e.target.value)}
                 onKeyDown={(e) => { if (e.key === 'Enter') addManualIngredient(); }}
               />
-              <button className="ca-manual-add-btn" onClick={addManualIngredient} disabled={!manualInput.trim()}>
+              <button
+                className="ca-manual-add-btn"
+                onClick={addManualIngredient}
+                disabled={!manualInput.trim()}
+              >
                 + Add
               </button>
             </div>
-            <p className="ca-manual-hint">💡 Tip: You can add multiple at once — "onion, garlic, tomato"</p>
+            <p className="ca-manual-hint">💡 Tip: Add multiple at once — "onion, garlic, tomato"</p>
           </div>
 
           {ingredients.length > 0 && (
@@ -280,16 +423,34 @@ function CookingAssistant() {
               <div className="ca-ing-section-header">
                 <span className="ca-ing-section-title">Your Ingredients</span>
                 <span className="ca-count-badge">{ingredients.length} total</span>
-                <button className="ca-clear-all-btn" onClick={() => { setIngredients([]); setRecipes([]); }}>
+                <button
+                  className="ca-clear-all-btn"
+                  onClick={() => {
+                    setIngredients([]);
+                    setRecipes([]);
+                    setAllRecipes([]);
+                    setRecommendation('');
+                  }}
+                >
                   🗑️ Clear All
                 </button>
               </div>
               <div className="ca-ingredients-grid">
                 {ingredients.map((ing, i) => (
-                  <div key={i} className="ca-ing-chip removable" style={{ animationDelay: `${i * 0.04}s` }}>
+                  <div
+                    key={i}
+                    className="ca-ing-chip removable"
+                    style={{ animationDelay: `${i * 0.04}s` }}
+                  >
                     <span className="ca-ing-dot"></span>
                     <span className="ca-ing-name">{ing}</span>
-                    <button className="ca-ing-remove" onClick={() => removeIngredient(ing)} title="Remove">×</button>
+                    <button
+                      className="ca-ing-remove"
+                      onClick={() => removeIngredient(ing)}
+                      title="Remove"
+                    >
+                      ×
+                    </button>
                   </div>
                 ))}
               </div>
@@ -297,7 +458,11 @@ function CookingAssistant() {
           )}
 
           {ingredients.length > 0 && (
-            <button className="ca-find-btn" onClick={findRecipes} disabled={searchingRecipes}>
+            <button
+              className="ca-find-btn"
+              onClick={findRecipes}
+              disabled={searchingRecipes}
+            >
               {searchingRecipes
                 ? <><span className="ca-spinner"></span> Finding Recipes...</>
                 : <>🔍 Find Recipes for {ingredients.length} Ingredient{ingredients.length > 1 ? 's' : ''}</>
@@ -305,6 +470,66 @@ function CookingAssistant() {
             </button>
           )}
         </div>
+
+        {/* AI Recommendation Box */}
+        {recommendation && (
+          <div className="ca-section ca-fade-in" style={{ borderLeft: '4px solid #6366f1' }}>
+            <div className="ca-section-header">
+              <div>
+                <h2 className="ca-section-title">🧠 AI Recommendation</h2>
+                {methodBadge() && (
+                  <span style={{
+                    background:    methodBadge().color,
+                    color:         'white',
+                    fontSize:      '11px',
+                    fontWeight:    600,
+                    padding:       '3px 10px',
+                    borderRadius:  '100px',
+                    marginTop:     '6px',
+                    display:       'inline-block',
+                  }}>
+                    {methodBadge().label}
+                  </span>
+                )}
+              </div>
+            </div>
+            <p style={{ fontSize: '14px', color: '#374151', lineHeight: 1.7, whiteSpace: 'pre-line' }}>
+              {recommendation}
+            </p>
+          </div>
+        )}
+
+        {/* Ask the AI Chef */}
+        {recipes.length > 0 && (
+          <div className="ca-section">
+            <div className="ca-section-header">
+              <div>
+                <h2 className="ca-section-title">💬 Ask the AI Chef</h2>
+                <p className="ca-section-sub">
+                  Try: "vegetarian" • "easy" • "no spicy" • "quick" • "dessert" • "reset"
+                </p>
+              </div>
+            </div>
+            <div className="ca-manual-input-wrap">
+              <span className="ca-manual-icon">💬</span>
+              <input
+                className="ca-manual-input"
+                type="text"
+                placeholder="e.g. vegetarian, easy, no spicy, quick, dessert"
+                value={chatMessage}
+                onChange={(e) => setChatMessage(e.target.value)}
+                onKeyDown={(e) => { if (e.key === 'Enter') sendChat(); }}
+              />
+              <button
+                className="ca-manual-add-btn"
+                onClick={sendChat}
+                disabled={!chatMessage.trim() || chatLoading}
+              >
+                {chatLoading ? '...' : 'Ask'}
+              </button>
+            </div>
+          </div>
+        )}
 
         {/* Recipe cards */}
         {recipes.length > 0 && (
@@ -315,37 +540,90 @@ function CookingAssistant() {
             </div>
             <div className="ca-recipes-grid">
               {recipes.map((recipe, i) => (
-                <div key={recipe.id || i} className="ca-recipe-card" style={{ animationDelay: `${i * 0.07}s` }}>
+                <div
+                  key={recipe.id || i}
+                  className="ca-recipe-card"
+                  style={{ animationDelay: `${i * 0.07}s` }}
+                >
                   <div className="ca-recipe-top">
-                    <span className="ca-match-pill" style={{ background: mc(recipe.match_score) }}>
+                    <span
+                      className="ca-match-pill"
+                      style={{ background: mc(recipe.match_score) }}
+                    >
                       {recipe.match_score}% Match
                     </span>
-                    <span className="ca-cuisine-tag">{recipe.predicted_category || recipe.cuisine || recipe.category || 'Sri Lankan'}</span>
+                    <span className="ca-cuisine-tag">
+                      {recipe.category || recipe.cuisine || 'Sri Lankan'}
+                    </span>
                   </div>
+
                   <h3 className="ca-recipe-name">{recipe.name}</h3>
+
                   <div className="ca-recipe-meta">
                     <span className="ca-meta-item">⏱️ {recipe.cooking_time || `${recipe.cook_time_mins || 30} mins`}</span>
                     <span className="ca-meta-item">📊 {di(recipe.difficulty)}</span>
                     {recipe.region && <span className="ca-meta-item">📍 {recipe.region}</span>}
                   </div>
+
                   {recipe.missing_ingredients?.length > 0 && (
                     <div className="ca-missing-block">
                       <span className="ca-missing-label">🛒 Need: </span>
                       <span className="ca-missing-text">
                         {recipe.missing_ingredients.slice(0, 3).join(', ')}
-                        {recipe.missing_ingredients.length > 3 ? ` +${recipe.missing_ingredients.length - 3} more` : ''}
+                        {recipe.missing_ingredients.length > 3
+                          ? ` +${recipe.missing_ingredients.length - 3} more`
+                          : ''}
                       </span>
                     </div>
                   )}
-                  {/* ✅ Fixed: was a stray expression outside JSX — now a proper button */}
-                  <button className="ca-view-btn" onClick={() => setSelectedRecipe(recipe)}>
-                    View Full Recipe →
-                  </button>
+
+                  <div style={{ display: 'flex', gap: '8px', marginTop: 'auto' }}>
+                    <button
+                      className="ca-view-btn"
+                      onClick={() => { setSelectedRecipe(recipe); likeRecipe(recipe); }}
+                    >
+                      View Recipe →
+                    </button>
+                    <button
+                      onClick={() => rejectRecipe(recipe)}
+                      title="Not interested — remove this"
+                      style={{
+                        padding:      '11px 14px',
+                        background:   'transparent',
+                        border:       '2px solid #fca5a5',
+                        borderRadius: '12px',
+                        cursor:       'pointer',
+                        fontSize:     '16px',
+                        color:        '#ef4444',
+                        transition:   'all .2s',
+                        flexShrink:   0,
+                      }}
+                    >
+                      ✕
+                    </button>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
         )}
+
+        {/* Empty state */}
+        {recipes.length === 0 && allRecipes.length > 0 && (
+          <div className="ca-section ca-fade-in" style={{ textAlign: 'center', padding: '40px' }}>
+            <div style={{ fontSize: '48px', marginBottom: '16px' }}>🔍</div>
+            <h3 style={{ color: '#374151', marginBottom: '8px' }}>No recipes match that filter</h3>
+            <p style={{ color: '#6b7280', marginBottom: '20px' }}>Try a different filter or reset to see all recipes</p>
+            <button
+              className="ca-find-btn"
+              style={{ maxWidth: '200px', margin: '0 auto' }}
+              onClick={() => { setRecipes(allRecipes); setRecommendation(''); }}
+            >
+              Reset Filters
+            </button>
+          </div>
+        )}
+
       </main>
 
       {/* ── Recipe Modal ── */}
@@ -356,29 +634,45 @@ function CookingAssistant() {
 
             <div className="ca-modal-top">
               <div>
-                <p className="ca-modal-cuisine">{selectedRecipe.cuisine || selectedRecipe.region || 'Sri Lankan'}</p>
+                <p className="ca-modal-cuisine">
+                  {selectedRecipe.cuisine || selectedRecipe.region || 'Sri Lankan'}
+                </p>
                 <h2 className="ca-modal-title">{selectedRecipe.name}</h2>
                 <div className="ca-modal-badges">
                   <span className="ca-mbadge green">✅ {selectedRecipe.match_score}% Match</span>
-                  <span className="ca-mbadge gray">⏱️ {selectedRecipe.cooking_time || `${selectedRecipe.cook_time_mins || 30} mins`}</span>
+                  <span className="ca-mbadge gray">
+                    ⏱️ {selectedRecipe.cooking_time || `${selectedRecipe.cook_time_mins || 30} mins`}
+                  </span>
                   <span className="ca-mbadge gray">📊 {selectedRecipe.difficulty}</span>
                   {selectedRecipe.spice_level && (
                     <span className="ca-mbadge orange">🌶️ Spice {selectedRecipe.spice_level}/5</span>
                   )}
-                  {selectedRecipe.search_method === 'sentence-bert' && (
-                    <span className="ca-mbadge blue">🤖 SBERT Matched</span>
+                  {searchMethod === 'rag-sbert' && (
+                    <span className="ca-mbadge" style={{ background: 'rgba(99,102,241,.3)', color: '#c7d2fe' }}>
+                      🧠 RAG
+                    </span>
+                  )}
+                  {searchMethod === 'sentence-bert' && (
+                    <span className="ca-mbadge" style={{ background: 'rgba(14,165,233,.3)', color: '#bae6fd' }}>
+                      🤖 SBERT
+                    </span>
                   )}
                 </div>
               </div>
               <div className="ca-modal-emoji">🍛</div>
             </div>
 
-            {selectedRecipe.description && <p className="ca-modal-desc">{selectedRecipe.description}</p>}
+            {selectedRecipe.description && (
+              <p className="ca-modal-desc">{selectedRecipe.description}</p>
+            )}
             {selectedRecipe.cultural_note && (
-              <div className="ca-modal-note"><span>📜</span> {selectedRecipe.cultural_note}</div>
+              <div className="ca-modal-note">
+                <span>📜</span> {selectedRecipe.cultural_note}
+              </div>
             )}
 
             <div className="ca-modal-body">
+
               {selectedRecipe.ingredients_used?.length > 0 && (
                 <div className="ca-modal-sec">
                   <h3 className="ca-msec-title">✅ Ingredients You Have</h3>
@@ -394,21 +688,25 @@ function CookingAssistant() {
                 <div className="ca-modal-sec">
                   <h3 className="ca-msec-title">📋 Full Ingredients List</h3>
                   <div className="ca-full-ingredients">
-                    {selectedRecipe.ingredients.map((ing, i) => (
-                      <div key={i} className="ca-full-ing-row">
-                        <span className="ca-full-ing-name">{typeof ing === 'object' ? ing.name : ing}</span>
-                        {typeof ing === 'object' && ing.amount && (
-                          <span className="ca-full-ing-amount">{ing.amount}</span>
-                        )}
-                      </div>
-                    ))}
+                    {selectedRecipe.ingredients.map((ing, i) => {
+                      const name = typeof ing === 'object'
+                        ? (typeof ing.name === 'object' ? ing.name?.english || '' : ing.name || '')
+                        : ing;
+                      const amount = typeof ing === 'object' ? ing.amount || '' : '';
+                      return (
+                        <div key={i} className="ca-full-ing-row">
+                          <span className="ca-full-ing-name">{name}</span>
+                          {amount && <span className="ca-full-ing-amount">{amount}</span>}
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               )}
 
               {selectedRecipe.missing_ingredients?.length > 0 && (
                 <div className="ca-modal-sec">
-                  <h3 className="ca-msec-title">🛒 You'll Also Need</h3>
+                  <h3 className="ca-msec-title">🛒 You Will Also Need</h3>
                   <div className="ca-chips">
                     {selectedRecipe.missing_ingredients.map((ing, i) => (
                       <span key={i} className="ca-chip orange">{ing}</span>
@@ -447,32 +745,27 @@ function CookingAssistant() {
                 </div>
               )}
 
-              {/* ── Pre-computed Adaptive Ingredients — shows instantly, no button needed ── */}
               {selectedRecipe.adaptive_ingredients?.length > 0 && (
                 <div className="ca-modal-sec ca-rag-section">
                   <h3 className="ca-msec-title">🔄 Adaptive Ingredients</h3>
-                  <div className="ca-rag-badge">
-                    <span className="ca-rag-method">Smart Substitutions</span>
-                  </div>
-                  <div className="ca-subs-block">
-                    <h4>Missing Hard-to-Find Ingredients?</h4>
-                    <div className="ca-subs-grid">
-                      {selectedRecipe.adaptive_ingredients.map((sub, i) => (
-                        <div key={i} className="ca-sub-card">
-                          <div className="ca-sub-original">❌ {sub.original}</div>
-                          <div className="ca-sub-arrow">→</div>
-                          <div className="ca-sub-replacement">✅ {sub.substitute}</div>
-                          {sub.notes && <div className="ca-sub-notes">{sub.notes}</div>}
-                        </div>
-                      ))}
-                    </div>
+                  <div className="ca-subs-grid">
+                    {selectedRecipe.adaptive_ingredients.map((sub, i) => (
+                      <div key={i} className="ca-sub-card">
+                        <div className="ca-sub-original">❌ {sub.original}</div>
+                        <div className="ca-sub-arrow">→</div>
+                        <div className="ca-sub-replacement">✅ {sub.substitute}</div>
+                        {sub.notes && <div className="ca-sub-notes">{sub.notes}</div>}
+                      </div>
+                    ))}
                   </div>
                 </div>
               )}
+
             </div>
           </div>
         </div>
       )}
+
     </div>
   );
 }
